@@ -20,6 +20,8 @@ venv/
 *.pdf
 *.docx
 *.pptx
+*.mp4
+*.icloud
 
 # LaTeX build artifacts
 *.fls
