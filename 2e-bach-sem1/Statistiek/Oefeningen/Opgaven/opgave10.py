@@ -1,5 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+
+script_dir = os.path.dirname(__file__)
 
 # Instellingen voor reproduceerbaarheid
 np.random.seed(42)
@@ -76,4 +79,5 @@ ax[1].legend(loc='lower right')
 ax[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
+plt.savefig(os.path.join(script_dir, 'opgave10_simulaties.png'))
 plt.show()
