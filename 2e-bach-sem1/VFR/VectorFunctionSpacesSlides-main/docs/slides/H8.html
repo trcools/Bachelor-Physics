@@ -1,68 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Jutho Haegeman">
-<meta name="dcterms.date" content="2025-11-24">
-
-<title>Vector- en functieruimten – Slides - Hoofdstuk 8 - Lineaire differentiaaloperatoren</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <meta name="author" content="Jutho Haegeman">
+  <meta name="dcterms.date" content="2025-11-24">
+  <title>Vector- en functieruimten -- Slides – Hoofdstuk 8 - Lineaire differentiaaloperatoren</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -77,199 +47,316 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-fixed">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Hoofdstuk 8 - Lineaire differentiaaloperatoren</h1>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Vector- en functieruimten – Slides</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H1.html" rel="" target="">
- <span class="menu-text">H1</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H2.html" rel="" target="">
- <span class="menu-text">H2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H3.html" rel="" target="">
- <span class="menu-text">H3</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H4.html" rel="" target="">
- <span class="menu-text">H4</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H5.html" rel="" target="">
- <span class="menu-text">H5</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H6.html" rel="" target="">
- <span class="menu-text">H6</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H7.html" rel="" target="">
- <span class="menu-text">H7</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../slides/H8.html" rel="" target="" aria-current="page">
- <span class="menu-text">H8</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H9.html" rel="" target="">
- <span class="menu-text">H9</span></a>
-  </li>  
-</ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jutho Haegeman 
 </div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
-  <li><a href="#differentiaaloperatoren-en-hun-toegevoegde" id="toc-differentiaaloperatoren-en-hun-toegevoegde" class="nav-link" data-scroll-target="#differentiaaloperatoren-en-hun-toegevoegde">Differentiaaloperatoren en hun toegevoegde</a>
-  <ul class="collapse">
-  <li><a href="#lineaire-differentiaalvergelijkingen" id="toc-lineaire-differentiaalvergelijkingen" class="nav-link" data-scroll-target="#lineaire-differentiaalvergelijkingen">Lineaire differentiaalvergelijkingen</a></li>
-  <li><a href="#terugkerend-voorbeeld" id="toc-terugkerend-voorbeeld" class="nav-link" data-scroll-target="#terugkerend-voorbeeld">(Terugkerend) voorbeeld</a></li>
-  <li><a href="#bijkomende-bemerkingen" id="toc-bijkomende-bemerkingen" class="nav-link" data-scroll-target="#bijkomende-bemerkingen">Bijkomende bemerkingen</a></li>
-  <li><a href="#bijkomende-bemerkingen-1" id="toc-bijkomende-bemerkingen-1" class="nav-link" data-scroll-target="#bijkomende-bemerkingen-1">Bijkomende bemerkingen</a></li>
-  <li><a href="#bijkomende-bemerkingen-2" id="toc-bijkomende-bemerkingen-2" class="nav-link" data-scroll-target="#bijkomende-bemerkingen-2">Bijkomende bemerkingen</a></li>
-  <li><a href="#superpositie" id="toc-superpositie" class="nav-link" data-scroll-target="#superpositie">Superpositie</a></li>
-  <li><a href="#superpositie-structuur-van-de-oplossingen" id="toc-superpositie-structuur-van-de-oplossingen" class="nav-link" data-scroll-target="#superpositie-structuur-van-de-oplossingen">Superpositie: structuur van de oplossingen</a></li>
-  <li><a href="#existentie-en-uniciteit" id="toc-existentie-en-uniciteit" class="nav-link" data-scroll-target="#existentie-en-uniciteit">Existentie en uniciteit</a></li>
-  <li><a href="#toegevoegde-operator" id="toc-toegevoegde-operator" class="nav-link" data-scroll-target="#toegevoegde-operator">Toegevoegde operator</a></li>
-  <li><a href="#toegevoegde-operator-randvoorwaarden" id="toc-toegevoegde-operator-randvoorwaarden" class="nav-link" data-scroll-target="#toegevoegde-operator-randvoorwaarden">Toegevoegde operator: randvoorwaarden</a></li>
-  <li><a href="#toegevoegde-operator-voorbeeld" id="toc-toegevoegde-operator-voorbeeld" class="nav-link" data-scroll-target="#toegevoegde-operator-voorbeeld">Toegevoegde operator: voorbeeld</a></li>
-  <li><a href="#toegevoegde-operator-en-existentie-voorbeeld" id="toc-toegevoegde-operator-en-existentie-voorbeeld" class="nav-link" data-scroll-target="#toegevoegde-operator-en-existentie-voorbeeld">Toegevoegde operator en existentie: voorbeeld</a></li>
-  <li><a href="#toegevoegde-operator-en-existentie-voorbeeld-1" id="toc-toegevoegde-operator-en-existentie-voorbeeld-1" class="nav-link" data-scroll-target="#toegevoegde-operator-en-existentie-voorbeeld-1">Toegevoegde operator en existentie: voorbeeld</a></li>
-  <li><a href="#zelftoegevoegde-differentiaaloperatoren" id="toc-zelftoegevoegde-differentiaaloperatoren" class="nav-link" data-scroll-target="#zelftoegevoegde-differentiaaloperatoren">Zelftoegevoegde differentiaaloperatoren</a></li>
-  <li><a href="#zelftoegevoegde-differentiaaloperatoren-1" id="toc-zelftoegevoegde-differentiaaloperatoren-1" class="nav-link" data-scroll-target="#zelftoegevoegde-differentiaaloperatoren-1">Zelftoegevoegde differentiaaloperatoren</a></li>
-  <li><a href="#sturm-liouville-operator-randvoorwaarden" id="toc-sturm-liouville-operator-randvoorwaarden" class="nav-link" data-scroll-target="#sturm-liouville-operator-randvoorwaarden">Sturm-Liouville operator: randvoorwaarden</a></li>
-  <li><a href="#sturm-liouville-operator-randvoorwaarden-1" id="toc-sturm-liouville-operator-randvoorwaarden-1" class="nav-link" data-scroll-target="#sturm-liouville-operator-randvoorwaarden-1">Sturm-Liouville operator: randvoorwaarden</a></li>
-  </ul></li>
-  <li><a href="#beginvoorwaardeproblemen" id="toc-beginvoorwaardeproblemen" class="nav-link" data-scroll-target="#beginvoorwaardeproblemen">Beginvoorwaardeproblemen</a>
-  <ul class="collapse">
-  <li><a href="#beginvoorwaardeprobleem" id="toc-beginvoorwaardeprobleem" class="nav-link" data-scroll-target="#beginvoorwaardeprobleem">Beginvoorwaardeprobleem</a></li>
-  <li><a href="#homogene-oplossing" id="toc-homogene-oplossing" class="nav-link" data-scroll-target="#homogene-oplossing">Homogene oplossing</a></li>
-  <li><a href="#homogene-oplossing-1" id="toc-homogene-oplossing-1" class="nav-link" data-scroll-target="#homogene-oplossing-1">Homogene oplossing</a></li>
-  <li><a href="#homogene-oplossing-2" id="toc-homogene-oplossing-2" class="nav-link" data-scroll-target="#homogene-oplossing-2">Homogene oplossing</a></li>
-  <li><a href="#tijdsordening-en-tijdsgeordende-exponentiële" id="toc-tijdsordening-en-tijdsgeordende-exponentiële" class="nav-link" data-scroll-target="#tijdsordening-en-tijdsgeordende-exponentiële">Tijdsordening en tijdsgeordende exponentiële</a></li>
-  <li><a href="#fundamentale-matrixoplossing" id="toc-fundamentale-matrixoplossing" class="nav-link" data-scroll-target="#fundamentale-matrixoplossing">Fundamentale matrixoplossing</a></li>
-  <li><a href="#fundamentale-matrices" id="toc-fundamentale-matrices" class="nav-link" data-scroll-target="#fundamentale-matrices">Fundamentale matrices</a></li>
-  <li><a href="#fundamentele-matrices-en-wronskiaan" id="toc-fundamentele-matrices-en-wronskiaan" class="nav-link" data-scroll-target="#fundamentele-matrices-en-wronskiaan">Fundamentele matrices en Wronskiaan</a></li>
-  <li><a href="#wronskiaan-en-abels-formule" id="toc-wronskiaan-en-abels-formule" class="nav-link" data-scroll-target="#wronskiaan-en-abels-formule">Wronskiaan en Abel’s formule</a></li>
-  <li><a href="#theorema-van-floquet" id="toc-theorema-van-floquet" class="nav-link" data-scroll-target="#theorema-van-floquet">Theorema van Floquet</a></li>
-  <li><a href="#inhomogene-oplossing" id="toc-inhomogene-oplossing" class="nav-link" data-scroll-target="#inhomogene-oplossing">Inhomogene oplossing</a></li>
-  <li><a href="#analyciteit-van-de-oplossingen" id="toc-analyciteit-van-de-oplossingen" class="nav-link" data-scroll-target="#analyciteit-van-de-oplossingen">Analyciteit van de oplossingen</a></li>
-  <li><a href="#voorbeeld-taylorreeks-1" id="toc-voorbeeld-taylorreeks-1" class="nav-link" data-scroll-target="#voorbeeld-taylorreeks-1">Voorbeeld Taylorreeks (1)</a></li>
-  <li><a href="#voorbeeld-taylorreeks-2" id="toc-voorbeeld-taylorreeks-2" class="nav-link" data-scroll-target="#voorbeeld-taylorreeks-2">Voorbeeld Taylorreeks (2)</a></li>
-  <li><a href="#singulier-beginvoorwaardeproblemen-zonder-bewijs" id="toc-singulier-beginvoorwaardeproblemen-zonder-bewijs" class="nav-link" data-scroll-target="#singulier-beginvoorwaardeproblemen-zonder-bewijs">Singulier beginvoorwaardeproblemen (zonder bewijs)</a></li>
-  <li><a href="#methode-van-frobenius" id="toc-methode-van-frobenius" class="nav-link" data-scroll-target="#methode-van-frobenius">Methode van Frobenius</a></li>
-  <li><a href="#methode-van-frobenius-voor-2de-orde" id="toc-methode-van-frobenius-voor-2de-orde" class="nav-link" data-scroll-target="#methode-van-frobenius-voor-2de-orde">Methode van Frobenius voor 2de orde</a></li>
-  <li><a href="#voorbeeld-zwak-singulier-punt" id="toc-voorbeeld-zwak-singulier-punt" class="nav-link" data-scroll-target="#voorbeeld-zwak-singulier-punt">Voorbeeld zwak singulier punt</a></li>
-  <li><a href="#voorbeeld-zwak-singulier-punt-1" id="toc-voorbeeld-zwak-singulier-punt-1" class="nav-link" data-scroll-target="#voorbeeld-zwak-singulier-punt-1">Voorbeeld zwak singulier punt</a></li>
-  <li><a href="#voorbeeld-zwak-singulier-punt-2" id="toc-voorbeeld-zwak-singulier-punt-2" class="nav-link" data-scroll-target="#voorbeeld-zwak-singulier-punt-2">Voorbeeld zwak singulier punt</a></li>
-  </ul></li>
-  <li><a href="#randvoorwaardeproblemen" id="toc-randvoorwaardeproblemen" class="nav-link" data-scroll-target="#randvoorwaardeproblemen">Randvoorwaardeproblemen</a>
-  <ul class="collapse">
-  <li><a href="#randvoorwaarden" id="toc-randvoorwaarden" class="nav-link" data-scroll-target="#randvoorwaarden">Randvoorwaarden</a></li>
-  <li><a href="#randvoorwaarden-1" id="toc-randvoorwaarden-1" class="nav-link" data-scroll-target="#randvoorwaarden-1">Randvoorwaarden</a></li>
-  <li><a href="#gescheiden-randvoorwaarden" id="toc-gescheiden-randvoorwaarden" class="nav-link" data-scroll-target="#gescheiden-randvoorwaarden">Gescheiden randvoorwaarden</a></li>
-  <li><a href="#inhomogene-oplossing-1" id="toc-inhomogene-oplossing-1" class="nav-link" data-scroll-target="#inhomogene-oplossing-1">Inhomogene oplossing</a></li>
-  <li><a href="#greense-functie" id="toc-greense-functie" class="nav-link" data-scroll-target="#greense-functie">Greense functie</a></li>
-  <li><a href="#greense-functie-1" id="toc-greense-functie-1" class="nav-link" data-scroll-target="#greense-functie-1">Greense functie</a></li>
-  <li><a href="#greense-functie-2" id="toc-greense-functie-2" class="nav-link" data-scroll-target="#greense-functie-2">Greense functie</a></li>
-  <li><a href="#greense-functie-voorbeeld" id="toc-greense-functie-voorbeeld" class="nav-link" data-scroll-target="#greense-functie-voorbeeld">Greense functie: voorbeeld</a></li>
-  <li><a href="#greense-functie-interpretatie" id="toc-greense-functie-interpretatie" class="nav-link" data-scroll-target="#greense-functie-interpretatie">Greense functie: interpretatie</a></li>
-  <li><a href="#greense-functie-en-toegevoegde-operator-voorbeeld" id="toc-greense-functie-en-toegevoegde-operator-voorbeeld" class="nav-link" data-scroll-target="#greense-functie-en-toegevoegde-operator-voorbeeld">Greense functie en toegevoegde operator: voorbeeld</a></li>
-  </ul></li>
-  <li><a href="#sturm-liouville-eigenwaardeproblemen" id="toc-sturm-liouville-eigenwaardeproblemen" class="nav-link" data-scroll-target="#sturm-liouville-eigenwaardeproblemen">Sturm-Liouville eigenwaardeproblemen</a>
-  <ul class="collapse">
-  <li><a href="#eigenwaardeproblemen-met-differentiaaloperatoren" id="toc-eigenwaardeproblemen-met-differentiaaloperatoren" class="nav-link" data-scroll-target="#eigenwaardeproblemen-met-differentiaaloperatoren">Eigenwaardeproblemen met differentiaaloperatoren</a></li>
-  <li><a href="#eigenwaardeproblemen-voorbeeld" id="toc-eigenwaardeproblemen-voorbeeld" class="nav-link" data-scroll-target="#eigenwaardeproblemen-voorbeeld">Eigenwaardeproblemen: voorbeeld</a></li>
-  <li><a href="#regulier-sturm-liouville-probleem" id="toc-regulier-sturm-liouville-probleem" class="nav-link" data-scroll-target="#regulier-sturm-liouville-probleem">Regulier Sturm-Liouville probleem</a></li>
-  <li><a href="#regulier-sturm-liouville-probleem-1" id="toc-regulier-sturm-liouville-probleem-1" class="nav-link" data-scroll-target="#regulier-sturm-liouville-probleem-1">Regulier Sturm-Liouville probleem</a></li>
-  <li><a href="#regulier-sturm-liouville-probleem-2" id="toc-regulier-sturm-liouville-probleem-2" class="nav-link" data-scroll-target="#regulier-sturm-liouville-probleem-2">Regulier Sturm-Liouville probleem</a></li>
-  <li><a href="#regulier-sturm-liouville-probleem-3" id="toc-regulier-sturm-liouville-probleem-3" class="nav-link" data-scroll-target="#regulier-sturm-liouville-probleem-3">Regulier Sturm-Liouville probleem</a></li>
-  <li><a href="#regulier-sturm-liouville-probleem-voorbeeld" id="toc-regulier-sturm-liouville-probleem-voorbeeld" class="nav-link" data-scroll-target="#regulier-sturm-liouville-probleem-voorbeeld">Regulier Sturm-Liouville probleem: voorbeeld</a></li>
-  <li><a href="#rayleigh-ritz-methode" id="toc-rayleigh-ritz-methode" class="nav-link" data-scroll-target="#rayleigh-ritz-methode">Rayleigh-Ritz methode</a></li>
-  <li><a href="#rayleigh-ritz-methode-1" id="toc-rayleigh-ritz-methode-1" class="nav-link" data-scroll-target="#rayleigh-ritz-methode-1">Rayleigh-Ritz methode</a></li>
-  <li><a href="#uitbreidingen-op-sturm-liouville-theorie" id="toc-uitbreidingen-op-sturm-liouville-theorie" class="nav-link" data-scroll-target="#uitbreidingen-op-sturm-liouville-theorie">Uitbreidingen op Sturm-Liouville theorie</a></li>
-  <li><a href="#uitbreidingen-op-sturm-liouville-theorie-1" id="toc-uitbreidingen-op-sturm-liouville-theorie-1" class="nav-link" data-scroll-target="#uitbreidingen-op-sturm-liouville-theorie-1">Uitbreidingen op Sturm-Liouville theorie</a></li>
-  <li><a href="#uitbreidingen-op-sturm-liouville-theorie-2" id="toc-uitbreidingen-op-sturm-liouville-theorie-2" class="nav-link" data-scroll-target="#uitbreidingen-op-sturm-liouville-theorie-2">Uitbreidingen op Sturm-Liouville theorie</a></li>
-  </ul></li>
-  <li><a href="#partiële-differentiaalvergelijkingen" id="toc-partiële-differentiaalvergelijkingen" class="nav-link" data-scroll-target="#partiële-differentiaalvergelijkingen">Partiële differentiaalvergelijkingen</a>
-  <ul class="collapse">
-  <li><a href="#beginvoorwaardeproblemen-1" id="toc-beginvoorwaardeproblemen-1" class="nav-link" data-scroll-target="#beginvoorwaardeproblemen-1">Beginvoorwaardeproblemen</a></li>
-  <li><a href="#meerdimensionale-sturm-liouville-operator" id="toc-meerdimensionale-sturm-liouville-operator" class="nav-link" data-scroll-target="#meerdimensionale-sturm-liouville-operator">Meerdimensionale Sturm-Liouville operator</a></li>
-  <li><a href="#meerdimensionale-sturm-liouville-operator-1" id="toc-meerdimensionale-sturm-liouville-operator-1" class="nav-link" data-scroll-target="#meerdimensionale-sturm-liouville-operator-1">Meerdimensionale Sturm-Liouville operator</a></li>
-  <li><a href="#meerdimensionale-sturm-liouville-operator-2" id="toc-meerdimensionale-sturm-liouville-operator-2" class="nav-link" data-scroll-target="#meerdimensionale-sturm-liouville-operator-2">Meerdimensionale Sturm-Liouville operator</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hoofdstuk 8 - Lineaire differentiaaloperatoren</h1>
+</div>
 </div>
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jutho Haegeman </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 24, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="doel-van-dit-hoofdstuk" class="level2">
-<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+  <p class="date">2025-11-24</p>
+</section>
+<section id="doel-van-dit-hoofdstuk" class="slide level2">
+<h2>Doel van dit hoofdstuk</h2>
 <div class="hidden">
 <p>$$ % Math operators % % </p>
 % VECTORS
@@ -293,10 +380,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Eigenwaardeproblemen met differentiaaloperatoren</li>
 </ul>
 </section>
-<section id="differentiaaloperatoren-en-hun-toegevoegde" class="level1">
+<section>
+<section id="differentiaaloperatoren-en-hun-toegevoegde" class="title-slide slide level1 center">
 <h1>Differentiaaloperatoren en hun toegevoegde</h1>
-<section id="lineaire-differentiaalvergelijkingen" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-differentiaalvergelijkingen">Lineaire differentiaalvergelijkingen</h2>
+
+</section>
+<section id="lineaire-differentiaalvergelijkingen" class="slide level2">
+<h2>Lineaire differentiaalvergelijkingen</h2>
 <ul>
 <li><p>Lineaire differentiaalvergelijking:</p>
 <p><span class="math display">({\hat{L}} u)(x) = f(x),\quad a &lt; x &lt; b</span></p>
@@ -305,12 +395,15 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Randvoorwaarden: <span class="math inline">B_i[u] = \gamma_i, i=1,\ldots,m</span> met hierin</p>
 <p><span class="math display">B_i[u] = \sum_{j=1}^{p} \alpha_{i,j} \frac{{\mathrm{d}}^{j-1} u}{{\mathrm{d}}x^{j-1}}(a) + \sum_{j=1}^{p} \alpha_{i,j+p} \frac{{\mathrm{d}}^{j-1} u}{{\mathrm{d}}x^{j-1}}(b)</span></p>
 <ul>
-<li>randvoorwaarden onafhankelijk als <span class="math inline">{\mathsf{B}} = \begin{bmatrix} \alpha_{1,1} &amp;\dots &amp;\alpha_{1,2p}\\  \vdots &amp; &amp; \vdots\\  \alpha_{m,1} &amp;\dots &amp;\alpha_{m,2p}  \end{bmatrix}</span> rang <span class="math inline">m</span> heeft</li>
+<li>randvoorwaarden onafhankelijk als <span class="math inline">{\mathsf{B}} = \begin{bmatrix} \alpha_{1,1} &amp;\dots &amp;\alpha_{1,2p}\\
+\vdots &amp; &amp; \vdots\\
+\alpha_{m,1} &amp;\dots &amp;\alpha_{m,2p}
+\end{bmatrix}</span> rang <span class="math inline">m</span> heeft</li>
 </ul></li>
 </ul>
 </section>
-<section id="terugkerend-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="terugkerend-voorbeeld">(Terugkerend) voorbeeld</h2>
+<section id="terugkerend-voorbeeld" class="slide level2">
+<h2>(Terugkerend) voorbeeld</h2>
 <p><span class="math display">  -u''(x) = x</span></p>
 <ul>
 <li>zonder randvoorwaarden: <span class="math inline">u(x) = c_1 + c_2 x -\frac{1}{2} x^2</span></li>
@@ -327,8 +420,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><span class="math inline">\rightarrow</span> hoe kunnen we het bestaan en de uniciteit van de oplossingen karakteriseren?</p>
 </section>
-<section id="bijkomende-bemerkingen" class="level2">
-<h2 class="anchored" data-anchor-id="bijkomende-bemerkingen">Bijkomende bemerkingen</h2>
+<section id="bijkomende-bemerkingen" class="slide level2">
+<h2>Bijkomende bemerkingen</h2>
 <ol type="1">
 <li><p>Met behulp van de positie en afleidingsoperator kunnen we <span class="math inline">{\hat{L}}</span> schrijven als</p>
 <p><span class="math display">{\hat{L}} = \sum_{j=0}^{p} a_j({\hat{X}}) {\hat{D}}^j</span></p></li>
@@ -339,8 +432,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ol>
 </section>
-<section id="bijkomende-bemerkingen-1" class="level2">
-<h2 class="anchored" data-anchor-id="bijkomende-bemerkingen-1">Bijkomende bemerkingen</h2>
+<section id="bijkomende-bemerkingen-1" class="slide level2">
+<h2>Bijkomende bemerkingen</h2>
 <ol start="3" type="1">
 <li><p>Waarde en regulariteit van de coefficiënten <span class="math inline">a_k(x)</span>?</p>
 <ul>
@@ -357,8 +450,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ol>
 </section>
-<section id="bijkomende-bemerkingen-2" class="level2">
-<h2 class="anchored" data-anchor-id="bijkomende-bemerkingen-2">Bijkomende bemerkingen</h2>
+<section id="bijkomende-bemerkingen-2" class="slide level2">
+<h2>Bijkomende bemerkingen</h2>
 <ol start="4" type="1">
 <li><p>Domein van oplossingen = domein van <span class="math inline">{\hat{L}}</span></p>
 <ul>
@@ -371,8 +464,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ol>
 </section>
-<section id="superpositie" class="level2">
-<h2 class="anchored" data-anchor-id="superpositie">Superpositie</h2>
+<section id="superpositie" class="slide level2">
+<h2>Superpositie</h2>
 <ul>
 <li><p><strong>superpositie</strong> = belangrijkste eigenschap/gevolg van lineariteit</p>
 <p><span class="math display">\begin{align*}
@@ -391,8 +484,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">({\hat{L}} u)(x) = 0, \quad \forall a &lt; x &lt; b\qquad \text{with}\ B_i[u] = 0, \forall i=1,\ldots,m</span></p></li>
 </ul>
 </section>
-<section id="superpositie-structuur-van-de-oplossingen" class="level2">
-<h2 class="anchored" data-anchor-id="superpositie-structuur-van-de-oplossingen">Superpositie: structuur van de oplossingen</h2>
+<section id="superpositie-structuur-van-de-oplossingen" class="slide level2">
+<h2>Superpositie: structuur van de oplossingen</h2>
 <ul>
 <li><p>We ontbinden de oplossing van het algemene probleem als <span class="math inline">u = u_0 + u_f + u_\gamma</span>:</p>
 <ul>
@@ -407,8 +500,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\rightarrow</span> wanneer is het bestaan van <span class="math inline">u_f</span> en <span class="math inline">u_\gamma</span> gegarandeerd?</p></li>
 </ul>
 </section>
-<section id="existentie-en-uniciteit" class="level2">
-<h2 class="anchored" data-anchor-id="existentie-en-uniciteit">Existentie en uniciteit</h2>
+<section id="existentie-en-uniciteit" class="slide level2">
+<h2>Existentie en uniciteit</h2>
 <ul>
 <li><p>Existentie van <span class="math inline">u_\gamma</span> is voor later</p></li>
 <li><p>Voor <span class="math inline">u_0</span> en <span class="math inline">u_f</span> definiëren we de nu het domein van de differentiaaloperator als:</p>
@@ -426,8 +519,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-operator" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-operator">Toegevoegde operator</h2>
+<section id="toegevoegde-operator" class="slide level2">
+<h2>Toegevoegde operator</h2>
 <ul>
 <li><p>We zijn geïnteresseerd in de kernel van de toegevoegde operator, i.e.</p>
 <p><span class="math display">\begin{align*}
@@ -445,8 +538,8 @@ ul.task-list li input[type="checkbox"] {
 (bilineaire concomitant)</p></li>
 </ul>
 </section>
-<section id="toegevoegde-operator-randvoorwaarden" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-operator-randvoorwaarden">Toegevoegde operator: randvoorwaarden</h2>
+<section id="toegevoegde-operator-randvoorwaarden" class="slide level2">
+<h2>Toegevoegde operator: randvoorwaarden</h2>
 <ul>
 <li><p>De identiteit van Lagrange geïntegreerd over <span class="math inline">[a,b]</span> = identiteit van Green:</p>
 <p><span class="math display">{\left\langle v,{\hat{L}}u\right\rangle} - {\left\langle{\hat{L}}^\dagger v,u\right\rangle} =\left. J(u(x),v(x))\right|^b_a = \left. J(u(x),v(x))\right|_{x=b} - \left. J(u(x),v(x))\right|_{x=a}</span></p></li>
@@ -463,8 +556,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-operator-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-operator-voorbeeld">Toegevoegde operator: voorbeeld</h2>
+<section id="toegevoegde-operator-voorbeeld" class="slide level2">
+<h2>Toegevoegde operator: voorbeeld</h2>
 <ul>
 <li><span class="math inline">{\hat{L}}=-{\hat{D}}^2</span> op het interval <span class="math inline">[0,1]</span>:
 <ul>
@@ -485,8 +578,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-operator-en-existentie-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-operator-en-existentie-voorbeeld">Toegevoegde operator en existentie: voorbeeld</h2>
+<section id="toegevoegde-operator-en-existentie-voorbeeld" class="slide level2">
+<h2>Toegevoegde operator en existentie: voorbeeld</h2>
 <p><span class="math display">-u''(x) = f(x)</span></p>
 <ul>
 <li><p>zonder randvoorwaarden:</p>
@@ -507,8 +600,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-operator-en-existentie-voorbeeld-1" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-operator-en-existentie-voorbeeld-1">Toegevoegde operator en existentie: voorbeeld</h2>
+<section id="toegevoegde-operator-en-existentie-voorbeeld-1" class="slide level2">
+<h2>Toegevoegde operator en existentie: voorbeeld</h2>
 <p><span class="math display">-u''(x) = f(x)</span></p>
 <ul>
 <li><span class="math inline">u(0) = u'(0) =u'(1) = 0</span>: <span class="math inline">c_0=0</span>, <span class="math inline">c_2=0</span>, <span class="math inline">c_2 + \int_0^1 \,{\mathrm{d}}z f(z)=0</span>
@@ -524,8 +617,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><span class="math inline">\Rightarrow</span> dit zullen we enkel kunnen bereiken met <span class="math inline">m = 2p-m = p</span> randvoorwaarden</p>
 </section>
-<section id="zelftoegevoegde-differentiaaloperatoren" class="level2">
-<h2 class="anchored" data-anchor-id="zelftoegevoegde-differentiaaloperatoren">Zelftoegevoegde differentiaaloperatoren</h2>
+<section id="zelftoegevoegde-differentiaaloperatoren" class="slide level2">
+<h2>Zelftoegevoegde differentiaaloperatoren</h2>
 <ul>
 <li>Zelftoegevoegde operatoren hebben nuttige eigenschappen (vb spectrum)</li>
 <li>Eindig-dimensionaal:
@@ -545,18 +638,18 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="zelftoegevoegde-differentiaaloperatoren-1" class="level2">
-<h2 class="anchored" data-anchor-id="zelftoegevoegde-differentiaaloperatoren-1">Zelftoegevoegde differentiaaloperatoren</h2>
+<section id="zelftoegevoegde-differentiaaloperatoren-1" class="slide level2">
+<h2>Zelftoegevoegde differentiaaloperatoren</h2>
 <ul>
 <li><p>Veralgemeende Lagrange-identiteit: <span class="math display">w(x) \overline{v(x)} ({\hat{L}}u)(x) - w(x) \overline{({\hat{L}}^\dagger v)(x)} u(x) = \frac{{\mathrm{d}}\ }{{\mathrm{d}}x} J(u(x),v(x))</span> met <span class="math inline">J(u(x),v(x)) = \sum_{j=0}^{p} \sum_{k=0}^{j-1} (-1)^k \left(\frac{{\mathrm{d}}^k\ }{{\mathrm{d}}x^k}[ w(x) a_j(x) \overline{v(x)}]\right)\left(\frac{{\mathrm{d}}^{j-1-k}\ }{{\mathrm{d}}x^{j-1-k}}u(x)\right)</span></p></li>
 <li><p>Een reële 2de-orde differentiaaloperator is formeel zelf-toegevoegd t.o.v. <span class="math inline">{\left\langle\ ,\ \right\rangle}_w</span> als en slechts als hij kan geschreven worden in de vorm van een <strong>Sturm-Liouville operator</strong>: <span class="math display">({\hat{L}}u)(x) = -\frac{1}{w(x)} \frac{{\mathrm{d}}\ }{{\mathrm{d}}x} \left( p(x) \frac{{\mathrm{d}}\ }{{\mathrm{d}}x} u (x)\right) + \frac{q(x)}{w(x)} u(x)</span></p></li>
 <li><p>Er bestaat een keuze van <span class="math inline">w</span> die elke reële 2de-orde differentiaaloperator met <span class="math inline">a_2(x)\neq 0</span> voor <span class="math inline">x \in [a,b]</span> formeel zelf-toegevoegd maakt</p></li>
 </ul>
 </section>
-<section id="sturm-liouville-operator-randvoorwaarden" class="level2">
-<h2 class="anchored" data-anchor-id="sturm-liouville-operator-randvoorwaarden">Sturm-Liouville operator: randvoorwaarden</h2>
+<section id="sturm-liouville-operator-randvoorwaarden" class="slide level2">
+<h2>Sturm-Liouville operator: randvoorwaarden</h2>
 <ul>
-<li><p>voor Sturm-Liouville operator <span class="math inline">{\hat{L}}</span>: <span class="math inline">J(u(x),v(x)) = -p(x) \left[\overline{v(x)} u'(x) - \overline{v'(x)} u(x)\right]</span></p>
+<li><p>voor Sturm-Liouville operator <span class="math inline">{\hat{L}}</span>: <span class="math inline">J(u(x),v(x)) = -p(x) \left[\overline{v(x)}  u'(x) - \overline{v'(x)} u(x)\right]</span></p>
 <p><span class="math display">\begin{align*}
   \left[J(u(x),v(x))\right]_a^b &amp;= \boldsymbol{y}^{\mathsf{H}}{\mathsf{P}}\boldsymbol{x} =\begin{bmatrix}v(a)\\v'(a)\\v(b)\\v'(b)\end{bmatrix}^{\mathsf{H}}\begin{bmatrix} 0 &amp; +p(a) &amp; 0 &amp; 0 \\ -p(a) &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -p(b) \\ 0 &amp; 0 &amp; +p(b) &amp; 0\end{bmatrix} \begin{bmatrix}u(a)\\u'(a)\\u(b)\\u'(b)\end{bmatrix}\\
   &amp;= p(b) \det\left(\begin{bmatrix}
@@ -568,8 +661,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>reguliere Sturm-Liouville operator: <span class="math inline">p(a)\neq 0</span>, <span class="math inline">p(b)\neq 0</span></p></li>
 </ul>
 </section>
-<section id="sturm-liouville-operator-randvoorwaarden-1" class="level2">
-<h2 class="anchored" data-anchor-id="sturm-liouville-operator-randvoorwaarden-1">Sturm-Liouville operator: randvoorwaarden</h2>
+<section id="sturm-liouville-operator-randvoorwaarden-1" class="slide level2">
+<h2>Sturm-Liouville operator: randvoorwaarden</h2>
 <p>Reguliere Sturm-Liouville operator is zelftoegevoegd voor:</p>
 <ul>
 <li><p>gescheiden randvoorwaarden: <span class="math display">\begin{align*}
@@ -588,12 +681,14 @@ ul.task-list li input[type="checkbox"] {
 \end{align*}</span></p></li>
 <li><p>andere oplossingen voor de randvoorwaarden, maar dit zijn de twee fysisch meest relevante gevallen</p></li>
 </ul>
-</section>
-</section>
-<section id="beginvoorwaardeproblemen" class="level1">
+</section></section>
+<section>
+<section id="beginvoorwaardeproblemen" class="title-slide slide level1 center">
 <h1>Beginvoorwaardeproblemen</h1>
-<section id="beginvoorwaardeprobleem" class="level2">
-<h2 class="anchored" data-anchor-id="beginvoorwaardeprobleem">Beginvoorwaardeprobleem</h2>
+
+</section>
+<section id="beginvoorwaardeprobleem" class="slide level2">
+<h2>Beginvoorwaardeprobleem</h2>
 <p><span class="math display">({\hat{L}} u)(t) = \sum_{j=0}^{p} a_j(t) \frac{{\mathrm{d}}^j u}{{\mathrm{d}}t^j}(t) = f(t),\  a&lt;t&lt;b,\quad \text{met}\ u^{(i)}(a) = \gamma_i,\  i=0,\ldots,p-1.</span></p>
 <ul>
 <li>meestal <span class="math inline">t</span> in plaats van <span class="math inline">x</span></li>
@@ -606,8 +701,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="homogene-oplossing" class="level2">
-<h2 class="anchored" data-anchor-id="homogene-oplossing">Homogene oplossing</h2>
+<section id="homogene-oplossing" class="slide level2">
+<h2>Homogene oplossing</h2>
 <p>Herschrijven als (en veralgemenen tot voorwaarde op willekeurig punt <span class="math inline">c \in [a,b]</span>) <span class="math display">\frac{{\mathrm{d}}\boldsymbol{z}}{{\mathrm{d}}t}(t) = {\mathsf{A}}(t) \boldsymbol{z}(t),\  a&lt;t&lt;b,\quad \text{met}\ \boldsymbol{z}(c) = \boldsymbol{\zeta}</span></p>
 <p><span class="math display">\begin{align*}
 \boldsymbol{z}(t)&amp;= \begin{bmatrix}
@@ -630,22 +725,24 @@ ul.task-list li input[type="checkbox"] {
     \end{bmatrix}
 \end{align*}</span></p>
 </section>
-<section id="homogene-oplossing-1" class="level2">
-<h2 class="anchored" data-anchor-id="homogene-oplossing-1">Homogene oplossing</h2>
+<section id="homogene-oplossing-1" class="slide level2">
+<h2>Homogene oplossing</h2>
 <ul>
 <li><p>autonome geval (<span class="math inline">{\mathsf{A}}(t) ={\mathsf{A}}(0)={\mathsf{A}}</span>):</p>
-<p><span class="math inline">\boldsymbol{z}(t) = \exp\left((t-c){\mathsf{A}} \right) \boldsymbol{\zeta} = \sum_{n=0}^{+\infty} \frac{1}{n!} (t-c)^n {\mathsf{A}}^n \boldsymbol{\zeta}</span></p></li>
+<p><span class="math inline">\boldsymbol{z}(t) = \exp\left((t-c){\mathsf{A}} \right) \boldsymbol{\zeta} = \sum_{n=0}^{+\infty} \frac{1}{n!} (t-c)^n {\mathsf{A}}^n  \boldsymbol{\zeta}</span></p></li>
 <li><p>veralgemening: <span class="math inline">\boldsymbol{z}(t) = \exp\left(\int_{c}^{t} {\mathsf{A}}(\tau)\,{\mathrm{d}}\tau\right) \boldsymbol{\zeta}</span> ? <span class="math inline">\qquad\rightarrow</span> <strong>NEEN</strong>!</p>
 <p>(enkel als <span class="math inline">{\left[{\mathsf{A}}(t),{\mathsf{A}}(t')\right]}={\mathsf{O}}</span> voor alle <span class="math inline">t,t' \in [a,b]</span>, bvb als <span class="math inline">p=1</span>)</p></li>
 <li><p>Herschrijf probleem als</p>
 <p><span class="math display">\boldsymbol{z}(t) = \int_{c}^{t} {\mathsf{A}}(\tau) \boldsymbol{z}(\tau)\,{\mathrm{d}}\tau + \boldsymbol{\zeta} = ({\hat{{\mathsf{K}}}}\boldsymbol{z})(t) + \boldsymbol{\zeta}\quad \implies\quad ([{\hat{1}}- {\hat{{\mathsf{K}}}}]\boldsymbol{z})(t) = \boldsymbol{\zeta}</span></p>
 <p>met <span class="math inline">{\hat{{\mathsf{K}}}}</span> een matrix-waardige integraaloperator op vector-waardige functies <span class="math inline">\boldsymbol{z}(t)</span></p>
 <p><span class="math display">({\hat{{\mathsf{K}}}}\boldsymbol{z})(t) = \int_c^t {\mathsf{A}}(\tau)\boldsymbol{z}(\tau)\,{\mathrm{d}}\tau = \int_{a}^{b} {\mathsf{K}}(t,\tau)\boldsymbol{z}(\tau)\,{\mathrm{d}}\tau</span></p>
-<p>met kern <span class="math inline">{\mathsf{K}}(t,\tau) = \begin{cases} {\mathsf{A}}(\tau) H(t - \tau) H(\tau - c),&amp; t \geq c\\  {\mathsf{A}}(\tau) H(\tau - t) H(c-\tau), &amp; t &lt; c  \end{cases}</span></p></li>
+<p>met kern <span class="math inline">{\mathsf{K}}(t,\tau) = \begin{cases} {\mathsf{A}}(\tau) H(t - \tau) H(\tau - c),&amp; t \geq c\\
+{\mathsf{A}}(\tau) H(\tau - t) H(c-\tau), &amp; t &lt; c
+\end{cases}</span></p></li>
 </ul>
 </section>
-<section id="homogene-oplossing-2" class="level2">
-<h2 class="anchored" data-anchor-id="homogene-oplossing-2">Homogene oplossing</h2>
+<section id="homogene-oplossing-2" class="slide level2">
+<h2>Homogene oplossing</h2>
 <p>Oplossing voor <span class="math inline">([{\hat{1}}- {\hat{{\mathsf{K}}}}]\boldsymbol{z})(t) = \boldsymbol{\zeta}</span>:</p>
 <p><span class="math display">\boldsymbol{z}(t) = \sum_{n=0}^{+\infty} ({\hat{{\mathsf{K}}}}^n \boldsymbol{\zeta})(t) = \sum_{n=0}^{+\infty} \int_c^t {\mathrm{d}}t_1\int_c^{t_1} {\mathrm{d}}t_2 \cdots \int_c^{t_{n-1}} {\mathrm{d}}t_n\, {\mathsf{A}}(t_1) {\mathsf{A}}(t_2) \cdots {\mathsf{A}}(t_n) \zeta</span></p>
 <p>(in de eerste uitdrukking beschouwen we <span class="math inline">\boldsymbol{\zeta}</span> als de constante vectorfunctie <span class="math inline">t \mapsto \boldsymbol{\zeta}</span>)</p>
@@ -660,8 +757,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\Rightarrow</span> reeks convergeert absoluut</p></li>
 </ul>
 </section>
-<section id="tijdsordening-en-tijdsgeordende-exponentiële" class="level2">
-<h2 class="anchored" data-anchor-id="tijdsordening-en-tijdsgeordende-exponentiële">Tijdsordening en tijdsgeordende exponentiële</h2>
+<section id="tijdsordening-en-tijdsgeordende-exponentiële" class="slide level2">
+<h2>Tijdsordening en tijdsgeordende exponentiële</h2>
 <p>In de (kwantum)fysica wordt vaak de <strong>tijdsordening</strong> “operator” (procedure) ingevoerd:</p>
 <p><span class="math display">\mathcal{T}\left[{\mathsf{A}}(t_1){\mathsf{A}}(t_2)\right] = \begin{cases} {\mathsf{A}}(t_1){\mathsf{A}}(t_2),&amp;t_1 &gt; t_2\\
 {\mathsf{A}}(t_2){\mathsf{A}}(t_1),&amp;t_2 &gt; t_1\\   
@@ -674,8 +771,8 @@ ul.task-list li input[type="checkbox"] {
 \end{align*}</span></p>
 <p><span class="math inline">\Rightarrow \mathcal{T}\exp</span> = <strong>tijdsgeordende exponentiële</strong></p>
 </section>
-<section id="fundamentale-matrixoplossing" class="level2">
-<h2 class="anchored" data-anchor-id="fundamentale-matrixoplossing">Fundamentale matrixoplossing</h2>
+<section id="fundamentale-matrixoplossing" class="slide level2">
+<h2>Fundamentale matrixoplossing</h2>
 <p>Beschouw een matrixfunctie <span class="math inline">[a,b]\to{\mathbb{F}}^{p \times r}: t \mapsto {\mathsf{Z}}(t)</span>, zodat de kolommen van <span class="math inline">{\mathsf{Z}}(t)</span> oplossingen zijn van de homogene differentiaalvergelijking <span class="math inline">\dot{\boldsymbol{z}}(t) = {\mathsf{A}}(t) \boldsymbol{z}(t)</span> zonder randvoorwaarden:</p>
 <ul>
 <li><p>als kolommen lineair onafhankelijk zijn op 1 tijdstip <span class="math inline">t_0</span>, dan zijn ze op elk ander tijdstip lineair onafhankelijk</p></li>
@@ -687,8 +784,8 @@ ul.task-list li input[type="checkbox"] {
 <p>(m.b.v. Jacobi’s formule uit H2: <span class="math inline">\frac{{\mathrm{d}}\ }{{\mathrm{d}}t} \det\big({\mathsf{A}}(t)\big) = \det\big({\mathsf{A}}(t)\big) \mathop{\mathrm{tr}}\left({\mathsf{A}}(t)^{-1} \frac{{\mathrm{d}}{\mathsf{A}}}{{\mathrm{d}}t}(t)\right)</span>)</p></li>
 </ul>
 </section>
-<section id="fundamentale-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="fundamentale-matrices">Fundamentale matrices</h2>
+<section id="fundamentale-matrices" class="slide level2">
+<h2>Fundamentale matrices</h2>
 <ul>
 <li><p>Fundamentale matrices <span class="math inline">{\mathsf{Z}}(t)</span> en <span class="math inline">\tilde{{\mathsf{Z}}}(t)</span> van dezelfde vergelijking <span class="math inline">\dot{\boldsymbol{z}}(t) = {\mathsf{A}}(t) \boldsymbol{z}(t)</span>:</p>
 <p>er bestaat constante inverteerbare matrix <span class="math inline">{\mathsf{C}} \in {\mathbb{F}}^{p\times p}</span> zodat <span class="math inline">\tilde{{\mathsf{Z}}}(t) = {\mathsf{Z}}(t) {\mathsf{C}}</span></p></li>
@@ -705,12 +802,17 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\rightarrow \det\left[\mathcal{T} \exp\left(\int_{t_0}^t {\mathsf{A}}(\tau)\,{\mathrm{d}}\tau\right)\right] = \exp\left[\int_{t_0}^{t} \mathop{\mathrm{tr}}\big({\mathsf{A}}(\tau)\big)\,{\mathrm{d}}\tau\right]</span> veralgemening van <span class="math inline">\det\left[\exp({\mathsf{A}})\right] = \exp\left(\mathop{\mathrm{tr}}[{\mathsf{A}}]\right)</span></p></li>
 </ul>
 </section>
-<section id="fundamentele-matrices-en-wronskiaan" class="level2">
-<h2 class="anchored" data-anchor-id="fundamentele-matrices-en-wronskiaan">Fundamentele matrices en Wronskiaan</h2>
+<section id="fundamentele-matrices-en-wronskiaan" class="slide level2">
+<h2>Fundamentele matrices en Wronskiaan</h2>
 <p>terug naar scalaire functies <span class="math inline">u(t)</span></p>
 <ul>
 <li><p>Gegeven een verzameling functies <span class="math inline">\{u_i(t):[a,b] \to {\mathbb{F}}; i=1,\dots,p\}</span></p></li>
-<li><p><strong>Wronskiaan</strong>: <span class="math inline">W(t) = \det\left(\begin{bmatrix}  u_1(t) &amp; u_2(t) &amp; \dots &amp; u_p(t)\\  \dot{u}_1(t) &amp; \dot{u}_2(t) &amp; \dots &amp; \dot{u}_p(t)\\  \vdots &amp; \vdots &amp; &amp; \vdots\\  u_1^{(p-1)}(t) &amp; u_2^{(p-1)}(t) &amp; \dots &amp; u_p^{(p-1)}(t)\\  \end{bmatrix}\right)</span></p>
+<li><p><strong>Wronskiaan</strong>: <span class="math inline">W(t) = \det\left(\begin{bmatrix}
+      u_1(t) &amp; u_2(t) &amp; \dots &amp; u_p(t)\\
+      \dot{u}_1(t) &amp; \dot{u}_2(t) &amp; \dots &amp; \dot{u}_p(t)\\
+      \vdots &amp; \vdots &amp; &amp; \vdots\\
+      u_1^{(p-1)}(t) &amp; u_2^{(p-1)}(t) &amp; \dots &amp; u_p^{(p-1)}(t)\\
+  \end{bmatrix}\right)</span></p>
 <ul>
 <li><p>functies lineair afhankelijk <span class="math inline">\implies W(t)=0</span>; <span class="math inline">W(t_0)\neq 0</span> impliceert functies lineair onafhankelijk</p>
 <p>(soms <span class="math inline">W(t_0)=0</span> voor lineair onafhankelijke functies)</p></li>
@@ -719,14 +821,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Wronskiaan = determinant van fundamentele matrix voor equivalent eerste-orde probleem <span class="math inline">\Rightarrow</span> Liouville = <strong>Abel’s formule</strong>: <span class="math inline">W(t) = W(t_0) {\mathrm{e}}^{-\int_{t_0}^t \frac{a_{p-1}(\tau)}{a_p(\tau)}\,{\mathrm{d}}\tau}</span></p></li>
 </ul>
 </section>
-<section id="wronskiaan-en-abels-formule" class="level2">
-<h2 class="anchored" data-anchor-id="wronskiaan-en-abels-formule">Wronskiaan en Abel’s formule</h2>
+<section id="wronskiaan-en-abels-formule" class="slide level2">
+<h2>Wronskiaan en Abel’s formule</h2>
 <p>Voor <span class="math inline">p=2</span></p>
 <ul>
 <li>Abel’s formule kan eenvoudig rechtstreeks bewezen worden:
 <ul>
 <li><p><span class="math inline">W(t) = u_1(t) \dot{u}_2(t) - \dot{u}_1(t) u_2(t)</span></p>
-<p><span class="math inline">\Rightarrow \dot{W}(t) = u_1(t) \ddot{u}_2(t) - \ddot{u}_1(t) u_2(t) = -\frac{a_1(t)}{a_2(t)}\left( u_1(t) \dot{u}_2(t) - \dot{u}_1(t) u_2(t)\right) = -\frac{a_1(t)}{a_2(t)} W(t)</span></p></li>
+<p><span class="math inline">\Rightarrow \dot{W}(t) = u_1(t) \ddot{u}_2(t) - \ddot{u}_1(t) u_2(t) =  -\frac{a_1(t)}{a_2(t)}\left( u_1(t) \dot{u}_2(t) - \dot{u}_1(t) u_2(t)\right) = -\frac{a_1(t)}{a_2(t)} W(t)</span></p></li>
 </ul></li>
 <li>Abel’s formule kan gebruikt worden om een 2de lineaire onafhankelijke oplossing te construeren:
 <ul>
@@ -736,8 +838,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="theorema-van-floquet" class="level2">
-<h2 class="anchored" data-anchor-id="theorema-van-floquet">Theorema van Floquet</h2>
+<section id="theorema-van-floquet" class="slide level2">
+<h2>Theorema van Floquet</h2>
 <p><span class="math inline">\frac{{\mathrm{d}}\boldsymbol{z}}{{\mathrm{d}}t} (t) = {\mathsf{A}}(t) \boldsymbol{z}(t)</span> met <span class="math inline">{\mathsf{A}}(t+T) ={\mathsf{A}}(t)</span> (periodiek)</p>
 <ul>
 <li><strong>Floquet</strong>:
@@ -755,12 +857,12 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="inhomogene-oplossing" class="level2">
-<h2 class="anchored" data-anchor-id="inhomogene-oplossing">Inhomogene oplossing</h2>
+<section id="inhomogene-oplossing" class="slide level2">
+<h2>Inhomogene oplossing</h2>
 <p><span class="math display">\frac{{\mathrm{d}}\boldsymbol{z}}{{\mathrm{d}}t}(t) = {\mathsf{A}}(t) \boldsymbol{z}(t) + \boldsymbol{b}(t),\quad a &lt; t &lt; b\qquad \text{met}\ \boldsymbol{z}(t_0) = \boldsymbol{\zeta}</span></p>
 <p>(voor <span class="math inline">p</span>de orde scalaire differentiaalvergelijking: <span class="math inline">\boldsymbol{b}(t) = \begin{bmatrix} 0 &amp; 0 &amp; \dots &amp; f(t)/a_p(t) \end{bmatrix}^{\mathsf{T}}</span>)</p>
 <ul>
-<li><p>na integratie: <span class="math inline">\boldsymbol{z}(t) - ({\hat{{\mathsf{K}}}}\boldsymbol{z})(t) = \boldsymbol{\zeta} + \int_{t_0}^{t} \boldsymbol{b}(\tau)\,{\mathrm{d}}\tau</span></p>
+<li><p>na integratie: <span class="math inline">\boldsymbol{z}(t) - ({\hat{{\mathsf{K}}}}\boldsymbol{z})(t) =  \boldsymbol{\zeta} + \int_{t_0}^{t} \boldsymbol{b}(\tau)\,{\mathrm{d}}\tau</span></p>
 <p><span class="math display">\begin{align*}
   \Rightarrow \boldsymbol{z}(t) &amp;= {\mathsf{Z}}(t,t_0) \boldsymbol{\zeta} + \sum_{n=0}^{+\infty} \int_{t_0}^t {\mathrm{d}}t_1\int_{t_0}^{t_1} {\mathrm{d}}t_2 \cdots \int_{t_0}^{t_{n-1}} {\mathrm{d}}t_n\int_{t_0}^{t_n} {\mathrm{d}}\tau\, {\mathsf{A}}(t_1) {\mathsf{A}}(t_2) \cdots {\mathsf{A}}(t_n) \boldsymbol{b}(\tau)\nonumber\\
   &amp;={\mathsf{Z}}(t,t_0) \boldsymbol{\zeta} + \int_{t_0}^{t} {\mathrm{d}}\tau \sum_{n=0}^{+\infty} \int_{\tau}^t {\mathrm{d}}t_1\int_{\tau}^{t_1} {\mathrm{d}}t_2 \cdots \int_{\tau}^{t_{n-1}} {\mathrm{d}}t_n\, {\mathsf{A}}(t_1) {\mathsf{A}}(t_2) \cdots {\mathsf{A}}(t_n) \boldsymbol{b}(\tau)\nonumber\\
@@ -768,8 +870,8 @@ ul.task-list li input[type="checkbox"] {
 \end{align*}</span></p></li>
 </ul>
 </section>
-<section id="analyciteit-van-de-oplossingen" class="level2">
-<h2 class="anchored" data-anchor-id="analyciteit-van-de-oplossingen">Analyciteit van de oplossingen</h2>
+<section id="analyciteit-van-de-oplossingen" class="slide level2">
+<h2>Analyciteit van de oplossingen</h2>
 <ul>
 <li><p><span class="math inline">{\mathsf{A}}(t)</span> en <span class="math inline">{\mathsf{b}}(t)</span> analytisch zijn in <span class="math inline">[a,b]</span>:</p>
 <ul>
@@ -786,8 +888,8 @@ ul.task-list li input[type="checkbox"] {
 <p>differentiaalvergelijking <span class="math inline">\rightarrow</span> recursierelatie voor coefficiënten <span class="math inline">u_k</span></p></li>
 </ul>
 </section>
-<section id="voorbeeld-taylorreeks-1" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld-taylorreeks-1">Voorbeeld Taylorreeks (1)</h2>
+<section id="voorbeeld-taylorreeks-1" class="slide level2">
+<h2>Voorbeeld Taylorreeks (1)</h2>
 <p>Airy-vergelijking / Stokes-vergelijking (toepassingen in kwantummechanica en optica):</p>
 <p><span class="math display">\ddot{u}(t) - t u(t) = 0</span></p>
 <ul>
@@ -804,24 +906,26 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="voorbeeld-taylorreeks-2" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld-taylorreeks-2">Voorbeeld Taylorreeks (2)</h2>
+<section id="voorbeeld-taylorreeks-2" class="slide level2">
+<h2>Voorbeeld Taylorreeks (2)</h2>
 <p>Legendre vergelijking (gerelateerd aan Laplace vergelijking in sferische coördinaten):</p>
 <p><span class="math display">(1-t^2) \ddot{u}(t) - 2t \dot{u}(t) +\nu(\nu+1) = 0</span></p>
 <ul>
 <li><p><span class="math inline">u(t)=\sum_{k \in {\mathbb{N}}} u_k t^k</span>:</p>
 <p><span class="math display">\Rightarrow u_{k+2} = \frac{k(k+1) - \nu(\nu+1)}{(k+1)(k+2)} u_k = \frac{(k-\nu)(k+\nu+1)}{(k+1)(k+2)} u_k</span></p>
 <ul>
-<li><p>even functie <span class="math inline">u_+(t)</span> startende van <span class="math inline">\begin{cases} u_+(0) = (u_+)_0 = 1\\ u_+'(0) = (u_+)_1 = 0 \end{cases}</span></p></li>
-<li><p>oneven functie <span class="math inline">u_-(t)</span> startende van <span class="math inline">\begin{cases} u_-(0) = (u_-)_0 = 0\\ u_-'(0) = (u_-)_1 = 1 \end{cases}</span></p></li>
+<li><p>even functie <span class="math inline">u_+(t)</span> startende van <span class="math inline">\begin{cases} u_+(0) = (u_+)_0 = 1\\ u_+'(0) = (u_+)_1 = 0
+\end{cases}</span></p></li>
+<li><p>oneven functie <span class="math inline">u_-(t)</span> startende van <span class="math inline">\begin{cases} u_-(0) = (u_-)_0 = 0\\ u_-'(0) = (u_-)_1 = 1
+\end{cases}</span></p></li>
 <li><p><span class="math inline">\nu = n \in {\mathbb{N}}_0</span>: <span class="math inline">u_{n+2} = 0</span>:</p>
 <p><span class="math inline">\rightarrow</span> één van beide oplossingen is een veelterm: Legendre-veeltermen uit H7</p>
 <p><span class="math inline">\rightarrow</span> andere oplossing: “Legendre-functies van het tweede type”</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="singulier-beginvoorwaardeproblemen-zonder-bewijs" class="level2">
-<h2 class="anchored" data-anchor-id="singulier-beginvoorwaardeproblemen-zonder-bewijs">Singulier beginvoorwaardeproblemen (zonder bewijs)</h2>
+<section id="singulier-beginvoorwaardeproblemen-zonder-bewijs" class="slide level2">
+<h2>Singulier beginvoorwaardeproblemen (zonder bewijs)</h2>
 <ul>
 <li><p><span class="math inline">{\mathsf{A}}(t)</span> analytisch in <span class="math inline">(0,\rho)</span> maar met singulariteit voor <span class="math inline">t=0</span></p>
 <p><span class="math inline">\Rightarrow</span> fundamentele matrix <span class="math inline">{\mathsf{Z}}(t)</span> is analytische functie van <span class="math inline">\log(t)</span></p></li>
@@ -837,8 +941,8 @@ ul.task-list li input[type="checkbox"] {
 <p>(via <span class="math inline">\boldsymbol{z}(t) = \begin{bmatrix}u(t) &amp; (t-\tau) \dot{u}(t) &amp; (t-\tau)^2 \ddot{u}(t) &amp; \ldots &amp; (t-\tau)^{p-1} u^{(p-1)}(t)\end{bmatrix}^{\mathsf{T}}</span>)</p></li>
 </ul>
 </section>
-<section id="methode-van-frobenius" class="level2">
-<h2 class="anchored" data-anchor-id="methode-van-frobenius">Methode van Frobenius</h2>
+<section id="methode-van-frobenius" class="slide level2">
+<h2>Methode van Frobenius</h2>
 <p><span class="math inline">p</span>de orde differentiaalvergelijking met zwak singulier punt bij <span class="math inline">t=\tau</span>:</p>
 <ul>
 <li><p>testoplossing <span class="math inline">u(t) = (t-\tau)^\lambda \sum_{k=0}^{+\infty} u_k (t-\tau)^k</span></p></li>
@@ -855,8 +959,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li><p>voor oplossing <span class="math inline">\lambda</span> en <span class="math inline">\mu = \lambda+n</span> met <span class="math inline">n \in {\mathbb{N}}_0</span> (maar geen oplossingen <span class="math inline">\mu+n'</span>): <span class="math inline">u_1(t) = t^\mu x_1(t)</span> en <span class="math inline">u_2(t) = c u_1(t) \log t + t^\lambda x_2(t)</span></p></li>
 </ul>
 </section>
-<section id="methode-van-frobenius-voor-2de-orde" class="level2">
-<h2 class="anchored" data-anchor-id="methode-van-frobenius-voor-2de-orde">Methode van Frobenius voor 2de orde</h2>
+<section id="methode-van-frobenius-voor-2de-orde" class="slide level2">
+<h2>Methode van Frobenius voor 2de orde</h2>
 <p>Voor 2de orde differentiaalvergelijking:</p>
 <ul>
 <li><p>indiciële vergelijking heeft twee oplossingen <span class="math inline">\lambda_1</span> en <span class="math inline">\lambda_2</span>, gesorteerd zodat <span class="math inline">\mathop{\mathrm{Re}}{\lambda_1} \geq \mathop{\mathrm{Re}}{\lambda_2}</span>.</p>
@@ -871,8 +975,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="voorbeeld-zwak-singulier-punt" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld-zwak-singulier-punt">Voorbeeld zwak singulier punt</h2>
+<section id="voorbeeld-zwak-singulier-punt" class="slide level2">
+<h2>Voorbeeld zwak singulier punt</h2>
 <p>Besselvergelijking (radieel deel van Laplacevergelijking cylindrische coördinaten):</p>
 <p><span class="math display">t^2 \ddot{u}(t) + t \dot{u}(t) + (t^2 - \nu^2) u(t) = 0</span></p>
 <ul>
@@ -884,8 +988,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p><span class="math display">J_{\nu}(t)=\left(\frac{t}{2}\right)^\nu \sum_{m=0}^{+\infty} \frac{(-1)^m}{\Gamma(m+1)\Gamma(m+\nu+1)}\left(\frac{t}{2}\right)^{2m}</span></p></li>
 </ul>
 </section>
-<section id="voorbeeld-zwak-singulier-punt-1" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld-zwak-singulier-punt-1">Voorbeeld zwak singulier punt</h2>
+<section id="voorbeeld-zwak-singulier-punt-1" class="slide level2">
+<h2>Voorbeeld zwak singulier punt</h2>
 <p>Besselvergelijking (radieel deel van Laplacevergelijking cylindrische coördinaten):</p>
 <p><span class="math display">t^2 \ddot{u}(t) + t \dot{u}(t) + (t^2 - \nu^2) u(t) = 0</span></p>
 <ul>
@@ -901,8 +1005,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="voorbeeld-zwak-singulier-punt-2" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld-zwak-singulier-punt-2">Voorbeeld zwak singulier punt</h2>
+<section id="voorbeeld-zwak-singulier-punt-2" class="slide level2">
+<h2>Voorbeeld zwak singulier punt</h2>
 <p>Besselvergelijking (radieel deel van Laplacevergelijking cylindrische coördinaten):</p>
 <p><span class="math display">t^2 \ddot{u}(t) + t \dot{u}(t) + (t^2 - \nu^2) u(t) = 0</span></p>
 <ul>
@@ -915,44 +1019,56 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p><span class="math inline">j_n(t) = \left(\frac{\pi}{2t}\right)^{1/2} J_{n+1/2}(t)</span></p></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="randvoorwaardeproblemen" class="level1">
+</section></section>
+<section>
+<section id="randvoorwaardeproblemen" class="title-slide slide level1 center">
 <h1>Randvoorwaardeproblemen</h1>
-<section id="randvoorwaarden" class="level2">
-<h2 class="anchored" data-anchor-id="randvoorwaarden">Randvoorwaarden</h2>
+
+</section>
+<section id="randvoorwaarden" class="slide level2">
+<h2>Randvoorwaarden</h2>
 <ul>
 <li><p><span class="math inline">({\hat{L}}u)(x) = \sum_{j=0}^{p} a_j(x) \frac{{\mathrm{d}}^j u}{{\mathrm{d}}x^j}(x) =0</span> zonder randvoorwaarden:</p>
 <ul>
 <li><span class="math inline">p</span> lineair onafhankelijke oplossingen <span class="math inline">u_j(x)</span>, <span class="math inline">j=1,\ldots,p</span></li>
-<li>fundamentele matrix <span class="math inline">{\mathsf{Z}}(x) = \begin{bmatrix} u_j^{(i)}(x) \end{bmatrix}_{i=0,\ldots,p-1; j=1,\ldots,p}</span></li>
+<li>fundamentele matrix <span class="math inline">{\mathsf{Z}}(x) = \begin{bmatrix}
+u_j^{(i)}(x)
+\end{bmatrix}_{i=0,\ldots,p-1; j=1,\ldots,p}</span></li>
 <li>willekeurige oplossing is <span class="math inline">u(x) = \sum_j c^j u_j(x)</span></li>
 </ul></li>
 <li><p>randvoorwaarden <span class="math inline">B_i[u]=\gamma_i</span> voor <span class="math inline">i=1,\ldots,m</span>: <span class="math inline">{\mathsf{B}} {\mathsf{X}} \boldsymbol{c} = \boldsymbol{\gamma}</span> met</p>
 <ul>
 <li><p><span class="math inline">{\mathsf{B}}</span> de matrix zodat <span class="math inline">B_i[u] = \sum_{j=0}^{p-1} B_{i,j} u^{(j)}(a) + B_{i,j+p} u^{(j)}(b)</span></p></li>
-<li><p><span class="math inline">{\mathsf{X}} = \begin{bmatrix}  {\mathsf{Z}}(a)\\  {\mathsf{Z}}(b) \end{bmatrix}</span> de matrix met als <span class="math inline">j</span>de kolom <span class="math inline">\boldsymbol{x}_j = \begin{bmatrix} u_j(a) &amp; u_j'(a) &amp; \ldots &amp; u^{(p-1)}_j(a) &amp; u_j(b) &amp; u_j'(b) &amp; \dots &amp; u_j^{(p-1)}(b) \end{bmatrix}^{\mathsf{T}}</span></p></li>
+<li><p><span class="math inline">{\mathsf{X}} = \begin{bmatrix}
+    {\mathsf{Z}}(a)\\
+    {\mathsf{Z}}(b)
+\end{bmatrix}</span> de matrix met als <span class="math inline">j</span>de kolom <span class="math inline">\boldsymbol{x}_j = \begin{bmatrix}
+u_j(a) &amp; u_j'(a) &amp; \ldots &amp; u^{(p-1)}_j(a) &amp; u_j(b) &amp; u_j'(b) &amp; \dots &amp; u_j^{(p-1)}(b)
+\end{bmatrix}^{\mathsf{T}}</span></p></li>
 <li><p>unieke oplossing voor elke <span class="math inline">\gamma</span> vereist <span class="math inline">m=p</span> zodat <span class="math inline">{\mathsf{B}}{\mathsf{X}} = {\mathsf{M}}</span> een vierkante matrix is <span class="math inline">\rightarrow</span> noodzakelijk maar niet voldoende</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="randvoorwaarden-1" class="level2">
-<h2 class="anchored" data-anchor-id="randvoorwaarden-1">Randvoorwaarden</h2>
+<section id="randvoorwaarden-1" class="slide level2">
+<h2>Randvoorwaarden</h2>
 <ul>
 <li><p>voorbeeld <span class="math inline">-u''(x) = 0</span>: <span class="math inline">u_1(x) = 1</span>, <span class="math inline">u_2(x) = x</span> <span class="math inline">\rightarrow {\mathsf{Z}} = \begin{bmatrix} 1 &amp; x \\ 0 &amp; 1 \end{bmatrix}</span></p>
 <ul>
 <li><p>beginvoorwaarden <span class="math inline">B_1[u] = u(a)</span> en <span class="math inline">B_2[u] = u'(a)</span>:</p>
-<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}  1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}</span>: inverteerbaar</p></li>
+<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}
+    1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}</span>: inverteerbaar</p></li>
 <li><p>randvoorwaarden <span class="math inline">B_1[u] = u(a)</span> en <span class="math inline">B_2[u] = u(b)</span>:</p>
-<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}  1 &amp; a \\ 1 &amp; b \end{bmatrix}</span>: inverteerbaar</p></li>
+<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 1 &amp; 0\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}
+    1 &amp; a \\ 1 &amp; b \end{bmatrix}</span>: inverteerbaar</p></li>
 <li><p>randvoorwaarden <span class="math inline">B_1[u] = u'(a)</span> en <span class="math inline">B_2[u] = u'(b)</span>:</p>
-<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}  0 &amp; 1 \\ 0 &amp; 1 \end{bmatrix}</span>: niet inverteerbaar</p></li>
+<p><span class="math inline">{\mathsf{B}} = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}</span> en dus <span class="math inline">{\mathsf{M}} = \begin{bmatrix}
+    0 &amp; 1 \\ 0 &amp; 1 \end{bmatrix}</span>: niet inverteerbaar</p></li>
 </ul></li>
 <li><p>met exact <span class="math inline">p</span> randvoorwaarden: existentie van <span class="math inline">u_\gamma</span> voor elke <span class="math inline">\boldsymbol{\gamma}</span> komt overeen met uniciteit: enkel triviale <span class="math inline">u_0(x)=0</span> voldoet aan volledig homogeen probleem</p></li>
 </ul>
 </section>
-<section id="gescheiden-randvoorwaarden" class="level2">
-<h2 class="anchored" data-anchor-id="gescheiden-randvoorwaarden">Gescheiden randvoorwaarden</h2>
+<section id="gescheiden-randvoorwaarden" class="slide level2">
+<h2>Gescheiden randvoorwaarden</h2>
 <ul>
 <li><p>tweede-orde differentiaalvergelijking: <strong>gescheiden randvoorwaarden</strong>:</p>
 <p><span class="math display">B_1[u] = \alpha_1 u(a) + \alpha_2 u'(a) = \gamma_1,\qquad B_2[u] = \beta_1 u(b) + \beta_2 u'(b) = \gamma_2</span></p>
@@ -962,11 +1078,14 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li><p><strong>Robin voorwaarden</strong>: <span class="math inline">B_1[u] = u(a) - \ell u'(a)</span> en <span class="math inline">B_2[u] = u(b) + \ell u'(b)</span> voor een constante <span class="math inline">\ell</span></p>
 <p>(tekenwissel heeft te maken met de “buitenwaartse richtingsafgeleide”, zie verder voor hogerdimensionale partiële differentiaalvergelijkingen)</p></li>
 </ul></li>
-<li><p>Met gescheiden randvoorwaarden is <span class="math inline">{\mathsf{M}} = \begin{bmatrix}  \begin{bmatrix} \alpha_1 &amp; \alpha_2\end{bmatrix} {\mathsf{Z}}(a)\\  \begin{bmatrix} \beta_1 &amp; \beta_2\end{bmatrix} {\mathsf{Z}}(b)\\  \end{bmatrix}</span>: <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{M}}) &gt; 0 \Rightarrow \mathop{\mathrm{nullity}}{\mathsf{M}} &lt; 2</span> <span class="math inline">\Rightarrow</span> volledig homogeen probleem heeft hoogstens één lineair onafhankelijke niet-triviale oplossing <span class="math inline">u_0(x)</span></p></li>
+<li><p>Met gescheiden randvoorwaarden is <span class="math inline">{\mathsf{M}} = \begin{bmatrix}
+      \begin{bmatrix} \alpha_1 &amp; \alpha_2\end{bmatrix} {\mathsf{Z}}(a)\\
+      \begin{bmatrix} \beta_1 &amp; \beta_2\end{bmatrix} {\mathsf{Z}}(b)\\
+  \end{bmatrix}</span>: <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{M}}) &gt; 0 \Rightarrow \mathop{\mathrm{nullity}}{\mathsf{M}} &lt; 2</span> <span class="math inline">\Rightarrow</span> volledig homogeen probleem heeft hoogstens één lineair onafhankelijke niet-triviale oplossing <span class="math inline">u_0(x)</span></p></li>
 </ul>
 </section>
-<section id="inhomogene-oplossing-1" class="level2">
-<h2 class="anchored" data-anchor-id="inhomogene-oplossing-1">Inhomogene oplossing</h2>
+<section id="inhomogene-oplossing-1" class="slide level2">
+<h2>Inhomogene oplossing</h2>
 <p>Oplossing van <span class="math inline">({\hat{L}} u_f)(x) = f(x)</span> met <span class="math inline">B_i[u_f] = 0</span> voor <span class="math inline">i=1,\ldots,p</span></p>
 <ul>
 <li><p>Herhaling beginvoorwaardeprobleem: <span class="math inline">\boldsymbol{z}(t) = \int_{t_0}^{t} {\mathsf{Z}}(t,\tau) \boldsymbol{b}(\tau)\,{\mathrm{d}}\tau</span></p>
@@ -978,19 +1097,19 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p>met <span class="math inline">g_\xi(x)</span> de <strong>Greense functie</strong>, gedefinieerd door voorwaarden op volgende slide.</p></li>
 </ul>
 </section>
-<section id="greense-functie" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie">Greense functie</h2>
+<section id="greense-functie" class="slide level2">
+<h2>Greense functie</h2>
 <p><span class="math display">u_f(x) = \int_{a}^b g_\xi(x) f(\xi)\,{\mathrm{d}}\xi</span></p>
 <p>Greense functie (volledig) gedefinieerd door</p>
 <ul>
 <li><span class="math inline">B_i[g_\xi]=0</span> voor <span class="math inline">i=1,\ldots,p</span></li>
-<li><span class="math inline">({\hat{L}} g_\xi)(x) = 0</span> voor <span class="math inline">x \in (a,\xi)</span> en <span class="math inline">x \in (\xi,b)</span></li>
+<li><span class="math inline">({\hat{L}}  g_\xi)(x) = 0</span> voor <span class="math inline">x \in (a,\xi)</span> en <span class="math inline">x \in (\xi,b)</span></li>
 <li><span class="math inline">g_\xi(x)</span> en zijn afgeleiden <span class="math inline">g^{(j)}_{\xi}(x)</span> voor <span class="math inline">j \leq p-2</span> zijn continu in <span class="math inline">x=\xi</span></li>
 <li><span class="math inline">g^{(p-1)}_\xi(x)</span> is discontinu bij <span class="math inline">x = \xi</span> en voldoet aan de “sprongconditie” <span class="math inline">g^{(p-1)}_\xi(\xi^+) - g^{(p-1)}_\xi(\xi^-) = \frac{1}{a_p(\xi)}</span></li>
 </ul>
 </section>
-<section id="greense-functie-1" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie-1">Greense functie</h2>
+<section id="greense-functie-1" class="slide level2">
+<h2>Greense functie</h2>
 <p><span class="math display">u_f(x) = \int_{a}^b g_\xi(x) f(\xi)\,{\mathrm{d}}\xi</span></p>
 <p><span class="math inline">\rightarrow</span> met oplossingen <span class="math inline">u_j(x)</span> (<span class="math inline">j=1,\ldots,p</span>) van de homogene differentiaalvergelijking zonder randvoorwaarden geldt</p>
 <p><span class="math display">g_\xi(x) = H(\xi-x) \sum_{i=1}^{p} c^j(\xi) u_j(x)  + H(x - \xi) \sum_{i=1}^{p} d^j(\xi) u_j(x)</span></p>
@@ -998,8 +1117,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li>coefficiënten <span class="math inline">c^j</span> en <span class="math inline">d^j</span> worden opgelegd door randvoorwaarden, continuïteitsvoorwaarden en sprongconditie</li>
 </ul>
 </section>
-<section id="greense-functie-2" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie-2">Greense functie</h2>
+<section id="greense-functie-2" class="slide level2">
+<h2>Greense functie</h2>
 <p><span class="math display">u_f(x) = \int_{a}^b g_\xi(x) f(\xi)\,{\mathrm{d}}\xi</span></p>
 <ul>
 <li><p>voor <span class="math inline">p=2</span>:</p>
@@ -1015,8 +1134,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p>met <span class="math inline">W(x) = u_1(x) u_2'(x) - u_1'(x) u_2(x) \neq 0</span> voor alle <span class="math inline">x \in [a,b]</span></p></li>
 </ul>
 </section>
-<section id="greense-functie-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie-voorbeeld">Greense functie: voorbeeld</h2>
+<section id="greense-functie-voorbeeld" class="slide level2">
+<h2>Greense functie: voorbeeld</h2>
 <ul>
 <li><p><span class="math inline">-u''(x) = f(x)</span> en <span class="math inline">B_1[u] = u(a)</span> en <span class="math inline">B_2[u] = u(b)</span>; stel <span class="math inline">[a,b]=[0,1]</span>:</p>
 <ul>
@@ -1033,8 +1152,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
   \end{align*}</span></p></li>
 </ul>
 </section>
-<section id="greense-functie-interpretatie" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie-interpretatie">Greense functie: interpretatie</h2>
+<section id="greense-functie-interpretatie" class="slide level2">
+<h2>Greense functie: interpretatie</h2>
 <ul>
 <li><p><span class="math inline">({\hat{L}}u_f)(x) = f(x)</span> en <span class="math inline">B_i[u_f]=0</span> met <span class="math inline">u_f(x) = \int_{a}^b g_\xi(x) f(\xi)\,{\mathrm{d}}\xi</span></p>
 <p><span class="math inline">\Rightarrow ({\hat{L}} g_\xi)(x) = \delta(x-\xi)</span> met <span class="math inline">B_i[g_\xi] = 0</span>?</p>
@@ -1046,11 +1165,13 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p><span class="math inline">\rightarrow</span> moet automatisch aan toegevoegde randvoorwaarden voldoen</p></li>
 </ul>
 </section>
-<section id="greense-functie-en-toegevoegde-operator-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="greense-functie-en-toegevoegde-operator-voorbeeld">Greense functie en toegevoegde operator: voorbeeld</h2>
+<section id="greense-functie-en-toegevoegde-operator-voorbeeld" class="slide level2">
+<h2>Greense functie en toegevoegde operator: voorbeeld</h2>
 <ul>
 <li><p><span class="math inline">-u''(x)=0</span> met randvoorwaarden <span class="math inline">u(0) = u(1)= 0</span>: zelftoegevoegd</p>
-<p><span class="math inline">\Rightarrow g(x,y) = \begin{cases} x(1-y),&amp;0 &lt; x &lt; y\\  y (1-x), &amp;y &lt; x &lt; 1  \end{cases} =\min(x,y)(1-\max(x,y))</span></p></li>
+<p><span class="math inline">\Rightarrow g(x,y) = \begin{cases} x(1-y),&amp;0 &lt; x &lt; y\\
+y (1-x), &amp;y &lt; x &lt; 1
+\end{cases} =\min(x,y)(1-\max(x,y))</span></p></li>
 <li><p><span class="math inline">-u''(x)=0</span> met randvoorwaarden <span class="math inline">B_1[u] = u(0) + u(1)=0</span> and <span class="math inline">B_2[u]=u'(0)=0</span>:</p>
 <ul>
 <li><p>toegevoegde randvoorwaarden: <span class="math inline">\tilde{B}_1[v] = v'(0) + v'(1)=0</span> and <span class="math inline">\tilde{B}_2[v] = v(1)=0</span></p></li>
@@ -1061,12 +1182,14 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li><p><span class="math inline">g^\dagger_y(x) = \overline{g(y,x)}</span> voldoet aan <span class="math inline">g^\dagger_y(1) = 0</span> en <span class="math inline">\frac{{\mathrm{d}}\ g^\dagger_y}{{\mathrm{d}}x}(0) + \frac{{\mathrm{d}}\ g^\dagger_y}{{\mathrm{d}}x}(1) = 0</span></p></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="sturm-liouville-eigenwaardeproblemen" class="level1">
+</section></section>
+<section>
+<section id="sturm-liouville-eigenwaardeproblemen" class="title-slide slide level1 center">
 <h1>Sturm-Liouville eigenwaardeproblemen</h1>
-<section id="eigenwaardeproblemen-met-differentiaaloperatoren" class="level2">
-<h2 class="anchored" data-anchor-id="eigenwaardeproblemen-met-differentiaaloperatoren">Eigenwaardeproblemen met differentiaaloperatoren</h2>
+
+</section>
+<section id="eigenwaardeproblemen-met-differentiaaloperatoren" class="slide level2">
+<h2>Eigenwaardeproblemen met differentiaaloperatoren</h2>
 <p><span class="math display">({\hat{L}}u)(x) = \lambda u(x),\qquad B_i[u] = 0, i =1,\ldots,m</span></p>
 <ul>
 <li>Motivatie:
@@ -1082,8 +1205,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="eigenwaardeproblemen-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="eigenwaardeproblemen-voorbeeld">Eigenwaardeproblemen: voorbeeld</h2>
+<section id="eigenwaardeproblemen-voorbeeld" class="slide level2">
+<h2>Eigenwaardeproblemen: voorbeeld</h2>
 <ul>
 <li><span class="math inline">-u''(x) = \lambda u(x)</span>:
 <ul>
@@ -1098,8 +1221,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul>
 <p><span class="math inline">\Rightarrow</span> we beperken ons tot 2de orde zelftoegevoegde operatoren: Sturm-Liouville operatoren met gescheiden (of periodieke) randvoorwaarden</p>
 </section>
-<section id="regulier-sturm-liouville-probleem" class="level2">
-<h2 class="anchored" data-anchor-id="regulier-sturm-liouville-probleem">Regulier Sturm-Liouville probleem</h2>
+<section id="regulier-sturm-liouville-probleem" class="slide level2">
+<h2>Regulier Sturm-Liouville probleem</h2>
 <p><span class="math display">\begin{align*}
 ({\hat{L}}u)(x)= -\frac{1}{w(x)} \frac{{\mathrm{d}}\ }{{\mathrm{d}}x}\left(p(x)\frac{{\mathrm{d}}u}{{\mathrm{d}}x}(x)\right) + \frac{q(x)}{w(x)} u(x) = \lambda u(x)
 \end{align*}</span> of equivalent <span class="math display">\begin{align*}
@@ -1111,8 +1234,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li>Gescheiden randvoorwaarden <span class="math inline">B_1[u] = \alpha_1 u(a) + \alpha_2 u'(a)=0</span> en <span class="math inline">B_2[u] = \beta_1 u(b) + \beta_2 u'(b) = 0</span></li>
 </ul>
 </section>
-<section id="regulier-sturm-liouville-probleem-1" class="level2">
-<h2 class="anchored" data-anchor-id="regulier-sturm-liouville-probleem-1">Regulier Sturm-Liouville probleem</h2>
+<section id="regulier-sturm-liouville-probleem-1" class="slide level2">
+<h2>Regulier Sturm-Liouville probleem</h2>
 <p>Structuur van de oplossingen voor een regulier Sturm-Liouville probleem:</p>
 <ul>
 <li>(punt)spectrum van <span class="math inline">{\hat{L}}</span> correspondeert met een oneindige rij reële getallen <span class="math inline">\lambda_0 &lt; \lambda_1 &lt; \lambda_2 &lt; \ldots &lt; \lambda_n &lt; \ldots</span>, met een eindige ondergrens <span class="math inline">-\infty &lt;M&lt;\lambda_0</span> maar geen bovengrens: <span class="math inline">\lim_{n\to \infty} \lambda_n = +\infty</span></li>
@@ -1121,8 +1244,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li>De eigenvectoren <span class="math inline">\{u_n, n \in {\mathbb{N}}\}</span> vormen een complete orthonormale basis</li>
 </ul>
 </section>
-<section id="regulier-sturm-liouville-probleem-2" class="level2">
-<h2 class="anchored" data-anchor-id="regulier-sturm-liouville-probleem-2">Regulier Sturm-Liouville probleem</h2>
+<section id="regulier-sturm-liouville-probleem-2" class="slide level2">
+<h2>Regulier Sturm-Liouville probleem</h2>
 <ul>
 <li><p>Dimensionaliteit van <span class="math inline">\mathop{\mathrm{ker}}({\hat{L}}-\lambda {\hat{1}})</span> is 0 of 1 voor gescheiden randvoorwaarden (zie eerder)</p></li>
 <li><p>Orthonormaliteit van eigenvectoren uit zelf-toegevoegd zijn van <span class="math inline">{\hat{L}}</span></p></li>
@@ -1135,8 +1258,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p><span class="math inline">\Rightarrow</span> <span class="math inline">\lambda_n = M + \frac{1}{\mu_n}</span></p></li>
 </ul>
 </section>
-<section id="regulier-sturm-liouville-probleem-3" class="level2">
-<h2 class="anchored" data-anchor-id="regulier-sturm-liouville-probleem-3">Regulier Sturm-Liouville probleem</h2>
+<section id="regulier-sturm-liouville-probleem-3" class="slide level2">
+<h2>Regulier Sturm-Liouville probleem</h2>
 <p>Bijkomende gevolgen en eigenschappen</p>
 <ul>
 <li><p>Resolutie van de identiteit:</p>
@@ -1150,8 +1273,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <p><span class="math inline">u_n(x)</span> heeft exact <span class="math inline">n</span> nulpunten in <span class="math inline">(a,b)</span></p></li>
 </ul>
 </section>
-<section id="regulier-sturm-liouville-probleem-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="regulier-sturm-liouville-probleem-voorbeeld">Regulier Sturm-Liouville probleem: voorbeeld</h2>
+<section id="regulier-sturm-liouville-probleem-voorbeeld" class="slide level2">
+<h2>Regulier Sturm-Liouville probleem: voorbeeld</h2>
 <ul>
 <li><p><span class="math inline">{\hat{L}} = -{\hat{D}}^2</span> op <span class="math inline">L^2([0,L])</span> (dus met <span class="math inline">w(x)=1</span>) met Dirichlet voorwaarden <span class="math inline">u(0)=u(L)=0</span>:</p>
 <ul>
@@ -1159,7 +1282,7 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li><p><span class="math inline">u_n(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{\pi}{L} (n+1) x\right)</span> met eigenwaarde <span class="math inline">\lambda_n = \left(\frac{\pi}{L} (n+1)\right)^2</span></p></li>
 <li><p>alle <span class="math inline">\lambda_n \neq 0</span>: inverse operator <span class="math inline">{\hat{G}}={\hat{L}}^{-1}</span> bestaat</p></li>
 <li><p><span class="math inline">{\hat{G}}</span> is integraaloperator met kern</p>
-<p><span class="math inline">g(x,y) = \sum_{n=0}^{+\infty} \left(\frac{\pi}{L} (n+1)\right)^{-2} \frac{2}{L} \sin\left(\frac{\pi}{L} (n+1) x\right)\sin\left(\frac{\pi}{L} (n+1) y\right)</span></p>
+<p><span class="math inline">g(x,y) = \sum_{n=0}^{+\infty}  \left(\frac{\pi}{L} (n+1)\right)^{-2} \frac{2}{L} \sin\left(\frac{\pi}{L} (n+1) x\right)\sin\left(\frac{\pi}{L} (n+1) y\right)</span></p>
 <p><span class="math inline">\qquad= \sum_{k=1}^{+\infty} \frac{2}{L \pi^2 k^2} \sin\left(\frac{\pi}{L} k x\right)\sin\left(\frac{\pi}{L} k y\right)</span></p>
 <p><span class="math inline">\qquad\sum_{k=1}^{+\infty} \frac{1}{L \pi^2 k^2} \left[\cos\left(\frac{\pi}{L} k (x-y)\right)- \cos\left(\frac{\pi}{L} k (x+y)\right)\right]</span></p></li>
 <li><p>voor <span class="math inline">L=1</span>: <span class="math inline">g(x,y) = \min(x,y)(1-\max(x,y))</span> ?</p>
@@ -1167,8 +1290,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="rayleigh-ritz-methode" class="level2">
-<h2 class="anchored" data-anchor-id="rayleigh-ritz-methode">Rayleigh-Ritz methode</h2>
+<section id="rayleigh-ritz-methode" class="slide level2">
+<h2>Rayleigh-Ritz methode</h2>
 <ul>
 <li><p>Voor alle functies <span class="math inline">u \in \mathop{\mathrm{\mathcal{D}}}_{{\hat{L}}}</span> (inclusief randvoorwaarden) geldt</p>
 <p><span class="math display">\mathcal{R}[u] = \frac{{\left\langle u,{\hat{L}}u\right\rangle}_w}{{\left\langle u,u\right\rangle}_w} \geq \lambda_0</span></p>
@@ -1188,8 +1311,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="rayleigh-ritz-methode-1" class="level2">
-<h2 class="anchored" data-anchor-id="rayleigh-ritz-methode-1">Rayleigh-Ritz methode</h2>
+<section id="rayleigh-ritz-methode-1" class="slide level2">
+<h2>Rayleigh-Ritz methode</h2>
 <p>Algemeen: zoek beste benadering <span class="math inline">u^\ast</span> binnen een bepaalde deelverzameling <span class="math inline">U \subseteq \mathop{\mathrm{\mathcal{D}}}_{{\hat{L}}}</span>:</p>
 <p><strong>Rayleigh-Ritz methode = variationeel principe</strong>:</p>
 <p><span class="math inline">u^\ast = \mathop{\mathrm{arg\ min}}_{u \in U} \mathcal{R}[u]</span></p>
@@ -1202,8 +1325,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="uitbreidingen-op-sturm-liouville-theorie" class="level2">
-<h2 class="anchored" data-anchor-id="uitbreidingen-op-sturm-liouville-theorie">Uitbreidingen op Sturm-Liouville theorie</h2>
+<section id="uitbreidingen-op-sturm-liouville-theorie" class="slide level2">
+<h2>Uitbreidingen op Sturm-Liouville theorie</h2>
 <ul>
 <li><p><span class="math inline">p(a) = p(b)</span> en <span class="math inline">p(x)</span>, <span class="math inline">p'(x)</span>, <span class="math inline">w(x)</span> en <span class="math inline">s(x)</span> continue in <span class="math inline">(a,b]</span>:</p>
 <ul>
@@ -1222,8 +1345,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 <li><p>Algemeen: <span class="math inline">M &lt; \lambda_0 &lt; \tilde{\lambda}_1 \leq \tilde{\lambda}_2 &lt; \lambda_1 \leq \lambda_2 &lt; \tilde{\lambda}_3 \leq \tilde{\lambda}_4 &lt; \ldots</span></p></li>
 </ul>
 </section>
-<section id="uitbreidingen-op-sturm-liouville-theorie-1" class="level2">
-<h2 class="anchored" data-anchor-id="uitbreidingen-op-sturm-liouville-theorie-1">Uitbreidingen op Sturm-Liouville theorie</h2>
+<section id="uitbreidingen-op-sturm-liouville-theorie-1" class="slide level2">
+<h2>Uitbreidingen op Sturm-Liouville theorie</h2>
 <ul>
 <li><p><strong>singulier Sturm-Liouville probleem</strong>:</p>
 <ul>
@@ -1245,8 +1368,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="uitbreidingen-op-sturm-liouville-theorie-2" class="level2">
-<h2 class="anchored" data-anchor-id="uitbreidingen-op-sturm-liouville-theorie-2">Uitbreidingen op Sturm-Liouville theorie</h2>
+<section id="uitbreidingen-op-sturm-liouville-theorie-2" class="slide level2">
+<h2>Uitbreidingen op Sturm-Liouville theorie</h2>
 <ul>
 <li><p>Voorbeelden op oneindig interval <span class="math inline">x \in (-\infty,+\infty)</span>:</p>
 <ul>
@@ -1264,12 +1387,14 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="partiële-differentiaalvergelijkingen" class="level1">
+</section></section>
+<section>
+<section id="partiële-differentiaalvergelijkingen" class="title-slide slide level1 center">
 <h1>Partiële differentiaalvergelijkingen</h1>
-<section id="beginvoorwaardeproblemen-1" class="level2">
-<h2 class="anchored" data-anchor-id="beginvoorwaardeproblemen-1">Beginvoorwaardeproblemen</h2>
+
+</section>
+<section id="beginvoorwaardeproblemen-1" class="slide level2">
+<h2>Beginvoorwaardeproblemen</h2>
 <ul>
 <li><p>Beschouw:</p>
 <ul>
@@ -1289,8 +1414,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="meerdimensionale-sturm-liouville-operator" class="level2">
-<h2 class="anchored" data-anchor-id="meerdimensionale-sturm-liouville-operator">Meerdimensionale Sturm-Liouville operator</h2>
+<section id="meerdimensionale-sturm-liouville-operator" class="slide level2">
+<h2>Meerdimensionale Sturm-Liouville operator</h2>
 <ul>
 <li><p>Functies <span class="math inline">u(\boldsymbol{x})</span> met <span class="math inline">\boldsymbol{x} \in \Omega \subseteq {\mathbb{R}}^d</span></p></li>
 <li><p>Afgeleide-operatoren $(_i u)() = ()</p>
@@ -1305,8 +1430,8 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
 </ul></li>
 </ul>
 </section>
-<section id="meerdimensionale-sturm-liouville-operator-1" class="level2">
-<h2 class="anchored" data-anchor-id="meerdimensionale-sturm-liouville-operator-1">Meerdimensionale Sturm-Liouville operator</h2>
+<section id="meerdimensionale-sturm-liouville-operator-1" class="slide level2">
+<h2>Meerdimensionale Sturm-Liouville operator</h2>
 <p>Sturm-Liouville probleem: <span class="math inline">{\hat{L}} u_n(\boldsymbol{x}) = \lambda_n u_n(\boldsymbol{x})</span> waarbij <span class="math inline">u_n(\boldsymbol{x})</span> voldoet aan de randvoorwaarden</p>
 <ul>
 <li><p>Praktische oplossing: scheiding der veranderlijken (na overgang naar aangepaste coördinaten: cartesisch, cylindrisch, sferisch, …)</p></li>
@@ -1318,12 +1443,12 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
   u(x,0,z) &amp;= 0 &amp; \frac{\partial u}{\partial y}(0,b,z) &amp;= 0&amp;\forall (x,z) \in [0,a] \times [0,c]\\
   \frac{\partial u}{\partial x}(x,y,0) &amp;= 0 &amp; \frac{\partial u}{\partial x}(x,y,c) &amp;= 0&amp;\forall (x,y) \in [0,a] \times [0,b]
 \end{align*}</span></p></li>
-<li><p>met <span class="math inline">u(\boldsymbol{x})=X(x)Y(y)Z(z)</span>: <span class="math inline">-\frac{X''(x)}{X(x)} -\frac{Y''(y)}{Y(y)} -\frac{Z''(z)}{Z(z)} = \lambda</span></p></li>
+<li><p>met <span class="math inline">u(\boldsymbol{x})=X(x)Y(y)Z(z)</span>: <span class="math inline">-\frac{X''(x)}{X(x)}    -\frac{Y''(y)}{Y(y)}    -\frac{Z''(z)}{Z(z)} = \lambda</span></p></li>
 </ul></li>
 </ul>
 </section>
-<section id="meerdimensionale-sturm-liouville-operator-2" class="level2">
-<h2 class="anchored" data-anchor-id="meerdimensionale-sturm-liouville-operator-2">Meerdimensionale Sturm-Liouville operator</h2>
+<section id="meerdimensionale-sturm-liouville-operator-2" class="slide level2">
+<h2>Meerdimensionale Sturm-Liouville operator</h2>
 <ul>
 <li><p>Voorbeeld: <span class="math inline">{\hat{L}} = - \boldsymbol{\nabla}^2 = - \Delta = - {\hat{D}}_x^2 - {\hat{D}}_y^2 - {\hat{D}}_z^2</span></p>
 <ul>
@@ -1339,252 +1464,396 @@ u_q(t) &amp;= t^\lambda \left(\frac{1}{(q-1)!} x_1(t) (\log t)^{q-1} + \frac{1}{
   \end{cases}.
 \end{align*}</span></p></li>
 <li><p><span class="math inline">{G}={\mathsf{L}}^{-1}</span>: integraaloperator met kern = Greense functie</p>
-<p><span class="math inline">g(\boldsymbol{x},\boldsymbol{y}) = \sum_{k=1}^{+\infty}\sum_{m,n=0}^{+\infty} \frac{u_{k,m,n} (\boldsymbol{x}) u_{k,m,n}(\boldsymbol{y})}{\lambda_{k,m,n}}</span></p></li>
+<p><span class="math inline">g(\boldsymbol{x},\boldsymbol{y}) = \sum_{k=1}^{+\infty}\sum_{m,n=0}^{+\infty} \frac{u_{k,m,n}    (\boldsymbol{x}) u_{k,m,n}(\boldsymbol{y})}{\lambda_{k,m,n}}</span></p></li>
 <li><p>Propagator: <span class="math inline">Z(t,t') = \exp\big({\hat{L}}(t-t')\big)</span></p>
-<p><span class="math inline">z(\boldsymbol{x}, t,\boldsymbol{x}',t') = \sum_{k=1}^{+\infty}\sum_{m,n=0}^{+\infty} {\mathrm{e}}^{\lambda_{k,m,n}(t-t')} u_{k,m,n} (\boldsymbol{x}) u_{k,m,n}(\boldsymbol{x}')</span></p></li>
+<p><span class="math inline">z(\boldsymbol{x}, t,\boldsymbol{x}',t') = \sum_{k=1}^{+\infty}\sum_{m,n=0}^{+\infty} {\mathrm{e}}^{\lambda_{k,m,n}(t-t')} u_{k,m,n}  (\boldsymbol{x}) u_{k,m,n}(\boldsymbol{x}')</span></p></li>
 </ul></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
-</section>
-</section>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
 
 </body></html>

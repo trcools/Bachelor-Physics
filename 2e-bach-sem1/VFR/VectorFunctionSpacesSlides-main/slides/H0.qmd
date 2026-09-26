@@ -7,7 +7,7 @@ format:
      theme: solarized
      smaller: true
      html-math-method: katex
-     chalkboard: true
+     chalkboard: false
 ---
 
 

@@ -2,12 +2,12 @@
 title: "Hoofdstuk 1 - Elementaire wiskundige structuren"
 author: "Jutho Haegeman"
 date: "09/21/2026"
-# format:
-#   revealjs:
-#     theme: solarized
-#     smaller: true
-#     html-math-method: katex
-#     chalkboard: true
+format:
+   revealjs:
+     theme: solarized
+     smaller: true
+     html-math-method: katex
+     chalkboard: false
 ---
 
 ## Doel van dit hoofdstuk

@@ -1,68 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Jutho Haegeman">
-<meta name="dcterms.date" content="2025-10-28">
-
-<title>Vector- en functieruimten – Slides - Hoofdstuk 5 - Inwendig product en orthogonaliteit</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <meta name="author" content="Jutho Haegeman">
+  <meta name="dcterms.date" content="2025-10-28">
+  <title>Vector- en functieruimten -- Slides – Hoofdstuk 5 - Inwendig product en orthogonaliteit</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -77,183 +47,316 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-fixed">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Hoofdstuk 5 - Inwendig product en orthogonaliteit</h1>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Vector- en functieruimten – Slides</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H1.html" rel="" target="">
- <span class="menu-text">H1</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H2.html" rel="" target="">
- <span class="menu-text">H2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H3.html" rel="" target="">
- <span class="menu-text">H3</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H4.html" rel="" target="">
- <span class="menu-text">H4</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../slides/H5.html" rel="" target="" aria-current="page">
- <span class="menu-text">H5</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H6.html" rel="" target="">
- <span class="menu-text">H6</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H7.html" rel="" target="">
- <span class="menu-text">H7</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H8.html" rel="" target="">
- <span class="menu-text">H8</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H9.html" rel="" target="">
- <span class="menu-text">H9</span></a>
-  </li>  
-</ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jutho Haegeman 
 </div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
-  <li><a href="#proloog-bilineaire-en-sesquilineaire-vormen" id="toc-proloog-bilineaire-en-sesquilineaire-vormen" class="nav-link" data-scroll-target="#proloog-bilineaire-en-sesquilineaire-vormen">Proloog: Bilineaire en sesquilineaire vormen</a>
-  <ul class="collapse">
-  <li><a href="#bilineaire-vormen" id="toc-bilineaire-vormen" class="nav-link" data-scroll-target="#bilineaire-vormen">Bilineaire vormen</a></li>
-  <li><a href="#bilineaire-vormen-en-matrices" id="toc-bilineaire-vormen-en-matrices" class="nav-link" data-scroll-target="#bilineaire-vormen-en-matrices">Bilineaire vormen en matrices</a></li>
-  <li><a href="#bilineaire-en-kwadratische-vormen" id="toc-bilineaire-en-kwadratische-vormen" class="nav-link" data-scroll-target="#bilineaire-en-kwadratische-vormen">Bilineaire en kwadratische vormen</a></li>
-  <li><a href="#kwadratische-vormen-toepassingen" id="toc-kwadratische-vormen-toepassingen" class="nav-link" data-scroll-target="#kwadratische-vormen-toepassingen">Kwadratische vormen: toepassingen</a></li>
-  <li><a href="#sesquilineaire-vormen" id="toc-sesquilineaire-vormen" class="nav-link" data-scroll-target="#sesquilineaire-vormen">Sesquilineaire vormen</a></li>
-  <li><a href="#sesquilineaire-vormen-en-matrices" id="toc-sesquilineaire-vormen-en-matrices" class="nav-link" data-scroll-target="#sesquilineaire-vormen-en-matrices">Sesquilineaire vormen en matrices</a></li>
-  <li><a href="#bilineaire-en-sesquilineaire-vormen" id="toc-bilineaire-en-sesquilineaire-vormen" class="nav-link" data-scroll-target="#bilineaire-en-sesquilineaire-vormen">Bilineaire en sesquilineaire vormen</a></li>
-  </ul></li>
-  <li><a href="#inwendig-productruimten" id="toc-inwendig-productruimten" class="nav-link" data-scroll-target="#inwendig-productruimten">Inwendig productruimten</a>
-  <ul class="collapse">
-  <li><a href="#inwendig-product" id="toc-inwendig-product" class="nav-link" data-scroll-target="#inwendig-product">Inwendig product</a></li>
-  <li><a href="#cauchy-schwarz-ongelijkheid" id="toc-cauchy-schwarz-ongelijkheid" class="nav-link" data-scroll-target="#cauchy-schwarz-ongelijkheid">Cauchy-Schwarz ongelijkheid</a></li>
-  <li><a href="#inwendig-product-voorbeelden-eindig-dimensionaal" id="toc-inwendig-product-voorbeelden-eindig-dimensionaal" class="nav-link" data-scroll-target="#inwendig-product-voorbeelden-eindig-dimensionaal">Inwendig product: voorbeelden (eindig-dimensionaal)</a></li>
-  <li><a href="#inwendig-product-voorbeelden-oneindig-dimensionaal" id="toc-inwendig-product-voorbeelden-oneindig-dimensionaal" class="nav-link" data-scroll-target="#inwendig-product-voorbeelden-oneindig-dimensionaal">Inwendig product: voorbeelden (oneindig-dimensionaal)</a></li>
-  <li><a href="#inwendig-product-bijkomende-eigenschappen" id="toc-inwendig-product-bijkomende-eigenschappen" class="nav-link" data-scroll-target="#inwendig-product-bijkomende-eigenschappen">Inwendig product: bijkomende eigenschappen</a></li>
-  </ul></li>
-  <li><a href="#orthogonaliteit-en-unitariteit" id="toc-orthogonaliteit-en-unitariteit" class="nav-link" data-scroll-target="#orthogonaliteit-en-unitariteit">Orthogonaliteit en unitariteit</a>
-  <ul class="collapse">
-  <li><a href="#orthogonaliteit" id="toc-orthogonaliteit" class="nav-link" data-scroll-target="#orthogonaliteit">Orthogonaliteit</a></li>
-  <li><a href="#orthogonaal-complement" id="toc-orthogonaal-complement" class="nav-link" data-scroll-target="#orthogonaal-complement">Orthogonaal complement</a></li>
-  <li><a href="#orthogonale-projectie" id="toc-orthogonale-projectie" class="nav-link" data-scroll-target="#orthogonale-projectie">Orthogonale projectie</a></li>
-  <li><a href="#orthogonale-projector" id="toc-orthogonale-projector" class="nav-link" data-scroll-target="#orthogonale-projector">Orthogonale projector</a></li>
-  <li><a href="#orthogonaal-complement-en-directe-som" id="toc-orthogonaal-complement-en-directe-som" class="nav-link" data-scroll-target="#orthogonaal-complement-en-directe-som">Orthogonaal complement en directe som</a></li>
-  <li><a href="#orthonormale-basis" id="toc-orthonormale-basis" class="nav-link" data-scroll-target="#orthonormale-basis">Orthonormale basis</a></li>
-  <li><a href="#orthonormale-basis-1" id="toc-orthonormale-basis-1" class="nav-link" data-scroll-target="#orthonormale-basis-1">Orthonormale basis</a></li>
-  <li><a href="#orthonormale-basis-2" id="toc-orthonormale-basis-2" class="nav-link" data-scroll-target="#orthonormale-basis-2">Orthonormale basis</a></li>
-  <li><a href="#expansiestelling-gevolgen" id="toc-expansiestelling-gevolgen" class="nav-link" data-scroll-target="#expansiestelling-gevolgen">Expansiestelling: gevolgen</a></li>
-  <li><a href="#expansiestelling-voorbeeld" id="toc-expansiestelling-voorbeeld" class="nav-link" data-scroll-target="#expansiestelling-voorbeeld">Expansiestelling: voorbeeld</a></li>
-  <li><a href="#gram-schmidt" id="toc-gram-schmidt" class="nav-link" data-scroll-target="#gram-schmidt">Gram-Schmidt</a></li>
-  <li><a href="#gram-schmidt-en-qr-decompositie" id="toc-gram-schmidt-en-qr-decompositie" class="nav-link" data-scroll-target="#gram-schmidt-en-qr-decompositie">Gram-Schmidt en QR decompositie</a></li>
-  </ul></li>
-  <li><a href="#lineaire-functionalen-en-dualiteit-van-hilbertruimten" id="toc-lineaire-functionalen-en-dualiteit-van-hilbertruimten" class="nav-link" data-scroll-target="#lineaire-functionalen-en-dualiteit-van-hilbertruimten">Lineaire functionalen en dualiteit van Hilbertruimten</a>
-  <ul class="collapse">
-  <li><a href="#lineaire-functionalen" id="toc-lineaire-functionalen" class="nav-link" data-scroll-target="#lineaire-functionalen">Lineaire functionalen</a></li>
-  <li><a href="#lineaire-functionalen-1" id="toc-lineaire-functionalen-1" class="nav-link" data-scroll-target="#lineaire-functionalen-1">Lineaire functionalen</a></li>
-  <li><a href="#lineaire-functionalen-en-vectoren" id="toc-lineaire-functionalen-en-vectoren" class="nav-link" data-scroll-target="#lineaire-functionalen-en-vectoren">Lineaire functionalen en vectoren</a></li>
-  <li><a href="#representatiestelling-van-riesz" id="toc-representatiestelling-van-riesz" class="nav-link" data-scroll-target="#representatiestelling-van-riesz">Representatiestelling van Riesz</a></li>
-  </ul></li>
-  <li><a href="#begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" id="toc-begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen-tussen-hilbertruimten">Begrensde lineaire afbeeldingen tussen Hilbertruimten</a>
-  <ul class="collapse">
-  <li><a href="#begrensde-lineaire-afbeeldingen" id="toc-begrensde-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</a></li>
-  <li><a href="#eindig-dimensionaal-en-basisrepresentatie" id="toc-eindig-dimensionaal-en-basisrepresentatie" class="nav-link" data-scroll-target="#eindig-dimensionaal-en-basisrepresentatie">Eindig-dimensionaal en basisrepresentatie</a></li>
-  <li><a href="#toegevoegde-van-een-afbeelding" id="toc-toegevoegde-van-een-afbeelding" class="nav-link" data-scroll-target="#toegevoegde-van-een-afbeelding">Toegevoegde van een afbeelding</a></li>
-  <li><a href="#toegevoegde-afbeelding-matrixrepresentatie" id="toc-toegevoegde-afbeelding-matrixrepresentatie" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-matrixrepresentatie">Toegevoegde afbeelding: matrixrepresentatie</a></li>
-  <li><a href="#toegevoegde-afbeelding-eigenschappen" id="toc-toegevoegde-afbeelding-eigenschappen" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-eigenschappen">Toegevoegde afbeelding: eigenschappen</a></li>
-  <li><a href="#toegevoegde-afbeelding-voorbeeld" id="toc-toegevoegde-afbeelding-voorbeeld" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-voorbeeld">Toegevoegde afbeelding: voorbeeld</a></li>
-  <li><a href="#zelf-toegevoegde-operatoren" id="toc-zelf-toegevoegde-operatoren" class="nav-link" data-scroll-target="#zelf-toegevoegde-operatoren">Zelf-toegevoegde operatoren</a></li>
-  <li><a href="#zelf-toegevoegde-operatoren-eigenschappen" id="toc-zelf-toegevoegde-operatoren-eigenschappen" class="nav-link" data-scroll-target="#zelf-toegevoegde-operatoren-eigenschappen">Zelf-toegevoegde operatoren: eigenschappen</a></li>
-  <li><a href="#isometrische-en-unitaire-afbeeldingen" id="toc-isometrische-en-unitaire-afbeeldingen" class="nav-link" data-scroll-target="#isometrische-en-unitaire-afbeeldingen">Isometrische en unitaire afbeeldingen</a></li>
-  <li><a href="#isometrische-en-unitaire-afbeeldingen-1" id="toc-isometrische-en-unitaire-afbeeldingen-1" class="nav-link" data-scroll-target="#isometrische-en-unitaire-afbeeldingen-1">Isometrische en unitaire afbeeldingen</a></li>
-  <li><a href="#isometrische-en-unitaire-matrices" id="toc-isometrische-en-unitaire-matrices" class="nav-link" data-scroll-target="#isometrische-en-unitaire-matrices">Isometrische en unitaire matrices</a></li>
-  <li><a href="#anti-unitaire-transformatie" id="toc-anti-unitaire-transformatie" class="nav-link" data-scroll-target="#anti-unitaire-transformatie">Anti-unitaire transformatie</a></li>
-  <li><a href="#normale-operatoren" id="toc-normale-operatoren" class="nav-link" data-scroll-target="#normale-operatoren">Normale operatoren</a></li>
-  <li><a href="#normale-operatoren-eigenschappen" id="toc-normale-operatoren-eigenschappen" class="nav-link" data-scroll-target="#normale-operatoren-eigenschappen">Normale operatoren: eigenschappen</a></li>
-  <li><a href="#hilbert-schmidt-inwendig-product" id="toc-hilbert-schmidt-inwendig-product" class="nav-link" data-scroll-target="#hilbert-schmidt-inwendig-product">Hilbert-Schmidt inwendig product</a></li>
-  </ul></li>
-  <li><a href="#toepassing-kleinste-kwadratenoplossing" id="toc-toepassing-kleinste-kwadratenoplossing" class="nav-link" data-scroll-target="#toepassing-kleinste-kwadratenoplossing">Toepassing: kleinste-kwadratenoplossing</a>
-  <ul class="collapse">
-  <li><a href="#overgedetermineerd-stelsel" id="toc-overgedetermineerd-stelsel" class="nav-link" data-scroll-target="#overgedetermineerd-stelsel">Overgedetermineerd stelsel</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hoofdstuk 5 - Inwendig product en orthogonaliteit</h1>
+</div>
 </div>
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jutho Haegeman </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 28, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="doel-van-dit-hoofdstuk" class="level2">
-<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+  <p class="date">2025-10-28</p>
+</section>
+<section id="doel-van-dit-hoofdstuk" class="slide level2">
+<h2>Doel van dit hoofdstuk</h2>
 <div class="hidden">
 <p>$$ % Math operators % % </p>
 % VECTORS
@@ -277,10 +380,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Toepassing: kleinste kwadratenoplossing voor overgedetermineerde systemen</p></li>
 </ul>
 </section>
-<section id="proloog-bilineaire-en-sesquilineaire-vormen" class="level1">
+<section>
+<section id="proloog-bilineaire-en-sesquilineaire-vormen" class="title-slide slide level1 center">
 <h1>Proloog: Bilineaire en sesquilineaire vormen</h1>
-<section id="bilineaire-vormen" class="level2">
-<h2 class="anchored" data-anchor-id="bilineaire-vormen">Bilineaire vormen</h2>
+
+</section>
+<section id="bilineaire-vormen" class="slide level2">
+<h2>Bilineaire vormen</h2>
 <ul>
 <li>herhaling: bilineaire afbeelding <span class="math inline">B:V_1 \times V_2 \to V_3</span>
 <ul>
@@ -297,8 +403,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="bilineaire-vormen-en-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="bilineaire-vormen-en-matrices">Bilineaire vormen en matrices</h2>
+<section id="bilineaire-vormen-en-matrices" class="slide level2">
+<h2>Bilineaire vormen en matrices</h2>
 <ul>
 <li><p>basisrepresentatie: <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span></p>
 <p><span class="math inline">\Rightarrow B({v},{w}) = {v}^i \underbrace{B({e}_i,{e}_j)}_{B_{ij}\Rightarrow {\mathsf{B}}\in{\mathbb{F}}^{n\times n}} w^j = \boldsymbol{v}^{\mathsf{T}}{\mathsf{B}} \boldsymbol{w}</span></p>
@@ -314,8 +420,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="bilineaire-en-kwadratische-vormen" class="level2">
-<h2 class="anchored" data-anchor-id="bilineaire-en-kwadratische-vormen">Bilineaire en kwadratische vormen</h2>
+<section id="bilineaire-en-kwadratische-vormen" class="slide level2">
+<h2>Bilineaire en kwadratische vormen</h2>
 <ul>
 <li><p>elke bilineaire vorm kan ontbonden worden als: <span class="math inline">B({v},{w}) = \underbrace{\frac{1}{2}\left(B({v},{w})+B({w},{v})\right)}_{B_{\text{S}}({v},{w})} + \underbrace{\frac{1}{2}\left(B({v},{w})-B({w},{v})\right)}_{B_{\text{A}}({v},{w})}</span></p></li>
 <li><p>kwadratische vorm = afbeelding <span class="math inline">q:V \to {\mathbb{R}}</span> zodat</p>
@@ -327,8 +433,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="kwadratische-vormen-toepassingen" class="level2">
-<h2 class="anchored" data-anchor-id="kwadratische-vormen-toepassingen">Kwadratische vormen: toepassingen</h2>
+<section id="kwadratische-vormen-toepassingen" class="slide level2">
+<h2>Kwadratische vormen: toepassingen</h2>
 <ul>
 <li><p>kwadratische Hamiltoniaan/Lagrangiaan(harmonische oscillator): <span class="math display">H(x,p) = \frac{1}{2m} p^2 + \frac{1}{2}m \omega^2 x^2</span></p></li>
 <li><p>kegelsneden: <span class="math inline">x^2 + y^2 - z^2 = 1</span></p></li>
@@ -337,8 +443,8 @@ ul.task-list li input[type="checkbox"] {
 \quad\quad\qquad \frac{1}{2} (x-x_0)^i(x-x_0)^j \frac{\partial^2 f}{\partial x^i \partial x^j}(\boldsymbol{x}_0)</span></p></li>
 </ul>
 </section>
-<section id="sesquilineaire-vormen" class="level2">
-<h2 class="anchored" data-anchor-id="sesquilineaire-vormen">Sesquilineaire vormen</h2>
+<section id="sesquilineaire-vormen" class="slide level2">
+<h2>Sesquilineaire vormen</h2>
 <p>Complexe vectorruimte <span class="math inline">V</span>:</p>
 <ul>
 <li><p>Sesquilinaire vorm is afbeelding <span class="math inline">C:V \times V \to {\mathbb{F}}</span> met</p>
@@ -354,8 +460,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Herleidt zich tot (symmetrische of antisymmetrische) bilineaire vormen voor <span class="math inline">{\mathbb{F}}= {\mathbb{R}}</span></p>
 </section>
-<section id="sesquilineaire-vormen-en-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="sesquilineaire-vormen-en-matrices">Sesquilineaire vormen en matrices</h2>
+<section id="sesquilineaire-vormen-en-matrices" class="slide level2">
+<h2>Sesquilineaire vormen en matrices</h2>
 <ul>
 <li><p>basisrepresentatie: <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span></p>
 <p><span class="math inline">C({v},{w}) = \overline{v^i} C({e}_i,{e}_j) w^j = \boldsymbol{v}^{\mathsf{H}}{\mathsf{C}} \boldsymbol{w}</span> met <span class="math inline">C_{ij} = C({e}_i,{e}_j) \Rightarrow {\mathsf{C}} \in {\mathbb{F}}^{n \times n}</span></p>
@@ -371,8 +477,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="bilineaire-en-sesquilineaire-vormen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="bilineaire-en-sesquilineaire-vormen">Bilineaire en sesquilineaire vormen</h2>
+<section id="bilineaire-en-sesquilineaire-vormen" class="slide level2 smaller">
+<h2>Bilineaire en sesquilineaire vormen</h2>
 <p>Bijkomende begrippen:</p>
 <ul>
 <li><p><strong>ontaard</strong>: als een <span class="math inline">{v}\in V</span> bestaat zodat <span class="math inline">C({w},{v})=0</span> voor alle <span class="math inline">{w}\in V</span> <span class="math inline">\Rightarrow \mathop{\mathrm{rank}}({\mathsf{C}}) &lt; \mathop{\mathrm{dim}}(V)</span> of <span class="math inline">\det({\mathsf{C}})=0</span></p></li>
@@ -387,12 +493,14 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>stelling: als <span class="math inline">C</span> positief semidefiniet is maar niet positief definiet, dan is <span class="math inline">C</span> ontaard</p></li>
 </ul>
-</section>
-</section>
-<section id="inwendig-productruimten" class="level1">
+</section></section>
+<section>
+<section id="inwendig-productruimten" class="title-slide slide level1 center">
 <h1>Inwendig productruimten</h1>
-<section id="inwendig-product" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="inwendig-product">Inwendig product</h2>
+
+</section>
+<section id="inwendig-product" class="slide level2 smaller">
+<h2>Inwendig product</h2>
 <p>Inwendig product op vectorruimte <span class="math inline">V</span> = hermitische, positief definiete sesquilineaire vorm.</p>
 <ul>
 <li><p>notatie: <span class="math inline">V \times V \to {\mathbb{F}}: ({v},{w}) \mapsto {\left\langle{v},{w}\right\rangle}</span></p></li>
@@ -410,8 +518,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\rightarrow</span> gaan we hier niet gebruiken</p></li>
 </ul>
 </section>
-<section id="cauchy-schwarz-ongelijkheid" class="level2">
-<h2 class="anchored" data-anchor-id="cauchy-schwarz-ongelijkheid">Cauchy-Schwarz ongelijkheid</h2>
+<section id="cauchy-schwarz-ongelijkheid" class="slide level2">
+<h2>Cauchy-Schwarz ongelijkheid</h2>
 <ul>
 <li><p>Cauchy-Schwarz-Bunjakowski: <span class="math inline">{\left\lvert{\left\langle{v},{w}\right\rangle}\right\rvert}^2 \leq {\left\langle{v},{v}\right\rangle}{\left\langle{w},{w}\right\rangle}</span></p></li>
 <li><p>gevolg: <span class="math inline">{\left\lVert{v}\right\rVert} = \sqrt{{\left\langle{v},{v}\right\rangle}}</span> is een valabele norm</p>
@@ -425,8 +533,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Hilbertruimte</strong>: inwendig productruimte die metrisch compleet is</p></li>
 </ul>
 </section>
-<section id="inwendig-product-voorbeelden-eindig-dimensionaal" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="inwendig-product-voorbeelden-eindig-dimensionaal">Inwendig product: voorbeelden (eindig-dimensionaal)</h2>
+<section id="inwendig-product-voorbeelden-eindig-dimensionaal" class="slide level2 smaller">
+<h2>Inwendig product: voorbeelden (eindig-dimensionaal)</h2>
 <ul>
 <li><p><span class="math inline">V={\mathbb{R}}^n</span>: euclidisch inwendig product <span class="math display">{\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle}= \boldsymbol{v}^{\mathsf{T}}\boldsymbol{w} = v^i \delta_{ij} w^j = \sum_{i=1}^n v^i w^i</span></p></li>
 <li><p><span class="math inline">V={\mathbb{C}}^n</span>: natuurlijke veralgemening <span class="math display">{\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle}= \boldsymbol{v}^{\mathsf{H}}\boldsymbol{w} = \overline{v^i} \delta_{ij} w^j = \sum_{i=1}^n \overline{v^i} w^i</span></p>
@@ -436,8 +544,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">{\left\langle{\mathsf{A}},{\mathsf{B}}\right\rangle}= \mathop{\mathrm{tr}}({\mathsf{A}}^{\mathsf{H}}{\mathsf{B}}) = \sum_{i=1}^m\sum_{j=1}^m \overline{A^i_{\ j}} B^i_{\ j}</span></p></li>
 </ul>
 </section>
-<section id="inwendig-product-voorbeelden-oneindig-dimensionaal" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="inwendig-product-voorbeelden-oneindig-dimensionaal">Inwendig product: voorbeelden (oneindig-dimensionaal)</h2>
+<section id="inwendig-product-voorbeelden-oneindig-dimensionaal" class="slide level2 smaller">
+<h2>Inwendig product: voorbeelden (oneindig-dimensionaal)</h2>
 <ul>
 <li><p><span class="math inline">V=\ell^2({\mathbb{N}}_0, {\mathbb{F}})</span>: rijen <span class="math inline">\boldsymbol{v} = (v^i \in {\mathbb{F}})_{i\in {\mathbb{N}}_0}</span> waarvoor <span class="math inline">\sum_{i=1}^{+\infty} {\left\lvert v^i\right\rvert}^2 &lt; \infty</span></p>
 <p><span class="math display">\Rightarrow {\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle} = \sum_{i=1}^{+\infty} \overline{v^i} w^i</span></p>
@@ -449,8 +557,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">V = L^2([a,b],{\mathbb{F}})</span>: kwadratisch integreerbare functies (zie H7)</p></li>
 </ul>
 </section>
-<section id="inwendig-product-bijkomende-eigenschappen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="inwendig-product-bijkomende-eigenschappen">Inwendig product: bijkomende eigenschappen</h2>
+<section id="inwendig-product-bijkomende-eigenschappen" class="slide level2 smaller">
+<h2>Inwendig product: bijkomende eigenschappen</h2>
 <ul>
 <li><p>Parallellogram wet: voor de norm <span class="math inline">{\left\lVert{v}\right\rVert} = \sqrt{{\left\langle{v},{v}\right\rangle}}</span> geassocieerd aan een inwendig product geldt</p>
 <p><span class="math display">{\left\lVert{v}+ {w}\right\rVert}^2 + {\left\lVert{v}- {w}\right\rVert}^2 = 2({\left\lVert{v}\right\rVert}^2 + {\left\lVert{w}\right\rVert}^2)</span></p></li>
@@ -463,12 +571,14 @@ ul.task-list li input[type="checkbox"] {
 \end{align}</span></p>
 <p>(bewijs niet te kennen)</p></li>
 </ul>
-</section>
-</section>
-<section id="orthogonaliteit-en-unitariteit" class="level1">
+</section></section>
+<section>
+<section id="orthogonaliteit-en-unitariteit" class="title-slide slide level1 center">
 <h1>Orthogonaliteit en unitariteit</h1>
-<section id="orthogonaliteit" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="orthogonaliteit">Orthogonaliteit</h2>
+
+</section>
+<section id="orthogonaliteit" class="slide level2 smaller">
+<h2>Orthogonaliteit</h2>
 <p>Gegeven een inwendig productruimte <span class="math inline">(V,{\left\langle\ ,\ \right\rangle})</span></p>
 <ul>
 <li><p>orthogonaliteit: <span class="math inline">{v}\perp {w}\iff {\left\langle{v},{w}\right\rangle}=0</span></p>
@@ -486,8 +596,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="orthogonaal-complement" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonaal-complement">Orthogonaal complement</h2>
+<section id="orthogonaal-complement" class="slide level2">
+<h2>Orthogonaal complement</h2>
 <ul>
 <li><p>verzameling <span class="math inline">S \subseteq V</span>:</p>
 <p><span class="math display">S^\perp = \{{v}\in V | {\left\langle{w},{v}\right\rangle} = 0\ \text{voor alle}\ {w}\in S\}</span></p>
@@ -499,8 +609,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="orthogonale-projectie" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonale-projectie">Orthogonale projectie</h2>
+<section id="orthogonale-projectie" class="slide level2">
+<h2>Orthogonale projectie</h2>
 <p>Gegeven een <strong>gesloten (!)</strong> deelruimte <span class="math inline">W {\preccurlyeq}V</span></p>
 <ul>
 <li><p>stelling: orthogonale projectie van een vector <span class="math inline">{v}\in V</span> is de vector <span class="math inline">{w}\in W</span> die voldoet aan</p>
@@ -512,8 +622,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Gevolg: <strong>orthogonale directe som decompositie</strong> <span class="math inline">V = W \oplus W^\perp</span></p></li>
 </ul>
 </section>
-<section id="orthogonale-projector" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonale-projector">Orthogonale projector</h2>
+<section id="orthogonale-projector" class="slide level2">
+<h2>Orthogonale projector</h2>
 <ul>
 <li><p><strong>orthogonale projector</strong> <span class="math inline">{\hat{P}}\in\mathop{\mathrm{End}}(V)</span>:</p>
 <p><span class="math inline">{\hat{P}}^2 = {\hat{P}}</span> en <span class="math inline">{\left\langle{\hat{P}}{v},{w}\right\rangle} = {\left\langle{v},{\hat{P}}{w}\right\rangle}, \forall {v},{w}\in V</span></p>
@@ -525,8 +635,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="orthogonaal-complement-en-directe-som" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonaal-complement-en-directe-som">Orthogonaal complement en directe som</h2>
+<section id="orthogonaal-complement-en-directe-som" class="slide level2">
+<h2>Orthogonaal complement en directe som</h2>
 <p>Bijkomende eigenschappen van orthogonaal complement en orthogonale directe som:</p>
 <ul>
 <li><p>voor elke deelverzameling <span class="math inline">S</span>: <span class="math inline">V = S^\perp \oplus S^{\perp\perp}</span></p>
@@ -539,8 +649,8 @@ ul.task-list li input[type="checkbox"] {
 <p>(aangezien <span class="math inline">S^\perp = (\overline{{\mathbb{F}}S})^\perp = V^\perp</span>)</p></li>
 </ul>
 </section>
-<section id="orthonormale-basis" class="level2">
-<h2 class="anchored" data-anchor-id="orthonormale-basis">Orthonormale basis</h2>
+<section id="orthonormale-basis" class="slide level2">
+<h2>Orthonormale basis</h2>
 <ul>
 <li><p><span class="math inline">\mathop{\mathrm{dim}}(V)=n</span> eindig: elke verzameling van <span class="math inline">n</span> orthogonale vectoren zijn lineair onafhankelijk en vormen basis</p>
 <p>orthogonale basis maken uit gegeven basis: zie straks</p></li>
@@ -548,8 +658,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\rightarrow</span> bewijs in stappen op volgende slides</p></li>
 </ul>
 </section>
-<section id="orthonormale-basis-1" class="level2">
-<h2 class="anchored" data-anchor-id="orthonormale-basis-1">Orthonormale basis</h2>
+<section id="orthonormale-basis-1" class="slide level2">
+<h2>Orthonormale basis</h2>
 <p>Beschouw rij <span class="math inline">({e}_n, n \in {\mathbb{N}}_0)</span> van orthonormale vectoren:</p>
 <ul>
 <li><p>Orthogonale projector op deelruimte <span class="math inline">W_n = {\mathbb{F}}\{{e}_i,i=1,\ldots,n\}</span> wordt gedefinieerd door <span class="math inline">{\hat{P}}_n {v}= \sum_{i=1}^n {e}_i {\left\langle{e}_i,{v}\right\rangle}</span></p>
@@ -563,8 +673,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\rightarrow</span> karakteriseert uniek orthogonale projector op <span class="math inline">W_n</span></p></li>
 </ul>
 </section>
-<section id="orthonormale-basis-2" class="level2">
-<h2 class="anchored" data-anchor-id="orthonormale-basis-2">Orthonormale basis</h2>
+<section id="orthonormale-basis-2" class="slide level2">
+<h2>Orthonormale basis</h2>
 <ul>
 <li><p>Bessel’s ongelijkheid: <span class="math inline">\sum_{i=1}^n {\left\lvert{\left\langle{e}_i,{v}\right\rangle}\right\rvert}^2 \leq {\left\lVert{v}\right\rVert}^2</span></p>
 <p>(bewijs volgt onmiddellijk uit voorgaand bewijs)</p>
@@ -572,8 +682,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>expansiestelling</strong>: compleet orthonormale rij vormt Schauder basis en elke vector <span class="math inline">{v}\in V</span> kan worden geëxpandeerd als de convergente reeks <span class="math display">{v}= \sum_{i=1}^{+\infty} {e}_i {\left\langle{e}_i,{v}\right\rangle}</span></p></li>
 </ul>
 </section>
-<section id="expansiestelling-gevolgen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="expansiestelling-gevolgen">Expansiestelling: gevolgen</h2>
+<section id="expansiestelling-gevolgen" class="slide level2 smaller">
+<h2>Expansiestelling: gevolgen</h2>
 <ul>
 <li><p>expansiecoefficiënten: <span class="math inline">({\left\langle{e}_i,{v}\right\rangle})_{i\in {\mathbb{N}}_0}</span></p>
 <p>ook wel: <em>veralgemeende Fourier-coefficiënten</em> (zie volgende slide)</p></li>
@@ -587,8 +697,8 @@ ul.task-list li input[type="checkbox"] {
 <p>relatie <span class="math inline">{v}\leftrightarrow ({\left\langle{e}_i,{v}\right\rangle})_{i\in {\mathbb{N}}_0}</span> is een Hilbertruimte-isomorfisme tussen <span class="math inline">V</span> en <span class="math inline">\ell^2({\mathbb{N}}_0; {\mathbb{F}})</span></p></li>
 </ul>
 </section>
-<section id="expansiestelling-voorbeeld" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="expansiestelling-voorbeeld">Expansiestelling: voorbeeld</h2>
+<section id="expansiestelling-voorbeeld" class="slide level2 smaller">
+<h2>Expansiestelling: voorbeeld</h2>
 <ul>
 <li><p><span class="math inline">V = L^2([0,L], {\mathbb{C}})</span>: rij <span class="math inline">(f_k)_{k\in {\mathbb{Z}}}</span> met</p>
 <p><span class="math display">f_k(x) = \frac{1}{\sqrt{L}}\exp\left(+{\mathrm{i}}\frac{2\pi}{L} k x\right)</span></p>
@@ -600,8 +710,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>zie hoofdstuk 7 voor meer details</p></li>
 </ul>
 </section>
-<section id="gram-schmidt" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="gram-schmidt">Gram-Schmidt</h2>
+<section id="gram-schmidt" class="slide level2 smaller">
+<h2>Gram-Schmidt</h2>
 <p>lineair onafhankelijke vectoren: <span class="math inline">S=\{{v}_1,{v}_2,\ldots\}</span></p>
 <p><span class="math inline">\rightarrow</span> orthonormale rij <span class="math inline">(q_1,q_2,\ldots)</span> die zelfde (deel)ruimte opspant</p>
 <p><span class="math inline">\rightarrow</span> meer specifiek: <span class="math inline">{\mathbb{F}}\{{v}_i, i=1,\ldots,n\} = {\mathbb{F}}\{q_i; i=1,\ldots,n\}</span> voor alle <span class="math inline">n</span></p>
@@ -615,8 +725,8 @@ ul.task-list li input[type="checkbox"] {
 \end{align*}</span> <span class="math inline">\Rightarrow {v}_k = \sum_{j=1}^{k} R^{j}_{\ k} {q}_{j}</span> met <span class="math inline">R^j_{\ k} = {\left\langle q_j,{v}_k\right\rangle}</span> en <span class="math inline">R^k_{\ k} = {\left\lVert{v}_k - \sum_{j=1}^{k-1}R^j_{\ k} {q}_j\right\rVert} = {\left\lVert{w}_k\right\rVert}</span></p>
 <p>Opmerking: <span class="math inline">{w}_n</span> kan enkel nul worden als <span class="math inline">{v}_n</span> lineair afhankelijk is van <span class="math inline">\{{v}_1,\ldots,{v}_{n-1}\}</span></p>
 </section>
-<section id="gram-schmidt-en-qr-decompositie" class="level2">
-<h2 class="anchored" data-anchor-id="gram-schmidt-en-qr-decompositie">Gram-Schmidt en QR decompositie</h2>
+<section id="gram-schmidt-en-qr-decompositie" class="slide level2">
+<h2>Gram-Schmidt en QR decompositie</h2>
 <p>Matrixversie: <span class="math inline">{\mathbb{F}}^n</span> met Euclidisch inwendig product</p>
 <ul>
 <li><p><span class="math inline">m</span> lineair onafhankelijke vectoren: <span class="math inline">{\mathsf{V}} = \begin{bmatrix} \boldsymbol{v}_1 | \boldsymbol{v}_2 | \dots | \boldsymbol{v}_m \end{bmatrix} \in {\mathbb{F}}^{n \times m}</span></p></li>
@@ -630,12 +740,14 @@ ul.task-list li input[type="checkbox"] {
 <li><p>numeriek: keuze algoritme van belang voor stabiliteit</p>
 <p>(classical vs modified Gram-Schmidt, Householder)</p></li>
 </ul>
-</section>
-</section>
-<section id="lineaire-functionalen-en-dualiteit-van-hilbertruimten" class="level1">
+</section></section>
+<section>
+<section id="lineaire-functionalen-en-dualiteit-van-hilbertruimten" class="title-slide slide level1 center">
 <h1>Lineaire functionalen en dualiteit van Hilbertruimten</h1>
-<section id="lineaire-functionalen" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen">Lineaire functionalen</h2>
+
+</section>
+<section id="lineaire-functionalen" class="slide level2">
+<h2>Lineaire functionalen</h2>
 <p>Gegeven een Hilbertruimte <span class="math inline">V</span>:</p>
 <ul>
 <li><p>Aan elke <span class="math inline">{v}\in V</span> associeren we een <span class="math inline">\chi_{v}\in V^\ast</span> <span class="math display">\chi_{v}: V \to {\mathbb{F}}: w \mapsto \chi_v[w] = {\left\langle{v},{w}\right\rangle}</span></p>
@@ -648,8 +760,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><span class="math inline">\Rightarrow</span> kunnen we elke (begrensde) functionaal zo bekomen?</p>
 </section>
-<section id="lineaire-functionalen-1" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-1">Lineaire functionalen</h2>
+<section id="lineaire-functionalen-1" class="slide level2">
+<h2>Lineaire functionalen</h2>
 <p>Als <span class="math inline">V</span> eindig-dimensionaal met <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span>:</p>
 <ul>
 <li><p>Duale basis <span class="math inline">B^\ast_V=\{\varepsilon^1,\ldots,\varepsilon^n\}</span>: <span class="math inline">\varepsilon^i[{e}_j] =\delta^i_{\ j}</span></p></li>
@@ -660,8 +772,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\Rightarrow ({v}_\xi)^j = \overline{\xi_i g^{ij}}</span></p></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-en-vectoren" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="lineaire-functionalen-en-vectoren">Lineaire functionalen en vectoren</h2>
+<section id="lineaire-functionalen-en-vectoren" class="slide level2 smaller">
+<h2>Lineaire functionalen en vectoren</h2>
 <p>Voor <span class="math inline">V</span> eindig-dimensionaal kunnen we elke lineaire functionaal <span class="math inline">\xi</span> voorstellen als inwendig product met een geassocieerde vector <span class="math inline">{v}_\xi</span></p>
 <p>Interpretatie en gevolgen:</p>
 <ul>
@@ -674,8 +786,8 @@ ul.task-list li input[type="checkbox"] {
 <p>de bijectieve afbeelding <span class="math inline">{v}\to \chi_{v}</span> behoudt inwendig product en lineaire combinaties (maar met complexe toevoeging van scalaire factoren)</p></li>
 </ul>
 </section>
-<section id="representatiestelling-van-riesz" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="representatiestelling-van-riesz">Representatiestelling van Riesz</h2>
+<section id="representatiestelling-van-riesz" class="slide level2 smaller">
+<h2>Representatiestelling van Riesz</h2>
 <p>Geldt dit ook voor oneindig-dimensionale Hilbertruimten <span class="math inline">V</span>?</p>
 <ul>
 <li><p>Vanaf nu: <span class="math inline">V^\ast = \mathcal{B}(V,{\mathbb{F}})</span> (begrensde lineaire functionalen)</p></li>
@@ -689,12 +801,14 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Gevolg: voor Hilbertruimten geldt <span class="math inline">V \cong V^\ast</span></p></li>
 </ul>
-</section>
-</section>
-<section id="begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" class="level1">
+</section></section>
+<section>
+<section id="begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" class="title-slide slide level1 center">
 <h1>Begrensde lineaire afbeeldingen tussen Hilbertruimten</h1>
-<section id="begrensde-lineaire-afbeeldingen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</h2>
+
+</section>
+<section id="begrensde-lineaire-afbeeldingen" class="slide level2 smaller">
+<h2>Begrensde lineaire afbeeldingen</h2>
 <p>Hilbertruimten <span class="math inline">(V, {\left\langle\ ,\ \right\rangle}_V)</span> en <span class="math inline">(W, {\left\langle\ ,\ \right\rangle}_W)</span>; lineaire afbeelding <span class="math inline">{\hat{A}} \in \mathcal{B}(V,W)</span></p>
 <ul>
 <li><p>Geinduceerde norm:</p>
@@ -711,8 +825,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="eindig-dimensionaal-en-basisrepresentatie" class="level2">
-<h2 class="anchored" data-anchor-id="eindig-dimensionaal-en-basisrepresentatie">Eindig-dimensionaal en basisrepresentatie</h2>
+<section id="eindig-dimensionaal-en-basisrepresentatie" class="slide level2">
+<h2>Eindig-dimensionaal en basisrepresentatie</h2>
 <ul>
 <li><p>Basis voor <span class="math inline">V</span>: <span class="math inline">B_V = \{{e}_1,\ldots,{e}_n\}</span></p></li>
 <li><p>Basis voor <span class="math inline">W</span>: <span class="math inline">B_W = \{{f}_1,\ldots,{f}_m\}</span></p>
@@ -725,8 +839,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-van-een-afbeelding" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-van-een-afbeelding">Toegevoegde van een afbeelding</h2>
+<section id="toegevoegde-van-een-afbeelding" class="slide level2">
+<h2>Toegevoegde van een afbeelding</h2>
 <p>Voor elke <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> bestaat er een afbeelding in <span class="math inline">\mathcal{B}(W,V)</span> die we noteren als <span class="math inline">{\hat{A}}^\dagger</span> en die voldoet aan</p>
 <p><span class="math display">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle},\quad \forall {w}\in W, \forall{v}\in V</span></p>
 <p>en <span class="math inline">{\left\lVert{\hat{A}}^\dagger\right\rVert}={\left\lVert{\hat{A}}\right\rVert}</span></p>
@@ -737,19 +851,19 @@ ul.task-list li input[type="checkbox"] {
 <li>involutief: <span class="math inline">{\hat{A}}^{\dagger\dagger} = ({\hat{A}}^\dagger)^\dagger = {\hat{A}}</span></li>
 </ul>
 </section>
-<section id="toegevoegde-afbeelding-matrixrepresentatie" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-matrixrepresentatie">Toegevoegde afbeelding: matrixrepresentatie</h2>
+<section id="toegevoegde-afbeelding-matrixrepresentatie" class="slide level2">
+<h2>Toegevoegde afbeelding: matrixrepresentatie</h2>
 <p>Voor <span class="math inline">V</span> en <span class="math inline">W</span> eindig-dimensionaal:</p>
 <p><span class="math inline">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle}</span> <span class="math inline">\quad\iff {\overline{w}}^i ({\mathsf{g}}_W)_{ij} A^j_{\ k} v^k = \overline{(A^\dagger)^l_{\ i} w^i} ({\mathsf{g}}_V)_{lk} v^k</span></p>
-<p><span class="math inline">\Rightarrow (A^\dagger)^l_{\ i} = \overline{({\mathsf{g}}_W)_{ij} A^j_{\ k} ({\mathsf{g}}_V^{-1})^{k l}}</span></p>
+<p><span class="math inline">\Rightarrow    (A^\dagger)^l_{\ i} = \overline{({\mathsf{g}}_W)_{ij} A^j_{\ k} ({\mathsf{g}}_V^{-1})^{k l}}</span></p>
 <p>Als <span class="math inline">B_V</span> en <span class="math inline">B_W</span> orthonormaal:</p>
 <ul>
 <li><span class="math inline">(A^\dagger)^l_{\ i} = \overline{A^i_{\ l}} = ({\mathsf{A}}^{\mathsf{H}})^l_{\ i}</span></li>
 <li>toegevoegde afbeelding voorgesteld door Hermitisch toegevoegde matrixrepresentatie</li>
 </ul>
 </section>
-<section id="toegevoegde-afbeelding-eigenschappen" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-eigenschappen">Toegevoegde afbeelding: eigenschappen</h2>
+<section id="toegevoegde-afbeelding-eigenschappen" class="slide level2">
+<h2>Toegevoegde afbeelding: eigenschappen</h2>
 <p>Beschouw <span class="math inline">{\hat{A}}\in\mathcal{B}(V,W)</span></p>
 <ul>
 <li><p><span class="math inline">{\left\lVert{\hat{A}}^\dagger{\hat{A}}\right\rVert} = {\left\lVert{\hat{A}}{\hat{A}}^\dagger\right\rVert} = {\left\lVert{\hat{A}}\right\rVert}^2</span></p></li>
@@ -761,8 +875,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="toegevoegde-afbeelding-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-voorbeeld">Toegevoegde afbeelding: voorbeeld</h2>
+<section id="toegevoegde-afbeelding-voorbeeld" class="slide level2">
+<h2>Toegevoegde afbeelding: voorbeeld</h2>
 <p>Oneindig-dimensionaal voorbeeld:</p>
 <ul>
 <li><span class="math inline">V = W = \ell^2({\mathbb{N}}_0,{\mathbb{F}})</span> (kwadratisch sommeerbare rijen)
@@ -778,8 +892,8 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\Rightarrow {\hat{T}} = {\hat{S}}^\dagger</span></li>
 </ul>
 </section>
-<section id="zelf-toegevoegde-operatoren" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="zelf-toegevoegde-operatoren">Zelf-toegevoegde operatoren</h2>
+<section id="zelf-toegevoegde-operatoren" class="slide level2 smaller">
+<h2>Zelf-toegevoegde operatoren</h2>
 <p>Hilbertruimte <span class="math inline">V=W</span>: operatoren</p>
 <ul>
 <li><p>een operator is <strong>zelftoegevoegd</strong> als <span class="math inline">{\hat{A}}={\hat{A}}^\dagger</span></p>
@@ -796,8 +910,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="zelf-toegevoegde-operatoren-eigenschappen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="zelf-toegevoegde-operatoren-eigenschappen">Zelf-toegevoegde operatoren: eigenschappen</h2>
+<section id="zelf-toegevoegde-operatoren-eigenschappen" class="slide level2 smaller">
+<h2>Zelf-toegevoegde operatoren: eigenschappen</h2>
 <ul>
 <li><p><span class="math inline">{\hat{A}}\in\mathop{\mathrm{End}}(V)</span> zelftoegevoegd en <span class="math inline">{\hat{A}}{v}= \lambda {v}</span>:</p>
 <p><span class="math inline">{\left\langle{v},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}{v},{v}\right\rangle} \implies \lambda = {\overline{\lambda}}</span> of dus <span class="math inline">\lambda \in {\mathbb{R}}</span></p></li>
@@ -807,13 +921,14 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">{\hat{A}}{\hat{B}}</span> zelftoegevoegd <span class="math inline">\iff</span> <span class="math inline">{\left[{\hat{A}},{\hat{B}}\right]} = {\hat{0}}</span></p></li>
 <li><p>orthogonale projector <span class="math inline">\equiv</span> zelftoegevoegde projector</p></li>
 <li><p>voorbeeld op <span class="math inline">V =L^2([a,b])</span>: <span class="math inline">{\hat{M}}_x: f(x) \mapsto x f(x)</span></p>
-<p><span class="math inline">{\left\langle g,{\hat{M}}_x f\right\rangle} = \int_a^b \overline{g(x)} (x f(x)) \,{\mathrm{d}}x = \int_{a}^b \overline{x g(x)} f(x)\,{\mathrm{d}}x = {\left\langle{\hat{M}}_x g,f\right\rangle}</span></p>
+<p><span class="math inline">{\left\langle g,{\hat{M}}_x f\right\rangle} = \int_a^b \overline{g(x)} (x f(x)) \,{\mathrm{d}}x
+= \int_{a}^b \overline{x g(x)} f(x)\,{\mathrm{d}}x = {\left\langle{\hat{M}}_x g,f\right\rangle}</span></p>
 <p><span class="math inline">\Rightarrow {\hat{M}}_x</span> is zelftoegevoegd / Hermitisch</p>
 <p>(<span class="math inline">{\hat{M}}_x</span> is begrensd voor <span class="math inline">L^2([a,b])</span> met compact interval <span class="math inline">[a,b]</span>; zie H7)</p></li>
 </ul>
 </section>
-<section id="isometrische-en-unitaire-afbeeldingen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-afbeeldingen">Isometrische en unitaire afbeeldingen</h2>
+<section id="isometrische-en-unitaire-afbeeldingen" class="slide level2 smaller">
+<h2>Isometrische en unitaire afbeeldingen</h2>
 <p>Beschouw <span class="math inline">{\hat{Q}}\in \mathcal{B}(V,W)</span>:</p>
 <ul>
 <li><p>isometrisch <span class="math inline">\iff {\hat{Q}}^\dagger{\hat{Q}}={\hat{1}}_V</span></p>
@@ -827,8 +942,8 @@ ul.task-list li input[type="checkbox"] {
 <p>als <span class="math inline">{\hat{U}}^{-1}</span> bestaat en <span class="math inline">{\hat{U}}^\dagger {\hat{U}}={\hat{1}}_V</span> <span class="math inline">\implies</span> <span class="math inline">{\hat{U}}^{-1}={\hat{U}}^\dagger</span> en dus <span class="math inline">{\hat{U}}{\hat{U}}^\dagger = {\hat{1}}_W</span></p></li>
 </ul>
 </section>
-<section id="isometrische-en-unitaire-afbeeldingen-1" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-afbeeldingen-1">Isometrische en unitaire afbeeldingen</h2>
+<section id="isometrische-en-unitaire-afbeeldingen-1" class="slide level2 smaller">
+<h2>Isometrische en unitaire afbeeldingen</h2>
 <ul>
 <li><p>(zoals steeds) <span class="math inline">V, W</span> met <span class="math inline">\mathop{\mathrm{dim}}(V) = \mathop{\mathrm{dim}}(W)</span> eindig: isometrisch <span class="math inline">\iff</span> unitair</p>
 <ul>
@@ -849,8 +964,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">{\hat{Q}}</span> isometrisch maar niet unitair: <span class="math inline">{\hat{Q}}{\hat{Q}}^\dagger</span> is orthogonale projector</p></li>
 </ul>
 </section>
-<section id="isometrische-en-unitaire-matrices" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-matrices">Isometrische en unitaire matrices</h2>
+<section id="isometrische-en-unitaire-matrices" class="slide level2 smaller">
+<h2>Isometrische en unitaire matrices</h2>
 <ul>
 <li><p>unitaire matrices <span class="math inline">{\mathsf{U}} \in {\mathbb{C}}^{n\times n}</span>: basistransformatie tussen orthonormale basissen</p>
 <ul>
@@ -868,8 +983,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="anti-unitaire-transformatie" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="anti-unitaire-transformatie">Anti-unitaire transformatie</h2>
+<section id="anti-unitaire-transformatie" class="slide level2 smaller">
+<h2>Anti-unitaire transformatie</h2>
 <p><span class="math inline">{\hat{A}}</span> een antilineaire operator tussen complexe Hilbertruimten <span class="math inline">V</span> en <span class="math inline">W</span></p>
 <ul>
 <li><p>Definitie van toegevoegde:</p>
@@ -883,8 +998,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="normale-operatoren" class="level2">
-<h2 class="anchored" data-anchor-id="normale-operatoren">Normale operatoren</h2>
+<section id="normale-operatoren" class="slide level2">
+<h2>Normale operatoren</h2>
 <ul>
 <li><p><span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> voldoet aan <span class="math inline">{\hat{A}}{\hat{A}}^\dagger = {\hat{A}}^\dagger{\hat{A}}</span>: <strong>normale operator</strong></p></li>
 <li><p>speciale gevallen van normaal:</p>
@@ -897,8 +1012,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\Rightarrow</span> <span class="math inline">{\hat{A}}_{\text{r}}</span> en <span class="math inline">{\hat{A}}_{\text{i}}</span> gelijktijdig diagonaliseerbaar?</p></li>
 </ul>
 </section>
-<section id="normale-operatoren-eigenschappen" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="normale-operatoren-eigenschappen">Normale operatoren: eigenschappen</h2>
+<section id="normale-operatoren-eigenschappen" class="slide level2 smaller">
+<h2>Normale operatoren: eigenschappen</h2>
 <ul>
 <li><p><span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(V)</span>: normaal <span class="math inline">\iff</span> <span class="math inline">\forall {v}\in V: {\left\lVert{\hat{A}}{v}\right\rVert} = {\left\lVert{\hat{A}}^\dagger{v}\right\rVert}</span></p></li>
 <li><p><span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> en normaal en <span class="math inline">{\hat{A}}{v}= \lambda {v}</span>:</p>
@@ -916,8 +1031,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="hilbert-schmidt-inwendig-product" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="hilbert-schmidt-inwendig-product">Hilbert-Schmidt inwendig product</h2>
+<section id="hilbert-schmidt-inwendig-product" class="slide level2 smaller">
+<h2>Hilbert-Schmidt inwendig product</h2>
 <p>Inwendig product voor lineaire afbeeldingen <span class="math inline">{\hat{A}} \in \mathcal{B}(V,W)</span>?</p>
 <ul>
 <li><p>geïnduceerde norm is niet afkomstig van inwendig product</p></li>
@@ -932,12 +1047,14 @@ ul.task-list li input[type="checkbox"] {
 <p>(spelen belangrijke theoretische rol in H7 en H8: Greense functies)</p></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="toepassing-kleinste-kwadratenoplossing" class="level1">
+</section></section>
+<section>
+<section id="toepassing-kleinste-kwadratenoplossing" class="title-slide slide level1 center">
 <h1>Toepassing: kleinste-kwadratenoplossing</h1>
-<section id="overgedetermineerd-stelsel" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="overgedetermineerd-stelsel">Overgedetermineerd stelsel</h2>
+
+</section>
+<section id="overgedetermineerd-stelsel" class="slide level2 smaller">
+<h2>Overgedetermineerd stelsel</h2>
 <p><span class="math inline">{\mathsf{A}} \boldsymbol{x} = \boldsymbol{y}</span> met <span class="math inline">m</span> vergelijkingen voor <span class="math inline">n &lt; m</span> onbekenden:</p>
 <ul>
 <li><p><span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>, <span class="math inline">\boldsymbol{x} \in {\mathbb{F}}^n</span> en <span class="math inline">\boldsymbol{y} \in {\mathbb{F}}^m</span></p></li>
@@ -955,246 +1072,390 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
-</section>
-</section>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
 
 </body></html>

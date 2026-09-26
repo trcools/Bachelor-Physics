@@ -2,12 +2,12 @@
 title: "Hoofdstuk 4 - Normen en afstanden"
 author: "Jutho Haegeman"
 date: "10/21/2025"
-# format:
-#   revealjs:
-#     theme: solarized
-#     html-math-method: katex
-#     smaller: true
-#     chalkboard: true
+format:
+   revealjs:
+     theme: solarized
+     html-math-method: katex
+     smaller: true
+     chalkboard: false
 ---
 
 ## Doel van dit hoofdstuk

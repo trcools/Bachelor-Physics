@@ -1,68 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Jutho Haegeman">
-<meta name="dcterms.date" content="2026-09-22">
-
-<title>Vector- en functieruimten – Slides - Hoofdstuk 2 - Lineaire afbeeldingen</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <meta name="author" content="Jutho Haegeman">
+  <meta name="dcterms.date" content="2026-09-22">
+  <title>Vector- en functieruimten -- Slides – Hoofdstuk 2 - Lineaire afbeeldingen</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -77,180 +47,316 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-fixed">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Hoofdstuk 2 - Lineaire afbeeldingen</h1>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Vector- en functieruimten – Slides</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H1.html" rel="" target="">
- <span class="menu-text">H1</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../slides/H2.html" rel="" target="" aria-current="page">
- <span class="menu-text">H2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H3.html" rel="" target="">
- <span class="menu-text">H3</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H4.html" rel="" target="">
- <span class="menu-text">H4</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H5.html" rel="" target="">
- <span class="menu-text">H5</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H6.html" rel="" target="">
- <span class="menu-text">H6</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H7.html" rel="" target="">
- <span class="menu-text">H7</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H8.html" rel="" target="">
- <span class="menu-text">H8</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H9.html" rel="" target="">
- <span class="menu-text">H9</span></a>
-  </li>  
-</ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jutho Haegeman 
 </div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
-  <li><a href="#lineaire-afbeeldingen" id="toc-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#lineaire-afbeeldingen">Lineaire afbeeldingen</a>
-  <ul class="collapse">
-  <li><a href="#definitie" id="toc-definitie" class="nav-link" data-scroll-target="#definitie">Definitie</a></li>
-  <li><a href="#voorbeelden" id="toc-voorbeelden" class="nav-link" data-scroll-target="#voorbeelden">Voorbeelden</a></li>
-  <li><a href="#eigenschappen" id="toc-eigenschappen" class="nav-link" data-scroll-target="#eigenschappen">Eigenschappen</a></li>
-  </ul></li>
-  <li><a href="#kern-beeld-en-rang-nulliteitsstelling" id="toc-kern-beeld-en-rang-nulliteitsstelling" class="nav-link" data-scroll-target="#kern-beeld-en-rang-nulliteitsstelling">Kern, beeld en rang-nulliteitsstelling</a>
-  <ul class="collapse">
-  <li><a href="#beeldruimte" id="toc-beeldruimte" class="nav-link" data-scroll-target="#beeldruimte">Beeldruimte</a></li>
-  <li><a href="#kern-of-nulruimte" id="toc-kern-of-nulruimte" class="nav-link" data-scroll-target="#kern-of-nulruimte">Kern (of nulruimte)</a></li>
-  <li><a href="#rang-nulliteitsstelling" id="toc-rang-nulliteitsstelling" class="nav-link" data-scroll-target="#rang-nulliteitsstelling">Rang-nulliteitsstelling</a></li>
-  <li><a href="#rang-nulliteitsstelling-1" id="toc-rang-nulliteitsstelling-1" class="nav-link" data-scroll-target="#rang-nulliteitsstelling-1">Rang-nulliteitsstelling</a></li>
-  <li><a href="#voorbeeld" id="toc-voorbeeld" class="nav-link" data-scroll-target="#voorbeeld">Voorbeeld</a></li>
-  </ul></li>
-  <li><a href="#matrices-en-determinanten" id="toc-matrices-en-determinanten" class="nav-link" data-scroll-target="#matrices-en-determinanten">Matrices en determinanten</a>
-  <ul class="collapse">
-  <li><a href="#matrixvoorstelling-van-lineaire-afbeeldingen" id="toc-matrixvoorstelling-van-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#matrixvoorstelling-van-lineaire-afbeeldingen">Matrixvoorstelling van lineaire afbeeldingen</a></li>
-  <li><a href="#matrixvoorstelling-en-compositie" id="toc-matrixvoorstelling-en-compositie" class="nav-link" data-scroll-target="#matrixvoorstelling-en-compositie">Matrixvoorstelling en compositie</a></li>
-  <li><a href="#bewerkingen-met-matrices" id="toc-bewerkingen-met-matrices" class="nav-link" data-scroll-target="#bewerkingen-met-matrices">Bewerkingen met matrices</a></li>
-  <li><a href="#bewerkingen-met-matrices-1" id="toc-bewerkingen-met-matrices-1" class="nav-link" data-scroll-target="#bewerkingen-met-matrices-1">Bewerkingen met matrices</a></li>
-  <li><a href="#rang-van-een-matrix" id="toc-rang-van-een-matrix" class="nav-link" data-scroll-target="#rang-van-een-matrix">Rang van een matrix</a></li>
-  <li><a href="#spoor" id="toc-spoor" class="nav-link" data-scroll-target="#spoor">Spoor</a></li>
-  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
-  <li><a href="#determinant-als-volume" id="toc-determinant-als-volume" class="nav-link" data-scroll-target="#determinant-als-volume">Determinant als volume</a></li>
-  <li><a href="#determinant-verdere-eigenschappen" id="toc-determinant-verdere-eigenschappen" class="nav-link" data-scroll-target="#determinant-verdere-eigenschappen">Determinant: verdere eigenschappen</a></li>
-  <li><a href="#determinant-toepassing" id="toc-determinant-toepassing" class="nav-link" data-scroll-target="#determinant-toepassing">Determinant: toepassing</a></li>
-  <li><a href="#determinant-toepassing-1" id="toc-determinant-toepassing-1" class="nav-link" data-scroll-target="#determinant-toepassing-1">Determinant: toepassing</a></li>
-  <li><a href="#determinant-toepassing-2" id="toc-determinant-toepassing-2" class="nav-link" data-scroll-target="#determinant-toepassing-2">Determinant: toepassing</a></li>
-  <li><a href="#matrix-inverse" id="toc-matrix-inverse" class="nav-link" data-scroll-target="#matrix-inverse">Matrix inverse:</a></li>
-  <li><a href="#afgeleide-van-een-determinant" id="toc-afgeleide-van-een-determinant" class="nav-link" data-scroll-target="#afgeleide-van-een-determinant">Afgeleide van een determinant</a></li>
-  </ul></li>
-  <li><a href="#algemene-lineaire-groep-en-basistranformaties" id="toc-algemene-lineaire-groep-en-basistranformaties" class="nav-link" data-scroll-target="#algemene-lineaire-groep-en-basistranformaties">Algemene lineaire groep en basistranformaties</a>
-  <ul class="collapse">
-  <li><a href="#lineaire-groep" id="toc-lineaire-groep" class="nav-link" data-scroll-target="#lineaire-groep">Lineaire groep</a></li>
-  <li><a href="#basistransformaties" id="toc-basistransformaties" class="nav-link" data-scroll-target="#basistransformaties">Basistransformaties</a></li>
-  <li><a href="#basistransformaties-1" id="toc-basistransformaties-1" class="nav-link" data-scroll-target="#basistransformaties-1">Basistransformaties</a></li>
-  <li><a href="#basistransformaties-2" id="toc-basistransformaties-2" class="nav-link" data-scroll-target="#basistransformaties-2">Basistransformaties</a></li>
-  </ul></li>
-  <li><a href="#functionalen-en-duale-ruimte" id="toc-functionalen-en-duale-ruimte" class="nav-link" data-scroll-target="#functionalen-en-duale-ruimte">Functionalen en duale ruimte</a>
-  <ul class="collapse">
-  <li><a href="#functionalen" id="toc-functionalen" class="nav-link" data-scroll-target="#functionalen">Functionalen</a></li>
-  <li><a href="#lineaire-functionalen-en-duale-ruimte" id="toc-lineaire-functionalen-en-duale-ruimte" class="nav-link" data-scroll-target="#lineaire-functionalen-en-duale-ruimte">Lineaire functionalen en duale ruimte</a></li>
-  <li><a href="#lineaire-functionalen-eigenschappen" id="toc-lineaire-functionalen-eigenschappen" class="nav-link" data-scroll-target="#lineaire-functionalen-eigenschappen">Lineaire functionalen: eigenschappen</a></li>
-  <li><a href="#lineaire-functionalen-meer-voorbeelden-uit-de-fysica" id="toc-lineaire-functionalen-meer-voorbeelden-uit-de-fysica" class="nav-link" data-scroll-target="#lineaire-functionalen-meer-voorbeelden-uit-de-fysica">Lineaire functionalen: meer voorbeelden uit de fysica</a></li>
-  <li><a href="#lineaire-functionalen-meer-voorbeelden-van-duale-basis" id="toc-lineaire-functionalen-meer-voorbeelden-van-duale-basis" class="nav-link" data-scroll-target="#lineaire-functionalen-meer-voorbeelden-van-duale-basis">Lineaire functionalen: meer voorbeelden van duale basis</a></li>
-  <li><a href="#lineaire-functionalen-en-basistransformaties" id="toc-lineaire-functionalen-en-basistransformaties" class="nav-link" data-scroll-target="#lineaire-functionalen-en-basistransformaties">Lineaire functionalen en basistransformaties</a></li>
-  <li><a href="#duale-lineaire-afbeeldingen-en-de-getransponeerde" id="toc-duale-lineaire-afbeeldingen-en-de-getransponeerde" class="nav-link" data-scroll-target="#duale-lineaire-afbeeldingen-en-de-getransponeerde">Duale lineaire afbeeldingen en de getransponeerde</a></li>
-  </ul></li>
-  <li><a href="#lineaire-systemen" id="toc-lineaire-systemen" class="nav-link" data-scroll-target="#lineaire-systemen">Lineaire systemen</a>
-  <ul class="collapse">
-  <li><a href="#lineaire-systemen-definitie-en-terminologie" id="toc-lineaire-systemen-definitie-en-terminologie" class="nav-link" data-scroll-target="#lineaire-systemen-definitie-en-terminologie">Lineaire systemen: definitie en terminologie</a></li>
-  <li><a href="#lineaire-systemen-voorbeelden" id="toc-lineaire-systemen-voorbeelden" class="nav-link" data-scroll-target="#lineaire-systemen-voorbeelden">Lineaire systemen: voorbeelden</a></li>
-  <li><a href="#lineaire-systemen-voorbeelden-1" id="toc-lineaire-systemen-voorbeelden-1" class="nav-link" data-scroll-target="#lineaire-systemen-voorbeelden-1">Lineaire systemen: voorbeelden</a></li>
-  <li><a href="#lineaire-systemen-oplossingsstrategie" id="toc-lineaire-systemen-oplossingsstrategie" class="nav-link" data-scroll-target="#lineaire-systemen-oplossingsstrategie">Lineaire systemen: oplossingsstrategie</a></li>
-  <li><a href="#lineaire-systemen-oplossingsstrategie-1" id="toc-lineaire-systemen-oplossingsstrategie-1" class="nav-link" data-scroll-target="#lineaire-systemen-oplossingsstrategie-1">Lineaire systemen: oplossingsstrategie</a></li>
-  <li><a href="#toepassingen-van-lu-decompositie" id="toc-toepassingen-van-lu-decompositie" class="nav-link" data-scroll-target="#toepassingen-van-lu-decompositie">Toepassingen van LU decompositie</a></li>
-  <li><a href="#multidimensionale-gaussische-distributie-1" id="toc-multidimensionale-gaussische-distributie-1" class="nav-link" data-scroll-target="#multidimensionale-gaussische-distributie-1">Multidimensionale Gaussische distributie (1)</a></li>
-  <li><a href="#multidimensionale-gaussische-distributie-2" id="toc-multidimensionale-gaussische-distributie-2" class="nav-link" data-scroll-target="#multidimensionale-gaussische-distributie-2">Multidimensionale Gaussische distributie (2)</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hoofdstuk 2 - Lineaire afbeeldingen</h1>
+</div>
 </div>
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jutho Haegeman </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 22, 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="doel-van-dit-hoofdstuk" class="level2">
-<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+  <p class="date">2026-09-22</p>
+</section>
+<section id="doel-van-dit-hoofdstuk" class="slide level2">
+<h2>Doel van dit hoofdstuk</h2>
 <div class="hidden">
 <p>$$ % Math operators % % </p>
 % VECTORS
@@ -276,10 +382,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Determinanten als volume(verandering), Jacobianen en substituties in meervoudige integralen</p></li>
 </ul>
 </section>
-<section id="lineaire-afbeeldingen" class="level1">
+<section>
+<section id="lineaire-afbeeldingen" class="title-slide slide level1 center">
 <h1>Lineaire afbeeldingen</h1>
-<section id="definitie" class="level2">
-<h2 class="anchored" data-anchor-id="definitie">Definitie</h2>
+
+</section>
+<section id="definitie" class="slide level2">
+<h2>Definitie</h2>
 <p>Homomorfismen tussen vectorruimten: <span class="math inline">\varphi \in \mathop{\mathrm{Hom}}(V,W)</span></p>
 <ul>
 <li><p>Structuurbehoud:</p>
@@ -292,8 +401,8 @@ ul.task-list li input[type="checkbox"] {
 <p>(hoofdletter Latijns alfabet, hoedje, functiehaakjes niet noodzakelijk)</p></li>
 </ul>
 </section>
-<section id="voorbeelden" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeelden">Voorbeelden</h2>
+<section id="voorbeelden" class="slide level2">
+<h2>Voorbeelden</h2>
 <ul>
 <li><span class="math inline">\mathop{\mathrm{Hom}}({\mathbb{F}}^n, {\mathbb{F}}^m) \cong {\mathbb{F}}^{m \times n}</span>: matrices die werken op standaard kolomvectoren via matrix-vector-vermenigvuldiging</li>
 <li>De identiteitsafbeelding <span class="math inline">{\hat{1}}_V</span></li>
@@ -305,8 +414,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Integraaltransformaties: Fouriertransformatie, Laplace-transformatie,</li>
 </ul>
 </section>
-<section id="eigenschappen" class="level2">
-<h2 class="anchored" data-anchor-id="eigenschappen">Eigenschappen</h2>
+<section id="eigenschappen" class="slide level2">
+<h2>Eigenschappen</h2>
 <ul>
 <li><span class="math inline">\mathop{\mathrm{Hom}}(V,W)</span> is zelf een vectorruimte over <span class="math inline">{\mathbb{F}}</span>,
 <ul>
@@ -320,20 +429,22 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><span class="math inline">(\mathop{\mathrm{End}}(V), \circ)</span> is een associatieve algebra met <span class="math inline">{\hat{1}}_V</span> als eenheidselement</li>
 </ul>
-</section>
-</section>
-<section id="kern-beeld-en-rang-nulliteitsstelling" class="level1">
+</section></section>
+<section>
+<section id="kern-beeld-en-rang-nulliteitsstelling" class="title-slide slide level1 center">
 <h1>Kern, beeld en rang-nulliteitsstelling</h1>
-<section id="beeldruimte" class="level2">
-<h2 class="anchored" data-anchor-id="beeldruimte">Beeldruimte</h2>
+
+</section>
+<section id="beeldruimte" class="slide level2">
+<h2>Beeldruimte</h2>
 <p><span class="math inline">\mathop{\mathrm{im}}({\hat{A}}) = {\hat{A}}(V) = \{{\hat{A}}{v}; {v}\in V\}</span></p>
 <ul>
 <li><span class="math inline">\mathop{\mathrm{im}}({\hat{A}}) {\preccurlyeq}W</span></li>
 <li>rang: <span class="math inline">\mathop{\mathrm{rank}}({\hat{A}}) = \mathop{\mathrm{dim}}(\mathop{\mathrm{im}}({\hat{A}}))</span></li>
 </ul>
 </section>
-<section id="kern-of-nulruimte" class="level2">
-<h2 class="anchored" data-anchor-id="kern-of-nulruimte">Kern (of nulruimte)</h2>
+<section id="kern-of-nulruimte" class="slide level2">
+<h2>Kern (of nulruimte)</h2>
 <p>Zelfde definitie als voor groep: <span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}) = {\hat{A}}^{-1}(\{{o}_W\})</span></p>
 <ul>
 <li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}) {\preccurlyeq}V</span></p></li>
@@ -344,8 +455,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Voorbeeld: <span class="math inline">\mathop{\mathrm{ker}}({\hat{D}})</span> de verzameling van constante functies</p>
 </section>
-<section id="rang-nulliteitsstelling" class="level2">
-<h2 class="anchored" data-anchor-id="rang-nulliteitsstelling">Rang-nulliteitsstelling</h2>
+<section id="rang-nulliteitsstelling" class="slide level2">
+<h2>Rang-nulliteitsstelling</h2>
 <p>Gegeven een afbeelding <span class="math inline">{\hat{A}}:V \to W</span></p>
 <ul>
 <li><p>Equivalentierelatie <span class="math inline">{v}\sim {u}\Leftrightarrow ({v}- {u}) \in \mathop{\mathrm{ker}}({\hat{A}}) \Leftrightarrow {\hat{A}}{v}= {\hat{A}}{u}</span></p></li>
@@ -356,8 +467,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\Rightarrow\mathop{\mathrm{rank}}({\hat{A}}) + \mathop{\mathrm{nullity}}({\hat{A}}) = \mathop{\mathrm{dim}}(V)</span></p></li>
 </ul>
 </section>
-<section id="rang-nulliteitsstelling-1" class="level2">
-<h2 class="anchored" data-anchor-id="rang-nulliteitsstelling-1">Rang-nulliteitsstelling</h2>
+<section id="rang-nulliteitsstelling-1" class="slide level2">
+<h2>Rang-nulliteitsstelling</h2>
 <p>Gevolgen:</p>
 <ul>
 <li>Voor <span class="math inline">V,W</span> eindigdimensionaal en <span class="math inline">\mathop{\mathrm{dim}}(V) = \mathop{\mathrm{dim}}(W)</span> zijn volgende eigenschappen equivalent:
@@ -369,8 +480,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Voor een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span> impliceert het bestaan van een linker- of rechterinverse meteen dat dit een volwaardig inverse is: <span class="math inline">{\mathsf{A}}^{-1}</span></li>
 </ul>
 </section>
-<section id="voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeeld">Voorbeeld</h2>
+<section id="voorbeeld" class="slide level2">
+<h2>Voorbeeld</h2>
 <p>Beschouw de vectorruimte <span class="math inline">{\mathbb{F}}^{{\mathbb{N}}_0}</span>, de vectorruimte van oneindig lange tuples met als lineaire afbeeldingen:</p>
 <ul>
 <li><span class="math inline">{\hat{R}}(v^1,v^2,v^3,\ldots) = (0, v^1, v^2, \ldots)</span></li>
@@ -381,12 +492,14 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">{\hat{L}} {\hat{R}} = {\hat{1}}</span></li>
 <li><span class="math inline">{\hat{R}}{\hat{L}}={\hat{P}}</span> met <span class="math inline">{\hat{P}}(v^1,v^2,v^3,\ldots) = (0, v^2, v^3, \ldots)</span></li>
 </ul>
-</section>
-</section>
-<section id="matrices-en-determinanten" class="level1">
+</section></section>
+<section>
+<section id="matrices-en-determinanten" class="title-slide slide level1 center">
 <h1>Matrices en determinanten</h1>
-<section id="matrixvoorstelling-van-lineaire-afbeeldingen" class="level2">
-<h2 class="anchored" data-anchor-id="matrixvoorstelling-van-lineaire-afbeeldingen">Matrixvoorstelling van lineaire afbeeldingen</h2>
+
+</section>
+<section id="matrixvoorstelling-van-lineaire-afbeeldingen" class="slide level2">
+<h2>Matrixvoorstelling van lineaire afbeeldingen</h2>
 <p>Beschouw een lineaire afbeelding <span class="math inline">{\hat{A}}:V \to W</span> waar <span class="math inline">V</span> en <span class="math inline">W</span> eindig-dimensionaal zijn en een basis <span class="math inline">B_V = \{{e}_1,\ldots,{e}_n\}</span> en <span class="math inline">B_W = \{{f}_1,\ldots,{f}_m\}</span> hebben:</p>
 <p><span class="math display">{\hat{A}}({e}_j) = {f}_i A^i_{\ j} \Rightarrow {w}= {\hat{A}}({v}) = v^j {\hat{A}}({e}_j) = (A^i_{\ j} v^j) {f}_i = w^i {f}_i</span></p>
 <p>Met behulp van</p>
@@ -396,8 +509,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>geldt dus <span class="math inline">\boldsymbol{w}= {\mathsf{A}}\boldsymbol{v}</span>: matrix - vector product</p>
 </section>
-<section id="matrixvoorstelling-en-compositie" class="level2">
-<h2 class="anchored" data-anchor-id="matrixvoorstelling-en-compositie">Matrixvoorstelling en compositie</h2>
+<section id="matrixvoorstelling-en-compositie" class="slide level2">
+<h2>Matrixvoorstelling en compositie</h2>
 <p>Voor de compositie van lineaire afbeeldingen geldt:</p>
 <p><span class="math inline">{\hat{C}} = {\hat{A}}\circ {\hat{B}} \Rightarrow {\mathsf{C}} = {\mathsf{A}} \cdot {\mathsf{B}}</span>: matrix - matrix product “<span class="math inline">\cdot</span>”</p>
 <p>Enkele eigenschappen van matrixvermenigvuldiging:</p>
@@ -437,8 +550,8 @@ Beschouw een groep $G = \{g_1,g_2,\ldots\}$. Met elk groepselement kunnen we een
 
 Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\bbC G$, waarbij $\map{L}_g$ en $\map{R}_g$ zullen worden voorgesteld door "permutatiematrices': vierkante matrices met enkel nul en één, zodat er exact één element één is in elke rij en elke kolom. Deze staan gekend als de linker en rechter reguliere representatie, en spelen een belangrijke rol bij de ontwikkeling van representatietheorie. -->
 </section>
-<section id="bewerkingen-met-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="bewerkingen-met-matrices">Bewerkingen met matrices</h2>
+<section id="bewerkingen-met-matrices" class="slide level2">
+<h2>Bewerkingen met matrices</h2>
 <p>Gegeven een matrix <span class="math inline">{\mathsf{A}}</span> met componenten <span class="math inline">A^i_{\ j}</span></p>
 <ul>
 <li>Transponeren: <span class="math inline">[{\mathsf{A}}^{\mathsf{T}}]^i_{\ j} = A^j_{\ i}</span> <span class="math inline">\Rightarrow</span> later: <span class="math inline">({\mathsf{A}}^{\mathsf{T}})_i^{\ j} = A^j_{\ i}</span>
@@ -451,12 +564,12 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <ul>
 <li><span class="math inline">({\mathsf{A}}^{\mathsf{H}})^{\mathsf{H}}={\mathsf{A}}</span></li>
 <li><span class="math inline">(a_1 {\mathsf{A}}_1 + a_2 {\mathsf{A}}_2)^{\mathsf{H}}= {\overline{a_1}} {\mathsf{A}}_1^{\mathsf{H}}+ {\overline{a_2}} {\mathsf{A}}_2^{\mathsf{H}}</span></li>
-<li><span class="math inline">({\mathsf{A}} \cdot {\mathsf{B}})^{\mathsf{H}}= {\mathsf{B}}^{\mathsf{H}}\cdot {\mathsf{A}}^{\mathsf{H}}</span></li>
+<li><span class="math inline">({\mathsf{A}} \cdot {\mathsf{B}})^{\mathsf{H}}= {\mathsf{B}}^{\mathsf{H}}\cdot  {\mathsf{A}}^{\mathsf{H}}</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="bewerkingen-met-matrices-1" class="level2">
-<h2 class="anchored" data-anchor-id="bewerkingen-met-matrices-1">Bewerkingen met matrices</h2>
+<section id="bewerkingen-met-matrices-1" class="slide level2">
+<h2>Bewerkingen met matrices</h2>
 <p>Een matrix kan de voorstelling zijn van verschillende soorten objecten uit de lineaire algebra (zie H5: bilineaire en sesquilineaire afbeeldingen).</p>
 <p>Voor matrices als voorstelling van een lineaire afbeelding hebben volgende definities geen betekenis door ‘index mismatch’; desalniettemin voeren we volgende definities toch al in op het niveau van matrices. We komen ze later terug tegen in de context van bilineaire en sesquilineaire vormen, waar ze een intrinsieke betekenis hebben:</p>
 <ul>
@@ -466,8 +579,8 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <li>anti-Hermitisch of scheef-Hermitisch: <span class="math inline">{\mathsf{A}} = -{\mathsf{A}}^{\mathsf{H}}</span></li>
 </ul>
 </section>
-<section id="rang-van-een-matrix" class="level2">
-<h2 class="anchored" data-anchor-id="rang-van-een-matrix">Rang van een matrix</h2>
+<section id="rang-van-een-matrix" class="slide level2">
+<h2>Rang van een matrix</h2>
 <p>Een matrix <span class="math inline">{\mathsf{A}}\in {\mathbb{F}}^{m \times n}</span> kan een lineaire afbeelding van <span class="math inline">{\mathbb{F}}^n</span> naar <span class="math inline">{\mathbb{F}}^m</span> voorstellen.</p>
 <ul>
 <li><p><span class="math inline">\mathop{\mathrm{im}}({\mathsf{A}}) {\preccurlyeq}{\mathbb{F}}^m</span> staat ook gekend als de <strong>kolomruimte</strong> van <span class="math inline">{\mathsf{A}}</span>, de ruimte opgespannen door de kolommen van <span class="math inline">{\mathsf{A}}</span></p></li>
@@ -478,16 +591,16 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <li><p>Stelling 2: <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}\cdot {\mathsf{B}}) \leq \min(\mathop{\mathrm{rank}}({\mathsf{A}}), \mathop{\mathrm{rank}}({\mathsf{B}}))</span></p></li>
 </ul>
 </section>
-<section id="spoor" class="level2">
-<h2 class="anchored" data-anchor-id="spoor">Spoor</h2>
+<section id="spoor" class="slide level2">
+<h2>Spoor</h2>
 <p>Gegeven een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span></p>
 <ul>
 <li>Spoor <span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}) = A^i_{\ i}</span></li>
 <li>Triviaal: <span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}\cdot {\mathsf{B}}) = \mathop{\mathrm{tr}}({\mathsf{B}}\cdot {\mathsf{A}})</span></li>
 </ul>
 </section>
-<section id="determinant" class="level2">
-<h2 class="anchored" data-anchor-id="determinant">Determinant</h2>
+<section id="determinant" class="slide level2">
+<h2>Determinant</h2>
 <p>Gegeven een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span></p>
 <ul>
 <li><p><strong>Leibniz formule</strong> <span class="math display">\begin{align*}
@@ -500,8 +613,8 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <p>praktische algoritmes voor determinant hebben complexiteit <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^3)</span></p></li>
 </ul>
 </section>
-<section id="determinant-als-volume" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-als-volume">Determinant als volume</h2>
+<section id="determinant-als-volume" class="slide level2">
+<h2>Determinant als volume</h2>
 <ul>
 <li><p>Beschouw de determinant als een multivariate functie van de <span class="math inline">n</span> kolommen van de matrix <span class="math inline">{\mathsf{A}} \eqsim (\boldsymbol{a}_1,\boldsymbol{a}_2, \ldots,\boldsymbol{a}_n)</span>. De determinant is volledig en uniek gekarakteriseerd door:</p>
 <ul>
@@ -513,8 +626,8 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <p><span class="math inline">\Rightarrow \det({\mathsf{A}})</span> is de volumeverandering door de lineaire afbeelding <span class="math inline">{\mathsf{A}}</span></p></li>
 </ul>
 </section>
-<section id="determinant-verdere-eigenschappen" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-verdere-eigenschappen">Determinant: verdere eigenschappen</h2>
+<section id="determinant-verdere-eigenschappen" class="slide level2">
+<h2>Determinant: verdere eigenschappen</h2>
 <ul>
 <li><p><span class="math inline">\det({\mathsf{A}}) =0 \iff \mathop{\mathrm{rank}}({\mathsf{A}}) &lt; n</span></p></li>
 <li><p><span class="math inline">\epsilon^{j_1j_2\cdots j_n} A^{i_1}_{\ j_1} A^{i_2}_{\ j_2} \cdots A^{i_n}_{\ j_n} = \epsilon^{i_1i_2\cdots i_n}</span></p></li>
@@ -522,8 +635,8 @@ Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\
 <p>Twee opeenvolgende transformaties <span class="math inline">\Rightarrow</span> product van volumeveranderingen</p></li>
 </ul>
 </section>
-<section id="determinant-toepassing" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-toepassing">Determinant: toepassing</h2>
+<section id="determinant-toepassing" class="slide level2">
+<h2>Determinant: toepassing</h2>
 <p>Beschouw een multidimensionele integraal <span class="math inline">\int_V g(\boldsymbol{x}) {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n</span></p>
 <p>Stel dat we een algemene (niet noodzakelijk lineaire) coordinatentransformatie willen doorvoeren: <span class="math inline">\boldsymbol{x} = \boldsymbol{f}(\boldsymbol{y})</span> met <span class="math inline">\boldsymbol{f}:{\mathbb{R}}^n \to {\mathbb{R}}^n</span> of dus <span class="math inline">x^i = f^i(y^1,y^2,\ldots,y^n)</span></p>
 <p>Rond een bepaald punt <span class="math inline">\boldsymbol{x}_k =\boldsymbol{f}(\boldsymbol{y}_k)</span> geldt de eerste-orde Taylor benadering: <span class="math display">\begin{align*}
@@ -532,8 +645,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 &amp;= x^i_k + \frac{\partial f^i}{\partial y^j}(\boldsymbol{y}_k) (y^j - y_k^j)
 \end{align*}</span></p>
 </section>
-<section id="determinant-toepassing-1" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-toepassing-1">Determinant: toepassing</h2>
+<section id="determinant-toepassing-1" class="slide level2">
+<h2>Determinant: toepassing</h2>
 <p>De <strong>Jacobiaan</strong> <span class="math inline">{\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y})</span> met componenten</p>
 <p><span class="math display"> ({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))^i_{\ j} = \frac{\partial f^i}{\partial y^j}(\boldsymbol{y}) </span></p>
 <p>beschrijft de lineaire benadering van <span class="math inline">\boldsymbol{f}</span> in de buurt van het punt <span class="math inline">\boldsymbol{y}</span>.</p>
@@ -541,8 +654,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <p><span class="math display"> {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n = {\left\lvert\det({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))\right\rvert} {\mathrm{d}}y^1 {\mathrm{d}}y^2 \cdots {\mathrm{d}}y^n</span></p>
 <p><span class="math inline">\Rightarrow\int_V g(\boldsymbol{x}) {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n</span> <span class="math inline">\qquad =\int_{V'} g(\boldsymbol{f}(\boldsymbol{y})) {\left\lvert\det({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))\right\rvert} {\mathrm{d}}y^1 {\mathrm{d}}y^2 \cdots {\mathrm{d}}y^n</span></p>
 </section>
-<section id="determinant-toepassing-2" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-toepassing-2">Determinant: toepassing</h2>
+<section id="determinant-toepassing-2" class="slide level2">
+<h2>Determinant: toepassing</h2>
 <p>Voorbeeld: poolcoördinaten <span class="math inline">x = \rho \cos \theta, y = \rho \sin \theta</span></p>
 <p><span class="math display">\begin{align*}
   {\mathsf{J}}(r,\theta) = \begin{bmatrix}
@@ -557,8 +670,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <li>De absolute waarde heeft te maken met het feit dat een determinant de verandering van een geörienteerd volume beschrijft. Voor de volume-integraal is dit teken (dat aangeeft of de oriëntatie al dan niet behouden blijft) niet van belang, of wordt het gecompenseerd door hoe de integratiegrenzen geordend worden.</li>
 </ul>
 </section>
-<section id="matrix-inverse" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-inverse">Matrix inverse:</h2>
+<section id="matrix-inverse" class="slide level2">
+<h2>Matrix inverse:</h2>
 <ul>
 <li><p><strong><span class="math inline">(k,l)</span>-minor</strong> <span class="math inline">M_k^{\ l}</span> van een matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n\times n}</span> is de determinant van de matrix die overblijft na het verwijderen van rij <span class="math inline">k</span> en kolom <span class="math inline">l</span></p></li>
 <li><p><strong>Laplace-expansie</strong> van determinant:</p>
@@ -570,8 +683,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <li><p>als <span class="math inline">\det({\mathsf{A}}) = 0</span>: <span class="math inline">{\mathsf{A}}</span> is singulier, ontaard, niet-inverteerbaar</p></li>
 </ul>
 </section>
-<section id="afgeleide-van-een-determinant" class="level2">
-<h2 class="anchored" data-anchor-id="afgeleide-van-een-determinant">Afgeleide van een determinant</h2>
+<section id="afgeleide-van-een-determinant" class="slide level2">
+<h2>Afgeleide van een determinant</h2>
 <p>Beschouw een matrixwaardige functie <span class="math inline">{\mathsf{A}}(t)</span>, i.e.&nbsp;een matrix waarvan de elementen (continue, afleidbare) functies zijn van de tijd.</p>
 <ul>
 <li><p><strong>Jacobi’s formule:</strong></p>
@@ -580,12 +693,14 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 &amp;= \det({\mathsf{A}}(t)) \mathop{\mathrm{tr}}\left[{\mathsf{A}}^{-1}(t) \frac{{\mathrm{d}}{\mathsf{A}}}{{\mathrm{d}}t}(t)\right]
 \end{align*}</span></p></li>
 </ul>
-</section>
-</section>
-<section id="algemene-lineaire-groep-en-basistranformaties" class="level1">
+</section></section>
+<section>
+<section id="algemene-lineaire-groep-en-basistranformaties" class="title-slide slide level1 center">
 <h1>Algemene lineaire groep en basistranformaties</h1>
-<section id="lineaire-groep" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-groep">Lineaire groep</h2>
+
+</section>
+<section id="lineaire-groep" class="slide level2">
+<h2>Lineaire groep</h2>
 <ul>
 <li><p><span class="math inline">\mathop{\mathrm{Aut}}(V)</span> voor vectorruimte <span class="math inline">V</span> wordt genoteerd als <span class="math inline">\mathop{\mathrm{GL}}(V)</span> en de “algemene lineaire groep” voor <span class="math inline">V</span> genoemd.</p></li>
 <li><p><span class="math inline">\mathop{\mathrm{GL}}({\mathbb{F}}^n)= \mathop{\mathrm{GL}}(n;{\mathbb{F}})</span>: inverteerbare <span class="math inline">n \times n</span> matrices</p>
@@ -598,8 +713,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <li><p>Speciale lineaire groep <span class="math inline">\mathop{\mathrm{SL}}(n; {\mathbb{F}})</span>: <span class="math inline">n\times n</span> matrices met <span class="math inline">\det({\mathsf{A}}) = 1</span></p></li>
 </ul>
 </section>
-<section id="basistransformaties" class="level2">
-<h2 class="anchored" data-anchor-id="basistransformaties">Basistransformaties</h2>
+<section id="basistransformaties" class="slide level2">
+<h2>Basistransformaties</h2>
 <p>Eindigdimensionale vectorruimte <span class="math inline">V</span> met twee verschillende keuzes van basis <span class="math inline">B = \{{e}_1,{e}_2,\ldots,{e}_n\}</span> en <span class="math inline">\tilde{B} = \{\tilde{{e}}_1,\ldots,\tilde{{e}}_n\}</span>:</p>
 <ul>
 <li><p><span class="math inline">{e}_j = \tilde{{e}}_i T^i_{\ j} \Rightarrow {v}= v^j {e}_j = \tilde{v}^i \tilde{{e}}_i = v^j T^i_{\ j} \tilde{{e}}_i \Rightarrow \tilde{\boldsymbol{v}} = {\mathsf{T}} \boldsymbol{v}</span></p></li>
@@ -608,8 +723,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <p><span class="math inline">\Rightarrow {\mathsf{T}} = \phi_{\tilde{B}} \circ \phi_B^{-1}: {\mathbb{F}}^n \to {\mathbb{F}}^n</span>; <span class="math inline">{\mathsf{T}} \in \mathop{\mathrm{GL}}(n;{\mathbb{F}})</span></p></li>
 </ul>
 </section>
-<section id="basistransformaties-1" class="level2">
-<h2 class="anchored" data-anchor-id="basistransformaties-1">Basistransformaties</h2>
+<section id="basistransformaties-1" class="slide level2">
+<h2>Basistransformaties</h2>
 <p>Beschouw twee eindigdimensionale vectorruimten <span class="math inline">V</span> en <span class="math inline">W</span> met verschillende keuzes van basis <span class="math inline">B_V</span> en <span class="math inline">\tilde{B}_V</span>, alsook <span class="math inline">B_W</span> en <span class="math inline">\tilde{B}_W</span> en een lineaire afbeelding <span class="math inline">{\hat{A}}:V\to W</span>:</p>
 <ul>
 <li>Matrixrepresentatie <span class="math inline">{\mathsf{A}} = \phi_{B_W} \circ {\hat{A}} \circ \phi_{B_V}^{-1}</span></li>
@@ -621,8 +736,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 \end{align*}</span></li>
 </ul>
 </section>
-<section id="basistransformaties-2" class="level2">
-<h2 class="anchored" data-anchor-id="basistransformaties-2">Basistransformaties</h2>
+<section id="basistransformaties-2" class="slide level2">
+<h2>Basistransformaties</h2>
 <p>Voor <span class="math inline">V = W</span> en dus een lineaire operator <span class="math inline">{\hat{A}}</span> op V</p>
 <ul>
 <li><p><span class="math inline">\tilde{{\mathsf{A}}} = {\mathsf{T}} {\mathsf{A}} {\mathsf{T}}^{-1}</span>: <strong>gelijkvormigheidstransformatie</strong></p></li>
@@ -634,12 +749,14 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <li><span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}) = \mathop{\mathrm{tr}}(\tilde{{\mathsf{A}}})</span></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="functionalen-en-duale-ruimte" class="level1">
+</section></section>
+<section>
+<section id="functionalen-en-duale-ruimte" class="title-slide slide level1 center">
 <h1>Functionalen en duale ruimte</h1>
-<section id="functionalen" class="level2">
-<h2 class="anchored" data-anchor-id="functionalen">Functionalen</h2>
+
+</section>
+<section id="functionalen" class="slide level2">
+<h2>Functionalen</h2>
 <ul>
 <li><p>Afbeelding van vectorruimte <span class="math inline">V</span> naar het scalaire veld <span class="math inline">{\mathbb{F}}</span></p></li>
 <li><p>Vaak in de context van functieruimten, vaak niet-lineair</p></li>
@@ -653,8 +770,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <p><span class="math display"> f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + \underbrace{\frac{\partial f}{\partial x^i} (x^i-x^i_0)}_{\text{lineaire functionaal van $\boldsymbol{x}-\boldsymbol{x}_0$}} + \ldots</span></p></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-en-duale-ruimte" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-en-duale-ruimte">Lineaire functionalen en duale ruimte</h2>
+<section id="lineaire-functionalen-en-duale-ruimte" class="slide level2">
+<h2>Lineaire functionalen en duale ruimte</h2>
 <p>Beschouw eindigdimensionale vectorruimte <span class="math inline">V</span> met basis <span class="math inline">B = \{{e}_1,\ldots,{e}_n\}</span>:</p>
 <ul>
 <li><p>Lineaire functionaal = duale vector = covector</p>
@@ -668,8 +785,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 </ul></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-eigenschappen" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-eigenschappen">Lineaire functionalen: eigenschappen</h2>
+<section id="lineaire-functionalen-eigenschappen" class="slide level2">
+<h2>Lineaire functionalen: eigenschappen</h2>
 <ul>
 <li><span class="math inline">\mathop{\mathrm{rank}}(\xi) \leq \mathop{\mathrm{dim}}({\mathbb{F}}) = 1</span></li>
 <li>als <span class="math inline">\mathop{\mathrm{rank}}(\xi) = 0</span>: triviale functionaal die elke vector op 0 afbeeldt</li>
@@ -681,8 +798,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 </ul></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-meer-voorbeelden-uit-de-fysica" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-meer-voorbeelden-uit-de-fysica">Lineaire functionalen: meer voorbeelden uit de fysica</h2>
+<section id="lineaire-functionalen-meer-voorbeelden-uit-de-fysica" class="slide level2">
+<h2>Lineaire functionalen: meer voorbeelden uit de fysica</h2>
 <ul>
 <li><p>Kracht: duale vector die snelheid (=vector) afbeeldt op vermogen (scalair): <span class="math inline">P = F_i v^i</span></p></li>
 <li><p>Door de wet van Newton: momentum is duale vector</p></li>
@@ -691,8 +808,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <p><span class="math inline">\Rightarrow</span> zie H9 voor theorie van distributies</p></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-meer-voorbeelden-van-duale-basis" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-meer-voorbeelden-van-duale-basis">Lineaire functionalen: meer voorbeelden van duale basis</h2>
+<section id="lineaire-functionalen-meer-voorbeelden-van-duale-basis" class="slide level2">
+<h2>Lineaire functionalen: meer voorbeelden van duale basis</h2>
 <ul>
 <li>Ruimte <span class="math inline">{\mathbb{F}}[x]</span> van polynomen:
 <ul>
@@ -706,8 +823,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 </ul></li>
 </ul>
 </section>
-<section id="lineaire-functionalen-en-basistransformaties" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-functionalen-en-basistransformaties">Lineaire functionalen en basistransformaties</h2>
+<section id="lineaire-functionalen-en-basistransformaties" class="slide level2">
+<h2>Lineaire functionalen en basistransformaties</h2>
 <p>Vectorruimte <span class="math inline">V</span> met twee basissen <span class="math inline">B</span> en <span class="math inline">\tilde{B}</span></p>
 <ul>
 <li><p>We weten al: <span class="math inline">\boldsymbol{v} = \phi_B({v})</span>, <span class="math inline">\tilde{\boldsymbol{v}} = \phi_{\tilde{B}}({v}) = (\phi_{\tilde{B}} \circ \phi_{B}^{-1})(\boldsymbol{v}) = {\mathsf{T}} \boldsymbol{v}</span></p></li>
@@ -719,8 +836,8 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 <p><span class="math inline">({\mathsf{T}}_1 {\mathsf{T}}_2)^{-{\mathsf{T}}} = {\mathsf{T}}_1^{-{\mathsf{T}}} {\mathsf{T}}_2^{-{\mathsf{T}}}</span></p></li>
 </ul>
 </section>
-<section id="duale-lineaire-afbeeldingen-en-de-getransponeerde" class="level2">
-<h2 class="anchored" data-anchor-id="duale-lineaire-afbeeldingen-en-de-getransponeerde">Duale lineaire afbeeldingen en de getransponeerde</h2>
+<section id="duale-lineaire-afbeeldingen-en-de-getransponeerde" class="slide level2">
+<h2>Duale lineaire afbeeldingen en de getransponeerde</h2>
 <p>Gegeven vectorruimten <span class="math inline">V, W</span> en een lineaire afbeelding <span class="math inline">{\hat{A}} \in \mathop{\mathrm{Hom}}(V,W)</span></p>
 <p>Voor elke <span class="math inline">\xi \in W^\ast</span> definieren we een <span class="math inline">\chi \in V^\ast</span> via</p>
 <p><span class="math display"> \chi[{v}] = \xi[{\hat{A}}{v}] = (\xi \circ {\hat{A}})({v})</span></p>
@@ -912,12 +1029,14 @@ Tijdsomkeringsymmetrie in kwantummechanica:
   $\Rightarrow (\map{T} \Psi) = \conj{\Psi(-p)}$
 
   = Complexe conjugatie + spiegeling van momentum -->
-</section>
-</section>
-<section id="lineaire-systemen" class="level1">
+</section></section>
+<section>
+<section id="lineaire-systemen" class="title-slide slide level1 center">
 <h1>Lineaire systemen</h1>
-<section id="lineaire-systemen-definitie-en-terminologie" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-systemen-definitie-en-terminologie">Lineaire systemen: definitie en terminologie</h2>
+
+</section>
+<section id="lineaire-systemen-definitie-en-terminologie" class="slide level2">
+<h2>Lineaire systemen: definitie en terminologie</h2>
 <p>Vind <span class="math inline">{x}</span> zodat voldaan is aan <span class="math inline">{\hat{A}} {x}= {y}</span></p>
 <ul>
 <li><p><span class="math inline">{y}= {o}</span>: homogeen, <span class="math inline">{y}\neq {o}</span>: inhomogeen</p></li>
@@ -925,8 +1044,8 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 <li><p><span class="math inline">\mathop{\mathrm{nullity}}({\hat{A}}) = 0</span>: homogeen probleem laat enkel de <strong>triviale oplossing</strong> <span class="math inline">{x}_0 = {o}</span> toe</p></li>
 </ul>
 </section>
-<section id="lineaire-systemen-voorbeelden" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-systemen-voorbeelden">Lineaire systemen: voorbeelden</h2>
+<section id="lineaire-systemen-voorbeelden" class="slide level2">
+<h2>Lineaire systemen: voorbeelden</h2>
 <ul>
 <li>Standaardvorm eindig-dimensionaal probleem: <span class="math inline">{\mathsf{A}} \boldsymbol{x} = \boldsymbol{y}</span> met <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>, <span class="math inline">\boldsymbol{x} \in {\mathbb{F}}^n</span> en <span class="math inline">\boldsymbol{y} \in {\mathbb{F}}^m</span>
 <ul>
@@ -936,17 +1055,18 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 </ul></li>
 </ul>
 </section>
-<section id="lineaire-systemen-voorbeelden-1" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-systemen-voorbeelden-1">Lineaire systemen: voorbeelden</h2>
+<section id="lineaire-systemen-voorbeelden-1" class="slide level2">
+<h2>Lineaire systemen: voorbeelden</h2>
 <ul>
 <li><p><span class="math inline">({\hat{D}}-\frac{1}{\tau}{\hat{1}})f = {o}\Leftrightarrow \frac{{\mathrm{d}}\ f}{{\mathrm{d}}t} - \frac{1}{\tau} f(t) = 0</span>: homogeen probleem</p>
 <p><span class="math inline">\Rightarrow f(t) = c {\mathrm{e}}^{-\frac{t}{\tau}}</span>: <span class="math inline">\Rightarrow \mathop{\mathrm{nullity}}({\hat{D}} - \frac{1}{\tau}{\hat{1}}) = 1</span></p></li>
-<li><p><span class="math inline">\begin{cases}\frac{{\mathrm{d}}\ f}{{\mathrm{d}}t} - \frac{1}{\tau} f(t) = 0\\ f(0) = f_0 \end{cases}</span></p>
+<li><p><span class="math inline">\begin{cases}\frac{{\mathrm{d}}\ f}{{\mathrm{d}}t} - \frac{1}{\tau} f(t) = 0\\
+f(0) = f_0 \end{cases}</span></p>
 <p><span class="math inline">\Rightarrow f(t) = f_0 {\mathrm{e}}^{-\frac{t}{\tau}}</span> (unieke oplossing)</p></li>
 </ul>
 </section>
-<section id="lineaire-systemen-oplossingsstrategie" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-systemen-oplossingsstrategie">Lineaire systemen: oplossingsstrategie</h2>
+<section id="lineaire-systemen-oplossingsstrategie" class="slide level2">
+<h2>Lineaire systemen: oplossingsstrategie</h2>
 <ul>
 <li><p>Een matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span> heet</p>
 <ul>
@@ -957,8 +1077,8 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 <li><p>Voor een boven-/benedendriehoeksmatrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span> met <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}) \neq 0</span> kan de oplossing <span class="math inline">{x}= {\mathsf{A}}^{-1}{y}</span> berekend worden via voorwaartse/achterwaardse substitutie met een kost die schaalt als <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^2)</span>, of als <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^3/3)</span> indien <span class="math inline">{\mathsf{A}}^{-1}</span> volledig wordt berekend.</p></li>
 </ul>
 </section>
-<section id="lineaire-systemen-oplossingsstrategie-1" class="level2">
-<h2 class="anchored" data-anchor-id="lineaire-systemen-oplossingsstrategie-1">Lineaire systemen: oplossingsstrategie</h2>
+<section id="lineaire-systemen-oplossingsstrategie-1" class="slide level2">
+<h2>Lineaire systemen: oplossingsstrategie</h2>
 <p>Voor een algemene matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span>:</p>
 <ul>
 <li><p>Gaussische eliminatie <span class="math inline">\Rightarrow {\mathsf{A}} = {\mathsf{L}}{\mathsf{U}}</span>: LU ontbinding</p>
@@ -971,8 +1091,8 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 <li><p>Complexiteit voor <span class="math inline">m=n</span>: <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(\frac{2}{3} n^3)</span></p></li>
 </ul>
 </section>
-<section id="toepassingen-van-lu-decompositie" class="level2">
-<h2 class="anchored" data-anchor-id="toepassingen-van-lu-decompositie">Toepassingen van LU decompositie</h2>
+<section id="toepassingen-van-lu-decompositie" class="slide level2">
+<h2>Toepassingen van LU decompositie</h2>
 <ul>
 <li><p><span class="math inline">\underbrace{\det({\mathsf{P}})}_{\mathop{\mathrm{sgn}}(\sigma)} \det({\mathsf{A}}) = \underbrace{\det({\mathsf{L}})}_{\prod_i L^i_{\ i} = 1} \underbrace{\det({\mathsf{U}})}_{\prod_j U^j_{\ j}} \Rightarrow \mathop{\mathrm{\mathscr{O}}}(n^3)</span></p></li>
 <li><p>Multidimensionale Gaussische distributie</p>
@@ -981,8 +1101,8 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 <p>Hoe <span class="math inline">Z</span> kiezen zodat <span class="math inline">\int f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n\boldsymbol{x} = 1</span>?</p></li>
 </ul>
 </section>
-<section id="multidimensionale-gaussische-distributie-1" class="level2">
-<h2 class="anchored" data-anchor-id="multidimensionale-gaussische-distributie-1">Multidimensionale Gaussische distributie (1)</h2>
+<section id="multidimensionale-gaussische-distributie-1" class="slide level2">
+<h2>Multidimensionale Gaussische distributie (1)</h2>
 <p><span class="math inline">f_{\boldsymbol{X}}(\boldsymbol{x}) = Z {\mathrm{e}}^{-\frac{1}{2} (\boldsymbol{x}-\boldsymbol{\mu})^{\mathsf{T}}{\mathsf{A}} (\boldsymbol{x}-\boldsymbol{\mu})}</span></p>
 <ul>
 <li>normering
@@ -990,21 +1110,25 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 <li><p><span class="math inline">{\mathsf{A}} = {\mathsf{A}}^T \Rightarrow {\mathsf{A}} = {\mathsf{L}} {\mathsf{D}} {\mathsf{L}}^{\mathsf{T}}</span></p></li>
 <li><p>substitutie: <span class="math inline">\boldsymbol{y} = {\mathsf{L}}^{\mathsf{T}}(\boldsymbol{x}-\boldsymbol{\mu}) \Leftrightarrow \boldsymbol{x}=\boldsymbol{\mu} + \boldsymbol{L}^{-{\mathsf{T}}}\boldsymbol{y}</span></p>
 <p><span class="math inline">\Rightarrow {\mathsf{J}} = {\mathsf{L}}^{-{\mathsf{T}}}, \det({\mathsf{J}}) = 1</span></p></li>
-<li><p><span class="math inline">\int f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x} = \int_{{\mathbb{R}}^n} Z \exp\left[-\frac{1}{2}\boldsymbol{y}^{\mathsf{T}}{\mathsf{D}} \boldsymbol{y} \right] \,{\mathrm{d}}^n \boldsymbol{y} \\ = Z \prod_{i=1}^n\left( \int_{-\infty}^{+\infty} {\mathrm{e}}^{-\frac{1}{2} d_i (y^i)^2}\,{\mathrm{d}}y^i\right)\\  = Z \prod_{i=1}^n \sqrt{\frac{2\pi}{d_i}} = Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{D}})}} =Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{A}})}}</span></p></li>
+<li><p><span class="math inline">\int f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x} = \int_{{\mathbb{R}}^n} Z \exp\left[-\frac{1}{2}\boldsymbol{y}^{\mathsf{T}}{\mathsf{D}} \boldsymbol{y} \right] \,{\mathrm{d}}^n \boldsymbol{y} \\
+= Z \prod_{i=1}^n\left( \int_{-\infty}^{+\infty} {\mathrm{e}}^{-\frac{1}{2} d_i (y^i)^2}\,{\mathrm{d}}y^i\right)\\
+= Z \prod_{i=1}^n \sqrt{\frac{2\pi}{d_i}} = Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{D}})}} =Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{A}})}}</span></p></li>
 <li><p><span class="math inline">\Rightarrow Z = \sqrt{\frac{\det({\mathsf{A}})}{(2\pi)^n}}</span></p></li>
 </ul></li>
 </ul>
 </section>
-<section id="multidimensionale-gaussische-distributie-2" class="level2">
-<h2 class="anchored" data-anchor-id="multidimensionale-gaussische-distributie-2">Multidimensionale Gaussische distributie (2)</h2>
+<section id="multidimensionale-gaussische-distributie-2" class="slide level2">
+<h2>Multidimensionale Gaussische distributie (2)</h2>
 <p><span class="math inline">f_{\boldsymbol{X}}(\boldsymbol{x}) = Z {\mathrm{e}}^{-\frac{1}{2} (\boldsymbol{x}-\boldsymbol{\mu})^{\mathsf{T}}{\mathsf{A}} (\boldsymbol{x}-\boldsymbol{\mu})}</span></p>
 <ul>
 <li>gemiddelde en covariantie
 <ul>
-<li><p>momentgenererende functie <span class="math inline">M_{\boldsymbol{X}}(\boldsymbol{t}) = \langle {\mathrm{e}}^{\sum_{i=1}^n t_i X^i} \rangle = \int_{{\mathbb{R}}^n} {\mathrm{e}}^{\sum_{i=1}^n t_i x^i} f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x}\\ ={\mathrm{e}}^{\frac{1}{2} \boldsymbol{t}^{\mathsf{T}}{\mathsf{A}}^{-1} \boldsymbol{t} + \boldsymbol{t}^{\mathsf{T}}\boldsymbol{\mu}}</span></p></li>
+<li><p>momentgenererende functie <span class="math inline">M_{\boldsymbol{X}}(\boldsymbol{t}) = \langle {\mathrm{e}}^{\sum_{i=1}^n t_i X^i} \rangle = \int_{{\mathbb{R}}^n} {\mathrm{e}}^{\sum_{i=1}^n t_i x^i} f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x}\\
+={\mathrm{e}}^{\frac{1}{2} \boldsymbol{t}^{\mathsf{T}}{\mathsf{A}}^{-1} \boldsymbol{t} + \boldsymbol{t}^{\mathsf{T}}\boldsymbol{\mu}}</span></p></li>
 <li><p><span class="math inline">\langle X^i\rangle = \left.\frac{\partial M_{\boldsymbol{X}}}{\partial t_i}\right|_{\boldsymbol{t}=\boldsymbol{0}} = \mu^i</span></p></li>
 <li><p><span class="math inline">\langle X^i X^j\rangle = \left.\frac{\partial^2 M_{\boldsymbol{X}}}{\partial t_i \partial t_j}\right|_{\boldsymbol{t}=\boldsymbol{0}} = ({\mathsf{A}}^{-1})^{ij} + \mu^i \mu^j</span></p></li>
-<li><p>covariantiematrix <span class="math inline">\Sigma^{ij} = \langle (X^i-\langle X^i \rangle)(X^j-\langle X^j \rangle)\rangle = \\ \langle X^i X^j \rangle - \langle X^i \rangle \langle X^j \rangle = ({\mathsf{A}}^{-1})^{ij}</span></p></li>
+<li><p>covariantiematrix <span class="math inline">\Sigma^{ij} = \langle (X^i-\langle X^i \rangle)(X^j-\langle X^j \rangle)\rangle = \\
+\langle X^i X^j \rangle - \langle X^i \rangle \langle X^j \rangle = ({\mathsf{A}}^{-1})^{ij}</span></p></li>
 </ul></li>
 </ul>
 <!-- ## Blokmatrices
@@ -1145,246 +1269,390 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
 
   $$\frac{\drm \mat{A}^{-1}}{\drm x}(x) = -\mat{A}^{-1}(x) \frac{\drm \mat{A}}{\drm x}(x) \mat{A}^{-1}(x)$$ -->
 
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
-</section>
-</section>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
 
 </body></html>

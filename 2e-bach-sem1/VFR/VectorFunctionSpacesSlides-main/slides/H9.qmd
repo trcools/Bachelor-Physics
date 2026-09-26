@@ -2,12 +2,12 @@
 title: "Hoofdstuk 9 - Fourieranalyse en distributies"
 author: "Jutho Haegeman"
 date: "12/02/2025"
-# format:
-#   revealjs:
-#     theme: solarized
-#     html-math-method: katex
-#     smaller: true
-#     chalkboard: true
+format:
+   revealjs:
+     theme: solarized
+     html-math-method: katex
+     smaller: true
+     chalkboard: true
 ---
 
 ## Doel van dit hoofdstuk

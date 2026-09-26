@@ -2,12 +2,12 @@
 title: "Hoofdstuk 8 - Lineaire differentiaaloperatoren"
 author: "Jutho Haegeman"
 date: "11/24/2025"
-# format:
-#   revealjs:
-#     theme: solarized
-#     html-math-method: katex
-#     smaller: true
-#     chalkboard: true
+format:
+   revealjs:
+     theme: solarized
+     html-math-method: katex
+     smaller: true
+     chalkboard: false
 ---
 
 ## Doel van dit hoofdstuk

@@ -1,68 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Jutho Haegeman">
-<meta name="dcterms.date" content="2025-10-21">
-
-<title>Vector- en functieruimten – Slides - Hoofdstuk 4 - Normen en afstanden</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <meta name="author" content="Jutho Haegeman">
+  <meta name="dcterms.date" content="2025-10-21">
+  <title>Vector- en functieruimten -- Slides – Hoofdstuk 4 - Normen en afstanden</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -77,173 +47,316 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-fixed">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Hoofdstuk 4 - Normen en afstanden</h1>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Vector- en functieruimten – Slides</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H1.html" rel="" target="">
- <span class="menu-text">H1</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H2.html" rel="" target="">
- <span class="menu-text">H2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H3.html" rel="" target="">
- <span class="menu-text">H3</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../slides/H4.html" rel="" target="" aria-current="page">
- <span class="menu-text">H4</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H5.html" rel="" target="">
- <span class="menu-text">H5</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H6.html" rel="" target="">
- <span class="menu-text">H6</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H7.html" rel="" target="">
- <span class="menu-text">H7</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H8.html" rel="" target="">
- <span class="menu-text">H8</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../slides/H9.html" rel="" target="">
- <span class="menu-text">H9</span></a>
-  </li>  
-</ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jutho Haegeman 
 </div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
-  <li><a href="#genormeerde-vectorruimten" id="toc-genormeerde-vectorruimten" class="nav-link" data-scroll-target="#genormeerde-vectorruimten">Genormeerde vectorruimten</a>
-  <ul class="collapse">
-  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm">Norm</a></li>
-  <li><a href="#nuttige-eigenschap" id="toc-nuttige-eigenschap" class="nav-link" data-scroll-target="#nuttige-eigenschap">Nuttige eigenschap</a></li>
-  <li><a href="#voorbeelden" id="toc-voorbeelden" class="nav-link" data-scroll-target="#voorbeelden">Voorbeelden:</a></li>
-  <li><a href="#hölder-p-norm" id="toc-hölder-p-norm" class="nav-link" data-scroll-target="#hölder-p-norm">Hölder <span class="math inline">p</span>-norm</a></li>
-  <li><a href="#hölder-p-norm-1" id="toc-hölder-p-norm-1" class="nav-link" data-scroll-target="#hölder-p-norm-1">Hölder <span class="math inline">p</span>-norm</a></li>
-  <li><a href="#hölder-p-norm-2" id="toc-hölder-p-norm-2" class="nav-link" data-scroll-target="#hölder-p-norm-2">Hölder <span class="math inline">p</span>-norm</a></li>
-  <li><a href="#hölder-p-norm-3" id="toc-hölder-p-norm-3" class="nav-link" data-scroll-target="#hölder-p-norm-3">Hölder <span class="math inline">p</span>-norm</a></li>
-  <li><a href="#metrische-ruimten" id="toc-metrische-ruimten" class="nav-link" data-scroll-target="#metrische-ruimten">Metrische ruimten</a></li>
-  <li><a href="#metrische-ruimten-1" id="toc-metrische-ruimten-1" class="nav-link" data-scroll-target="#metrische-ruimten-1">Metrische ruimten</a></li>
-  <li><a href="#metrische-ruimten-2" id="toc-metrische-ruimten-2" class="nav-link" data-scroll-target="#metrische-ruimten-2">Metrische ruimten</a></li>
-  <li><a href="#metrische-ruimten-3" id="toc-metrische-ruimten-3" class="nav-link" data-scroll-target="#metrische-ruimten-3">Metrische ruimten</a></li>
-  <li><a href="#continuïteit-in-genormeerde-vectorruimte" id="toc-continuïteit-in-genormeerde-vectorruimte" class="nav-link" data-scroll-target="#continuïteit-in-genormeerde-vectorruimte">Continuïteit in genormeerde vectorruimte</a></li>
-  <li><a href="#convergentie-in-functieruimten" id="toc-convergentie-in-functieruimten" class="nav-link" data-scroll-target="#convergentie-in-functieruimten">Convergentie in functieruimten</a></li>
-  <li><a href="#convergentie-in-functieruimten-voorbeeld" id="toc-convergentie-in-functieruimten-voorbeeld" class="nav-link" data-scroll-target="#convergentie-in-functieruimten-voorbeeld">Convergentie in functieruimten (voorbeeld)</a></li>
-  <li><a href="#equivalentie-van-normen" id="toc-equivalentie-van-normen" class="nav-link" data-scroll-target="#equivalentie-van-normen">Equivalentie van normen</a></li>
-  <li><a href="#compacte-verzameling" id="toc-compacte-verzameling" class="nav-link" data-scroll-target="#compacte-verzameling">Compacte verzameling</a></li>
-  <li><a href="#compacte-verzamelingen" id="toc-compacte-verzamelingen" class="nav-link" data-scroll-target="#compacte-verzamelingen">Compacte verzamelingen</a></li>
-  </ul></li>
-  <li><a href="#banachruimten" id="toc-banachruimten" class="nav-link" data-scroll-target="#banachruimten">Banachruimten</a>
-  <ul class="collapse">
-  <li><a href="#cauchy-rijen-en-compleetheid" id="toc-cauchy-rijen-en-compleetheid" class="nav-link" data-scroll-target="#cauchy-rijen-en-compleetheid">Cauchy rijen en compleetheid</a></li>
-  <li><a href="#banachruimten-1" id="toc-banachruimten-1" class="nav-link" data-scroll-target="#banachruimten-1">Banachruimten</a></li>
-  <li><a href="#banachruimten-2" id="toc-banachruimten-2" class="nav-link" data-scroll-target="#banachruimten-2">Banachruimten</a></li>
-  <li><a href="#banachruimten-complete-verzameling" id="toc-banachruimten-complete-verzameling" class="nav-link" data-scroll-target="#banachruimten-complete-verzameling">Banachruimten: complete verzameling</a></li>
-  <li><a href="#banachruimten-complete-verzameling-1" id="toc-banachruimten-complete-verzameling-1" class="nav-link" data-scroll-target="#banachruimten-complete-verzameling-1">Banachruimten: complete verzameling</a></li>
-  <li><a href="#banachruimten-3" id="toc-banachruimten-3" class="nav-link" data-scroll-target="#banachruimten-3">Banachruimten</a></li>
-  <li><a href="#banachruimten-en-basis" id="toc-banachruimten-en-basis" class="nav-link" data-scroll-target="#banachruimten-en-basis">Banachruimten en basis</a></li>
-  </ul></li>
-  <li><a href="#normen-voor-lineaire-afbeeldingen" id="toc-normen-voor-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#normen-voor-lineaire-afbeeldingen">Normen voor lineaire afbeeldingen</a>
-  <ul class="collapse">
-  <li><a href="#normen-voor-matrices" id="toc-normen-voor-matrices" class="nav-link" data-scroll-target="#normen-voor-matrices">Normen voor matrices</a></li>
-  <li><a href="#continuïteit-van-lineaire-afbeeldingen" id="toc-continuïteit-van-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#continuïteit-van-lineaire-afbeeldingen">Continuïteit van lineaire afbeeldingen</a></li>
-  <li><a href="#begrensde-lineaire-afbeeldingen" id="toc-begrensde-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</a></li>
-  <li><a href="#geïnduceerde-norm" id="toc-geïnduceerde-norm" class="nav-link" data-scroll-target="#geïnduceerde-norm">Geïnduceerde norm</a></li>
-  <li><a href="#geïnduceerde-norm-1" id="toc-geïnduceerde-norm-1" class="nav-link" data-scroll-target="#geïnduceerde-norm-1">Geïnduceerde norm</a></li>
-  <li><a href="#normen-voor-lineaire-operatoren" id="toc-normen-voor-lineaire-operatoren" class="nav-link" data-scroll-target="#normen-voor-lineaire-operatoren">Normen voor lineaire operatoren</a></li>
-  <li><a href="#normen-voor-matrices-1" id="toc-normen-voor-matrices-1" class="nav-link" data-scroll-target="#normen-voor-matrices-1">Normen voor matrices</a></li>
-  <li><a href="#consistente-matrixnormen" id="toc-consistente-matrixnormen" class="nav-link" data-scroll-target="#consistente-matrixnormen">Consistente matrixnormen</a></li>
-  <li><a href="#matrixnormen-terminologie" id="toc-matrixnormen-terminologie" class="nav-link" data-scroll-target="#matrixnormen-terminologie">Matrixnormen: terminologie</a></li>
-  <li><a href="#spectraalstraal" id="toc-spectraalstraal" class="nav-link" data-scroll-target="#spectraalstraal">Spectraalstraal</a></li>
-  <li><a href="#duale-normen" id="toc-duale-normen" class="nav-link" data-scroll-target="#duale-normen">Duale normen</a></li>
-  </ul></li>
-  <li><a href="#toepassingen" id="toc-toepassingen" class="nav-link" data-scroll-target="#toepassingen">Toepassingen</a>
-  <ul class="collapse">
-  <li><a href="#functies-van-matrices-en-operatoren" id="toc-functies-van-matrices-en-operatoren" class="nav-link" data-scroll-target="#functies-van-matrices-en-operatoren">Functies van matrices en operatoren</a></li>
-  <li><a href="#functies-van-matrices-en-operatoren-1" id="toc-functies-van-matrices-en-operatoren-1" class="nav-link" data-scroll-target="#functies-van-matrices-en-operatoren-1">Functies van matrices en operatoren</a></li>
-  <li><a href="#sensitiviteit-van-lineaire-systemen" id="toc-sensitiviteit-van-lineaire-systemen" class="nav-link" data-scroll-target="#sensitiviteit-van-lineaire-systemen">Sensitiviteit van lineaire systemen</a></li>
-  <li><a href="#sensitiviteit-van-lineaire-systemen-1" id="toc-sensitiviteit-van-lineaire-systemen-1" class="nav-link" data-scroll-target="#sensitiviteit-van-lineaire-systemen-1">Sensitiviteit van lineaire systemen</a></li>
-  <li><a href="#markovketens-en-stochastische-matrices" id="toc-markovketens-en-stochastische-matrices" class="nav-link" data-scroll-target="#markovketens-en-stochastische-matrices">Markovketens en stochastische matrices</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Hoofdstuk 4 - Normen en afstanden</h1>
+</div>
 </div>
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jutho Haegeman </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 21, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="doel-van-dit-hoofdstuk" class="level2">
-<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+  <p class="date">2025-10-21</p>
+</section>
+<section id="doel-van-dit-hoofdstuk" class="slide level2">
+<h2>Doel van dit hoofdstuk</h2>
 <div class="hidden">
 <p>$$ % Math operators % % </p>
 % VECTORS
@@ -262,10 +375,13 @@ ul.task-list li input[type="checkbox"] {
 <p>(rijen, reeksen, continuïteit, …)</p></li>
 </ul>
 </section>
-<section id="genormeerde-vectorruimten" class="level1">
+<section>
+<section id="genormeerde-vectorruimten" class="title-slide slide level1 center">
 <h1>Genormeerde vectorruimten</h1>
-<section id="norm" class="level2">
-<h2 class="anchored" data-anchor-id="norm">Norm</h2>
+
+</section>
+<section id="norm" class="slide level2">
+<h2>Norm</h2>
 <p>Gegeven een vectorruimte <span class="math inline">V</span>. Een norm is een afbeelding <span class="math inline">V \to {\mathbb{R}}: {v}\mapsto {\left\lVert{v}\right\rVert}</span> die voldoet aan</p>
 <ul>
 <li><p>absolute homogeniteit: <span class="math inline">{\left\lVert{a}{v}\right\rVert} = {\left\lvert{a}\right\rvert} {\left\lVert{v}\right\rVert}</span></p>
@@ -276,21 +392,21 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Voor de eerste eigenschap hebben we op het veld van scalairen <span class="math inline">{\mathbb{F}}</span> een <strong>absolute waarde</strong> <span class="math inline">{\left\lvert{a}\right\rvert}</span> nodig. Voor <span class="math inline">{\mathbb{R}}</span> en <span class="math inline">{\mathbb{C}}</span> komt dit overeen met de gekende definitie.</p>
 </section>
-<section id="nuttige-eigenschap" class="level2">
-<h2 class="anchored" data-anchor-id="nuttige-eigenschap">Nuttige eigenschap</h2>
+<section id="nuttige-eigenschap" class="slide level2">
+<h2>Nuttige eigenschap</h2>
 <p><span class="math inline">{\left\lVert{v}\right\rVert} \leq {\left\lVert{w}\right\rVert} + {\left\lVert{v}- {w}\right\rVert}</span> (uit driehoeksongelijkheid)</p>
 <p><span class="math inline">\implies {\left\lVert{v}\right\rVert} - {\left\lVert{w}\right\rVert} \leq {\left\lVert{v}- {w}\right\rVert}</span> <span class="math inline">\implies {\left\lvert{\left\lVert{v}\right\rVert} - {\left\lVert{w}\right\rVert}\right\rvert} \leq {\left\lVert{v}- {w}\right\rVert}</span> (uit <span class="math inline">{v}\leftrightarrow {w}</span>)</p>
 </section>
-<section id="voorbeelden" class="level2">
-<h2 class="anchored" data-anchor-id="voorbeelden">Voorbeelden:</h2>
+<section id="voorbeelden" class="slide level2">
+<h2>Voorbeelden:</h2>
 <ul>
 <li><span class="math inline">V = {\mathbb{F}}^n</span>: <span class="math inline">{\left\lVert{v}\right\rVert} = \sum_{i=1}^n {\left\lvert v^i\right\rvert}</span></li>
 <li><span class="math inline">V = {\mathbb{R}}^2</span>: <span class="math inline">{\left\lVert(x,y)\right\rVert} = \sqrt{x^2 + y^2}</span></li>
 <li><span class="math inline">V = C(I,{\mathbb{F}})</span> voor een interval <span class="math inline">I=[a,b] \subseteq {\mathbb{R}}</span>: <span class="math inline">{\left\lVert f\right\rVert} = \int_I {\left\lvert f(x)\right\rvert}\,{\mathrm{d}}x</span> (zie later)</li>
 </ul>
 </section>
-<section id="hölder-p-norm" class="level2">
-<h2 class="anchored" data-anchor-id="hölder-p-norm">Hölder <span class="math inline">p</span>-norm</h2>
+<section id="hölder-p-norm" class="slide level2">
+<h2>Hölder <span class="math inline">p</span>-norm</h2>
 <p>Voor <span class="math inline">V = {\mathbb{F}}^n</span> hebben we een familie van normen</p>
 <p><span class="math display">{\left\lVert{v}\right\rVert}_p = \left[\sum_{i=1}^{n} {\left\lvert v^i\right\rvert}^p\right]^{1/p}</span></p>
 <p>Speciale gevallen:</p>
@@ -300,8 +416,8 @@ ul.task-list li input[type="checkbox"] {
 <li>limiet <span class="math inline">p\to \infty</span>: <span class="math display">{\left\lVert{v}\right\rVert}_\infty = \max \{{\left\lvert{v}^i\right\rvert}, i=1,\ldots,n\}</span></li>
 </ul>
 </section>
-<section id="hölder-p-norm-1" class="level2">
-<h2 class="anchored" data-anchor-id="hölder-p-norm-1">Hölder <span class="math inline">p</span>-norm</h2>
+<section id="hölder-p-norm-1" class="slide level2">
+<h2>Hölder <span class="math inline">p</span>-norm</h2>
 <ul>
 <li><p><span class="math inline">{\left\lVert\cdot\right\rVert}_p</span> is absoluut homogeen en positief definiet per constructie.</p></li>
 <li><p>driehoeksongelijkheid kunnen we in een aantal stappen bewijzen, waarvoor we <span class="math inline">q = p/(p-1)</span> invoeren, of dus <span class="math inline">1/p + 1/q = 1</span> (inclusief <span class="math inline">p=1 \leftrightarrow q=\infty</span> en vice versa):</p>
@@ -312,8 +428,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="hölder-p-norm-2" class="level2">
-<h2 class="anchored" data-anchor-id="hölder-p-norm-2">Hölder <span class="math inline">p</span>-norm</h2>
+<section id="hölder-p-norm-2" class="slide level2">
+<h2>Hölder <span class="math inline">p</span>-norm</h2>
 <p>Uitbreiding naar oneindig-dimensionale ruimten:</p>
 <ul>
 <li><p><span class="math inline">\ell^p({\mathbb{N}}_0,{\mathbb{F}}) {\preccurlyeq}{\mathbb{F}}^{{\mathbb{N}}_0}</span>: de ruimte van alle rijen <span class="math inline">(v^1,v^2,v^3,\ldots)</span> waarvoor <span class="math inline">\sum_{i=1}^{+\infty} {\left\lvert v^i\right\rvert}^p</span> convergeert naar een eindige waarde</p>
@@ -327,8 +443,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Bewijs van eigenschappen norm als limiet <span class="math inline">n\to\infty</span> van bewijs voor <span class="math inline">{\mathbb{F}}^n</span>.</p></li>
 </ul>
 </section>
-<section id="hölder-p-norm-3" class="level2">
-<h2 class="anchored" data-anchor-id="hölder-p-norm-3">Hölder <span class="math inline">p</span>-norm</h2>
+<section id="hölder-p-norm-3" class="slide level2">
+<h2>Hölder <span class="math inline">p</span>-norm</h2>
 <p>Uitbreiding naar oneindig-dimensionale ruimten:</p>
 <ul>
 <li><p>Voor <span class="math inline">V = C^0([a,b],{\mathbb{F}})</span>: <span class="math inline">{\left\lVert f\right\rVert}_p = \left(\int_a^b {\left\lvert f(x)\right\rvert}^p\,{\mathrm{d}}x\right)^{1/p}</span></p>
@@ -339,8 +455,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="metrische-ruimten" class="level2">
-<h2 class="anchored" data-anchor-id="metrische-ruimten">Metrische ruimten</h2>
+<section id="metrische-ruimten" class="slide level2">
+<h2>Metrische ruimten</h2>
 <p>Gegegeven een verzameling <span class="math inline">X</span>, een metriek of afstandsfunctie is een functie <span class="math inline">d:X \times X \to {\mathbb{R}}_{\geq 0}</span> met eigenschappen:</p>
 <ul>
 <li><span class="math inline">d(x,y) = 0 \iff x=y</span></li>
@@ -352,8 +468,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> wordt een metrische ruimte met de keuze <span class="math inline">d({v},{w}) = {\left\lVert{v}-{w}\right\rVert}</span></li>
 </ul>
 </section>
-<section id="metrische-ruimten-1" class="level2">
-<h2 class="anchored" data-anchor-id="metrische-ruimten-1">Metrische ruimten</h2>
+<section id="metrische-ruimten-1" class="slide level2">
+<h2>Metrische ruimten</h2>
 <p>Belang van metrische ruimten is dat we concepten uit analyse van functies <span class="math inline">{\mathbb{R}}\to {\mathbb{R}}</span> kunnen veralgemenen:</p>
 <ul>
 <li><p>Convergentie van een rij <span class="math inline">(x_n \in X)_{n \in {\mathbb{N}}_0}</span>:</p>
@@ -365,12 +481,12 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><span class="math inline">\Phi</span> is continu in <span class="math inline">x \in X</span>: <span class="math inline">\lim_{n \to \infty} \Phi(x_n) = \Phi(x)</span> voor alle rijen <span class="math inline">(x_n)_{n \in{\mathbb{N}}_0}</span> met <span class="math inline">\lim_{n\to\infty} x_n = x</span></li>
 <li><span class="math inline">\Phi</span> is continu in <span class="math inline">x \in X</span>: <span class="math inline">\forall \epsilon &gt; 0</span>, <span class="math inline">\exists \delta_{\epsilon} &gt; 0</span> zodat <span class="math inline">d_X(x',x) &lt; \delta_\epsilon \implies d_Y(\Phi(x'),\Phi(x))&lt;\epsilon</span></li>
-<li><span class="math inline">\Phi</span> continu in volledig <span class="math inline">X</span>: <span class="math inline">\lim_{n\to\infty}\Phi(x_n) = \Phi(\lim_{n\to\infty} x_n)</span> voor alle convergerende rijen<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><span class="math inline">\Phi</span> continu in volledig <span class="math inline">X</span>: <span class="math inline">\lim_{n\to\infty}\Phi(x_n) = \Phi(\lim_{n\to\infty} x_n)</span> voor alle convergerende rijen<sup>1</sup></li>
 </ul></li>
 </ul>
-</section>
-<section id="metrische-ruimten-2" class="level2">
-<h2 class="anchored" data-anchor-id="metrische-ruimten-2">Metrische ruimten</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Voor een continue afbeelding <span class="math inline">\Phi</span> kan <span class="math inline">\delta_\epsilon</span> in de tweede definitie nog steeds afhangen van <span class="math inline">x</span>. Is dat niet nodig, dan heet <span class="math inline">\Phi</span> ook “uniform continu”.</p></li></ol></aside></section>
+<section id="metrische-ruimten-2" class="slide level2">
+<h2>Metrische ruimten</h2>
 <ul>
 <li>Een afbeelding <span class="math inline">\Phi:X \to Y</span> tussen metrische ruimten <span class="math inline">(X,d_X)</span> en <span class="math inline">(Y,d_Y)</span> is <strong>isometrisch</strong> als <span class="math inline">d_Y(\Phi(x),\Phi(x')) = d_X(x,x')</span> voor alle <span class="math inline">x,x'\in X</span>
 <ul>
@@ -380,8 +496,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="metrische-ruimten-3" class="level2">
-<h2 class="anchored" data-anchor-id="metrische-ruimten-3">Metrische ruimten</h2>
+<section id="metrische-ruimten-3" class="slide level2">
+<h2>Metrische ruimten</h2>
 <p>Topologische concepten in een metrische ruimte <span class="math inline">(X,d)</span>:</p>
 <ul>
 <li>Open bol: <span class="math inline">B_r(x) = \{x'\in X| d(x,x') &lt; r\}</span></li>
@@ -398,18 +514,18 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">X</span> is <strong>separabel</strong> (scheidbaar?) als <span class="math inline">X</span> een aftelbare dichte deelverzameling heeft</li>
 </ul>
 </section>
-<section id="continuïteit-in-genormeerde-vectorruimte" class="level2">
-<h2 class="anchored" data-anchor-id="continuïteit-in-genormeerde-vectorruimte">Continuïteit in genormeerde vectorruimte</h2>
+<section id="continuïteit-in-genormeerde-vectorruimte" class="slide level2">
+<h2>Continuïteit in genormeerde vectorruimte</h2>
 <p>We beschouwen nu een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> als metrische ruimte met metriek <span class="math inline">d({v},{w}) = {\left\lVert{v}-{w}\right\rVert}</span></p>
 <ul>
 <li><p>De norm <span class="math inline">{\left\lVert\cdot\right\rVert}:V\to {\mathbb{R}}</span> is zelf een continue afbeelding</p>
 <p><span class="math inline">\Rightarrow</span> voor een convergente rij <span class="math inline">(v_n \in V)_{n\in{\mathbb{N}}_0}</span> is de geassocieerde rij <span class="math inline">({\left\lVert{v}_n\right\rVert})_{n\in{\mathbb{N}}_0}</span> convergent (en dus begrensd)</p></li>
-<li><p>Vector optelling <span class="math inline">+:V \times V \to V</span> en scalaire vermenigvuldiging <span class="math inline">{\mathbb{F}}\times V \to V</span> zijn continue afbeeldingen<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li><p>Vector optelling <span class="math inline">+:V \times V \to V</span> en scalaire vermenigvuldiging <span class="math inline">{\mathbb{F}}\times V \to V</span> zijn continue afbeeldingen<sup>1</sup></p></li>
 </ul>
-</section>
-<section id="convergentie-in-functieruimten" class="level2">
-<h2 class="anchored" data-anchor-id="convergentie-in-functieruimten">Convergentie in functieruimten</h2>
-<p>Beschouw opnieuw <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met nu de <span class="math inline">p=\infty</span>-norm, welke zich herleidt tot:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Hiervoor hebben we het volgende nodig: de productverzameling <span class="math inline">X \times Y</span> van twee metrische ruimten <span class="math inline">(X, d_X)</span> en <span class="math inline">(Y, d_Y)</span> is metrische ruimte, bevoorbeeld met metriek <span class="math inline">d_{X,Y}((x,y), (x',y')) = d_X(x,x') + d_Y(y,y')</span>}</p></li></ol></aside></section>
+<section id="convergentie-in-functieruimten" class="slide level2">
+<h2>Convergentie in functieruimten</h2>
+<p>Beschouw opnieuw <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met nu de <span class="math inline">p=\infty</span>-norm, welke zich herleidt tot:<sup>1</sup></p>
 <p><span class="math display">{\left\lVert f\right\rVert}_p = \sup_{x\in [a,b]}{\left\lvert f(x)\right\rvert} = \max_{x\in[a,b]}{\left\lvert f(x)\right\rvert}</span></p>
 <p>Convergentie: <span class="math inline">\lim_{n\to \infty} f_n = f</span> als</p>
 <ul>
@@ -421,9 +537,9 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">{\left\lvert f_n(x)-f(x)\right\rvert} &lt; \epsilon</span> voor alle <span class="math inline">n &gt; N_{\epsilon,x}</span> voor alle <span class="math inline">x \in [a,b]</span></p>
 <p>kan niet worden bekomen met behulp van norm</p></li>
 </ul>
-</section>
-<section id="convergentie-in-functieruimten-voorbeeld" class="level2">
-<h2 class="anchored" data-anchor-id="convergentie-in-functieruimten-voorbeeld">Convergentie in functieruimten (voorbeeld)</h2>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Extremumstelling van Weierstrass: <span class="math inline">\sup</span> wordt <span class="math inline">\max</span> voor continue <span class="math inline">f</span> begrensd interval <span class="math inline">[a,b]</span></p></li></ol></aside></section>
+<section id="convergentie-in-functieruimten-voorbeeld" class="slide level2">
+<h2>Convergentie in functieruimten (voorbeeld)</h2>
 <p>Beschouw de rij <span class="math inline">(f_n \in C^0([0,1],{\mathbb{R}}))_{n \in {\mathbb{N}}_0}</span> met <span class="math inline">f_n(x) = \exp(-n x)</span></p>
 <ul>
 <li><p><span class="math inline">(f_n)</span> convergeert puntsgewijs naar de (niet-continue!) functie</p>
@@ -433,8 +549,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">(f_n)</span> convergeert niet volgens de <span class="math inline">p= \infty</span> norm</p></li>
 </ul>
 </section>
-<section id="equivalentie-van-normen" class="level2">
-<h2 class="anchored" data-anchor-id="equivalentie-van-normen">Equivalentie van normen</h2>
+<section id="equivalentie-van-normen" class="slide level2">
+<h2>Equivalentie van normen</h2>
 <ul>
 <li><p>Twee normen voor een vectorruimte <span class="math inline">V</span> zijn equivalent als ze aanleiding geven tot dezelfde definitie van convergerende rijen (met dan dezelfde limietpunten)</p></li>
 <li><p>Stelling: twee normen <span class="math inline">{\left\lVert\cdot\right\rVert}_a</span> en <span class="math inline">{\left\lVert\cdot\right\rVert}_b</span> zijn equivalent als en slechts als er constanten <span class="math inline">C \geq c &gt; 0</span> bestaan zodat <span class="math inline">c {\left\lVert{v}\right\rVert}_a \leq {\left\lVert{v}\right\rVert}_b \leq C{\left\lVert{v}\right\rVert}_a</span> voor alle <span class="math inline">{v}\in V</span></p></li>
@@ -446,8 +562,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="compacte-verzameling" class="level2">
-<h2 class="anchored" data-anchor-id="compacte-verzameling">Compacte verzameling</h2>
+<section id="compacte-verzameling" class="slide level2">
+<h2>Compacte verzameling</h2>
 <ul>
 <li><p>Een verzameling <span class="math inline">U</span> is compact als</p>
 <ul>
@@ -458,8 +574,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Stelling: in een eindig-dimensionale vectorruimte <span class="math inline">V</span> is een deelverzameling <span class="math inline">U</span> compact als en slechts als <span class="math inline">U</span> begrensd en gesloten is (analoog aan Vectoranalayse).</p></li>
 </ul>
 </section>
-<section id="compacte-verzamelingen" class="level2">
-<h2 class="anchored" data-anchor-id="compacte-verzamelingen">Compacte verzamelingen</h2>
+<section id="compacte-verzamelingen" class="slide level2">
+<h2>Compacte verzamelingen</h2>
 <p>In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijkcompact.</p>
 <ul>
 <li><p>Voorbeeld: <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met <span class="math inline">{\left\lVert\cdot\right\rVert}_\infty</span></p>
@@ -469,12 +585,14 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Technisch (Riesz lemma): Beschouw een eigenlijke gesloten deelruimte <span class="math inline">W{\preccurlyeq}V</span>. Voor elke <span class="math inline">\epsilon \in (0,1)</span> kunnen we een <span class="math inline">{v}_\epsilon \in V</span> vinden waarvoor <span class="math inline">{\left\lVert{v}_\epsilon\right\rVert}=1</span> en <span class="math inline">{\left\lVert{v}_\epsilon - {w}\right\rVert} &gt; \epsilon</span> voor alle <span class="math inline">w \in W</span>.</p></li>
 </ul>
-</section>
-</section>
-<section id="banachruimten" class="level1">
+</section></section>
+<section>
+<section id="banachruimten" class="title-slide slide level1 center">
 <h1>Banachruimten</h1>
-<section id="cauchy-rijen-en-compleetheid" class="level2">
-<h2 class="anchored" data-anchor-id="cauchy-rijen-en-compleetheid">Cauchy rijen en compleetheid</h2>
+
+</section>
+<section id="cauchy-rijen-en-compleetheid" class="slide level2">
+<h2>Cauchy rijen en compleetheid</h2>
 <ul>
 <li><p>Een Cauchy-rij in een metrische ruimte <span class="math inline">(X,d)</span> is een rij <span class="math inline">(x_n \in X)_{n\in{\mathbb{N}}_0}</span> zodat <span class="math inline">\forall \epsilon &gt;0: \exists N_\epsilon \in {\mathbb{N}}</span> met dan <span class="math inline">n,m &gt; N_\epsilon \implies d(x_n,x_m) &lt; \epsilon</span></p>
 <p>(intuïtief: elementen in de staart van de rij komen arbitrair dicht bij elkaar)</p></li>
@@ -483,8 +601,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> die metrisch compleet is wordt een Banachruimte genoemd</p></li>
 </ul>
 </section>
-<section id="banachruimten-1" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-1">Banachruimten</h2>
+<section id="banachruimten-1" class="slide level2">
+<h2>Banachruimten</h2>
 <p>Voorbeelden:</p>
 <ul>
 <li>Elke eindig-dimensionale vectorruimte, met om het even welke keuze van norm</li>
@@ -493,8 +611,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Ruimte <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met maximumnorm/uniformnorm <span class="math inline">{\left\lVert\cdot\right\rVert}_\infty</span> voor begrensd (compact) interval <span class="math inline">[a,b]</span></li>
 </ul>
 </section>
-<section id="banachruimten-2" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-2">Banachruimten</h2>
+<section id="banachruimten-2" class="slide level2">
+<h2>Banachruimten</h2>
 <p>Tegenvoorbeeld:</p>
 <ul>
 <li>Ruimte <span class="math inline">{\mathbb{F}}[x]</span> van polynomen met norm <span class="math inline">{\left\lVert p\right\rVert}= \max_{x \in [a,b]} {\left\lvert p(x)\right\rvert}</span>
@@ -509,8 +627,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="banachruimten-complete-verzameling" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-complete-verzameling">Banachruimten: complete verzameling</h2>
+<section id="banachruimten-complete-verzameling" class="slide level2">
+<h2>Banachruimten: complete verzameling</h2>
 <p>Aangezien (oneindig-dimensionale) deelruimten <span class="math inline">W {\preccurlyeq}V</span> niet noodzakelijk gesloten zijn (in tegenstelling tot eindig-dimensionale deelruimten), kunnen we hun sluiting <span class="math inline">\overline{W}</span> bekijken.</p>
 <ul>
 <li><p>Zoals eerder: als <span class="math inline">\overline{W}=V</span>, dan is <span class="math inline">W</span> een <strong>dichte</strong> deelruimte</p>
@@ -520,8 +638,8 @@ ul.task-list li input[type="checkbox"] {
 <p>(Contrast met H1: complete verzameling als <span class="math inline">{\mathbb{F}}S = V</span>)</p></li>
 </ul>
 </section>
-<section id="banachruimten-complete-verzameling-1" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-complete-verzameling-1">Banachruimten: complete verzameling</h2>
+<section id="banachruimten-complete-verzameling-1" class="slide level2">
+<h2>Banachruimten: complete verzameling</h2>
 <p>Voorbeeld: stelling van Stone-Weierstrass</p>
 <p>Equivalente formuleringen:</p>
 <ul>
@@ -530,19 +648,19 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\{x^n, n=0,1,2,\ldots\}</span> is een complete verzameling voor <span class="math inline">C^0([a,b],{\mathbb{F}})</span></li>
 </ul>
 </section>
-<section id="banachruimten-3" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-3">Banachruimten</h2>
+<section id="banachruimten-3" class="slide level2">
+<h2>Banachruimten</h2>
 <p>Van rijen naar reeksen in genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span></p>
 <ul>
 <li><p>Convergentie van reeksen: als rij van partieelsommen convergeert</p>
-<p><span class="math inline">\sum_{n=1}^{+\infty} {v}_n ={v}\iff \lim_{n\to\infty} \sum_{k=1}^{n} {v}_k = {v}\iff \lim_{n\to \infty} {\left\lVert\sum_{k=1}^{n} {v}_k - {v}\right\rVert} = 0</span></p></li>
+<p><span class="math inline">\sum_{n=1}^{+\infty} {v}_n   ={v}\iff  \lim_{n\to\infty} \sum_{k=1}^{n} {v}_k = {v}\iff \lim_{n\to \infty} {\left\lVert\sum_{k=1}^{n} {v}_k - {v}\right\rVert} = 0</span></p></li>
 <li><p>Een reeks <span class="math inline">\sum_{n=1}^{+\infty} {v}_n</span> is absoluut convergent als de reeks <span class="math inline">\sum_{n=1}^{+\infty} {\left\lVert{v}_n\right\rVert}</span> convergeert</p>
 <p>(absolute convergentie is zeker geen nodige voorwaarde voor convergentie van een reeks)</p></li>
 <li><p>Stelling: Een genormeerde vectorruimte is metrisch compleet (Banachruimte) als en slechts als absolute convergentie een voldoende voorwaarde is voor convergentie van een reeks (elke absoluut convergente reeks convergeert).</p></li>
 </ul>
 </section>
-<section id="banachruimten-en-basis" class="level2">
-<h2 class="anchored" data-anchor-id="banachruimten-en-basis">Banachruimten en basis</h2>
+<section id="banachruimten-en-basis" class="slide level2">
+<h2>Banachruimten en basis</h2>
 <p>Convergentie van rijen en reeksen laat een nieuw concept van basis toe in Banachruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span></p>
 <ul>
 <li><p>Een <em>Schauder basis</em> is een rij <span class="math inline">({e}_n \in V)_{n \in {\mathbb{N}}_0}</span> zodat voor elke vector <span class="math inline">{v}\in V</span> een rij van coefficiënten <span class="math inline">(a^n \in {\mathbb{F}})_{n \in {\mathbb{N}}_0}</span> bestaat, zodat de reeks <span class="math inline">\sum_{n =1}^{+\infty} a^n {e}_n</span> convergeert naar <span class="math inline">{v}</span></p></li>
@@ -553,12 +671,14 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p><span class="math inline">\Rightarrow</span> allerlei technische subtiliteiten die verdwijnen in het geval van Hilbertruimten (zie volgend hoofdstuk)</p>
-</section>
-</section>
-<section id="normen-voor-lineaire-afbeeldingen" class="level1">
+</section></section>
+<section>
+<section id="normen-voor-lineaire-afbeeldingen" class="title-slide slide level1 center">
 <h1>Normen voor lineaire afbeeldingen</h1>
-<section id="normen-voor-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="normen-voor-matrices">Normen voor matrices</h2>
+
+</section>
+<section id="normen-voor-matrices" class="slide level2">
+<h2>Normen voor matrices</h2>
 <p>Gegeven <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>:</p>
 <ul>
 <li><p>‘vectoriseer’ <span class="math inline">{\mathsf{A}}</span> (vergeet de matrixstructuur) via <span class="math inline">{\mathbb{F}}^{m \times n} \cong {\mathbb{F}}^{m n}</span> (vectorruimte-isomorphisme) en gebruik een vectornorm</p></li>
@@ -567,8 +687,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>kunnen we normen met extra nuttige eigenschappen bedenken voor lineaire afbeeldingen?</p></li>
 </ul>
 </section>
-<section id="continuïteit-van-lineaire-afbeeldingen" class="level2">
-<h2 class="anchored" data-anchor-id="continuïteit-van-lineaire-afbeeldingen">Continuïteit van lineaire afbeeldingen</h2>
+<section id="continuïteit-van-lineaire-afbeeldingen" class="slide level2">
+<h2>Continuïteit van lineaire afbeeldingen</h2>
 <p>Beschouw genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>.</p>
 <ul>
 <li><p>Een lineaire afbeelding <span class="math inline">{\hat{A}}\in \mathop{\mathrm{Hom}}(V,W)</span> wordt begrensd genoemd als er een constante <span class="math inline">C \in {\mathbb{R}}_{\geq 0}</span> bestaat zodat <span class="math display">{\left\lVert{\hat{A}}{v}\right\rVert}_W\leq C {\left\lVert{v}\right\rVert}_V,\quad\forall {v}\in V</span></p></li>
@@ -580,8 +700,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="begrensde-lineaire-afbeeldingen" class="level2">
-<h2 class="anchored" data-anchor-id="begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</h2>
+<section id="begrensde-lineaire-afbeeldingen" class="slide level2">
+<h2>Begrensde lineaire afbeeldingen</h2>
 <p>We definiëren <span class="math inline">\mathcal{B}(V,W) {\preccurlyeq}\mathop{\mathrm{Hom}}(V,W)</span> als de ruimte van begrensde lineaire afbeeldingen tussen genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>.</p>
 <ul>
 <li><p><span class="math inline">\mathcal{B}(V,W)</span> vormt inderdaad een vectorruimte (een deelruimte van <span class="math inline">\mathop{\mathrm{Hom}}(V,W)</span>): tracht dit zelf aan te tonen!</p></li>
@@ -589,8 +709,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Een norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}</span> voor lineaire afbeeldingen <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> heet <strong>ondergeschikt</strong> (subordinate) aan de vectornormen in <span class="math inline">V</span> en <span class="math inline">W</span> als <span class="math display">{\left\lVert{\hat{A}}{v}\right\rVert}_W \leq {\left\lVert{\hat{A}}\right\rVert} {\left\lVert{v}\right\rVert}_V,\quad\forall {v}\in V</span></p></li>
 </ul>
 </section>
-<section id="geïnduceerde-norm" class="level2">
-<h2 class="anchored" data-anchor-id="geïnduceerde-norm">Geïnduceerde norm</h2>
+<section id="geïnduceerde-norm" class="slide level2">
+<h2>Geïnduceerde norm</h2>
 <p>Beschouw genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>. We kunnen een norm voor afbeeldingen <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> definiëren via</p>
 <p><span class="math display">\begin{align}
 {\left\lVert{\hat{A}}\right\rVert}_{V \to W} &amp;= \inf\{ C |  {\left\lVert{\hat{A}} {v}\right\rVert}_W \leq C {\left\lVert{v}\right\rVert}_V, \forall {v}\in V\}\nonumber\\
@@ -599,14 +719,14 @@ ul.task-list li input[type="checkbox"] {
 \end{align}</span></p>
 <p>Deze norm staat gekend als de <strong>geïnduceerde norm</strong> of soms ook <strong>operator norm</strong> (ook al geldt hij voor algemene lineaire afbeeldingen). Soms wordt ook met de “subordinate norm” specifiek naar deze definitie verwezen.</p>
 </section>
-<section id="geïnduceerde-norm-1" class="level2">
-<h2 class="anchored" data-anchor-id="geïnduceerde-norm-1">Geïnduceerde norm</h2>
+<section id="geïnduceerde-norm-1" class="slide level2">
+<h2>Geïnduceerde norm</h2>
 <ul>
 <li>Voor <span class="math inline">(V, {\left\lVert\cdot\right\rVert}_V)</span> een genormeerde ruimte en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span> een Banachruimte geldt dat de ruimte <span class="math inline">\mathcal{B}(V,W)</span> van begrensde lineaire afbeeldingen in combinatie met de geïnduceerde norm <span class="math inline">{\left\lVert\cdot\right\rVert}_{V\to W}</span> zelf een Banachruimte is</li>
 </ul>
 </section>
-<section id="normen-voor-lineaire-operatoren" class="level2">
-<h2 class="anchored" data-anchor-id="normen-voor-lineaire-operatoren">Normen voor lineaire operatoren</h2>
+<section id="normen-voor-lineaire-operatoren" class="slide level2">
+<h2>Normen voor lineaire operatoren</h2>
 <p>Beschouw nu specifiek <span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(V)</span> voor een Banachruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span>. De begrensde lineaire operatoren worden genoteerd als <span class="math inline">\mathcal{B}(V) = \mathcal{B}(V,V) {\preccurlyeq}\mathop{\mathrm{End}}(V)</span>.</p>
 <ul>
 <li><p>Een norm <span class="math inline">{\left\lVert\cdot\right\rVert}</span> voor lineaire operatoren wordt <strong>submultiplicatief</strong> genoemd als <span class="math display">{\left\lVert{\hat{A}}\cdot{\hat{B}}\right\rVert} \leq {\left\lVert{\hat{A}}\right\rVert} {\left\lVert{\hat{B}}\right\rVert}, \quad \forall {\hat{A}},{\hat{B}} \in \mathcal{B}(V)</span></p></li>
@@ -614,8 +734,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Voor elke submultiplicatieve of ondergeschikte norm geldt <span class="math inline">{\left\lVert{\hat{1}}\right\rVert} \geq 1</span>. Voor de geinduceerde norm is <span class="math inline">{\left\lVert{\hat{1}}\right\rVert}=1</span>.</p></li>
 </ul>
 </section>
-<section id="normen-voor-matrices-1" class="level2">
-<h2 class="anchored" data-anchor-id="normen-voor-matrices-1">Normen voor matrices</h2>
+<section id="normen-voor-matrices-1" class="slide level2">
+<h2>Normen voor matrices</h2>
 <ul>
 <li><p>voor gegeven <span class="math inline">p</span>: <span class="math inline">p</span>-norm vormt een familie van normen voor vectoren in <span class="math inline">{\mathbb{F}}^n</span> voor arbitraire <span class="math inline">n</span></p></li>
 <li><p>voor een matrix <span class="math inline">{\mathsf{A}}\in{\mathbb{F}}^{m \times n}</span> kunnen we in principe de geïnduceerde norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{p\to q}</span> berekenen voor <span class="math inline">p</span>-norm op <span class="math inline">{\mathbb{F}}^m</span> en <span class="math inline">q</span>-norm op <span class="math inline">{\mathbb{F}}^n</span>; typisch willen we <span class="math inline">p=q</span>.</p>
@@ -629,8 +749,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="consistente-matrixnormen" class="level2">
-<h2 class="anchored" data-anchor-id="consistente-matrixnormen">Consistente matrixnormen</h2>
+<section id="consistente-matrixnormen" class="slide level2">
+<h2>Consistente matrixnormen</h2>
 <p>Gegeven een familie van normen <span class="math inline">\{{\left\lVert\cdot\right\rVert}^{(m \times n)}: {\mathbb{F}}^{m\times n} \to {\mathbb{R}}_{\geq 0}; \forall m, n \in {\mathbb{N}}\}</span> voor matrices van alle groottes:</p>
 <ul>
 <li><p>deze worden <strong>consistent</strong> genoemd als <span class="math display">{\left\lVert{\mathsf{A}}{\mathsf{B}}\right\rVert}^{(m \times n)} \leq {\left\lVert{\mathsf{A}}\right\rVert}^{(m \times k)} {\left\lVert{\mathsf{B}}\right\rVert}^{(k \times n)}</span> voor alle <span class="math inline">{\mathsf{A}}\in{\mathbb{F}}^{m\times k}</span> en <span class="math inline">{\mathsf{B}}\in{\mathbb{F}}^{k\times n}</span></p></li>
@@ -639,8 +759,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>de norm <span class="math inline">{\left\lVert\text{vectorize}({\mathsf{A}})\right\rVert}_\infty</span> is niet consistent</p></li>
 </ul>
 </section>
-<section id="matrixnormen-terminologie" class="level2">
-<h2 class="anchored" data-anchor-id="matrixnormen-terminologie">Matrixnormen: terminologie</h2>
+<section id="matrixnormen-terminologie" class="slide level2">
+<h2>Matrixnormen: terminologie</h2>
 <ul>
 <li><p>Het concept “matrixnorm” wordt vaak gedefinieerd als een norm die aan de drie voorwaarden van een vectornorm voldoet, en bovendien aan de consistentievoorwaarde.</p></li>
 <li><p>De consistentievoorwaarde is een veralgemening van submultiplicativiteit van operatoren, en beide termen worden soms door elkaar gebruikt.</p></li>
@@ -648,8 +768,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>(in vragen hieromtrent zal ook steeds de expliciete voorwaarde als wiskundige ongelijkheid vermeld staan)</p></li>
 </ul>
 </section>
-<section id="spectraalstraal" class="level2">
-<h2 class="anchored" data-anchor-id="spectraalstraal">Spectraalstraal</h2>
+<section id="spectraalstraal" class="slide level2">
+<h2>Spectraalstraal</h2>
 <ul>
 <li><p>De spectraalstraal van een operator <span class="math inline">{\hat{A}}\in\mathop{\mathrm{End}}(V)</span> is gedefinieerd als <span class="math display">\rho_{{\hat{A}}} = \sup\{{\left\lvert\lambda\right\rvert};\lambda \in \sigma_{{\hat{A}}}\}</span></p></li>
 <li><p>Voor een submultiplicatieve norm en <span class="math inline">V</span> eindig-dimensionaal geldt <span class="math inline">{\left\lVert{\hat{A}}\right\rVert} \geq \rho_{{\hat{A}}}</span></p>
@@ -660,30 +780,32 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Gelfand formule: <span class="math inline">\rho_{\hat{A}} =\lim_{n\to\infty}{\left\lVert{\hat{A}}^n\right\rVert}^{\frac{1}{n}}</span></p></li>
 </ul>
 </section>
-<section id="duale-normen" class="level2">
-<h2 class="anchored" data-anchor-id="duale-normen">Duale normen</h2>
+<section id="duale-normen" class="slide level2">
+<h2>Duale normen</h2>
 <p>Gegeven een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span>:</p>
 <ul>
 <li><p>geïnduceerde norm op <span class="math inline">\mathcal{B}(V,{\mathbb{F}}){\preccurlyeq}V^\ast</span> wordt genoteerd als de duale norm <span class="math inline">{\left\lVert\cdot\right\rVert}^\ast</span>: <span class="math display">{\left\lVert\xi\right\rVert}^\ast = \sup\left\{\frac{{\left\lvert\xi[v]\right\rvert}}{{\left\lVert v\right\rVert}} ; \forall v \in V, v \neq {o}\right\}, \quad \forall \xi \in V^\ast</span></p></li>
 <li><p>voor <span class="math inline">V = {\mathbb{F}}</span> met Hölder norm <span class="math inline">{\left\lVert\cdot\right\rVert}_p</span> wordt de duale norm gegeven door <span class="math inline">{\left\lVert\xi\right\rVert}_p^\ast = {\left\lVert\boldsymbol{\xi}\right\rVert}_q</span> waarbij <span class="math inline">1/p+1/q=1</span>, en <span class="math inline">\boldsymbol{\xi}</span> de componenten van <span class="math inline">\xi</span>, i.e.&nbsp;zodat <span class="math inline">\xi[\boldsymbol{v}]=\boldsymbol{\xi}^{\mathsf{T}}\boldsymbol{v}</span></p></li>
 </ul>
-</section>
-</section>
-<section id="toepassingen" class="level1">
+</section></section>
+<section>
+<section id="toepassingen" class="title-slide slide level1 center">
 <h1>Toepassingen</h1>
-<section id="functies-van-matrices-en-operatoren" class="level2">
-<h2 class="anchored" data-anchor-id="functies-van-matrices-en-operatoren">Functies van matrices en operatoren</h2>
+
+</section>
+<section id="functies-van-matrices-en-operatoren" class="slide level2">
+<h2>Functies van matrices en operatoren</h2>
 <ul>
 <li><p>Functie met convergente Taylorreeks rond <span class="math inline">z=0</span>: <span class="math display">f(z) = \sum_{n=0}^{+\infty} f_n z^n, \quad \forall {\left\lvert z\right\rvert}&lt;R</span></p>
 <ul>
 <li><p><span class="math inline">{\hat{A}}\in\mathcal{B}(V)</span> met submultiplicatieve operatornorm:</p>
-<p><span class="math inline">{\left\lVert\sum_{n=0}^{+\infty} f_n {\hat{A}}^n\right\rVert} \leq \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}^n\right\rVert} \leq \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}\right\rVert}^n</span></p>
+<p><span class="math inline">{\left\lVert\sum_{n=0}^{+\infty} f_n {\hat{A}}^n\right\rVert} \leq     \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}^n\right\rVert} \leq  \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}\right\rVert}^n</span></p>
 <p><span class="math inline">\Rightarrow</span> <span class="math inline">\sum_{n=0}^{+\infty} f_n {\hat{A}}^n</span> convergeert voor alle <span class="math inline">{\hat{A}}</span> met <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}&lt;R</span> als <span class="math inline">V</span> een Banachruimte is</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="functies-van-matrices-en-operatoren-1" class="level2">
-<h2 class="anchored" data-anchor-id="functies-van-matrices-en-operatoren-1">Functies van matrices en operatoren</h2>
+<section id="functies-van-matrices-en-operatoren-1" class="slide level2">
+<h2>Functies van matrices en operatoren</h2>
 <ul>
 <li>Functies met convergente Taylorreeks rond <span class="math inline">z=\lambda</span> voor elke eigenwaarde <span class="math inline">\lambda</span>
 <ul>
@@ -693,8 +815,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="sensitiviteit-van-lineaire-systemen" class="level2">
-<h2 class="anchored" data-anchor-id="sensitiviteit-van-lineaire-systemen">Sensitiviteit van lineaire systemen</h2>
+<section id="sensitiviteit-van-lineaire-systemen" class="slide level2">
+<h2>Sensitiviteit van lineaire systemen</h2>
 <p>Lineair system <span class="math inline">{\hat{A}}{x}= {y}</span> met <span class="math inline">{x},{y}\in V</span> en <span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> met <span class="math inline">V</span> een genormeerde vectorruimte met norm <span class="math inline">{\left\lVert\cdot\right\rVert}</span></p>
 <ul>
 <li><p>Stel kleine variatie <span class="math inline">{y}\to {y}+ \Delta{y}\Rightarrow {x}\to {x}+ \Delta {x}</span></p></li>
@@ -707,270 +829,407 @@ ul.task-list li input[type="checkbox"] {
 <p>met hierin <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}</span> de geïnduceerde norm geassocieerd aan de vectornorm</p></li>
 </ul>
 </section>
-<section id="sensitiviteit-van-lineaire-systemen-1" class="level2">
-<h2 class="anchored" data-anchor-id="sensitiviteit-van-lineaire-systemen-1">Sensitiviteit van lineaire systemen</h2>
+<section id="sensitiviteit-van-lineaire-systemen-1" class="slide level2">
+<h2>Sensitiviteit van lineaire systemen</h2>
 <ul>
 <li><p>Uitbreiding: ook variatie <span class="math inline">{\hat{A}}\to {\hat{A}}+\Delta{\hat{A}}</span> met <span class="math inline">{\left\lVert{\hat{A}}^{-1}\Delta{\hat{A}}\right\rVert} &lt; 1</span></p>
 <ul>
-<li><span class="math inline">{\left\lVert({\hat{A}} + \Delta{\hat{A}})^{-1}\right\rVert} \leq \frac{{\left\lVert{\hat{A}}^{-1}\right\rVert}}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}}</span></li>
-<li><span class="math inline">\frac{{\left\lVert\Delta {x}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \frac{\kappa({\hat{A}})}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}} \left( \frac{{\left\lVert\Delta {y}\right\rVert}}{{\left\lVert{y}\right\rVert}} + \frac{{\left\lVert\Delta{\hat{A}}\right\rVert}}{{\left\lVert{\hat{A}}\right\rVert}}\right)</span></li>
+<li><span class="math inline">{\left\lVert({\hat{A}} + \Delta{\hat{A}})^{-1}\right\rVert} \leq  \frac{{\left\lVert{\hat{A}}^{-1}\right\rVert}}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}}</span></li>
+<li><span class="math inline">\frac{{\left\lVert\Delta {x}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq  \frac{\kappa({\hat{A}})}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}}  \left( \frac{{\left\lVert\Delta {y}\right\rVert}}{{\left\lVert{y}\right\rVert}} + \frac{{\left\lVert\Delta{\hat{A}}\right\rVert}}{{\left\lVert{\hat{A}}\right\rVert}}\right)</span></li>
 </ul></li>
 <li><p>A postiori error: het residu <span class="math inline">r = {\hat{{y}}} - {\hat{A}}\tilde{{x}}</span> voor een benaderde oplossing <span class="math inline">\tilde{{x}}</span>:</p>
-<p><span class="math inline">\Rightarrow \frac{{\left\lVert{x}- \tilde{{x}}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \kappa({\hat{A}}) \frac{{\left\lVert{r}\right\rVert}}{{\left\lVert{y}\right\rVert}}</span> met <span class="math inline">{x}</span> de echte oplossing</p></li>
+<p><span class="math inline">\Rightarrow  \frac{{\left\lVert{x}- \tilde{{x}}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \kappa({\hat{A}}) \frac{{\left\lVert{r}\right\rVert}}{{\left\lVert{y}\right\rVert}}</span> met <span class="math inline">{x}</span> de echte oplossing</p></li>
 </ul>
 </section>
-<section id="markovketens-en-stochastische-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="markovketens-en-stochastische-matrices">Markovketens en stochastische matrices</h2>
+<section id="markovketens-en-stochastische-matrices" class="slide level2">
+<h2>Markovketens en stochastische matrices</h2>
 <p>Misschien later?</p>
 
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
-</section>
-</section>
+</div>
+</div>
+</section></section>
 
+    </div>
+  </div>
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
 
-<ol>
-<li id="fn1"><p>Voor een continue afbeelding <span class="math inline">\Phi</span> kan <span class="math inline">\delta_\epsilon</span> in de tweede definitie nog steeds afhangen van <span class="math inline">x</span>. Is dat niet nodig, dan heet <span class="math inline">\Phi</span> ook “uniform continu”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Hiervoor hebben we het volgende nodig: de productverzameling <span class="math inline">X \times Y</span> van twee metrische ruimten <span class="math inline">(X, d_X)</span> en <span class="math inline">(Y, d_Y)</span> is metrische ruimte, bevoorbeeld met metriek <span class="math inline">d_{X,Y}((x,y), (x',y')) = d_X(x,x') + d_Y(y,y')</span>}<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Extremumstelling van Weierstrass: <span class="math inline">\sup</span> wordt <span class="math inline">\max</span> voor continue <span class="math inline">f</span> begrensd interval <span class="math inline">[a,b]</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
 
 </body></html>

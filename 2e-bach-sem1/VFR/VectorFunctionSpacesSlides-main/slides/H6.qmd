@@ -2,12 +2,12 @@
 title: "Hoofdstuk 6 - Unitaire gelijkvormigheid en unitaire equivalentie"
 author: "Jutho Haegeman"
 date: "11/12/2025"
-# format:
-#   revealjs:
-#     theme: solarized
-#     html-math-method: katex
-#     smaller: true
-#     chalkboard: true
+format:
+   revealjs:
+     theme: solarized
+     html-math-method: katex
+     smaller: true
+     chalkboard: false
 ---
 
 ## Doel van dit hoofdstuk
