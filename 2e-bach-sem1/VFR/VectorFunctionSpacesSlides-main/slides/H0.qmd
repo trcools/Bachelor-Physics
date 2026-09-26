@@ -1,0 +1,258 @@
+---
+title: " Vector- en functieruimten"
+author: "Jutho Haegeman & Lander Burgelman"
+date: "09/21/2026"
+format:
+   revealjs:
+     theme: solarized
+     smaller: true
+     html-math-method: katex
+     chalkboard: true
+---
+
+
+# Inleiding en praktische informatie
+
+
+::: {.hidden}
+$$
+% Math operators
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Unitary}{U}
+\DeclareMathOperator{\Orthogonal}{O}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{codom}
+\DeclareMathOperator{\D}{\mathcal{D}}
+\DeclareMathOperator{\E}{\mathcal{E}}
+\DeclareMathOperator{\R}{\mathcal{R}}
+\DeclareMathOperator{\Schw}{\mathcal{S}}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convhull}{co}
+
+\newcommand{\opgreek}[1]{\begingroup\mathgroup-1 #1\endgroup}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+
+\DeclareMathOperator{\Pv}{Pv}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\adj}{adj}
+
+\DeclareMathOperator*{\varmin}{min}
+\DeclareMathOperator*{\varmax}{max}
+\DeclareMathOperator*{\argmin}{arg\ min}
+\DeclareMathOperator*{\argmax}{arg\ max}
+\DeclareMathOperator{\order}{\mathscr{O}}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\sinc}{sinc}
+
+
+\newcommand{\commutator}[2]{{\left[#1,#2\right]}}
+\newcommand{\anticommutator}[2]{{\left\{#1,#2\right\}}}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\newcommand{\conj}[1]{{\overline{#1}}}
+\newcommand{\abs}[1]{{\left\lvert#1\right\rvert}}
+\newcommand{\norm}[1]{{\left\lVert#1\right\rVert}}
+\newcommand{\inner}[2]{{\left\langle#1,#2\right\rangle}}
+
+\newcommand{\drm}{{\mathrm{d}}}
+\newcommand{\erm}{{\mathrm{e}}}
+\newcommand{\irm}{{\mathrm{i}}}
+
+
+% VECTORS
+\newcommand{\vect}[1]{{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % specifically for vectors in F^n
+\newcommand{\zerovec}{{o}}
+\newcommand{\vu}{\vect{u}}
+\newcommand{\vv}{\vect{v}}
+\newcommand{\vw}{\vect{w}}
+\newcommand{\ve}{\vect{e}}
+\newcommand{\vf}{\vect{f}}
+\newcommand{\vx}{\vect{x}}
+\newcommand{\vy}{\vect{y}}
+
+% MATRICES
+\newcommand{\mat}[1]{{\mathsf{#1}}}
+\newcommand{\zeromat}{\mat{O}}
+\newcommand{\idmat}{\mat{I}}
+
+% SCALARS
+\newcommand{\scalara}{{a}}
+\newcommand{\scalarb}{{b}}
+\newcommand{\scalarc}{{c}}
+
+% LINEAR MAPS
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+\newcommand{\map}[1]{{\hat{#1}}}
+\newcommand{\idmap}{\map{1}}
+\newcommand{\zeromap}{\map{0}}
+
+\newcommand{\transpose}{{\mathsf{T}}}
+\newcommand{\hermitian}{{\mathsf{H}}}
+
+\renewcommand{\d}{{\mathrm{d}}}
+
+% FIELDS
+\newcommand{\bbF}{{\mathbb{F}}}
+\newcommand{\bbN}{{\mathbb{N}}}
+\newcommand{\bbZ}{{\mathbb{Z}}}
+\newcommand{\bbQ}{{\mathbb{Q}}}
+\newcommand{\bbR}{{\mathbb{R}}}
+\newcommand{\bbC}{{\mathbb{C}}}
+\newcommand{\bbH}{{\mathbb{H}}}
+\newcommand{\bbT}{{\mathbb{T}}}
+
+% RELATIONS
+\newcommand{\subspace}{{\preccurlyeq}}
+\newcommand{\supspace}{{\succcurlyeq}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\levicivita}{{\epsilon}}
+
+\newcommand{\sx}{{\sigma^x}}
+\newcommand{\sy}{{\sigma^y}}
+\newcommand{\sz}{{\sigma^z}}
+\renewcommand{\sp}{{\sigma^+}}
+\newcommand{\sm}{{\sigma^-}}
+
+\DeclareMathOperator*{\sumint}{
+\mathchoice
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+$$
+:::
+
+
+## Motivatie
+
+Vergelijkingen van de fysica:
+
+* Aangedreven harmonische oscillator:
+  $m \frac{\drm^2 x}{\drm t^2} + \gamma \frac{\drm x}{\drm t} + k x = F(t)$
+
+* Warmtevergelijking of diffusievergelijking:
+  $\frac{\partial u}{\partial t} = \alpha \nabla^2 u$
+
+* Golfvergelijking:
+  $\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u$
+
+* Maxwellvergelijkingen:
+
+  $\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}, \quad \nabla \cdot \vec{B} = 0, \quad \nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}, \quad \nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}$
+
+* Schrödingervergelijking:
+  $i \hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \psi + V \psi$
+
+versus
+
+* Navier-Stokesvergelijking:  $\rho \left( \frac{\partial \vec{v}}{\partial t} + (\vec{v} \cdot \nabla) \vec{v} \right) = -\nabla p + \mu \nabla^2 \vec{v} + \vec{f}$
+
+## Motivatie: lineariteit
+
+* Lineariteit:
+
+  lineare combinatie van bronnen $\Rightarrow$ lineaire combinatie van oplossingen
+
+* Lineariteit is alom tegenwoordig (soms als benadering rond evenwichtstoestand)
+
+* Ligt aan de grondslag van een hele reeks wiskundige technieken, zowel analytisch als numeriek:
+
+  * Basistranformaties, orthogonale en unitaire transformaties
+  * Basisoplossingen , eigenfuncties en eigenwaarden
+  * Superpositieprincipe
+  * Fourier-analyse (alsook Lapace- en Z-transformaties)
+  * Begin- en randvoorwaardeproblemen: Greense functies
+  * Numerieke lineaire algebra en numerieke integratie
+  * Numerieke optimalisatie en root finding: 
+    * Newton-Raphson methode, gradient descent, conjugate gradient, quasi-Newton methoden, …
+
+## Lesgevers en lesschema
+
+* Theorielessen:
+
+  * Jutho Haegeman, Lander Burgelman
+  * Dinsdagnamiddag (13u - 15u45 in week 1 - 6, 14u30 - 17u15 in week 7 - 12)
+
+* Oefeningenlessen:
+
+  * Sander De Meyer, Kevin Vervoort
+  * Maandagvoormiddag (11u30 - 12u45) + (in week 7 - 12) vrijdagvoormiddag (11u30 - 12u45)
+
+* Afwijkingen van het lesschema worden tijdig gecommuniceerd via Ufora.
+
+## Evaluatie
+
+* Theorie en oefeningen tellen elk voor 50%
+
+  * Examen voor 18 van de 20 punten:
+  
+    * open boek voor beide onderdelen
+    * theorie-gedeelte: analoog aan Lineaire Algebra,
+      waar-valsvragen, bewijzen toelichten, korte theoretische oefeningen
+    * oefeningen-gedeelte: analoog aan wat er in de
+      oefeningenles wordt behandeld
+    * tijd zelf in te delen
+
+  * 2 punten op "niet-periodegebonden evaluatie":
+
+    * mini-examen in één van de laatste lesweken, over een deel van de leerstof, evenzeer openboek met theorie-gedeelte (waar-valsvragen) en een oefeningen-gedeelte
+    * details worden nog gecommuniceerd
+
+## Cursusmateriaal
+
+* Theoriecursus beschikbaar als PDF op Ufora, wordt nog verder bijgewerkt.
+
+  * Eenvoudige versie ("-simple") bevat sowieso alles wat we gaan zien, mogelijks wordt ook daar nog in geschrapt.
+
+  * Geavanceerde versie bevat extra materiaal, in de vorm van secties die in meer detail bepaalde aspecten behandelen, bijkomende opmerkingen en verwijzingen, en appendices met geavanceerd/wiskundig actergrondmateriaal.
+
+  * Beide documenten zijn momenteel nog niet volledig klaar en zullen nog onderhevig zijn aan wijzigingen, voornamelijk vanaf na Hoofdstuk 6.
+
+* Oefeningen: 
+
+  * Zie eerste oefeningenles
+
+* Verder op ufora: slides, extra materiaal en links, referentielijst, … 
+
+## Vragen en opmerkingen
+
+* Inhoudelijke vragen over de cursus of oefeningen:
+  
+  * Tijdens de les (of pauze).
+  
+  * Via het discussieforum op Ufora:
+  
+    voor iedereen zichtbaar, iedereen kan antwoorden, docenten en assistenten volgen mee en zullen ook antwoorden.
+
+  * Inhoudelijke vragen via mail worden toch naar het forum doorverwezen.
+
+  * Niet-inhoudelijke vragen (praktisch, organisatorisch, … ) via mail.
+
+* Typfouten of andere fouten in de cursus:
+
+  steeds welkom, zelfs als je niet zeker bent!
+
+# Vragen ?

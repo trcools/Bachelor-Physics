@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jutho Haegeman">
+<meta name="dcterms.date" content="2026-09-21">
+
+<title>Vector- en functieruimten – Slides - Hoofdstuk 1 - Elementaire wiskundige structuren</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vector- en functieruimten – Slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../slides/H1.html" rel="" target="" aria-current="page">
+ <span class="menu-text">H1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H2.html" rel="" target="">
+ <span class="menu-text">H2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H3.html" rel="" target="">
+ <span class="menu-text">H3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H4.html" rel="" target="">
+ <span class="menu-text">H4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H5.html" rel="" target="">
+ <span class="menu-text">H5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H6.html" rel="" target="">
+ <span class="menu-text">H6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H7.html" rel="" target="">
+ <span class="menu-text">H7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H8.html" rel="" target="">
+ <span class="menu-text">H8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H9.html" rel="" target="">
+ <span class="menu-text">H9</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
+  <li><a href="#doel-van-dit-hoofdstuk-1" id="toc-doel-van-dit-hoofdstuk-1" class="nav-link" data-scroll-target="#doel-van-dit-hoofdstuk-1">Doel van dit hoofdstuk</a></li>
+  <li><a href="#verzamelingen-en-afbeeldingen" id="toc-verzamelingen-en-afbeeldingen" class="nav-link" data-scroll-target="#verzamelingen-en-afbeeldingen">Verzamelingen en afbeeldingen</a>
+  <ul class="collapse">
+  <li><a href="#verzamelingen" id="toc-verzamelingen" class="nav-link" data-scroll-target="#verzamelingen">Verzamelingen</a></li>
+  <li><a href="#verzamelingen-1" id="toc-verzamelingen-1" class="nav-link" data-scroll-target="#verzamelingen-1">Verzamelingen</a></li>
+  <li><a href="#afbeeldingen" id="toc-afbeeldingen" class="nav-link" data-scroll-target="#afbeeldingen">Afbeeldingen</a></li>
+  <li><a href="#afbeeldingen-1" id="toc-afbeeldingen-1" class="nav-link" data-scroll-target="#afbeeldingen-1">Afbeeldingen</a></li>
+  <li><a href="#kardinaliteit" id="toc-kardinaliteit" class="nav-link" data-scroll-target="#kardinaliteit">Kardinaliteit</a></li>
+  <li><a href="#relaties" id="toc-relaties" class="nav-link" data-scroll-target="#relaties">Relaties</a></li>
+  <li><a href="#relaties-1" id="toc-relaties-1" class="nav-link" data-scroll-target="#relaties-1">Relaties</a></li>
+  <li><a href="#relaties-2" id="toc-relaties-2" class="nav-link" data-scroll-target="#relaties-2">Relaties</a></li>
+  <li><a href="#relaties-3" id="toc-relaties-3" class="nav-link" data-scroll-target="#relaties-3">Relaties</a></li>
+  </ul></li>
+  <li><a href="#groepen-ringen-en-velden" id="toc-groepen-ringen-en-velden" class="nav-link" data-scroll-target="#groepen-ringen-en-velden">Groepen, ringen en velden</a>
+  <ul class="collapse">
+  <li><a href="#bineaire-operatie" id="toc-bineaire-operatie" class="nav-link" data-scroll-target="#bineaire-operatie">Bineaire operatie</a></li>
+  <li><a href="#groep" id="toc-groep" class="nav-link" data-scroll-target="#groep">Groep</a></li>
+  <li><a href="#homomorfisme" id="toc-homomorfisme" class="nav-link" data-scroll-target="#homomorfisme">Homomorfisme</a></li>
+  <li><a href="#automorfismegroep" id="toc-automorfismegroep" class="nav-link" data-scroll-target="#automorfismegroep">Automorfismegroep:</a></li>
+  <li><a href="#voorbeelden-van-homomorfismen" id="toc-voorbeelden-van-homomorfismen" class="nav-link" data-scroll-target="#voorbeelden-van-homomorfismen">Voorbeelden van homomorfismen</a></li>
+  <li><a href="#voorbeelden-van-homomorfismen-1" id="toc-voorbeelden-van-homomorfismen-1" class="nav-link" data-scroll-target="#voorbeelden-van-homomorfismen-1">Voorbeelden van homomorfismen</a></li>
+  <li><a href="#groepsacties" id="toc-groepsacties" class="nav-link" data-scroll-target="#groepsacties">Groepsacties</a></li>
+  <li><a href="#deelgroepen-en-kern" id="toc-deelgroepen-en-kern" class="nav-link" data-scroll-target="#deelgroepen-en-kern">Deelgroepen en kern</a></li>
+  <li><a href="#quotientgroep" id="toc-quotientgroep" class="nav-link" data-scroll-target="#quotientgroep">Quotientgroep</a></li>
+  <li><a href="#ring" id="toc-ring" class="nav-link" data-scroll-target="#ring">Ring</a></li>
+  <li><a href="#ring-1" id="toc-ring-1" class="nav-link" data-scroll-target="#ring-1">Ring</a></li>
+  <li><a href="#ring-en-veld" id="toc-ring-en-veld" class="nav-link" data-scroll-target="#ring-en-veld">Ring en veld</a></li>
+  </ul></li>
+  <li><a href="#vectorruimten" id="toc-vectorruimten" class="nav-link" data-scroll-target="#vectorruimten">Vectorruimten</a>
+  <ul class="collapse">
+  <li><a href="#vectorruimte" id="toc-vectorruimte" class="nav-link" data-scroll-target="#vectorruimte">Vectorruimte</a></li>
+  <li><a href="#voorbeelden" id="toc-voorbeelden" class="nav-link" data-scroll-target="#voorbeelden">Voorbeelden</a></li>
+  <li><a href="#deelruimten" id="toc-deelruimten" class="nav-link" data-scroll-target="#deelruimten">Deelruimten</a></li>
+  <li><a href="#meer-voorbeelden" id="toc-meer-voorbeelden" class="nav-link" data-scroll-target="#meer-voorbeelden">Meer voorbeelden</a></li>
+  <li><a href="#homomorfismen" id="toc-homomorfismen" class="nav-link" data-scroll-target="#homomorfismen">Homomorfismen</a></li>
+  <li><a href="#lineaire-combinaties" id="toc-lineaire-combinaties" class="nav-link" data-scroll-target="#lineaire-combinaties">Lineaire combinaties</a></li>
+  <li><a href="#lineaire-span-en-compleetheid" id="toc-lineaire-span-en-compleetheid" class="nav-link" data-scroll-target="#lineaire-span-en-compleetheid">Lineaire span en compleetheid</a></li>
+  <li><a href="#lineaire-onafhankelijkheid-en-basis" id="toc-lineaire-onafhankelijkheid-en-basis" class="nav-link" data-scroll-target="#lineaire-onafhankelijkheid-en-basis">Lineaire onafhankelijkheid en basis</a></li>
+  <li><a href="#basis-eigenschappen" id="toc-basis-eigenschappen" class="nav-link" data-scroll-target="#basis-eigenschappen">Basis: eigenschappen</a></li>
+  <li><a href="#coordinaten-en-indexnotatie" id="toc-coordinaten-en-indexnotatie" class="nav-link" data-scroll-target="#coordinaten-en-indexnotatie">Coordinaten en indexnotatie</a></li>
+  <li><a href="#indexnotatie" id="toc-indexnotatie" class="nav-link" data-scroll-target="#indexnotatie">Indexnotatie</a></li>
+  <li><a href="#bewerkingen-met-deelruimten" id="toc-bewerkingen-met-deelruimten" class="nav-link" data-scroll-target="#bewerkingen-met-deelruimten">Bewerkingen met deelruimten</a></li>
+  <li><a href="#bewerkingen-met-deelruimten-1" id="toc-bewerkingen-met-deelruimten-1" class="nav-link" data-scroll-target="#bewerkingen-met-deelruimten-1">Bewerkingen met deelruimten</a></li>
+  <li><a href="#bewerkingen-met-deelruimten-2" id="toc-bewerkingen-met-deelruimten-2" class="nav-link" data-scroll-target="#bewerkingen-met-deelruimten-2">Bewerkingen met deelruimten</a></li>
+  <li><a href="#bewerkingen-met-deelruimten-3" id="toc-bewerkingen-met-deelruimten-3" class="nav-link" data-scroll-target="#bewerkingen-met-deelruimten-3">Bewerkingen met deelruimten</a></li>
+  </ul></li>
+  <li><a href="#algebras" id="toc-algebras" class="nav-link" data-scroll-target="#algebras">Algebras</a>
+  <ul class="collapse">
+  <li><a href="#algebras-1" id="toc-algebras-1" class="nav-link" data-scroll-target="#algebras-1">Algebras</a></li>
+  <li><a href="#algebras-2" id="toc-algebras-2" class="nav-link" data-scroll-target="#algebras-2">Algebras</a></li>
+  </ul></li>
+  <li><a href="#samenvatting" id="toc-samenvatting" class="nav-link" data-scroll-target="#samenvatting">Samenvatting</a>
+  <ul class="collapse">
+  <li><a href="#samenvatting-1" id="toc-samenvatting-1" class="nav-link" data-scroll-target="#samenvatting-1">Samenvatting</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hoofdstuk 1 - Elementaire wiskundige structuren</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jutho Haegeman </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 21, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="doel-van-dit-hoofdstuk" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+<div class="hidden">
+<p>$$ % Math operators % % </p>
+% VECTORS
+<p>% specifically for vectors in F^n </p>
+% MATRICES
+<p>% SCALARS </p>
+% LINEAR MAPS
+<p>% FIELDS </p>
+<p>% RELATIONS </p>
+<p>$$</p>
+</div>
+<ul>
+<li><p>Belangrijkste wiskundige concepten:</p>
+<p>Herhaling (voornamelijk)</p></li>
+<li><p>Notatie en terminologie</p></li>
+<li><p>Weinig voorbeelden om beknopt te blijven</p></li>
+</ul>
+</section>
+<section id="doel-van-dit-hoofdstuk-1" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk-1">Doel van dit hoofdstuk</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="algebraicstructures.svg" class="nostretch img-fluid figure-img" width="700"></p>
+</figure>
+</div>
+</section>
+<section id="verzamelingen-en-afbeeldingen" class="level1">
+<h1>Verzamelingen en afbeeldingen</h1>
+<section id="verzamelingen" class="level2">
+<h2 class="anchored" data-anchor-id="verzamelingen">Verzamelingen</h2>
+<ul>
+<li>verzameling met hoofdletters <span class="math inline">A, B, \ldots</span></li>
+<li>elementen <span class="math inline">a, b, c \in A</span> met kleine letters</li>
+<li>deelverzameling <span class="math inline">B \subseteq A</span></li>
+<li>unie <span class="math inline">A \cup B</span>, doorsnede <span class="math inline">A \cap B</span>, verschil <span class="math inline">A \setminus B</span></li>
+<li>complement van een deelverzameling <span class="math inline">B \subseteq A</span>: <span class="math inline">B^{\text{c}} = \{ a \in A | a \not\in B\}</span></li>
+<li>Cartesisch product <span class="math inline">A \times B = \{(a,b); \forall a \in A, \forall b \in B \}</span></li>
+</ul>
+</section>
+<section id="verzamelingen-1" class="level2">
+<h2 class="anchored" data-anchor-id="verzamelingen-1">Verzamelingen</h2>
+<ul>
+<li>belangrijkste verzamelingen:
+<ul>
+<li>lege verzameling <span class="math inline">\{\}</span></li>
+<li>natuurlijke getallen <span class="math inline">{\mathbb{N}}= \{0,1,2,\ldots\}</span>, <span class="math inline">{\mathbb{N}}_0 = {\mathbb{N}}\setminus \{0\}</span></li>
+<li>gehele getallen <span class="math inline">{\mathbb{Z}}</span></li>
+<li>rationale getallen <span class="math inline">{\mathbb{Q}}</span></li>
+<li>reële getallen <span class="math inline">{\mathbb{R}}</span></li>
+<li>niet-negatieve getallen <span class="math inline">{\mathbb{R}}_{\geq 0}</span>, positieve getallen <span class="math inline">{\mathbb{R}}_{&gt;0}</span></li>
+<li><span class="math inline">\overline{{\mathbb{R}}} = {\mathbb{R}}\cup \{-\infty,+\infty\}</span></li>
+<li>complexe getallen <span class="math inline">{\mathbb{C}}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="afbeeldingen" class="level2">
+<h2 class="anchored" data-anchor-id="afbeeldingen">Afbeeldingen</h2>
+<ul>
+<li><span class="math inline">\varphi: A \to B : a \mapsto \varphi(a)</span>:
+<ul>
+<li>afbeelding <span class="math inline">\varphi</span>, domein <span class="math inline">A</span>, codomein <span class="math inline">B</span></li>
+<li>argument <span class="math inline">a</span>, waarde of beeld <span class="math inline">\varphi(a)</span></li>
+<li>beeld van <span class="math inline">C \subseteq A</span>: <span class="math inline">\varphi(C) = \{\varphi(a) | a \in C\}</span></li>
+<li>invers beeld (preimage) van <span class="math inline">D \subseteq B</span>: <span class="math inline">\varphi^{-1}(D) = \{a \in A | \varphi(a) \in D\}</span></li>
+</ul></li>
+<li>compositie <span class="math inline">\varphi \circ \psi</span>, identiteitsafbeelding <span class="math inline">\mathop{\mathrm{id}}_A</span></li>
+</ul>
+</section>
+<section id="afbeeldingen-1" class="level2">
+<h2 class="anchored" data-anchor-id="afbeeldingen-1">Afbeeldingen</h2>
+<ul>
+<li>injectief: elk element <span class="math inline">b \in B</span> is het beeld van ten hoogste één <span class="math inline">a \in A</span>, of dus <span class="math inline">\varphi^{-1}(\{b\})</span> bevat 0 of 1 elementen</li>
+<li>surjectief: elk element <span class="math inline">b \in B</span> is het beeld van minstens één <span class="math inline">a \in A</span>, of dus <span class="math inline">\varphi(A) = B</span></li>
+<li>bijectief: injectief en surjectief, elk element <span class="math inline">b \in B</span> is het beeld van exact één <span class="math inline">a \in A</span>
+<ul>
+<li>inverse afbeelding <span class="math inline">a = \varphi^{-1}(b)</span></li>
+<li><span class="math inline">\varphi^{-1} \circ \varphi = \mathop{\mathrm{id}}_A</span>, <span class="math inline">\varphi \circ \varphi^{-1} = \mathop{\mathrm{id}}_B</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="kardinaliteit" class="level2">
+<h2 class="anchored" data-anchor-id="kardinaliteit">Kardinaliteit</h2>
+<p>Kardinaliteit = aantal elementen in een verzameling</p>
+<p>Notatie: <span class="math inline">\vert A \vert</span> of <span class="math inline">\# A</span></p>
+<ul>
+<li><p>Eindig: <span class="math inline">I_n = \{1,2,\ldots,n\} \Rightarrow \vert I_n\vert = n</span></p></li>
+<li><p>Oneindig:</p>
+<ul>
+<li><p>Aftelbaar: <span class="math inline">{\mathbb{N}}</span>, <span class="math inline">{\mathbb{Z}}</span>, <span class="math inline">{\mathbb{Q}}</span></p>
+<p>Je kan de elementen nummeren = bijectie met <span class="math inline">{\mathbb{N}}</span></p></li>
+<li><p>Onaftelbaar: <span class="math inline">{\mathbb{R}}</span>, <span class="math inline">{\mathbb{C}}</span></p></li>
+</ul></li>
+<li><p>Werken met oneindige cardinaliteit:</p>
+<p><span class="math inline">\vert A \vert \leq \vert B \vert \Leftrightarrow</span> er bestaat een injectieve afbeelding van <span class="math inline">A</span> naar <span class="math inline">B</span></p></li>
+</ul>
+</section>
+<section id="relaties" class="level2">
+<h2 class="anchored" data-anchor-id="relaties">Relaties</h2>
+<p>Relatie tussen elementen <span class="math inline">a \in A</span> en <span class="math inline">b \in B</span> = deelverzameling van koppels <span class="math inline">(a,b) \in A \times B</span></p>
+</section>
+<section id="relaties-1" class="level2">
+<h2 class="anchored" data-anchor-id="relaties-1">Relaties</h2>
+<ol type="1">
+<li>Equivalentierelatie <span class="math inline">\sim</span> tussen elementen <span class="math inline">a, b, c \in A</span>
+<ul>
+<li>Definitie
+<ul>
+<li>reflexiviteit: <span class="math inline">a \sim a</span> voor alle <span class="math inline">a \in A</span></li>
+<li>symmetrie: <span class="math inline">a \sim b</span> impliceert <span class="math inline">b \sim a</span></li>
+<li>transitiviteit: <span class="math inline">a \sim b</span> en <span class="math inline">b \sim c</span> impliceert <span class="math inline">a \sim c</span></li>
+</ul></li>
+<li>Equivalentieklasse <span class="math inline">[a] = \{b \in A | b \sim a\}</span>
+<ul>
+<li>verschillende equivalentieklassen zijn disjunct: <span class="math inline">\lnot(a \sim b) \Rightarrow [a] \cap [b] = \{\}</span></li>
+<li>equivalentieklassen partitioneren <span class="math inline">A</span></li>
+<li>quotiëntverzameling <span class="math inline">A/ \sim</span> = verzameling van equivalentieklassen</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="relaties-2" class="level2">
+<h2 class="anchored" data-anchor-id="relaties-2">Relaties</h2>
+<ol type="1">
+<li>Equivalentierelatie <span class="math inline">\sim</span> tussen elementen <span class="math inline">a, b, c \in A</span>
+<ul>
+<li><p>Voorbeeld (dat vaak terugkomt):</p>
+<p><span class="math inline">\forall a,b \in {\mathbb{Z}}</span>, <span class="math inline">a \sim b \Leftrightarrow (b-a) \in n {\mathbb{Z}}</span></p>
+<p><span class="math inline">[a] = \{ b \in {\mathbb{Z}}| b \mod n = a\}</span></p>
+<p><span class="math inline">{\mathbb{Z}}/ \sim = {\mathbb{Z}}/ (n {\mathbb{Z}})</span></p>
+<p>in fysica: <span class="math inline">{\mathbb{Z}}_n</span>: gehele getallen modulo <span class="math inline">n</span></p></li>
+</ul></li>
+</ol>
+</section>
+<section id="relaties-3" class="level2">
+<h2 class="anchored" data-anchor-id="relaties-3">Relaties</h2>
+<ol start="2" type="1">
+<li>Partiële orde relatie <span class="math inline">a \preccurlyeq b</span> tussen elementen <span class="math inline">a, b \in A</span>
+<ul>
+<li>Definitie
+<ul>
+<li>reflexiviteit: <span class="math inline">a \preccurlyeq a</span> voor alle <span class="math inline">a \in A</span></li>
+<li>anitsymmetrie: <span class="math inline">a \preccurlyeq b \land b \preccurlyeq a</span> impliceert <span class="math inline">a=b</span></li>
+<li>transitiviteit: <span class="math inline">a \preccurlyeq b</span> en <span class="math inline">b \preccurlyeq c</span> impliceert <span class="math inline">a \preccurlyeq c</span></li>
+</ul></li>
+<li>Eigenschappen:
+<ul>
+<li><p>grootste element <span class="math inline">a</span>: <span class="math inline">b \preccurlyeq a</span> voor alle <span class="math inline">b \in A</span></p>
+<p>(uniek maar hoeft niet te bestaan)</p></li>
+<li><p>maximaal element <span class="math inline">a</span>: <span class="math inline">a \preccurlyeq b</span> impliceert <span class="math inline">b = a</span></p>
+<p>(niet uniek)</p></li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="groepen-ringen-en-velden" class="level1">
+<h1>Groepen, ringen en velden</h1>
+<section id="bineaire-operatie" class="level2">
+<h2 class="anchored" data-anchor-id="bineaire-operatie">Bineaire operatie</h2>
+<p>Een afbeelding <span class="math inline">\cdot: A \times A \to A: (a,b) \mapsto a \cdot b</span></p>
+<p>Mogelijke eigenschappen (<span class="math inline">\forall a, b, c \in A</span>)</p>
+<ul>
+<li>Associativiteit: <span class="math inline">a \cdot (b \cdot c) = (a \cdot b) \cdot c</span></li>
+<li>Neutraal element: <span class="math inline">\exists e \in A : a \cdot e = a = e \cdot a</span></li>
+<li>Inverses: <span class="math inline">\exists a^{-1} \in A: a \cdot a^{-1} = a^{-1} \cdot a = e</span></li>
+<li>Commutativiteit: <span class="math inline">a \cdot b = b \cdot a</span></li>
+</ul>
+</section>
+<section id="groep" class="level2">
+<h2 class="anchored" data-anchor-id="groep">Groep</h2>
+<p>Een groep <span class="math inline">(G, \cdot)</span> is een verzameling <span class="math inline">G</span> met een associatieve binaire operatie <span class="math inline">\cdot</span> die een neutraal element en inverses heeft.</p>
+<p>Indien de groepsoperatie ook commutatief is wordt de groep meestal een Abelse groep genoemd en de operatie meestal genoteerd als <span class="math inline">+</span></p>
+<ul>
+<li>Voorbeelden: <span class="math inline">({\mathbb{Z}}, +)</span>, <span class="math inline">({\mathbb{Z}}_n, +_{\bmod n})</span></li>
+<li>Groepen in de fysica: symmetrieën
+<ul>
+<li>Ruimtelijk: translaties, rotaties, reflecties</li>
+<li>Interne symmetrieën: vooral kwantum</li>
+</ul></li>
+<li>Triviale groep: <span class="math inline">(\{e\}, \cdot)</span> (steeds neutraal element!)</li>
+</ul>
+</section>
+<section id="homomorfisme" class="level2">
+<h2 class="anchored" data-anchor-id="homomorfisme">Homomorfisme</h2>
+<p>Homomorfisme = structuurbewarende afbeelding</p>
+<p>Groepshomomorfisme <span class="math inline">\varphi</span> van <span class="math inline">(G, \cdot)</span> naar <span class="math inline">(H, \circ)</span>: <span class="math inline">\varphi(g_1 \cdot g_2) = \varphi(g_1) \circ \varphi(g_2)</span></p>
+<p>Bijkomende terminologie:</p>
+<ul>
+<li>Endomorphisme: homorphisme van structuur naar zichzelf</li>
+<li>Isomorphisme: bijectief homomorfisme (notatie vaak <span class="math inline">\phi</span>)</li>
+<li>Automorphisme: bijectief endomorfisme</li>
+</ul>
+</section>
+<section id="automorfismegroep" class="level2">
+<h2 class="anchored" data-anchor-id="automorfismegroep">Automorfismegroep:</h2>
+<p>Voor elke verzameling <span class="math inline">A</span>, met eventuele structuur (groep, partiële order, ring, veld, vectorruimte, …):</p>
+<p>De verzameling <span class="math inline">\mathop{\mathrm{Aut}}(A)</span> van alle mogelijke automorfismen van <span class="math inline">A</span> met als binaire operatie <span class="math inline">\circ</span> (compositie) heeft associativiteit, neutraal element <span class="math inline">\mathop{\mathrm{id}}_A</span> and inverses</p>
+<p><span class="math inline">\Rightarrow (\mathop{\mathrm{Aut}}(A), \circ)</span> is een groep: automorfismegroep van <span class="math inline">A</span> !</p>
+<p>Voorbeeld:</p>
+<ul>
+<li><span class="math inline">I_n = \{1,\ldots,n\}</span> zonder extra structuur</li>
+<li><span class="math inline">\Rightarrow \mathop{\mathrm{Aut}}(I_n) = S_n</span>, de permutatiegroep van <span class="math inline">n</span> elementen</li>
+</ul>
+</section>
+<section id="voorbeelden-van-homomorfismen" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeelden-van-homomorfismen">Voorbeelden van homomorfismen</h2>
+<ul>
+<li><p>Triviaal homomorfise van elke groep <span class="math inline">(G,\cdot)</span> naar triviale groep <span class="math inline">(\{e\},\cdot)</span>: <span class="math inline">\forall g \in G: \varphi(g) = e</span>.</p></li>
+<li><p>Met behulp van:</p>
+<ul>
+<li>Groep 1: <span class="math inline">{\mathbb{Z}}_n = \{0,1,\ldots,n-1\}</span> met <span class="math inline">+</span> modulo <span class="math inline">n</span></li>
+<li>Groep 2: <span class="math inline">C_n = \{\omega^k ; k=0,\ldots, n-1\}</span> met <span class="math inline">\omega = {\mathrm{e}}^{{\mathrm{i}}\frac{2\pi}{n}}</span> en vermenigvuldiging (cyclische groep)</li>
+</ul></li>
+<li><p>Isomorphisme: <span class="math inline">k \in {\mathbb{Z}}_n \mapsto \omega^k \in C_n</span></p>
+<p><span class="math inline">\Rightarrow</span> isomorfisme <span class="math inline">{\mathbb{Z}}_n \cong C_n</span></p></li>
+<li><p>Surjectief homomorphisme: <span class="math inline">a \in C_{2n} \mapsto a^2 \in C_{n}</span></p></li>
+<li><p>Injectief homomorphisme: <span class="math inline">k \in {\mathbb{Z}}_{n} \mapsto 2k \in {\mathbb{Z}}_{2n}</span></p></li>
+</ul>
+</section>
+<section id="voorbeelden-van-homomorfismen-1" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeelden-van-homomorfismen-1">Voorbeelden van homomorfismen</h2>
+<p>Van permutatiegroep <span class="math inline">S_n</span> naar <span class="math inline">{\mathbb{Z}}_2</span>:</p>
+<ul>
+<li>Ontbind een willekeure permutatie <span class="math inline">\sigma \in S_n</span> als een samenstelling van elementaire transposities <span class="math inline">\tau_{i,j}</span></li>
+<li>Aantal transposities modulo 2 hangt niet af van gekozen ontbinding: pariteit <span class="math inline">P(\sigma) \in {\mathbb{Z}}_2</span></li>
+<li><span class="math inline">\mathop{\mathrm{sgn}}(\sigma) = (-1)^{P(\sigma)} \in C_2</span></li>
+</ul>
+</section>
+<section id="groepsacties" class="level2">
+<h2 class="anchored" data-anchor-id="groepsacties">Groepsacties</h2>
+<ul>
+<li><p>Gegeven een verzameling <span class="math inline">A</span> (configuratieruimte van een fysisch systeem), beschrijf hoe elementen <span class="math inline">g</span> van een groep <span class="math inline">G</span> (symmetrietransformaties) inwerkt op de elementen <span class="math inline">a \in A</span> en ze transformeert naar nieuwe elementen <span class="math inline">b \in A</span></p></li>
+<li><p>Met elke <span class="math inline">g \in G</span> moeten we dus een afbeelding <span class="math inline">A \to A</span> associeren, meer bepaald een automorphisme.</p>
+<p><span class="math inline">\Rightarrow</span> groepsactie is homomorphisme van <span class="math inline">G</span> naar <span class="math inline">\mathop{\mathrm{Aut}}(A)</span></p></li>
+<li><p>Wanneer <span class="math inline">A</span> een (eindig-dimensionale) vectorruimte is, is <span class="math inline">\mathop{\mathrm{Aut}}(A)</span> isomorf met de verzameling van inverteerbare matrices en wordt een groepsactie een <strong>representatie</strong> genoemd.</p></li>
+</ul>
+</section>
+<section id="deelgroepen-en-kern" class="level2">
+<h2 class="anchored" data-anchor-id="deelgroepen-en-kern">Deelgroepen en kern</h2>
+<ul>
+<li>Deelgroep <span class="math inline">H</span>: een deelverzameling <span class="math inline">H \subseteq G</span> die tevens nog steeds een groep is</li>
+<li>Normale subgroep: een subgroep <span class="math inline">N \subseteq G</span> zodat <span class="math inline">g n g^{-1} \in N</span> voor alle <span class="math inline">g \in G</span> en <span class="math inline">n \in N</span></li>
+<li>Voor een homomorphisme <span class="math inline">\varphi:(G,\cdot) \to (H,\circ)</span>
+<ul>
+<li>is het beeld <span class="math inline">\varphi(G)</span> een subgroep van <span class="math inline">H</span></li>
+<li>is het invers beeld <span class="math inline">\varphi^{-1}(e_H)</span> een normale subgroup van <span class="math inline">G</span>, die de naam <span class="math inline">\mathop{\mathrm{ker}}(\varphi)</span> krijgt</li>
+<li><span class="math inline">\mathop{\mathrm{ker}}(\varphi) = \{e_G\} \Leftrightarrow \varphi</span> is injectief</li>
+</ul></li>
+</ul>
+</section>
+<section id="quotientgroep" class="level2">
+<h2 class="anchored" data-anchor-id="quotientgroep">Quotientgroep</h2>
+<ul>
+<li>Quotientgroup <span class="math inline">G/N</span> voor <span class="math inline">N</span> normale subgroep van <span class="math inline">G</span>:
+<ul>
+<li><p><span class="math inline">g \sim h</span> als <span class="math inline">g^{-1} h \in N</span>, en dus ook <span class="math inline">h g^{-1} \in N</span></p></li>
+<li><p><span class="math inline">[g] = \{g \cdot n, \forall n \in N\} = \{n'\cdot g, \forall n \in N\}</span></p></li>
+<li><p><span class="math inline">G/N</span>: groep van equivalentieklassen met operatie</p>
+<p><span class="math inline">[g_1] \cdot [g_2] = [g_1 \cdot g_2]</span></p>
+<p>hangt niet af van gekozen representant: <span class="math inline">(g_1 \cdot n_1) \cdot (g_2 \cdot n_2) = (g_1 \cdot g_2) \cdot (g_2^{-1} \cdot n_1 \cdot g_2) \cdot n_2</span> <span class="math inline">= (g_1 \cdot g_2) \cdot n_1' \cdot n_2 = (g_1 \cdot g_2) \cdot n_3</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="ring" class="level2">
+<h2 class="anchored" data-anchor-id="ring">Ring</h2>
+<p>Abelse groep <span class="math inline">(R, +)</span> met tweede binaire operatie <span class="math inline">\cdot</span> die associatief is en een neutraal element heeft, met bijkomende distributiviteitseigenschap:</p>
+<p><span class="math inline">a \cdot (b + c) = a\cdot b + a \cdot c</span>; <span class="math inline">(b+c) \cdot a = b \cdot a + c \cdot a</span></p>
+<p>Voorbeelden:</p>
+<ul>
+<li><p><span class="math inline">({\mathbb{Z}}, +, \cdot)</span> en <span class="math inline">({\mathbb{Z}}_n, +_{\bmod n}, \cdot_{\bmod n})</span></p></li>
+<li><p>triviale ring <span class="math inline">(\{0=1\}, +, \cdot)</span></p></li>
+<li><p><span class="math inline">R[x]</span>: polynomen in <span class="math inline">x</span> met coefficienten uit ring <span class="math inline">R</span></p></li>
+<li><p><span class="math inline">R^{n \times n}</span>: <span class="math inline">n \times n</span> matrices met elementen uit <span class="math inline">R</span></p>
+<p>(in dat geval is <span class="math inline">\cdot</span> niet commutatief)</p></li>
+</ul>
+</section>
+<section id="ring-1" class="level2">
+<h2 class="anchored" data-anchor-id="ring-1">Ring</h2>
+<p>In een ring is er een neutraal element <span class="math inline">0</span> van <span class="math inline">+</span> en een neutraal element <span class="math inline">1</span> van <span class="math inline">\cdot</span>. Verder kunnen er nog elementen zijn met een speciale rol:</p>
+<ul>
+<li>Idempotent: <span class="math inline">a \cdot a = a</span></li>
+<li>Nilpotent met index <span class="math inline">p</span>: <span class="math inline">a^p = 0</span></li>
+<li>Multiplicatief invers element: <span class="math inline">a^{-1}</span> zodat <span class="math inline">a^{-1}\cdot a = a\cdot a^{-1} = 1</span></li>
+<li>Nuldeler: <span class="math inline">a b = 0</span> voor minstens 1 element <span class="math inline">b \neq 0</span>.</li>
+</ul>
+</section>
+<section id="ring-en-veld" class="level2">
+<h2 class="anchored" data-anchor-id="ring-en-veld">Ring en veld</h2>
+<ul>
+<li>Het additief neutraal element <span class="math inline">0</span> heeft nooit een multiplicatief inverse</li>
+<li>Een ring waarbij elk niet-<span class="math inline">0</span> element een multiplicatief inverse heeft: lichaam / delingsring</li>
+<li>Een delingsring waarbij <span class="math inline">\cdot</span> commutatief is: <strong>veld</strong></li>
+</ul>
+<p>Voorbeeld van velden: <span class="math inline">{\mathbb{Q}}</span>, <span class="math inline">{\mathbb{R}}</span>, <span class="math inline">{\mathbb{C}}</span>, <span class="math inline">{\mathbb{Z}}_p</span> voor <span class="math inline">p</span> priem</p>
+<p>Algebraisch gesloten veld: elke niet-constante veelterm heeft een nulpunt <span class="math inline">\Rightarrow {\mathbb{C}}</span></p>
+<p>Belangrijkste voorbeeld van delingsring: quaternionen <span class="math inline">{\mathbb{H}}</span></p>
+</section>
+</section>
+<section id="vectorruimten" class="level1">
+<h1>Vectorruimten</h1>
+<section id="vectorruimte" class="level2">
+<h2 class="anchored" data-anchor-id="vectorruimte">Vectorruimte</h2>
+<p>Een vectorruimte <span class="math inline">V=\{{o}_V, {v},{w},\ldots\}</span> over een veld <span class="math inline">{\mathbb{F}}=\{0,1,a,b,c,\ldots)</span> (scalairen genoemd) is een abelse groep <span class="math inline">(V,+)</span> met een afbeelding <span class="math inline">{\mathbb{F}}\times V \to V</span> (vermenigvuldigen met scalairen), met als eigenschappen</p>
+<ul>
+<li><span class="math inline">a({v}+ {w}) = a {v}+ a {w}</span></li>
+<li><span class="math inline">(a+b) {v}= a {v}+ b {v}</span></li>
+<li><span class="math inline">a (b {v}) = (a b) {v}</span></li>
+<li><span class="math inline">1 {v}= vv</span></li>
+</ul>
+<p>Andere verwachte eigenschappen volgen, zoals <span class="math inline">0 {v}= {o}_V</span>, <span class="math inline">\ldots</span></p>
+<p><span class="math inline">{\mathbb{F}}</span> is typisch <span class="math inline">{\mathbb{R}}</span> of <span class="math inline">{\mathbb{C}}</span></p>
+</section>
+<section id="voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeelden">Voorbeelden</h2>
+<ul>
+<li>Triviale vector ruimte: <span class="math inline">\{{o}\}</span> (voor om het even welk veld)</li>
+<li><span class="math inline">{\mathbb{F}}^n = {\mathbb{F}}\times {\mathbb{F}}\times \cdots \times {\mathbb{F}}</span>: n-tuples
+<ul>
+<li>meestal voorgesteld als kolom</li>
+<li>elementen genoteerd in het vet: <span class="math inline">\boldsymbol{v}\in {\mathbb{F}}^n</span></li>
+<li>elementsgewijze optelling en vermenigvuldiging met scalairen</li>
+<li>in het bijzonder: <span class="math inline">{\mathbb{F}}^1 \cong {\mathbb{F}}</span> als veld over zichzelf</li>
+</ul></li>
+<li><span class="math inline">{\mathbb{C}}</span> als veld over <span class="math inline">{\mathbb{R}}</span>: het complexe vlak</li>
+<li>analoog: <span class="math inline">{\mathbb{H}}</span> als veld over <span class="math inline">{\mathbb{R}}</span>, of over <span class="math inline">{\mathbb{C}}</span></li>
+<li><span class="math inline">{\mathbb{F}}^{m\times n}</span>: <span class="math inline">m \times n</span> matrices, opnieuw met componentsgewijze optelling en vermenigvuldiging met scalairen (≠ matrixvermenigvuldiging)</li>
+</ul>
+</section>
+<section id="deelruimten" class="level2">
+<h2 class="anchored" data-anchor-id="deelruimten">Deelruimten</h2>
+<ul>
+<li>Deelverzameling <span class="math inline">W</span> van een vectorruimte <span class="math inline">V</span> die gesloten is onder vectoroptelling (=deelgroep) en vermenigvuldiging met scalairen</li>
+<li>Notatie: <span class="math inline">W {\preccurlyeq}V</span></li>
+<li>Triviale deelruimte: <span class="math inline">\{{o}_V\}</span></li>
+<li>Eigenlijke deelruimte: <span class="math inline">W \neq \{{o}_V\}</span> en <span class="math inline">W \neq V</span></li>
+</ul>
+</section>
+<section id="meer-voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="meer-voorbeelden">Meer voorbeelden</h2>
+<ul>
+<li>Vectorruimte <span class="math inline">{\mathbb{F}}^{\mathcal{D}}</span>: functies van een bepaald domein <span class="math inline">\mathcal{D}</span> (bvb <span class="math inline">{\mathbb{R}}</span> of <span class="math inline">{\mathbb{R}}^3</span>) naar <span class="math inline">{\mathbb{F}}</span>
+<ul>
+<li>puntsgewijze optelling en vermenigvuldiging met scalairen</li>
+</ul></li>
+<li>Voor <span class="math inline">\mathcal{D} \subseteq {\mathbb{R}}^n</span>: Optelling en scalaire vermenigvuldiging behoudt de meeste analytische eigenschappen, dus interessante deelruimtes:
+<ul>
+<li>Continue functies: <span class="math inline">C(\mathcal{D},{\mathbb{F}})</span></li>
+<li><span class="math inline">k</span>-maal continue afleidbare functies: <span class="math inline">C^k(\mathcal{D},{\mathbb{F}})</span></li>
+<li>gladde functies: <span class="math inline">C^{\infty}(\mathcal{D},{\mathbb{F}})</span></li>
+<li>analytische functies <span class="math inline">C^{\omega}(\mathcal{D},{\mathbb{F}})</span> (functies met convergerende Taylorreeks binnen <span class="math inline">\mathcal{D}</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="homomorfismen" class="level2">
+<h2 class="anchored" data-anchor-id="homomorfismen">Homomorfismen</h2>
+<p>Structuurbehoudende afbeelding tussen twee vectorruimten <span class="math inline">V</span> and <span class="math inline">W</span>:</p>
+<p><span class="math inline">\varphi:V\to W</span> met <span class="math inline">\varphi (a^1 {v}_1 + a^2 {v}_2) = a^1 \varphi({v}_1) + a^2 \varphi({v}_2)</span></p>
+<ul>
+<li><p>vector-homomorfismen <span class="math inline">\mathop{\mathrm{Hom}}(V,W)</span>:</p>
+<p><strong>lineaire afbeeldingen</strong> <span class="math inline">\rightarrow</span> Hoofdstuk 2</p></li>
+<li><p>vector-endomorfismen <span class="math inline">\mathop{\mathrm{End}}(V) = \mathop{\mathrm{Hom}}(V,V)</span>:</p>
+<p><strong>lineaire operatoren</strong> <span class="math inline">\rightarrow</span> Hoofdstuk 3</p></li>
+<li><p>vector-isomorfismen:</p>
+<p><strong>lineaire transformaties</strong></p></li>
+<li><p>vector-automorfismegroep <span class="math inline">\mathop{\mathrm{GL}}(V)</span>:</p>
+<p><strong>algemeen lineaire groep</strong></p></li>
+</ul>
+</section>
+<section id="lineaire-combinaties" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-combinaties">Lineaire combinaties</h2>
+<p>Gegeven een deelverzameling <span class="math inline">S \subseteq V</span> van een vectorruimte <span class="math inline">V</span> over <span class="math inline">{\mathbb{F}}</span> (dus niet noodzakelijk een deelruimte):</p>
+<ul>
+<li>Een lineaire combinatie uit <span class="math inline">S</span> is elke vector <span class="math inline">{v}= \sum_{i=1}^m a^i {v}_i</span> met <span class="math inline">a^i \in {\mathbb{F}}</span>, <span class="math inline">{v}_i \in S</span> voor <span class="math inline">i=1,\ldots,m</span> voor een eindige integer <span class="math inline">m</span></li>
+</ul>
+</section>
+<section id="lineaire-span-en-compleetheid" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-span-en-compleetheid">Lineaire span en compleetheid</h2>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{span}}(S)</span> of <span class="math inline">{\mathbb{F}}S</span> is de verzameling van alle lineaire combinaties uit <span class="math inline">S</span>; dit is een deelruimte: <span class="math inline">\mathop{\mathrm{span}}(S) {\preccurlyeq}V</span></p></li>
+<li><p>Deelruimte <span class="math inline">W</span> is <strong>voortgebracht</strong> door <span class="math inline">S</span> als <span class="math inline">\mathop{\mathrm{span}}(S)=W</span></p></li>
+<li><p><span class="math inline">\mathop{\mathrm{span}}(\{\}) = \{{o}_V\}</span></p></li>
+<li><p><span class="math inline">S</span> is <strong>compleet</strong> als <span class="math inline">\mathop{\mathrm{span}}(S)=V</span></p></li>
+<li><p>Als de kleinste verzameling <span class="math inline">S</span> waarvoor <span class="math inline">\mathop{\mathrm{span}}(S)=V</span> een eindige kardinaliteit <span class="math inline">|S|=n</span> heeft, dan wordt <span class="math inline">V</span> een <strong><span class="math inline">n</span>-dimensionale vectorruimte</strong> genoemd: <span class="math inline">\mathop{\mathrm{dim}}(V)=n</span></p></li>
+<li><p>Als er geen eindige verzameling <span class="math inline">S</span> bestaat waarvoor <span class="math inline">\mathop{\mathrm{span}}(S)=V</span>, dan wordt <span class="math inline">V</span> een <strong>oneindig-dimensionale vectorruimte</strong> genoemd</p></li>
+</ul>
+</section>
+<section id="lineaire-onafhankelijkheid-en-basis" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-onafhankelijkheid-en-basis">Lineaire onafhankelijkheid en basis</h2>
+<ul>
+<li><p>Een deelverzameling <span class="math inline">S \subseteq V</span> van een vectorruimte <span class="math inline">V</span> over <span class="math inline">{\mathbb{F}}</span> wordt <strong>lineair onafhankelijk</strong> genoemd als voor elke lineaire combinatie <span class="math inline">\sum_{i=1}^m a^i {v}_i</span> geldt dat de vergelijking <span class="math inline">\sum_{i=1}^m a^i {v}_i = {o}_V</span> impliceert dat <span class="math inline">a^i = 0</span> voor <span class="math inline">i=1,\ldots,m</span>.</p></li>
+<li><p>Een verzameling <span class="math inline">S</span> die tegelijkertijd lineair onafhankelijk is en compleet is (<span class="math inline">V</span> voortbrengt) wordt een <em>basis</em> genoemd</p></li>
+<li><p>Voorbeeld: <span class="math inline">\{\boldsymbol{e}_i =(0,\ldots,\underbrace{0,1,0}_{\text{positie $i$}},\ldots,0); i=1,\ldots,n\}</span> is een basis voor <span class="math inline">{\mathbb{F}}^n</span></p></li>
+</ul>
+</section>
+<section id="basis-eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="basis-eigenschappen">Basis: eigenschappen</h2>
+<ul>
+<li><p>Uit elke complete verzameling <span class="math inline">S</span> kunnen we een basis <span class="math inline">B\subseteq S</span> extraheren</p></li>
+<li><p>Elke lineair onafhankelijke verzameling <span class="math inline">S</span> kunnen we uitbreiden tot een basis <span class="math inline">B \supseteq S</span></p></li>
+<li><p>Elke lineair onafhankelijke verzameling <span class="math inline">S</span> uit een <span class="math inline">n</span>-dimensionale vectorruimte heeft ten hoogste <span class="math inline">n</span> elementen</p></li>
+<li><p>Elke lineair onafhankelijke verzameling <span class="math inline">S</span> met <span class="math inline">n</span> elementen uit een <span class="math inline">n</span>-dimensionale vectorruimte is een basis, en elke basis heeft exact <span class="math inline">n</span> elementen</p></li>
+<li><p>Elke vectorruimte (ook oneindig-dimensionale) hebben een basis (Hamel-basis), maar die is vaak niet constructief en niet praktisch</p></li>
+</ul>
+</section>
+<section id="coordinaten-en-indexnotatie" class="level2">
+<h2 class="anchored" data-anchor-id="coordinaten-en-indexnotatie">Coordinaten en indexnotatie</h2>
+<p>Gegeven een basis <span class="math inline">B = \{{e}_i, i=1,\ldots,n\}</span> voor een eindig-dimensionale vectorruimte:</p>
+<ul>
+<li><p>Elke vector <span class="math inline">{v}\in V</span> kan 1-op-1 geassocieerd worden aan een <span class="math inline">n</span>-tuple <span class="math inline">\boldsymbol{v}=(v^1,\ldots,v^n) \in {\mathbb{F}}^n</span> zodat</p>
+<p><span class="math inline">{v}= \sum_{i=1}^n v^i {e}_i = v^i {e}_i</span> (Einstein sommatie-conventie)</p></li>
+<li><p><span class="math inline">\boldsymbol{v} = \phi_B({v})</span> met <span class="math inline">\phi_B:V \to {\mathbb{F}}^n</span>: coordinatenisomorfisme</p></li>
+<li><p>Elke <span class="math inline">n</span>-dimensionale vectorruimte is isomorf met <span class="math inline">{\mathbb{F}}^n</span></p></li>
+<li><p>Elke twee <span class="math inline">n</span>-dimensionale vectorruimten zijn isomorf: <span class="math inline">V \cong W</span></p></li>
+</ul>
+</section>
+<section id="indexnotatie" class="level2">
+<h2 class="anchored" data-anchor-id="indexnotatie">Indexnotatie</h2>
+<ul>
+<li><p>Coordinaten / componenten van een vector voorgesteld met contravariante index (bovenindex)</p></li>
+<li><p>Einstein-sommatieconventie: elk symbool dat éénmaal als bovenindex (contravariant) en éénmaal als benedenindex (covariant) voorkomt impliceert een sommatie over zijn bereik</p></li>
+<li><p>Kronecker-delta: <span class="math inline">\delta^i_j = \begin{cases} 1, i=j\\ 0, i \neq j\end{cases}</span></p></li>
+</ul>
+</section>
+<section id="bewerkingen-met-deelruimten" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-deelruimten">Bewerkingen met deelruimten</h2>
+<ul>
+<li><p><span class="math inline">W {\preccurlyeq}V</span> impliceert <span class="math inline">\mathop{\mathrm{dim}}(W) \leq \mathop{\mathrm{dim}}(V)</span></p></li>
+<li><p>Als <span class="math inline">V</span> eindig-dimensionaal is:</p>
+<p><span class="math inline">\mathop{\mathrm{dim}}(W) = \mathop{\mathrm{dim}}(V)</span> impliceert <span class="math inline">W = V</span></p></li>
+</ul>
+</section>
+<section id="bewerkingen-met-deelruimten-1" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-deelruimten-1">Bewerkingen met deelruimten</h2>
+<p>Voor deelruimten <span class="math inline">W_1,W_2 {\preccurlyeq}V</span>:</p>
+<ul>
+<li><span class="math inline">(W_1 \cap W_2)</span> is een deelruimte</li>
+<li><span class="math inline">W_1 + W_2 = {\mathbb{F}}(W_1 \cup W_2)</span> is een deelruimte:
+<ul>
+<li><p><span class="math inline">{v}= {w}_1 + {w}_2</span> voor een <span class="math inline">{w}_1 \in W_1</span> en <span class="math inline">{w}_2 \in W_2</span>.</p></li>
+<li><p><span class="math inline">\mathop{\mathrm{dim}}(W_1+W_2) = \mathop{\mathrm{dim}}(W_1) + \mathop{\mathrm{dim}}(W_2) - \mathop{\mathrm{dim}}(W_1 \cap W_2)</span></p></li>
+</ul></li>
+<li>als <span class="math inline">W_1 \cap W_2 = \{{o}\}</span>: <strong>(interne) directe som</strong> <span class="math inline">W_1 \oplus W_2</span>
+<ul>
+<li>ontbinding <span class="math inline">{v}= {w}_1 + {w}_2</span> met <span class="math inline">{w}_i \in W_i</span> (<span class="math inline">i=1,2</span>) is uniek</li>
+<li><span class="math inline">\mathop{\mathrm{dim}}(W_1 \oplus W_2) = \mathop{\mathrm{dim}}(W_1) + \mathop{\mathrm{dim}}(W_2)</span></li>
+</ul></li>
+<li><span class="math inline">\bigoplus_{i=1}^n W_i</span>: vereist dat <span class="math inline">W_{k+1} \cap \left(\bigoplus_{i=1}^{k} W_i\right) = \{{o}\}</span> voor <span class="math inline">k=1,2,\ldots,n-1</span></li>
+</ul>
+</section>
+<section id="bewerkingen-met-deelruimten-2" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-deelruimten-2">Bewerkingen met deelruimten</h2>
+<p>Voor vectorruimten <span class="math inline">V_1</span> en <span class="math inline">V_2</span>: <span class="math inline">V_1 \times V_2</span> is vectorruimte</p>
+<ul>
+<li>Vectorstructuur:
+<ul>
+<li><span class="math inline">({v}_1,{v}_2) + ({w}_1, {w}_2) = ({v}_1+{w}_1,{v}_2+{w}_2)</span></li>
+<li><span class="math inline">a ({v}_1, {v}_2)= (a {v}_1, a {v}_2)</span></li>
+</ul></li>
+<li>notatie: <span class="math inline">V_1 \oplus V_2</span>, naam: <strong>(externe) directe som</strong></li>
+<li><span class="math inline">{v}_1 \mapsto ({v}_1,{o}_{V_2})</span> en <span class="math inline">{v}_2 \mapsto ({o}_{V_1},{v}_2)</span> definiëren natuurlijke inbedding van <span class="math inline">V_1</span> en <span class="math inline">V_2</span> als deelruimten van <span class="math inline">V_1 \oplus V_2</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> geen onderscheid tussen interne en externe directe som</p>
+</section>
+<section id="bewerkingen-met-deelruimten-3" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-deelruimten-3">Bewerkingen met deelruimten</h2>
+<p>Gegeven een deelruimte <span class="math inline">W \subseteq V</span>:</p>
+<ul>
+<li>als <span class="math inline">V = W \oplus U</span>, dan is <span class="math inline">U</span> een <strong>complement</strong> van <span class="math inline">W</span> in <span class="math inline">V</span>
+<ul>
+<li>keuze voor complement <span class="math inline">U</span> is niet uniek</li>
+<li>voor elke keuze geldt <span class="math inline">\mathop{\mathrm{dim}}(U) = \mathop{\mathrm{dim}}(V) - \mathop{\mathrm{dim}}(W) = \mathop{\mathrm{codim}}(W)</span></li>
+</ul></li>
+<li><strong>quotientruimte</strong> <span class="math inline">V/W</span>:
+<ul>
+<li>equivalentierelatie <span class="math inline">{v}_1 \sim {v}_2 \Leftrightarrow ({v}_2-{v}_1) \in W</span></li>
+<li><span class="math inline">(W,+)</span> is normale subgroup van <span class="math inline">(V,+)</span></li>
+<li>equivalentieklassen: <span class="math inline">{v}+ W = \{{v}+ {w}; {w}\in W\}</span></li>
+<li><span class="math inline">\mathop{\mathrm{dim}}(V/W) = \mathop{\mathrm{dim}}(V) - \mathop{\mathrm{dim}}(W)</span></li>
+</ul></li>
+</ul>
+<!-- ## Affiene ruimte
+
+Gegeven een vectorruimte $V$, een geassocieerde affiene ruimte is een verzameling van punten $A = \{P, Q, \ldots\}$ waarop de abelse groep $(V,+)$ een groepsactie heeft, of dus
+
+* $\forall P \in A: P + \zerovec_V = P$
+* $\forall P \in A, \vv,\vw \in V: P + (\vv + \vw) = (P+\vv) + \vw$
+
+met bovendien:
+
+* als $P + \vv = P$ voor een bepaalde $P$, dan is $\vv = \zerovec_V$
+* $\forall P, Q \in A$: er bestaat een $\vv\in V$ zodat $Q = P + \vv$
+  * notatie: $\vv = Q - P$
+
+$A$ is zoals de vectorruimte $V$ die zijn oorsprong is vergeten -->
+</section>
+</section>
+<section id="algebras" class="level1">
+<h1>Algebras</h1>
+<section id="algebras-1" class="level2">
+<h2 class="anchored" data-anchor-id="algebras-1">Algebras</h2>
+<p>Een vectorruimte <span class="math inline">V</span> met een binaire operatie <span class="math inline">\odot: V \times V \mapsto V</span> die lineair is beide argumenten afzonderlijk (= bilineair)</p>
+<ul>
+<li><span class="math inline">(a^1 {v}_1 + a^2 {v}_2) \odot {w}= a^1 ({v}_1 \odot {w}) + a^2 ({v}_2 \odot {w})</span></li>
+<li><span class="math inline">{v}\odot (b^1 {w}_1 + b^2 {w}_2) = b^1 ({v}\odot {w}_1) + b^2 ({v}\odot {w}_2)</span></li>
+</ul>
+<p>Ten opzichte van een basis <span class="math inline">B = \{{e}_1,\ldots,{e}_n\}</span>:</p>
+<p><span class="math inline">(v^i {e}_i) \odot (w^j {e}_j) = v^i w^j ({e}_i \odot {e}_j) = v^i v^j \underbrace{f_{ij}^k}_{\text{structuurconstanten}} {e}_k</span></p>
+</section>
+<section id="algebras-2" class="level2">
+<h2 class="anchored" data-anchor-id="algebras-2">Algebras</h2>
+<ul>
+<li>Associatieve algebra <span class="math inline">(V,\cdot)</span>:
+<ul>
+<li><span class="math inline">({u}\cdot {v}) \cdot {w}= {u}\cdot ({v}\cdot {w})</span></li>
+<li>vaak ook met een neutraal element</li>
+<li>belangrijkste voorbeeld: vierkante matrices <span class="math inline">{\mathbb{F}}^{n \times n}</span> <!-- * **commutator**: $[\vv,\vw] = \vv \cdot \vw - \vw \cdot \vv$ --></li>
+</ul></li>
+<li>Alternerend product: <span class="math inline">{v}\odot {v}= 0 \Rightarrow {v}\odot {w}= -{w}\odot {v}</span>
+<ul>
+<li>automatisch antisymmetrisch / anticommutatief</li>
+<li>veralgemening naar antisymmetrische multilineaire vormen (Hoofdstuk 6)</li>
+<li>voorbeeld: vectorproduct <span class="math inline">\times</span> op <span class="math inline">{\mathbb{R}}^3</span></li>
+</ul></li>
+</ul>
+<!-- * Lie-algebra: algebra met alternered product, genoteerd als $[\vv, \vw] = -[\vw,\vv]$ dat voldoet aan Jacobi-identiteit
+
+  $[\vu,[\vv,\vw]] + [\vv,[\vw,\vu]] + [\vw,[\vu,\vv]] = 0$
+  
+  $\rightarrow$ kan gemaakt worden uit associatieve algebra m.b.v. commutator (controleer!) -->
+</section>
+</section>
+<section id="samenvatting" class="level1">
+<h1>Samenvatting</h1>
+<section id="samenvatting-1" class="level2">
+<h2 class="anchored" data-anchor-id="samenvatting-1">Samenvatting</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="algebraicstructures.svg" class="nostretch img-fluid figure-img" width="700"></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

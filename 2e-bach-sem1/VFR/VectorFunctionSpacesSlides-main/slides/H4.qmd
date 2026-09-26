@@ -1,0 +1,623 @@
+---
+title: "Hoofdstuk 4 - Normen en afstanden"
+author: "Jutho Haegeman"
+date: "10/21/2025"
+# format:
+#   revealjs:
+#     theme: solarized
+#     html-math-method: katex
+#     smaller: true
+#     chalkboard: true
+---
+
+## Doel van dit hoofdstuk
+
+
+::: {.hidden}
+$$
+% Math operators
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Unitary}{U}
+\DeclareMathOperator{\Orthogonal}{O}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{codom}
+\DeclareMathOperator{\D}{\mathcal{D}}
+\DeclareMathOperator{\E}{\mathcal{E}}
+\DeclareMathOperator{\R}{\mathcal{R}}
+\DeclareMathOperator{\Schw}{\mathcal{S}}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convhull}{co}
+
+\newcommand{\opgreek}[1]{\begingroup\mathgroup-1 #1\endgroup}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+
+\DeclareMathOperator{\Pv}{Pv}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\adj}{adj}
+
+\DeclareMathOperator*{\varmin}{min}
+\DeclareMathOperator*{\varmax}{max}
+\DeclareMathOperator*{\argmin}{arg\ min}
+\DeclareMathOperator*{\argmax}{arg\ max}
+\DeclareMathOperator{\order}{\mathscr{O}}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\sinc}{sinc}
+
+
+\newcommand{\commutator}[2]{{\left[#1,#2\right]}}
+\newcommand{\anticommutator}[2]{{\left\{#1,#2\right\}}}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\newcommand{\conj}[1]{{\overline{#1}}}
+\newcommand{\abs}[1]{{\left\lvert#1\right\rvert}}
+\newcommand{\norm}[1]{{\left\lVert#1\right\rVert}}
+\newcommand{\inner}[2]{{\left\langle#1,#2\right\rangle}}
+
+\newcommand{\drm}{{\mathrm{d}}}
+\newcommand{\erm}{{\mathrm{e}}}
+\newcommand{\irm}{{\mathrm{i}}}
+
+
+% VECTORS
+\newcommand{\vect}[1]{{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % specifically for vectors in F^n
+\newcommand{\zerovec}{{o}}
+\renewcommand{\vu}{\vect{u}}
+\newcommand{\vv}{\vect{v}}
+\newcommand{\vw}{\vect{w}}
+\newcommand{\ve}{\vect{e}}
+\newcommand{\vf}{\vect{f}}
+\newcommand{\vx}{\vect{x}}
+\newcommand{\vy}{\vect{y}}
+
+% MATRICES
+\newcommand{\mat}[1]{{\mathsf{#1}}}
+\newcommand{\zeromat}{\mat{O}}
+\newcommand{\idmat}{\mat{I}}
+
+% SCALARS
+\newcommand{\scalara}{{a}}
+\newcommand{\scalarb}{{b}}
+\newcommand{\scalarc}{{c}}
+
+% LINEAR MAPS
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+\newcommand{\map}[1]{{\hat{#1}}}
+\newcommand{\idmap}{\map{1}}
+\newcommand{\zeromap}{\map{0}}
+
+\newcommand{\transpose}{{\mathsf{T}}}
+\newcommand{\hermitian}{{\mathsf{H}}}
+
+\renewcommand{\d}{{\mathrm{d}}}
+
+% FIELDS
+\newcommand{\bbF}{{\mathbb{F}}}
+\newcommand{\bbN}{{\mathbb{N}}}
+\newcommand{\bbZ}{{\mathbb{Z}}}
+\newcommand{\bbQ}{{\mathbb{Q}}}
+\newcommand{\bbR}{{\mathbb{R}}}
+\newcommand{\bbC}{{\mathbb{C}}}
+\newcommand{\bbH}{{\mathbb{H}}}
+\newcommand{\bbT}{{\mathbb{T}}}
+
+% RELATIONS
+\newcommand{\subspace}{{\preccurlyeq}}
+\newcommand{\supspace}{{\succcurlyeq}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\levicivita}{{\epsilon}}
+
+\newcommand{\sx}{{\sigma^x}}
+\newcommand{\sy}{{\sigma^y}}
+\newcommand{\sz}{{\sigma^z}}
+\renewcommand{\sp}{{\sigma^+}}
+\newcommand{\sm}{{\sigma^-}}
+
+\DeclareMathOperator*{\sumint}{
+\mathchoice
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+$$
+:::
+
+* Concept van norm = lengte van een vector
+* Norm geeft aanleiding tot een afstand tussen vectoren
+* Vormt de basis om concepten uit analyse te importeren
+
+  (rijen, reeksen, continuïteit, …)
+
+# Genormeerde vectorruimten
+
+## Norm
+
+Gegeven een vectorruimte $V$. Een norm is een afbeelding $V \to \bbR : \vv \mapsto \norm{\vv}$ die voldoet aan
+
+* absolute homogeniteit: $\norm{\scalara \vv} = \abs{\scalara} \norm{\vv}$
+
+  $\Rightarrow \norm{\zerovec} = 0$ , 
+* subadditiviteit / driehoeksongelijkheid: $\norm{\vv + \vw } \leq \norm{\vv} + \norm{\vw}$
+
+  $\Rightarrow \norm{\zerovec} = 0 \leq \norm{\vv} + \norm{-\vv} = 2 \norm{\vv}$ 
+
+* positief definiet: $\norm{\vv} = 0 \Leftrightarrow \vv = 0$
+
+Voor de eerste eigenschap hebben we op het veld van scalairen $\bbF$ een **absolute waarde** $\abs{\scalara}$ nodig. Voor $\bbR$ en $\bbC$ komt dit overeen met de gekende definitie. 
+
+## Nuttige eigenschap
+
+$\norm{\vv} \leq \norm{\vw} + \norm{\vv - \vw}$ (uit driehoeksongelijkheid)
+
+$\implies \norm{\vv} - \norm{\vw} \leq \norm{\vv - \vw}$
+$\implies \abs{\norm{\vv} - \norm{\vw}} \leq \norm{\vv - \vw}$ (uit $\vv \leftrightarrow \vw$)
+
+## Voorbeelden:
+
+* $V = \bbF^n$: $\norm{\vv} = \sum_{i=1}^n \abs{v^i}$
+* $V = \bbR^2$: $\norm{(x,y)} = \sqrt{x^2 + y^2}$
+* $V = C(I,\bbF)$ voor een interval $I=[a,b] \subseteq \bbR$: $\norm{f} = \int_I \abs{f(x)}\,\drm x$ (zie later)
+
+## Hölder $p$-norm
+
+Voor $V = \bbF^n$ hebben we een familie van normen
+
+$$\norm{\vv}_p = \left[\sum_{i=1}^{n} \abs{v^i}^p\right]^{1/p}$$
+
+Speciale gevallen:
+
+* $p=1$: Manhattan norm
+* $p=2$: Euclidische norm $\rightarrow$ zie volgend hoofdstuk
+* limiet $p\to \infty$:
+  $$\norm{\vv}_\infty = \max \{\abs{\vv^i}, i=1,\ldots,n\}$$
+
+
+## Hölder $p$-norm
+
+* $\norm{\cdot}_p$ is absoluut homogeen en positief definiet per constructie.
+
+* driehoeksongelijkheid kunnen we in een aantal stappen bewijzen, waarvoor we $q = p/(p-1)$ invoeren, of dus $1/p + 1/q = 1$ (inclusief $p=1 \leftrightarrow q=\infty$ en vice versa):
+
+  * Young's ongelijkheid: $\forall a,b \in \bbR_{\geq 0}: ab \leq \frac{a^p}{p} + \frac{b^q}{q}$
+  * Hölder's ongelijkheid: $\sum_{i=1}^n \abs{v^i}\abs{w^i} \leq \norm{v}_p \norm{w}_q$
+  * Minkowski's ongelijkheid: $\norm{\vv+\vw}_p \leq \norm{\vv}_p + \norm{\vw}_p$
+
+## Hölder $p$-norm
+
+Uitbreiding naar oneindig-dimensionale ruimten:
+
+* $\ell^p(\bbN_0,\bbF) \subspace \bbF^{\bbN_0}$: de ruimte van alle rijen $(v^1,v^2,v^3,\ldots)$ waarvoor $\sum_{i=1}^{+\infty} \abs{v^i}^p$ convergeert naar een eindige waarde
+
+    * Minkowski's ongelijkheid is noodzakelijk om aan te tonen dat $\ell^p(\bbN_0,\bbF)$ een vectorruimte is
+
+    * norm $\norm{\vv}_p = \left[\sum_{i=1}^{+\infty} \abs{v^i}^p\right]^{1/p}$ is eindig
+
+    * speciaal geval $p=\infty$:
+    
+      $\norm{\vv}_\infty = \sup\{\abs{v^i}, i\in \bbN_0\}$ (supremum norm)
+
+      $\ell^\infty(\bbN_0,\bbF)$: ruimte van begrensde rijen
+
+  Bewijs van eigenschappen norm als limiet $n\to\infty$ van bewijs voor $\bbF^n$.
+
+## Hölder $p$-norm
+
+Uitbreiding naar oneindig-dimensionale ruimten:
+
+* Voor $V = C^0([a,b],\bbF)$: $\norm{f}_p = \left(\int_a^b \abs{f(x)}^p\,\drm x\right)^{1/p}$
+
+  * Continuïteit en compactheid van interval $[a,b]$ noodzakelijk om goed gedefinieerd te zijn (geen divergenties), en voor de eigenschap $\norm{f}_p=0 \implies f=0$
+  * Driehoeksongelijkheid kan op analoge manier bewezen worden
+  * Meer over functies in H7
+
+## Metrische ruimten
+
+Gegegeven een verzameling $X$, een metriek of afstandsfunctie is een functie $d:X \times X \to \bbR_{\geq 0}$ met eigenschappen:
+
+* $d(x,y) = 0 \iff x=y$
+* $d(x,y) = d(y,x)$
+* $d(x,y) + d(y,z) \geq d(x,z)$
+
+en dan noemen we $(X,d)$ een metrische ruimte
+(ruimte wijst niet noodzakelijk op vectorruimte)
+
+* Een genormeerde vectorruimte $(V,\norm{\cdot})$ wordt een metrische ruimte met de keuze $d(\vv,\vw) = \norm{\vv-\vw}$
+
+## Metrische ruimten
+
+Belang van metrische ruimten is dat we concepten uit analyse van functies $\bbR \to \bbR$ kunnen veralgemenen:
+
+* Convergentie van een rij $(x_n \in X)_{n \in \bbN_0}$:
+
+  * $\lim_{n \to \infty} x_n = x \iff \lim_{n \to \infty} d(x_n,x) = 0$
+
+  * of dus: $\forall \epsilon > 0, \exists N_\epsilon \in \bbN_0$ zodat $n \geq N_\epsilon \implies d(x,x_n) \leq \epsilon$
+
+
+* Continuïteit van $\Phi:X \to Y$ tussen metrische ruimten $(X,d_X)$ en $(Y,d_Y)$:
+
+  * $\Phi$ is continu in $x \in X$: $\lim_{n \to \infty} \Phi(x_n) = \Phi(x)$ voor alle rijen $(x_n)_{n \in\bbN_0}$ met $\lim_{n\to\infty} x_n = x$
+  * $\Phi$ is continu in $x \in X$: $\forall \epsilon > 0$, $\exists \delta_{\epsilon} > 0$ zodat $d_X(x',x) < \delta_\epsilon \implies d_Y(\Phi(x'),\Phi(x))<\epsilon$
+  * $\Phi$ continu in volledig $X$: $\lim_{n\to\infty}\Phi(x_n) = \Phi(\lim_{n\to\infty} x_n)$ voor alle convergerende rijen^[Voor een continue afbeelding $\Phi$ kan $\delta_\epsilon$ in de tweede definitie nog steeds afhangen van $x$. Is dat niet nodig, dan heet $\Phi$ ook "uniform continu".]
+
+## Metrische ruimten
+
+* Een afbeelding $\Phi:X \to Y$ tussen metrische ruimten $(X,d_X)$ en $(Y,d_Y)$ is **isometrisch** als $d_Y(\Phi(x),\Phi(x')) = d_X(x,x')$ voor alle $x,x'\in X$
+  * Een isometrische afbeelding is automatisch (uniform) continu ($\delta_\epsilon = \epsilon$)
+  * Een isometrische afbeelding is automatisch injectief
+  * Een bijectieve isometrische afbeelding definieert een isomorfisme tussen $(X, d_X)$ en $(Y, d_Y)$
+
+## Metrische ruimten
+
+Topologische concepten in een metrische ruimte $(X,d)$:
+
+* Open bol: $B_r(x) = \{x'\in X| d(x,x') < r\}$
+* Open (deel)verzameling $S$: $\forall x \in S, \exists r>0$ zodat $B_r(x) \subseteq S$
+* Gesloten deelverzameling $S$ als $S^\text{c} = X \setminus S$ open is
+  * $\Rightarrow$ een convergerende rij $(x_n \in S)$ voldoet aan $\lim_{n\to\infty} x_n \in S$
+  * $X$ and $\{\}$ zijn zowel open als gesloten
+* Sluiting $\overline{S}$: kleinste gesloten verzameling die $S$ bevat = $S$ en al zijn limietpunten
+* Dichte deelverzameling $S$: als $\overline{S} = X$ (bvb: $\overline{\mathbb{Q}}=\bbR$)
+* Begrensde verzameling $S$: $\exists M \in \bbR_{\geq 0}$ zodat $d(x,y)<M, \forall x,y \in S$
+* Compacte verzameling: zie verderop
+* $X$ is **separabel** (scheidbaar?) als $X$ een aftelbare dichte deelverzameling heeft
+
+## Continuïteit in genormeerde vectorruimte
+
+We beschouwen nu een genormeerde vectorruimte $(V,\norm{\cdot})$ als metrische ruimte met metriek $d(\vv,\vw) = \norm{\vv-\vw}$
+
+* De norm $\norm{\cdot}:V\to \bbR$ is zelf een continue afbeelding
+
+  $\Rightarrow$ voor een convergente rij $(v_n \in V)_{n\in\bbN_0}$ is de geassocieerde rij $(\norm{\vv_n})_{n\in\bbN_0}$ convergent (en dus begrensd)
+* Vector optelling $+:V \times V \to V$ en scalaire vermenigvuldiging $\bbF \times V \to V$ zijn continue afbeeldingen^[Hiervoor hebben we het volgende nodig: de productverzameling $X \times Y$ van twee metrische ruimten $(X, d_X)$ en $(Y, d_Y)$ is metrische ruimte, bevoorbeeld met metriek $d_{X,Y}((x,y), (x',y')) = d_X(x,x') + d_Y(y,y')$}]
+
+## Convergentie in functieruimten
+
+Beschouw opnieuw $C^0([a,b],\bbF)$ met nu de $p=\infty$-norm, welke zich herleidt tot:^[Extremumstelling van Weierstrass: $\sup$ wordt $\max$ voor continue $f$ begrensd interval $[a,b]$]
+
+$$\norm{f}_p = \sup_{x\in [a,b]}\abs{f(x)} = \max_{x\in[a,b]}\abs{f(x)}$$
+
+Convergentie: $\lim_{n\to \infty} f_n = f$ als
+
+* $\max_{x\in [a,b]} \abs{f_n(x)-f(x)} < \epsilon$ voor alle $n > N_\epsilon$
+* $\abs{f_n(x)-f(x)} < \epsilon$ voor alle $x \in [a,b]$ voor alle $n > N_\epsilon$
+
+  $\Rightarrow$ **uniforme convergentie** van een reeks
+
+  $\Rightarrow$ $\norm{f}_{\infty}$ voor continue functies wordt de uniform-norm genoemd
+
+* contrast met **puntsgewijze convergentie**:
+
+  $\abs{f_n(x)-f(x)} < \epsilon$ voor alle $n > N_{\epsilon,x}$ voor alle $x \in [a,b]$
+
+  kan niet worden bekomen met behulp van norm
+
+## Convergentie in functieruimten (voorbeeld)
+
+Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n x)$
+
+* $(f_n)$ convergeert puntsgewijs naar de (niet-continue!) functie
+  
+  $g(x) = \begin{cases} 1, x=0 \\ 0, x \in (0,1]\end{cases}$
+* $(f_n)$ convergeert volgens de $p=1$ norm naar de continue functie
+  
+  $h(x) = 0, \forall x \in [0,1]$
+* $(f_n)$ convergeert niet volgens de $p= \infty$ norm
+
+
+## Equivalentie van normen
+
+* Twee normen voor een vectorruimte $V$ zijn equivalent als ze aanleiding geven tot dezelfde definitie van convergerende rijen (met dan dezelfde limietpunten)
+
+* Stelling: twee normen $\norm{\cdot}_a$ en $\norm{\cdot}_b$ zijn equivalent als en slechts als er constanten $C \geq c > 0$ bestaan zodat $c \norm{\vv}_a \leq \norm{\vv}_b \leq C\norm{\vv}_a$ voor alle $\vv \in V$
+
+ 
+* Stelling: voor een eindig-dimensionale vectorruimte $V$ zijn alle normen equivalent 
+
+
+* Voorbeelden voor $\vec{v} \in \bbF^n$:
+  * $\frac{\norm{\vec{v}}_1}{\sqrt{n}} \leq \norm{\vec{v}}_2 \leq \norm{\vec{v}}_1$
+  * $\frac{\norm{\vec{v}}_1}{n} \leq \norm{\vec{v}}_\infty \leq \norm{\vec{v}}_1$
+
+## Compacte verzameling
+
+* Een verzameling $U$ is compact als
+
+  * Wanneer $U$ wordt bedekt door open verzamelingen $\mathcal{V}=\{V_1,V_2,\ldots,\}$ (i.e. $U \subseteq \bigcup \mathcal{V}$), dan wordt $U$ ook bedekt door een eindig aantal van die verzamelingen
+  * Elke rij $(\vv_n \in U)$ heeft een convergerende deelrij met limietpunt in $U$
+  
+  (equivalente karakterisaties in metrische ruimten)
+
+* Stelling: in een eindig-dimensionale vectorruimte $V$ is een deelverzameling $U$ compact als en slechts als $U$ begrensd en gesloten is (analoog aan Vectoranalayse).
+
+## Compacte verzamelingen
+
+In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijkcompact.
+
+* Voorbeeld: $C^0([a,b],\bbF)$ met $\norm{\cdot}_\infty$
+  
+  * Beschouw de gesloten eenheidsbol: $\overline{B_1(\zerovec)} = \{\vv \in V|\norm{\vv} \leq 1\}$
+  * Beschouw de rij $\{f_n(x)=x^n\}$ met elke $\norm{f_n} = 1$. Er bestaat geen  convergente deelrij.
+
+* Technisch (Riesz lemma): Beschouw een eigenlijke gesloten deelruimte $W\subspace V$. Voor elke $\epsilon \in (0,1)$ kunnen we een $\vv_\epsilon \in V$ vinden waarvoor $\norm{\vv_\epsilon}=1$ en $\norm{\vv_\epsilon - \vw} > \epsilon$ voor alle $w \in W$.
+
+# Banachruimten
+
+## Cauchy rijen en compleetheid
+
+* Een Cauchy-rij in een metrische ruimte $(X,d)$ is een rij $(x_n \in X)_{n\in\bbN_0}$ zodat $\forall \epsilon >0: \exists N_\epsilon \in \bbN$ met dan $n,m > N_\epsilon \implies d(x_n,x_m) < \epsilon$
+
+  (intuïtief: elementen in de staart van de rij komen arbitrair dicht bij elkaar)
+
+* Een convergente rij is altijd een Cauchy-rij
+* Als elke Cauchy-rij convergeert wordt $X$ (metrisch) compleet genoemd
+* Een genormeerde vectorruimte $(V,\norm{\cdot})$ die metrisch compleet is wordt een Banachruimte genoemd
+
+## Banachruimten
+
+Voorbeelden:
+
+* Elke eindig-dimensionale vectorruimte, met om het even welke keuze van norm
+* Elke eindig-dimensionale deelruimte $W$ van een oneindig-dimensionale vectorruimte $V$, met als norm de restrictie van $\norm{\cdot}$ tot $W$
+* De ruimte $\ell^p(\bbF)$ van oneindige rijen met eindige $p$-norm (en dit voor alle $p \in [1,+\infty]$)
+* Ruimte $C^0([a,b],\bbF)$ met maximumnorm/uniformnorm $\norm{\cdot}_\infty$ voor begrensd (compact) interval $[a,b]$
+
+## Banachruimten
+
+Tegenvoorbeeld:
+
+* Ruimte $\bbF[x]$ van polynomen met norm $\norm{p}= \max_{x \in [a,b]} \abs{p(x)}$
+  * $p_n(x) = \sum_{k=0}^n \frac{1}{k!}x^k$ definieert een Cauchy-rij
+  * $\lim_{n\to\infty} p_n$ bestaat niet als polynoom
+
+* Herinterpreteer $\bbF[x]$ als (eigenlijke) deelruimte van $C^0([a,b],\bbF)$
+  * $\lim_{n\to\infty} p_n = \exp$ bestaat als continue functie
+
+    $\Rightarrow$ een oneindige deelruimte van een Banachruimte is niet noodzakelijk gesloten
+
+## Banachruimten: complete verzameling
+
+Aangezien (oneindig-dimensionale) deelruimten $W \subspace V$ niet noodzakelijk gesloten zijn (in tegenstelling tot eindig-dimensionale deelruimten), kunnen we hun sluiting $\overline{W}$ bekijken. 
+
+* Zoals eerder: als $\overline{W}=V$, dan is $W$ een **dichte** deelruimte
+
+  Elke vector $\vv \in V$ kan arbitrair dicht benaderd worden door een vector $\vw \in W$:
+  
+  $\forall \epsilon > 0, \vv \in V : \exists \vw \in W$ zodat $\norm{\vv-\vw}<\epsilon$
+
+* Een verzameling $S$ waarvoor $\bbF S$ dicht is, of dus $\overline{\bbF S}=V$, wordt een totale, fundamentele of complete verzameling genoemd
+
+  (Contrast met H1: complete verzameling als $\bbF S = V$)
+
+## Banachruimten: complete verzameling
+
+Voorbeeld: stelling van Stone-Weierstrass
+
+Equivalente formuleringen:
+
+* Elke continue functie kan arbitrair dicht (in uniform-norm) benaderd worden door een veelterm
+* $\bbF[x]$ is een dichte deelverzameling van $C^0([a,b],\bbF)$
+* $\{x^n, n=0,1,2,\ldots\}$ is een complete verzameling voor $C^0([a,b],\bbF)$
+
+## Banachruimten
+
+Van rijen naar reeksen in genormeerde vectorruimten $(V,\norm{\cdot})$
+
+* Convergentie van reeksen: als rij van partieelsommen convergeert
+
+  $\sum_{n=1}^{+\infty} \vv_n	=\vv \iff  \lim_{n\to\infty} \sum_{k=1}^{n} \vv_k = \vv \iff \lim_{n\to \infty} \norm{\sum_{k=1}^{n} \vv_k - \vv } = 0$
+
+* Een reeks $\sum_{n=1}^{+\infty} \vv_n$ is absoluut convergent als de reeks $\sum_{n=1}^{+\infty} \norm{\vv_n}$ convergeert
+
+  (absolute convergentie is zeker geen nodige voorwaarde voor convergentie van een reeks)
+
+* Stelling: Een genormeerde vectorruimte is metrisch compleet (Banachruimte) als en slechts als absolute convergentie een voldoende voorwaarde is voor convergentie van een reeks (elke absoluut convergente reeks convergeert).
+
+## Banachruimten en basis
+
+Convergentie van rijen en reeksen laat een nieuw concept van basis toe in Banachruimten $(V,\norm{\cdot})$
+
+* Een *Schauder basis* is een rij $(\ve_n \in V)_{n \in \bbN_0}$ zodat voor elke vector $\vv \in V$ een rij van coefficiënten $(a^n \in \bbF)_{n \in \bbN_0}$ bestaat, zodat de reeks $\sum_{n =1}^{+\infty} a^n \ve_n$ convergeert naar $\vv$
+
+* De rij $(x^n)_{n \in \bbN}$ is **geen (!!)** Schauder basis voor $(C^0([a,b],\bbF), \norm{\cdot}_{\infty})$:
+
+  * een reeks $\sum_{n=0}^{+\infty} a_n x^n$ die convergeert met betrekking tot $\norm{\cdot}_{\infty}$ (uniforme convergentie) geeft sowieso aanleiding tot een analytische functie
+
+  * een niet-analytische continue functie zoals $\abs{x}$ heeft geen Taylorreeks die in het volledige interval convergent is
+
+$\Rightarrow$ allerlei technische subtiliteiten die verdwijnen in het geval van Hilbertruimten (zie volgend hoofdstuk)
+
+# Normen voor lineaire afbeeldingen
+
+## Normen voor matrices
+
+Gegeven $\mat{A} \in \bbF^{m \times n}$: 
+
+* 'vectoriseer' $\mat{A}$ (vergeet de matrixstructuur) via $\bbF^{m \times n} \cong \bbF^{m n}$ (vectorruimte-isomorphisme) en gebruik een vectornorm
+
+* voorbeeld: Frobenius norm (ook wel Hilbert-Schmidt norm):
+
+  $\norm{\mat{A}}_\text{F} = \left(\sum_{i=1}^{m}\sum_{j=1}^{n} \abs{A^i_{\ j}}^2\right)^{1/2} = \sqrt{\tr(\mat{A}^\hermitian \mat{A})}$
+
+* kunnen we normen met extra nuttige eigenschappen bedenken voor lineaire afbeeldingen?
+
+## Continuïteit van lineaire afbeeldingen
+
+Beschouw genormeerde vectorruimten $(V,\norm{\cdot}_V)$ en $(W,\norm{\cdot}_W)$.
+
+* Een lineaire afbeelding $\map{A}\in \Hom(V,W)$ wordt begrensd genoemd als er een constante $C \in \bbR_{\geq 0}$ bestaat zodat
+  $$\norm{\map{A}\vv}_W\leq C \norm{\vv}_V,\quad\forall \vv\in V$$
+* Stelling: Voor een lineaire afbeelding $\map{A}\in \Hom(V,W)$ zijn volgende eigenschappen equivalent
+
+  * $\map{A}$ is begrensd
+  * $\map{A}$ is continu in de oorsprong
+  * $\map{A}$ is overal continu (en zelfs uniform continu)
+
+## Begrensde lineaire afbeeldingen
+
+We definiëren $\mathcal{B}(V,W) \subspace \Hom(V,W)$ als de ruimte van begrensde lineaire afbeeldingen tussen genormeerde vectorruimten $(V,\norm{\cdot}_V)$ en $(W,\norm{\cdot}_W)$.
+
+* $\mathcal{B}(V,W)$ vormt inderdaad een vectorruimte (een deelruimte van $\Hom(V,W)$): tracht dit zelf aan te tonen!
+
+* Als het domein $V$ een eindig-dimensionale ruimte is, geldt $\mathcal{B}(V,W)=\Hom(V,W)$
+
+* Een norm $\norm{\map{A}}$ voor lineaire afbeeldingen $\map{A}\in \mathcal{B}(V,W)$ heet **ondergeschikt** (subordinate) aan de vectornormen in $V$ en $W$ als
+  $$\norm{\map{A}\vv}_W \leq \norm{\map{A}} \norm{\vv}_V,\quad\forall \vv \in V$$
+
+## Geïnduceerde norm
+
+Beschouw genormeerde vectorruimten $(V,\norm{\cdot}_V)$ en $(W,\norm{\cdot}_W)$. We kunnen een norm voor afbeeldingen $\map{A}\in \mathcal{B}(V,W)$ definiëren via
+
+\begin{align}
+\norm{\map{A}}_{V \to W} &= \inf\{ C | 	\norm{\map{A} \vv}_W \leq C \norm{\vv}_V, \forall \vv \in V\}\nonumber\\
+&= \sup\left\{\frac{\norm{\map{A}\vv}_W}{\norm{\vv}_V}\ \text{with}\ \vv \neq \zerovec_V\right\}\nonumber\\
+&= \sup\{ \norm{\map{A}\vv}_W \text{with}\ \norm{\vv}_V = 1\}
+\end{align}
+
+Deze norm staat gekend als de **geïnduceerde norm** of soms ook **operator norm** (ook al geldt hij voor algemene lineaire afbeeldingen). Soms wordt ook met de "subordinate norm" specifiek naar deze definitie verwezen.
+
+## Geïnduceerde norm
+
+* Voor $(V, \norm{\cdot}_V)$ een genormeerde ruimte en $(W,\norm{\cdot}_W)$ een Banachruimte geldt dat de ruimte $\mathcal{B}(V,W)$ van begrensde lineaire afbeeldingen in combinatie met de geïnduceerde norm $\norm{\cdot}_{V\to W}$ zelf een Banachruimte is
+
+## Normen voor lineaire operatoren
+
+Beschouw nu specifiek $\map{A}\in \End(V)$ voor een Banachruimte $(V,\norm{\cdot}_V)$. De begrensde lineaire operatoren worden genoteerd als $\mathcal{B}(V) = \mathcal{B}(V,V) \subspace \End(V)$.
+
+* Een norm $\norm{\cdot}$ voor lineaire operatoren wordt **submultiplicatief** genoemd als
+  $$\norm{\map{A}\cdot\map{B}} \leq \norm{\map{A}} \norm{\map{B}}, \quad \forall \map{A},\map{B} \in \mathcal{B}(V)$$
+
+* De geinduceerde norm $\norm{\map{A}}_{V\to V}$ is submultiplicatief
+
+* Voor elke submultiplicatieve of ondergeschikte norm geldt $\norm{\idmap} \geq 1$. Voor de geinduceerde norm is $\norm{\idmap}=1$.
+
+## Normen voor matrices
+
+* voor gegeven $p$: $p$-norm vormt een familie van normen voor vectoren in $\bbF^n$ voor arbitraire $n$
+
+* voor een matrix $\mat{A}\in\bbF^{m \times n}$ kunnen we in principe de geïnduceerde norm $\norm{\map{A}}_{p\to q}$ berekenen voor $p$-norm op $\bbF^m$ en $q$-norm op $\bbF^n$; typisch willen we $p=q$.
+
+  * $\norm{\mat{A}}_{\text{col}} = \norm{\mat{A}}_{1 \to 1} = \max_{j=1,\ldots,n} \sum_{i=1}^{m} \abs{A^i_{\ j}}$
+  * $\norm{\mat{A}}_{\text{row}} = \norm{\mat{A}}_{\infty \to \infty} = \max_{i=1,\ldots,m} \sum_{j=1}^{n} \abs{A^i_{\ j}}$
+
+  (oefeningen, zelf proberen)
+
+  * ($\norm{\mat{A}}_{2 \to 2}$ is moeilijker te berekenen, en is gegeven door de grootste "singuliere waarde" (zie H6))
+
+## Consistente matrixnormen
+
+Gegeven een familie van normen $\{\norm{\cdot}^{(m \times n)}: \bbF^{m\times n} \to \bbR_{\geq 0}; \forall m, n \in \bbN\}$ voor matrices van alle groottes:
+
+* deze worden **consistent** genoemd als 
+$$\norm{\mat{A}\mat{B}}^{(m \times n)} \leq \norm{\mat{A}}^{(m \times k)} \norm{\mat{B}}^{(k \times n)}$$
+voor alle $\mat{A}\in\bbF^{m\times k}$ en $\mat{B}\in\bbF^{k\times n}$
+
+* de normen $\norm{\mat{A}}_{p\to p}$ zijn consistent 
+* de norm $\norm{\mat{A}}_{\text{F}}=\norm{\text{vectorize}(\mat{A})}_2$ is consistent
+* de norm $\norm{\text{vectorize}(\mat{A})}_\infty$ is niet consistent
+
+## Matrixnormen: terminologie
+
+* Het concept "matrixnorm" wordt vaak gedefinieerd als een norm die aan de drie voorwaarden van een vectornorm voldoet, en bovendien aan de consistentievoorwaarde.
+* De consistentievoorwaarde is een veralgemening van submultiplicativiteit van operatoren, en beide termen worden soms door elkaar gebruikt.
+* Er is geen gestandardiseerde terminologie en "subordinate", "submultiplicative" en "consistent" of ook "compatible" wordt door elkaar gebruikt in gerelateerde betekenissen
+
+* (in vragen hieromtrent zal ook steeds de expliciete voorwaarde als wiskundige ongelijkheid vermeld staan)
+
+## Spectraalstraal
+
+* De spectraalstraal van een operator $\map{A}\in\End(V)$ is gedefinieerd als
+  $$\rho_{\map{A}} = \sup\{\abs{\lambda};\lambda \in \sigma_{\map{A}}\}$$
+
+* Voor een submultiplicatieve norm en $V$ eindig-dimensionaal geldt $\norm{\map{A}} \geq \rho_{\map{A}}$
+  * ook $\rho_{\map{A}}^n \leq \norm{\map{A}^n}$
+  * als $\map{A}$ inverteerbaar: $\norm{\map{A}}^{-1}\leq \rho_{\map{A}}^{-1}$
+
+* Gelfand formule: $\rho_\map{A} =\lim_{n\to\infty}\norm{\map{A}^n}^{\frac{1}{n}}$
+
+
+## Duale normen
+
+Gegeven een genormeerde vectorruimte $(V,\norm{\cdot})$:
+
+* geïnduceerde norm op $\mathcal{B}(V,\bbF)\subspace V^\ast$ wordt genoteerd als de duale norm $\norm{\cdot}^\ast$:
+  $$\norm{\xi}^\ast = \sup\left\{\frac{\abs{\xi[v]}}{\norm{v}} ; \forall v \in V, v \neq \zerovec\right\}, \quad \forall \xi \in V^\ast$$
+
+* voor $V = \bbF$ met Hölder norm $\norm{\cdot}_p$ wordt de duale norm gegeven door $\norm{\xi}_p^\ast = \norm{\vec{\xi}}_q$ waarbij $1/p+1/q=1$, en $\vec{\xi}$ de componenten van $\xi$, i.e. zodat $\xi[\vec{v}]=\vec{\xi}^\transpose \vec{v}$
+
+
+# Toepassingen
+
+## Functies van matrices en operatoren
+
+* Functie met convergente Taylorreeks rond $z=0$:
+  $$f(z) = \sum_{n=0}^{+\infty} f_n z^n, \quad \forall \abs{z}<R$$
+
+  * $\map{A}\in\mathcal{B}(V)$ met submultiplicatieve operatornorm:
+
+    $\norm{\sum_{n=0}^{+\infty} f_n \map{A}^n} \leq 	\sum_{n=0}^{+\infty} \abs{f_n} \norm{\map{A}^n} \leq  \sum_{n=0}^{+\infty} \abs{f_n} \norm{\map{A}}^n$
+
+    $\Rightarrow$ $\sum_{n=0}^{+\infty} f_n \map{A}^n$ convergeert voor alle $\map{A}$ met $\norm{\map{A}}<R$ als $V$ een Banachruimte is
+
+## Functies van matrices en operatoren
+
+* Functies met convergente Taylorreeks rond $z=\lambda$ voor elke eigenwaarde $\lambda$
+  * Beschouw $\map{N}$ met $\map{N}^s = 0$ en definieer
+    $$\norm{\vv}_{R,s} = \norm{\vv} + \frac{\norm{\map{N}\vv}}{R} + \dots + \frac{\norm{\map{N}^{s-1}\vv}}{R^{s-1}}$$
+
+    $\Rightarrow \norm{\map{N}\vv}_{\map{N},R} = R(\norm{v}_{\map{N},R} - \norm{\vv}) \leq R \norm{v}_{\map{N},R}$
+
+    $\Rightarrow \sup_{\vv \neq 0} \frac{\norm{\map{N}\vv}_{\map{N},R}}{\norm{\vv}_{\map{N},R}} \leq R$
+
+## Sensitiviteit van lineaire systemen
+
+Lineair system $\map{A}\vx = \vy$ met $\vx,\vy \in V$ en $\map{A} \in \End(V)$ met $V$ een genormeerde vectorruimte met norm $\norm{\cdot}$
+
+* Stel kleine variatie $\vy \to \vy + \Delta\vy \Rightarrow \vx \to \vx + \Delta \vx$
+* $\frac{\norm{\Delta \vx}}{\norm{\vx}} \leq \kappa(\map{A}) \frac{\norm{\Delta\vy}}{\norm{\vy}}$
+
+  met het **condititiegetal $\kappa(\map{A})$** gegeven door
+
+  $$\kappa(\map{A}) = \begin{cases}
+ \norm{\map{A}}\norm{\map{A}^{-1}},&\text{if $\map{A}$ is invertible}\\
+ +\infty,&\text{otherwise}
+ \end{cases}$$
+
+  met hierin $\norm{\map{A}}$ de geïnduceerde norm geassocieerd aan de vectornorm
+
+## Sensitiviteit van lineaire systemen
+
+* Uitbreiding: ook variatie $\map{A}\to \map{A}+\Delta\map{A}$ met $\norm{\map{A}^{-1}\Delta\map{A}} < 1$
+
+  * $\norm{(\map{A} + \Delta\map{A})^{-1}} \leq  \frac{\norm{\map{A}^{-1}}}{1 - \norm{\map{A}^{-1} \Delta\map{A}}}$
+  * $\frac{\norm{\Delta \vx}}{\norm{\vx}} \leq  \frac{\kappa(\map{A})}{1 - \norm{\map{A}^{-1} \Delta\map{A}}}  \left( \frac{\norm{\Delta \vy}}{\norm{\vy}} + \frac{\norm{\Delta\map{A}}}{\norm{\map{A}}}\right)$
+
+* A postiori error: het residu $r = \map{\vy} - \map{A}\tilde{\vx}$ voor een benaderde oplossing $\tilde{\vx}$:
+
+  $\Rightarrow 	\frac{\norm{\vx - \tilde{\vx}}}{\norm{\vx}} \leq \kappa(\map{A}) \frac{\norm{\vect{r}}}{\norm{\vy}}$ met $\vx$ de echte oplossing
+
+## Markovketens en stochastische matrices
+
+Misschien later?

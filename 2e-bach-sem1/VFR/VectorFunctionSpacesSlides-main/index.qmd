@@ -1,0 +1,8 @@
+---
+title: "Vector and Function Spaces -- Slides"
+listing:
+  contents: "slides"
+  sort: "title asc"
+  type: table
+---
+

@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jutho Haegeman">
+<meta name="dcterms.date" content="2025-11-18">
+
+<title>Vector- en functieruimten – Slides - Hoofdstuk 7 - Functieruimten</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vector- en functieruimten – Slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H1.html" rel="" target="">
+ <span class="menu-text">H1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H2.html" rel="" target="">
+ <span class="menu-text">H2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H3.html" rel="" target="">
+ <span class="menu-text">H3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H4.html" rel="" target="">
+ <span class="menu-text">H4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H5.html" rel="" target="">
+ <span class="menu-text">H5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H6.html" rel="" target="">
+ <span class="menu-text">H6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../slides/H7.html" rel="" target="" aria-current="page">
+ <span class="menu-text">H7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H8.html" rel="" target="">
+ <span class="menu-text">H8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H9.html" rel="" target="">
+ <span class="menu-text">H9</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
+  <li><a href="#doel-van-dit-hoofdstuk-1" id="toc-doel-van-dit-hoofdstuk-1" class="nav-link" data-scroll-target="#doel-van-dit-hoofdstuk-1">Doel van dit hoofdstuk</a></li>
+  <li><a href="#functieruimten-en-normen" id="toc-functieruimten-en-normen" class="nav-link" data-scroll-target="#functieruimten-en-normen">Functieruimten en normen</a>
+  <ul class="collapse">
+  <li><a href="#functieruimten" id="toc-functieruimten" class="nav-link" data-scroll-target="#functieruimten">Functieruimten</a></li>
+  <li><a href="#lebesgue-ruimten" id="toc-lebesgue-ruimten" class="nav-link" data-scroll-target="#lebesgue-ruimten">Lebesgue-ruimten</a></li>
+  <li><a href="#lebesgue-ruimten-1" id="toc-lebesgue-ruimten-1" class="nav-link" data-scroll-target="#lebesgue-ruimten-1">Lebesgue-ruimten</a></li>
+  <li><a href="#van-seminorm-naar-norm" id="toc-van-seminorm-naar-norm" class="nav-link" data-scroll-target="#van-seminorm-naar-norm">Van seminorm naar norm</a></li>
+  <li><a href="#van-seminorm-naar-norm-1" id="toc-van-seminorm-naar-norm-1" class="nav-link" data-scroll-target="#van-seminorm-naar-norm-1">Van seminorm naar norm</a></li>
+  <li><a href="#lebesgue-integraal" id="toc-lebesgue-integraal" class="nav-link" data-scroll-target="#lebesgue-integraal">Lebesgue-integraal</a></li>
+  <li><a href="#lebesgue-integraal-1" id="toc-lebesgue-integraal-1" class="nav-link" data-scroll-target="#lebesgue-integraal-1">Lebesgue-integraal</a></li>
+  <li><a href="#lebesgue-integraal-2" id="toc-lebesgue-integraal-2" class="nav-link" data-scroll-target="#lebesgue-integraal-2">Lebesgue-integraal</a></li>
+  <li><a href="#bijna-overal-en-maat-nul-nulverzamelingen" id="toc-bijna-overal-en-maat-nul-nulverzamelingen" class="nav-link" data-scroll-target="#bijna-overal-en-maat-nul-nulverzamelingen">“Bijna overal” en “maat nul” (nulverzamelingen)</a></li>
+  <li><a href="#compleetheid-van-lpimathbbf" id="toc-compleetheid-van-lpimathbbf" class="nav-link" data-scroll-target="#compleetheid-van-lpimathbbf">Compleetheid van <span class="math inline">L^p(I;{\mathbb{F}})</span></a></li>
+  <li><a href="#bijkomende-opmeringen" id="toc-bijkomende-opmeringen" class="nav-link" data-scroll-target="#bijkomende-opmeringen">Bijkomende opmeringen</a></li>
+  </ul></li>
+  <li><a href="#hilbertruimten-en-inwendig-product" id="toc-hilbertruimten-en-inwendig-product" class="nav-link" data-scroll-target="#hilbertruimten-en-inwendig-product">Hilbertruimten en inwendig product</a>
+  <ul class="collapse">
+  <li><a href="#hilbertruimten-en-inwendig-product-1" id="toc-hilbertruimten-en-inwendig-product-1" class="nav-link" data-scroll-target="#hilbertruimten-en-inwendig-product-1">Hilbertruimten en inwendig product</a></li>
+  </ul></li>
+  <li><a href="#orthogonale-veeltermen" id="toc-orthogonale-veeltermen" class="nav-link" data-scroll-target="#orthogonale-veeltermen">Orthogonale veeltermen</a>
+  <ul class="collapse">
+  <li><a href="#orthogonale-veeltermen-1" id="toc-orthogonale-veeltermen-1" class="nav-link" data-scroll-target="#orthogonale-veeltermen-1">Orthogonale veeltermen</a></li>
+  <li><a href="#orthogonale-veeltermen-2" id="toc-orthogonale-veeltermen-2" class="nav-link" data-scroll-target="#orthogonale-veeltermen-2">Orthogonale veeltermen</a></li>
+  <li><a href="#orthogonale-veeltermen-3" id="toc-orthogonale-veeltermen-3" class="nav-link" data-scroll-target="#orthogonale-veeltermen-3">Orthogonale veeltermen</a></li>
+  <li><a href="#orthogonale-veeltermen-legendre" id="toc-orthogonale-veeltermen-legendre" class="nav-link" data-scroll-target="#orthogonale-veeltermen-legendre">Orthogonale veeltermen: Legendre</a></li>
+  <li><a href="#orthogonale-veeltermen-hermite" id="toc-orthogonale-veeltermen-hermite" class="nav-link" data-scroll-target="#orthogonale-veeltermen-hermite">Orthogonale veeltermen: Hermite</a></li>
+  <li><a href="#orthogonale-veeltermen-laguerre" id="toc-orthogonale-veeltermen-laguerre" class="nav-link" data-scroll-target="#orthogonale-veeltermen-laguerre">Orthogonale veeltermen: Laguerre</a></li>
+  <li><a href="#orthogonale-veeltermen-chebyshev" id="toc-orthogonale-veeltermen-chebyshev" class="nav-link" data-scroll-target="#orthogonale-veeltermen-chebyshev">Orthogonale veeltermen: Chebyshev</a></li>
+  <li><a href="#toepassing-gaussische-kwadratuur" id="toc-toepassing-gaussische-kwadratuur" class="nav-link" data-scroll-target="#toepassing-gaussische-kwadratuur">Toepassing: Gaussische kwadratuur</a></li>
+  <li><a href="#toepassing-gaussische-kwadratuur-1" id="toc-toepassing-gaussische-kwadratuur-1" class="nav-link" data-scroll-target="#toepassing-gaussische-kwadratuur-1">Toepassing: Gaussische kwadratuur</a></li>
+  </ul></li>
+  <li><a href="#fourierreeksen" id="toc-fourierreeksen" class="nav-link" data-scroll-target="#fourierreeksen">Fourierreeksen</a>
+  <ul class="collapse">
+  <li><a href="#periodieke-functies" id="toc-periodieke-functies" class="nav-link" data-scroll-target="#periodieke-functies">Periodieke functies</a></li>
+  <li><a href="#trigonometrische-veeltermen-en-fouriercoefficiënten" id="toc-trigonometrische-veeltermen-en-fouriercoefficiënten" class="nav-link" data-scroll-target="#trigonometrische-veeltermen-en-fouriercoefficiënten">Trigonometrische veeltermen en Fouriercoefficiënten</a></li>
+  <li><a href="#fouriercoefficiënten-eigenschappen" id="toc-fouriercoefficiënten-eigenschappen" class="nav-link" data-scroll-target="#fouriercoefficiënten-eigenschappen">Fouriercoefficiënten: eigenschappen</a></li>
+  <li><a href="#convoluties" id="toc-convoluties" class="nav-link" data-scroll-target="#convoluties">Convoluties</a></li>
+  <li><a href="#convergentie-geen-stellingenbewijzen" id="toc-convergentie-geen-stellingenbewijzen" class="nav-link" data-scroll-target="#convergentie-geen-stellingenbewijzen">Convergentie (geen stellingen/bewijzen)</a></li>
+  <li><a href="#gladheid-en-convergentiesnelheid" id="toc-gladheid-en-convergentiesnelheid" class="nav-link" data-scroll-target="#gladheid-en-convergentiesnelheid">Gladheid en convergentiesnelheid</a></li>
+  <li><a href="#convoluties-herbekeken" id="toc-convoluties-herbekeken" class="nav-link" data-scroll-target="#convoluties-herbekeken">Convoluties herbekeken</a></li>
+  <li><a href="#stuksgewijze-continuïteit-en-gibbsfenoneem" id="toc-stuksgewijze-continuïteit-en-gibbsfenoneem" class="nav-link" data-scroll-target="#stuksgewijze-continuïteit-en-gibbsfenoneem">Stuksgewijze continuïteit en Gibbsfenoneem</a></li>
+  <li><a href="#stuksgewijze-continuïteit-en-gibbsfenoneem-1" id="toc-stuksgewijze-continuïteit-en-gibbsfenoneem-1" class="nav-link" data-scroll-target="#stuksgewijze-continuïteit-en-gibbsfenoneem-1">Stuksgewijze continuïteit en Gibbsfenoneem</a></li>
+  <li><a href="#relatie-met-discrete-fouriertransformatie" id="toc-relatie-met-discrete-fouriertransformatie" class="nav-link" data-scroll-target="#relatie-met-discrete-fouriertransformatie">Relatie met discrete Fouriertransformatie</a></li>
+  </ul></li>
+  <li><a href="#operatoren-op-hilbertruimten" id="toc-operatoren-op-hilbertruimten" class="nav-link" data-scroll-target="#operatoren-op-hilbertruimten">Operatoren op Hilbertruimten</a>
+  <ul class="collapse">
+  <li><a href="#veelvoorkomende-operatoren-op-functieruimten" id="toc-veelvoorkomende-operatoren-op-functieruimten" class="nav-link" data-scroll-target="#veelvoorkomende-operatoren-op-functieruimten">Veelvoorkomende operatoren op functieruimten</a></li>
+  <li><a href="#veelvoorkomende-operatoren-op-functieruimten-1" id="toc-veelvoorkomende-operatoren-op-functieruimten-1" class="nav-link" data-scroll-target="#veelvoorkomende-operatoren-op-functieruimten-1">Veelvoorkomende operatoren op functieruimten</a></li>
+  <li><a href="#veelvoorkomende-operatoren-op-functieruimten-2" id="toc-veelvoorkomende-operatoren-op-functieruimten-2" class="nav-link" data-scroll-target="#veelvoorkomende-operatoren-op-functieruimten-2">Veelvoorkomende operatoren op functieruimten</a></li>
+  <li><a href="#domein-van-een-operator" id="toc-domein-van-een-operator" class="nav-link" data-scroll-target="#domein-van-een-operator">Domein van een operator</a></li>
+  <li><a href="#domein-van-een-operator-1" id="toc-domein-van-een-operator-1" class="nav-link" data-scroll-target="#domein-van-een-operator-1">Domein van een operator</a></li>
+  <li><a href="#begrensde-en-onbegrensde-operatoren" id="toc-begrensde-en-onbegrensde-operatoren" class="nav-link" data-scroll-target="#begrensde-en-onbegrensde-operatoren">Begrensde en onbegrensde operatoren</a></li>
+  <li><a href="#begrensde-en-onbegrensde-operatoren-1" id="toc-begrensde-en-onbegrensde-operatoren-1" class="nav-link" data-scroll-target="#begrensde-en-onbegrensde-operatoren-1">Begrensde en onbegrensde operatoren</a></li>
+  <li><a href="#begrensde-en-onbegrensde-operatoren-2" id="toc-begrensde-en-onbegrensde-operatoren-2" class="nav-link" data-scroll-target="#begrensde-en-onbegrensde-operatoren-2">Begrensde en onbegrensde operatoren</a></li>
+  <li><a href="#toegevoegde-van-een-onbegrensde-operator" id="toc-toegevoegde-van-een-onbegrensde-operator" class="nav-link" data-scroll-target="#toegevoegde-van-een-onbegrensde-operator">Toegevoegde van een onbegrensde operator</a></li>
+  <li><a href="#toegevoegde-eigenschappen-en-voorbeelden" id="toc-toegevoegde-eigenschappen-en-voorbeelden" class="nav-link" data-scroll-target="#toegevoegde-eigenschappen-en-voorbeelden">Toegevoegde: eigenschappen en voorbeelden</a></li>
+  <li><a href="#symmetrische-en-zelftoegevoegde-operatoren" id="toc-symmetrische-en-zelftoegevoegde-operatoren" class="nav-link" data-scroll-target="#symmetrische-en-zelftoegevoegde-operatoren">Symmetrische en zelftoegevoegde operatoren</a></li>
+  <li><a href="#uitgebreid-voorbeeld" id="toc-uitgebreid-voorbeeld" class="nav-link" data-scroll-target="#uitgebreid-voorbeeld">Uitgebreid voorbeeld</a></li>
+  <li><a href="#uitgebreid-voorbeeld-1" id="toc-uitgebreid-voorbeeld-1" class="nav-link" data-scroll-target="#uitgebreid-voorbeeld-1">Uitgebreid voorbeeld</a></li>
+  <li><a href="#uitgebreid-voorbeeld-2" id="toc-uitgebreid-voorbeeld-2" class="nav-link" data-scroll-target="#uitgebreid-voorbeeld-2">Uitgebreid voorbeeld</a></li>
+  <li><a href="#positie--en-momentumoperator-op-l2mathbbr" id="toc-positie--en-momentumoperator-op-l2mathbbr" class="nav-link" data-scroll-target="#positie--en-momentumoperator-op-l2mathbbr">Positie- en momentumoperator op <span class="math inline">L^2({\mathbb{R}})</span></a></li>
+  </ul></li>
+  <li><a href="#spectraaltheorie" id="toc-spectraaltheorie" class="nav-link" data-scroll-target="#spectraaltheorie">Spectraaltheorie</a>
+  <ul class="collapse">
+  <li><a href="#eigenwaarden-en-eigenvectoren" id="toc-eigenwaarden-en-eigenvectoren" class="nav-link" data-scroll-target="#eigenwaarden-en-eigenvectoren">Eigenwaarden en eigenvectoren</a></li>
+  <li><a href="#compacte-operatoren" id="toc-compacte-operatoren" class="nav-link" data-scroll-target="#compacte-operatoren">Compacte operatoren</a></li>
+  <li><a href="#compacte-operatoren-1" id="toc-compacte-operatoren-1" class="nav-link" data-scroll-target="#compacte-operatoren-1">Compacte operatoren</a></li>
+  <li><a href="#compacte-operatoren-2" id="toc-compacte-operatoren-2" class="nav-link" data-scroll-target="#compacte-operatoren-2">Compacte operatoren</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren" id="toc-spectrum-van-algemene-operatoren" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren">Spectrum van algemene operatoren</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren-1" id="toc-spectrum-van-algemene-operatoren-1" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren-1">Spectrum van algemene operatoren</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren-voorbeelden" id="toc-spectrum-van-algemene-operatoren-voorbeelden" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren-voorbeelden">Spectrum van algemene operatoren: voorbeelden</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren-voorbeelden-1" id="toc-spectrum-van-algemene-operatoren-voorbeelden-1" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren-voorbeelden-1">Spectrum van algemene operatoren: voorbeelden</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren-voorbeelden-2" id="toc-spectrum-van-algemene-operatoren-voorbeelden-2" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren-voorbeelden-2">Spectrum van algemene operatoren: voorbeelden</a></li>
+  <li><a href="#spectrum-van-algemene-operatoren-voorbeelden-3" id="toc-spectrum-van-algemene-operatoren-voorbeelden-3" class="nav-link" data-scroll-target="#spectrum-van-algemene-operatoren-voorbeelden-3">Spectrum van algemene operatoren: voorbeelden</a></li>
+  <li><a href="#spectrum-van-zelftoegevoegde-operatoren" id="toc-spectrum-van-zelftoegevoegde-operatoren" class="nav-link" data-scroll-target="#spectrum-van-zelftoegevoegde-operatoren">Spectrum van zelftoegevoegde operatoren</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hoofdstuk 7 - Functieruimten</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jutho Haegeman </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 18, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="doel-van-dit-hoofdstuk" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+<div class="hidden">
+<p>$$ % Math operators % % </p>
+% VECTORS
+<p>% specifically for vectors in F^n </p>
+% MATRICES
+<p>% SCALARS </p>
+% LINEAR MAPS
+<p>% FIELDS </p>
+<p>% RELATIONS </p>
+<p>$$</p>
+</div>
+<ul>
+<li>Inzicht krijgen in de complicaties van het werken met functieruimten</li>
+<li>Orthonormale basissen voor functieruimten:
+<ul>
+<li>orthogonale veeltermen:
+<ul>
+<li>belangrijkste eigenschappen</li>
+<li>voornaamste families die relevant zijn in de fysica</li>
+</ul></li>
+<li>Fourierreeks:
+<ul>
+<li>eigenschappen</li>
+<li>convergentiesnelheid</li>
+<li>verband met discrete Fouriertransformatie</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="doel-van-dit-hoofdstuk-1" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk-1">Doel van dit hoofdstuk</h2>
+<ul>
+<li><p>Belangrijkste operatoren op functieruimten:</p>
+<p>integraaloperatoren, multiplicatie-operatoren, differentiaaloperatoren</p></li>
+<li><p>Eigenschappen van onbegrensde operatoren</p>
+<ul>
+<li>Toegevoegde van onbegrensde operator</li>
+<li>Verschil tussen symmetrisch en zelftoegevoegd</li>
+<li>Belang hiervan in de context van differentiaaloperatoren en randvoorwaarden</li>
+</ul></li>
+<li><p>Intuïtie krijgen voor de spectraaltheorie van begrensde en onbegrensde operatoren op oneindig-dimensionale Hilbertruimten aan de hand van relevante voorbeelden</p></li>
+</ul>
+</section>
+<section id="functieruimten-en-normen" class="level1">
+<h1>Functieruimten en normen</h1>
+<p>(geen stellingen of bewijzen)</p>
+<section id="functieruimten" class="level2">
+<h2 class="anchored" data-anchor-id="functieruimten">Functieruimten</h2>
+<p>Gegeven een vectorruimte <span class="math inline">Y</span> over <span class="math inline">{\mathbb{F}}</span> en een willekeurige verzameling <span class="math inline">X</span>:</p>
+<p>verzameling <span class="math inline">Y^X</span> van functies <span class="math inline">f:X \to Y</span> vormt een vectorruimte over <span class="math inline">{\mathbb{F}}</span>, waarbij de lineaire structuur gewoon puntsgewijs wordt gedefinieerd m.b.v. deze van <span class="math inline">Y</span>:</p>
+<p><span class="math display">(a f + b g)(x) = a f(x) + b g(x), \forall x \in X</span></p>
+<p>Voorbeelden:</p>
+<ul>
+<li><span class="math inline">Y = {\mathbb{F}}</span>, <span class="math inline">X = \{1,\ldots,n\}</span>: <span class="math inline">Y^X \cong {\mathbb{F}}^n</span></li>
+<li><span class="math inline">Y = {\mathbb{F}}</span>, <span class="math inline">X = {\mathbb{N}}_0</span>: vectorruimte van oneindig lange rijen</li>
+</ul>
+<p><span class="math inline">\rightarrow</span> functieruimte wordt typisch gebruikt in de context waar <span class="math inline">X</span> onaftelbaar is:</p>
+<ul>
+<li><span class="math inline">X = [a,b]</span>, <span class="math inline">X = {\mathbb{R}}</span>, <span class="math inline">X = \Omega \subseteq {\mathbb{R}}^d</span></li>
+</ul>
+<p><span class="math inline">\rightarrow</span> bijkomende eigenschappen: continuïteit, kwadratische integreerbaarheid, …&nbsp;</p>
+<ul>
+<li>belangrijk dat deze compatibel zijn met (behouden blijven onder) lineaire combinaties</li>
+</ul>
+</section>
+<section id="lebesgue-ruimten" class="level2">
+<h2 class="anchored" data-anchor-id="lebesgue-ruimten">Lebesgue-ruimten</h2>
+<p>We willen ook graag minstens een norm (vanaf sectie 7.2: inwendig product):</p>
+<p><span class="math display">f:X \to Y \quad \rightarrow \quad{\left\lVert f\right\rVert}_p = \left(\int_{X} {\left\lVert f(x)\right\rVert}_Y^p \,{\mathrm{d}}x\right)^{1/p} \quad ?</span></p>
+<ul>
+<li><p><span class="math inline">Y</span> moet zelf reeds een norm hebben:</p>
+<p>vanaf nu <span class="math inline">Y = {\mathbb{F}}</span>: <span class="math inline">{\left\lVert f(x)\right\rVert}_Y = {\left\lvert f(x)\right\rvert}</span> (voor de eenvoud, veralgemening triviaal)</p></li>
+<li><p>We hebben een concept van integreren over <span class="math inline">X</span> nodig <span class="math inline">\Rightarrow</span> bijkomende complicaties</p>
+<ul>
+<li><span class="math inline">X</span> voldoende regulier: vanaf nu <span class="math inline">X = [a,b]\subseteq {\mathbb{R}}</span> of <span class="math inline">X = {\mathbb{R}}</span> (voor de eenvoud)</li>
+<li>de functie <span class="math inline">f</span> moet “integreerbaar” zijn binnen het gebruikte integraalconcept</li>
+<li>de integraal mag niet divergeren</li>
+<li>de integraal moet voldoen aan driehoeksongelijkheid</li>
+<li>de integraal kan nul worden voor functies die niet de nul-functie zijn</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\rightarrow</span> beperken tot deelverzameling van functies: moet deelruimte zijn!</p>
+</section>
+<section id="lebesgue-ruimten-1" class="level2">
+<h2 class="anchored" data-anchor-id="lebesgue-ruimten-1">Lebesgue-ruimten</h2>
+<p><span class="math inline">\mathcal{L}^p(I,{\mathbb{F}})</span> is de verzameling van functies <span class="math inline">f:I\to {\mathbb{F}}</span> (met dus <span class="math inline">I=[a,b]</span> of <span class="math inline">I = {\mathbb{R}}</span>) die integreerbaar zijn en waarvoor <span class="math inline">\int_I {\left\lvert f(x)\right\rvert}^p \,{\mathrm{d}}x</span> eindig is</p>
+<ul>
+<li><p>preciese definitie hangt af van integraalconcept (zie verder)</p></li>
+<li><p>als <span class="math inline">f</span> integreerbaar is, is <span class="math inline">{\left\lvert f\right\rvert}^p</span> integreerbaar</p></li>
+<li><p>het geval <span class="math inline">p=\infty</span> laten we voorlopig buiten beschouwing</p></li>
+<li><p><span class="math inline">\mathcal{L}^p(I,{\mathbb{F}})</span> vormt een vectorruimte (lineaire combinaties van twee integreerbare functies is integreerbaar, integraal van <span class="math inline">{\left\lvert a f(x) + b g(x)\right\rvert}^p</span> can begrensd worden met behulp van convexiteit van <span class="math inline">{\left\lvert\cdot\right\rvert}^p</span></p></li>
+<li><p>resulterende definitie <span class="math inline">{\left\lVert f\right\rVert}_p = \left(\int_I {\left\lvert f(x)\right\rvert}^p \,{\mathrm{d}}x\right)^{1/p}</span> voldoet aan driehoeksongelijkheid (Minkowski)</p></li>
+<li><p><span class="math inline">{\left\lVert f\right\rVert}_p</span> is niet positief definiet, er zijn niet-triviale functies waarvoor <span class="math inline">{\left\lVert f\right\rVert}_p = 0</span></p>
+<p><span class="math inline">\Rightarrow</span> seminorm</p></li>
+</ul>
+</section>
+<section id="van-seminorm-naar-norm" class="level2">
+<h2 class="anchored" data-anchor-id="van-seminorm-naar-norm">Van seminorm naar norm</h2>
+<p>Observatie 1:voor <span class="math inline">f,g \in \mathcal{L}^p(I,{\mathbb{F}})</span></p>
+<ul>
+<li><p><span class="math inline">{\left\lVert f\right\rVert}_p = 0</span> en <span class="math inline">{\left\lVert g\right\rVert}_p = 0</span> <span class="math inline">\Rightarrow {\left\lVert a f + b g\right\rVert}_p = 0</span></p>
+<p>(wegens driehoeksongelijkheid en absolute homogeniteit)</p>
+<p><span class="math inline">\Rightarrow</span> verzameling <span class="math inline">U = \{f | {\left\lVert f\right\rVert}_p = 0\}</span> vormt deelruimte van <span class="math inline">\mathcal{L}^p(I,{\mathbb{F}})</span></p></li>
+<li><p>functies waarvoor <span class="math inline">{\left\lVert f - g\right\rVert}_{p} = 0 \Leftrightarrow f-g \in U</span> noemen we “bijna overal” gelijk; dit is een equivalentierelatie</p></li>
+</ul>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">L^p(I,{\mathbb{F}}) = \mathcal{L}^p(I,{\mathbb{F}})/U</span>: de vectorruimte van equivalentieklassen van functies die bijna overal gelijk zijn</p>
+<ul>
+<li>(in de praktijk werken we nog steeds gewoon met functies, die dan representatief zijn voor alle andere functies binnen die equivalentieklasse)</li>
+</ul>
+</section>
+<section id="van-seminorm-naar-norm-1" class="level2">
+<h2 class="anchored" data-anchor-id="van-seminorm-naar-norm-1">Van seminorm naar norm</h2>
+<p>Observatie 2: voor <span class="math inline">f,g \in \mathcal{L}^p(I,{\mathbb{F}})</span></p>
+<ul>
+<li><p><span class="math inline">{\left\lVert f - g\right\rVert}_{p} = 0</span> <span class="math inline">\Rightarrow {\left\lVert f\right\rVert}_p = {\left\lVert g\right\rVert}_p</span></p>
+<p>(wegens <span class="math inline">{\left\lvert{\left\lVert f\right\rVert}-{\left\lVert g\right\rVert}\right\rvert} \leq {\left\lVert f - g\right\rVert}</span>, eveneens uit driehoeksongelijkheid)</p></li>
+<li><p><span class="math inline">{\left\lVert f\right\rVert}_p</span> neemt voor alle functies binnen een equivalentieklasse dezelfde waarde aan</p></li>
+<li><p>met elk element uit <span class="math inline">L^p(I,{\mathbb{F}})</span> kan een eenduidige waarde <span class="math inline">{\left\lVert f\right\rVert}_p</span> worden geassocieerd (onafhankelijk van de keuze <span class="math inline">f</span> binnen de klasse)</p></li>
+<li><p>Op <span class="math inline">L^p(I,{\mathbb{F}})</span> is <span class="math inline">{\left\lVert\cdot\right\rVert}_p</span> een norm</p></li>
+<li><p>Is <span class="math inline">L^p(I,{\mathbb{F}})</span> metrisch compleet (Banachruimte) ?</p>
+<ul>
+<li><p>deze vraag ereist dat we integralen en limieten kunnen omdraaien, e.g.:</p>
+<p><span class="math display">\lim_{n\to \infty} \int_I {\left\lvert f_n(x)\right\rvert}^p\,{\mathrm{d}}x = \int_I {\left\lvert\lim_{n\to\infty} f_n(x)\right\rvert}^p\,{\mathrm{d}}x = \int_I \lim_{n\to\infty} {\left\lvert f_n(x)\right\rvert}^p\,{\mathrm{d}}x \quad ?</span></p></li>
+<li><p>tegenvoorbeeld: <span class="math inline">f_n(x) = 2n^2 \exp(-n^2 x^2)</span></p>
+<p><span class="math inline">\Rightarrow</span>: <span class="math inline">f_n \to 0</span> terwijl <span class="math inline">\int_0^1 f_n(x)\,{\mathrm{d}}x = 1 - \exp(-n^2) \to 1</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="lebesgue-integraal" class="level2">
+<h2 class="anchored" data-anchor-id="lebesgue-integraal">Lebesgue-integraal</h2>
+<ul>
+<li><p>Riemann-integraal <span class="math inline">\int_a^b f(x)\,{\mathrm{d}}x</span>:</p>
+<ul>
+<li><p>partitie <span class="math inline">P</span> van <span class="math inline">[a,b]</span>: <span class="math inline">\Delta_k = [x_{k-1},x_k]</span> met <span class="math inline">a = x_0 &lt; x_1 &lt; \ldots &lt; x_{n_1} &lt; x_n=b</span></p></li>
+<li><p><span class="math inline">m_k = \inf_{x \in \Delta_k} f(x)</span> en <span class="math inline">M_k = \sup_{x \in \Delta_k} f(x)</span>:</p>
+<p><span class="math inline">s_{f,P} = \sum_{k=1}^{n} m_k (x_k - x_{k-1})</span> en <span class="math inline">S_{f,P} = \sum_{k=1}^{n} M_k (x_k - x_{k-1})</span></p></li>
+<li><p>integraal bestaat als <span class="math inline">s_f = \sup_{P} s_{f,P} = \inf_{P} S_{f,P} = S_f</span></p>
+<p>(functies met “niet te veel” discontinuïteiten)</p></li>
+</ul>
+<p>werkt niet voor bvb <span class="math inline">\chi_{\mathbb{Q}}(x) = \begin{cases} 1,&amp; x \in {\mathbb{Q}}\\ 0,&amp; x \in {\mathbb{R}}\setminus {\mathbb{Q}}\end{cases}</span> (Dirichlet functie)</p>
+<ul>
+<li>Voorwaarden voor het omdraaien van limieten en integralen met Riemann-integraal zijn heel streng</li>
+<li>Er zijn rijen van integraarbare functies waarvoor de limiet bestaat maar niet (Riemann)-integreerbaar is</li>
+</ul></li>
+</ul>
+</section>
+<section id="lebesgue-integraal-1" class="level2">
+<h2 class="anchored" data-anchor-id="lebesgue-integraal-1">Lebesgue-integraal</h2>
+<ul>
+<li>Lebesgue-integraal <span class="math inline">\int_a^b f(x)\,{\mathrm{d}}x</span>: eerst voor <span class="math inline">0 \leq f(x) \leq M</span>
+<ul>
+<li><p>partitie van <span class="math inline">[0,M]</span>: <span class="math inline">0 = y_0 &lt; y_1 &lt; \ldots &lt; y_{n-1} &lt; y_n = M</span></p></li>
+<li><p>invers beeld (pre-image) <span class="math inline">E_k = f^{-1}([y_{k-1},y_k))</span></p></li>
+<li><p><span class="math inline">l_{f,P} = \sum_{k=1}^{n} y_{k-1} \mu(E_k)</span> en <span class="math inline">L_{f,P} = \sum_{k=1}^{n} y_k \mu(E_k)</span></p>
+<p>met <span class="math inline">\mu(E_k)</span> de “grootte” (maat) van <span class="math inline">E_k</span></p></li>
+</ul>
+<img src="riemannlebesgue.png" class="img-fluid"></li>
+</ul>
+</section>
+<section id="lebesgue-integraal-2" class="level2">
+<h2 class="anchored" data-anchor-id="lebesgue-integraal-2">Lebesgue-integraal</h2>
+<ul>
+<li><p>Probleem zit verdoken in de maat <span class="math inline">\mu(E_k)</span>:</p>
+<p><span class="math inline">E_k</span> is niet noodzakelijk een interval; meer algemene deelverzameling van <span class="math inline">{\mathbb{R}}</span></p>
+<p>We willen graag:</p>
+<ul>
+<li><span class="math inline">\mu([a,b]) = \mu([a,b)) = \mu((a,b]) = \mu((a,b)) = b - a</span> (<span class="math inline">\forall a &lt; b \in {\mathbb{R}}</span>)</li>
+<li><span class="math inline">\mu\left(\bigcup\{A_i, i= 1,2,\ldots\}\right) = \sum_{i} \mu(A_i)</span> voor disjuncte verzamelingen <span class="math inline">A_i</span> (countable additivity)</li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> een <span class="math inline">\mu</span> met deze eigenschappen kan niet worden gedefinieerd voor de collectie <span class="math inline">\mathcal{P}({\mathbb{R}})</span> van alle mogelijke deelverzamelingen van <span class="math inline">{\mathbb{R}}</span> (of van een interval binnen <span class="math inline">{\mathbb{R}}</span>)</p>
+<p><span class="math inline">\Rightarrow</span> de definitie van <span class="math inline">\mu</span> wordt beperkt tot een subcollectie van toegelaten deelverzamelingen van <span class="math inline">{\mathbb{R}}</span></p>
+<p><span class="math inline">\Rightarrow</span> een functie is Lebesgue-integreerbaar als alle inverse beelden <span class="math inline">E_k = f^{-1}([y_{k-1},y_k))</span> van dit toegelaten type zijn</p>
+<p><span class="math inline">\Rightarrow</span> een functie die Riemann-integreerbaar is, is Lebesgue-integreerbaar en de integralen hebben dezelfde waarde</p>
+<p>“Lebesgue integralen verhouden zich tot Riemann integralen zoals <span class="math inline">{\mathbb{R}}</span> tot <span class="math inline">{\mathbb{Q}}</span>”</p></li>
+</ul>
+</section>
+<section id="bijna-overal-en-maat-nul-nulverzamelingen" class="level2">
+<h2 class="anchored" data-anchor-id="bijna-overal-en-maat-nul-nulverzamelingen">“Bijna overal” en “maat nul” (nulverzamelingen)</h2>
+<ul>
+<li><p>Een positieve functie <span class="math inline">f</span> heeft <span class="math inline">\int_I f(x)\,{\mathrm{d}}x = 0</span> enkel als de verzameling <span class="math inline">N=\{x | f(x)&gt;0\}</span> maat nul heeft: <span class="math inline">\mu(N) = 0</span></p></li>
+<li><p>Nulverzamelingen: verzamelingen <span class="math inline">N</span> met <span class="math inline">\mu(N)=0</span></p>
+<ul>
+<li>Individueel punt</li>
+<li>Aftelbaar eindig aantal punten</li>
+<li>Ook onaftelbare verzamelingen kunnen maat nul hebben</li>
+</ul></li>
+<li><p>Andere “bijna overal” definities:</p>
+<ul>
+<li><p>functies <span class="math inline">f</span> en <span class="math inline">g</span> zijn bijna overal gelijk, als er een verzameling <span class="math inline">N</span> bestaat met <span class="math inline">\mu(N)=0</span> zodat <span class="math inline">f(x)=g(x)</span> voor alle <span class="math inline">x \in I \setminus N</span></p></li>
+<li><p><span class="math inline">\lim_{n \to \infty} f_n</span> convergeert “bijna overal” puntsgewijs naar <span class="math inline">f</span>, als er een verzameling <span class="math inline">N</span> bestaat met <span class="math inline">\mu(N)=0</span> zodat <span class="math inline">\lim_{n \to \infty} f_n(x) = f(x)</span> voor alle <span class="math inline">x \in I \setminus N</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="compleetheid-van-lpimathbbf" class="level2">
+<h2 class="anchored" data-anchor-id="compleetheid-van-lpimathbbf">Compleetheid van <span class="math inline">L^p(I;{\mathbb{F}})</span></h2>
+<ul>
+<li><p>Er kan worden aangetoond dat <span class="math inline">L^p(I,{\mathbb{F}})</span> een Banachruimte is (stelling van Riesz-Fischer)</p>
+<p>(zonder bewijs)</p></li>
+<li><p>uitbreidingen:</p>
+<ul>
+<li><p>voor <span class="math inline">p=\infty</span>: <span class="math inline">L^\infty(I,{\mathbb{F}})</span> gedefinieerd via <span class="math inline">{\left\lVert f\right\rVert}_\infty = \mathrm{ess}\ \sup_{x\in I} {\left\lvert f\right\rvert} = \inf\big\{M \geq 0 |\ \mu\left(\{x \in I | {\left\lvert f(x)\right\rvert}&gt; M\right\}) = 0\big\}</span></p></li>
+<li><p><span class="math inline">L^p_w(I,{\mathbb{F}})</span> met norm <span class="math inline">{\left\lVert f\right\rVert}_{p,w} = \left(\int_{I} w(x) {\left\lvert f(x)\right\rvert}^p \,{\mathrm{d}}x\right)^{1/p}</span> voor integreerbare functie <span class="math inline">w</span> met <span class="math inline">w(x)&gt;0</span> voor alle <span class="math inline">x \in I</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="bijkomende-opmeringen" class="level2">
+<h2 class="anchored" data-anchor-id="bijkomende-opmeringen">Bijkomende opmeringen</h2>
+<ul>
+<li><p><span class="math inline">I = [a,b]</span> (compact): <span class="math inline">L^p(I,{\mathbb{F}}) {\preccurlyeq}L^q(I,{\mathbb{F}})</span> als <span class="math inline">p &gt; q</span></p>
+<p><span class="math inline">I = {\mathbb{R}}</span>: <span class="math inline">L^p(I,{\mathbb{F}})</span> en <span class="math inline">L^q(I,{\mathbb{F}})</span> hebben elk elementen die de andere niet bevat</p></li>
+<li><p>Interessante dichte deelruimtes als <span class="math inline">I</span> compact:</p>
+<ul>
+<li>polynomen</li>
+<li>continue functies <span class="math inline">C^0(I,{\mathbb{F}})</span>, gladde functies <span class="math inline">C^\infty(I,{\mathbb{F}})</span>, elke <span class="math inline">C^k(I,{\mathbb{F}})</span> voor <span class="math inline">k \in {\mathbb{N}}</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow \overline{C^k(I,{\mathbb{F}})} = L^p(I,{\mathbb{F}})</span>: sluiting hangt af van definitie limiet en dus van <span class="math inline">{\left\lVert\cdot\right\rVert}_p</span></p></li>
+<li><p>Interessante dichte deelruimtes als <span class="math inline">I = {\mathbb{R}}</span>:</p>
+<ul>
+<li><p><span class="math inline">C_c^k(I,{\mathbb{F}})</span>: continu (afleidbare) functies met compacte “drager” (support)</p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">\mathrm{supp}(f) = \overline{\{ x \in I |\ f(x) \neq 0\}} \subseteq I</span></p></li>
+</ul></li>
+<li><p><span class="math inline">L^p(I,{\mathbb{F}})</span> is “separabel”: laat aftelbare fundamentele verzameling <span class="math inline">S</span> toe</p>
+<p>(verzameling waarvoor geldt dat <span class="math inline">\overline{{\mathbb{F}}S} = L^p(I,{\mathbb{F}})</span>, niet noodzakelijk een basis)</p>
+<ul>
+<li><span class="math inline">I</span> compact: <span class="math inline">S=\{x^k,k\in{\mathbb{N}}\}</span>, <span class="math inline">S=\{\exp({\mathrm{i}}\frac{2\pi}{L} k x), k \in{\mathbb{Z}}\}</span>, </li>
+<li><span class="math inline">I = {\mathbb{R}}</span>: <span class="math inline">S=\{x^n \chi_{[-N,N]}, n \in {\mathbb{N}}, N \in {\mathbb{N}}\}</span></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="hilbertruimten-en-inwendig-product" class="level1">
+<h1>Hilbertruimten en inwendig product</h1>
+<section id="hilbertruimten-en-inwendig-product-1" class="level2">
+<h2 class="anchored" data-anchor-id="hilbertruimten-en-inwendig-product-1">Hilbertruimten en inwendig product</h2>
+<ul>
+<li><p><span class="math inline">L^2(I,{\mathbb{F}})</span> is een Hilbertruimte: <span class="math inline">{\left\lVert\cdot\right\rVert}_2</span> voldoet aan parallellogramregel en is afkomstig van het inwendig product</p>
+<p><span class="math display">{\left\langle f,g\right\rangle} = \int_I \overline{f(x)}g(x)\,{\mathrm{d}}x</span></p></li>
+<li><p><span class="math inline">L_w^2(I,{\mathbb{F}})</span> is een Hilbertruimte: <span class="math inline">{\left\lVert\cdot\right\rVert}_{2,w}</span> voldoet aan parallellogramregel en is afkomstig van het inwendig product</p>
+<p><span class="math display">{\left\langle f,g\right\rangle}_w = \int_I w(x) \overline{f(x)}g(x)\,{\mathrm{d}}x</span></p>
+<p>met dus <span class="math inline">w(x) &gt; 0</span> voor <span class="math inline">x \in I</span> (op nulverzameling na)</p></li>
+<li><p>nog algemener: <span class="math inline">{\left\langle f,g\right\rangle} = \iint_I w(x,y) \overline{f(x)}g(y)\,{\mathrm{d}}x{\mathrm{d}}y</span> ?</p>
+<p><span class="math inline">\rightarrow</span> weinig gebruikt, precieze voorwaarden op <span class="math inline">w(x,y)</span> niet duidelijk</p></li>
+</ul>
+</section>
+</section>
+<section id="orthogonale-veeltermen" class="level1">
+<h1>Orthogonale veeltermen</h1>
+<section id="orthogonale-veeltermen-1" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-1">Orthogonale veeltermen</h2>
+<ul>
+<li><p><span class="math inline">\{x^n, n\in{\mathbb{N}}_0\}</span> is een fundamentele verzameling voor:</p>
+<ul>
+<li><span class="math inline">L^2([a,b], {\mathbb{F}})</span></li>
+<li><span class="math inline">L^2_w(I, {\mathbb{F}})</span> voor <span class="math inline">I = {\mathbb{R}}</span> of <span class="math inline">I = {\mathbb{R}}_{\geq 0}</span> in combinatie met goed gekozen <span class="math inline">w</span></li>
+</ul></li>
+<li><p><span class="math inline">\{x^n, n\in{\mathbb{N}}_0\}</span> kan omgevormd worden tot een basis door de equivalente orthogonale/orthonormale rij te vormen via het Gram-Schmidt algoritme (en dan het expansietheoriem toe te passen)</p></li>
+<li><p>Verschillende families van orthogonale polynomen (door keuzes van <span class="math inline">I</span> en <span class="math inline">w</span>)</p></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-2" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-2">Orthogonale veeltermen</h2>
+<p>Gram-Schmidt algoritme toegepast op <span class="math inline">\{x^n, n\in{\mathbb{N}}_0\}</span> <span class="math inline">\Rightarrow</span> <span class="math inline">\{p_n(x), n \in {\mathbb{N}}_0\}</span> met</p>
+<ul>
+<li><p><span class="math inline">p_n(x)</span> is een polynoom van graad <span class="math inline">n</span> met reële coëfficiënten</p>
+<ul>
+<li><p>volgt uit structuur Gram-Schmidt</p></li>
+<li><p><span class="math inline">p_n(x)</span> is orthogonaal op alle met polynomen van graad <span class="math inline">&lt;n</span></p></li>
+<li><p>niet steeds genormaliseerd: <span class="math inline">{\left\langle p_n,p_m\right\rangle}_w \sim C_n \delta_{n,m}</span></p></li>
+<li><p>voor symmetrisch interval en <span class="math inline">w(x)=w(-x)</span>:</p>
+<p><span class="math inline">p_n</span> bevat enkel even (oneven) machten van <span class="math inline">x</span> voor <span class="math inline">n</span> even (oneven)</p></li>
+</ul></li>
+<li><p><span class="math inline">x p_n(x) = a_{n} p_{n+1}(x) + b_n p_{n}(x) + c_{n} p_{n-1}(x)</span></p>
+<p>met <span class="math inline">c_0 = 0</span> en <span class="math inline">c_{n} {\left\langle p_{n-1},p_{n-1}\right\rangle}_w = a_{n-1} {\left\langle p_n,p_n\right\rangle}_w</span> <span class="math inline">\Rightarrow c_n = a_{n-1}</span></p>
+<ul>
+<li><p>vermenigvuldigen met <span class="math inline">x</span> heeft tridiagonale “matrixrepresentatie” t.o.v. basis <span class="math inline">p_n</span></p></li>
+<li><p>als normalisatie van basis <span class="math inline">n</span>-onafhankelijk:</p>
+<p><span class="math inline">c_n = a_{n-1} \Leftrightarrow</span> symmetrische matrixrepresentatie</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-3" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-3">Orthogonale veeltermen</h2>
+<ul>
+<li><p>Orthogonale projector op deelruimte van polynomen van graad <span class="math inline">n</span>:</p>
+<p><span class="math display">({\hat{P}}_n f)(x) = \int_I w(y) K_n(x,y) f(y)\,{\mathrm{d}}y = \int_I w(y) \left[\sum_{k=0}^{n} \frac{p_k(x) p_k(y)}{{\left\langle p_k,p_k\right\rangle}_w} \right] f(y)\,{\mathrm{d}}y</span></p>
+<p>met hierin (Christoffel-Darboux formule): <span class="math display">\sum_{k=0}^{n} \frac{p_k(x) p_k(y)}{{\left\langle p_k,p_k\right\rangle}_w} = \begin{cases} \frac{a_n}{{\left\langle p_n,p_n\right\rangle}_w} \frac{ p_{n+1}(x) p_n(y) - p_{n}(x) p_{n+1}(y)}{x-y},&amp; x \neq y\\
+  \frac{a_n}{{\left\langle p_n,p_n\right\rangle}_w} ( p_{n+1}'(x) p_n(y) - p_{n}'(x) p_{n+1}(y)),&amp; x = y
+\end{cases}</span></p></li>
+<li><p><span class="math inline">p_n</span> heeft <span class="math inline">n</span> verschillende nulpunten in <span class="math inline">I</span>;</p>
+<p>de nulpunten van <span class="math inline">p_n</span> liggen tussen deze van <span class="math inline">p_{n+1}</span> in (alternerend)</p></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-legendre" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-legendre">Orthogonale veeltermen: Legendre</h2>
+<ul>
+<li><p><span class="math inline">I = [-1,+1]</span>, <span class="math inline">w(x)=1</span>:</p>
+<p><span class="math display">\begin{align*}
+\begin{split}
+  &amp;P_0(x) = 1,\quad P_1(x) = x,\quad P_2(x) = \frac{1}{2}(3 x^2 - 1),\\
+  &amp;P_3(x) = \frac{1}{2}(5x^3-3x),\quad P_4(x) = \frac{1}{8}(35 x^4 - 30x^2 + 3), \quad \ldots
+\end{split}
+\end{align*}</span></p></li>
+<li><p>Genererende functie (Legendre 1782): <span class="math inline">\frac{1}{\sqrt{1 - 2x t + t^2}} = \sum_{n=0}^{+\infty} P_n(x) t^n</span></p>
+<p><span class="math inline">\rightarrow</span> nuttig om eigenschappen aan te tonen:</p>
+<ul>
+<li><p>uit <span class="math inline">\int_{-1}^{+1} \frac{1}{\sqrt{1 - 2x t + t^2}} \frac{1}{\sqrt{1 - 2x s + s^2}} \,{\mathrm{d}}x = \sum_{n,m=0}^{+\infty} {\left\langle P_n,P_m\right\rangle} t^n s^m = \frac{1}{\sqrt{ts}} \log \frac{1 + \sqrt{ts}}{1 - \sqrt{ts}}</span></p>
+<p><span class="math inline">\Rightarrow {\left\langle P_n,P_m\right\rangle} = \int_{-1}^{+1} P_n(x) P_m(x) \,{\mathrm{d}}x = \frac{2}{2n +1} \delta_{n,m}</span></p></li>
+<li><p>uit afgeleide naar <span class="math inline">t</span> <span class="math inline">\rightarrow</span> Bonnet recursieformule:</p>
+<p><span class="math inline">(n+1) P_{n+1}(x) + n P_{n-1}(x) = (2n+1) x P_n(x)</span></p></li>
+<li><p>Rodrigues formule: <span class="math inline">P_n(x) = \frac{1}{2^n n!} \frac{{\mathrm{d}}^n\ }{{\mathrm{d}}x^n} (x^2 -1)^n</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-hermite" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-hermite">Orthogonale veeltermen: Hermite</h2>
+<ul>
+<li><p><span class="math inline">I = {\mathbb{R}}</span>, <span class="math inline">w(x)=\exp(-x^2)</span>: (polynomen worden kwadratisch integreerbaar)</p>
+<p><span class="math display">\begin{align*}
+\begin{split}
+  &amp;H_0(x) = 1,\quad H_1(x) = 2x,\quad H_2(x) = 4 x^2 - 2,\\
+  &amp;H_3(x) = 8x^3-12x,\quad H_4(x) = 16 x^4 - 48x^2 + 12, \quad \ldots
+\end{split}
+\end{align*}</span></p></li>
+<li><p>Genererende functie: <span class="math inline">\exp( 2 x t - t^2) = \sum_{n=0}^{+\infty} \frac{1}{n!} H_n(x) t^n</span></p>
+<p><span class="math inline">\rightarrow</span> nuttig om eigenschappen aan te tonen:</p>
+<ul>
+<li><p>uit <span class="math inline">\int_{-\infty}^{+\infty} {\mathrm{e}}^{-x^2} {\mathrm{e}}^{2x s - s^2} {\mathrm{e}}^{2x s - s^2}\,{\mathrm{d}}x = \sum_{m,n=0}^{+\infty} \frac{{\left\langle H_m,H_n\right\rangle}_w}{m! n!} s^m t^n = \sqrt{\pi} {\mathrm{e}}^{2 s t}</span></p>
+<p><span class="math inline">\Rightarrow {\left\langle H_m,H_n\right\rangle}_w = \int_{-\infty}^{+\infty} {\mathrm{e}}^{-x^2} H_m(x) H_n(x)\,{\mathrm{d}}x = 2^n n! \sqrt{\pi} \delta_{m,n}</span></p></li>
+<li><p>uit afgeleide naar <span class="math inline">t</span> <span class="math inline">\rightarrow</span> Bonnet recursieformule:</p>
+<p><span class="math inline">H_{n+1}(x) + 2n H_{n-1}(x) = 2 x H_{n}(x)</span></p></li>
+<li><p>Rodrigues formule: <span class="math inline">H_n(x) = (-1)^n {\mathrm{e}}^{x^2} \frac{{\mathrm{d}}^n}{{\mathrm{d}}x^n} {\mathrm{e}}^{-x^2}</span></p></li>
+</ul></li>
+<li><p><span class="math inline">\{\phi_n(x) \sim H_n(x) {\mathrm{e}}^{-\frac{x^2}{2}},n \in {\mathbb{N}}\}</span></p>
+<p>is orthogonale fundamentele verzameling (basis) voor <span class="math inline">L^2({\mathbb{R}},{\mathbb{F}})</span></p></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-laguerre" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-laguerre">Orthogonale veeltermen: Laguerre</h2>
+<ul>
+<li><p><span class="math inline">I = [0,+\infty)</span>, <span class="math inline">w(x)=\exp(-x)</span>:</p>
+<p><span class="math display">\begin{align*}
+\begin{split}
+  &amp;L_0(x) = 1,\quad L_1(x) = 1-x,\quad L_2(x) = \frac{1}{2}(x^2 - 4x + 2),\\
+  &amp;L_3(x) = \frac{1}{6}(-x^3 + 9x^2 - 18 x +6)\quad \ldots
+\end{split}
+\end{align*}</span></p></li>
+<li><p>Genererende functie: <span class="math inline">\frac{1}{1-t} \exp\left(-x\frac{ t}{1 - t}\right) = \sum_{n=0}^{+\infty} L_n(x) t^n</span></p>
+<p><span class="math inline">\rightarrow</span> nuttig om eigenschappen aan te tonen:</p>
+<ul>
+<li><p>uit <span class="math inline">\int_{0}^{+\infty} {\mathrm{e}}^{-x} \frac{1}{1-s} \exp\left(\frac{-x s}{1 - s}\right)\frac{1}{1-t} \exp\left(\frac{-x t}{1 - t}\right)\,{\mathrm{d}}x = \sum_{m,n=0}^{+\infty} {\left\langle L_m,L_n\right\rangle}_w s^mt^n = \frac{1}{1-ts}</span></p>
+<p><span class="math inline">\Rightarrow {\left\langle L_m,L_n\right\rangle}_w = \int_0^{+\infty} {\mathrm{e}}^{-x} L_m(x) L_n(x) \,{\mathrm{d}}x = \delta_{m,n}</span></p></li>
+<li><p>uit afgeleide naar <span class="math inline">t</span> <span class="math inline">\rightarrow</span> Bonnet recursieformule:</p>
+<p><span class="math inline">(n+1) L_{n+1}(x) + n L_{n-1}(x) = (2n + 1 - x) L_n(x)</span></p></li>
+<li><p>Rodrigues formule: <span class="math inline">L_n(x) = \frac{{\mathrm{e}}^x}{n!} \frac{{\mathrm{d}}^n\ }{{\mathrm{d}}x^n} (x^n {\mathrm{e}}^{-x})</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonale-veeltermen-chebyshev" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-veeltermen-chebyshev">Orthogonale veeltermen: Chebyshev</h2>
+<ul>
+<li><p><span class="math inline">I = [-1,1]</span>, <span class="math inline">w(x) = (1-x^2)^{-1/2}</span>:</p>
+<p><span class="math display">\begin{align*}
+\begin{split}
+  &amp;T_0(x) = 1,\quad T_1(x) = x,\quad T_2(x) = 2x^2-1,\quad T_3(x) = 4x^3 - 3x,\quad \ldots
+\end{split}
+\end{align*}</span></p></li>
+<li><p>Genererende functie: <span class="math inline">\frac{1- x t}{1 - 2x t+ t^2} = \sum_{n=0}^{+\infty} T_n(x) t^n</span></p></li>
+<li><p>In dit geval: <span class="math inline">{\left\langle f,g\right\rangle}_w = \int_{-1}^{+1} \frac{1}{\sqrt{1-x^2}} f(x) g(x)\,{\mathrm{d}}x = \int_{0}^{+\pi} f(\cos \theta) g(\cos \theta) \,{\mathrm{d}}\theta</span></p>
+<ul>
+<li><p><span class="math inline">T_n(x) = T_n(\cos \theta) = \cos(n \theta) = \cos(n \arccos x)</span></p></li>
+<li><p><span class="math display">\begin{align*}
+{\left\langle T_m,T_n\right\rangle}_w = \int_{-1}^{+1} \frac{T_m(x) T_n(x)}{\sqrt{1-x^2}} \,{\mathrm{d}}x
+= \int_0^{+\pi} \cos(m\theta)\cos(n\theta)\,{\mathrm{d}}\theta
+= \begin{cases} \pi, &amp; m = n = 0\\ \frac{\pi}{2}    \delta_{n,m}, &amp;\text{otherwise}\end{cases}
+\end{align*}</span></p></li>
+<li><p><span class="math inline">T_{n\pm 1}(\cos \theta) = \cos(\theta) \cos(n \theta) \mp \sin(\theta) \sin(n\theta)</span>:</p>
+<p>recursierelatie <span class="math inline">T_{n+1}(x) = 2x T_n(x) - T_{n-1}(x)</span></p></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\rightarrow</span> vooral in numerieke analyse, statistiek, minder in fysica</p>
+</section>
+<section id="toepassing-gaussische-kwadratuur" class="level2">
+<h2 class="anchored" data-anchor-id="toepassing-gaussische-kwadratuur">Toepassing: Gaussische kwadratuur</h2>
+<ul>
+<li><p>Numerieke benadering van integraal op basis van functiewaarden op een discrete, eindige verzameling <span class="math inline">\{x_i \in I; i=1,\ldots,n\}</span>:</p>
+<p><span class="math display">\int_I w(x) f(x)\,{\mathrm{d}}x \approx \sum_{i=1}^{n} a^i f(x_i)</span></p>
+<p><span class="math inline">\rightarrow</span> moet lineaire functionaal zijn van de functiewaarden <span class="math inline">\{f(x_i)\}</span></p></li>
+<li><p>met <span class="math inline">n</span> punten: benadering exact voor veeltermen van graad <span class="math inline">\leq n-1</span></p>
+<p><span class="math display">\begin{align*}
+  \begin{bmatrix}
+    1 &amp; 1 &amp; 1 &amp; \dots &amp; 1\\
+    x_1 &amp; x_2 &amp; x_3 &amp; \dots &amp; x_n\\
+    (x_1)^2 &amp; (x_2)^2 &amp; (x_3)^2 &amp; \dots &amp; (x_n)^2\\
+    \vdots &amp; &amp; &amp; \ddots &amp; \vdots\\
+    (x_1)^{n-1} &amp; (x_2)^{n-1} &amp; (x_3)^{n-1} &amp; \dots &amp; (x_n)^{n-1}
+  \end{bmatrix}
+  \begin{bmatrix}
+    a^1 \\ a_2 \\ a_3 \\ \vdots \\ a_{n}
+  \end{bmatrix}
+  = \begin{bmatrix}
+    b^0\\ b^1 \\ b^2 \\ \vdots \\ b^{n-1}
+  \end{bmatrix}
+\end{align*}</span></p>
+<p>met <span class="math inline">b^k = \int_I w(x) x^k\,{\mathrm{d}}x</span>: lineair systeem met Vandermonde matrix</p></li>
+</ul>
+</section>
+<section id="toepassing-gaussische-kwadratuur-1" class="level2">
+<h2 class="anchored" data-anchor-id="toepassing-gaussische-kwadratuur-1">Toepassing: Gaussische kwadratuur</h2>
+<ul>
+<li><p>Kunnen we beter doen als we de <span class="math inline">\{x_i\}</span> slim kiezen?</p>
+<p>Kunnnen we de benadering exact maken voor veeltermen tot graad <span class="math inline">\leq 2n-1</span> ?</p></li>
+<li><p>Moeilijk niet-lineair probleem?</p>
+<p>Gauss: kies <span class="math inline">\{x_i; i=1,\ldots,n\}</span> als nulpunten van de orthogonale veelterm <span class="math inline">p_n</span> geassocieerd aan <span class="math inline">I</span> en <span class="math inline">w</span></p>
+<ul>
+<li><p>we kiezen <span class="math inline">a^i</span> zodat exact voor veeltermen tot graad <span class="math inline">n-1</span></p></li>
+<li><p><span class="math inline">\int w(x) p_n(x) q(x)\,{\mathrm{d}}x = 0</span> voor elke <span class="math inline">q</span> van graad <span class="math inline">\leq n-1</span></p>
+<p><span class="math inline">\rightarrow</span> benaderingsformule correct als <span class="math inline">p_n(x_i) =0</span> voor elke <span class="math inline">x_i</span></p></li>
+<li><p>willekeurige polynoom van graad <span class="math inline">\leq 2n-1</span>:</p>
+<p><span class="math inline">f(x) = p_n(x) q(x) + r(x)</span> met <span class="math inline">r(x)</span> veelterm met graad <span class="math inline">\leq n-1</span></p>
+<p><span class="math inline">\Rightarrow \int w(x) f(x)\,{\mathrm{d}}x = \int w(x) r(x)\,{\mathrm{d}}x = \sum a^i r(x_i) = \sum a^i f(x_i)</span></p></li>
+</ul></li>
+<li><p>Vandermonde-matrix inverteren is numeriek instabiel: eigenschappen van orthogonale veeltermen kunnen ook helpen om <span class="math inline">a^i</span> te vinden</p>
+<p><span class="math inline">\rightarrow</span>: niet te kennen</p></li>
+</ul>
+</section>
+</section>
+<section id="fourierreeksen" class="level1">
+<h1>Fourierreeksen</h1>
+<section id="periodieke-functies" class="level2">
+<h2 class="anchored" data-anchor-id="periodieke-functies">Periodieke functies</h2>
+<ul>
+<li><p>periodieke functies <span class="math inline">f:{\mathbb{R}}\to {\mathbb{C}}</span> met <span class="math inline">f(x+L) = f(x)</span></p>
+<ul>
+<li>functiewaarden <span class="math inline">x \in [0,L)</span> <span class="math inline">\to</span> periodiek uitbreiden</li>
+<li>functie op circel <span class="math inline">\cong</span> 1-dimensionale torus <span class="math inline">{\mathbb{T}}^1 = {\mathbb{R}}/(L{\mathbb{Z}})</span>.</li>
+</ul></li>
+<li><p>trigonometische veelterm van graad <span class="math inline">n</span>:</p>
+<p><span class="math display">\begin{align*}
+f(x) &amp;= \frac{a_0}{2} + \sum_{k=1}^{n} a_k \cos\left(\frac{2\pi}{L} k x\right) + \sum_{k=1}^n b_k \sin\left(\frac{2\pi}{L} k x\right)= \sum_{k=-n}^{+n} c_k \exp\left({\mathrm{i}}\frac{2\pi}{L} k x\right)
+\end{align*}</span></p>
+<ul>
+<li><p><span class="math inline">a_k = c_k + c_{-k}</span> voor <span class="math inline">k \in {\mathbb{N}}</span> en <span class="math inline">b_k = {\mathrm{i}}(c_k - c_{-k})</span> voor <span class="math inline">k\in {\mathbb{N}}_0</span></p></li>
+<li><p>orthonormale basis: <span class="math inline">S=\left\{ \varphi_k(x) = \frac{1}{\sqrt{L}} {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x};\ k =-n,-n+1,\dots,0,\dots, n-1, n\right\}</span></p></li>
+</ul></li>
+<li><p>meerdimensionale Fourier-basis (<span class="math inline">\boldsymbol{x} \in \mathbb{T}^d = L_1 \times L_2 \times \cdots \times L_d</span>):</p>
+<p><span class="math display">\left\{\varphi_{\boldsymbol{k}}(\boldsymbol{x}) = \frac{1}{(L_1 L_2 \dots L_d)^{1/2}} {\mathrm{e}}^{+{\mathrm{i}}(\frac{2\pi}{L_1} k_1 x_1 + \dots + \frac{2\pi}{L_d} k_d x_d)}; \boldsymbol{k} \in {\mathbb{Z}}^d\right\}</span></p></li>
+</ul>
+</section>
+<section id="trigonometrische-veeltermen-en-fouriercoefficiënten" class="level2">
+<h2 class="anchored" data-anchor-id="trigonometrische-veeltermen-en-fouriercoefficiënten">Trigonometrische veeltermen en Fouriercoefficiënten</h2>
+<ul>
+<li><p><strong>Fouriercoefficiënten</strong>: <span class="math inline">\widehat{f}_k = {\left\langle\varphi_k,f\right\rangle} = \frac{1}{\sqrt{L}} \int_{0}^{L} f(x) {\mathrm{e}}^{-{\mathrm{i}}\frac{2\pi}{L} k x}\,{\mathrm{d}}x</span> (<span class="math inline">\forall k \in {\mathbb{Z}}</span>)</p></li>
+<li><p>Orthogonale projector op trigonometrische veeltermen van graad <span class="math inline">n</span>:</p>
+<p><span class="math display">\begin{align*}
+  f_n(x) =  ({\hat{P}}_n f)(x) &amp;= \sum_{k=-n}^{+n} {\left\langle\varphi_k,f\right\rangle} \varphi_k(x)= \sum_{k=-n}^{+n} \widehat{f}_k \varphi_k(x) = \frac{1}{\sqrt{L}} \sum_{k=-n}^{+n} \widehat{f}_k {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x} \\
+  &amp;= \sum_{k=-n}^{+n} \frac{1}{L} \int_0^L f(t) {\mathrm{e}}^{+ {\mathrm{i}}\frac{2\pi}{L} k (x - t)}\,{\mathrm{d}}t = \int_0^L D_n(x-t) f(t)\,{\mathrm{d}}t
+\end{align*}</span></p>
+<p>met <span class="math inline">D_n(x) = \frac{1}{L} \sum_{k=-n}^{+n} {\mathrm{e}}^{+ {\mathrm{i}}\frac{2\pi}{L} k x} = \frac{\sin\left(\frac{(2n+1)\pi}{L}x\right)}{L \sin\left(\frac{\pi}{L}x\right)}</span> (Dirichlet kernel)</p></li>
+<li><p><strong>Fourierreeks</strong>: <span class="math display">\lim_{n \to \infty} \frac{1}{\sqrt{L}} \sum_{k=-n}^{+n} \widehat{f}_k {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x}</span></p></li>
+</ul>
+</section>
+<section id="fouriercoefficiënten-eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="fouriercoefficiënten-eigenschappen">Fouriercoefficiënten: eigenschappen</h2>
+<p><span class="math display">\widehat{f}_k = {\left\langle\varphi_k,f\right\rangle} = \frac{1}{\sqrt{L}} \int_{0}^{L} f(x) {\mathrm{e}}^{-{\mathrm{i}}\frac{2\pi}{L}k x}\,{\mathrm{d}}x</span></p>
+<ul>
+<li><p>Bestaan (<span class="math inline">\forall k \in {\mathbb{Z}}</span>) voor elke <span class="math inline">f \in L^1([0,L];{\mathbb{C}})</span> met <span class="math inline">{\left\lvert\widehat{f}_k\right\rvert} \leq \frac{1}{\sqrt{L}} {\left\lVert f\right\rVert}_1 \Rightarrow {\left\lVert\widehat{f}\right\rVert}_{\infty} = \sup_{k \in {\mathbb{Z}}} {\left\lvert\widehat{f}_k\right\rvert} \leq \frac{1}{\sqrt{L}}{\left\lVert f\right\rVert}_1</span></p></li>
+<li><p>Lineariteit: <span class="math inline">h(x) = a f(x) + b g(x) \implies \widehat{h}_k = a \widehat{f}_k + b \widehat{g}_k</span></p></li>
+<li><p>Translatie (in ruimte/tijd): <span class="math inline">h(x) = f(x-x_0) \implies \widehat{h}_k = {\mathrm{e}}^{-{\mathrm{i}}\frac{2\pi}{L}k x_0} \widehat{f}_k</span></p></li>
+<li><p>Modulatie (verschuiging in frequentie): <span class="math inline">h(x) = f(x) {\mathrm{e}}^{{\mathrm{i}}\frac{2\pi}{L} k_0 x} \implies \widehat{h}_k = \widehat{f}_{k-k_0}</span></p></li>
+<li><p>Conjugatie: <span class="math inline">h(x) = \overline{f(x)} \implies \widehat{h}_k = \overline{\widehat{f}_{-k}}</span></p></li>
+<li><p>Tijd-/frequentie-omkering: <span class="math inline">h(x) = f(-x) \implies \widehat{h}_k = \widehat{f}_{-k}</span></p></li>
+<li><p>(Discrete) herschaling: <span class="math inline">h(x) = f(s x) \implies \widehat{h}_{k} = \begin{cases} \frac{1}{s}\widehat{f}_{k/s} ,&amp;\text{$k$ is veelvoud van $s$}\\ 0,&amp;\text{anders}\end{cases},\quad\forall s \in {\mathbb{N}}_0</span></p></li>
+</ul>
+</section>
+<section id="convoluties" class="level2">
+<h2 class="anchored" data-anchor-id="convoluties">Convoluties</h2>
+<ul>
+<li><p>Convolutie van periodieke functies:</p>
+<p><span class="math display">\begin{align*}(f \ast g)(x) &amp;= \int_0^L f(x-y \mod L) g(y)\,{\mathrm{d}}y \\
+&amp;= \int_0^L f(y) g(x-y \mod L)\,{\mathrm{d}}y = (g \ast f)(x)
+\end{align*}</span></p>
+<ul>
+<li>opnieuw periodieke functie</li>
+<li>voor <span class="math inline">f,g \in L^1([0,L])</span> is <span class="math inline">f\ast g \in L^1([0,L])</span> (aan bord)</li>
+</ul></li>
+<li><p>Fouriercoefficiënten:</p>
+<p><span class="math inline">h(x) = (f \ast g)(x) = \int_0^L f(x-y \mod L) g(y)\,{\mathrm{d}}y \implies \widehat{h}_k = \sqrt{L} \widehat{f}_k \widehat{g}_k</span></p></li>
+</ul>
+</section>
+<section id="convergentie-geen-stellingenbewijzen" class="level2">
+<h2 class="anchored" data-anchor-id="convergentie-geen-stellingenbewijzen">Convergentie (geen stellingen/bewijzen)</h2>
+<ul>
+<li><p>Beschouw <span class="math inline">f_n = \frac{1}{\sqrt{L}} \sum_{k=-n}^{+n} \widehat{f}_k {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x}</span></p></li>
+<li><p>De Fourierbasis is een fundamentele verzameling in <span class="math inline">L^1([0,L],{\mathbb{F}})</span>:</p>
+<p>er bestaat een rij <span class="math inline">(\tilde{f}_n)</span> van trigonometrische veeltermen zodat</p>
+<p><span class="math display">\lim_{n\to \infty} {\left\lVert\tilde{f}_n - f\right\rVert}_1 = 0</span></p>
+<p>voor alle <span class="math inline">f \in L^1([0,L],{\mathbb{F}})</span> (concreet: <span class="math inline">\tilde{f}_n = \frac{f_0 + f_1+f_2+\ldots+f_n}{n+1}</span>).</p></li>
+<li><p>Wat zegt dit over <span class="math inline">\lim_{n\to \infty} {\left\lVert f_n - f\right\rVert}_2</span> ?</p>
+<ul>
+<li>bemerk dat <span class="math inline">L^2([0,L],{\mathbb{F}}) {\preccurlyeq}L^1([0,L],{\mathbb{F}})</span></li>
+<li>maar <span class="math inline">{\left\lVert\cdot \right\rVert}_2</span> is strengere maat van convergentie</li>
+<li><span class="math inline">L^2([0,L],{\mathbb{F}})</span> kan geen niet-triviale functies bevatten die loodrecht staan op alle Fourier/trigonometrische polynomen</li>
+</ul>
+<p><span class="math inline">\rightarrow</span> expansiestelling: <span class="math inline">\lim_{n\to \infty} {\left\lVert f_n - f\right\rVert}_2=0</span></p>
+<p><span class="math inline">\implies \sum_{k \in {\mathbb{Z}}} {\left\lvert\widehat{f}_k\right\rvert}^2 = {\left\lVert\widehat{f}\right\rVert}_2^2</span> en dus voor grote <span class="math inline">k</span>: <span class="math inline">{\left\lvert\widehat{f}_k\right\rvert}</span> daalt sneller dan <span class="math inline">{\left\lvert k\right\rvert}^{-1/2}</span></p></li>
+</ul>
+</section>
+<section id="gladheid-en-convergentiesnelheid" class="level2">
+<h2 class="anchored" data-anchor-id="gladheid-en-convergentiesnelheid">Gladheid en convergentiesnelheid</h2>
+<ul>
+<li><p>Een periodieke functie is continu, i.e.&nbsp;<span class="math inline">f \in C^0({\mathbb{T}}^1_L)</span>, als <span class="math display">\begin{align*}
+      f(x) &amp;= \lim_{y \to x} f(y), \forall x \in (0,L),&amp;\text{and}&amp;&amp;\lim_{y \stackrel{&gt;}{\to} 0} f(y) &amp;= \lim_{y \stackrel{&lt;}{\to} L} f(y).
+  \end{align*}</span></p></li>
+<li><p><span class="math inline">f \in C^p({\mathbb{T}}^1_L)</span>: <span class="math inline">h(x) = f^{(p)}(x)\implies \widehat{h}_k = \left({\mathrm{i}}\frac{2\pi}{L} k\right)^p \widehat{f}_k</span> (bewijs via partiële integratie)</p></li>
+<li><p>Convergentiesnelheid voor uniforme convergentie: <span class="math inline">{\left\lVert f_n - f\right\rVert}_\infty \leq \sqrt{\frac{2}{L(2p-1)}} \frac{1}{n^{p-1/2}} \left[\sum_{k \in {\mathbb{Z}}} {\left\lvert k\right\rvert}^{2p} {\left\lvert\widehat{f}_k\right\rvert}^2\right]^{1/2}</span> (zonder bewijs)</p>
+<p>voor willekeurige <span class="math inline">p &gt; 1/2</span></p>
+<ul>
+<li><p>als Fourierreeks uniform convergeert, is limiet continu</p></li>
+<li><p>enkel mogelijk als <span class="math inline">f</span> continu is: noodzakelijk maar niet voldoende</p></li>
+<li><p>als <span class="math inline">f' \in L^2([0,L],{\mathbb{F}}) \implies \sum_{k\in {\mathbb{Z}}} {\left\lvert k\right\rvert}^2{\left\lvert\widehat{f}_k\right\rvert}^2 = \left(\frac{L}{2\pi}\right)^2 {\left\lVert f'\right\rVert}_2^2 &lt; \infty</span></p>
+<p><span class="math inline">\implies</span> Fourierreeks voor <span class="math inline">f</span> convergeert uniform</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="convoluties-herbekeken" class="level2">
+<h2 class="anchored" data-anchor-id="convoluties-herbekeken">Convoluties herbekeken</h2>
+<ul>
+<li><p>convolutie <span class="math inline">h = f \ast g \leftrightarrow \widehat{h}_k = \sqrt{L} \widehat{f}_k \ast \widehat{g}_k</span></p>
+<ul>
+<li><p><span class="math inline">f, g \in L^2([0,L],{\mathbb{F}}) \implies {\left\lvert\widehat{f}_k\right\rvert}</span>, <span class="math inline">{\left\lvert\widehat{g}_k\right\rvert} &lt; {\left\lvert k\right\rvert}^{-1/2}</span> <span class="math inline">\implies {\left\lvert\widehat{h}_k\right\rvert} &lt; {\left\lvert k\right\rvert}^{-1}</span></p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">h=f \ast g</span> heeft uniform convergerende Fourierreeks (en is dus continu)</p></li>
+</ul></li>
+<li><p>omgekeerde resultaat?</p>
+<ul>
+<li><p><strong>discrete convolutie</strong>: <span class="math inline">\widehat{h}_k = (\widehat{f}\ast \widehat{g})_k=\sum_{l\in {\mathbb{Z}}} \widehat{f}_{k-l} \widehat{g}_l = \sum_{l\in {\mathbb{Z}}} \widehat{f}_{l} \widehat{g}_{k-l} = (\widehat{g}\ast \widehat{f})_k</span></p></li>
+<li><p><span class="math inline">h(x) = f(x) g(x)\implies \widehat{h}_k =\frac{1}{\sqrt{L}} (\widehat{f} \ast \widehat{g})_k = \frac{1}{\sqrt{L}} \sum_{\ell \in {\mathbb{Z}}} \widehat{f}_{k-l} \widehat{g}_l</span></p>
+<p>onder welke voorwaarden? niet te kennen</p></li>
+</ul></li>
+<li><p>absoluut sommeerbare rijen: <span class="math inline">\widehat{f} \in \ell^1({\mathbb{Z}},{\mathbb{C}})</span>: <span class="math inline">\sum_{k\in{\mathbb{Z}}} {\left\lvert\widehat{f}_k\right\rvert} &lt; \infty</span></p>
+<ul>
+<li><p><span class="math inline">\widehat{f}\in \ell^1({\mathbb{Z}})</span> <span class="math inline">\implies</span> Fourierreeks convergeert absoluut <span class="math inline">\implies</span> Fourierreeks convergeert uniform <span class="math inline">\implies f</span> continu</p></li>
+<li><p><span class="math inline">\widehat{f},\widehat{g} \in \ell^1({\mathbb{Z}}) \implies \widehat{f}\ast \widehat{g} \in \ell^1({\mathbb{Z}})</span></p>
+<p>continuïteit van <span class="math inline">f</span> en <span class="math inline">g</span> noodzakelijk maar niet voldoende</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="stuksgewijze-continuïteit-en-gibbsfenoneem" class="level2">
+<h2 class="anchored" data-anchor-id="stuksgewijze-continuïteit-en-gibbsfenoneem">Stuksgewijze continuïteit en Gibbsfenoneem</h2>
+<ul>
+<li><p><span class="math inline">f(x) = H(x) = \frac{1}{2}(1 + \mathop{\mathrm{sgn}}(x))</span> op interval <span class="math inline">[-L/2,+L/2]</span></p></li>
+<li><p><span class="math display">\begin{align*}
+\widehat{f}_k =\begin{cases}
+  \frac{\sqrt{L}}{2},&amp;k=0\\\frac{{\mathrm{i}}\sqrt{L}}{2\pi} \frac{\cos\left(\pi k\right)-1}{k},&amp;k \neq 0
+\end{cases} = \begin{cases} \frac{\sqrt{L}}{2}\delta_{k,0},&amp;\text{$k$ even}\\ \frac{-{\mathrm{i}}\sqrt{L}}{\pi} \frac{1}{k},&amp;\text{$k$ odd} \end{cases}
+\end{align*}</span></p></li>
+<li><p><span class="math inline">{\left\lvert\widehat{f}_k\right\rvert} \sim {\left\lvert k\right\rvert}^{-1}</span>: geen absolute of uniforme convergentie <span class="math inline">\Leftrightarrow</span> niet continu</p></li>
+<li><p><span class="math inline">f_{2m+1}(x) = \frac{1}{\sqrt{L}}\sum_{{\left\lvert k\right\rvert}\leq 2m+1} \widehat{f}_k {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x}</span> <span class="math inline">= \frac{1}{2}+\frac{2}{\pi} \left[ \sin\left(\frac{2\pi}{L} x\right) + \frac{1}{3} \sin\left(\frac{6\pi}{L} x\right) + \frac{1}{5} \sin\left(\frac{10\pi}{L} x\right) + \dots \right]</span></p>
+<ul>
+<li><p><span class="math inline">f_{2m+1}(0) = 1/2 \Rightarrow \lim_{n\to \infty} f_n(0) = 1/2 = (f(0^-)+f(0^+))/2</span></p></li>
+<li><p><span class="math inline">f_{2m}\left(\frac{L}{4m}\right) = \frac{1}{2} + \frac{2}{\pi} \sum_{l=0}^{m-1} \frac{\sin\left(\pi \frac{2l+1}{2m}\right)}{(2l+1)} = \frac{1}{2} + \frac{1}{\pi}\left(\frac{\pi}{m}\right) \sum_{l=0}^{m-1} \frac{\sin\left(\pi \frac{2l+1}{2m}\right)}{\pi \frac{2l+1}{2m}}</span></p>
+<p><span class="math inline">\qquad \stackrel{m\to\infty}{\longrightarrow} \frac{1}{2} + \frac{1}{\pi} \int_0^\pi \frac{\sin(x)}{x}\,{\mathrm{d}}x</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="stuksgewijze-continuïteit-en-gibbsfenoneem-1" class="level2">
+<h2 class="anchored" data-anchor-id="stuksgewijze-continuïteit-en-gibbsfenoneem-1">Stuksgewijze continuïteit en Gibbsfenoneem</h2>
+<ul>
+<li>Gibbsfenomeen: functie met discontinuïteit <span class="math inline">f(x_0^{\pm}) = f_0 \pm \frac{1}{2} a</span>
+<ul>
+<li><span class="math inline">\lim_{n\to\infty} f_n(x_0) = f_0</span></li>
+<li><span class="math inline">\lim_{n \to \infty} f_n\left(x_0 \pm \frac{L}{2n} \right) = f_0 \pm \frac{a}{\pi} \int_0^{\pi} \frac{\sin(x)}{x}\,{\mathrm{d}}x = f(x_0)^\pm \pm a \left[\frac{1}{\pi} \int_0^{\pi} \frac{\sin(x)}{x}\,{\mathrm{d}}x - \frac{1}{2}\right]</span> <span class="math inline">\qquad= f(x_0)^\pm \pm a \cdot (0.089489872236\dots)</span></li>
+</ul></li>
+<li><img src="gibbs.png" class="img-fluid" style="width:75.0%"></li>
+</ul>
+</section>
+<section id="relatie-met-discrete-fouriertransformatie" class="level2">
+<h2 class="anchored" data-anchor-id="relatie-met-discrete-fouriertransformatie">Relatie met discrete Fouriertransformatie</h2>
+<ul>
+<li><p><span class="math inline">f(x) = \frac{1}{\sqrt{L}} \sum_{k \in {\mathbb{Z}}}\widehat{f}_k {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} k x}.</span></p></li>
+<li><p>‘Bemonster’ (sample) <span class="math inline">f</span>:</p>
+<p><span class="math inline">f_j = f(x_j)</span> met <span class="math inline">x_j = j \epsilon</span>; <span class="math inline">j=0,1,\dots, N-1</span> en <span class="math inline">N=L/\epsilon</span></p></li>
+<li><p>Discrete Fouriertransformatie van ‘samples’ <span class="math display">\begin{align*}
+  F^k &amp;= \frac{1}{\sqrt{N}} \sum_{j = 0}^{N-1} f_j {\mathrm{e}}^{-{\mathrm{i}}\frac{2\pi}{N} k j} =\frac{1}{\sqrt{N}} \frac{1}{\sqrt{L}} \sum_{j=0}^{N-1} \left(\sum_{l \in {\mathbb{Z}}} \widehat{f}_l {\mathrm{e}}^{+{\mathrm{i}}\frac{2\pi}{L} l j \epsilon}\right) {\mathrm{e}}^{-{\mathrm{i}}\frac{2\pi}{N} k j}\nonumber \\
+  &amp; = \frac{\sqrt{\epsilon}}{N} \sum_{l \in {\mathbb{Z}}} \widehat{f}_l \sum_{j=0}^{N-1} {\mathrm{e}}^{{\mathrm{i}}\frac{2\pi}{N} j (l-k)} = \sqrt{\epsilon} \sum_{p \in {\mathbb{Z}}} \widehat{f}_{k + p N}.
+\end{align*}</span></p></li>
+<li><p>Snel dalende Fouriercoefficiënten: <span class="math inline">F^k = \widehat{f}_{\min(k, k-N)} + \dots</span></p></li>
+<li><p>Fouriercoefficiënten exact begrensd: <span class="math inline">\widehat{f}_k = 0</span> voor <span class="math inline">{\left\lvert k\right\rvert}&gt;n</span> <span class="math inline">\Leftrightarrow</span> <span class="math inline">f</span> is trigonometrische veelterm van graad <span class="math inline">n</span></p>
+<p><span class="math inline">\Rightarrow</span> exacte reconstructie mogelijk uit samples als <span class="math inline">\epsilon \leq L/(2n+1)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="operatoren-op-hilbertruimten" class="level1">
+<h1>Operatoren op Hilbertruimten</h1>
+<section id="veelvoorkomende-operatoren-op-functieruimten" class="level2">
+<h2 class="anchored" data-anchor-id="veelvoorkomende-operatoren-op-functieruimten">Veelvoorkomende operatoren op functieruimten</h2>
+<p>Hilbertuimte <span class="math inline">H = L^2(I,{\mathbb{C}})</span>: lineaire afbeeldingen <span class="math inline">f \mapsto g</span> met <span class="math inline">f,g \in H</span></p>
+<ul>
+<li><p>Integraaloperatoren: <span class="math display">g(x) =  ({\hat{A}}f)(x) = \int_I A(x,y) f(y) \,{\mathrm{d}}y</span></p>
+<ul>
+<li><span class="math inline">A:I \times I \to {\mathbb{C}}</span>: <strong>(integraal)kern</strong> van de ‘integraaltransformatie’</li>
+<li>meest directe veralgemening van een matrix <span class="math inline">{\mathsf{A}}</span> en <span class="math inline">w^i = A^i_{\ j} v^j</span></li>
+</ul></li>
+<li><p>Vermenigvuldigingsoperatoren: <span class="math display">g(x) = ({\hat{M}}_h f)(x) = h(x) f(x)</span></p>
+<ul>
+<li><p>belangrijkste voorbeeld: “positie-operator” <span class="math inline">{\hat{X}}</span></p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\hat{M}}_h = h({\hat{X}})</span></p></li>
+<li><p>vergelijkbaar met diagonaalmatrices</p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\hat{M}}_h</span> als integraaloperator met <span class="math inline">A(x,y) = h(x)\delta(x-y)</span> ? (zie later)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="veelvoorkomende-operatoren-op-functieruimten-1" class="level2">
+<h2 class="anchored" data-anchor-id="veelvoorkomende-operatoren-op-functieruimten-1">Veelvoorkomende operatoren op functieruimten</h2>
+<ul>
+<li><p>Differentiaaloperatoren:</p>
+<ul>
+<li>bekendste voorbeeld: <span class="math inline">g(x) = ({\hat{D}}f)(x) = f'(x)</span></li>
+<li>vaak geschreven als <span class="math inline">{\hat{P}} = -{\mathrm{i}}{\hat{D}}</span> (<strong>momentum-operator</strong>)</li>
+<li>andere differentiaaloperatoren: <span class="math inline">p({\hat{D}})</span> met <span class="math inline">p</span> een veelterm</li>
+</ul></li>
+<li><p>Identiteitsoperator: <span class="math inline">g(x) = ({\hat{1}}f)(x) = f(x)</span></p>
+<ul>
+<li><p>resolutie van de identiteit t.o.v. orthonormale basis:</p>
+<p><span class="math display">f(x) = \sum_{n =0}^{+\infty} {\left\langle\varphi_n,f\right\rangle} \varphi_n(x) = \int_I \sum_{n=0}^{+\infty} \varphi_n(x) \overline{\varphi_n(y)} f(y)\,{\mathrm{d}}y</span></p>
+<p><span class="math inline">\rightarrow</span> neemt de vorm aan van integraaloperator met kern</p>
+<p><span class="math display">A(x,y) = \sum_{n=0}^{+\infty} \varphi_n(x) \overline{\varphi_n(y)}</span></p>
+<p><span class="math inline">\Rightarrow A(x,y) = \delta(x-y)</span> ? (zie later)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="veelvoorkomende-operatoren-op-functieruimten-2" class="level2">
+<h2 class="anchored" data-anchor-id="veelvoorkomende-operatoren-op-functieruimten-2">Veelvoorkomende operatoren op functieruimten</h2>
+<p>Voor functies <span class="math inline">f</span> met domein <span class="math inline">{\mathbb{R}}</span>:</p>
+<ul>
+<li>Translatie-operator: <span class="math inline">({\hat{\tau}}_a f)(x) = f(x - a)</span> voor <span class="math inline">a \in {\mathbb{R}}</span></li>
+<li>Herschalingsoperator: <span class="math inline">({\hat{\sigma}}_s f)(x) = f(s x)</span> voor <span class="math inline">s \in {\mathbb{R}}_{\neq 0}</span>, of <span class="math inline">s \in {\mathbb{R}}_{&gt; 0}</span></li>
+<li>Spiegeloperator: <span class="math inline">({\hat{\pi}} f)(x) = f(-x)</span></li>
+</ul>
+<p>Voor functies met domein <span class="math inline">{\mathbb{R}}^d</span>:</p>
+<ul>
+<li>voor de hand liggende uitbreiding, en ook rotatie-operator.</li>
+</ul>
+</section>
+<section id="domein-van-een-operator" class="level2">
+<h2 class="anchored" data-anchor-id="domein-van-een-operator">Domein van een operator</h2>
+<ul>
+<li><p>Sommige operatoren hebben niet de volledige Hilbertruimte als domein:</p>
+<ul>
+<li><span class="math inline">{\hat{D}}</span> kan enkel op afleidbare functies werken</li>
+<li><span class="math inline">{\hat{M}}_h f</span> is mogelijks niet meer kwadratisch integreerbaar</li>
+</ul>
+<p><span class="math inline">\rightarrow</span> domein is deel<del>verzameling</del>ruimte van <span class="math inline">H</span></p></li>
+<li><p>beschouw operator <span class="math inline">{\hat{A}}</span> met domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}} {\preccurlyeq}H</span>:</p>
+<ul>
+<li>als <span class="math inline">{\hat{A}}</span> begrensd <span class="math inline">\Rightarrow</span> continu <span class="math inline">\Rightarrow</span> actie van <span class="math inline">{\hat{A}}</span> ook gedefinieerd op <span class="math inline">\overline{\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}}</span></li>
+<li>als <span class="math inline">\overline{\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}} \neq H</span>, definieer actie op <span class="math inline">{v}\in \overline{\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}}^\perp</span> als <span class="math inline">{\hat{A}}({v}) = {o}</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> voor begrensde operatoren: <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span> kan altijd gelijk worden gekozen aan <span class="math inline">H</span></p>
+<p><span class="math inline">\Rightarrow</span> voor onbegrensde operatoren: operatoren waarvan het domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span> dicht is in <span class="math inline">V</span>, maar geen uitbreiding naar randpunten mogelijk wegens gebrek aan continuïteit</p>
+<ul>
+<li><p>bijvoorbeeld: (continu) afleidbare functies zijn dicht in <span class="math inline">L^2(I)</span></p>
+<p><span class="math inline">\rightarrow</span> kies <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{D}}} = C^1(I,{\mathbb{F}})</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="domein-van-een-operator-1" class="level2">
+<h2 class="anchored" data-anchor-id="domein-van-een-operator-1">Domein van een operator</h2>
+<ul>
+<li><p>Vanaf nu: <span class="math inline">\mathop{\mathrm{End}}(H)</span> = verzameling van alle lineaire afbeeldingen van een dichte deelruimte van <span class="math inline">H</span> naar <span class="math inline">H</span> (“densily defined”)</p></li>
+<li><p><span class="math inline">{\hat{A}},{\hat{B}} \in \mathop{\mathrm{End}}(V)</span> met domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}, \mathop{\mathrm{\mathcal{D}}}_{{\hat{B}}}</span>:</p>
+<ul>
+<li><p>beeld/bereik <span class="math inline">\mathcal{R}_{{\hat{A}}} = \mathop{\mathrm{im}}({\hat{A}}) = \{ {\hat{A}}{v}| {v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}\}</span></p></li>
+<li><p>gelijkheid: <span class="math inline">{\hat{A}} = {\hat{B}} \iff \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}} = \mathop{\mathrm{\mathcal{D}}}_{{\hat{B}}}</span> en <span class="math inline">{\hat{A}}{v}= {\hat{B}} {v}</span> voor alle <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span></p></li>
+<li><p>restrictie/extensie: <span class="math inline">{\hat{A}} \subset {\hat{B}} \iff \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}} {\preccurlyeq}\mathop{\mathrm{\mathcal{D}}}_{{\hat{B}}}</span> en <span class="math inline">{\hat{A}}{v}= {\hat{B}} {v}</span> voor alle <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span></p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\hat{B}}</span> is een extensie van <span class="math inline">{\hat{A}}</span>, <span class="math inline">{\hat{A}}</span> is een restrictie van <span class="math inline">{\hat{B}}</span></p></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> een (onbegrensde) operator is gedefinieerd door zijn actie EN zijn domein!</p>
+<ul>
+<li>als fysici denken we meestal niet na over domein</li>
+<li>behalve voor afleidingsoperatoren: randvoorwaarden (zie later)</li>
+</ul></li>
+</ul>
+</section>
+<section id="begrensde-en-onbegrensde-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="begrensde-en-onbegrensde-operatoren">Begrensde en onbegrensde operatoren</h2>
+<ul>
+<li><p>Integraaloperator:</p>
+<p><span class="math inline">{\left\lVert{\hat{A}}f\right\rVert}^2 = \int_I \underbrace{{\left\lvert\int_I A(x,y) f(y)\,{\mathrm{d}}y\right\rvert}^2}_{\Downarrow\ \text{Cauchy-Schwarz}} \,{\mathrm{d}}x</span></p>
+<p><span class="math inline">\quad\leq \int_I \left(\int_I {\left\lvert A(x,y)\right\rvert}^2\,{\mathrm{d}}y\right)^2 \left(\int_I f(y),{\mathrm{d}}y\right)^2\,{\mathrm{d}}x = \left(\int_I\int_I {\left\lvert A(x,y)\right\rvert}^2 \,{\mathrm{d}}y{\mathrm{d}}x\right) {\left\lVert f\right\rVert}^2</span></p>
+<p><span class="math inline">\Rightarrow</span> begrensd als <span class="math inline">\left(\int_I\int_I {\left\lvert A(x,y)\right\rvert}^2 \,{\mathrm{d}}y{\mathrm{d}}x\right) &lt; \infty</span></p></li>
+<li><p>Vermenigvuldigingsoperator:</p>
+<p><span class="math display">{\left\lVert{\hat{M}}_h f\right\rVert}^2 = \int_I {\left\lvert h(x) f(x)\right\rvert}^2\,{\mathrm{d}}x \leq \left(\mathrm{ess}\ \sup_{x \in I} {\left\lvert h(x)\right\rvert}^2\right) {\left\lVert f\right\rVert}^2</span></p>
+<p><span class="math inline">\Rightarrow</span> positie-operator <span class="math inline">{\hat{X}}</span> op <span class="math inline">L^2(I,{\mathbb{F}})</span> is begrensd als <span class="math inline">I</span> begrensd domein is, maar is onbegrensd op <span class="math inline">L^2({\mathbb{R}},{\mathbb{F}})</span></p></li>
+</ul>
+</section>
+<section id="begrensde-en-onbegrensde-operatoren-1" class="level2">
+<h2 class="anchored" data-anchor-id="begrensde-en-onbegrensde-operatoren-1">Begrensde en onbegrensde operatoren</h2>
+<ul>
+<li><p>Afleidingsoperator: altijd onbegrensd</p>
+<ul>
+<li><p>op <span class="math inline">L^2([0,L],{\mathbb{C}})</span>: <span class="math inline">f_k = \frac{1}{\sqrt{L}} \exp({\mathrm{i}}\frac{2\pi}{L}k x)</span></p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\left\lVert f_k\right\rVert}_2 = 1</span> en <span class="math inline">{\left\lVert{\hat{D}}f_k\right\rVert}_2 = \frac{2\pi}{L} {\left\lvert k\right\rvert}</span> voor arbitraire <span class="math inline">k \in {\mathbb{Z}}</span></p></li>
+<li><p>op <span class="math inline">L^2({\mathbb{R}},{\mathbb{C}})</span>:</p></li>
+</ul>
+<p><span class="math inline">f_n(x) = \begin{cases} \sin(\frac{2\pi}{L}n x),&amp;x \in [0,L]\\ 0,&amp; x \not\in [0,L] \end{cases}</span></p>
+<p><span class="math inline">\rightarrow ({\hat{D}}f_n)(x) = f'_n(x) = \begin{cases} \frac{2\pi}{L} n \cos(\frac{2\pi}{L}n x),&amp;x \in [0,L]\\ 0,&amp; x \not\in [0,L]\end{cases}</span></p>
+<p><span class="math inline">\rightarrow {\left\lVert f_n\right\rVert}_2 = \frac{L}{2}</span> en <span class="math inline">{\left\lVert f'_n\right\rVert}_2 = \pi n</span> voor arbitraire <span class="math inline">n \in {\mathbb{N}}_0</span></p></li>
+</ul>
+</section>
+<section id="begrensde-en-onbegrensde-operatoren-2" class="level2">
+<h2 class="anchored" data-anchor-id="begrensde-en-onbegrensde-operatoren-2">Begrensde en onbegrensde operatoren</h2>
+<ul>
+<li><p><span class="math inline">[{\hat{A}},{\hat{B}}] = {\hat{1}}</span> (of technisch: restrictie <span class="math inline">\subset {\hat{1}}</span>):</p>
+<p><span class="math inline">\Rightarrow</span> minstens 1 van beide operatoren is onbegrensd</p></li>
+<li><p>Voorbeeld 1: <span class="math inline">(({\hat{D}}{\hat{X}} - {\hat{X}} {\hat{D}}) f)(x) = \frac{{\mathrm{d}}\ }{{\mathrm{d}}x} \big(x f(x)\big) - x \frac{{\mathrm{d}}\ }{{\mathrm{d}}x} f(x) = f(x)</span></p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\hat{D}}</span> altijd onbegrensd, <span class="math inline">{\hat{X}}</span> afhankelijk van <span class="math inline">I</span> in <span class="math inline">L^2(I,{\mathbb{F}})</span></p></li>
+<li><p>Voorbeeld 2: <span class="math inline">H = \ell^2({\mathbb{N}})</span>: rijen <span class="math inline">{v}=(v_0,v_1,v_2,\ldots)</span> met <span class="math inline">\sum_{n \in {\mathbb{N}}} {\left\lvert{v}_n\right\rvert}^2 &lt; \infty</span></p>
+<ul>
+<li><p>dichte deelruimten:</p>
+<ul>
+<li>rijen waarvoor <span class="math inline">\sum_{n \in {\mathbb{N}}} n^p {\left\lvert{v}_n\right\rvert}^2 &lt; \infty</span></li>
+<li>rijen met een eindig aantal niet-nulelementen</li>
+</ul></li>
+<li><p><span class="math display">\begin{align*}
+{\hat{A}}^- {e}_n &amp;= \begin{cases} {o}, &amp; n=0\\
+\sqrt{n} {e}_{n-1},&amp;n &gt; 0
+\end{cases}, &amp;{\hat{A}}^+{e}_{n} = \sqrt{n+1} {e}_{n+1}.
+\end{align*}</span></p></li>
+<li><p><span class="math inline">{\left[{\hat{A}}^-,{\hat{A}}^+\right]} {e}_n = {e}_n</span></p>
+<p>(beide onbegrensd; domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^\pm} = \{{v}\in \ell^2({\mathbb{N}}) | \sum_{n \in {\mathbb{N}}} n {\left\lvert{v}_n\right\rvert}^2 &lt; \infty\}</span>)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="toegevoegde-van-een-onbegrensde-operator" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-van-een-onbegrensde-operator">Toegevoegde van een onbegrensde operator</h2>
+<ul>
+<li><p>Definitie van toegevoegde operator: mogelijke problemen</p>
+<ul>
+<li><span class="math inline">{v}\mapsto {\left\langle{w},{\hat{A}}{v}\right\rangle}</span> is niet langer een continue lineaire functionaal op <span class="math inline">H</span></li>
+<li><span class="math inline">{\hat{A}}^\dagger</span> waarschijnlijk onbegrensd: welk domein?</li>
+</ul></li>
+<li><p>Constructie van de toegevoegde van een onbegrensde operator</p>
+<ol type="1">
+<li>definieer domein: <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^\dagger}</span> bevat alle <span class="math inline">{w}\in H</span> zodat <span class="math inline">{v}\mapsto {\left\langle{w},{\hat{A}}{v}\right\rangle}</span> een begrensde <span class="math inline">\leftrightarrow</span> continue lineaire functionaal is voor alle <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span></li>
+<li>aangezien <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span> een dichte deelruimte is van <span class="math inline">H</span>, kan de actie van <span class="math inline">{v}\mapsto {\left\langle{w},{\hat{A}}{v}\right\rangle}</span> nu uitgebreid worden naar volledig <span class="math inline">H</span> (maar niet de actie van <span class="math inline">{\hat{A}}</span> zelf)</li>
+<li>nu kunnen we Riesz representatie-theorema toepassen om aan <span class="math inline">{w}</span> een nieuwe vector <span class="math inline">{\hat{A}}^\dagger({w})</span> te associeren zodat</li>
+</ol>
+<p><span class="math display">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle},\forall {v}\in \mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}}, {w}\in \mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}^\dagger}</span></p>
+<ol start="4" type="1">
+<li>uniciteit, lineairiteit van <span class="math inline">{\hat{A}}^\dagger</span> en andere eigenschappen volgen zoals gewoonlijk</li>
+</ol></li>
+</ul>
+</section>
+<section id="toegevoegde-eigenschappen-en-voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-eigenschappen-en-voorbeelden">Toegevoegde: eigenschappen en voorbeelden</h2>
+<ul>
+<li><p>Voorbeeld 1: <span class="math inline">{\left\langle{w},{\hat{A}}^-{v}\right\rangle} = \sum_{n \in {\mathbb{N}}} \sqrt{n+1} \overline{w^n} v^{n+1} = {\left\langle{\hat{A}}^+{w},{v}\right\rangle}</span> voor alle <span class="math inline">{v},{w}</span> met <span class="math inline">\sum_{n \in {\mathbb{N}}} n {\left\lvert v_n\right\rvert}^2 &lt; \infty</span> <span class="math inline">\Rightarrow {\hat{A}}^+ = ({\hat{A}}^-)^\dagger</span>: domein van deze operatoren is reeds maximaal</p></li>
+<li><p>Voorbeeld 2: op <span class="math inline">L^2([a,b],{\mathbb{F}})</span>, beschouw <span class="math inline">{\hat{D}}</span> met als domein alle afleidbare functies met <span class="math inline">f' \in L^2([a,b],{\mathbb{F}})</span> en <span class="math inline">f(a)=f(b)=0</span></p>
+<p><span class="math display">\int_a^b \overline{g(x)} f'(x)\,{\mathrm{d}}x = g(b)f(b) - g(a)f(a) - \int_a^b \overline{g'(x)}f(x)\,{\mathrm{d}}x</span></p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">({\hat{D}}^\dagger g)(x) = -g'(x)</span> met als domein alle afleidbare functies <span class="math inline">g</span> met <span class="math inline">g' \in L^2([a,b],{\mathbb{F}})</span>, zonder bijkomende randvoorwaarden</p></li>
+<li><p><span class="math inline">{\hat{A}} \subset {\hat{B}} \Rightarrow {\hat{B}}^\dagger \subset {\hat{A}}^\dagger</span> (minder <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span> dan in <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{B}}} \implies</span> meer <span class="math inline">{w}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^\dagger}</span> mogelijk)</p></li>
+<li><p>Als <span class="math inline">{\hat{A}}^\dagger</span> zelf ook dicht gedefineerd is, dan kunnen we <span class="math inline">{\hat{A}}^{\dagger\dagger}</span> definiëren:</p>
+<p><span class="math inline">\rightarrow</span> <span class="math inline">{\hat{A}} \subset {\hat{A}}^{\dagger\dagger}</span> (<span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^{\dagger\dagger}}</span> bevat alle <span class="math inline">{v}</span> zodat <span class="math inline">{w}\mapsto {\left\langle{v},{\hat{A}}^\dagger{w}\right\rangle} = {\overline{{\left\langle{\hat{A}}^\dagger {w},{v}\right\rangle}}}</span> continu is voor alle <span class="math inline">{w}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^\dagger}</span>: zeker voldaan <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span>)</p></li>
+</ul>
+</section>
+<section id="symmetrische-en-zelftoegevoegde-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="symmetrische-en-zelftoegevoegde-operatoren">Symmetrische en zelftoegevoegde operatoren</h2>
+<ul>
+<li><p><strong>symmetrische / hermitische / hermitisch symmetrische operator</strong>: <span class="math display">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}{w},{v}\right\rangle}, \forall {v},{w}\in \mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}}</span></p>
+<p>(symmetrisch wordt ook gebruikt in complexe geval)</p></li>
+<li><p><strong>zelftoegevoegde operatoren</strong>:</p>
+<p><span class="math display">{\hat{A}}^\dagger = {\hat{A}} \Leftrightarrow \mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}^\dagger}=\mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}}\ \text{en}\ {\hat{A}}{v}= {\hat{A}}^\dagger{v},\forall {v}\in \mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{A}}}</span></p>
+<p>(zelftoegevoegd <span class="math inline">\Rightarrow</span> symmetrisch)</p></li>
+<li><p>symmetrische operator:</p>
+<p><span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}{\preccurlyeq}\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}^\dagger}</span> en <span class="math inline">{\hat{A}}^\dagger {v}= {\hat{A}}{v}</span> voor alle <span class="math inline">{v}\in \mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span></p>
+<p><span class="math display">\Rightarrow {\hat{A}} \subset {\hat{A}}^\dagger \Rightarrow {\hat{A}}^{\dagger\dagger} \subset {\hat{A}}^\dagger</span> <span class="math display">\Rightarrow {\hat{A}} \subset {\hat{A}}^{\dagger\dagger} \subset {\hat{A}}^\dagger</span></p></li>
+</ul>
+</section>
+<section id="uitgebreid-voorbeeld" class="level2">
+<h2 class="anchored" data-anchor-id="uitgebreid-voorbeeld">Uitgebreid voorbeeld</h2>
+<p>Beschouw de operator <span class="math inline">{\hat{P}}</span> met actie <span class="math inline">({\hat{P}}f)(x)=-{\mathrm{i}}f'(x)</span> en de identiteit <span class="math display">\begin{align*}
+{\left\langle g,{\hat{P}} f\right\rangle} &amp;= \int_{a}^{b} \overline{g(x)}   (-{\mathrm{i}}) f'(x)\,{\mathrm{d}}x
+= -{\mathrm{i}}\left[\overline{g(b)}f(b) - \overline{g(a)} f(a)\right] + \int_{a}^{b} \overline{(-{\mathrm{i}}) g'(x)}f(x)\,{\mathrm{d}}x\nonumber\\
+&amp;= -{\mathrm{i}}\left[\overline{g(b)}f(b) - \overline{g(a)} f(a)\right] + {\left\langle{\hat{P}} g,f\right\rangle}
+\end{align*}</span></p>
+<p>We moeten het domein nog specifiëren:</p>
+<ul>
+<li><span class="math inline">{\hat{P}}_1</span> met domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_1 = \{f \in L^2([a,b]) | \text{$f'$ bestaat en $f' \in L^2([a,b])$}\}</span>
+<ul>
+<li>niet symmetrisch</li>
+<li><span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{P}}_1^\dagger} = \{f \in \mathop{\mathrm{\mathcal{D}}}_1 | f(a) = f(b) = 0\}</span></li>
+</ul></li>
+<li><span class="math inline">{\hat{P}}_2</span> met domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_2 = \{f \in \mathop{\mathrm{\mathcal{D}}}_1 | f(a) = f(b) = 0\}</span>
+<ul>
+<li>symmetrisch</li>
+<li><span class="math inline">{\hat{P}}_2^\dagger = {\hat{P}}_1</span>: <span class="math inline">{\hat{P}}_2 \subset {\hat{P}}_1</span></li>
+<li><span class="math inline">{\hat{P}}_2^{\dagger\dagger} = {\hat{P}}_1^\dagger = {\hat{P}}_2</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="uitgebreid-voorbeeld-1" class="level2">
+<h2 class="anchored" data-anchor-id="uitgebreid-voorbeeld-1">Uitgebreid voorbeeld</h2>
+<p>Beschouw de operator <span class="math inline">{\hat{P}}</span> met actie <span class="math inline">({\hat{P}}f)(x)=-{\mathrm{i}}f'(x)</span> en de identiteit <span class="math display">\begin{align*}
+{\left\langle g,{\hat{P}} f\right\rangle} &amp;= \int_{a}^{b} \overline{g(x)}   (-{\mathrm{i}}) f'(x)\,{\mathrm{d}}x
+= -{\mathrm{i}}\left[\overline{g(b)}f(b) - \overline{g(a)} f(a)\right] + \int_{a}^{b} \overline{(-{\mathrm{i}}) g'(x)}f(x)\,{\mathrm{d}}x\nonumber\\
+&amp;= -{\mathrm{i}}\left[\overline{g(b)}f(b) - \overline{g(a)} f(a)\right] + {\left\langle{\hat{P}} g,f\right\rangle}
+\end{align*}</span></p>
+<p>We moeten het domein nog specifiëren:</p>
+<ul>
+<li><span class="math inline">{\hat{P}}_1</span> met domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_1 = \{f \in L^2([a,b]) | \text{$f'$ bestaat en $f' \in L^2([a,b])$}\}</span>
+<ul>
+<li>niet symmetrisch</li>
+<li><span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{P}}_1^\dagger} = \{f \in \mathop{\mathrm{\mathcal{D}}}_1 | f(a) = f(b) = 0\}</span></li>
+</ul></li>
+<li>Stel bijvoorbeeld <span class="math inline">{\hat{P}}_4</span> met <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_4 = \{f \in C^1([a,b]) | f(a) = f(b) = 0\}</span>
+<ul>
+<li>nog steeds symmetrisch</li>
+<li>nog steeds <span class="math inline">{\hat{P}}_4^\dagger = {\hat{P}}_1</span></li>
+<li><span class="math inline">{\hat{P}}_4^{\dagger\dagger} = {\hat{P}}_2</span> <span class="math inline">\Rightarrow</span> <span class="math inline">{\hat{P}}_4 \subset {\hat{P}}_4^{\dagger\dagger} \subset {\hat{P}}_4^\dagger</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="uitgebreid-voorbeeld-2" class="level2">
+<h2 class="anchored" data-anchor-id="uitgebreid-voorbeeld-2">Uitgebreid voorbeeld</h2>
+<p>Kunnen we een extensie vinden van <span class="math inline">{\hat{P}}_2</span> waarvoor <span class="math inline">{\hat{P}}_3 = {\hat{P}}_3^\dagger</span> ?</p>
+<ul>
+<li>Stel <span class="math inline">{\hat{P}}_3</span> met <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_3 =\{f \in \mathop{\mathrm{\mathcal{D}}}_1 | f(b) = {\mathrm{e}}^s f(a)\}</span> voor een <span class="math inline">s \in {\mathbb{C}}</span>
+<ul>
+<li>er geldt inderdaad <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_2 {\preccurlyeq}\mathop{\mathrm{\mathcal{D}}}_3 {\preccurlyeq}\mathop{\mathrm{\mathcal{D}}}_1</span></li>
+<li>symmetrisch? als <span class="math inline">-{\mathrm{i}}[{\mathrm{e}}^{\overline{s}+s} - 1] \overline{g(a)}f(a) = 0 \Rightarrow</span> <span class="math inline">s</span> zuiver imaginair</li>
+<li>toegevoegde operator? <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{P}}_3^\dagger} = \{g \in \mathop{\mathrm{\mathcal{D}}}_1 | g(b) = {\mathrm{e}}^{-{\overline{s}}} g(a)\}</span></li>
+</ul>
+<span class="math inline">\Rightarrow</span> voor <span class="math inline">{\mathrm{e}}^s = {\mathrm{e}}^{{\mathrm{i}}\theta}</span> (voor een <span class="math inline">\theta \in [0,2\pi)</span>): zelf-toegevoegd (en dus symmetrisch)
+<ul>
+<li><p>“verdraaide (twisted) randvoorwaarden”</p>
+<p>omvat periodiek (<span class="math inline">\theta=0</span>, <span class="math inline">f(a)=f(b)</span>) en antiperiodiek (<span class="math inline">\theta=\pi</span>, <span class="math inline">f(b)=-f(a)</span>)</p></li>
+</ul></li>
+<li>Belang: eigenwaarden en eigenvectoren
+<ul>
+<li><span class="math inline">{\hat{P}}_1</span>: <span class="math inline">{\mathrm{e}}^{i \lambda x}</span> is een eigenvector met eigenwaarde <span class="math inline">\lambda</span> voor alle <span class="math inline">\lambda \in {\mathbb{C}}</span></li>
+<li><span class="math inline">{\hat{P}}_2</span>: geen eigenvectoren of eigenwaarden</li>
+<li><span class="math inline">{\hat{P}}_3</span>: eigenvectoren <span class="math inline">\varphi_k(x) = \frac{1}{\sqrt{L}} {\mathrm{e}}^{{\mathrm{i}}\frac{2\pi}{L} \left(k + \frac{\theta}{2\pi}\right) x}</span> met eigenwaarden <span class="math inline">\lambda_k = \frac{2\pi}{L} \left(k + \frac{\theta}{2\pi}\right)</span> voor alle <span class="math inline">k \in {\mathbb{Z}}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="positie--en-momentumoperator-op-l2mathbbr" class="level2">
+<h2 class="anchored" data-anchor-id="positie--en-momentumoperator-op-l2mathbbr">Positie- en momentumoperator op <span class="math inline">L^2({\mathbb{R}})</span></h2>
+<ul>
+<li><p>Zonder bewijs: op <span class="math inline">H=L^2({\mathbb{R}})</span> zijn <span class="math inline">{\hat{X}}</span> en <span class="math inline">{\hat{P}}</span> automatisch zelf-toegevoegd wanneer ze worden gedefinieerd op hun maximaal toegelaten domein</p>
+<p><span class="math display">\mathop{\mathrm{\mathcal{D}}}\,\!_{{\hat{X}}} = \{f \in H | \int_{-\infty}^{+\infty} {\left\lvert x f(x)\right\rvert}^2\,{\mathrm{d}}x &lt; \infty\}</span></p>
+<p><span class="math display">\mathop{\mathrm{\mathcal{D}}}_{{\hat{P}}} = \{f \in H | f'\ \text{bestaat en}\ \int_{-\infty}^{+\infty} {\left\lvert f'(x)\right\rvert}^2\,{\mathrm{d}}x &lt; \infty\}</span></p>
+<p>(<span class="math inline">f \in \mathop{\mathrm{\mathcal{D}}}_{{\hat{P}}}</span> impliceert <span class="math inline">\lim_{x\to \pm \infty} f(x) = 0</span>)</p></li>
+</ul>
+</section>
+</section>
+<section id="spectraaltheorie" class="level1">
+<h1>Spectraaltheorie</h1>
+<p>(geen bewijzen)</p>
+<section id="eigenwaarden-en-eigenvectoren" class="level2">
+<h2 class="anchored" data-anchor-id="eigenwaarden-en-eigenvectoren">Eigenwaarden en eigenvectoren</h2>
+<p>Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:</p>
+<ul>
+<li><p>Voorbeeld met momentumoperator: soms geen eigenwaarden, soms volledig <span class="math inline">{\mathbb{C}}</span> als eigenwaarde</p></li>
+<li><p>Ander voorbeeld op <span class="math inline">\ell^2({\mathbb{N}})</span>:</p>
+<p><span class="math display">\begin{align*}
+  {\hat{A}}^- {e}_n &amp;= \begin{cases} {o}, &amp; n=0\\
+  \sqrt{n} {e}_{n-1},&amp;n &gt; 0
+  \end{cases}, &amp;{\hat{A}}^+{e}_{n} = \sqrt{n+1} {e}_{n+1}.
+\end{align*}</span></p>
+<ul>
+<li><span class="math inline">{v}= \sum_{n=0}^{+\infty} \frac{\lambda^n}{\sqrt{n!}} {\mathrm{e}}^{-{\left\lvert\lambda\right\rvert}^2/2} {e}_n</span>: <span class="math inline">{\left\lVert{v}\right\rVert}_2 = 1</span> en <span class="math inline">{\hat{A}}^-{v}= \lambda {v}</span> voor alle <span class="math inline">\lambda \in {\mathbb{C}}</span></li>
+<li><span class="math inline">{\hat{A}}^+ = ({\hat{A}}^{-})^\dagger</span>: geen eigenwaarden en eigenvectoren</li>
+</ul></li>
+<li><p>Positie-operator <span class="math inline">{\hat{X}}</span> op <span class="math inline">L^2([a,b])</span>: (begrensde operator!)</p>
+<ul>
+<li>geen exacte eigenvectoren (normaliseerbare functies in <span class="math inline">L^2([a,b])</span>)</li>
+<li><span class="math inline">f_{\lambda,\epsilon}(x) = \begin{cases} \frac{1}{\sqrt{2\epsilon}},&amp;{\left\lvert x-\lambda\right\rvert} &lt; \epsilon\\  0,&amp;\text{elsewhere}  \end{cases}</span> voldoet aan <span class="math inline">{\left\lVert x f(x) - \lambda f(x)\right\rVert}^2 = \int_{\lambda-\epsilon}^{\lambda+\epsilon} \frac{(x-\lambda)^2}{2\epsilon}\,{\mathrm{d}}x = \frac{\epsilon^2}{3}</span> voor alle <span class="math inline">\lambda \in [a,b]</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="compacte-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="compacte-operatoren">Compacte operatoren</h2>
+<ul>
+<li>compacte operatoren (deelverzameling van begrende operatoren)
+<ul>
+<li><p>klasse van operatoren die zich meer als een “matrix” gedragen</p></li>
+<li><p>van belang voor de (theoretische) ontwikkeling van Greense functies etc</p></li>
+<li><p>technische definitie: <span class="math inline">{\hat{A}}</span> is compact als, voor elke begrensde rij <span class="math inline">({v}_n \in H)_{n \in {\mathbb{N}}_0}</span>, <span class="math inline">(w_n ={\hat{A}}{v}_n)_{n \in {\mathbb{N}}_0}</span> een convergerende deelrij bevat</p>
+<p>(m.a.w.: begrensde deelverzameling <span class="math inline">\stackrel{{\hat{A}}}{\longrightarrow}</span> compacte deelverzameling)</p></li>
+<li><p>bevat de klasse van Hilbert-Schmidt operatoren:</p>
+<p><span class="math display">{\left\lVert{\hat{A}}\right\rVert}_{\text{HS}}^2 = \sum_{n =1}^{+\infty} {\left\lVert{\hat{A}}{e}_n\right\rVert}^2 &lt; \infty</span></p>
+<p>of voor een integraaloperator</p>
+<p><span class="math display">{\left\lVert{\hat{A}}\right\rVert}_{\text{HS}}^2 = \int_I \int_I {\left\lvert A(x,y)\right\rvert}^2 \,{\mathrm{d}}x {\mathrm{d}}y &lt; \infty</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="compacte-operatoren-1" class="level2">
+<h2 class="anchored" data-anchor-id="compacte-operatoren-1">Compacte operatoren</h2>
+<ul>
+<li><p>zelftoegevoegde compacte operator <span class="math inline">{\hat{A}}</span> beschikt over een spectrale decompositie</p>
+<p><span class="math display">{\hat{A}} = \sum_{n} \lambda_n {\hat{P}}_{\lambda_n}\quad \implies H = V_0 \bigoplus_{n} V_{\lambda_n}</span></p>
+<ul>
+<li><span class="math inline">\lambda_n \in {\mathbb{R}}</span></li>
+<li>aantal eigenwaarden <span class="math inline">\lambda_n \neq 0</span> eindig of aftelbaar oneindig</li>
+<li>elke <span class="math inline">V_{\lambda_n \neq 0}</span> is eindig-dimensionaal, <span class="math inline">V_0</span> kan oneindig-dimensionaal zijn</li>
+<li><span class="math inline">(\lambda_n)</span> kan gesorteerd worden zodat <span class="math inline">{\left\lvert\lambda_n\right\rvert}</span> niet-stijgend is (<span class="math inline">{\left\lvert\lambda_{n+1}\right\rvert} \leq {\left\lvert\lambda_n\right\rvert}</span>)</li>
+<li><span class="math inline">{\left\lvert\lambda_1\right\rvert} = {\left\lVert{\hat{A}}\right\rVert}</span> (operatornorm)</li>
+<li><span class="math inline">\lim_{n\to \infty} \lambda_n =0</span>, of dus, aantal eigenwaarden met <span class="math inline">{\left\lvert\lambda_n\right\rvert} &gt; \epsilon</span> is eindig</li>
+</ul></li>
+</ul>
+</section>
+<section id="compacte-operatoren-2" class="level2">
+<h2 class="anchored" data-anchor-id="compacte-operatoren-2">Compacte operatoren</h2>
+<ul>
+<li><p>algemene compacte operator <span class="math inline">{\hat{A}}</span> beschikt over <strong>Schmidt-decompositie</strong>:</p>
+<p>niet-stijgende rij positieve getallen <span class="math inline">(\sigma_n \in {\mathbb{R}}_{\geq 0})_{n \in {\mathbb{N}}_0}</span> en verzamelingen orthonormale vectoren <span class="math inline">(u_n \in H)_{n \in {\mathbb{N}}_0}</span> en <span class="math inline">(v_n \in H)_{n \in {\mathbb{N}}_0}</span> met <span class="math inline">{\hat{A}}u_n = \sigma_n v_n</span> en <span class="math inline">{\hat{A}}^\dagger v_n = \sigma_n u_n</span> zodat</p>
+<p><span class="math display">{\hat{A}} {w}= \sum_{n} \sigma_n {u}_n {\left\langle{v}_n,{w}\right\rangle}, \forall {w}\in H</span></p>
+<ul>
+<li>veralgemening van singuliere waardendecompositie</li>
+<li>van belang voor definitie van kwantumverstrengeling (“entanglement”)</li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren">Spectrum van algemene operatoren</h2>
+<ul>
+<li><p>Operator <span class="math inline">{\hat{A}}</span> met dicht domein <span class="math inline">\mathop{\mathrm{\mathcal{D}}}_{{\hat{A}}}</span> en bereik <span class="math inline">\mathcal{R}_{{\hat{A}}}</span> is injectief indien <span class="math inline">\mathop{\mathrm{ker}}({\hat{A}})=\{{o}\}</span></p>
+<p><span class="math inline">\Rightarrow</span> we kunnen de inverse <span class="math inline">{\hat{A}}^{-1}</span> definiëren als operator met domein <span class="math inline">\mathcal{R}_{{\hat{A}}}</span></p>
+<p><span class="math inline">\Rightarrow</span> deze inverse is enkel “dicht gedefinieerd” als <span class="math inline">\overline{\mathcal{R}_{{\hat{A}}}} = H</span></p></li>
+<li><p>Voor <span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(H)</span> definiëren we de resolvente verzameling als de verzameling van complexe getallen <span class="math inline">\lambda</span> waarvoor</p>
+<ol type="1">
+<li>de inverse van <span class="math inline">{\hat{A}}-\lambda {\hat{1}}</span> kan worden gedefinieerd: <span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}-\lambda {\hat{1}}) = \{{o}\}</span></li>
+<li>EN deze inverse <span class="math inline">({\hat{A}}-\lambda{\hat{1}})^{-1}</span> dicht gedefinieerd is</li>
+<li>EN deze inverse <span class="math inline">({\hat{A}}-\lambda{\hat{1}})^{-1}</span> begrensd is (zodat de definitie ervan kan worden uitgebreid tot volledig <span class="math inline">H</span>)</li>
+</ol>
+<ul>
+<li><p>De resolvente verzameling is een open deelverzameling van <span class="math inline">{\mathbb{C}}</span></p></li>
+<li><p>Het complement in <span class="math inline">{\mathbb{C}}</span> is het <strong>spectrum</strong> <span class="math inline">\sigma_{{\hat{A}}}</span> van <span class="math inline">{\hat{A}}</span>, en is dus een gesloten deelverzameling van <span class="math inline">{\mathbb{C}}</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren-1" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren-1">Spectrum van algemene operatoren</h2>
+<ul>
+<li><p>spectrum <span class="math inline">\sigma_{{\hat{A}}}</span> bevat verschillende bijdragen:</p>
+<ul>
+<li><strong>puntspectrum</strong> <span class="math inline">\sigma^{(\text{p})}_{{\hat{A}}}</span>: <span class="math inline">\lambda \in {\mathbb{C}}</span> waarvoor <span class="math inline">\mathop{\mathrm{nullity}}({\hat{A}}-\lambda {\hat{1}}) &gt; 0</span> (de inverse kan niet worden gedefinieerd); dit zijn de echte eigenwaarden en eigenvectoren</li>
+<li><strong>continu spectrum</strong> <span class="math inline">\sigma^{(\text{c})}_{{\hat{A}}}</span>: <span class="math inline">\lambda \in {\mathbb{C}}</span> waarvoor <span class="math inline">({\hat{A}}-\lambda {\hat{1}})^{-1}</span> onbegrensd is; bij deze waarden <span class="math inline">\lambda</span> kan een “benaderende” eigenvector gevonden waarden zodat <span class="math inline">{\left\lVert{\hat{A}}{v}-\lambda{v}\right\rVert} &lt; \epsilon</span>, <span class="math inline">\forall \epsilon &gt; 0</span></li>
+<li><strong>residueel spectrum</strong> <span class="math inline">\sigma^{(\text{r})}_{{\hat{A}}}</span>: <span class="math inline">\lambda \in {\mathbb{C}}</span> waarvoor <span class="math inline">({\hat{A}}-\lambda {\hat{1}})^{-1}</span> niet dicht gedefinieerd is <span class="math inline">\rightarrow</span> zie verder</li>
+</ul></li>
+<li><p>het gehele spectrum is nooit leeg, maar sommige van de afzonderlijke types spectrum kunnen leeg zijn</p></li>
+<li><p>begrensde operatoren <span class="math inline">{\hat{A}}</span>: <span class="math inline">{\left\lvert\lambda\right\rvert} &gt; {\left\lVert{\hat{A}}\right\rVert} \implies \lambda \not \in \sigma_{{\hat{A}}}</span></p></li>
+<li><p>voor willekeurige operatoren: (maar zie verderop voor zelftoegevoegd)</p>
+<ul>
+<li>puntspectrum is niet noodzakelijk discreet (eindig of aftelbaar)</li>
+<li>continu spectrum is niet noodzakelijk onaftelbaar</li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren-voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren-voorbeelden">Spectrum van algemene operatoren: voorbeelden</h2>
+<ul>
+<li><p><span class="math inline">{\hat{A}}^-</span> op <span class="math inline">\ell^2({\mathbb{N}})</span>: <span class="math inline">\sigma^{(\text{p})}= {\mathbb{C}}</span></p></li>
+<li><p><span class="math inline">{\hat{X}}</span> op <span class="math inline">L^2([a,b])</span>:</p>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{X}}-\lambda{\hat{1}}) = \{0\}</span> voor alle <span class="math inline">\lambda \in {\mathbb{C}}</span> <span class="math inline">\Rightarrow \sigma^{(\text{p})} = \emptyset</span></p></li>
+<li><p><span class="math inline">\mathcal{R}_{{\hat{X}}-\lambda{\hat{1}}}</span>: steeds dichte deelruimte van <span class="math inline">H</span></p>
+<ul>
+<li>kwadratisch integreerbare functies met <span class="math inline">f(\lambda) = 0</span> als <span class="math inline">\lambda \in [a,b]</span>)</li>
+<li>volledig <span class="math inline">H</span> als <span class="math inline">\lambda \not\in[a,b]</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow \sigma^{(\text{p})} = \emptyset</span></p></li>
+<li><p><span class="math inline">({\hat{X}}-\lambda)^{-1}</span> werkt op <span class="math inline">\mathcal{R}_{{\hat{X}}-\lambda{\hat{1}}}</span>: <span class="math inline">f(x) \mapsto g(x) = (x-\lambda)^{-1} f(x)</span></p>
+<ul>
+<li><span class="math inline">{\left\lVert g\right\rVert} \leq (\max_{x}{\left\lvert x-\lambda\right\rvert}^{-1}) {\left\lVert f\right\rVert}</span> als <span class="math inline">\lambda \not \in [a,b]</span></li>
+<li><span class="math inline">{\left\lVert g\right\rVert}</span> niet te begrensen door <span class="math inline">{\left\lVert f\right\rVert}</span> als <span class="math inline">\lambda \in [a,b]</span> <span class="math inline">\Rightarrow</span> <span class="math inline">\sigma^{(\text{c})} = [a,b]</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren-voorbeelden-1" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren-voorbeelden-1">Spectrum van algemene operatoren: voorbeelden</h2>
+<ul>
+<li>Op <span class="math inline">H = \ell^2({\mathbb{N}}_0)</span>: operator <span class="math inline">{\hat{A}}:e_n \mapsto \frac{1}{n}e_n</span> voor alle <span class="math inline">n \in {\mathbb{N}}_0</span>
+<ul>
+<li><p>Elke <span class="math inline">e_n</span> is een eigenvector met eigenwaarde <span class="math inline">\frac{1}{n}</span>: <span class="math inline">\sigma^{(\text{p})} = \{n^{-1}; n \in {\mathbb{N}}_0\}</span></p></li>
+<li><p><span class="math inline">({\hat{A}}-\lambda {\hat{1}})^{-1} \sum_{n\in{\mathbb{N}}_0} v^n {e}_n = \sum_{n\in{\mathbb{N}}_0} \frac{1}{n^{-1} - \lambda} v^n {e}_n</span></p>
+<ul>
+<li><span class="math inline">\lambda \not \in {\mathbb{N}}</span>: goed gedefinieerd en begrensd voor alle <span class="math inline">{v}\in H</span></li>
+<li><span class="math inline">\lambda = 0</span>: gedefinieerd op <span class="math inline">\{ {v}\in \ell^2({\mathbb{N}}_0) | \sum_{n\in{\mathbb{N}}_0} n^2 {\left\lvert v^n\right\rvert}^2 &lt; \infty\}</span> maar onbegrend: <span class="math inline">{\left\lVert{\hat{A}}^{-1}{e}_n\right\rVert} = n {\left\lVert{e}_n\right\rVert} = n</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow \sigma^{(\text{c})} = \{0\}</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren-voorbeelden-2" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren-voorbeelden-2">Spectrum van algemene operatoren: voorbeelden</h2>
+<ul>
+<li><p>Op <span class="math inline">H = \ell^2({\mathbb{N}}_0)</span>: verschuivingsoperatoren</p>
+<p><span class="math display">{\hat{L}} (v^0, v^1, v^2, \ldots) = (v^1, v^2, v^3, \ldots),\quad{\hat{R}} (v^0, v^1, v^2,\ldots) = (0, v^0, v^1, \ldots)</span></p>
+<ul>
+<li><p><span class="math inline">{\hat{L}}^\dagger = {\hat{R}}</span> en vice versa, <span class="math inline">{\left\lVert{\hat{L}}\right\rVert} = {\left\lVert{\hat{R}}\right\rVert}=1 \implies {\left\lvert\lambda\right\rvert} &gt; 1</span> niet in spectrum</p></li>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{R}} - \lambda {\hat{1}}) =\{0\}</span> voor alle <span class="math inline">\lambda</span>: <span class="math inline">\sigma^{(\text{p})}_{{\hat{R}}} = \emptyset</span></p></li>
+<li><p><span class="math inline">{v}_\lambda = \sum_{n=0}^{+\infty} \lambda^n {e}_n</span> is eigenvector van <span class="math inline">{\hat{L}}</span> met eigenwaarde <span class="math inline">\lambda</span>: <span class="math inline">{v}_\lambda</span> is normaliseerbaar voor <span class="math inline">{\left\lvert\lambda\right\rvert}&lt;1</span> <span class="math inline">\Rightarrow</span> <span class="math inline">\sigma^{(\text{p})}_{{\hat{L}}} = \{\lambda \in {\mathbb{C}}| {\left\lvert\lambda\right\rvert}&lt; 1\}</span></p></li>
+<li><p>m.b.v. <span class="math inline">\mathop{\mathrm{im}}({\hat{R}}-\lambda {\hat{1}})^\perp = \mathop{\mathrm{ker}}(({\hat{R}}-\lambda {\hat{1}})^\dagger) = \mathop{\mathrm{ker}}({\hat{L}}-{\overline{\lambda}}{\hat{1}})</span></p>
+<p><span class="math inline">\implies \mathop{\mathrm{im}}({\hat{R}}-\lambda {\hat{1}})^{\perp\perp} = \overline{\mathop{\mathrm{im}}({\hat{R}}-\lambda {\hat{1}})} = \mathop{\mathrm{ker}}({\hat{L}} - \overline{\lambda}{\hat{1}})^\perp</span></p>
+<p><span class="math inline">\implies ({\hat{R}}-\lambda {\hat{1}})^{-1}</span> niet dicht gedefinieerd als <span class="math inline">{\overline{\lambda}}</span> eigenwaarde is van <span class="math inline">{\hat{R}}^\dagger = {\hat{L}}</span> <span class="math inline">\implies \sigma_{{\hat{R}}}^{(\text{r})} = \{\lambda \in {\mathbb{C}}| {\left\lvert\lambda\right\rvert}&lt; 1\}</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-algemene-operatoren-voorbeelden-3" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-algemene-operatoren-voorbeelden-3">Spectrum van algemene operatoren: voorbeelden</h2>
+<ul>
+<li><p>Op <span class="math inline">H = \ell^2({\mathbb{N}}_0)</span>: verschuivingsoperatoren</p>
+<p><span class="math display">{\hat{L}} (v^0, v^1, v^2, \ldots) = (v^1, v^2, v^3, \ldots),\quad{\hat{R}} (v^0, v^1, v^2,\ldots) = (0, v^0, v^1, \ldots)</span></p>
+<ul>
+<li><p><span class="math inline">\sigma_{{\hat{L}}}^{(\text{c})} = \sigma_{{\hat{R}}}^{(\text{c})} = \{\lambda \in {\mathbb{C}}| {\left\lvert\lambda\right\rvert}= 1\}</span>: benaderende eigenvectoren</p>
+<ul>
+<li><p><span class="math inline">{v}_{\lambda,n} = \frac{1}{\sqrt{n}} \sum_{k=0}^{n-1} {\mathrm{e}}^{{\mathrm{i}}k\phi} {e}_k</span> met <span class="math inline">\lambda = {\mathrm{e}}^{{\mathrm{i}}\phi}</span>:</p>
+<p><span class="math inline">{\left\lVert{\hat{L}} {v}_{\lambda,n} - \lambda {v}_{\lambda,n}\right\rVert} = {\left\lVert\frac{1}{\sqrt{n}} {\mathrm{e}}^{{\mathrm{i}}\phi n} {e}_{n-1}\right\rVert} = \frac{1}{\sqrt{n}}</span></p></li>
+<li><p><span class="math inline">{v}'_{\lambda,n} = \frac{1}{\sqrt{n}} \sum_{k=0}^{n-1} {\mathrm{e}}^{-{\mathrm{i}}k\phi} {e}_k</span> met <span class="math inline">\lambda = {\mathrm{e}}^{{\mathrm{i}}\phi}</span></p>
+<p><span class="math inline">{\left\lVert{\hat{R}} {v}'_{\lambda,n} - \lambda {v}'_{\lambda,n}\right\rVert} = {\left\lVert\frac{1}{\sqrt{n}} {\mathrm{e}}^{-{\mathrm{i}}\phi (n-1)}{e}_{n} - \frac{1}{\sqrt{n}} {\mathrm{e}}^{{\mathrm{i}}\phi } {e}_{0}\right\rVert} = \sqrt{\frac{2}{n}}</span></p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="spectrum-van-zelftoegevoegde-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="spectrum-van-zelftoegevoegde-operatoren">Spectrum van zelftoegevoegde operatoren</h2>
+<ul>
+<li><p>Voor een zelftoegevoegde operator <span class="math inline">{\hat{A}}={\hat{A}}^\dagger</span> geldt:</p>
+<ul>
+<li><span class="math inline">\sigma \subseteq {\mathbb{R}}</span></li>
+<li><span class="math inline">\sigma^{(\text{r})} = \emptyset</span></li>
+<li><span class="math inline">\sigma^{(\text{p})}</span> is discreet: eindig of aftelbaar (want bijbehorende eigenvectoren vormen orthonormale rij: moet aftelbaar zijn)</li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> er kan een soort spectrale decompositie worden opgeschreven die zowel het puntspectrum als het continue spectrum omvat</p>
+<p><span class="math inline">\Rightarrow</span> in de fysica schrijven we dit met “eigenvectoren” met een “Dirac-delta normalisering”</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

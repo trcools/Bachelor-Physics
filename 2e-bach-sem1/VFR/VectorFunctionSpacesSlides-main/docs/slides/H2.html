@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jutho Haegeman">
+<meta name="dcterms.date" content="2026-09-22">
+
+<title>Vector- en functieruimten – Slides - Hoofdstuk 2 - Lineaire afbeeldingen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vector- en functieruimten – Slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H1.html" rel="" target="">
+ <span class="menu-text">H1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../slides/H2.html" rel="" target="" aria-current="page">
+ <span class="menu-text">H2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H3.html" rel="" target="">
+ <span class="menu-text">H3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H4.html" rel="" target="">
+ <span class="menu-text">H4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H5.html" rel="" target="">
+ <span class="menu-text">H5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H6.html" rel="" target="">
+ <span class="menu-text">H6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H7.html" rel="" target="">
+ <span class="menu-text">H7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H8.html" rel="" target="">
+ <span class="menu-text">H8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H9.html" rel="" target="">
+ <span class="menu-text">H9</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
+  <li><a href="#lineaire-afbeeldingen" id="toc-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#lineaire-afbeeldingen">Lineaire afbeeldingen</a>
+  <ul class="collapse">
+  <li><a href="#definitie" id="toc-definitie" class="nav-link" data-scroll-target="#definitie">Definitie</a></li>
+  <li><a href="#voorbeelden" id="toc-voorbeelden" class="nav-link" data-scroll-target="#voorbeelden">Voorbeelden</a></li>
+  <li><a href="#eigenschappen" id="toc-eigenschappen" class="nav-link" data-scroll-target="#eigenschappen">Eigenschappen</a></li>
+  </ul></li>
+  <li><a href="#kern-beeld-en-rang-nulliteitsstelling" id="toc-kern-beeld-en-rang-nulliteitsstelling" class="nav-link" data-scroll-target="#kern-beeld-en-rang-nulliteitsstelling">Kern, beeld en rang-nulliteitsstelling</a>
+  <ul class="collapse">
+  <li><a href="#beeldruimte" id="toc-beeldruimte" class="nav-link" data-scroll-target="#beeldruimte">Beeldruimte</a></li>
+  <li><a href="#kern-of-nulruimte" id="toc-kern-of-nulruimte" class="nav-link" data-scroll-target="#kern-of-nulruimte">Kern (of nulruimte)</a></li>
+  <li><a href="#rang-nulliteitsstelling" id="toc-rang-nulliteitsstelling" class="nav-link" data-scroll-target="#rang-nulliteitsstelling">Rang-nulliteitsstelling</a></li>
+  <li><a href="#rang-nulliteitsstelling-1" id="toc-rang-nulliteitsstelling-1" class="nav-link" data-scroll-target="#rang-nulliteitsstelling-1">Rang-nulliteitsstelling</a></li>
+  <li><a href="#voorbeeld" id="toc-voorbeeld" class="nav-link" data-scroll-target="#voorbeeld">Voorbeeld</a></li>
+  </ul></li>
+  <li><a href="#matrices-en-determinanten" id="toc-matrices-en-determinanten" class="nav-link" data-scroll-target="#matrices-en-determinanten">Matrices en determinanten</a>
+  <ul class="collapse">
+  <li><a href="#matrixvoorstelling-van-lineaire-afbeeldingen" id="toc-matrixvoorstelling-van-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#matrixvoorstelling-van-lineaire-afbeeldingen">Matrixvoorstelling van lineaire afbeeldingen</a></li>
+  <li><a href="#matrixvoorstelling-en-compositie" id="toc-matrixvoorstelling-en-compositie" class="nav-link" data-scroll-target="#matrixvoorstelling-en-compositie">Matrixvoorstelling en compositie</a></li>
+  <li><a href="#bewerkingen-met-matrices" id="toc-bewerkingen-met-matrices" class="nav-link" data-scroll-target="#bewerkingen-met-matrices">Bewerkingen met matrices</a></li>
+  <li><a href="#bewerkingen-met-matrices-1" id="toc-bewerkingen-met-matrices-1" class="nav-link" data-scroll-target="#bewerkingen-met-matrices-1">Bewerkingen met matrices</a></li>
+  <li><a href="#rang-van-een-matrix" id="toc-rang-van-een-matrix" class="nav-link" data-scroll-target="#rang-van-een-matrix">Rang van een matrix</a></li>
+  <li><a href="#spoor" id="toc-spoor" class="nav-link" data-scroll-target="#spoor">Spoor</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
+  <li><a href="#determinant-als-volume" id="toc-determinant-als-volume" class="nav-link" data-scroll-target="#determinant-als-volume">Determinant als volume</a></li>
+  <li><a href="#determinant-verdere-eigenschappen" id="toc-determinant-verdere-eigenschappen" class="nav-link" data-scroll-target="#determinant-verdere-eigenschappen">Determinant: verdere eigenschappen</a></li>
+  <li><a href="#determinant-toepassing" id="toc-determinant-toepassing" class="nav-link" data-scroll-target="#determinant-toepassing">Determinant: toepassing</a></li>
+  <li><a href="#determinant-toepassing-1" id="toc-determinant-toepassing-1" class="nav-link" data-scroll-target="#determinant-toepassing-1">Determinant: toepassing</a></li>
+  <li><a href="#determinant-toepassing-2" id="toc-determinant-toepassing-2" class="nav-link" data-scroll-target="#determinant-toepassing-2">Determinant: toepassing</a></li>
+  <li><a href="#matrix-inverse" id="toc-matrix-inverse" class="nav-link" data-scroll-target="#matrix-inverse">Matrix inverse:</a></li>
+  <li><a href="#afgeleide-van-een-determinant" id="toc-afgeleide-van-een-determinant" class="nav-link" data-scroll-target="#afgeleide-van-een-determinant">Afgeleide van een determinant</a></li>
+  </ul></li>
+  <li><a href="#algemene-lineaire-groep-en-basistranformaties" id="toc-algemene-lineaire-groep-en-basistranformaties" class="nav-link" data-scroll-target="#algemene-lineaire-groep-en-basistranformaties">Algemene lineaire groep en basistranformaties</a>
+  <ul class="collapse">
+  <li><a href="#lineaire-groep" id="toc-lineaire-groep" class="nav-link" data-scroll-target="#lineaire-groep">Lineaire groep</a></li>
+  <li><a href="#basistransformaties" id="toc-basistransformaties" class="nav-link" data-scroll-target="#basistransformaties">Basistransformaties</a></li>
+  <li><a href="#basistransformaties-1" id="toc-basistransformaties-1" class="nav-link" data-scroll-target="#basistransformaties-1">Basistransformaties</a></li>
+  <li><a href="#basistransformaties-2" id="toc-basistransformaties-2" class="nav-link" data-scroll-target="#basistransformaties-2">Basistransformaties</a></li>
+  </ul></li>
+  <li><a href="#functionalen-en-duale-ruimte" id="toc-functionalen-en-duale-ruimte" class="nav-link" data-scroll-target="#functionalen-en-duale-ruimte">Functionalen en duale ruimte</a>
+  <ul class="collapse">
+  <li><a href="#functionalen" id="toc-functionalen" class="nav-link" data-scroll-target="#functionalen">Functionalen</a></li>
+  <li><a href="#lineaire-functionalen-en-duale-ruimte" id="toc-lineaire-functionalen-en-duale-ruimte" class="nav-link" data-scroll-target="#lineaire-functionalen-en-duale-ruimte">Lineaire functionalen en duale ruimte</a></li>
+  <li><a href="#lineaire-functionalen-eigenschappen" id="toc-lineaire-functionalen-eigenschappen" class="nav-link" data-scroll-target="#lineaire-functionalen-eigenschappen">Lineaire functionalen: eigenschappen</a></li>
+  <li><a href="#lineaire-functionalen-meer-voorbeelden-uit-de-fysica" id="toc-lineaire-functionalen-meer-voorbeelden-uit-de-fysica" class="nav-link" data-scroll-target="#lineaire-functionalen-meer-voorbeelden-uit-de-fysica">Lineaire functionalen: meer voorbeelden uit de fysica</a></li>
+  <li><a href="#lineaire-functionalen-meer-voorbeelden-van-duale-basis" id="toc-lineaire-functionalen-meer-voorbeelden-van-duale-basis" class="nav-link" data-scroll-target="#lineaire-functionalen-meer-voorbeelden-van-duale-basis">Lineaire functionalen: meer voorbeelden van duale basis</a></li>
+  <li><a href="#lineaire-functionalen-en-basistransformaties" id="toc-lineaire-functionalen-en-basistransformaties" class="nav-link" data-scroll-target="#lineaire-functionalen-en-basistransformaties">Lineaire functionalen en basistransformaties</a></li>
+  <li><a href="#duale-lineaire-afbeeldingen-en-de-getransponeerde" id="toc-duale-lineaire-afbeeldingen-en-de-getransponeerde" class="nav-link" data-scroll-target="#duale-lineaire-afbeeldingen-en-de-getransponeerde">Duale lineaire afbeeldingen en de getransponeerde</a></li>
+  </ul></li>
+  <li><a href="#lineaire-systemen" id="toc-lineaire-systemen" class="nav-link" data-scroll-target="#lineaire-systemen">Lineaire systemen</a>
+  <ul class="collapse">
+  <li><a href="#lineaire-systemen-definitie-en-terminologie" id="toc-lineaire-systemen-definitie-en-terminologie" class="nav-link" data-scroll-target="#lineaire-systemen-definitie-en-terminologie">Lineaire systemen: definitie en terminologie</a></li>
+  <li><a href="#lineaire-systemen-voorbeelden" id="toc-lineaire-systemen-voorbeelden" class="nav-link" data-scroll-target="#lineaire-systemen-voorbeelden">Lineaire systemen: voorbeelden</a></li>
+  <li><a href="#lineaire-systemen-voorbeelden-1" id="toc-lineaire-systemen-voorbeelden-1" class="nav-link" data-scroll-target="#lineaire-systemen-voorbeelden-1">Lineaire systemen: voorbeelden</a></li>
+  <li><a href="#lineaire-systemen-oplossingsstrategie" id="toc-lineaire-systemen-oplossingsstrategie" class="nav-link" data-scroll-target="#lineaire-systemen-oplossingsstrategie">Lineaire systemen: oplossingsstrategie</a></li>
+  <li><a href="#lineaire-systemen-oplossingsstrategie-1" id="toc-lineaire-systemen-oplossingsstrategie-1" class="nav-link" data-scroll-target="#lineaire-systemen-oplossingsstrategie-1">Lineaire systemen: oplossingsstrategie</a></li>
+  <li><a href="#toepassingen-van-lu-decompositie" id="toc-toepassingen-van-lu-decompositie" class="nav-link" data-scroll-target="#toepassingen-van-lu-decompositie">Toepassingen van LU decompositie</a></li>
+  <li><a href="#multidimensionale-gaussische-distributie-1" id="toc-multidimensionale-gaussische-distributie-1" class="nav-link" data-scroll-target="#multidimensionale-gaussische-distributie-1">Multidimensionale Gaussische distributie (1)</a></li>
+  <li><a href="#multidimensionale-gaussische-distributie-2" id="toc-multidimensionale-gaussische-distributie-2" class="nav-link" data-scroll-target="#multidimensionale-gaussische-distributie-2">Multidimensionale Gaussische distributie (2)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hoofdstuk 2 - Lineaire afbeeldingen</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jutho Haegeman </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="doel-van-dit-hoofdstuk" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+<div class="hidden">
+<p>$$ % Math operators % % </p>
+% VECTORS
+<p>% specifically for vectors in F^n </p>
+% MATRICES
+<p>% SCALARS </p>
+% LINEAR MAPS
+<p>% FIELDS </p>
+<p>% RELATIONS </p>
+<p>$$</p>
+</div>
+<p>Herhaling:</p>
+<ul>
+<li><p>Lineaire afbeeldingen: definities, elementaire eigenschappen, voorstelling als matrices</p></li>
+<li><p>Eigenschappen van matrices en determinanten</p></li>
+<li><p>Matrixinverse</p></li>
+<li><p>Lineaire transformaties, algemene lineaire groep, basistransformaties</p></li>
+<li><p>Lineaire stelsels: oplossingstructuur en relevante matrixontbindingen</p></li>
+</ul>
+<p>Nieuw (?)</p>
+<ul>
+<li><p>Lineaire functionalen en duale ruimte</p></li>
+<li><p>Determinanten als volume(verandering), Jacobianen en substituties in meervoudige integralen</p></li>
+</ul>
+</section>
+<section id="lineaire-afbeeldingen" class="level1">
+<h1>Lineaire afbeeldingen</h1>
+<section id="definitie" class="level2">
+<h2 class="anchored" data-anchor-id="definitie">Definitie</h2>
+<p>Homomorfismen tussen vectorruimten: <span class="math inline">\varphi \in \mathop{\mathrm{Hom}}(V,W)</span></p>
+<ul>
+<li><p>Structuurbehoud:</p>
+<ul>
+<li>Additiviteit: <span class="math inline">\varphi({v}_1 + {v}_2) = \varphi({v}_1) + \varphi({v}_2)</span></li>
+<li>Homogeniteit: <span class="math inline">\varphi(a {v}) = a \varphi({v})</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> <strong>lineariteit</strong> <span class="math inline">\varphi(a_1 {v}_1 + a_2 {w}) = a_1 \varphi({v}_1) + a_2 \varphi({v}_2)</span></p></li>
+<li><p>Nieuwe notatie: <span class="math inline">{\hat{A}}:V \to W: {v}\mapsto {\hat{A}}({v}) = {\hat{A}}{v}</span></p>
+<p>(hoofdletter Latijns alfabet, hoedje, functiehaakjes niet noodzakelijk)</p></li>
+</ul>
+</section>
+<section id="voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeelden">Voorbeelden</h2>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{Hom}}({\mathbb{F}}^n, {\mathbb{F}}^m) \cong {\mathbb{F}}^{m \times n}</span>: matrices die werken op standaard kolomvectoren via matrix-vector-vermenigvuldiging</li>
+<li>De identiteitsafbeelding <span class="math inline">{\hat{1}}_V</span></li>
+<li>Afgeleide-operator <span class="math inline">{\hat{D}}</span>, die werkt op functies op een interval <span class="math inline">I \subseteq {\mathbb{R}}</span> als <span class="math inline">({\hat{D}}f)(x) = \frac{{\mathrm{d}}f}{{\mathrm{d}}x}(x) = f'(x)</span>
+<ul>
+<li>Domein <span class="math inline">C^k(I,{\mathbb{F}}) \Rightarrow</span> codomein <span class="math inline">C^{k-1}(I,{\mathbb{F}})</span></li>
+<li>Domein <span class="math inline">C^{\infty}(I,{\mathbb{F}})</span> = codomain: lineaire operator</li>
+</ul></li>
+<li>Integraaltransformaties: Fouriertransformatie, Laplace-transformatie,</li>
+</ul>
+</section>
+<section id="eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="eigenschappen">Eigenschappen</h2>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{Hom}}(V,W)</span> is zelf een vectorruimte over <span class="math inline">{\mathbb{F}}</span>,
+<ul>
+<li>Puntsgewijze definitie, gebruik makende van vectorstructuur die bestaat in codomein <span class="math inline">W</span>: <span class="math inline">({\hat{A}}+{\hat{B}})({v}) = {\hat{A}}({v}) + {\hat{B}}({v})</span> en <span class="math inline">(a {\hat{A}})({v}) = a {\hat{A}}(v)</span>.</li>
+<li>‘Nulvector’ is de nulafbeelding <span class="math inline">{\hat{0}}</span> die voldoet aan <span class="math inline">{\hat{0}} {v}= {o}_W</span>, <span class="math inline">\forall {v}\in V</span></li>
+</ul></li>
+<li>Compositie van lineaire afbeeldingen:
+<ul>
+<li><span class="math inline">\circ: \mathop{\mathrm{Hom}}(V,W) \times \mathop{\mathrm{Hom}}(U,V) \to \mathop{\mathrm{Hom}}(U,W)</span></li>
+<li><span class="math inline">{\hat{A}} \circ {\hat{B}}</span> is bilineair in zijn argumenten</li>
+</ul></li>
+<li><span class="math inline">(\mathop{\mathrm{End}}(V), \circ)</span> is een associatieve algebra met <span class="math inline">{\hat{1}}_V</span> als eenheidselement</li>
+</ul>
+</section>
+</section>
+<section id="kern-beeld-en-rang-nulliteitsstelling" class="level1">
+<h1>Kern, beeld en rang-nulliteitsstelling</h1>
+<section id="beeldruimte" class="level2">
+<h2 class="anchored" data-anchor-id="beeldruimte">Beeldruimte</h2>
+<p><span class="math inline">\mathop{\mathrm{im}}({\hat{A}}) = {\hat{A}}(V) = \{{\hat{A}}{v}; {v}\in V\}</span></p>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{im}}({\hat{A}}) {\preccurlyeq}W</span></li>
+<li>rang: <span class="math inline">\mathop{\mathrm{rank}}({\hat{A}}) = \mathop{\mathrm{dim}}(\mathop{\mathrm{im}}({\hat{A}}))</span></li>
+</ul>
+</section>
+<section id="kern-of-nulruimte" class="level2">
+<h2 class="anchored" data-anchor-id="kern-of-nulruimte">Kern (of nulruimte)</h2>
+<p>Zelfde definitie als voor groep: <span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}) = {\hat{A}}^{-1}(\{{o}_W\})</span></p>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}) {\preccurlyeq}V</span></p></li>
+<li><p>nulliteit: <span class="math inline">\mathop{\mathrm{nullity}}({\hat{A}}) = \mathop{\mathrm{dim}}(\mathop{\mathrm{ker}}({\hat{A}}))</span></p></li>
+<li><p>injectieve afbeelding <span class="math inline">\Leftrightarrow \mathop{\mathrm{nullity}}({\hat{A}}) = 0</span></p></li>
+<li><p>injectieve afbeeldingen behouden lineaire onafhankelijkheid en dimensie</p>
+<p>voor <span class="math inline">U{\preccurlyeq}V</span>: <span class="math inline">\mathop{\mathrm{dim}}({\hat{A}}U) = \mathop{\mathrm{dim}}(U)</span></p></li>
+</ul>
+<p>Voorbeeld: <span class="math inline">\mathop{\mathrm{ker}}({\hat{D}})</span> de verzameling van constante functies</p>
+</section>
+<section id="rang-nulliteitsstelling" class="level2">
+<h2 class="anchored" data-anchor-id="rang-nulliteitsstelling">Rang-nulliteitsstelling</h2>
+<p>Gegeven een afbeelding <span class="math inline">{\hat{A}}:V \to W</span></p>
+<ul>
+<li><p>Equivalentierelatie <span class="math inline">{v}\sim {u}\Leftrightarrow ({v}- {u}) \in \mathop{\mathrm{ker}}({\hat{A}}) \Leftrightarrow {\hat{A}}{v}= {\hat{A}}{u}</span></p></li>
+<li><p>Met elke equivalentieklasse <span class="math inline">[{v}]</span> is een uniek punt in <span class="math inline">\mathop{\mathrm{im}}({\hat{A}})</span> geassocieerd</p></li>
+<li><p>We kunnen een bijectieve afbeelding definiëren van de quotiëntruimte <span class="math inline">V /\mathop{\mathrm{ker}}({\hat{A}})</span> naar <span class="math inline">\mathop{\mathrm{im}}({\hat{A}})</span></p></li>
+<li><p>Voor <span class="math inline">V</span> eindig-dimensionaal:</p>
+<p><span class="math inline">\mathop{\mathrm{dim}}(\mathop{\mathrm{im}}({\hat{A}})) = \mathop{\mathrm{dim}}(V/\mathop{\mathrm{ker}}({\hat{A}})) = \mathop{\mathrm{dim}}(V) - \mathop{\mathrm{dim}}(\mathop{\mathrm{ker}}({\hat{A}}))</span></p>
+<p><span class="math inline">\Rightarrow\mathop{\mathrm{rank}}({\hat{A}}) + \mathop{\mathrm{nullity}}({\hat{A}}) = \mathop{\mathrm{dim}}(V)</span></p></li>
+</ul>
+</section>
+<section id="rang-nulliteitsstelling-1" class="level2">
+<h2 class="anchored" data-anchor-id="rang-nulliteitsstelling-1">Rang-nulliteitsstelling</h2>
+<p>Gevolgen:</p>
+<ul>
+<li>Voor <span class="math inline">V,W</span> eindigdimensionaal en <span class="math inline">\mathop{\mathrm{dim}}(V) = \mathop{\mathrm{dim}}(W)</span> zijn volgende eigenschappen equivalent:
+<ul>
+<li>injectief: <span class="math inline">\mathop{\mathrm{nullity}}({\hat{A}}) = 0</span></li>
+<li>surjectief: <span class="math inline">\mathop{\mathrm{rank}}({\hat{A}}) = \mathop{\mathrm{dim}}(W) = \mathop{\mathrm{dim}}(V)</span></li>
+<li>bijectief</li>
+</ul></li>
+<li>Voor een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span> impliceert het bestaan van een linker- of rechterinverse meteen dat dit een volwaardig inverse is: <span class="math inline">{\mathsf{A}}^{-1}</span></li>
+</ul>
+</section>
+<section id="voorbeeld" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeeld">Voorbeeld</h2>
+<p>Beschouw de vectorruimte <span class="math inline">{\mathbb{F}}^{{\mathbb{N}}_0}</span>, de vectorruimte van oneindig lange tuples met als lineaire afbeeldingen:</p>
+<ul>
+<li><span class="math inline">{\hat{R}}(v^1,v^2,v^3,\ldots) = (0, v^1, v^2, \ldots)</span></li>
+<li><span class="math inline">{\hat{L}}(v^1,v^2,v^3,\ldots) = (v^2,v^3,v^4, \ldots)</span></li>
+</ul>
+<p>Er geldt dat:</p>
+<ul>
+<li><span class="math inline">{\hat{L}} {\hat{R}} = {\hat{1}}</span></li>
+<li><span class="math inline">{\hat{R}}{\hat{L}}={\hat{P}}</span> met <span class="math inline">{\hat{P}}(v^1,v^2,v^3,\ldots) = (0, v^2, v^3, \ldots)</span></li>
+</ul>
+</section>
+</section>
+<section id="matrices-en-determinanten" class="level1">
+<h1>Matrices en determinanten</h1>
+<section id="matrixvoorstelling-van-lineaire-afbeeldingen" class="level2">
+<h2 class="anchored" data-anchor-id="matrixvoorstelling-van-lineaire-afbeeldingen">Matrixvoorstelling van lineaire afbeeldingen</h2>
+<p>Beschouw een lineaire afbeelding <span class="math inline">{\hat{A}}:V \to W</span> waar <span class="math inline">V</span> en <span class="math inline">W</span> eindig-dimensionaal zijn en een basis <span class="math inline">B_V = \{{e}_1,\ldots,{e}_n\}</span> en <span class="math inline">B_W = \{{f}_1,\ldots,{f}_m\}</span> hebben:</p>
+<p><span class="math display">{\hat{A}}({e}_j) = {f}_i A^i_{\ j} \Rightarrow {w}= {\hat{A}}({v}) = v^j {\hat{A}}({e}_j) = (A^i_{\ j} v^j) {f}_i = w^i {f}_i</span></p>
+<p>Met behulp van</p>
+<ul>
+<li><span class="math inline">\boldsymbol{v} = \phi_{B_V}({v}) \in {\mathbb{F}}^n</span>, <span class="math inline">\boldsymbol{w} = \phi_{B_W}({w}) \in {\mathbb{F}}^m</span></li>
+<li><span class="math inline">{\mathsf{A}} = \Phi_{B_W,B_V}({\hat{A}}) = \phi_{B_W}\circ {\hat{A}} \circ \phi_{B_V}^{-1} \in {\mathbb{F}}^{m \times n}</span> : <strong>matrixvoorstelling</strong></li>
+</ul>
+<p>geldt dus <span class="math inline">\boldsymbol{w}= {\mathsf{A}}\boldsymbol{v}</span>: matrix - vector product</p>
+</section>
+<section id="matrixvoorstelling-en-compositie" class="level2">
+<h2 class="anchored" data-anchor-id="matrixvoorstelling-en-compositie">Matrixvoorstelling en compositie</h2>
+<p>Voor de compositie van lineaire afbeeldingen geldt:</p>
+<p><span class="math inline">{\hat{C}} = {\hat{A}}\circ {\hat{B}} \Rightarrow {\mathsf{C}} = {\mathsf{A}} \cdot {\mathsf{B}}</span>: matrix - matrix product “<span class="math inline">\cdot</span>”</p>
+<p>Enkele eigenschappen van matrixvermenigvuldiging:</p>
+<ul>
+<li><span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m\times n}, {\mathsf{B}}\in{\mathbb{F}}^{n \times p} \Rightarrow {\mathsf{C}} \in {\mathbb{F}}^{m \times p}</span></li>
+<li>associatief, neutraal element = <span class="math inline">{\mathsf{I}}_n</span> (<span class="math inline">n \times n</span> eenheidsmatrix), niet commutatief, bilineair</li>
+<li>computationele complexiteit: <span class="math inline">mnp</span> vermenigvuldigingen en <span class="math inline">mn(p-1)</span> addities van scalairen (naïve telling)</li>
+<li>geheugencomplexiteit: <span class="math inline">mn + np + mp</span> scalairen</li>
+<li>voor <span class="math inline">m \approx n \approx p</span>: <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^3)</span> bewerkingen op <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^2)</span> data</li>
+</ul>
+<!-- ## Lineaire extensie en vrije vectorruimte
+
+* Voor een verzameling $S$ waarvan we de elementen $\{a_1, a_2,\ldots\}$ beschouwen als abstracte entiteiten zonder vooraf bestaande vectorstructuur:
+  * de **vrije vectorruimte** $\bbF S$ bestaat uit alle "formele" lineaire combinaties, waarbij we de elementen van $S$ als abstracte basisvectoren beschouwen (zie H1)
+
+* Voor verzamelingen $S,S'$ en een afbeelding $\varphi:S\to S'$: 
+  * De **lineaire extensie** van $\varphi$ is een lineaire afbeelding $\Hom(\bbF S, \bbF S')$, gedefinieerd als 
+  
+    $$\map{\varphi}(\vv) = v^i \map{\varphi}(a_i) = v^i \varphi(a_i)$$
+  
+    met $\varphi(a_i)$ een element uit $S'$ (= basisvector uit $\bbF S'$).
+
+## Voorbeeld van lineaire extensie (1)
+
+* Beschouw de verzameling van bits $S=\{0,1\}$ en de bit-flip-operatie $\varphi:S\to S$ met $\varphi(0) =1$, $\varphi(1) = 0$
+
+* $\bbC S \cong \bbC^2$ en $\map{\varphi} \cong \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$
+
+* Indien we de standaard basisvectoren van $\bbC S$ noteren als  $\vert 0 \rangle$ en $\vert 1 \rangle$ (de zogenaamde ket-notatie van Dirac), dan komt dat overeen met de taal waarin quantum bits (qubits) geformuleerd worden. De flip-operatie op een qubit wordt beschreven door bovenstaande matrix, die ook $\sigma^x$ wordt genoemd, en 1 van de drie Pauli matrices is.
+
+## Voorbeeld van lineaire extensie (2)
+
+Beschouw een groep $G = \{g_1,g_2,\ldots\}$. Met elk groepselement kunnen we een element uit $\Aut(G)$ associeren, namelijk op 2 verschillende manieren:
+
+* linker-multiplicatie: $L_{g} (h) = g h$ zodat $L_{g_1} L_{g_2} = L_{g_1 g_2}$
+* rechter-multiplicatie: $R_{g}(h) = h g^{-1}$ zodat $R_{g_1} R_{g_2} = R_{g_1 g_2}$
+
+Deze transformaties kunnen gepromoveerd worden tot lineaire transformaties op $\bbC G$, waarbij $\map{L}_g$ en $\map{R}_g$ zullen worden voorgesteld door "permutatiematrices': vierkante matrices met enkel nul en één, zodat er exact één element één is in elke rij en elke kolom. Deze staan gekend als de linker en rechter reguliere representatie, en spelen een belangrijke rol bij de ontwikkeling van representatietheorie. -->
+</section>
+<section id="bewerkingen-met-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-matrices">Bewerkingen met matrices</h2>
+<p>Gegeven een matrix <span class="math inline">{\mathsf{A}}</span> met componenten <span class="math inline">A^i_{\ j}</span></p>
+<ul>
+<li>Transponeren: <span class="math inline">[{\mathsf{A}}^{\mathsf{T}}]^i_{\ j} = A^j_{\ i}</span> <span class="math inline">\Rightarrow</span> later: <span class="math inline">({\mathsf{A}}^{\mathsf{T}})_i^{\ j} = A^j_{\ i}</span>
+<ul>
+<li><span class="math inline">({\mathsf{A}}^{\mathsf{T}})^{\mathsf{T}}={\mathsf{A}}</span></li>
+<li><span class="math inline">(a_1 {\mathsf{A}}_1 + a_2 {\mathsf{A}}_2)^{\mathsf{T}}= a_1 {\mathsf{A}}_1^{\mathsf{T}}+ a_2 {\mathsf{A}}_2^{\mathsf{T}}</span> (lineair)</li>
+<li><span class="math inline">({\mathsf{A}}{\mathsf{B}})^{\mathsf{T}}= {\mathsf{B}}^{\mathsf{T}}{\mathsf{A}}^{\mathsf{T}}</span></li>
+</ul></li>
+<li>Hermitisch toevoegen (hermitisch conjugeren, hermitisch transponeren): <span class="math inline">({\mathsf{A}}^{\mathsf{H}})^i_{\ j} = {\overline{\left(A^j_{\ i}\right)}}</span>
+<ul>
+<li><span class="math inline">({\mathsf{A}}^{\mathsf{H}})^{\mathsf{H}}={\mathsf{A}}</span></li>
+<li><span class="math inline">(a_1 {\mathsf{A}}_1 + a_2 {\mathsf{A}}_2)^{\mathsf{H}}= {\overline{a_1}} {\mathsf{A}}_1^{\mathsf{H}}+ {\overline{a_2}} {\mathsf{A}}_2^{\mathsf{H}}</span></li>
+<li><span class="math inline">({\mathsf{A}} \cdot {\mathsf{B}})^{\mathsf{H}}= {\mathsf{B}}^{\mathsf{H}}\cdot {\mathsf{A}}^{\mathsf{H}}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="bewerkingen-met-matrices-1" class="level2">
+<h2 class="anchored" data-anchor-id="bewerkingen-met-matrices-1">Bewerkingen met matrices</h2>
+<p>Een matrix kan de voorstelling zijn van verschillende soorten objecten uit de lineaire algebra (zie H5: bilineaire en sesquilineaire afbeeldingen).</p>
+<p>Voor matrices als voorstelling van een lineaire afbeelding hebben volgende definities geen betekenis door ‘index mismatch’; desalniettemin voeren we volgende definities toch al in op het niveau van matrices. We komen ze later terug tegen in de context van bilineaire en sesquilineaire vormen, waar ze een intrinsieke betekenis hebben:</p>
+<ul>
+<li>symmetrisch: <span class="math inline">{\mathsf{A}} = {\mathsf{A}}^{\mathsf{T}}</span></li>
+<li>antisymmetrisch of scheef-symmetrisch: <span class="math inline">{\mathsf{A}} = -{\mathsf{A}}^{\mathsf{T}}</span></li>
+<li>Hermitisch: <span class="math inline">{\mathsf{A}} = {\mathsf{A}}^{\mathsf{H}}</span></li>
+<li>anti-Hermitisch of scheef-Hermitisch: <span class="math inline">{\mathsf{A}} = -{\mathsf{A}}^{\mathsf{H}}</span></li>
+</ul>
+</section>
+<section id="rang-van-een-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="rang-van-een-matrix">Rang van een matrix</h2>
+<p>Een matrix <span class="math inline">{\mathsf{A}}\in {\mathbb{F}}^{m \times n}</span> kan een lineaire afbeelding van <span class="math inline">{\mathbb{F}}^n</span> naar <span class="math inline">{\mathbb{F}}^m</span> voorstellen.</p>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{im}}({\mathsf{A}}) {\preccurlyeq}{\mathbb{F}}^m</span> staat ook gekend als de <strong>kolomruimte</strong> van <span class="math inline">{\mathsf{A}}</span>, de ruimte opgespannen door de kolommen van <span class="math inline">{\mathsf{A}}</span></p></li>
+<li><p>de dimensie van die ruimte, zijnde <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}})</span>, wordt soms ook de <strong>kolomrang</strong> genoemd</p></li>
+<li><p>De rijen van de matrix <span class="math inline">{\mathsf{A}}</span> definieren vectoren van lengte <span class="math inline">n</span>, en spannen een deelruimte op van <span class="math inline">{\mathbb{F}}^n</span>, de <strong>rijruimte</strong></p></li>
+<li><p>De bijbehorende dimensie is de <strong>rijrang</strong> van <span class="math inline">{\mathsf{A}}</span></p></li>
+<li><p>Stelling 1: rijrang = kolomrang <span class="math inline">\Rightarrow</span> rang!</p></li>
+<li><p>Stelling 2: <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}\cdot {\mathsf{B}}) \leq \min(\mathop{\mathrm{rank}}({\mathsf{A}}), \mathop{\mathrm{rank}}({\mathsf{B}}))</span></p></li>
+</ul>
+</section>
+<section id="spoor" class="level2">
+<h2 class="anchored" data-anchor-id="spoor">Spoor</h2>
+<p>Gegeven een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span></p>
+<ul>
+<li>Spoor <span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}) = A^i_{\ i}</span></li>
+<li>Triviaal: <span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}\cdot {\mathsf{B}}) = \mathop{\mathrm{tr}}({\mathsf{B}}\cdot {\mathsf{A}})</span></li>
+</ul>
+</section>
+<section id="determinant" class="level2">
+<h2 class="anchored" data-anchor-id="determinant">Determinant</h2>
+<p>Gegeven een vierkante matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span></p>
+<ul>
+<li><p><strong>Leibniz formule</strong> <span class="math display">\begin{align*}
+\det({\mathsf{A}}) &amp;= \sum_{\sigma \in S_n} \mathop{\mathrm{sgn}}(\sigma) A^1_{\ \sigma(1)} A^2_{\ \sigma(2)} \cdots A^n_{\ \sigma(n)}\\
+&amp;= \epsilon^{j_1j_2\cdots j_n} A^1_{\ j_1} A^2_{\ j_2} \cdots A^n_{\ j_n}
+\end{align*}</span></p>
+<p>met <span class="math inline">\epsilon^{i_1i_2\cdots i_n} = \begin{cases} \mathop{\mathrm{sgn}}(\sigma),&amp;\sigma=(i_1,i_2,\ldots,i_n) \in S_n\\ 0, &amp;(i_1,i_2,\ldots,i_n) \not\in S_n\end{cases}</span></p>
+<p><strong>Levi-Civita symbool</strong></p></li>
+<li><p><span class="math inline">n!</span> termen met elk <span class="math inline">n</span> vermenigvuldigingen ?</p>
+<p>praktische algoritmes voor determinant hebben complexiteit <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^3)</span></p></li>
+</ul>
+</section>
+<section id="determinant-als-volume" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-als-volume">Determinant als volume</h2>
+<ul>
+<li><p>Beschouw de determinant als een multivariate functie van de <span class="math inline">n</span> kolommen van de matrix <span class="math inline">{\mathsf{A}} \eqsim (\boldsymbol{a}_1,\boldsymbol{a}_2, \ldots,\boldsymbol{a}_n)</span>. De determinant is volledig en uniek gekarakteriseerd door:</p>
+<ul>
+<li>lineariteit in elke kolom = multilineaire functie</li>
+<li>alternerend in twee opeenvolgende kolommen: <span class="math inline">\boldsymbol{a}_i =\boldsymbol{a}_{i+1} \Rightarrow \det = 0</span></li>
+<li>eenheidsmatrix <span class="math inline">{\mathsf{I}}_n \eqsim</span> standaardbasis <span class="math inline">(\boldsymbol{e}_1,\ldots,\boldsymbol{e}_n)</span> <span class="math inline">\Rightarrow \det = 1</span></li>
+</ul></li>
+<li><p>eigenschappen die je verwacht voor het <strong>volume</strong> van een parallellopipidum opgespannen door <span class="math inline">(\boldsymbol{a}_1, \ldots,\boldsymbol{a}_n)</span></p>
+<p><span class="math inline">\Rightarrow \det({\mathsf{A}})</span> is de volumeverandering door de lineaire afbeelding <span class="math inline">{\mathsf{A}}</span></p></li>
+</ul>
+</section>
+<section id="determinant-verdere-eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-verdere-eigenschappen">Determinant: verdere eigenschappen</h2>
+<ul>
+<li><p><span class="math inline">\det({\mathsf{A}}) =0 \iff \mathop{\mathrm{rank}}({\mathsf{A}}) &lt; n</span></p></li>
+<li><p><span class="math inline">\epsilon^{j_1j_2\cdots j_n} A^{i_1}_{\ j_1} A^{i_2}_{\ j_2} \cdots A^{i_n}_{\ j_n} = \epsilon^{i_1i_2\cdots i_n}</span></p></li>
+<li><p><span class="math inline">\det({\mathsf{A}}\cdot{\mathsf{B}}) = \det({\mathsf{A}})\det({\mathsf{B}})</span></p>
+<p>Twee opeenvolgende transformaties <span class="math inline">\Rightarrow</span> product van volumeveranderingen</p></li>
+</ul>
+</section>
+<section id="determinant-toepassing" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-toepassing">Determinant: toepassing</h2>
+<p>Beschouw een multidimensionele integraal <span class="math inline">\int_V g(\boldsymbol{x}) {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n</span></p>
+<p>Stel dat we een algemene (niet noodzakelijk lineaire) coordinatentransformatie willen doorvoeren: <span class="math inline">\boldsymbol{x} = \boldsymbol{f}(\boldsymbol{y})</span> met <span class="math inline">\boldsymbol{f}:{\mathbb{R}}^n \to {\mathbb{R}}^n</span> of dus <span class="math inline">x^i = f^i(y^1,y^2,\ldots,y^n)</span></p>
+<p>Rond een bepaald punt <span class="math inline">\boldsymbol{x}_k =\boldsymbol{f}(\boldsymbol{y}_k)</span> geldt de eerste-orde Taylor benadering: <span class="math display">\begin{align*}
+x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsymbol{y}_k)) \\
+&amp;= f^i(\boldsymbol{y}_k) + \frac{\partial f^i}{\partial y^j}(\boldsymbol{y}_k) (y^j - y_k^j) \\
+&amp;= x^i_k + \frac{\partial f^i}{\partial y^j}(\boldsymbol{y}_k) (y^j - y_k^j)
+\end{align*}</span></p>
+</section>
+<section id="determinant-toepassing-1" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-toepassing-1">Determinant: toepassing</h2>
+<p>De <strong>Jacobiaan</strong> <span class="math inline">{\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y})</span> met componenten</p>
+<p><span class="math display"> ({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))^i_{\ j} = \frac{\partial f^i}{\partial y^j}(\boldsymbol{y}) </span></p>
+<p>beschrijft de lineaire benadering van <span class="math inline">\boldsymbol{f}</span> in de buurt van het punt <span class="math inline">\boldsymbol{y}</span>.</p>
+<p>Dit brengt een volumeverandering teweeg gegeven door</p>
+<p><span class="math display"> {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n = {\left\lvert\det({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))\right\rvert} {\mathrm{d}}y^1 {\mathrm{d}}y^2 \cdots {\mathrm{d}}y^n</span></p>
+<p><span class="math inline">\Rightarrow\int_V g(\boldsymbol{x}) {\mathrm{d}}x^1 {\mathrm{d}}x^2 \cdots {\mathrm{d}}x^n</span> <span class="math inline">\qquad =\int_{V'} g(\boldsymbol{f}(\boldsymbol{y})) {\left\lvert\det({\mathsf{J}}_{\boldsymbol{f}}(\boldsymbol{y}))\right\rvert} {\mathrm{d}}y^1 {\mathrm{d}}y^2 \cdots {\mathrm{d}}y^n</span></p>
+</section>
+<section id="determinant-toepassing-2" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-toepassing-2">Determinant: toepassing</h2>
+<p>Voorbeeld: poolcoördinaten <span class="math inline">x = \rho \cos \theta, y = \rho \sin \theta</span></p>
+<p><span class="math display">\begin{align*}
+  {\mathsf{J}}(r,\theta) = \begin{bmatrix}
+    \frac{\partial x}{\partial \rho} &amp; \frac{\partial x}{\partial \theta} \\ \frac{\partial y}{\partial \rho} &amp; \frac{\partial y}{\partial \theta}
+  \end{bmatrix} = \begin{bmatrix}
+    \cos(\theta) &amp; -\rho \sin(\theta) \\ \sin(\theta) &amp; \rho \cos(\theta)
+  \end{bmatrix}
+\end{align*}</span></p>
+<p><span class="math display">{\left\lvert\det({\mathsf{J}}(\rho,\theta))\right\rvert} = \rho \Rightarrow {\mathrm{d}}x {\mathrm{d}}y = \rho {\mathrm{d}}\rho {\mathrm{d}}\theta </span></p>
+<p>Opmerking:</p>
+<ul>
+<li>De absolute waarde heeft te maken met het feit dat een determinant de verandering van een geörienteerd volume beschrijft. Voor de volume-integraal is dit teken (dat aangeeft of de oriëntatie al dan niet behouden blijft) niet van belang, of wordt het gecompenseerd door hoe de integratiegrenzen geordend worden.</li>
+</ul>
+</section>
+<section id="matrix-inverse" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-inverse">Matrix inverse:</h2>
+<ul>
+<li><p><strong><span class="math inline">(k,l)</span>-minor</strong> <span class="math inline">M_k^{\ l}</span> van een matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n\times n}</span> is de determinant van de matrix die overblijft na het verwijderen van rij <span class="math inline">k</span> en kolom <span class="math inline">l</span></p></li>
+<li><p><strong>Laplace-expansie</strong> van determinant:</p>
+<p><span class="math inline">\det({\mathsf{A}}) = \sum_l A^k_{\ l} (-1)^{k-l} M_k^{\ l}</span> (geen sommatieconventie)</p>
+<p>veralgemening: <span class="math inline">\sum_l A^i_{\ l} (-1)^{k-l} M_k^{\ l} = \det({\mathsf{A}}) \delta^i_{\ k}</span></p></li>
+<li><p>Met behulp van <span class="math inline">(\mathop{\mathrm{adj}}({\mathsf{A}}))^i_{\ j} = (-1)^{j-i} M_j^{\ i}</span>:</p>
+<p><span class="math inline">{\mathsf{A}} \cdot \mathop{\mathrm{adj}}({\mathsf{A}}) = \det({\mathsf{A}}) {\mathsf{I}}_n</span></p></li>
+<li><p>als <span class="math inline">\det({\mathsf{A}})\neq 0</span>: <span class="math inline">\Rightarrow\ {\mathsf{A}}^{-1} = \det({\mathsf{A}})^{-1} \mathop{\mathrm{adj}}({\mathsf{A}})</span></p></li>
+<li><p>als <span class="math inline">\det({\mathsf{A}}) = 0</span>: <span class="math inline">{\mathsf{A}}</span> is singulier, ontaard, niet-inverteerbaar</p></li>
+</ul>
+</section>
+<section id="afgeleide-van-een-determinant" class="level2">
+<h2 class="anchored" data-anchor-id="afgeleide-van-een-determinant">Afgeleide van een determinant</h2>
+<p>Beschouw een matrixwaardige functie <span class="math inline">{\mathsf{A}}(t)</span>, i.e.&nbsp;een matrix waarvan de elementen (continue, afleidbare) functies zijn van de tijd.</p>
+<ul>
+<li><p><strong>Jacobi’s formule:</strong></p>
+<p><span class="math display">\begin{align*}
+\frac{{\mathrm{d}}\ }{{\mathrm{d}}t} \det({\mathsf{A}}(t)) &amp;= \mathop{\mathrm{tr}}\left[\mathop{\mathrm{adj}}({\mathsf{A}}(t)) \frac{{\mathrm{d}}{\mathsf{A}}}{{\mathrm{d}}t}(t)\right]\\
+&amp;= \det({\mathsf{A}}(t)) \mathop{\mathrm{tr}}\left[{\mathsf{A}}^{-1}(t) \frac{{\mathrm{d}}{\mathsf{A}}}{{\mathrm{d}}t}(t)\right]
+\end{align*}</span></p></li>
+</ul>
+</section>
+</section>
+<section id="algemene-lineaire-groep-en-basistranformaties" class="level1">
+<h1>Algemene lineaire groep en basistranformaties</h1>
+<section id="lineaire-groep" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-groep">Lineaire groep</h2>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{Aut}}(V)</span> voor vectorruimte <span class="math inline">V</span> wordt genoteerd als <span class="math inline">\mathop{\mathrm{GL}}(V)</span> en de “algemene lineaire groep” voor <span class="math inline">V</span> genoemd.</p></li>
+<li><p><span class="math inline">\mathop{\mathrm{GL}}({\mathbb{F}}^n)= \mathop{\mathrm{GL}}(n;{\mathbb{F}})</span>: inverteerbare <span class="math inline">n \times n</span> matrices</p>
+<ul>
+<li><p>vierkante matrices waarvoor <span class="math inline">\det({\mathsf{A}}) \neq 0</span></p></li>
+<li><p>voor <span class="math inline">{\mathbb{F}}={\mathbb{R}}</span>: <span class="math inline">\det({\mathsf{A}}) &gt; 0</span> of <span class="math inline">\det({\mathsf{A}}) &lt; 0</span></p>
+<p><span class="math inline">\Rightarrow</span> twee onsamenhangende delen</p></li>
+<li><p>voor <span class="math inline">{\mathbb{F}}= {\mathbb{C}}</span>: samenhangend</p></li>
+</ul></li>
+<li><p>Speciale lineaire groep <span class="math inline">\mathop{\mathrm{SL}}(n; {\mathbb{F}})</span>: <span class="math inline">n\times n</span> matrices met <span class="math inline">\det({\mathsf{A}}) = 1</span></p></li>
+</ul>
+</section>
+<section id="basistransformaties" class="level2">
+<h2 class="anchored" data-anchor-id="basistransformaties">Basistransformaties</h2>
+<p>Eindigdimensionale vectorruimte <span class="math inline">V</span> met twee verschillende keuzes van basis <span class="math inline">B = \{{e}_1,{e}_2,\ldots,{e}_n\}</span> en <span class="math inline">\tilde{B} = \{\tilde{{e}}_1,\ldots,\tilde{{e}}_n\}</span>:</p>
+<ul>
+<li><p><span class="math inline">{e}_j = \tilde{{e}}_i T^i_{\ j} \Rightarrow {v}= v^j {e}_j = \tilde{v}^i \tilde{{e}}_i = v^j T^i_{\ j} \tilde{{e}}_i \Rightarrow \tilde{\boldsymbol{v}} = {\mathsf{T}} \boldsymbol{v}</span></p></li>
+<li><p><span class="math inline">\boldsymbol{v} = \phi_{B}({v})</span> en <span class="math inline">\tilde{\boldsymbol{v}} = \phi_{\tilde{B}}({v})</span></p>
+<p><span class="math inline">\Rightarrow \tilde{\boldsymbol{v}} = \phi_{\tilde{B}} \circ \phi_B^{-1}(\boldsymbol{v})</span></p>
+<p><span class="math inline">\Rightarrow {\mathsf{T}} = \phi_{\tilde{B}} \circ \phi_B^{-1}: {\mathbb{F}}^n \to {\mathbb{F}}^n</span>; <span class="math inline">{\mathsf{T}} \in \mathop{\mathrm{GL}}(n;{\mathbb{F}})</span></p></li>
+</ul>
+</section>
+<section id="basistransformaties-1" class="level2">
+<h2 class="anchored" data-anchor-id="basistransformaties-1">Basistransformaties</h2>
+<p>Beschouw twee eindigdimensionale vectorruimten <span class="math inline">V</span> en <span class="math inline">W</span> met verschillende keuzes van basis <span class="math inline">B_V</span> en <span class="math inline">\tilde{B}_V</span>, alsook <span class="math inline">B_W</span> en <span class="math inline">\tilde{B}_W</span> en een lineaire afbeelding <span class="math inline">{\hat{A}}:V\to W</span>:</p>
+<ul>
+<li>Matrixrepresentatie <span class="math inline">{\mathsf{A}} = \phi_{B_W} \circ {\hat{A}} \circ \phi_{B_V}^{-1}</span></li>
+<li>Matrixrepresentatie <span class="math display">\begin{align*}
+\tilde{{\mathsf{A}}} &amp;= \phi_{\tilde{B}_W} \circ {\hat{A}} \circ \phi_{\tilde{B}_V}^{-1}\\
+&amp; = \phi_{\tilde{B}_W} \circ (\phi_{B_W}^{-1} \circ {\mathsf{A}} \circ \phi_{B_V}) \circ \phi_{\tilde{B}_V}^{-1}\\
+&amp;= (\phi_{\tilde{B}_W} \circ \phi_{B_W}^{-1}) \circ {\mathsf{A}} \circ (\phi_{\tilde{B}_V} \circ \phi_{B_V})^{-1}\\
+&amp;= {\mathsf{T}}_W \cdot {\mathsf{A}} \cdot {\mathsf{T}}_V^{-1}
+\end{align*}</span></li>
+</ul>
+</section>
+<section id="basistransformaties-2" class="level2">
+<h2 class="anchored" data-anchor-id="basistransformaties-2">Basistransformaties</h2>
+<p>Voor <span class="math inline">V = W</span> en dus een lineaire operator <span class="math inline">{\hat{A}}</span> op V</p>
+<ul>
+<li><p><span class="math inline">\tilde{{\mathsf{A}}} = {\mathsf{T}} {\mathsf{A}} {\mathsf{T}}^{-1}</span>: <strong>gelijkvormigheidstransformatie</strong></p></li>
+<li><p>Gerelateerd zijn via een gelijkvormigheidstransformtie is een equivalentierelatie</p></li>
+<li><p>Eigenschappen van <span class="math inline">{\mathsf{A}}</span> die invariant zijn onder gelijkvormigheidstransformaties zijn basisonafhankelijk, en zijn dus intrinsieke eigenschappen die kunnen worden geassocieerd aan het wiskundige object <span class="math inline">{\hat{A}}</span></p></li>
+<li><p>Voorbeelden:</p>
+<ul>
+<li><span class="math inline">\det({\mathsf{A}}) = \det(\tilde{{\mathsf{A}}})</span></li>
+<li><span class="math inline">\mathop{\mathrm{tr}}({\mathsf{A}}) = \mathop{\mathrm{tr}}(\tilde{{\mathsf{A}}})</span></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="functionalen-en-duale-ruimte" class="level1">
+<h1>Functionalen en duale ruimte</h1>
+<section id="functionalen" class="level2">
+<h2 class="anchored" data-anchor-id="functionalen">Functionalen</h2>
+<ul>
+<li><p>Afbeelding van vectorruimte <span class="math inline">V</span> naar het scalaire veld <span class="math inline">{\mathbb{F}}</span></p></li>
+<li><p>Vaak in de context van functieruimten, vaak niet-lineair</p></li>
+<li><p>Voorbeeld: pad <span class="math inline">q(t)</span> van een deeltje gedurende een tijdsinterval <span class="math inline">I</span>:</p>
+<ul>
+<li><span class="math inline">q:I \to {\mathbb{R}}^3: t \mapsto q(t)</span>; <span class="math inline">q \in C(I, {\mathbb{R}}^3)</span></li>
+<li>Actie <span class="math inline">S: C(I,{\mathbb{R}}^3) \mapsto {\mathbb{R}}: q \mapsto S[q] = \int_I L(q(t),\dot{q}(t),t)\,{\mathrm{d}}t</span></li>
+</ul></li>
+<li><p><strong>Lineaire functionalen</strong>: <span class="math inline">\mathop{\mathrm{Hom}}(V, {\mathbb{F}})</span></p></li>
+<li><p>Voorbeeld: linearisatie van een functie <span class="math inline">f:{\mathbb{R}}^n \to {\mathbb{R}}</span></p>
+<p><span class="math display"> f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + \underbrace{\frac{\partial f}{\partial x^i} (x^i-x^i_0)}_{\text{lineaire functionaal van $\boldsymbol{x}-\boldsymbol{x}_0$}} + \ldots</span></p></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-en-duale-ruimte" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-en-duale-ruimte">Lineaire functionalen en duale ruimte</h2>
+<p>Beschouw eindigdimensionale vectorruimte <span class="math inline">V</span> met basis <span class="math inline">B = \{{e}_1,\ldots,{e}_n\}</span>:</p>
+<ul>
+<li><p>Lineaire functionaal = duale vector = covector</p>
+<p><span class="math inline">\xi[{v}] = v^i \xi[{e}_i] = \begin{bmatrix} \xi[{e}_1] &amp; \cdots &amp; \xi[{e}_n] \end{bmatrix} \begin{bmatrix} v^1 \\ \vdots \\ v^n\end{bmatrix}</span></p>
+<p><span class="math inline">\Rightarrow</span> coordinatenrepresentatie is rijmatrix</p></li>
+<li><p><strong>duale ruimte</strong> <span class="math inline">V^\ast = \mathop{\mathrm{Hom}}(V,{\mathbb{F}})</span> met <span class="math inline">\mathop{\mathrm{dim}}(V) = \mathop{\mathrm{dim}}(V^\ast)</span></p></li>
+<li><p>Duale basis: <span class="math inline">B^\ast=\{\epsilon^1,\ldots,\epsilon^n\}</span> met <span class="math inline">\epsilon^i[{e}_j] = \delta^i_j</span></p>
+<ul>
+<li><span class="math inline">\xi = \xi_i \epsilon^i</span> met <span class="math inline">\xi_i = \xi[{e}_i]</span></li>
+<li>covariante indices</li>
+</ul></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-eigenschappen">Lineaire functionalen: eigenschappen</h2>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{rank}}(\xi) \leq \mathop{\mathrm{dim}}({\mathbb{F}}) = 1</span></li>
+<li>als <span class="math inline">\mathop{\mathrm{rank}}(\xi) = 0</span>: triviale functionaal die elke vector op 0 afbeeldt</li>
+<li>alle andere:
+<ul>
+<li><span class="math inline">\mathop{\mathrm{rank}}(\xi)=1 \Rightarrow \mathop{\mathrm{nullity}}(\xi) = \mathop{\mathrm{dim}}(V)-1</span></li>
+<li><span class="math inline">\mathop{\mathrm{ker}}(\xi)</span> has <span class="math inline">\mathop{\mathrm{codim}}= 1</span>: hyperplanes</li>
+<li>als <span class="math inline">\mathop{\mathrm{ker}}(\xi) = \mathop{\mathrm{ker}}(\chi)</span>: <span class="math inline">\xi = a \chi</span> voor een scalair <span class="math inline">a \in {\mathbb{F}}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-meer-voorbeelden-uit-de-fysica" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-meer-voorbeelden-uit-de-fysica">Lineaire functionalen: meer voorbeelden uit de fysica</h2>
+<ul>
+<li><p>Kracht: duale vector die snelheid (=vector) afbeeldt op vermogen (scalair): <span class="math inline">P = F_i v^i</span></p></li>
+<li><p>Door de wet van Newton: momentum is duale vector</p></li>
+<li><p>Relatie tussen momentum en snelheid: <span class="math inline">p_i = M_{ij} v^j</span> met <span class="math inline">M</span> de massa-matrix, volgt uit kinetische energie als kwadratische vorm (zie H5) van snelheid: <span class="math inline">T = \frac{1}{2} v^i M_{ij} v^j</span></p></li>
+<li><p>Continue functies <span class="math inline">V = C({\mathbb{R}}; {\mathbb{F}})</span>: Dirac-delta <span class="math inline">\delta_a[f] = f(a)</span></p>
+<p><span class="math inline">\Rightarrow</span> zie H9 voor theorie van distributies</p></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-meer-voorbeelden-van-duale-basis" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-meer-voorbeelden-van-duale-basis">Lineaire functionalen: meer voorbeelden van duale basis</h2>
+<ul>
+<li>Ruimte <span class="math inline">{\mathbb{F}}[x]</span> van polynomen:
+<ul>
+<li>basis van monomials <span class="math inline">B=\{e_n=x^n,n=0,1,2,\ldots\}</span></li>
+<li><span class="math inline">\Rightarrow</span> duale basis <span class="math inline">B^* = \left\{\epsilon^n = \frac{1}{n!}\left.\frac{{\mathrm{d}}\ }{{\mathrm{d}}x^n}\right|_{x=0} , n=0,1,2,\ldots\right\}</span></li>
+</ul></li>
+<li>Ruimte <span class="math inline">{\mathbb{F}}_n[x]</span> van <span class="math inline">n</span>de-graads polynomen:
+<ul>
+<li>n+1 verschillende punten <span class="math inline">\{x^0,\ldots,x^n\} \subseteq {\mathbb{R}}</span> geven aanleiding tot duale basis <span class="math inline">\tilde{B}^* = \{\varphi^i, i=0,\ldots,n\}</span> waarbij <span class="math inline">\varphi^i[p] = p(x^i)</span></li>
+<li><span class="math inline">\Rightarrow</span> geassocieerde basis voor <span class="math inline">{\mathbb{F}}_n[x]</span> bestaat uit de Lagrange veeltermen: <span class="math display">f_j(x) = \prod_{\substack{i=0 \\ i\neq j}}^n \frac{(x - x_i)}{(x_j - x_i)}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-en-basistransformaties" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-en-basistransformaties">Lineaire functionalen en basistransformaties</h2>
+<p>Vectorruimte <span class="math inline">V</span> met twee basissen <span class="math inline">B</span> en <span class="math inline">\tilde{B}</span></p>
+<ul>
+<li><p>We weten al: <span class="math inline">\boldsymbol{v} = \phi_B({v})</span>, <span class="math inline">\tilde{\boldsymbol{v}} = \phi_{\tilde{B}}({v}) = (\phi_{\tilde{B}} \circ \phi_{B}^{-1})(\boldsymbol{v}) = {\mathsf{T}} \boldsymbol{v}</span></p></li>
+<li><p>Lineaire functionaal <span class="math inline">\xi:V \to {\mathbb{F}}</span>:</p>
+<p><span class="math inline">\xi[v] = \underbrace{(\xi \circ \phi_B^{-1})}_{\text{rijvector $\xi_i$}} (\boldsymbol{v}) = (\xi \circ \phi_{\tilde{B}}^{-1})\circ (\phi_{\tilde{B}} \circ \phi_B^{-1}) (\boldsymbol{v})</span></p></li>
+<li><p><span class="math inline">\xi_i = \tilde{\xi}_i T^i_{\ j}</span> of dus</p>
+<p><span class="math inline">\tilde{\xi}_j = ({\mathsf{T}}^{-1})^i_{\ j} \xi_i = ({\mathsf{T}}^{-{\mathsf{T}}})^{\ i}_j \xi_i</span></p></li>
+<li><p><span class="math inline">{\mathsf{T}}^{-{\mathsf{T}}} = ({\mathsf{T}}^{-1})^{\mathsf{T}}= ({\mathsf{T}}^{\mathsf{T}})^{-1}</span> (duale of contragradiente representatie van <span class="math inline">T \in \mathop{\mathrm{GL}}(n;{\mathbb{F}})</span>)</p>
+<p><span class="math inline">({\mathsf{T}}_1 {\mathsf{T}}_2)^{-{\mathsf{T}}} = {\mathsf{T}}_1^{-{\mathsf{T}}} {\mathsf{T}}_2^{-{\mathsf{T}}}</span></p></li>
+</ul>
+</section>
+<section id="duale-lineaire-afbeeldingen-en-de-getransponeerde" class="level2">
+<h2 class="anchored" data-anchor-id="duale-lineaire-afbeeldingen-en-de-getransponeerde">Duale lineaire afbeeldingen en de getransponeerde</h2>
+<p>Gegeven vectorruimten <span class="math inline">V, W</span> en een lineaire afbeelding <span class="math inline">{\hat{A}} \in \mathop{\mathrm{Hom}}(V,W)</span></p>
+<p>Voor elke <span class="math inline">\xi \in W^\ast</span> definieren we een <span class="math inline">\chi \in V^\ast</span> via</p>
+<p><span class="math display"> \chi[{v}] = \xi[{\hat{A}}{v}] = (\xi \circ {\hat{A}})({v})</span></p>
+<p>We noteren <span class="math inline">\chi = {\hat{A}}^\ast (\xi)</span> en noemen <span class="math inline">{\hat{A}}^\ast \in \mathop{\mathrm{Hom}}(W^\ast,V^\ast)</span> de <strong>duale lineaire afbeelding</strong></p>
+<p>In coordinaten:</p>
+<p><span class="math display"> \chi_j = \xi_i A^i_{\ j} = ({\mathsf{A}}^{\mathsf{T}})^{\ i}_j \xi_i</span></p>
+<p><span class="math inline">\Rightarrow</span> transponeren geeft de matrix-representatie van de duale lineaire afbeelding</p>
+<!-- # Affiene transformaties
+
+## Affiene ruimten: herhaling
+
+* Affiene ruimte $A$ over een vectorruimte $V$: verzameling van punten $A=\{P, Q, \ldots\}$ zodat voor elke $P \in A, \vv \in V$ er exact één $Q$ bestaat waarvoor $Q = P + \vv$, en vice versa, voor elke $P,Q \in A$ bestaat er exact één $\vv \in V$ zodat $Q = P + \vv$.
+
+* Na keuze van 1 vast punt $O \in A$, de oorsprong, kunnen we elk punt $P\in A$ karakteriseren via $x_{PO}$ zodat $P = O + x_{PO}$
+
+## Affiene transformaties
+
+* Affiene transformaties:
+  * lineaire transformaties $\map{T} \in \GL(V)$ kunnen werken als $P \mapsto P' = O + \map{T}(x_{PO})$ 
+  * translaties: vectoren $\vv \in V$ kunnen werken als $P \mapsto P' = O + \vv + x_{PO}$
+  * beide samen: $(\map{T},\vv): P \mapsto P' = O + \vv + \map{T} x_{PO}$
+
+* Compositie van affiene transformaties:
+  *  $(\map{T}_1,\vv_1) \circ (\map{T}_2,\vv_2) = (\map{T}_1\map{T}_2, \vv_1 + \map{T}_1 \vv_2)$
+  * $(\map{T},\vv)^{-1} = (\map{T}^{-1}, -\map{T}^{-1}\vv)$
+  * $\Rightarrow \Aut(A) = \Aff(V) = V \rtimes \GL(V)$ (semidirect product)
+
+## Affiene transformaties als matrix
+
+Voor $V = \bbF^n$ kunnen we de affiene transformaties voorstellen als
+
+$$  \begin{bmatrix}
+        \vec{x}'\\ 1
+    \end{bmatrix} = \begin{bmatrix}
+        \mat{T} & \vec{v} \\ \zeromat_{n \times 1} & 1
+    \end{bmatrix} \begin{bmatrix}
+        \vec{x} \\ 1
+    \end{bmatrix}
+$$
+
+In abstracte termen: 
+
+$\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
+
+# Lineaire afbeeldingen in reële en complexe vectorruimten
+
+## Van reële naar complexe ruimte
+
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
+  * Eindigdimensionaal: Kies basis $B \Rightarrow W \cong \bbR^n$, breidt uit tot $\bbC^n$, d.w.z. laat complexe expansiecoëfficiënten toe, of dus, $W = \bbR B \Rightarrow W^{\bbC} = \bbC B$. 
+  * Bemerk dat $\dim_{\bbR}(W) = \dim_{\bbC}(W^{\bbC})$
+  * We zullen dit vaak impliciet doen, bvb. voor eigenwaarden en eigenvectoren van een reële matrix.
+
+## Van reële naar complexe ruimte
+
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
+  * Basisonafhankelijke constructie:
+
+    Definieer $W^\bbC = W \times W$, met
+    * vectoradditie $(\vw_1,\vw_2) + (\vw_1',\vw_2') = (\vw_1+ \vw_1', \vw_2 + \vw_2')$ (idem als voor $W \oplus W$)
+    * vermenigvuldiging met complexe scalairen: $(a + \irm b) (\vw_1,\vw_2) = (a \vw_1 - b \vw_2, b \vw_1 + a \vw_2)$
+
+    $\Rightarrow$ genoteerd als $W^\bbC = W \oplus (\irm W)$
+
+## Van complexe naar reële ruimte:
+
+* Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
+  * Behoudt dezelfde verzameling van vectoren $V^{\bbR} = V$, beperk de vermenigvuldiging met scalairen tot reële scalairen
+  
+  $\Rightarrow$ dit verandert de betekenis van "lineaire afhankelijkheid", "lineaire span", "voortbrengendheid", "compleetheid", "basis" en "dimensie"
+
+## Van complexe naar reële ruimte:
+
+* Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
+
+  * Stel $V$ eindig-dimensionaal met basis $B=\{\ve_1,\ldots,\ve_n\}$. Om elke vector te kunnne expanderen met behulp van reële coefficiënten moeten we de basis uitbreiden tot $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm \ve_1, \ldots, \irm \ve_n\}$. 
+
+  * $\dim_{\bbC}(V) = n \Rightarrow \dim_{\bbR}(V^\bbR) = 2 n = 2 \dim_{\bbC}(V)$
+
+  * $V \cong \bbC^n$ en $V^\bbR \cong \bbR^{2n}$ (met $V = V^\bbR$ als verzameling)
+
+  * $\vec{v}^\bbR = (\real(\vec{v}), \imag(\vec{v}))$
+
+## Complexe lineaire afbeeldingen
+
+Beschouw nu twee complexe vectorruimten $V$ en $W$, en hun reële versie $V^\bbR$ en $W^\bbR$.
+
+Een (complexe) lineaire afbeelding $\map{A}\in \Hom_{\bbC}(V,W)$ voldoet aan
+
+$$\map{A}(a_1 \vv_1 + a_2 \vv_2) = a_1 \map{A}(\vv_1) + a_2 \map{A}(\vv_2)$$
+
+Als dit geldt voor $a_1,a_2 \in \bbC$, dan zeker voor $a_1,a_2 \in \bbR$
+
+$\Rightarrow \map{A} \in \Hom_{\bbR}(V^\bbR, W^\bbR)$
+
+Er bestaat en inclusie van complexe lineaire afbeeldingen in $\Hom(V,W)$ naar reële lineaire afbeelding in $\Hom_{\bbR}(V^\bbR, W^\bbR)$
+
+## Complexe lineaire afbeeldingen
+
+Als matrix: $\mat{A}^\bbR = \begin{bmatrix} \real(\mat{A}) & -\imag(\mat{A}) \\ \imag(\mat{A}) & \real(\mat{A}) \end{bmatrix}$
+
+Niet alle afbeeldingen in $\Hom_{\bbR}(V^\bbR,W^\bbR)$ komen overeen met complexe lineaire afbeeldingen $\map{A} \in \Hom_{\bbC}(V,W)$.
+
+Wat is de betekenis van de andere, en is er een natuurlijke keuze voor het complement? 
+
+## Complexe lineaire afbeeldingen
+
+* In $V^\bbR$ kan je niet vermenigvuldigen met $\irm$.
+
+* Maar je kan wel werken met de linaire afbeelding $\map{J}_V = \irm \idmap_V$, en deze vormt een geldige lineaire afbeelding die ook bestaat in $\End_{\bbR}(V^\bbR)$.
+
+* Uiteraard geldt $\map{J}_V^2 = - \idmap_V$.
+
+* Matrixrepresentatie als reële matrix:
+  $$\mat{J}_V^\bbR = \begin{bmatrix} \zeromat_{n \times n} & -\idmat_{n \times n} \\ \idmat_{n \times n} & \zeromat_{n \times n} \end{bmatrix}$$
+
+* Complexe lineaire afbeelding: $\map{A}\circ \map{J}_V = \map{J}_W \circ\map{A}$
+
+## Reële lineaire afbeeldingen
+
+Beschouw nu een willekeurige (reëel lineaire) afbeelding $\map{L} \in \Hom_{\bbR}(V^\bbR,W^\bbR)$.
+
+We kunnen deze uniek ontbinden als
+
+$$\map{L} = \underbrace{\frac{1}{2}(\map{L} - \map{J}_W \map{L} \map{J}_V)}_{\map{A}} + \underbrace{\frac{1}{2} (\map{L} + \map{J}_W \map{L} \map{J}_V)}_{\map{B}}$$
+
+waarbij geldt:
+
+* $\map{J}_W \circ \map{A} = \map{A} \circ \map{J}_V$ (complexe lineaire afbeelding)
+* $\map{J}_W \circ \map{B} = - \map{B} \circ \map{J}_V$
+
+## Antilineaire afbeeldingen
+
+Dit leidt tot een nieuwe definitie:
+
+Een afbeelding $\map{B}:V \to W$ tussen complexe vectorruimten $V$ en $W$ wordt **antilineair** genoemd indien ze voldoet aan
+
+* $\map{B}(\vv_1 + \vv_2) = \map{B}(\vv_1) + \map{B}(\vv_2)$
+* $\map{B}(\scalara \vv) = \conj{\scalara} \map{B}(\vv)$
+
+## Antilineaire afbeeldingen: eigenschappen
+
+* Compositie van even aantal antilineaire afbeeldingen is (complex) lineaire afbeelding
+* Complexe lineaire combinaties van antilineaire afbeeldingen zijn antilineaire afbeeldingen (antilineaire afbeeldingen vormen een complexe vectorruimte)
+* Elke reëel lineaire afbeelding tussen $V^\bbR$ en $W^\bbR$ kan uniek ontbonden worden als som van een lineaire afbeeldingen tussen $V$ en $W$ en een antilineaire afbeeldingen tussen $V$ en $W$
+
+## Antilineaire afbeeldingen: conjugatie
+
+* Beschouw een basis $B$ voor de complexe vectorruimte $V$, die dus een bijbehorende basis $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm\ve_1,\ldots,\irm\ve_n\}$ voor $V^\bbR$ impliceert.
+* De specifieke afbeelding $\map{C}_B \in \End_{\bbR}(V^\bbR)$ met matrixrepresentatie $\mat{C}_B^{\bbR} = \begin{bmatrix} \idmat_{n\times n} & \zeromat_{n \times n} \\ \zeromat_{n \times n}  & -\idmat_{n \times n} \end{bmatrix}$ noemen we de complexe conjugatie-operator geassocieerd aan de basiskeuze $B$. Ten opzichte van $V$, is $\map{C}_B$ een zuiver antilineaire operator.
+* Elke andere antilineaire operator $\map{B}$ kan nu geschreven worden als een product $\map{B} = \map{B}' \circ \map{C}_B$, waarbij $\map{B}' \in \Hom(V,W)$ een gewone (complex) lineaire afbeelding.
+
+## Reële, complexe en antilineaire afbeeldingen: matrixgedaante
+
+\begin{align*}
+    \mat{L} &= \begin{bmatrix}
+        \mat{L}_{11} & \mat{L}_{12} \\ \mat{L}_{21} & \mat{L}_{22}
+    \end{bmatrix} \\
+  &=\begin{bmatrix}
+        \mat{A}_{1} & -\mat{A}_{2} \\ \mat{A}_2 & \mat{A}_1
+    \end{bmatrix} + \begin{bmatrix}
+        \mat{B}_1 & \mat{B}_2 \\ \mat{B}_2 & -\mat{B}_1
+    \end{bmatrix} \nonumber\\
+    &= \begin{bmatrix}
+        \mat{A}_{1} & -\mat{A}_{2} \\ \mat{A}_2 & \mat{A}_1
+    \end{bmatrix} + \begin{bmatrix}
+        \mat{B}_1 & -\mat{B}_2 \\ \mat{B}_2 & \mat{B}_1
+    \end{bmatrix}\begin{bmatrix}
+        \idmat & \zeromat \\ \zeromat & -\idmat
+    \end{bmatrix}
+\end{align*}
+
+$$\Rightarrow \mat{A} = \mat{A}_1 + \irm \mat{A}_2$$
+
+## Antilineaire afbeelding: voorbeeld
+
+Tijdsomkeringsymmetrie in kwantummechanica:
+
+* Actie op golffunctie $\map{T}: \psi(x) \mapsto \conj{\psi(x)}$
+
+* Stel: $\psi_p(x) \sim \erm^{\irm p x} \Rightarrow \map{T} \psi_p = \psi_{-p}$
+
+* Golffunctie in momentumruimte ($\cong$ Fouriertransformatie)
+  
+  $\Psi(p) \sim \int \erm^{-\irm p x} \psi(x)\,\drm x$
+
+* Actie van tijdsomkering op momentum-golffunctie 
+
+  $\Rightarrow (\map{T} \Psi) = \conj{\Psi(-p)}$
+
+  = Complexe conjugatie + spiegeling van momentum -->
+</section>
+</section>
+<section id="lineaire-systemen" class="level1">
+<h1>Lineaire systemen</h1>
+<section id="lineaire-systemen-definitie-en-terminologie" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-systemen-definitie-en-terminologie">Lineaire systemen: definitie en terminologie</h2>
+<p>Vind <span class="math inline">{x}</span> zodat voldaan is aan <span class="math inline">{\hat{A}} {x}= {y}</span></p>
+<ul>
+<li><p><span class="math inline">{y}= {o}</span>: homogeen, <span class="math inline">{y}\neq {o}</span>: inhomogeen</p></li>
+<li><p><span class="math inline">{y}\in \mathop{\mathrm{im}}({\hat{A}})</span>: er bestaan één of meerdere oplossingen <span class="math inline">{x}= {x}' + {x}_0</span>, met <span class="math inline">{x}'</span> een <strong>particuliere oplossing</strong> die voldoet aan <span class="math inline">{\hat{A}}{x}' = {y}</span>, en <span class="math inline">{x}_0 \in \mathop{\mathrm{ker}}({\hat{A}})</span> een oplossing van het homogene probleem</p></li>
+<li><p><span class="math inline">\mathop{\mathrm{nullity}}({\hat{A}}) = 0</span>: homogeen probleem laat enkel de <strong>triviale oplossing</strong> <span class="math inline">{x}_0 = {o}</span> toe</p></li>
+</ul>
+</section>
+<section id="lineaire-systemen-voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-systemen-voorbeelden">Lineaire systemen: voorbeelden</h2>
+<ul>
+<li>Standaardvorm eindig-dimensionaal probleem: <span class="math inline">{\mathsf{A}} \boldsymbol{x} = \boldsymbol{y}</span> met <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>, <span class="math inline">\boldsymbol{x} \in {\mathbb{F}}^n</span> en <span class="math inline">\boldsymbol{y} \in {\mathbb{F}}^m</span>
+<ul>
+<li><span class="math inline">m &lt; n \Rightarrow \mathop{\mathrm{nullity}}({\mathsf{A}}) &gt; 0</span>: als oplossing bestaat is ze niet uniek (<strong>ondergedetermineerd</strong>)</li>
+<li><span class="math inline">m &gt; n \Rightarrow \mathop{\mathrm{rank}}({\mathsf{A}}) \leq n &lt; m</span>: <span class="math inline">\mathop{\mathrm{im}}({\mathsf{A}})</span> is een eigenlijke deelruimte van <span class="math inline">{\mathbb{F}}^m</span>; er bestaan rechterleden <span class="math inline">\boldsymbol{y}</span> waarvoor geen oplossing bestaat (<strong>overgedetermineerd</strong>)</li>
+<li>het bestaan van een unieke oplossing voor elk rechterlid <span class="math inline">\boldsymbol{y}</span> kan enkel als <span class="math inline">m=n</span> en <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}) = n \Leftrightarrow \mathop{\mathrm{nullity}}({\mathsf{A}}) = 0</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="lineaire-systemen-voorbeelden-1" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-systemen-voorbeelden-1">Lineaire systemen: voorbeelden</h2>
+<ul>
+<li><p><span class="math inline">({\hat{D}}-\frac{1}{\tau}{\hat{1}})f = {o}\Leftrightarrow \frac{{\mathrm{d}}\ f}{{\mathrm{d}}t} - \frac{1}{\tau} f(t) = 0</span>: homogeen probleem</p>
+<p><span class="math inline">\Rightarrow f(t) = c {\mathrm{e}}^{-\frac{t}{\tau}}</span>: <span class="math inline">\Rightarrow \mathop{\mathrm{nullity}}({\hat{D}} - \frac{1}{\tau}{\hat{1}}) = 1</span></p></li>
+<li><p><span class="math inline">\begin{cases}\frac{{\mathrm{d}}\ f}{{\mathrm{d}}t} - \frac{1}{\tau} f(t) = 0\\ f(0) = f_0 \end{cases}</span></p>
+<p><span class="math inline">\Rightarrow f(t) = f_0 {\mathrm{e}}^{-\frac{t}{\tau}}</span> (unieke oplossing)</p></li>
+</ul>
+</section>
+<section id="lineaire-systemen-oplossingsstrategie" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-systemen-oplossingsstrategie">Lineaire systemen: oplossingsstrategie</h2>
+<ul>
+<li><p>Een matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span> heet</p>
+<ul>
+<li>bovendriehoeks als <span class="math inline">A^i_{\ j} = 0</span> voor alle <span class="math inline">1 \leq j &lt; i \leq m</span></li>
+<li>benedendriehoeks als <span class="math inline">A^i_{\ j}=0</span> voor alle <span class="math inline">1 \leq i &lt; j \leq n</span></li>
+</ul></li>
+<li><p>Voor een boven-/benedendriehoeksmatrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span> is <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}) \neq 0</span>, en dus bestaat <span class="math inline">{\mathsf{A}}^{-1}</span>, als alle diagonaalelementen <span class="math inline">A^i_{\ i} \neq 0</span> voor <span class="math inline">i=1,\ldots,n</span>.</p></li>
+<li><p>Voor een boven-/benedendriehoeksmatrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span> met <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}}) \neq 0</span> kan de oplossing <span class="math inline">{x}= {\mathsf{A}}^{-1}{y}</span> berekend worden via voorwaartse/achterwaardse substitutie met een kost die schaalt als <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^2)</span>, of als <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(n^3/3)</span> indien <span class="math inline">{\mathsf{A}}^{-1}</span> volledig wordt berekend.</p></li>
+</ul>
+</section>
+<section id="lineaire-systemen-oplossingsstrategie-1" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-systemen-oplossingsstrategie-1">Lineaire systemen: oplossingsstrategie</h2>
+<p>Voor een algemene matrix <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{n \times n}</span>:</p>
+<ul>
+<li><p>Gaussische eliminatie <span class="math inline">\Rightarrow {\mathsf{A}} = {\mathsf{L}}{\mathsf{U}}</span>: LU ontbinding</p>
+<ul>
+<li><span class="math inline">L</span>: L(ower), benedendriehoeksmatrix met elementen <span class="math inline">1</span> op de diagonaal</li>
+<li><span class="math inline">U</span>: U(pper), bovendriehoeksmatrix met vrije elementen op diagonaal</li>
+<li>soms <span class="math inline">{\mathsf{A}} = {\mathsf{L}} {\mathsf{D}} \tilde{{\mathsf{U}}}</span> met dan ook diagonaalelementen <span class="math inline">1</span> in <span class="math inline">\tilde{{\mathsf{U}}}</span></li>
+</ul></li>
+<li><p>Inclusief pivoteren: <span class="math inline">\Rightarrow {\mathsf{P}} {\mathsf{A}} = {\mathsf{L}} {\mathsf{U}}</span> met <span class="math inline">{\mathsf{P}}</span> een permutatie matrix is</p></li>
+<li><p>Complexiteit voor <span class="math inline">m=n</span>: <span class="math inline">\mathop{\mathrm{\mathscr{O}}}(\frac{2}{3} n^3)</span></p></li>
+</ul>
+</section>
+<section id="toepassingen-van-lu-decompositie" class="level2">
+<h2 class="anchored" data-anchor-id="toepassingen-van-lu-decompositie">Toepassingen van LU decompositie</h2>
+<ul>
+<li><p><span class="math inline">\underbrace{\det({\mathsf{P}})}_{\mathop{\mathrm{sgn}}(\sigma)} \det({\mathsf{A}}) = \underbrace{\det({\mathsf{L}})}_{\prod_i L^i_{\ i} = 1} \underbrace{\det({\mathsf{U}})}_{\prod_j U^j_{\ j}} \Rightarrow \mathop{\mathrm{\mathscr{O}}}(n^3)</span></p></li>
+<li><p>Multidimensionale Gaussische distributie</p>
+<p><span class="math display">f_{\boldsymbol{X}}(\boldsymbol{x}) = Z \exp\left[-\frac{1}{2} \sum_{i,j=1}^{n}(x^i - \mu^i) A_{i,j} (x^j - \mu^j)\right]\\
+= Z \exp\left[-\frac{1}{2} (\boldsymbol{x}-\boldsymbol{\mu})^{\mathsf{T}}{\mathsf{A}} (\boldsymbol{x}-\boldsymbol{\mu})\right]</span></p>
+<p>Hoe <span class="math inline">Z</span> kiezen zodat <span class="math inline">\int f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n\boldsymbol{x} = 1</span>?</p></li>
+</ul>
+</section>
+<section id="multidimensionale-gaussische-distributie-1" class="level2">
+<h2 class="anchored" data-anchor-id="multidimensionale-gaussische-distributie-1">Multidimensionale Gaussische distributie (1)</h2>
+<p><span class="math inline">f_{\boldsymbol{X}}(\boldsymbol{x}) = Z {\mathrm{e}}^{-\frac{1}{2} (\boldsymbol{x}-\boldsymbol{\mu})^{\mathsf{T}}{\mathsf{A}} (\boldsymbol{x}-\boldsymbol{\mu})}</span></p>
+<ul>
+<li>normering
+<ul>
+<li><p><span class="math inline">{\mathsf{A}} = {\mathsf{A}}^T \Rightarrow {\mathsf{A}} = {\mathsf{L}} {\mathsf{D}} {\mathsf{L}}^{\mathsf{T}}</span></p></li>
+<li><p>substitutie: <span class="math inline">\boldsymbol{y} = {\mathsf{L}}^{\mathsf{T}}(\boldsymbol{x}-\boldsymbol{\mu}) \Leftrightarrow \boldsymbol{x}=\boldsymbol{\mu} + \boldsymbol{L}^{-{\mathsf{T}}}\boldsymbol{y}</span></p>
+<p><span class="math inline">\Rightarrow {\mathsf{J}} = {\mathsf{L}}^{-{\mathsf{T}}}, \det({\mathsf{J}}) = 1</span></p></li>
+<li><p><span class="math inline">\int f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x} = \int_{{\mathbb{R}}^n} Z \exp\left[-\frac{1}{2}\boldsymbol{y}^{\mathsf{T}}{\mathsf{D}} \boldsymbol{y} \right] \,{\mathrm{d}}^n \boldsymbol{y} \\ = Z \prod_{i=1}^n\left( \int_{-\infty}^{+\infty} {\mathrm{e}}^{-\frac{1}{2} d_i (y^i)^2}\,{\mathrm{d}}y^i\right)\\  = Z \prod_{i=1}^n \sqrt{\frac{2\pi}{d_i}} = Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{D}})}} =Z \frac{(2\pi)^{n/2}}{\sqrt{\det({\mathsf{A}})}}</span></p></li>
+<li><p><span class="math inline">\Rightarrow Z = \sqrt{\frac{\det({\mathsf{A}})}{(2\pi)^n}}</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="multidimensionale-gaussische-distributie-2" class="level2">
+<h2 class="anchored" data-anchor-id="multidimensionale-gaussische-distributie-2">Multidimensionale Gaussische distributie (2)</h2>
+<p><span class="math inline">f_{\boldsymbol{X}}(\boldsymbol{x}) = Z {\mathrm{e}}^{-\frac{1}{2} (\boldsymbol{x}-\boldsymbol{\mu})^{\mathsf{T}}{\mathsf{A}} (\boldsymbol{x}-\boldsymbol{\mu})}</span></p>
+<ul>
+<li>gemiddelde en covariantie
+<ul>
+<li><p>momentgenererende functie <span class="math inline">M_{\boldsymbol{X}}(\boldsymbol{t}) = \langle {\mathrm{e}}^{\sum_{i=1}^n t_i X^i} \rangle = \int_{{\mathbb{R}}^n} {\mathrm{e}}^{\sum_{i=1}^n t_i x^i} f_{\boldsymbol{X}}(\boldsymbol{x})\,{\mathrm{d}}^n \boldsymbol{x}\\ ={\mathrm{e}}^{\frac{1}{2} \boldsymbol{t}^{\mathsf{T}}{\mathsf{A}}^{-1} \boldsymbol{t} + \boldsymbol{t}^{\mathsf{T}}\boldsymbol{\mu}}</span></p></li>
+<li><p><span class="math inline">\langle X^i\rangle = \left.\frac{\partial M_{\boldsymbol{X}}}{\partial t_i}\right|_{\boldsymbol{t}=\boldsymbol{0}} = \mu^i</span></p></li>
+<li><p><span class="math inline">\langle X^i X^j\rangle = \left.\frac{\partial^2 M_{\boldsymbol{X}}}{\partial t_i \partial t_j}\right|_{\boldsymbol{t}=\boldsymbol{0}} = ({\mathsf{A}}^{-1})^{ij} + \mu^i \mu^j</span></p></li>
+<li><p>covariantiematrix <span class="math inline">\Sigma^{ij} = \langle (X^i-\langle X^i \rangle)(X^j-\langle X^j \rangle)\rangle = \\ \langle X^i X^j \rangle - \langle X^i \rangle \langle X^j \rangle = ({\mathsf{A}}^{-1})^{ij}</span></p></li>
+</ul></li>
+</ul>
+<!-- ## Blokmatrices
+
+* Lineair stelsel dat bestaat uit twee delen voor 1 groep onbekenden: $\map{A}_1 \vx = \vy_1$ en $\map{A}_2 \vx = \vy_2$
+
+  $\Rightarrow \begin{bmatrix}
+        \mat{A}_1 \\ \mat{A}_2 
+    \end{bmatrix} \vec{x} = \begin{bmatrix}
+        \vec{y}_1 \\ \vec{y}_2
+    \end{bmatrix}$
+  
+  * $\mat{A}_1 \in \bbF^{m_1 \times n}, \mat{A}_2 \in \bbF^{m_2 \times n}$
+  * (technisch: directe som $\vy_1 \oplus \vy_2$)
+
+* Twee groepen van onbekenden:
+
+  $\begin{bmatrix}
+        \mat{A}_{11} & \mat{A}_{12} \\ \mat{A}_{21} & \mat{A}_{22}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \vec{x}_1 \\ \vec{x}_2
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \vec{y}_1 \\ \vec{y}_2
+    \end{bmatrix}$
+
+  * $\mat{A}_{ij} \in \bbF^{m_i \times n_j}$ voor $i,j=1,2$
+
+## Blokmatrices en blok-LDU-decompositie:
+
+$\begin{bmatrix}
+        \mat{A}_{11} & \mat{A}_{12} \\ \mat{A}_{21} & \mat{A}_{22}
+    \end{bmatrix}$ met $m_1=n_1$ en $m_2 = n_2$:
+
+* $\mat{A}_{11}$ en $\mat{A}_{22}$ zijn vierkante matrices
+
+* $\mat{A}_{11}$ inverteerbaar $\Rightarrow$ blok-LDU-decompositie:
+
+  $$    \mat{A} = \underbrace{\begin{bmatrix}
+        \idmat_{n_1} & \zeromat \\ \mat{A}_{21} \mat{A}_{11}^{-1} & \idmat_{n_2}
+    \end{bmatrix}}_{\mat{L}}
+    \underbrace{\begin{bmatrix}
+        \mat{A}_{11}& \zeromat\\
+        \zeromat & \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12} 
+    \end{bmatrix}}_{\mat{D}}
+    \underbrace{\begin{bmatrix}
+        \idmat_{n_1} &  \mat{A}_{11}^{-1} \mat{A}_{12}\\
+        \zeromat & \idmat_{n_2}
+    \end{bmatrix}}_{\mat{U}}$$
+
+* Schur complement $(\mat{A}/\mat{A}_{11}) = \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12}$
+
+* $\det(\mat{A}) = \det(\mat{A}_{11}) \det(\mat{A}/\mat{A}_{11})$
+
+## Blokmatrices en blok-LDU-decompositie:
+
+::: {.r-fit-text}
+
+\begin{align*}
+    \mat{A}^{-1} &= \mat{U}^{-1} \mat{D}^{-1} \mat{L}^{-1}\nonumber\\
+    &= \begin{bmatrix}
+        \idmat_{n_1} &  -\mat{A}_{11}^{-1} \mat{A}_{12}\\
+        \zeromat & \idmat_{n_2}
+    \end{bmatrix}\begin{bmatrix}
+        \mat{A}_{11}^{-1}& \zeromat\\
+        \zeromat & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+    \end{bmatrix}\begin{bmatrix}
+        \idmat_{n_1} & \zeromat \\ -\mat{A}_{21} \mat{A}_{11}^{-1} & \idmat_{n_2}
+    \end{bmatrix}   \nonumber\\
+    &= \begin{bmatrix}
+    \mat{A}_{11}^{-1} + \mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & -\mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_12)^{-1}\\
+        -(\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+    \end{bmatrix}
+\end{align*}
+
+:::
+
+* Toepassing: probabiliteitsdistributie
+
+  $f_{\vec{X}}(\vec{x}_1,\vec{x}_2) = \sqrt{\frac{\det(\mat{A})}{(2\pi)^n}} \erm^{-\frac{1}{2} \begin{bmatrix}
+        \vec{x}_1 \\ \vec{x}_2\end{bmatrix}^\transpose \begin{bmatrix}
+        \mat{A}_{11} & \mat{A}_{12} \\ \mat{A}_{21} & \mat{A}_{22}
+    \end{bmatrix} \begin{bmatrix}
+        \vec{x}_1 \\ \vec{x}_2\end{bmatrix}}$
+
+  * marginale distributie van $\vec{X}_2$:
+
+    $f_{\vec{X}_2}(\vec{x}_2) = \int_{\bbR^{n_1}} f_{\vec{X}}(\vec{x}_1,\vec{x}_2) \,\drm^{n_1} \vec{x}_1$
+
+## Blokmatrices en blok-LDU-decompositie:
+
+* Toepassing: probabiliteitsdistributie
+
+  $f_{\vec{X}}(\vec{x}_1,\vec{x}_2) = \sqrt{\frac{\det(\mat{A})}{(2\pi)^n}} \erm^{-\frac{1}{2} \begin{bmatrix}
+        \vec{x}_1 \\ \vec{x}_2\end{bmatrix}^\transpose \begin{bmatrix}
+        \mat{A}_{11} & \mat{A}_{12} \\ \mat{A}_{21} & \mat{A}_{22}
+    \end{bmatrix} \begin{bmatrix}
+        \vec{x}_1 \\ \vec{x}_2\end{bmatrix}}$
+
+  * marginale distributie van $\vec{X}_2$:
+
+    $f_{\vec{X}_2}(\vec{x}_2) = \int_{\bbR^{n_1}} f_{\vec{X}}(\vec{x}_1,\vec{x}_2) \,\drm^{n_1} \vec{x}_1$
+
+  * substitutie: $\vec{x}_1 = \vec{y}_1 - \mat{A}_{11}^{-1} \mat{A}_{12} \vec{x}_2$
+
+  * $\Rightarrow f_{\vec{X}_2}(\vec{x}_2) =\sqrt{\frac{\det(\mat{A}/\mat{A}_{11})}{(2\pi)^{n_2}}} \erm^{-\frac{1}{2} \vec{x}_2^\transpose (\mat{A}/\mat{A}_{11}) \vec{x}_2}$
+
+    Nog steeds Gaussische distributie. Covariantiematrix voor $\vec{x}_2$ is gegeven door $(\mat{A}/\mat{A}_{11})^{-1}$
+
+
+## Sherman-Morrison-Woodbury matrixidentiteit
+
+Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \times k}$ en matrices $\mat{U} \in \bbF^{n \times k}$, $\mat{V} \in \bbF^{k \times n}$, de **matrixidentiteit van Woodbury** stelt dat
+
+\begin{equation}
+    (\mat{A} + \mat{U} \mat{C} \mat{V})^{-1} = \mat{A}^{-1} - \mat{A}^{-1} \mat{U} (\mat{C}^{-1} + \mat{V} \mat{A}^{-1} \mat{U})^{-1} \mat{V} \mat{A}^{-1}
+\end{equation}
+
+* Bewijs: aan bord
+
+* $k=1$: "rang-1 updates" $\rightarrow$ **Sherman-Morrison formule**
+
+  $(\mat{A} + \vec{u} \vec{v}^\transpose)^{-1} = \mat{A}^{-1} - \frac{\mat{A}^{-1}\vec{u} \vec{v}^{\transpose} \mat{A}^{-1} }{1 + \vec{v}^\transpose \mat{A}^{-1} \vec{u}}$
+
+## Toepassingen
+
+* Recursieve structuur van inverse van som
+
+\begin{align*}
+(\mat{A} + \mat{B})^{-1} &= \mat{A}^{-1} - \mat{A}^{-1} (\mat{B}^{-1} + \mat{A}^{-1})^{-1} \mat{A}^{-1} \\
+    &= \mat{A}^{-1} - \mat{A}^{-1} (\idmat + \mat{A} \mat{B}^{-1} )^{-1}\\
+    &= \mat{A}^{-1} - \mat{A}^{-1} \mat{B} (\mat{A} + \mat{B})^{-1}\\
+  &=  \sum_{k=0}^{\infty} (-\mat{A}^{-1} \mat{B})^k\mat{A}^{-1}
+  \end{align*}
+
+* Afgeleide van de matrixinverse van een matrixwaardige functie:
+
+  $$\frac{\drm \mat{A}^{-1}}{\drm x}(x) = -\mat{A}^{-1}(x) \frac{\drm \mat{A}}{\drm x}(x) \mat{A}^{-1}(x)$$ -->
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

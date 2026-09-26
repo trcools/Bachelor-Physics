@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jutho Haegeman">
+<meta name="dcterms.date" content="2025-10-21">
+
+<title>Vector- en functieruimten – Slides - Hoofdstuk 4 - Normen en afstanden</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vector- en functieruimten – Slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H1.html" rel="" target="">
+ <span class="menu-text">H1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H2.html" rel="" target="">
+ <span class="menu-text">H2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H3.html" rel="" target="">
+ <span class="menu-text">H3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../slides/H4.html" rel="" target="" aria-current="page">
+ <span class="menu-text">H4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H5.html" rel="" target="">
+ <span class="menu-text">H5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H6.html" rel="" target="">
+ <span class="menu-text">H6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H7.html" rel="" target="">
+ <span class="menu-text">H7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H8.html" rel="" target="">
+ <span class="menu-text">H8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H9.html" rel="" target="">
+ <span class="menu-text">H9</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
+  <li><a href="#genormeerde-vectorruimten" id="toc-genormeerde-vectorruimten" class="nav-link" data-scroll-target="#genormeerde-vectorruimten">Genormeerde vectorruimten</a>
+  <ul class="collapse">
+  <li><a href="#norm" id="toc-norm" class="nav-link" data-scroll-target="#norm">Norm</a></li>
+  <li><a href="#nuttige-eigenschap" id="toc-nuttige-eigenschap" class="nav-link" data-scroll-target="#nuttige-eigenschap">Nuttige eigenschap</a></li>
+  <li><a href="#voorbeelden" id="toc-voorbeelden" class="nav-link" data-scroll-target="#voorbeelden">Voorbeelden:</a></li>
+  <li><a href="#hölder-p-norm" id="toc-hölder-p-norm" class="nav-link" data-scroll-target="#hölder-p-norm">Hölder <span class="math inline">p</span>-norm</a></li>
+  <li><a href="#hölder-p-norm-1" id="toc-hölder-p-norm-1" class="nav-link" data-scroll-target="#hölder-p-norm-1">Hölder <span class="math inline">p</span>-norm</a></li>
+  <li><a href="#hölder-p-norm-2" id="toc-hölder-p-norm-2" class="nav-link" data-scroll-target="#hölder-p-norm-2">Hölder <span class="math inline">p</span>-norm</a></li>
+  <li><a href="#hölder-p-norm-3" id="toc-hölder-p-norm-3" class="nav-link" data-scroll-target="#hölder-p-norm-3">Hölder <span class="math inline">p</span>-norm</a></li>
+  <li><a href="#metrische-ruimten" id="toc-metrische-ruimten" class="nav-link" data-scroll-target="#metrische-ruimten">Metrische ruimten</a></li>
+  <li><a href="#metrische-ruimten-1" id="toc-metrische-ruimten-1" class="nav-link" data-scroll-target="#metrische-ruimten-1">Metrische ruimten</a></li>
+  <li><a href="#metrische-ruimten-2" id="toc-metrische-ruimten-2" class="nav-link" data-scroll-target="#metrische-ruimten-2">Metrische ruimten</a></li>
+  <li><a href="#metrische-ruimten-3" id="toc-metrische-ruimten-3" class="nav-link" data-scroll-target="#metrische-ruimten-3">Metrische ruimten</a></li>
+  <li><a href="#continuïteit-in-genormeerde-vectorruimte" id="toc-continuïteit-in-genormeerde-vectorruimte" class="nav-link" data-scroll-target="#continuïteit-in-genormeerde-vectorruimte">Continuïteit in genormeerde vectorruimte</a></li>
+  <li><a href="#convergentie-in-functieruimten" id="toc-convergentie-in-functieruimten" class="nav-link" data-scroll-target="#convergentie-in-functieruimten">Convergentie in functieruimten</a></li>
+  <li><a href="#convergentie-in-functieruimten-voorbeeld" id="toc-convergentie-in-functieruimten-voorbeeld" class="nav-link" data-scroll-target="#convergentie-in-functieruimten-voorbeeld">Convergentie in functieruimten (voorbeeld)</a></li>
+  <li><a href="#equivalentie-van-normen" id="toc-equivalentie-van-normen" class="nav-link" data-scroll-target="#equivalentie-van-normen">Equivalentie van normen</a></li>
+  <li><a href="#compacte-verzameling" id="toc-compacte-verzameling" class="nav-link" data-scroll-target="#compacte-verzameling">Compacte verzameling</a></li>
+  <li><a href="#compacte-verzamelingen" id="toc-compacte-verzamelingen" class="nav-link" data-scroll-target="#compacte-verzamelingen">Compacte verzamelingen</a></li>
+  </ul></li>
+  <li><a href="#banachruimten" id="toc-banachruimten" class="nav-link" data-scroll-target="#banachruimten">Banachruimten</a>
+  <ul class="collapse">
+  <li><a href="#cauchy-rijen-en-compleetheid" id="toc-cauchy-rijen-en-compleetheid" class="nav-link" data-scroll-target="#cauchy-rijen-en-compleetheid">Cauchy rijen en compleetheid</a></li>
+  <li><a href="#banachruimten-1" id="toc-banachruimten-1" class="nav-link" data-scroll-target="#banachruimten-1">Banachruimten</a></li>
+  <li><a href="#banachruimten-2" id="toc-banachruimten-2" class="nav-link" data-scroll-target="#banachruimten-2">Banachruimten</a></li>
+  <li><a href="#banachruimten-complete-verzameling" id="toc-banachruimten-complete-verzameling" class="nav-link" data-scroll-target="#banachruimten-complete-verzameling">Banachruimten: complete verzameling</a></li>
+  <li><a href="#banachruimten-complete-verzameling-1" id="toc-banachruimten-complete-verzameling-1" class="nav-link" data-scroll-target="#banachruimten-complete-verzameling-1">Banachruimten: complete verzameling</a></li>
+  <li><a href="#banachruimten-3" id="toc-banachruimten-3" class="nav-link" data-scroll-target="#banachruimten-3">Banachruimten</a></li>
+  <li><a href="#banachruimten-en-basis" id="toc-banachruimten-en-basis" class="nav-link" data-scroll-target="#banachruimten-en-basis">Banachruimten en basis</a></li>
+  </ul></li>
+  <li><a href="#normen-voor-lineaire-afbeeldingen" id="toc-normen-voor-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#normen-voor-lineaire-afbeeldingen">Normen voor lineaire afbeeldingen</a>
+  <ul class="collapse">
+  <li><a href="#normen-voor-matrices" id="toc-normen-voor-matrices" class="nav-link" data-scroll-target="#normen-voor-matrices">Normen voor matrices</a></li>
+  <li><a href="#continuïteit-van-lineaire-afbeeldingen" id="toc-continuïteit-van-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#continuïteit-van-lineaire-afbeeldingen">Continuïteit van lineaire afbeeldingen</a></li>
+  <li><a href="#begrensde-lineaire-afbeeldingen" id="toc-begrensde-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</a></li>
+  <li><a href="#geïnduceerde-norm" id="toc-geïnduceerde-norm" class="nav-link" data-scroll-target="#geïnduceerde-norm">Geïnduceerde norm</a></li>
+  <li><a href="#geïnduceerde-norm-1" id="toc-geïnduceerde-norm-1" class="nav-link" data-scroll-target="#geïnduceerde-norm-1">Geïnduceerde norm</a></li>
+  <li><a href="#normen-voor-lineaire-operatoren" id="toc-normen-voor-lineaire-operatoren" class="nav-link" data-scroll-target="#normen-voor-lineaire-operatoren">Normen voor lineaire operatoren</a></li>
+  <li><a href="#normen-voor-matrices-1" id="toc-normen-voor-matrices-1" class="nav-link" data-scroll-target="#normen-voor-matrices-1">Normen voor matrices</a></li>
+  <li><a href="#consistente-matrixnormen" id="toc-consistente-matrixnormen" class="nav-link" data-scroll-target="#consistente-matrixnormen">Consistente matrixnormen</a></li>
+  <li><a href="#matrixnormen-terminologie" id="toc-matrixnormen-terminologie" class="nav-link" data-scroll-target="#matrixnormen-terminologie">Matrixnormen: terminologie</a></li>
+  <li><a href="#spectraalstraal" id="toc-spectraalstraal" class="nav-link" data-scroll-target="#spectraalstraal">Spectraalstraal</a></li>
+  <li><a href="#duale-normen" id="toc-duale-normen" class="nav-link" data-scroll-target="#duale-normen">Duale normen</a></li>
+  </ul></li>
+  <li><a href="#toepassingen" id="toc-toepassingen" class="nav-link" data-scroll-target="#toepassingen">Toepassingen</a>
+  <ul class="collapse">
+  <li><a href="#functies-van-matrices-en-operatoren" id="toc-functies-van-matrices-en-operatoren" class="nav-link" data-scroll-target="#functies-van-matrices-en-operatoren">Functies van matrices en operatoren</a></li>
+  <li><a href="#functies-van-matrices-en-operatoren-1" id="toc-functies-van-matrices-en-operatoren-1" class="nav-link" data-scroll-target="#functies-van-matrices-en-operatoren-1">Functies van matrices en operatoren</a></li>
+  <li><a href="#sensitiviteit-van-lineaire-systemen" id="toc-sensitiviteit-van-lineaire-systemen" class="nav-link" data-scroll-target="#sensitiviteit-van-lineaire-systemen">Sensitiviteit van lineaire systemen</a></li>
+  <li><a href="#sensitiviteit-van-lineaire-systemen-1" id="toc-sensitiviteit-van-lineaire-systemen-1" class="nav-link" data-scroll-target="#sensitiviteit-van-lineaire-systemen-1">Sensitiviteit van lineaire systemen</a></li>
+  <li><a href="#markovketens-en-stochastische-matrices" id="toc-markovketens-en-stochastische-matrices" class="nav-link" data-scroll-target="#markovketens-en-stochastische-matrices">Markovketens en stochastische matrices</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hoofdstuk 4 - Normen en afstanden</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jutho Haegeman </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="doel-van-dit-hoofdstuk" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+<div class="hidden">
+<p>$$ % Math operators % % </p>
+% VECTORS
+<p>% specifically for vectors in F^n </p>
+% MATRICES
+<p>% SCALARS </p>
+% LINEAR MAPS
+<p>% FIELDS </p>
+<p>% RELATIONS </p>
+<p>$$</p>
+</div>
+<ul>
+<li><p>Concept van norm = lengte van een vector</p></li>
+<li><p>Norm geeft aanleiding tot een afstand tussen vectoren</p></li>
+<li><p>Vormt de basis om concepten uit analyse te importeren</p>
+<p>(rijen, reeksen, continuïteit, …)</p></li>
+</ul>
+</section>
+<section id="genormeerde-vectorruimten" class="level1">
+<h1>Genormeerde vectorruimten</h1>
+<section id="norm" class="level2">
+<h2 class="anchored" data-anchor-id="norm">Norm</h2>
+<p>Gegeven een vectorruimte <span class="math inline">V</span>. Een norm is een afbeelding <span class="math inline">V \to {\mathbb{R}}: {v}\mapsto {\left\lVert{v}\right\rVert}</span> die voldoet aan</p>
+<ul>
+<li><p>absolute homogeniteit: <span class="math inline">{\left\lVert{a}{v}\right\rVert} = {\left\lvert{a}\right\rvert} {\left\lVert{v}\right\rVert}</span></p>
+<p><span class="math inline">\Rightarrow {\left\lVert{o}\right\rVert} = 0</span> ,</p></li>
+<li><p>subadditiviteit / driehoeksongelijkheid: <span class="math inline">{\left\lVert{v}+ {w}\right\rVert} \leq {\left\lVert{v}\right\rVert} + {\left\lVert{w}\right\rVert}</span></p>
+<p><span class="math inline">\Rightarrow {\left\lVert{o}\right\rVert} = 0 \leq {\left\lVert{v}\right\rVert} + {\left\lVert-{v}\right\rVert} = 2 {\left\lVert{v}\right\rVert}</span></p></li>
+<li><p>positief definiet: <span class="math inline">{\left\lVert{v}\right\rVert} = 0 \Leftrightarrow {v}= 0</span></p></li>
+</ul>
+<p>Voor de eerste eigenschap hebben we op het veld van scalairen <span class="math inline">{\mathbb{F}}</span> een <strong>absolute waarde</strong> <span class="math inline">{\left\lvert{a}\right\rvert}</span> nodig. Voor <span class="math inline">{\mathbb{R}}</span> en <span class="math inline">{\mathbb{C}}</span> komt dit overeen met de gekende definitie.</p>
+</section>
+<section id="nuttige-eigenschap" class="level2">
+<h2 class="anchored" data-anchor-id="nuttige-eigenschap">Nuttige eigenschap</h2>
+<p><span class="math inline">{\left\lVert{v}\right\rVert} \leq {\left\lVert{w}\right\rVert} + {\left\lVert{v}- {w}\right\rVert}</span> (uit driehoeksongelijkheid)</p>
+<p><span class="math inline">\implies {\left\lVert{v}\right\rVert} - {\left\lVert{w}\right\rVert} \leq {\left\lVert{v}- {w}\right\rVert}</span> <span class="math inline">\implies {\left\lvert{\left\lVert{v}\right\rVert} - {\left\lVert{w}\right\rVert}\right\rvert} \leq {\left\lVert{v}- {w}\right\rVert}</span> (uit <span class="math inline">{v}\leftrightarrow {w}</span>)</p>
+</section>
+<section id="voorbeelden" class="level2">
+<h2 class="anchored" data-anchor-id="voorbeelden">Voorbeelden:</h2>
+<ul>
+<li><span class="math inline">V = {\mathbb{F}}^n</span>: <span class="math inline">{\left\lVert{v}\right\rVert} = \sum_{i=1}^n {\left\lvert v^i\right\rvert}</span></li>
+<li><span class="math inline">V = {\mathbb{R}}^2</span>: <span class="math inline">{\left\lVert(x,y)\right\rVert} = \sqrt{x^2 + y^2}</span></li>
+<li><span class="math inline">V = C(I,{\mathbb{F}})</span> voor een interval <span class="math inline">I=[a,b] \subseteq {\mathbb{R}}</span>: <span class="math inline">{\left\lVert f\right\rVert} = \int_I {\left\lvert f(x)\right\rvert}\,{\mathrm{d}}x</span> (zie later)</li>
+</ul>
+</section>
+<section id="hölder-p-norm" class="level2">
+<h2 class="anchored" data-anchor-id="hölder-p-norm">Hölder <span class="math inline">p</span>-norm</h2>
+<p>Voor <span class="math inline">V = {\mathbb{F}}^n</span> hebben we een familie van normen</p>
+<p><span class="math display">{\left\lVert{v}\right\rVert}_p = \left[\sum_{i=1}^{n} {\left\lvert v^i\right\rvert}^p\right]^{1/p}</span></p>
+<p>Speciale gevallen:</p>
+<ul>
+<li><span class="math inline">p=1</span>: Manhattan norm</li>
+<li><span class="math inline">p=2</span>: Euclidische norm <span class="math inline">\rightarrow</span> zie volgend hoofdstuk</li>
+<li>limiet <span class="math inline">p\to \infty</span>: <span class="math display">{\left\lVert{v}\right\rVert}_\infty = \max \{{\left\lvert{v}^i\right\rvert}, i=1,\ldots,n\}</span></li>
+</ul>
+</section>
+<section id="hölder-p-norm-1" class="level2">
+<h2 class="anchored" data-anchor-id="hölder-p-norm-1">Hölder <span class="math inline">p</span>-norm</h2>
+<ul>
+<li><p><span class="math inline">{\left\lVert\cdot\right\rVert}_p</span> is absoluut homogeen en positief definiet per constructie.</p></li>
+<li><p>driehoeksongelijkheid kunnen we in een aantal stappen bewijzen, waarvoor we <span class="math inline">q = p/(p-1)</span> invoeren, of dus <span class="math inline">1/p + 1/q = 1</span> (inclusief <span class="math inline">p=1 \leftrightarrow q=\infty</span> en vice versa):</p>
+<ul>
+<li>Young’s ongelijkheid: <span class="math inline">\forall a,b \in {\mathbb{R}}_{\geq 0}: ab \leq \frac{a^p}{p} + \frac{b^q}{q}</span></li>
+<li>Hölder’s ongelijkheid: <span class="math inline">\sum_{i=1}^n {\left\lvert v^i\right\rvert}{\left\lvert w^i\right\rvert} \leq {\left\lVert v\right\rVert}_p {\left\lVert w\right\rVert}_q</span></li>
+<li>Minkowski’s ongelijkheid: <span class="math inline">{\left\lVert{v}+{w}\right\rVert}_p \leq {\left\lVert{v}\right\rVert}_p + {\left\lVert{w}\right\rVert}_p</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="hölder-p-norm-2" class="level2">
+<h2 class="anchored" data-anchor-id="hölder-p-norm-2">Hölder <span class="math inline">p</span>-norm</h2>
+<p>Uitbreiding naar oneindig-dimensionale ruimten:</p>
+<ul>
+<li><p><span class="math inline">\ell^p({\mathbb{N}}_0,{\mathbb{F}}) {\preccurlyeq}{\mathbb{F}}^{{\mathbb{N}}_0}</span>: de ruimte van alle rijen <span class="math inline">(v^1,v^2,v^3,\ldots)</span> waarvoor <span class="math inline">\sum_{i=1}^{+\infty} {\left\lvert v^i\right\rvert}^p</span> convergeert naar een eindige waarde</p>
+<ul>
+<li><p>Minkowski’s ongelijkheid is noodzakelijk om aan te tonen dat <span class="math inline">\ell^p({\mathbb{N}}_0,{\mathbb{F}})</span> een vectorruimte is</p></li>
+<li><p>norm <span class="math inline">{\left\lVert{v}\right\rVert}_p = \left[\sum_{i=1}^{+\infty} {\left\lvert v^i\right\rvert}^p\right]^{1/p}</span> is eindig</p></li>
+<li><p>speciaal geval <span class="math inline">p=\infty</span>:</p>
+<p><span class="math inline">{\left\lVert{v}\right\rVert}_\infty = \sup\{{\left\lvert v^i\right\rvert}, i\in {\mathbb{N}}_0\}</span> (supremum norm)</p>
+<p><span class="math inline">\ell^\infty({\mathbb{N}}_0,{\mathbb{F}})</span>: ruimte van begrensde rijen</p></li>
+</ul>
+<p>Bewijs van eigenschappen norm als limiet <span class="math inline">n\to\infty</span> van bewijs voor <span class="math inline">{\mathbb{F}}^n</span>.</p></li>
+</ul>
+</section>
+<section id="hölder-p-norm-3" class="level2">
+<h2 class="anchored" data-anchor-id="hölder-p-norm-3">Hölder <span class="math inline">p</span>-norm</h2>
+<p>Uitbreiding naar oneindig-dimensionale ruimten:</p>
+<ul>
+<li><p>Voor <span class="math inline">V = C^0([a,b],{\mathbb{F}})</span>: <span class="math inline">{\left\lVert f\right\rVert}_p = \left(\int_a^b {\left\lvert f(x)\right\rvert}^p\,{\mathrm{d}}x\right)^{1/p}</span></p>
+<ul>
+<li>Continuïteit en compactheid van interval <span class="math inline">[a,b]</span> noodzakelijk om goed gedefinieerd te zijn (geen divergenties), en voor de eigenschap <span class="math inline">{\left\lVert f\right\rVert}_p=0 \implies f=0</span></li>
+<li>Driehoeksongelijkheid kan op analoge manier bewezen worden</li>
+<li>Meer over functies in H7</li>
+</ul></li>
+</ul>
+</section>
+<section id="metrische-ruimten" class="level2">
+<h2 class="anchored" data-anchor-id="metrische-ruimten">Metrische ruimten</h2>
+<p>Gegegeven een verzameling <span class="math inline">X</span>, een metriek of afstandsfunctie is een functie <span class="math inline">d:X \times X \to {\mathbb{R}}_{\geq 0}</span> met eigenschappen:</p>
+<ul>
+<li><span class="math inline">d(x,y) = 0 \iff x=y</span></li>
+<li><span class="math inline">d(x,y) = d(y,x)</span></li>
+<li><span class="math inline">d(x,y) + d(y,z) \geq d(x,z)</span></li>
+</ul>
+<p>en dan noemen we <span class="math inline">(X,d)</span> een metrische ruimte (ruimte wijst niet noodzakelijk op vectorruimte)</p>
+<ul>
+<li>Een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> wordt een metrische ruimte met de keuze <span class="math inline">d({v},{w}) = {\left\lVert{v}-{w}\right\rVert}</span></li>
+</ul>
+</section>
+<section id="metrische-ruimten-1" class="level2">
+<h2 class="anchored" data-anchor-id="metrische-ruimten-1">Metrische ruimten</h2>
+<p>Belang van metrische ruimten is dat we concepten uit analyse van functies <span class="math inline">{\mathbb{R}}\to {\mathbb{R}}</span> kunnen veralgemenen:</p>
+<ul>
+<li><p>Convergentie van een rij <span class="math inline">(x_n \in X)_{n \in {\mathbb{N}}_0}</span>:</p>
+<ul>
+<li><p><span class="math inline">\lim_{n \to \infty} x_n = x \iff \lim_{n \to \infty} d(x_n,x) = 0</span></p></li>
+<li><p>of dus: <span class="math inline">\forall \epsilon &gt; 0, \exists N_\epsilon \in {\mathbb{N}}_0</span> zodat <span class="math inline">n \geq N_\epsilon \implies d(x,x_n) \leq \epsilon</span></p></li>
+</ul></li>
+<li><p>Continuïteit van <span class="math inline">\Phi:X \to Y</span> tussen metrische ruimten <span class="math inline">(X,d_X)</span> en <span class="math inline">(Y,d_Y)</span>:</p>
+<ul>
+<li><span class="math inline">\Phi</span> is continu in <span class="math inline">x \in X</span>: <span class="math inline">\lim_{n \to \infty} \Phi(x_n) = \Phi(x)</span> voor alle rijen <span class="math inline">(x_n)_{n \in{\mathbb{N}}_0}</span> met <span class="math inline">\lim_{n\to\infty} x_n = x</span></li>
+<li><span class="math inline">\Phi</span> is continu in <span class="math inline">x \in X</span>: <span class="math inline">\forall \epsilon &gt; 0</span>, <span class="math inline">\exists \delta_{\epsilon} &gt; 0</span> zodat <span class="math inline">d_X(x',x) &lt; \delta_\epsilon \implies d_Y(\Phi(x'),\Phi(x))&lt;\epsilon</span></li>
+<li><span class="math inline">\Phi</span> continu in volledig <span class="math inline">X</span>: <span class="math inline">\lim_{n\to\infty}\Phi(x_n) = \Phi(\lim_{n\to\infty} x_n)</span> voor alle convergerende rijen<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul></li>
+</ul>
+</section>
+<section id="metrische-ruimten-2" class="level2">
+<h2 class="anchored" data-anchor-id="metrische-ruimten-2">Metrische ruimten</h2>
+<ul>
+<li>Een afbeelding <span class="math inline">\Phi:X \to Y</span> tussen metrische ruimten <span class="math inline">(X,d_X)</span> en <span class="math inline">(Y,d_Y)</span> is <strong>isometrisch</strong> als <span class="math inline">d_Y(\Phi(x),\Phi(x')) = d_X(x,x')</span> voor alle <span class="math inline">x,x'\in X</span>
+<ul>
+<li>Een isometrische afbeelding is automatisch (uniform) continu (<span class="math inline">\delta_\epsilon = \epsilon</span>)</li>
+<li>Een isometrische afbeelding is automatisch injectief</li>
+<li>Een bijectieve isometrische afbeelding definieert een isomorfisme tussen <span class="math inline">(X, d_X)</span> en <span class="math inline">(Y, d_Y)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="metrische-ruimten-3" class="level2">
+<h2 class="anchored" data-anchor-id="metrische-ruimten-3">Metrische ruimten</h2>
+<p>Topologische concepten in een metrische ruimte <span class="math inline">(X,d)</span>:</p>
+<ul>
+<li>Open bol: <span class="math inline">B_r(x) = \{x'\in X| d(x,x') &lt; r\}</span></li>
+<li>Open (deel)verzameling <span class="math inline">S</span>: <span class="math inline">\forall x \in S, \exists r&gt;0</span> zodat <span class="math inline">B_r(x) \subseteq S</span></li>
+<li>Gesloten deelverzameling <span class="math inline">S</span> als <span class="math inline">S^\text{c} = X \setminus S</span> open is
+<ul>
+<li><span class="math inline">\Rightarrow</span> een convergerende rij <span class="math inline">(x_n \in S)</span> voldoet aan <span class="math inline">\lim_{n\to\infty} x_n \in S</span></li>
+<li><span class="math inline">X</span> and <span class="math inline">\{\}</span> zijn zowel open als gesloten</li>
+</ul></li>
+<li>Sluiting <span class="math inline">\overline{S}</span>: kleinste gesloten verzameling die <span class="math inline">S</span> bevat = <span class="math inline">S</span> en al zijn limietpunten</li>
+<li>Dichte deelverzameling <span class="math inline">S</span>: als <span class="math inline">\overline{S} = X</span> (bvb: <span class="math inline">\overline{\mathbb{Q}}={\mathbb{R}}</span>)</li>
+<li>Begrensde verzameling <span class="math inline">S</span>: <span class="math inline">\exists M \in {\mathbb{R}}_{\geq 0}</span> zodat <span class="math inline">d(x,y)&lt;M, \forall x,y \in S</span></li>
+<li>Compacte verzameling: zie verderop</li>
+<li><span class="math inline">X</span> is <strong>separabel</strong> (scheidbaar?) als <span class="math inline">X</span> een aftelbare dichte deelverzameling heeft</li>
+</ul>
+</section>
+<section id="continuïteit-in-genormeerde-vectorruimte" class="level2">
+<h2 class="anchored" data-anchor-id="continuïteit-in-genormeerde-vectorruimte">Continuïteit in genormeerde vectorruimte</h2>
+<p>We beschouwen nu een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> als metrische ruimte met metriek <span class="math inline">d({v},{w}) = {\left\lVert{v}-{w}\right\rVert}</span></p>
+<ul>
+<li><p>De norm <span class="math inline">{\left\lVert\cdot\right\rVert}:V\to {\mathbb{R}}</span> is zelf een continue afbeelding</p>
+<p><span class="math inline">\Rightarrow</span> voor een convergente rij <span class="math inline">(v_n \in V)_{n\in{\mathbb{N}}_0}</span> is de geassocieerde rij <span class="math inline">({\left\lVert{v}_n\right\rVert})_{n\in{\mathbb{N}}_0}</span> convergent (en dus begrensd)</p></li>
+<li><p>Vector optelling <span class="math inline">+:V \times V \to V</span> en scalaire vermenigvuldiging <span class="math inline">{\mathbb{F}}\times V \to V</span> zijn continue afbeeldingen<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+</ul>
+</section>
+<section id="convergentie-in-functieruimten" class="level2">
+<h2 class="anchored" data-anchor-id="convergentie-in-functieruimten">Convergentie in functieruimten</h2>
+<p>Beschouw opnieuw <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met nu de <span class="math inline">p=\infty</span>-norm, welke zich herleidt tot:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span class="math display">{\left\lVert f\right\rVert}_p = \sup_{x\in [a,b]}{\left\lvert f(x)\right\rvert} = \max_{x\in[a,b]}{\left\lvert f(x)\right\rvert}</span></p>
+<p>Convergentie: <span class="math inline">\lim_{n\to \infty} f_n = f</span> als</p>
+<ul>
+<li><p><span class="math inline">\max_{x\in [a,b]} {\left\lvert f_n(x)-f(x)\right\rvert} &lt; \epsilon</span> voor alle <span class="math inline">n &gt; N_\epsilon</span></p></li>
+<li><p><span class="math inline">{\left\lvert f_n(x)-f(x)\right\rvert} &lt; \epsilon</span> voor alle <span class="math inline">x \in [a,b]</span> voor alle <span class="math inline">n &gt; N_\epsilon</span></p>
+<p><span class="math inline">\Rightarrow</span> <strong>uniforme convergentie</strong> van een reeks</p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">{\left\lVert f\right\rVert}_{\infty}</span> voor continue functies wordt de uniform-norm genoemd</p></li>
+<li><p>contrast met <strong>puntsgewijze convergentie</strong>:</p>
+<p><span class="math inline">{\left\lvert f_n(x)-f(x)\right\rvert} &lt; \epsilon</span> voor alle <span class="math inline">n &gt; N_{\epsilon,x}</span> voor alle <span class="math inline">x \in [a,b]</span></p>
+<p>kan niet worden bekomen met behulp van norm</p></li>
+</ul>
+</section>
+<section id="convergentie-in-functieruimten-voorbeeld" class="level2">
+<h2 class="anchored" data-anchor-id="convergentie-in-functieruimten-voorbeeld">Convergentie in functieruimten (voorbeeld)</h2>
+<p>Beschouw de rij <span class="math inline">(f_n \in C^0([0,1],{\mathbb{R}}))_{n \in {\mathbb{N}}_0}</span> met <span class="math inline">f_n(x) = \exp(-n x)</span></p>
+<ul>
+<li><p><span class="math inline">(f_n)</span> convergeert puntsgewijs naar de (niet-continue!) functie</p>
+<p><span class="math inline">g(x) = \begin{cases} 1, x=0 \\ 0, x \in (0,1]\end{cases}</span></p></li>
+<li><p><span class="math inline">(f_n)</span> convergeert volgens de <span class="math inline">p=1</span> norm naar de continue functie</p>
+<p><span class="math inline">h(x) = 0, \forall x \in [0,1]</span></p></li>
+<li><p><span class="math inline">(f_n)</span> convergeert niet volgens de <span class="math inline">p= \infty</span> norm</p></li>
+</ul>
+</section>
+<section id="equivalentie-van-normen" class="level2">
+<h2 class="anchored" data-anchor-id="equivalentie-van-normen">Equivalentie van normen</h2>
+<ul>
+<li><p>Twee normen voor een vectorruimte <span class="math inline">V</span> zijn equivalent als ze aanleiding geven tot dezelfde definitie van convergerende rijen (met dan dezelfde limietpunten)</p></li>
+<li><p>Stelling: twee normen <span class="math inline">{\left\lVert\cdot\right\rVert}_a</span> en <span class="math inline">{\left\lVert\cdot\right\rVert}_b</span> zijn equivalent als en slechts als er constanten <span class="math inline">C \geq c &gt; 0</span> bestaan zodat <span class="math inline">c {\left\lVert{v}\right\rVert}_a \leq {\left\lVert{v}\right\rVert}_b \leq C{\left\lVert{v}\right\rVert}_a</span> voor alle <span class="math inline">{v}\in V</span></p></li>
+<li><p>Stelling: voor een eindig-dimensionale vectorruimte <span class="math inline">V</span> zijn alle normen equivalent</p></li>
+<li><p>Voorbeelden voor <span class="math inline">\boldsymbol{v} \in {\mathbb{F}}^n</span>:</p>
+<ul>
+<li><span class="math inline">\frac{{\left\lVert\boldsymbol{v}\right\rVert}_1}{\sqrt{n}} \leq {\left\lVert\boldsymbol{v}\right\rVert}_2 \leq {\left\lVert\boldsymbol{v}\right\rVert}_1</span></li>
+<li><span class="math inline">\frac{{\left\lVert\boldsymbol{v}\right\rVert}_1}{n} \leq {\left\lVert\boldsymbol{v}\right\rVert}_\infty \leq {\left\lVert\boldsymbol{v}\right\rVert}_1</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="compacte-verzameling" class="level2">
+<h2 class="anchored" data-anchor-id="compacte-verzameling">Compacte verzameling</h2>
+<ul>
+<li><p>Een verzameling <span class="math inline">U</span> is compact als</p>
+<ul>
+<li>Wanneer <span class="math inline">U</span> wordt bedekt door open verzamelingen <span class="math inline">\mathcal{V}=\{V_1,V_2,\ldots,\}</span> (i.e.&nbsp;<span class="math inline">U \subseteq \bigcup \mathcal{V}</span>), dan wordt <span class="math inline">U</span> ook bedekt door een eindig aantal van die verzamelingen</li>
+<li>Elke rij <span class="math inline">({v}_n \in U)</span> heeft een convergerende deelrij met limietpunt in <span class="math inline">U</span></li>
+</ul>
+<p>(equivalente karakterisaties in metrische ruimten)</p></li>
+<li><p>Stelling: in een eindig-dimensionale vectorruimte <span class="math inline">V</span> is een deelverzameling <span class="math inline">U</span> compact als en slechts als <span class="math inline">U</span> begrensd en gesloten is (analoog aan Vectoranalayse).</p></li>
+</ul>
+</section>
+<section id="compacte-verzamelingen" class="level2">
+<h2 class="anchored" data-anchor-id="compacte-verzamelingen">Compacte verzamelingen</h2>
+<p>In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijkcompact.</p>
+<ul>
+<li><p>Voorbeeld: <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met <span class="math inline">{\left\lVert\cdot\right\rVert}_\infty</span></p>
+<ul>
+<li>Beschouw de gesloten eenheidsbol: <span class="math inline">\overline{B_1({o})} = \{{v}\in V|{\left\lVert{v}\right\rVert} \leq 1\}</span></li>
+<li>Beschouw de rij <span class="math inline">\{f_n(x)=x^n\}</span> met elke <span class="math inline">{\left\lVert f_n\right\rVert} = 1</span>. Er bestaat geen convergente deelrij.</li>
+</ul></li>
+<li><p>Technisch (Riesz lemma): Beschouw een eigenlijke gesloten deelruimte <span class="math inline">W{\preccurlyeq}V</span>. Voor elke <span class="math inline">\epsilon \in (0,1)</span> kunnen we een <span class="math inline">{v}_\epsilon \in V</span> vinden waarvoor <span class="math inline">{\left\lVert{v}_\epsilon\right\rVert}=1</span> en <span class="math inline">{\left\lVert{v}_\epsilon - {w}\right\rVert} &gt; \epsilon</span> voor alle <span class="math inline">w \in W</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="banachruimten" class="level1">
+<h1>Banachruimten</h1>
+<section id="cauchy-rijen-en-compleetheid" class="level2">
+<h2 class="anchored" data-anchor-id="cauchy-rijen-en-compleetheid">Cauchy rijen en compleetheid</h2>
+<ul>
+<li><p>Een Cauchy-rij in een metrische ruimte <span class="math inline">(X,d)</span> is een rij <span class="math inline">(x_n \in X)_{n\in{\mathbb{N}}_0}</span> zodat <span class="math inline">\forall \epsilon &gt;0: \exists N_\epsilon \in {\mathbb{N}}</span> met dan <span class="math inline">n,m &gt; N_\epsilon \implies d(x_n,x_m) &lt; \epsilon</span></p>
+<p>(intuïtief: elementen in de staart van de rij komen arbitrair dicht bij elkaar)</p></li>
+<li><p>Een convergente rij is altijd een Cauchy-rij</p></li>
+<li><p>Als elke Cauchy-rij convergeert wordt <span class="math inline">X</span> (metrisch) compleet genoemd</p></li>
+<li><p>Een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> die metrisch compleet is wordt een Banachruimte genoemd</p></li>
+</ul>
+</section>
+<section id="banachruimten-1" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-1">Banachruimten</h2>
+<p>Voorbeelden:</p>
+<ul>
+<li>Elke eindig-dimensionale vectorruimte, met om het even welke keuze van norm</li>
+<li>Elke eindig-dimensionale deelruimte <span class="math inline">W</span> van een oneindig-dimensionale vectorruimte <span class="math inline">V</span>, met als norm de restrictie van <span class="math inline">{\left\lVert\cdot\right\rVert}</span> tot <span class="math inline">W</span></li>
+<li>De ruimte <span class="math inline">\ell^p({\mathbb{F}})</span> van oneindige rijen met eindige <span class="math inline">p</span>-norm (en dit voor alle <span class="math inline">p \in [1,+\infty]</span>)</li>
+<li>Ruimte <span class="math inline">C^0([a,b],{\mathbb{F}})</span> met maximumnorm/uniformnorm <span class="math inline">{\left\lVert\cdot\right\rVert}_\infty</span> voor begrensd (compact) interval <span class="math inline">[a,b]</span></li>
+</ul>
+</section>
+<section id="banachruimten-2" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-2">Banachruimten</h2>
+<p>Tegenvoorbeeld:</p>
+<ul>
+<li>Ruimte <span class="math inline">{\mathbb{F}}[x]</span> van polynomen met norm <span class="math inline">{\left\lVert p\right\rVert}= \max_{x \in [a,b]} {\left\lvert p(x)\right\rvert}</span>
+<ul>
+<li><span class="math inline">p_n(x) = \sum_{k=0}^n \frac{1}{k!}x^k</span> definieert een Cauchy-rij</li>
+<li><span class="math inline">\lim_{n\to\infty} p_n</span> bestaat niet als polynoom</li>
+</ul></li>
+<li>Herinterpreteer <span class="math inline">{\mathbb{F}}[x]</span> als (eigenlijke) deelruimte van <span class="math inline">C^0([a,b],{\mathbb{F}})</span>
+<ul>
+<li><p><span class="math inline">\lim_{n\to\infty} p_n = \exp</span> bestaat als continue functie</p>
+<p><span class="math inline">\Rightarrow</span> een oneindige deelruimte van een Banachruimte is niet noodzakelijk gesloten</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="banachruimten-complete-verzameling" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-complete-verzameling">Banachruimten: complete verzameling</h2>
+<p>Aangezien (oneindig-dimensionale) deelruimten <span class="math inline">W {\preccurlyeq}V</span> niet noodzakelijk gesloten zijn (in tegenstelling tot eindig-dimensionale deelruimten), kunnen we hun sluiting <span class="math inline">\overline{W}</span> bekijken.</p>
+<ul>
+<li><p>Zoals eerder: als <span class="math inline">\overline{W}=V</span>, dan is <span class="math inline">W</span> een <strong>dichte</strong> deelruimte</p>
+<p>Elke vector <span class="math inline">{v}\in V</span> kan arbitrair dicht benaderd worden door een vector <span class="math inline">{w}\in W</span>:</p>
+<p><span class="math inline">\forall \epsilon &gt; 0, {v}\in V : \exists {w}\in W</span> zodat <span class="math inline">{\left\lVert{v}-{w}\right\rVert}&lt;\epsilon</span></p></li>
+<li><p>Een verzameling <span class="math inline">S</span> waarvoor <span class="math inline">{\mathbb{F}}S</span> dicht is, of dus <span class="math inline">\overline{{\mathbb{F}}S}=V</span>, wordt een totale, fundamentele of complete verzameling genoemd</p>
+<p>(Contrast met H1: complete verzameling als <span class="math inline">{\mathbb{F}}S = V</span>)</p></li>
+</ul>
+</section>
+<section id="banachruimten-complete-verzameling-1" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-complete-verzameling-1">Banachruimten: complete verzameling</h2>
+<p>Voorbeeld: stelling van Stone-Weierstrass</p>
+<p>Equivalente formuleringen:</p>
+<ul>
+<li>Elke continue functie kan arbitrair dicht (in uniform-norm) benaderd worden door een veelterm</li>
+<li><span class="math inline">{\mathbb{F}}[x]</span> is een dichte deelverzameling van <span class="math inline">C^0([a,b],{\mathbb{F}})</span></li>
+<li><span class="math inline">\{x^n, n=0,1,2,\ldots\}</span> is een complete verzameling voor <span class="math inline">C^0([a,b],{\mathbb{F}})</span></li>
+</ul>
+</section>
+<section id="banachruimten-3" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-3">Banachruimten</h2>
+<p>Van rijen naar reeksen in genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span></p>
+<ul>
+<li><p>Convergentie van reeksen: als rij van partieelsommen convergeert</p>
+<p><span class="math inline">\sum_{n=1}^{+\infty} {v}_n ={v}\iff \lim_{n\to\infty} \sum_{k=1}^{n} {v}_k = {v}\iff \lim_{n\to \infty} {\left\lVert\sum_{k=1}^{n} {v}_k - {v}\right\rVert} = 0</span></p></li>
+<li><p>Een reeks <span class="math inline">\sum_{n=1}^{+\infty} {v}_n</span> is absoluut convergent als de reeks <span class="math inline">\sum_{n=1}^{+\infty} {\left\lVert{v}_n\right\rVert}</span> convergeert</p>
+<p>(absolute convergentie is zeker geen nodige voorwaarde voor convergentie van een reeks)</p></li>
+<li><p>Stelling: Een genormeerde vectorruimte is metrisch compleet (Banachruimte) als en slechts als absolute convergentie een voldoende voorwaarde is voor convergentie van een reeks (elke absoluut convergente reeks convergeert).</p></li>
+</ul>
+</section>
+<section id="banachruimten-en-basis" class="level2">
+<h2 class="anchored" data-anchor-id="banachruimten-en-basis">Banachruimten en basis</h2>
+<p>Convergentie van rijen en reeksen laat een nieuw concept van basis toe in Banachruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span></p>
+<ul>
+<li><p>Een <em>Schauder basis</em> is een rij <span class="math inline">({e}_n \in V)_{n \in {\mathbb{N}}_0}</span> zodat voor elke vector <span class="math inline">{v}\in V</span> een rij van coefficiënten <span class="math inline">(a^n \in {\mathbb{F}})_{n \in {\mathbb{N}}_0}</span> bestaat, zodat de reeks <span class="math inline">\sum_{n =1}^{+\infty} a^n {e}_n</span> convergeert naar <span class="math inline">{v}</span></p></li>
+<li><p>De rij <span class="math inline">(x^n)_{n \in {\mathbb{N}}}</span> is <strong>geen (!!)</strong> Schauder basis voor <span class="math inline">(C^0([a,b],{\mathbb{F}}), {\left\lVert\cdot\right\rVert}_{\infty})</span>:</p>
+<ul>
+<li><p>een reeks <span class="math inline">\sum_{n=0}^{+\infty} a_n x^n</span> die convergeert met betrekking tot <span class="math inline">{\left\lVert\cdot\right\rVert}_{\infty}</span> (uniforme convergentie) geeft sowieso aanleiding tot een analytische functie</p></li>
+<li><p>een niet-analytische continue functie zoals <span class="math inline">{\left\lvert x\right\rvert}</span> heeft geen Taylorreeks die in het volledige interval convergent is</p></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> allerlei technische subtiliteiten die verdwijnen in het geval van Hilbertruimten (zie volgend hoofdstuk)</p>
+</section>
+</section>
+<section id="normen-voor-lineaire-afbeeldingen" class="level1">
+<h1>Normen voor lineaire afbeeldingen</h1>
+<section id="normen-voor-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="normen-voor-matrices">Normen voor matrices</h2>
+<p>Gegeven <span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>:</p>
+<ul>
+<li><p>‘vectoriseer’ <span class="math inline">{\mathsf{A}}</span> (vergeet de matrixstructuur) via <span class="math inline">{\mathbb{F}}^{m \times n} \cong {\mathbb{F}}^{m n}</span> (vectorruimte-isomorphisme) en gebruik een vectornorm</p></li>
+<li><p>voorbeeld: Frobenius norm (ook wel Hilbert-Schmidt norm):</p>
+<p><span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_\text{F} = \left(\sum_{i=1}^{m}\sum_{j=1}^{n} {\left\lvert A^i_{\ j}\right\rvert}^2\right)^{1/2} = \sqrt{\mathop{\mathrm{tr}}({\mathsf{A}}^{\mathsf{H}}{\mathsf{A}})}</span></p></li>
+<li><p>kunnen we normen met extra nuttige eigenschappen bedenken voor lineaire afbeeldingen?</p></li>
+</ul>
+</section>
+<section id="continuïteit-van-lineaire-afbeeldingen" class="level2">
+<h2 class="anchored" data-anchor-id="continuïteit-van-lineaire-afbeeldingen">Continuïteit van lineaire afbeeldingen</h2>
+<p>Beschouw genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>.</p>
+<ul>
+<li><p>Een lineaire afbeelding <span class="math inline">{\hat{A}}\in \mathop{\mathrm{Hom}}(V,W)</span> wordt begrensd genoemd als er een constante <span class="math inline">C \in {\mathbb{R}}_{\geq 0}</span> bestaat zodat <span class="math display">{\left\lVert{\hat{A}}{v}\right\rVert}_W\leq C {\left\lVert{v}\right\rVert}_V,\quad\forall {v}\in V</span></p></li>
+<li><p>Stelling: Voor een lineaire afbeelding <span class="math inline">{\hat{A}}\in \mathop{\mathrm{Hom}}(V,W)</span> zijn volgende eigenschappen equivalent</p>
+<ul>
+<li><span class="math inline">{\hat{A}}</span> is begrensd</li>
+<li><span class="math inline">{\hat{A}}</span> is continu in de oorsprong</li>
+<li><span class="math inline">{\hat{A}}</span> is overal continu (en zelfs uniform continu)</li>
+</ul></li>
+</ul>
+</section>
+<section id="begrensde-lineaire-afbeeldingen" class="level2">
+<h2 class="anchored" data-anchor-id="begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</h2>
+<p>We definiëren <span class="math inline">\mathcal{B}(V,W) {\preccurlyeq}\mathop{\mathrm{Hom}}(V,W)</span> als de ruimte van begrensde lineaire afbeeldingen tussen genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>.</p>
+<ul>
+<li><p><span class="math inline">\mathcal{B}(V,W)</span> vormt inderdaad een vectorruimte (een deelruimte van <span class="math inline">\mathop{\mathrm{Hom}}(V,W)</span>): tracht dit zelf aan te tonen!</p></li>
+<li><p>Als het domein <span class="math inline">V</span> een eindig-dimensionale ruimte is, geldt <span class="math inline">\mathcal{B}(V,W)=\mathop{\mathrm{Hom}}(V,W)</span></p></li>
+<li><p>Een norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}</span> voor lineaire afbeeldingen <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> heet <strong>ondergeschikt</strong> (subordinate) aan de vectornormen in <span class="math inline">V</span> en <span class="math inline">W</span> als <span class="math display">{\left\lVert{\hat{A}}{v}\right\rVert}_W \leq {\left\lVert{\hat{A}}\right\rVert} {\left\lVert{v}\right\rVert}_V,\quad\forall {v}\in V</span></p></li>
+</ul>
+</section>
+<section id="geïnduceerde-norm" class="level2">
+<h2 class="anchored" data-anchor-id="geïnduceerde-norm">Geïnduceerde norm</h2>
+<p>Beschouw genormeerde vectorruimten <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span> en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span>. We kunnen een norm voor afbeeldingen <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> definiëren via</p>
+<p><span class="math display">\begin{align}
+{\left\lVert{\hat{A}}\right\rVert}_{V \to W} &amp;= \inf\{ C |  {\left\lVert{\hat{A}} {v}\right\rVert}_W \leq C {\left\lVert{v}\right\rVert}_V, \forall {v}\in V\}\nonumber\\
+&amp;= \sup\left\{\frac{{\left\lVert{\hat{A}}{v}\right\rVert}_W}{{\left\lVert{v}\right\rVert}_V}\ \text{with}\ {v}\neq {o}_V\right\}\nonumber\\
+&amp;= \sup\{ {\left\lVert{\hat{A}}{v}\right\rVert}_W \text{with}\ {\left\lVert{v}\right\rVert}_V = 1\}
+\end{align}</span></p>
+<p>Deze norm staat gekend als de <strong>geïnduceerde norm</strong> of soms ook <strong>operator norm</strong> (ook al geldt hij voor algemene lineaire afbeeldingen). Soms wordt ook met de “subordinate norm” specifiek naar deze definitie verwezen.</p>
+</section>
+<section id="geïnduceerde-norm-1" class="level2">
+<h2 class="anchored" data-anchor-id="geïnduceerde-norm-1">Geïnduceerde norm</h2>
+<ul>
+<li>Voor <span class="math inline">(V, {\left\lVert\cdot\right\rVert}_V)</span> een genormeerde ruimte en <span class="math inline">(W,{\left\lVert\cdot\right\rVert}_W)</span> een Banachruimte geldt dat de ruimte <span class="math inline">\mathcal{B}(V,W)</span> van begrensde lineaire afbeeldingen in combinatie met de geïnduceerde norm <span class="math inline">{\left\lVert\cdot\right\rVert}_{V\to W}</span> zelf een Banachruimte is</li>
+</ul>
+</section>
+<section id="normen-voor-lineaire-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="normen-voor-lineaire-operatoren">Normen voor lineaire operatoren</h2>
+<p>Beschouw nu specifiek <span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(V)</span> voor een Banachruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert}_V)</span>. De begrensde lineaire operatoren worden genoteerd als <span class="math inline">\mathcal{B}(V) = \mathcal{B}(V,V) {\preccurlyeq}\mathop{\mathrm{End}}(V)</span>.</p>
+<ul>
+<li><p>Een norm <span class="math inline">{\left\lVert\cdot\right\rVert}</span> voor lineaire operatoren wordt <strong>submultiplicatief</strong> genoemd als <span class="math display">{\left\lVert{\hat{A}}\cdot{\hat{B}}\right\rVert} \leq {\left\lVert{\hat{A}}\right\rVert} {\left\lVert{\hat{B}}\right\rVert}, \quad \forall {\hat{A}},{\hat{B}} \in \mathcal{B}(V)</span></p></li>
+<li><p>De geinduceerde norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{V\to V}</span> is submultiplicatief</p></li>
+<li><p>Voor elke submultiplicatieve of ondergeschikte norm geldt <span class="math inline">{\left\lVert{\hat{1}}\right\rVert} \geq 1</span>. Voor de geinduceerde norm is <span class="math inline">{\left\lVert{\hat{1}}\right\rVert}=1</span>.</p></li>
+</ul>
+</section>
+<section id="normen-voor-matrices-1" class="level2">
+<h2 class="anchored" data-anchor-id="normen-voor-matrices-1">Normen voor matrices</h2>
+<ul>
+<li><p>voor gegeven <span class="math inline">p</span>: <span class="math inline">p</span>-norm vormt een familie van normen voor vectoren in <span class="math inline">{\mathbb{F}}^n</span> voor arbitraire <span class="math inline">n</span></p></li>
+<li><p>voor een matrix <span class="math inline">{\mathsf{A}}\in{\mathbb{F}}^{m \times n}</span> kunnen we in principe de geïnduceerde norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{p\to q}</span> berekenen voor <span class="math inline">p</span>-norm op <span class="math inline">{\mathbb{F}}^m</span> en <span class="math inline">q</span>-norm op <span class="math inline">{\mathbb{F}}^n</span>; typisch willen we <span class="math inline">p=q</span>.</p>
+<ul>
+<li><span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{\text{col}} = {\left\lVert{\mathsf{A}}\right\rVert}_{1 \to 1} = \max_{j=1,\ldots,n} \sum_{i=1}^{m} {\left\lvert A^i_{\ j}\right\rvert}</span></li>
+<li><span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{\text{row}} = {\left\lVert{\mathsf{A}}\right\rVert}_{\infty \to \infty} = \max_{i=1,\ldots,m} \sum_{j=1}^{n} {\left\lvert A^i_{\ j}\right\rvert}</span></li>
+</ul>
+<p>(oefeningen, zelf proberen)</p>
+<ul>
+<li>(<span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{2 \to 2}</span> is moeilijker te berekenen, en is gegeven door de grootste “singuliere waarde” (zie H6))</li>
+</ul></li>
+</ul>
+</section>
+<section id="consistente-matrixnormen" class="level2">
+<h2 class="anchored" data-anchor-id="consistente-matrixnormen">Consistente matrixnormen</h2>
+<p>Gegeven een familie van normen <span class="math inline">\{{\left\lVert\cdot\right\rVert}^{(m \times n)}: {\mathbb{F}}^{m\times n} \to {\mathbb{R}}_{\geq 0}; \forall m, n \in {\mathbb{N}}\}</span> voor matrices van alle groottes:</p>
+<ul>
+<li><p>deze worden <strong>consistent</strong> genoemd als <span class="math display">{\left\lVert{\mathsf{A}}{\mathsf{B}}\right\rVert}^{(m \times n)} \leq {\left\lVert{\mathsf{A}}\right\rVert}^{(m \times k)} {\left\lVert{\mathsf{B}}\right\rVert}^{(k \times n)}</span> voor alle <span class="math inline">{\mathsf{A}}\in{\mathbb{F}}^{m\times k}</span> en <span class="math inline">{\mathsf{B}}\in{\mathbb{F}}^{k\times n}</span></p></li>
+<li><p>de normen <span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{p\to p}</span> zijn consistent</p></li>
+<li><p>de norm <span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{\text{F}}={\left\lVert\text{vectorize}({\mathsf{A}})\right\rVert}_2</span> is consistent</p></li>
+<li><p>de norm <span class="math inline">{\left\lVert\text{vectorize}({\mathsf{A}})\right\rVert}_\infty</span> is niet consistent</p></li>
+</ul>
+</section>
+<section id="matrixnormen-terminologie" class="level2">
+<h2 class="anchored" data-anchor-id="matrixnormen-terminologie">Matrixnormen: terminologie</h2>
+<ul>
+<li><p>Het concept “matrixnorm” wordt vaak gedefinieerd als een norm die aan de drie voorwaarden van een vectornorm voldoet, en bovendien aan de consistentievoorwaarde.</p></li>
+<li><p>De consistentievoorwaarde is een veralgemening van submultiplicativiteit van operatoren, en beide termen worden soms door elkaar gebruikt.</p></li>
+<li><p>Er is geen gestandardiseerde terminologie en “subordinate”, “submultiplicative” en “consistent” of ook “compatible” wordt door elkaar gebruikt in gerelateerde betekenissen</p></li>
+<li><p>(in vragen hieromtrent zal ook steeds de expliciete voorwaarde als wiskundige ongelijkheid vermeld staan)</p></li>
+</ul>
+</section>
+<section id="spectraalstraal" class="level2">
+<h2 class="anchored" data-anchor-id="spectraalstraal">Spectraalstraal</h2>
+<ul>
+<li><p>De spectraalstraal van een operator <span class="math inline">{\hat{A}}\in\mathop{\mathrm{End}}(V)</span> is gedefinieerd als <span class="math display">\rho_{{\hat{A}}} = \sup\{{\left\lvert\lambda\right\rvert};\lambda \in \sigma_{{\hat{A}}}\}</span></p></li>
+<li><p>Voor een submultiplicatieve norm en <span class="math inline">V</span> eindig-dimensionaal geldt <span class="math inline">{\left\lVert{\hat{A}}\right\rVert} \geq \rho_{{\hat{A}}}</span></p>
+<ul>
+<li>ook <span class="math inline">\rho_{{\hat{A}}}^n \leq {\left\lVert{\hat{A}}^n\right\rVert}</span></li>
+<li>als <span class="math inline">{\hat{A}}</span> inverteerbaar: <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}^{-1}\leq \rho_{{\hat{A}}}^{-1}</span></li>
+</ul></li>
+<li><p>Gelfand formule: <span class="math inline">\rho_{\hat{A}} =\lim_{n\to\infty}{\left\lVert{\hat{A}}^n\right\rVert}^{\frac{1}{n}}</span></p></li>
+</ul>
+</section>
+<section id="duale-normen" class="level2">
+<h2 class="anchored" data-anchor-id="duale-normen">Duale normen</h2>
+<p>Gegeven een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span>:</p>
+<ul>
+<li><p>geïnduceerde norm op <span class="math inline">\mathcal{B}(V,{\mathbb{F}}){\preccurlyeq}V^\ast</span> wordt genoteerd als de duale norm <span class="math inline">{\left\lVert\cdot\right\rVert}^\ast</span>: <span class="math display">{\left\lVert\xi\right\rVert}^\ast = \sup\left\{\frac{{\left\lvert\xi[v]\right\rvert}}{{\left\lVert v\right\rVert}} ; \forall v \in V, v \neq {o}\right\}, \quad \forall \xi \in V^\ast</span></p></li>
+<li><p>voor <span class="math inline">V = {\mathbb{F}}</span> met Hölder norm <span class="math inline">{\left\lVert\cdot\right\rVert}_p</span> wordt de duale norm gegeven door <span class="math inline">{\left\lVert\xi\right\rVert}_p^\ast = {\left\lVert\boldsymbol{\xi}\right\rVert}_q</span> waarbij <span class="math inline">1/p+1/q=1</span>, en <span class="math inline">\boldsymbol{\xi}</span> de componenten van <span class="math inline">\xi</span>, i.e.&nbsp;zodat <span class="math inline">\xi[\boldsymbol{v}]=\boldsymbol{\xi}^{\mathsf{T}}\boldsymbol{v}</span></p></li>
+</ul>
+</section>
+</section>
+<section id="toepassingen" class="level1">
+<h1>Toepassingen</h1>
+<section id="functies-van-matrices-en-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="functies-van-matrices-en-operatoren">Functies van matrices en operatoren</h2>
+<ul>
+<li><p>Functie met convergente Taylorreeks rond <span class="math inline">z=0</span>: <span class="math display">f(z) = \sum_{n=0}^{+\infty} f_n z^n, \quad \forall {\left\lvert z\right\rvert}&lt;R</span></p>
+<ul>
+<li><p><span class="math inline">{\hat{A}}\in\mathcal{B}(V)</span> met submultiplicatieve operatornorm:</p>
+<p><span class="math inline">{\left\lVert\sum_{n=0}^{+\infty} f_n {\hat{A}}^n\right\rVert} \leq \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}^n\right\rVert} \leq \sum_{n=0}^{+\infty} {\left\lvert f_n\right\rvert} {\left\lVert{\hat{A}}\right\rVert}^n</span></p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">\sum_{n=0}^{+\infty} f_n {\hat{A}}^n</span> convergeert voor alle <span class="math inline">{\hat{A}}</span> met <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}&lt;R</span> als <span class="math inline">V</span> een Banachruimte is</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="functies-van-matrices-en-operatoren-1" class="level2">
+<h2 class="anchored" data-anchor-id="functies-van-matrices-en-operatoren-1">Functies van matrices en operatoren</h2>
+<ul>
+<li>Functies met convergente Taylorreeks rond <span class="math inline">z=\lambda</span> voor elke eigenwaarde <span class="math inline">\lambda</span>
+<ul>
+<li><p>Beschouw <span class="math inline">{\hat{N}}</span> met <span class="math inline">{\hat{N}}^s = 0</span> en definieer <span class="math display">{\left\lVert{v}\right\rVert}_{R,s} = {\left\lVert{v}\right\rVert} + \frac{{\left\lVert{\hat{N}}{v}\right\rVert}}{R} + \dots + \frac{{\left\lVert{\hat{N}}^{s-1}{v}\right\rVert}}{R^{s-1}}</span></p>
+<p><span class="math inline">\Rightarrow {\left\lVert{\hat{N}}{v}\right\rVert}_{{\hat{N}},R} = R({\left\lVert v\right\rVert}_{{\hat{N}},R} - {\left\lVert{v}\right\rVert}) \leq R {\left\lVert v\right\rVert}_{{\hat{N}},R}</span></p>
+<p><span class="math inline">\Rightarrow \sup_{{v}\neq 0} \frac{{\left\lVert{\hat{N}}{v}\right\rVert}_{{\hat{N}},R}}{{\left\lVert{v}\right\rVert}_{{\hat{N}},R}} \leq R</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="sensitiviteit-van-lineaire-systemen" class="level2">
+<h2 class="anchored" data-anchor-id="sensitiviteit-van-lineaire-systemen">Sensitiviteit van lineaire systemen</h2>
+<p>Lineair system <span class="math inline">{\hat{A}}{x}= {y}</span> met <span class="math inline">{x},{y}\in V</span> en <span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> met <span class="math inline">V</span> een genormeerde vectorruimte met norm <span class="math inline">{\left\lVert\cdot\right\rVert}</span></p>
+<ul>
+<li><p>Stel kleine variatie <span class="math inline">{y}\to {y}+ \Delta{y}\Rightarrow {x}\to {x}+ \Delta {x}</span></p></li>
+<li><p><span class="math inline">\frac{{\left\lVert\Delta {x}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \kappa({\hat{A}}) \frac{{\left\lVert\Delta{y}\right\rVert}}{{\left\lVert{y}\right\rVert}}</span></p>
+<p>met het <strong>condititiegetal <span class="math inline">\kappa({\hat{A}})</span></strong> gegeven door</p>
+<p><span class="math display">\kappa({\hat{A}}) = \begin{cases}
+{\left\lVert{\hat{A}}\right\rVert}{\left\lVert{\hat{A}}^{-1}\right\rVert},&amp;\text{if ${\hat{A}}$ is invertible}\\
++\infty,&amp;\text{otherwise}
+\end{cases}</span></p>
+<p>met hierin <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}</span> de geïnduceerde norm geassocieerd aan de vectornorm</p></li>
+</ul>
+</section>
+<section id="sensitiviteit-van-lineaire-systemen-1" class="level2">
+<h2 class="anchored" data-anchor-id="sensitiviteit-van-lineaire-systemen-1">Sensitiviteit van lineaire systemen</h2>
+<ul>
+<li><p>Uitbreiding: ook variatie <span class="math inline">{\hat{A}}\to {\hat{A}}+\Delta{\hat{A}}</span> met <span class="math inline">{\left\lVert{\hat{A}}^{-1}\Delta{\hat{A}}\right\rVert} &lt; 1</span></p>
+<ul>
+<li><span class="math inline">{\left\lVert({\hat{A}} + \Delta{\hat{A}})^{-1}\right\rVert} \leq \frac{{\left\lVert{\hat{A}}^{-1}\right\rVert}}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}}</span></li>
+<li><span class="math inline">\frac{{\left\lVert\Delta {x}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \frac{\kappa({\hat{A}})}{1 - {\left\lVert{\hat{A}}^{-1} \Delta{\hat{A}}\right\rVert}} \left( \frac{{\left\lVert\Delta {y}\right\rVert}}{{\left\lVert{y}\right\rVert}} + \frac{{\left\lVert\Delta{\hat{A}}\right\rVert}}{{\left\lVert{\hat{A}}\right\rVert}}\right)</span></li>
+</ul></li>
+<li><p>A postiori error: het residu <span class="math inline">r = {\hat{{y}}} - {\hat{A}}\tilde{{x}}</span> voor een benaderde oplossing <span class="math inline">\tilde{{x}}</span>:</p>
+<p><span class="math inline">\Rightarrow \frac{{\left\lVert{x}- \tilde{{x}}\right\rVert}}{{\left\lVert{x}\right\rVert}} \leq \kappa({\hat{A}}) \frac{{\left\lVert{r}\right\rVert}}{{\left\lVert{y}\right\rVert}}</span> met <span class="math inline">{x}</span> de echte oplossing</p></li>
+</ul>
+</section>
+<section id="markovketens-en-stochastische-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="markovketens-en-stochastische-matrices">Markovketens en stochastische matrices</h2>
+<p>Misschien later?</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Voor een continue afbeelding <span class="math inline">\Phi</span> kan <span class="math inline">\delta_\epsilon</span> in de tweede definitie nog steeds afhangen van <span class="math inline">x</span>. Is dat niet nodig, dan heet <span class="math inline">\Phi</span> ook “uniform continu”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Hiervoor hebben we het volgende nodig: de productverzameling <span class="math inline">X \times Y</span> van twee metrische ruimten <span class="math inline">(X, d_X)</span> en <span class="math inline">(Y, d_Y)</span> is metrische ruimte, bevoorbeeld met metriek <span class="math inline">d_{X,Y}((x,y), (x',y')) = d_X(x,x') + d_Y(y,y')</span>}<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Extremumstelling van Weierstrass: <span class="math inline">\sup</span> wordt <span class="math inline">\max</span> voor continue <span class="math inline">f</span> begrensd interval <span class="math inline">[a,b]</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

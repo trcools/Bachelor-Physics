@@ -1,0 +1,710 @@
+---
+title: "Hoofdstuk 6 - Unitaire gelijkvormigheid en unitaire equivalentie"
+author: "Jutho Haegeman"
+date: "11/12/2025"
+# format:
+#   revealjs:
+#     theme: solarized
+#     html-math-method: katex
+#     smaller: true
+#     chalkboard: true
+---
+
+## Doel van dit hoofdstuk
+
+
+::: {.hidden}
+$$
+% Math operators
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Unitary}{U}
+\DeclareMathOperator{\Orthogonal}{O}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{codom}
+\DeclareMathOperator{\D}{\mathcal{D}}
+\DeclareMathOperator{\E}{\mathcal{E}}
+\DeclareMathOperator{\R}{\mathcal{R}}
+\DeclareMathOperator{\Schw}{\mathcal{S}}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convhull}{co}
+
+\newcommand{\opgreek}[1]{\begingroup\mathgroup-1 #1\endgroup}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+
+\DeclareMathOperator{\Pv}{Pv}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\adj}{adj}
+
+\DeclareMathOperator*{\varmin}{min}
+\DeclareMathOperator*{\varmax}{max}
+\DeclareMathOperator*{\argmin}{arg\ min}
+\DeclareMathOperator*{\argmax}{arg\ max}
+\DeclareMathOperator{\order}{\mathscr{O}}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\sinc}{sinc}
+
+
+\newcommand{\commutator}[2]{{\left[#1,#2\right]}}
+\newcommand{\anticommutator}[2]{{\left\{#1,#2\right\}}}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\newcommand{\conj}[1]{{\overline{#1}}}
+\newcommand{\abs}[1]{{\left\lvert#1\right\rvert}}
+\newcommand{\norm}[1]{{\left\lVert#1\right\rVert}}
+\newcommand{\inner}[2]{{\left\langle#1,#2\right\rangle}}
+
+\newcommand{\drm}{{\mathrm{d}}}
+\newcommand{\erm}{{\mathrm{e}}}
+\newcommand{\irm}{{\mathrm{i}}}
+
+
+% VECTORS
+\newcommand{\vect}[1]{{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % specifically for vectors in F^n
+\newcommand{\zerovec}{{o}}
+\renewcommand{\vu}{\vect{u}}
+\newcommand{\vv}{\vect{v}}
+\newcommand{\vw}{\vect{w}}
+\newcommand{\ve}{\vect{e}}
+\newcommand{\vf}{\vect{f}}
+\newcommand{\vx}{\vect{x}}
+\newcommand{\vy}{\vect{y}}
+
+% MATRICES
+\newcommand{\mat}[1]{{\mathsf{#1}}}
+\newcommand{\zeromat}{\mat{O}}
+\newcommand{\idmat}{\mat{I}}
+
+% SCALARS
+\newcommand{\scalara}{{a}}
+\newcommand{\scalarb}{{b}}
+\newcommand{\scalarc}{{c}}
+
+% LINEAR MAPS
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+\newcommand{\map}[1]{{\hat{#1}}}
+\newcommand{\idmap}{\map{1}}
+\newcommand{\zeromap}{\map{0}}
+
+\newcommand{\transpose}{{\mathsf{T}}}
+\newcommand{\hermitian}{{\mathsf{H}}}
+
+\renewcommand{\d}{{\mathrm{d}}}
+
+% FIELDS
+\newcommand{\bbF}{{\mathbb{F}}}
+\newcommand{\bbN}{{\mathbb{N}}}
+\newcommand{\bbZ}{{\mathbb{Z}}}
+\newcommand{\bbQ}{{\mathbb{Q}}}
+\newcommand{\bbR}{{\mathbb{R}}}
+\newcommand{\bbC}{{\mathbb{C}}}
+\newcommand{\bbH}{{\mathbb{H}}}
+\newcommand{\bbT}{{\mathbb{T}}}
+
+% RELATIONS
+\newcommand{\subspace}{{\preccurlyeq}}
+\newcommand{\supspace}{{\succcurlyeq}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\levicivita}{{\epsilon}}
+
+\newcommand{\sx}{{\sigma^x}}
+\newcommand{\sy}{{\sigma^y}}
+\newcommand{\sz}{{\sigma^z}}
+\renewcommand{\sp}{{\sigma^+}}
+\newcommand{\sm}{{\sigma^-}}
+
+\DeclareMathOperator*{\sumint}{
+\mathchoice
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+$$
+:::
+
+* Overzicht van belangrijkste algoritmen, matrixdecomposities en toepassingen gebaseerd op unitaire transformaties
+* Elementaire unitaire transformaties = bouwstenen
+  * permutaties,
+  * Givens & Householder transformaties
+  * discrete Fouriertransformatie
+* QR decompositie 
+
+## Doel van dit hoofdstuk
+
+
+* Unitaire gelijkvormigheid: Schur triangulatie
+
+  (basis voor eigenwaardeproblemen)
+
+* Canonische vorm voor bilineaire vormen:
+
+  traagheidswet van Sylvester
+* Unitaire equivalentie: singuliere waardendecompositie
+  * kleinste kwadratenoplossing / Moore-Penrose inverse
+  * normen voor matrices
+  * lage-rang benaderingen
+
+# Unitaire en orthogonale groep 
+
+## Unitaire groep en speciaal unitaire groep {.smaller}
+
+* unitaire groep: $\Unitary(n) = \{\mat{U}\in\bbC^{n\times n} | \mat{U}^\hermitian \mat{U} = \idmat_n = \mat{U}\mat{U}^\hermitian\}$
+  
+  * compacte deelverzameling van $\bbC^{n \times n}$ (geen deelruimte)
+
+    $\Rightarrow$ belangrijk voor numerieke stabiliteit
+  * $\abs{\det(\mat{U})} = 1 \implies \det(\mat{U}) \in \Unitary(1)$
+  * deelgroep: $\SU(n) = \{\mat{U}\in \Unitary(n) | \det(\mat{U})=1\}$
+  * $\mat{U}(t) = \exp(t\mat{A}) \in \Unitary(n) \iff \mat{A} = -\mat{A}^\hermitian$
+    * $\frac{\drm\ }{\drm t}\mat{U}(t) = \mat{A}\mat{U}(t)$ met $\mat{U}(0) = \idmat_n$
+    * vaak $\mat{A} = \irm \mat{H}$ met $\mat{H} = \mat{H}^\hermitian$
+    * $\mat{A}$ of $\mat{H}$ geparameteriseerd door $n^2$ reële getallen
+    * $\mat{U}(t) \in \SU(n) \iff \tr(\mat{A})=0$: $n^2-1$ reële getallen
+  * $\Unitary(n)$ is samenhangend:
+
+    * continu pad $\mat{U}(t)=\exp(t \mat{A})$ verbind $\mat{U}(0)=\idmat_n$ met $\mat{U}(1)= \mat{U}$, via keuze $\mat{A}=\log(\mat{U})$ (bestaat steeds, maar niet uniek)
+
+## Orthogonale groep en speciaal orthogonale groep {.smaller}
+
+* orthogonale groep: $\Orthogonal(n) = \{\mat{O}\in\bbR^{n\times n} | \mat{O}^\transpose \mat{O} = \idmat_n = \mat{O}\mat{O}^\hermitian\} = \Unitary(n) \cap \bbR^{n \times n}$
+  
+  * $\det(\mat{O}) = \pm 1 \implies \Orthogonal(n)$ niet samenhangend
+  * deelgroep: $\SO(n) = \{\mat{O}\in \Orthogonal(n) | \det(\mat{O})=1\}$: "rotaties"
+  * $\mat{O}(t) = \exp(t\mat{A})$ met $\mat{A} = -\mat{A}^\transpose$ $\implies \mat{O}(t) \in \SO(n)$
+    * $\mat{O} \in \Orthogonal(n)$ met $\det(\mat{O})=-1$ kan niet worden verbonden via continu pad met $\idmat_n$, wel met elke andere orthogonale matrix $\mat{\tilde{O}}$ met $\det(\mat{\tilde{O}})=-1$
+    * $\det(-\idmat_n)= (-1)^n$
+
+# Elementaire unitaire transformaties
+
+## Permutatiematrices
+
+Permutatie van $n$ elementen: $\sigma \in S_n$
+
+Permutatiematrix $\mat{P}(\sigma)$: $(\mat{P}(\sigma))^i_{\ j} = \delta^i_{\sigma(j)}$
+
+$\Rightarrow$ $\mat{P}(\sigma) \in \Orthogonal(n)$: $\mat{P}(\sigma)^\transpose = \mat{P}(\sigma)^{-1} = \mat{P}(\sigma^{-1})$
+
+Elke orthogonale/unitaire matrix met enkel 0 en 1 als elementen is een permutatiematrix (exact één element 1 in elke rij en elke kolom)
+
+## Givenstransformatie {.smaller}
+
+$\mat{G} \in \bbF^{n \times n}$ met
+
+\begin{align}
+	G^k_{\ k} &= 1\ \text{for}\ k\neq i, k\neq j, & G^{i}_{\ i} &= G^j_{\ j} = c,& G^{j}_{\ i} &= \conj{s}, &G^{i}_{\ j} &= -s
+\end{align}
+
+en $1 \leq i < j \leq n$ en $\abs{c}^2 + \abs{s}^2 = 1$
+
+* Interpretatie $\bbF=\bbR$:
+  
+  rotatie in het vlak opgespannen door coördinaatassen $i$ en $j$
+
+* Voornaamste toepassing:
+  
+  basistransformatie zodat een specifiek element uit een vector nul wordt 
+
+  voor rij $i$ en rij $j$ krijgen we
+  \begin{align}
+  \begin{bmatrix} a^i = a\\ a^j = b \end{bmatrix} = \begin{bmatrix} c & -s \\ \conj{s} & c \end{bmatrix} \begin{bmatrix} r \\ 0 \end{bmatrix}
+  \end{align}
+
+  met bijvoorbeeld (niet volledig uniek: hier keuze $c > 0$)
+  \begin{align}
+  c &= \frac{\abs{a}}{\sqrt{\abs{a}^2+\abs{b}^2}}, &s &= \frac{a}{\abs{a}} \frac{ \conj{b}}{\sqrt{\abs{a}^2+\abs{b}^2}}, &r &= \frac{a}{\abs{a}} \sqrt{\abs{a}^2+\abs{b}^2}
+  \end{align}
+
+  en $r = \frac{a}{\abs{a}} \sqrt{\abs{a}^2+\abs{b}^2}$
+
+## Householder transformatie {.smaller}
+
+$\mat{H}\in\bbF^{n \times n}$ op basis van $\vec{v} \in \bbF^n$:
+
+$$\mat{H} = \idmat_n - \frac{2}{\vec{v}^\hermitian \vec{v}}\vec{v}\vec{v}^\hermitian$$
+
+$\Rightarrow \mat{H}^\hermitian = \mat{H}^{-1} = \mat{H}$
+
+* Interpretatie voor $\bbF = \bbR$:
+
+  spiegeling omheen het (hyper)vlak (codimensie 1) loodrecht op $\vec{v}$ ($\det{\mat{H}}=-1$)
+
+* Voornaamste toepassing:
+  
+  basistransformatie zodat op één na alle elementen uit een vector $\vec{w}=(w^1,\ldots,w^n)$ op nul worden afgebeeld
+
+  $$\mat{H} \vec{w} = \vec{w} - \frac{2\vec{v}^\hermitian\vec{w}}{\vec{v}^\hermitian\vec{v}} \vec{v} = \erm^{\irm \theta} \norm{\vec{w}} \vec{e}_1\quad\text{(norm moet behouden blijven)}$$
+
+  Oplossing (niet uniek): $\vec{v} = \vec{w} + \alpha \vec{e}_1$ met $\alpha =\pm \frac{w^1}{\abs{w^1}}\norm{w}$
+  
+  $\Rightarrow \mat{H}\vec{w} = \mp \frac{w^1}{\abs{w^1}}\norm{w} \vec{e}_1$
+
+## Discrete Fouriertransformatie {.smaller}
+
+Functies $f:\{0,\ldots,n-1\} \to \bbC$ $\quad(\eqsim (f_0,f_1,\ldots,f_{n-1})=\vec{f} \in \bbC^n)$
+
+* Discrete Fouriertransformatie:
+  $$F_k = \frac{1}{\sqrt{n}}\sum_{j=0}^{n-1} f_j \exp\left(-\irm \frac{2\pi}{n}j k \right),\quad \forall k=0,\ldots,n-1$$
+
+  met evenzeer $\vec{F} = (F_0,\ldots,F_{n-1}) \in \bbC^n$
+
+* Stelling: inverse transformatie $f_j = \frac{1}{\sqrt{n}}\sum_{k=0}^{n-1} F_k \exp\left(+\irm \frac{2\pi}{n}j k \right)$
+
+* $\vec{F} = \mat{U} \vec{f}$ en $\vec{f} = \mat{U}^\hermitian \vec{F}$ met dus $\mat{U} \in \Unitary(n)$; $\mat{U}$ gegeven door ($\omega = \erm^{-\irm \frac{2\pi}{n}}$):
+
+  $$	\mat{U} = \frac{1}{\sqrt{n}}\begin{bmatrix}
+		1 & 1  &1 &\dots & 1\\
+		1 & \omega  & \omega^2 & \dots & \omega^{n-1}\\
+		1 & \omega^2  & \omega^4 & \dots & \omega^{2(n-1)}\\
+		\vdots &  & & \ddots & \vdots\\
+		1 & \omega^{n-1} & \omega^{2(n-1)} & \dots &  \omega^{(n-1)^2}
+	\end{bmatrix}$$
+
+## Discrete Fouriertransformatie {.smaller}
+
+* Praktisch algoritme: "fast fourier transform" (zie Py4Sci)
+
+  complexiteit van $\vec{F} = \mat{U}\vec{f}$ van $\order(n^2)$ naar $\order(n \log_2 n)$
+
+* Toepassingen:
+  * relaties met "andere Fouriertransformaties" (zie later)
+
+  * diagonalisatie van **circulante matrices**
+    * $\mat{A}\in \bbC^{n \times n}$ is circulant als $A^i_{\ j} = f_{(j-i)\mod n}$
+
+    * met $\vec{u}_k$ de $k$de kolom uit $\mat{U}$: $(\vec{u}_k)^j = n^{-1/2} \omega^{kj}$
+
+      $\Rightarrow \mat{A}\vec{u}_k = \lambda_k \vec{u}_k$ met $\lambda_k = \sum_{j=0}^{n-1} f_j \erm^{-\irm \frac{2\pi}{n} k j} = \sqrt{n} F_k$
+
+    * fysisch: circulant = translatie-invariant
+
+      $\Rightarrow$ translatie-invariante systemen worden gediagonaliseerd in Fourier ($\approx$ momentum) basis, momentum is behouden grootheid
+
+# QR decompositie herbekeken
+
+## QR decompositie van algemene matrices {.smaller}
+
+Vorig hoofdstuk: $\mat{A} \in \bbF^{m \times n}$ met $m \geq n$: 
+
+$\mat{A} = \mat{Q} \mat{R}$ via Gram-Schmidt
+
+* $\mat{Q} \in \bbF^{m \times n}$ en $\mat{Q}^\hermitian \mat{Q} = \idmat_n$
+* $\mat{R} \in \bbF^{n \times n}$ bovendriehoeksmatrix
+
+Alternatieve voorstelling:
+
+* breidt $\mat{Q}$ uit met $m-n$ extra orthonormale kolommen tot $\mat{Q} \in \Unitary(m)$
+* $\mat{A} = \mat{Q} \mat{\tilde{R}}$ met $\tilde{\mat{R}} = \begin{bmatrix}
+		\mat{R}\\ \zeromat_{(m-n) \times n}
+	\end{bmatrix} \in \bbF^{m \times n}$
+* kan ook voor $\mat{A} \in \bbF^{m \times n}$ met $n > m$, nog steeds $\mat{R} \in \bbF^{m \times n}$ met $R^i_{\ j}=0$ voor $i > j$
+* we zoeken unitaire matrix $\mat{Q} \in \Unitary(m)$ zodat $\mat{\tilde{R}}=\mat{Q}^\dagger \mat{A}$ bovendriehoeksmatrix is
+
+  $\Rightarrow$ bouw $\mat{Q}$ uit Givens- of Householdertransformaties
+
+## QR decompositie van algemene matrices {.smaller}
+
+* algoritme op basis van Householder transformaties:
+
+  $\mat{H}_{n-1}^\hermitian \ldots \mat{H}_2^\hermitian \mat{H}_{1}^\hermitian \mat{A} =  \tilde{\mat{R}} \implies 	\mat{A} = \underbrace{\mat{H}_1 \mat{H}_2 \ldots \mat{H}_{n-1}}_{\tilde{\mat{Q}}} \tilde{\mat{R}}$
+
+  * $H_1$ werkt op alle rijen van $\mat{A}$ en transformeert eerste kolom naar $\sim \vec{e}_1$
+  * $H_2$ werkt op rijen 2 tot $m$ van $\mat{H}_1^\hermitian \mat{A}$ en transformeert tweede kolom naar $\sim \vec{e}_2$
+  * $H_3$ werkt op rijen 3 tot $m$ ...
+  * ...
+  * $H_{k}$ met $k=\min(m-1,n)$ werkt op rij $k$ en $k+1$, transformeert kolom $k$ naar $\sim\vec{e}_{k}$ $\longrightarrow$ bovendriehoeksmatrix $\tilde{\mat{R}}$
+    
+  $\Rightarrow$ numerieke stabiliteit en precisie in $\mat{Q}^\hermitian \mat{Q}=\idmat$ veel beter dan met Gram-Schmidt algoritme (zonder bewijs)
+
+* decompositie $\mat{A}=\mat{Q}\mat{R}$ heeft vrijheid $\mat{Q}\leftarrow \mat{Q}\mat{D}$ en $\mat{R}\leftarrow \mat{D}^{-1}\mat{R}$ met $\mat{D}$ een unitaire diagonaalmatrix (complexe fasen op de diagonaal)
+
+  $\Rightarrow$ de substitutie met $\mat{D}$ kan worden gebruikt om alle diagonaalelementen van $\mat{R}$ positief te maken; de decompositie wordt dan uniek
+
+# Schur decompositie en machtmethode
+
+## Schur decompositie {.smaller}
+
+Beschouw vierkante matrices $\mat{A} \in \bbC^{n \times n}$
+
+* Gelijkvormigheidstransformaties: 
+
+  $\tilde{\mat{A}}=\mat{V}^{-1} \mat{A} \mat{V}$ met $\mat{V} \in \GL(n)$
+
+  $\Rightarrow$ canonische vorm is Jordan-vorm $\mat{J}_{\mat{A}}$
+
+* Unitaire gelijkvormigheidstransformaties
+
+  $\tilde{\mat{A}}=\mat{Z}^{\hermitian} \mat{A} \mat{Z}$ met $\mat{Z} \in \Unitary(n)$
+
+  $\Rightarrow$ canonische vorm is de Schur bovendriehoeksvorm: 
+
+  **Schur-decompositie:** $\mat{A} = \mat{Z} \mat{T}\mat{Z}^\hermitian$ met $T^i_{\ j}=0$ voor $1 \leq j < i \leq n$
+
+  $\Rightarrow$ $\text{diag}(\mat{T}) = \sigma(\mat{T}) = \sigma(\mat{A})$
+
+* Praktisch: er is geen deterministisch algoritme dat in een eindig aantal stappen de eigenwaarden bepaalt
+
+  * gerelateerd aan Abel-Ruffini theorema: er is geen expliciete oplossing voor nulpunten van veeltermen van graad 5 of hoger in termen van basisoperaties $+, -, *, /, \cdot^n , \sqrt[n]{\cdot}$
+
+
+## Schur decompositie van normale matrices {.smaller}
+
+Normale matrix: $\mat{A}^\hermitian \mat{A} = \mat{A}\mat{A}^\hermitian$
+
+* Schur-decompositie: $\mat{A} = \mat{Z} \mat{T}\mat{Z}^\hermitian$
+  * normaliteit is een intrinsieke eigenschap en blijft behouden onder unitaire basistransformatie $\mat{Z}$ $\Rightarrow$ $\mat{T}$ is normaal
+
+* normale bovendriehoeksmatrix $\mat{T}$ moet zuiver diagonaal zijn
+
+  Bewijs: 
+  
+  * $(\mat{T}^\hermitian \mat{T})^1_{\ 1} = \abs{T^1_{ 1}}^2=
+(\mat{T} \mat{T}^\hermitian)^1_{\ 1} = \sum_{k=1}^n \abs{T^1_{ k}}^2 \Rightarrow T^1_{\ k} =0$ voor $k=2,\ldots,n$
+  * ...
+  * $(\mat{T}^\hermitian \mat{T})^i_{\ i} = \sum_{k=1}^i\abs{T^k_{\ i}}^2 = \abs{T^i_{\ i}}^2$ (wegens $T^k_{\ i}=0$ voor $k>i$ uit voorgaande)
+
+    $(\mat{T} \mat{T}^\hermitian)^i_{\ i} = \sum_{k=i}^n \abs{T^i_{ k}}^2 \Rightarrow T^i_{\ k} =0$ voor $k=i+1,\ldots,n$
+
+* Schurdecompositie = eigenwaardedecompositie
+* orthonormale basis van eigenvectoren
+* altijd diagonaliseerbaar, nooit niet-triviale Jordanblokken
+* spectrale decompositie $V = \sum_{\lambda \in \sigma(\mat{A})} V_\lambda$ is orthogonale directe som decompositie
+
+## Machtsmethode {.smaller}
+
+Gegeven $\mat{A}\in \bbF^{n\times n}$:
+
+* Machtsmethode/machtsiteratie (power method/iteration): 
+
+  startende van willekeurige vector $\vec{v}_0$, herhaal voor $k=0,1,2,\ldots$:
+  
+  * $\vec{q}_k =\vec{v}_k / \norm{\vec{v}_k}$
+  * $\vec{v}_{k+1} = \mat{A}\vec{q}_k$
+  * $\mu_{k} = \inner{\vec{q}_k}{\vec{v}_{k+1}}= \vec{q}_k^\hermitian \mat{A}\vec{q}_k$
+
+  Gevolgen:
+  * $\vec{q}_k \sim \mat{A}^k \vec{v}_0$ (op normalisatie na)
+  * sorteer eigenwaarden van $\mat{A}$ in afnemende absolute waarde, zodat $\abs{\lambda_1}=\rho_{\mat{A}}$
+  * als $\lambda_1$ simpel of semisimpel is (geen niet-triviale Jordanblokken, $V_{\lambda_1}= U_{\lambda_1}$):
+
+    $\mat{A} = \lambda_1 \mat{P}_{\lambda_1} + \tilde{\mat{A}}$ met $\rho_{\tilde{\mat{A}}} = \abs{\lambda_2}$
+  * als bovendien $\abs{\lambda_2} < \abs{\lambda_1}$:
+
+    $\mat{A}^k \vec{v}_0 = \lambda_1^k \left(\mat{P}_{\lambda_1} \vec{v}_0 + 	\frac{\tilde{\mat{A}}^k}{\lambda_1^k} \vec{v}_0\right) \implies \lim_{k\to\infty} \vec{q}_k \sim \mat{P}_{\lambda_1} \vec{v}_0$, $\lim_{k\to \infty} \mu_k = \lambda_1$
+
+  * convergentie: $\norm{\vec{q}_k-\vec{q}_\infty} = \order\left(\abs{\frac{\lambda_2}{\lambda_1}}^k\right)$ (**lineaire convergentie**)
+
+## Deelruimte-iteratie {.smaller}
+
+Gegeven $\mat{A}\in \bbF^{n\times n}$:
+
+* deelruimte-iteratie (subspace iteration):
+  
+  startende van $p\leq n$ willekeurige vectoren verzamelend als de kolommen van een matrix $\mat{V}_0 \in \bbF^{n \times p}$ herhaal voor $k=0,1,2,\ldots$:
+  * $\mat{Q}_k \mat{R}_k = \mat{V}_k$ (QR decompositie)
+  * $\mat{V}_{k+1} = \mat{A}\mat{Q}_k$
+  * $\mat{T}_k = \mat{Q}_k^\hermitian \mat{V}_{k+1} = \mat{Q}_k^\hermitian \mat{A}\mat{Q}_k$
+
+  Indien convergentie (voorwaarden buiten beschouwing van deze cursus):
+  $\mat{V}_\infty = \mat{A} \mat{Q}_\infty = \mat{Q}_\infty \mat{R}_\infty$ en $\mat{T}_\infty = \mat{R}_\infty$
+
+  $\Rightarrow \mat{Q}_\infty$ is orthonormale basis voor invariante deelruimte
+
+  $\Rightarrow$ restrictie van $\mat{A}$ op $\mat{Q}_\infty$ is bovendriehoek $\rightarrow$ Schur canonische vorm
+
+  $\Rightarrow$ eigenwaarden van $\mat{T}_\infty$ zijn eigenwaarde van $\mat{A}$
+
+  $\Rightarrow$ indien $p=n$: volledige Schur-decompositie
+
+  (bemerk: eerste kolom van $\mat{Q}$ ondergaat zelfde stappen als machtsiteratie)
+
+## QR-iteratie {.smaller}
+
+Gegeven $\mat{A}\in \bbF^{n\times n}$:
+
+* verbeterd algoritme voor volledige Schur-decompositie: QR iteratie
+
+  uit deelruimte-iteratie voor $p=n$ volgt:
+
+  * $\mat{T}_k = \mat{Q}_k^\hermitian \mat{A} \mat{Q}_k =  \mat{Q}_k^\hermitian \mat{V}_{k+1} = (\mat{Q}_k^\hermitian \mat{Q}_{k+1}) \mat{R}_{k+1}$
+  * $\mat{T}_{k+1} = \mat{Q}_{k+1}^\hermitian \mat{A} \mat{Q}_{k+1} = (\mat{Q}_k^\hermitian \mat{Q}_{k+1})^\hermitian \mat{T}_k (\mat{Q}_k^\hermitian \mat{Q}_{k+1}) = \mat{R}_{k+1} (\mat{Q}_k^\hermitian \mat{Q}_{k+1})$
+
+  * Hernoem $(\mat{Q}_k^\hermitian \mat{Q}_{k+1}) \mapsto \mat{Q}_k$
+
+  * Startende van $\mat{Z}_0=\mat{Q}_0 = \idmat$ en $\mat{T}_0 = \mat{A}$ herhaal voor $k=1,2,\ldots$:
+	  * $\mat{Q}_k \mat{R}_k = \mat{T}_{k-1}$ en $\mat{Z}_k = \mat{Z}_{k-1} \mat{Q}_k$
+	  * $\mat{T}_{k} = \mat{R}_k \mat{Q}_k$
+  
+    $\Rightarrow \mat{A} = \mat{T}_0 = \mat{Q}_1 \mat{R}_1 = \mat{Q}_1 \mat{T}_1 \mat{Q}_1^\hermitian = \ldots = \underbrace{(\mat{Q}_1 \mat{Q}_2 \cdots \mat{Q}_k)}_{\mat{Z}_k}\mat{T}_{k} 	\underbrace{(\mat{Q}_1 \mat{Q}_2 \cdots \mat{Q}_k)^\hermitian}_{\mat{Z}_k^\hermitian}$
+
+    Convergentie: $\mat{Q}_k \to \idmat \Rightarrow \mat{T}_k \to \mat{T}$ en ook $\mat{R}_k \to \mat{T}$ en $\mat{Z}_k \to \mat{Z}$
+    
+    $\Rightarrow \mat{A}=\mat{Z}\mat{T}\mat{Z}^\hermitian$: Schurdecompositie
+
+    * Praktijk: bijkomende trucs voor lagere kost en snellere convergentie
+
+# Bilineaire en kwadratische vormen herbekeken
+
+## Matrixcongruentie {.smaller}
+
+* Matrixgelijkvormigheid: $\mat{\tilde{A}}=\mat{T}\mat{A}\mat{T}^{-1}$
+
+  $\rightarrow$ behoudt spectrum, determinant, spoor, rang, …
+
+  $\rightarrow$ canonische vorm: Jordan
+
+* Matrixcongruentie: $\mat{\tilde{C}} = \mat{T}^{-\hermitian} \mat{C} \mat{T}^{-1}$
+
+  $\rightarrow$ behoudt spectrum etc niet, behoudt wel rang en nulliteit 
+
+  $\rightarrow$ canonische vorm: ?
+
+* Unitair: $\mat{\tilde{A}} = \mat{U} \mat{A} \mat{U}^{\hermitian}$ met $\mat{U}^\hermitian \mat{U}=\idmat$
+
+  $\rightarrow$ zowel gelijkvormig als congruent: $\mat{U}^{-1}=\mat{U}^\hermitian$ en dus $\mat{U}=\mat{U}^{-H}$
+
+  $\rightarrow$ canonische vorm: Schur (=diagonaal voor normale $\mat{A}$)
+
+## Kwadratische en symmetrische bilineaire vormen {.smaller}
+
+We beperken ons nu tot reële bilineaire vormen $B:V \times V \to \bbR$ (met $V$ een reële vectorruimte), die bovendien symmetrisch worden verondersteld (bijvoorbeeld omdat ze geassocieerd zijn aan een kwadratische vorm).
+
+* Matrixrepresentatie is reële, symmetrische matrix $\mat{B} = \mat{B}^\transpose$
+
+  * hermitisch en dus reële eigenwaarden
+  * eigenvectoren van reële matrix horende bij reële eigenwaarden kunnen reëel worden gekozen
+  * eigenvectoren van normale matrix kunnen orthonormaal worden gekozen
+
+  $\Rightarrow \mat{B} = \mat{Q} \mat{D} \mat{Q}^\transpose$
+
+  waarbij we de eigenwaarden kunnen sorteren zodat we eerst de positieve eigenwaarden, dan de negatieve eigenwaarden en dan de eigenwaarden nul hebben.
+
+  We kunnen deze vorm nog verder reduceren, aangezien matrixcongruentie niet beperkt is tot $\mat{Q}$ unitair/orthogonaal.
+  
+## Kwadratische en symmetrische bilineaire vormen {.smaller}
+
+* Gegeven $\mat{B} = \mat{Q}\mat{D}\mat{Q}^\transpose$
+
+  Met $\vec{q}_k$ de $k$de kolom van $\mat{Q}$ en $\vec{v}_k$ de $k$de kolom van een nieuwe matrix $\mat{V}$:
+  
+  $\rightarrow$ $\vec{v}_k = \begin{cases} \abs{D_{kk}}^{-1/2} \vec{q}_k,& D_{kk}\neq 0\\ \vec{q}_k,& D_{kk}=0 \end{cases}$ 
+
+  $\Rightarrow\mat{V}^\transpose	\mat{B} \mat{V} = \mathrm{diag}(\underbrace{+1,\ldots,+1}_{n_+\ \text{times}}, \underbrace{-1,\ldots,-1}_{n_-\ \text{times}}, \underbrace{0,\ldots,0}_{n_0\ \text{times}})$
+
+  Terminologie:
+  * $n_0 = \nullity(\mat{B})$, $n_+ + n_- = \rank(\mat{B})$
+  * $(n_+, n_-, n_0)$: traagheid(sindices) / "inertia"
+  * $n_+$: positieve traagheidsindex, $n_-$: negatieve traagheidsindex
+  * $n_+-n_-$: signatuur
+
+## Kwadratische en symmetrische bilineaire vormen {.smaller}
+
+* Gegeven $\Rightarrow\mat{V}^\transpose	\mat{B} \mat{V} = \mathrm{diag}(\underbrace{+1,\ldots,+1}_{n_+\ \text{times}}, \underbrace{-1,\ldots,-1}_{n_-\ \text{times}}, \underbrace{0,\ldots,0}_{n_0\ \text{times}})$
+
+  * De basistransformatie $\mat{V}$ is verre van uniek (arbitraire orthogonale transformaties binnen de kolommen geassocieerd aan $+1$, deze geassocieerd aan $-1$ en deze geassocieerd aan $0$ zijn mogelijk)
+  * De traagheidsindices zijn uniek en bepalen dus de canonische vorm van alle matrices gerelateerd via congruentie, via onderstaande stelling:
+
+* **Traagheidswet van Sylvester**: Twee symmetrische matrices $\mat{B},\mat{\tilde{B}} \in \bbR^{n \times n}$ zijn congruent als en slechts als hetzelfde aantal positieve, negatieve en nul eigenwaarden hebben.
+
+## Kwadratische en symmetrische bilineaire vormen {.smaller}
+
+* Praktisch algoritme voor canonische vorm: 
+  * eigenwaarden niet van belang, dus misschien mogelijk in eindig aantal stappen
+  * $\mat{B} = \mat{L}\mat{D}\mat{L}^\transpose$ en absorbeer opnieuw de vierkantswortel van de absolute waarde van de niet-nul elementen van $\mat{D}$ in de kolommen van $\mat{L}$
+  * dit komt neer op Lagrange-reductie van de kwadratische vorm:
+    	
+    $q(\vec{x})=\vec{x}^\transpose \mat{B} \vec{x} = \sum_{i,j=1}^{n} B_{ij} x^i x^j = B_{11} (x^1)^2 + 2 B_{12} x^1x^2 + \dots$
+
+    * Vervolledig alle termen met $x^1$ tot een kwadraat $\sign(B_{11}) (\sqrt{\abs{B_{11}}} x^1 + \sum_{k=2}^n B_{1k}/\sqrt{\abs{B_{11}}} x^k)^2$
+    * Vervolledig alle overblijvende termen met $(x^2)$ tot een kwadraat
+    * ...
+
+  * Voor $n = n_+$ (positief definiete vorm): $\mat{B} = \mat{L}\mat{L}^\transpose$ met $\mat{L}$ benedendriehoeksmatrix
+
+    $\rightarrow$ gekend als **Cholesky decompositie**
+
+# Singulaire waardendecompositie en polaire decompositie
+
+## Unitaire equivalentie {.smaller}
+
+* Matrixnormen gebaseerd op Euclidische norm:
+  * Geinduceerde 2-norm voor matrix $\mat{A} \in \bbF^{m \times n}$:
+
+    $$\norm{\mat{A}}_{2\to 2} = \max \{ \norm{\mat{A}\vec{v}}_2 | \vec{v}\in \bbF^{n}\ \text{with}\ \norm{\vec{v}}_2=1\}$$
+
+  * Frobeniusnorm $\norm{\mat{A}}_{\text{F}} = \sqrt{\tr(\mat{A}^\hermitian \mat{A})}$
+
+* Unitaire equivalentie:
+  $$\mat{\tilde{A}} = \mat{U}^\hermitian \mat{A}\mat{V}\ \text{met}\ \mat{U} \in \Unitary(m), \mat{V} \in \Unitary(n)$$
+
+  * $\norm{\mat{A}}_{2\to 2} = \norm{\tilde{\mat{A}}}_{2 \to 2}$
+  * $\norm{\mat{A}}_{\text{F}} = \norm{\tilde{\mat{A}}}_{\text{F}}$
+
+  $\rightarrow$ canonisch vorm?
+
+## Singuliere waardendecompositie {.smaller}
+
+Singuliere waardendecompositie van een matrix $\mat{A}\in\bbF^{m \times n}$:
+$$\mat{A} = \mat{U} \mat{S} \mat{V}^\hermitian$$
+
+met hierin
+
+* $\mat{U}\in \Unitary(m)$
+* $\mat{V}\in \Unitary(n)$
+* $\mat{S} = \bbF^{m \times n}$ met $\mat{S}^i_{\ j} = (\sigma_i) \delta^i_{\ j}$ en :
+  * $\sigma_1 \geq \sigma_2 \geq \ldots \geq \sigma_p > \sigma_{p+1} = \ldots \sigma_{\min(m,n)} = 0$
+  * $p \leq \min(m,n)$
+
+## Singuliere waardendecompositie {.smaller}
+
+Singuliere waardendecompositie van een matrix $\mat{A}\in\bbF^{m \times n}$:
+$$\mat{A} = \mat{U} \mat{S} \mat{V}^\hermitian$$
+
+Bewijs:
+
+* diagonaliseer positief semidefiniete matrix $\mat{A}^\hermitian \mat{A} = \mat{V}\mat{\Lambda} \mat{V}^\hermitian$:
+  * $\Lambda^i_{\ j} = \lambda_i \delta^i_{\ j}$ met $\lambda_i \geq 0 \Rightarrow \sigma_i = \sqrt{\lambda_i}$
+
+* bereken $\mat{A}\mat{V} = \mat{Q} \mat{R}$ met $\mat{Q} \in \Unitary(m)$, $\mat{R} \in \bbF^{m \times n}$ en bovendriehoeksmatrix
+  * $\Rightarrow \mat{A}^\hermitian \mat{A} = \mat{R}^\hermitian \mat{R} = \mat{\Lambda}$ (diagonaal)
+  * $\Rightarrow$ $\mat{R}$ is diagonaal met $\abs{R^i_{\ i}}^2 = \sigma_i^2$.
+  
+  * Absorbeer fases van $\mat{R}^i_{\ i}$ in $\mat{Q}$: $\mat{R} \to \mat{S}, \mat{Q}\to \mat{U}$
+
+* $\mat{A}\mat{A}^\hermitian = \mat{U} \mat{S}\mat{S}^\hermitian \mat{U}^\hermitian$: zelfde niet-nul eigenwaarden als $\mat{A}^\hermitian \mat{A}$
+
+## Singuliere waardendecompositie: eigenschappen {.smaller}
+
+* Notatie: $\vec{u}_i$ en $\vec{v}_i$ de $i$de kolom uit $\mat{U}$ en $\mat{V}$
+* Notatie: $\mat{U}_k \in \bbF^{m \times k}$ en $\mat{V}_k \in \bbF^{n \times k}$ de restrictie van $\mat{U}$ en $\mat{V}$ tot de eerste $k$ kolommen, en $\mat{S}_{k} \in \bbF^{k \times k}$ de eerste $k$ kolommen en rijen van $\mat{S}$
+
+* $\mat{A} = \underbrace{\mat{U} \mat{S} \mat{V}^\hermitian}_{\text{"full SVD"}} = \underbrace{\mat{U}_{\min(m,n)} \mat{S}_{\min(m,n)} \mat{V}_{\min(m,n)}^\hermitian}_{\text{"thin SVD"}} = \underbrace{\mat{U}_p \mat{S}_p \mat{V}_p}_{\text{"compact SVD"}}$
+
+  met $p$ de laatste niet-nul singuliere waarde $\sigma_p$ (zie volgende: $p=\rank (\mat{A})$)
+
+* $\mat{A}\mat{V}_k = \mat{U}_k \mat{S}_k$ en $\mat{A}^\hermitian \mat{U}_k = \mat{V}_k \mat{S}_k$ voor alle $k=1,\ldots,\min(m,n)$
+
+  $\Leftrightarrow \mat{A} \vec{v}_i = \sigma_i \vec{u}_i$ en $\mat{A}^\hermitian \vec{u}_i = \sigma_i \vec{v}_i$ voor alle $i=1,\ldots, \min(m,n)$
+* Uniciteit van SVD:
+  
+  * Singuliere waarden: uniek
+  
+  * Singuliere vectoren: $\mat{U}_p \to \mat{U}_p\mat{Q}$ en $\mat{V}_\to \mat{V}_p\mat{Q}$ met $\mat{Q} \in \Unitary(p)$ en $[\mat{Q},\mat{S}]=0$. Indien geen degeneraties in $\mat{S}$: $\mat{Q}$ diagonaal met complexe fasen op diagonaal
+
+  * Op de kolommen $p+1,\ldots,m$ van $\mat{U}$ en $p+1,\ldots,n$ van $\mat{V}$ kunnen onafhankelijke unitaire rotaties worden uitgevoerd
+
+## Singuliere waardendecompositie: Algoritme {.smaller}
+
+* Bewijs: lijkt constructief, maar niet nauwkeurig!
+  * eigenwaarden van $\mat{A}^\hermitian\mat{A}$ = singuliere waarden kwadraat
+  * $\sigma_i^2 + \epsilon \Rightarrow \sigma_i + \order(\epsilon/\sigma_i)$
+
+* Voor $\mat{A} \vec{v}_i = \sigma_i \vec{u}_i$ en $\mat{A}^\hermitian \vec{u}_i = \sigma_i \vec{v}_i$, voor vierkante $\mat{A} \in \bbF^{n\times n}$:
+
+  $$ \begin{bmatrix}
+		\zeromat & \mat{A} \\ \mat{A}^\hermitian & \zeromat
+	\end{bmatrix}\left(\frac{1}{\sqrt{2}}\begin{bmatrix}
+		\mat{U} & \mat{U} \\ \mat{V}  & -\mat{V}
+	\end{bmatrix}\right)
+ = \left(\frac{1}{\sqrt{2}}\begin{bmatrix}
+		\mat{U} & \mat{U} \\ \mat{V}  & -\mat{V}
+	\end{bmatrix}\right)
+\begin{bmatrix}
+		\mat{S} & \zeromat \\ \zeromat  & -\mat{S}
+	\end{bmatrix}$$
+
+  $\mat{A}\in \bbF^{m\times n}$ met $m > n$: $\mat{A} = \mat{Q} \mat{R} = (\mat{Q} \mat{U}_{\mat{R}}) \mat{S}_{\mat{R}} \mat{V}_{\mat{R}}^\hermitian =  \mat{U}_{\mat{A}}\mat{S}_{\mat{A}} \mat{V}_{\mat{A}}^\hermitian$
+
+
+## Verband met rang, norm en conditiegetal: {.smaller}
+
+Voor matrix $\mat{A} = \mat{U} \mat{S}\mat{V}^\hermitian\in \bbF^{m \times n}$:
+
+* $\vec{w} \in \im(\mat{A})$: $\vec{w}$ is lineaire combinatie van eerste $p$ kolommen van $\mat{U}$
+
+  $\Rightarrow \rank(\mat{A}) = p \leq \min(m,n)$ (aantal niet-nul singuliere waarden)
+
+  * $\rank(\mat{A})=\min(m,n)$: volle rang
+  * $\rank(\mat{A})<\min(m,n)$: rang-deficiete matrix
+
+* $\mat{A} \vec{v}_i=0$ voor $i=p+1,\ldots,n$:
+
+  $\Rightarrow$ deze kolommen vormen orthonormale basis voor $\ker(\mat{A})$
+
+* geïnduceerde norm $\norm{\mat{A}}_2 = \sigma_1$
+* Frobenius norm $\norm{\mat{A}}_{\text{F}} = \sqrt{\sum_{i=1}^p \sigma_i^2}$
+* voor inverteerbare (en dus vierkante volle-rang) $\mat{A}\in\bbF^{n \times n}$: $\mat{A}^{-1} = \mat{V} \mat{S}^{-1} \mat{U}^\hermitian$
+
+  $\Rightarrow$ conditiegetal (geassocieerd aan geïnduceerde $2$-norm): $\kappa(\mat{A}) = \sigma_1/\sigma_n$
+
+## Kleinste kwadratenoplossing {.smaller}
+
+Beschouw een lineair stelsel $\mat{A}\mat{x} = \mat{y}$ met $\mat{A}\in\bbF^{m \times n}$ en $\nullity(\mat{A}) \geq 0$:
+
+* als $\vec{y}\in \im(\mat{A})$: oplossing bestaat, uniek als $\nullity(\mat{A})=0$
+* als $\vec{y}\not\in \im(\mat{A})$: kleinste kwadratenoplossing, uniek als $\nullity(\mat{A})=0$
+* generiek geval:
+  * verzameling van alle kleinste kwadratenoplossingen:
+    $L = \{\vec{x} \in \bbF^n | \norm{\mat{A}\vec{x} - \vec{y}}_2 = \min_{\vec{x}' \in \bbF^n} \norm{\mat{A}\vec{x}' - \vec{y}}_2\}$
+  * kleinste kwadratenoplossing met minimale norm (uniek):
+    $\vec{x}^\ast = \argmin_{\vec{x} \in L} \norm{\vec{x}}$
+    
+    $$\Rightarrow \vec{x}^\ast = \underbrace{\mat{V}_p \mat{S}_p^{-1} \mat{U}_p^\hermitian}_{=\mat{A}^+} \vec{y}$$
+
+* Moore-Penrose pseudo-inverse gekarakteriseerd door
+  * $\mat{A} \mat{A}^+ = \mat{P}_{\im(\mat{A})}$
+  * $\mat{A}^+ \mat{A} = \mat{P}_{\ker(\mat{A})^\perp}$
+
+## Laagste rang benadering
+
+* gegeven $\mat{A} =\mat{U}\mat{S}\mat{V}^\hermitian \in \bbF^{m\times n}$
+
+* vind matrix $\mat{B}\in \bbF^{m \times n}$ met $\rank(\mat{B}) \leq r$ zodat $\norm{\mat{A}-\mat{B}}$ minimaal is:
+
+* **Eckart-Young-Mirsky theorema**:
+
+  oplossing $\mat{B}= \mat{U}_r \mat{S}_r \mat{V}_r^\hermitian$ 
+  
+  (getruncteerde singulierenwaardendecompositie)
+
+  * voor $\norm{\mat{A}-\mat{B}}_{2 \times 2}$
+  * ook voor $\norm{\mat{A}-\mat{B}}_{\text{F}}$
+
+## Polaire decompositie en isometrische benadering
+
+* gegeven $\mat{A} =\mat{U}_n\mat{S}_n\mat{V}_n^\hermitian \in \bbF^{m\times n}$ met $m\geq n$
+
+* **polaire decompositie** voor $m \geq n$:
+
+  $\mat{A} = \mat{U} \mat{P} = (\mat{U}_n \mat{V}_n^\hermitian) (\mat{V}_n \mat{S}_n \mat{V}_n^\hermitian)$
+
+  met dus $\mat{U}^\hermitian \mat{U} = \idmat_n$ en $\mat{P}$ positief (semi)definiet
+
+  $\Rightarrow$ veralgemeent $z = \erm^{\irm \arg(z)} \abs{z}$
+
+* vind isometrische matrix $\mat{B}$ waarvoor $\norm{\mat{A}-\mat{B}}$ minimaal is
+
+  $\Rightarrow \mat{B}= \mat{U}_n\mat{V}_n^{\hermitian}$ (als $m\geq n$ en voor $\norm{\mat{A}-\mat{B}}_{\text{F}}$)
+
+  (bewijs niet te kennen)

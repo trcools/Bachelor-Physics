@@ -1,3 +1,5 @@
+Reminder voor mezelf: Maak zeker nog de "voor de lezer" oefeningen op de powerpoints en bewijis alle stellingen uit de cursus.
+
 2e-bach-sem1/Statistiek/
 ├── Cursus/
 │   └── Statistiek.pdf

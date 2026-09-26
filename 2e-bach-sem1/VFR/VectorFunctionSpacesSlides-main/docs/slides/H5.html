@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jutho Haegeman">
+<meta name="dcterms.date" content="2025-10-28">
+
+<title>Vector- en functieruimten – Slides - Hoofdstuk 5 - Inwendig product en orthogonaliteit</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vector- en functieruimten – Slides</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H1.html" rel="" target="">
+ <span class="menu-text">H1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H2.html" rel="" target="">
+ <span class="menu-text">H2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H3.html" rel="" target="">
+ <span class="menu-text">H3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H4.html" rel="" target="">
+ <span class="menu-text">H4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../slides/H5.html" rel="" target="" aria-current="page">
+ <span class="menu-text">H5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H6.html" rel="" target="">
+ <span class="menu-text">H6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H7.html" rel="" target="">
+ <span class="menu-text">H7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H8.html" rel="" target="">
+ <span class="menu-text">H8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/H9.html" rel="" target="">
+ <span class="menu-text">H9</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#doel-van-dit-hoofdstuk" id="toc-doel-van-dit-hoofdstuk" class="nav-link active" data-scroll-target="#doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</a></li>
+  <li><a href="#proloog-bilineaire-en-sesquilineaire-vormen" id="toc-proloog-bilineaire-en-sesquilineaire-vormen" class="nav-link" data-scroll-target="#proloog-bilineaire-en-sesquilineaire-vormen">Proloog: Bilineaire en sesquilineaire vormen</a>
+  <ul class="collapse">
+  <li><a href="#bilineaire-vormen" id="toc-bilineaire-vormen" class="nav-link" data-scroll-target="#bilineaire-vormen">Bilineaire vormen</a></li>
+  <li><a href="#bilineaire-vormen-en-matrices" id="toc-bilineaire-vormen-en-matrices" class="nav-link" data-scroll-target="#bilineaire-vormen-en-matrices">Bilineaire vormen en matrices</a></li>
+  <li><a href="#bilineaire-en-kwadratische-vormen" id="toc-bilineaire-en-kwadratische-vormen" class="nav-link" data-scroll-target="#bilineaire-en-kwadratische-vormen">Bilineaire en kwadratische vormen</a></li>
+  <li><a href="#kwadratische-vormen-toepassingen" id="toc-kwadratische-vormen-toepassingen" class="nav-link" data-scroll-target="#kwadratische-vormen-toepassingen">Kwadratische vormen: toepassingen</a></li>
+  <li><a href="#sesquilineaire-vormen" id="toc-sesquilineaire-vormen" class="nav-link" data-scroll-target="#sesquilineaire-vormen">Sesquilineaire vormen</a></li>
+  <li><a href="#sesquilineaire-vormen-en-matrices" id="toc-sesquilineaire-vormen-en-matrices" class="nav-link" data-scroll-target="#sesquilineaire-vormen-en-matrices">Sesquilineaire vormen en matrices</a></li>
+  <li><a href="#bilineaire-en-sesquilineaire-vormen" id="toc-bilineaire-en-sesquilineaire-vormen" class="nav-link" data-scroll-target="#bilineaire-en-sesquilineaire-vormen">Bilineaire en sesquilineaire vormen</a></li>
+  </ul></li>
+  <li><a href="#inwendig-productruimten" id="toc-inwendig-productruimten" class="nav-link" data-scroll-target="#inwendig-productruimten">Inwendig productruimten</a>
+  <ul class="collapse">
+  <li><a href="#inwendig-product" id="toc-inwendig-product" class="nav-link" data-scroll-target="#inwendig-product">Inwendig product</a></li>
+  <li><a href="#cauchy-schwarz-ongelijkheid" id="toc-cauchy-schwarz-ongelijkheid" class="nav-link" data-scroll-target="#cauchy-schwarz-ongelijkheid">Cauchy-Schwarz ongelijkheid</a></li>
+  <li><a href="#inwendig-product-voorbeelden-eindig-dimensionaal" id="toc-inwendig-product-voorbeelden-eindig-dimensionaal" class="nav-link" data-scroll-target="#inwendig-product-voorbeelden-eindig-dimensionaal">Inwendig product: voorbeelden (eindig-dimensionaal)</a></li>
+  <li><a href="#inwendig-product-voorbeelden-oneindig-dimensionaal" id="toc-inwendig-product-voorbeelden-oneindig-dimensionaal" class="nav-link" data-scroll-target="#inwendig-product-voorbeelden-oneindig-dimensionaal">Inwendig product: voorbeelden (oneindig-dimensionaal)</a></li>
+  <li><a href="#inwendig-product-bijkomende-eigenschappen" id="toc-inwendig-product-bijkomende-eigenschappen" class="nav-link" data-scroll-target="#inwendig-product-bijkomende-eigenschappen">Inwendig product: bijkomende eigenschappen</a></li>
+  </ul></li>
+  <li><a href="#orthogonaliteit-en-unitariteit" id="toc-orthogonaliteit-en-unitariteit" class="nav-link" data-scroll-target="#orthogonaliteit-en-unitariteit">Orthogonaliteit en unitariteit</a>
+  <ul class="collapse">
+  <li><a href="#orthogonaliteit" id="toc-orthogonaliteit" class="nav-link" data-scroll-target="#orthogonaliteit">Orthogonaliteit</a></li>
+  <li><a href="#orthogonaal-complement" id="toc-orthogonaal-complement" class="nav-link" data-scroll-target="#orthogonaal-complement">Orthogonaal complement</a></li>
+  <li><a href="#orthogonale-projectie" id="toc-orthogonale-projectie" class="nav-link" data-scroll-target="#orthogonale-projectie">Orthogonale projectie</a></li>
+  <li><a href="#orthogonale-projector" id="toc-orthogonale-projector" class="nav-link" data-scroll-target="#orthogonale-projector">Orthogonale projector</a></li>
+  <li><a href="#orthogonaal-complement-en-directe-som" id="toc-orthogonaal-complement-en-directe-som" class="nav-link" data-scroll-target="#orthogonaal-complement-en-directe-som">Orthogonaal complement en directe som</a></li>
+  <li><a href="#orthonormale-basis" id="toc-orthonormale-basis" class="nav-link" data-scroll-target="#orthonormale-basis">Orthonormale basis</a></li>
+  <li><a href="#orthonormale-basis-1" id="toc-orthonormale-basis-1" class="nav-link" data-scroll-target="#orthonormale-basis-1">Orthonormale basis</a></li>
+  <li><a href="#orthonormale-basis-2" id="toc-orthonormale-basis-2" class="nav-link" data-scroll-target="#orthonormale-basis-2">Orthonormale basis</a></li>
+  <li><a href="#expansiestelling-gevolgen" id="toc-expansiestelling-gevolgen" class="nav-link" data-scroll-target="#expansiestelling-gevolgen">Expansiestelling: gevolgen</a></li>
+  <li><a href="#expansiestelling-voorbeeld" id="toc-expansiestelling-voorbeeld" class="nav-link" data-scroll-target="#expansiestelling-voorbeeld">Expansiestelling: voorbeeld</a></li>
+  <li><a href="#gram-schmidt" id="toc-gram-schmidt" class="nav-link" data-scroll-target="#gram-schmidt">Gram-Schmidt</a></li>
+  <li><a href="#gram-schmidt-en-qr-decompositie" id="toc-gram-schmidt-en-qr-decompositie" class="nav-link" data-scroll-target="#gram-schmidt-en-qr-decompositie">Gram-Schmidt en QR decompositie</a></li>
+  </ul></li>
+  <li><a href="#lineaire-functionalen-en-dualiteit-van-hilbertruimten" id="toc-lineaire-functionalen-en-dualiteit-van-hilbertruimten" class="nav-link" data-scroll-target="#lineaire-functionalen-en-dualiteit-van-hilbertruimten">Lineaire functionalen en dualiteit van Hilbertruimten</a>
+  <ul class="collapse">
+  <li><a href="#lineaire-functionalen" id="toc-lineaire-functionalen" class="nav-link" data-scroll-target="#lineaire-functionalen">Lineaire functionalen</a></li>
+  <li><a href="#lineaire-functionalen-1" id="toc-lineaire-functionalen-1" class="nav-link" data-scroll-target="#lineaire-functionalen-1">Lineaire functionalen</a></li>
+  <li><a href="#lineaire-functionalen-en-vectoren" id="toc-lineaire-functionalen-en-vectoren" class="nav-link" data-scroll-target="#lineaire-functionalen-en-vectoren">Lineaire functionalen en vectoren</a></li>
+  <li><a href="#representatiestelling-van-riesz" id="toc-representatiestelling-van-riesz" class="nav-link" data-scroll-target="#representatiestelling-van-riesz">Representatiestelling van Riesz</a></li>
+  </ul></li>
+  <li><a href="#begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" id="toc-begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen-tussen-hilbertruimten">Begrensde lineaire afbeeldingen tussen Hilbertruimten</a>
+  <ul class="collapse">
+  <li><a href="#begrensde-lineaire-afbeeldingen" id="toc-begrensde-lineaire-afbeeldingen" class="nav-link" data-scroll-target="#begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</a></li>
+  <li><a href="#eindig-dimensionaal-en-basisrepresentatie" id="toc-eindig-dimensionaal-en-basisrepresentatie" class="nav-link" data-scroll-target="#eindig-dimensionaal-en-basisrepresentatie">Eindig-dimensionaal en basisrepresentatie</a></li>
+  <li><a href="#toegevoegde-van-een-afbeelding" id="toc-toegevoegde-van-een-afbeelding" class="nav-link" data-scroll-target="#toegevoegde-van-een-afbeelding">Toegevoegde van een afbeelding</a></li>
+  <li><a href="#toegevoegde-afbeelding-matrixrepresentatie" id="toc-toegevoegde-afbeelding-matrixrepresentatie" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-matrixrepresentatie">Toegevoegde afbeelding: matrixrepresentatie</a></li>
+  <li><a href="#toegevoegde-afbeelding-eigenschappen" id="toc-toegevoegde-afbeelding-eigenschappen" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-eigenschappen">Toegevoegde afbeelding: eigenschappen</a></li>
+  <li><a href="#toegevoegde-afbeelding-voorbeeld" id="toc-toegevoegde-afbeelding-voorbeeld" class="nav-link" data-scroll-target="#toegevoegde-afbeelding-voorbeeld">Toegevoegde afbeelding: voorbeeld</a></li>
+  <li><a href="#zelf-toegevoegde-operatoren" id="toc-zelf-toegevoegde-operatoren" class="nav-link" data-scroll-target="#zelf-toegevoegde-operatoren">Zelf-toegevoegde operatoren</a></li>
+  <li><a href="#zelf-toegevoegde-operatoren-eigenschappen" id="toc-zelf-toegevoegde-operatoren-eigenschappen" class="nav-link" data-scroll-target="#zelf-toegevoegde-operatoren-eigenschappen">Zelf-toegevoegde operatoren: eigenschappen</a></li>
+  <li><a href="#isometrische-en-unitaire-afbeeldingen" id="toc-isometrische-en-unitaire-afbeeldingen" class="nav-link" data-scroll-target="#isometrische-en-unitaire-afbeeldingen">Isometrische en unitaire afbeeldingen</a></li>
+  <li><a href="#isometrische-en-unitaire-afbeeldingen-1" id="toc-isometrische-en-unitaire-afbeeldingen-1" class="nav-link" data-scroll-target="#isometrische-en-unitaire-afbeeldingen-1">Isometrische en unitaire afbeeldingen</a></li>
+  <li><a href="#isometrische-en-unitaire-matrices" id="toc-isometrische-en-unitaire-matrices" class="nav-link" data-scroll-target="#isometrische-en-unitaire-matrices">Isometrische en unitaire matrices</a></li>
+  <li><a href="#anti-unitaire-transformatie" id="toc-anti-unitaire-transformatie" class="nav-link" data-scroll-target="#anti-unitaire-transformatie">Anti-unitaire transformatie</a></li>
+  <li><a href="#normale-operatoren" id="toc-normale-operatoren" class="nav-link" data-scroll-target="#normale-operatoren">Normale operatoren</a></li>
+  <li><a href="#normale-operatoren-eigenschappen" id="toc-normale-operatoren-eigenschappen" class="nav-link" data-scroll-target="#normale-operatoren-eigenschappen">Normale operatoren: eigenschappen</a></li>
+  <li><a href="#hilbert-schmidt-inwendig-product" id="toc-hilbert-schmidt-inwendig-product" class="nav-link" data-scroll-target="#hilbert-schmidt-inwendig-product">Hilbert-Schmidt inwendig product</a></li>
+  </ul></li>
+  <li><a href="#toepassing-kleinste-kwadratenoplossing" id="toc-toepassing-kleinste-kwadratenoplossing" class="nav-link" data-scroll-target="#toepassing-kleinste-kwadratenoplossing">Toepassing: kleinste-kwadratenoplossing</a>
+  <ul class="collapse">
+  <li><a href="#overgedetermineerd-stelsel" id="toc-overgedetermineerd-stelsel" class="nav-link" data-scroll-target="#overgedetermineerd-stelsel">Overgedetermineerd stelsel</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hoofdstuk 5 - Inwendig product en orthogonaliteit</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jutho Haegeman </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 28, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="doel-van-dit-hoofdstuk" class="level2">
+<h2 class="anchored" data-anchor-id="doel-van-dit-hoofdstuk">Doel van dit hoofdstuk</h2>
+<div class="hidden">
+<p>$$ % Math operators % % </p>
+% VECTORS
+<p>% specifically for vectors in F^n </p>
+% MATRICES
+<p>% SCALARS </p>
+% LINEAR MAPS
+<p>% FIELDS </p>
+<p>% RELATIONS </p>
+<p>$$</p>
+</div>
+<ul>
+<li><p>Concept van inwendig product:</p>
+<ul>
+<li>geeft aanleiding tot lengte, oriëntatie, geometrie (bvb Pythogoras)</li>
+<li>geeft ook aanleiding tot (antilinear) isomorfisme tussen vector ruimte en zijn duale</li>
+</ul></li>
+<li><p>Concept van orthogonaliteit: orthogonale projectie, orthogonale basis: enorm belangrijk voor zowel theorie als praktijk (numerieke algoritmen)</p></li>
+<li><p>Lineaire afbeeldingen tussen inwendig product ruimten, toegevoegde afbeelding, zelftoegevoegde en normale operatoren, orthogonale en unitaire afbeeldingen</p></li>
+<li><p>Gerelateerde concepten: bilineare en sesquilineare vormen</p></li>
+<li><p>Toepassing: kleinste kwadratenoplossing voor overgedetermineerde systemen</p></li>
+</ul>
+</section>
+<section id="proloog-bilineaire-en-sesquilineaire-vormen" class="level1">
+<h1>Proloog: Bilineaire en sesquilineaire vormen</h1>
+<section id="bilineaire-vormen" class="level2">
+<h2 class="anchored" data-anchor-id="bilineaire-vormen">Bilineaire vormen</h2>
+<ul>
+<li>herhaling: bilineaire afbeelding <span class="math inline">B:V_1 \times V_2 \to V_3</span>
+<ul>
+<li><span class="math inline">B(a {v}_1 + b {w}_1, {v}_2) = a B({v}_1,{v}_2) + b B({w}_1,{v}_2)</span></li>
+<li><span class="math inline">B({v}_1, a {v}_2 + b {w}_2) = a B({v}_1,{v}_2) + b B({v}_1,{w}_2)</span></li>
+</ul></li>
+<li>bilineaire vorm = bilineaire afbeelding <span class="math inline">V \times V \to {\mathbb{F}}</span>
+<ul>
+<li>speciale gevallen:
+<ul>
+<li>symmetrisch <span class="math inline">B({v},{w})=B({w},{v})</span></li>
+<li>anti-/scheef-symmetrisch <span class="math inline">B({v},{w}) = -B({w},{v})</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="bilineaire-vormen-en-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="bilineaire-vormen-en-matrices">Bilineaire vormen en matrices</h2>
+<ul>
+<li><p>basisrepresentatie: <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span></p>
+<p><span class="math inline">\Rightarrow B({v},{w}) = {v}^i \underbrace{B({e}_i,{e}_j)}_{B_{ij}\Rightarrow {\mathsf{B}}\in{\mathbb{F}}^{n\times n}} w^j = \boldsymbol{v}^{\mathsf{T}}{\mathsf{B}} \boldsymbol{w}</span></p>
+<ul>
+<li><p>(anti)symmetrisch : <span class="math inline">{\mathsf{B}} = \pm {\mathsf{B}}^{{\mathsf{T}}} \Leftrightarrow B_{ij} = \pm B_{ji}</span></p></li>
+<li><p>basistransformatie:</p>
+<ul>
+<li>vector: <span class="math inline">\tilde{v}^i = [{\mathsf{T}}]^i_{\ j} v^j</span></li>
+<li>duale vector: <span class="math inline">\tilde{\xi}_i = [{\mathsf{T}}^{-{\mathsf{T}}}]_i^{\ j}\xi_j</span></li>
+<li>bilineaire vorm: <span class="math inline">\tilde{B}_{ij} = [{\mathsf{T}}^{-{\mathsf{T}}}]_i^{\ k}[{\mathsf{T}}^{-{\mathsf{T}}}]_j^{\ l}B_{kl}</span></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> behoudt (anti)symmetrie</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="bilineaire-en-kwadratische-vormen" class="level2">
+<h2 class="anchored" data-anchor-id="bilineaire-en-kwadratische-vormen">Bilineaire en kwadratische vormen</h2>
+<ul>
+<li><p>elke bilineaire vorm kan ontbonden worden als: <span class="math inline">B({v},{w}) = \underbrace{\frac{1}{2}\left(B({v},{w})+B({w},{v})\right)}_{B_{\text{S}}({v},{w})} + \underbrace{\frac{1}{2}\left(B({v},{w})-B({w},{v})\right)}_{B_{\text{A}}({v},{w})}</span></p></li>
+<li><p>kwadratische vorm = afbeelding <span class="math inline">q:V \to {\mathbb{R}}</span> zodat</p>
+<p><span class="math display">B({v},{w}) = \left(q({v}+{w})-q({v}) - q({w})\right)/2</span></p>
+<p>een bilineaire vorm is (er geldt dan <span class="math inline">q({v})=B({v},{v})</span>)</p>
+<ul>
+<li><p>kwadratische vorm equivalent met symmetrische bilineaire vorm</p>
+<p>(antisymmetrisch stuk geeft geen bijdrage in <span class="math inline">B({v},{v})</span>)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="kwadratische-vormen-toepassingen" class="level2">
+<h2 class="anchored" data-anchor-id="kwadratische-vormen-toepassingen">Kwadratische vormen: toepassingen</h2>
+<ul>
+<li><p>kwadratische Hamiltoniaan/Lagrangiaan(harmonische oscillator): <span class="math display">H(x,p) = \frac{1}{2m} p^2 + \frac{1}{2}m \omega^2 x^2</span></p></li>
+<li><p>kegelsneden: <span class="math inline">x^2 + y^2 - z^2 = 1</span></p></li>
+<li><p>tweede-orde Taylorexpansie <span class="math inline">\rightarrow</span> Hessiaan:</p>
+<p><span class="math display">f(\boldsymbol{x}) = f(\boldsymbol{x}_0) + (x-x_0)^i \partial_i f(\boldsymbol{x}_0) +\\
+\quad\quad\qquad \frac{1}{2} (x-x_0)^i(x-x_0)^j \frac{\partial^2 f}{\partial x^i \partial x^j}(\boldsymbol{x}_0)</span></p></li>
+</ul>
+</section>
+<section id="sesquilineaire-vormen" class="level2">
+<h2 class="anchored" data-anchor-id="sesquilineaire-vormen">Sesquilineaire vormen</h2>
+<p>Complexe vectorruimte <span class="math inline">V</span>:</p>
+<ul>
+<li><p>Sesquilinaire vorm is afbeelding <span class="math inline">C:V \times V \to {\mathbb{F}}</span> met</p>
+<ul>
+<li><span class="math inline">C({a}{u}+ {b}{v},{w}) = {\overline{{a}}} C({u},{w}) + {\overline{{b}}} C({v},{w})</span></li>
+<li><span class="math inline">C({u},{a}{v}+ {b}{w}) = {a}C({u},{v}) + {b}C({u},{w})</span></li>
+</ul></li>
+<li><p>Speciale gevallen:</p>
+<ul>
+<li><span class="math inline">C({v},{w}) = \overline{C({w},{v})}</span>: hermitisch</li>
+<li><span class="math inline">C({v},{w}) = -\overline{C({v},{w})}</span>: anti- of scheefhermitisch</li>
+</ul></li>
+</ul>
+<p>Herleidt zich tot (symmetrische of antisymmetrische) bilineaire vormen voor <span class="math inline">{\mathbb{F}}= {\mathbb{R}}</span></p>
+</section>
+<section id="sesquilineaire-vormen-en-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="sesquilineaire-vormen-en-matrices">Sesquilineaire vormen en matrices</h2>
+<ul>
+<li><p>basisrepresentatie: <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span></p>
+<p><span class="math inline">C({v},{w}) = \overline{v^i} C({e}_i,{e}_j) w^j = \boldsymbol{v}^{\mathsf{H}}{\mathsf{C}} \boldsymbol{w}</span> met <span class="math inline">C_{ij} = C({e}_i,{e}_j) \Rightarrow {\mathsf{C}} \in {\mathbb{F}}^{n \times n}</span></p>
+<ul>
+<li><p>(anti)hermitisch : <span class="math inline">{\mathsf{C}} = \pm {\mathsf{C}}^{{\mathsf{H}}} \Leftrightarrow C_{ij} = \pm \overline{C_{ji}}</span></p></li>
+<li><p>basistransformatie:</p>
+<ul>
+<li><p>vector: <span class="math inline">\tilde{v}^i = [{\mathsf{T}}]^i_{\ j} v^j</span></p></li>
+<li><p>duale vector: <span class="math inline">\tilde{\xi}_i = [{\mathsf{T}}^{-{\mathsf{T}}}]_i^{\ j}\xi_j</span></p></li>
+<li><p>sesquilineaire vorm: <span class="math inline">\tilde{C}_{ij} = [{\mathsf{T}}^{-{\mathsf{H}}}]_i^{\ k}[{\mathsf{T}}^{-{\mathsf{T}}}]_j^{\ l}C_{kl}</span></p>
+<p>(eenduidiger: <span class="math inline">\tilde{C}_{\bar{\imath}j} = [{\mathsf{T}}^{-{\mathsf{H}}}]_{\bar{\imath}}^{\ \bar{k}}[{\mathsf{T}}^{-{\mathsf{T}}}]_{j}^{\ l} C_{\bar{k}l}</span> )</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="bilineaire-en-sesquilineaire-vormen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="bilineaire-en-sesquilineaire-vormen">Bilineaire en sesquilineaire vormen</h2>
+<p>Bijkomende begrippen:</p>
+<ul>
+<li><p><strong>ontaard</strong>: als een <span class="math inline">{v}\in V</span> bestaat zodat <span class="math inline">C({w},{v})=0</span> voor alle <span class="math inline">{w}\in V</span> <span class="math inline">\Rightarrow \mathop{\mathrm{rank}}({\mathsf{C}}) &lt; \mathop{\mathrm{dim}}(V)</span> of <span class="math inline">\det({\mathsf{C}})=0</span></p></li>
+<li><p><strong>positief definiet of semidefiniet</strong>: <span class="math inline">C({v},{v}) &gt; 0</span> of <span class="math inline">C({v},{v}) \geq 0</span> voor alle <span class="math inline">{v}\neq {o}</span></p></li>
+<li><p><strong>indefiniet</strong>: <span class="math inline">C({v},{v})</span> neemt positieve en negatieve waarden aan voor verschillende <span class="math inline">{v}</span></p></li>
+<li><p><span class="math inline">{\mathsf{B}} = {\mathsf{T}}^{\mathsf{T}}\tilde{{\mathsf{B}}} {\mathsf{T}}</span> of <span class="math inline">{\mathsf{C}} = {\mathsf{T}}^{\mathsf{H}}\tilde{{\mathsf{C}}} {\mathsf{T}}</span>: <strong>matrix congruentie</strong> <span class="math inline">\rightarrow</span> equivalentierelatie</p>
+<ul>
+<li>behoudt geen eigenwaarden, niet compatibel met matrixvermenigvuldiging, machten, functies, …</li>
+<li>behoudt (anti)symmetrisch of (anti)hermitisch</li>
+<li>behoudt eigenwaarden <span class="math inline">0</span> en dus het ontaard zijn</li>
+<li>behoudt positief definiet / semidefiniet , indefiniet, …</li>
+</ul></li>
+<li><p>stelling: als <span class="math inline">C</span> positief semidefiniet is maar niet positief definiet, dan is <span class="math inline">C</span> ontaard</p></li>
+</ul>
+</section>
+</section>
+<section id="inwendig-productruimten" class="level1">
+<h1>Inwendig productruimten</h1>
+<section id="inwendig-product" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="inwendig-product">Inwendig product</h2>
+<p>Inwendig product op vectorruimte <span class="math inline">V</span> = hermitische, positief definiete sesquilineaire vorm.</p>
+<ul>
+<li><p>notatie: <span class="math inline">V \times V \to {\mathbb{F}}: ({v},{w}) \mapsto {\left\langle{v},{w}\right\rangle}</span></p></li>
+<li><p>eigenschappen:</p>
+<ul>
+<li><p>lineair in tweede argument: <span class="math inline">{\left\langle{v},a_1 {w}_1 + a_2 {w}_2\right\rangle} = a_1 {\left\langle{v},{w}_1\right\rangle} + a_2 {\left\langle{v},{w}_2\right\rangle}</span></p></li>
+<li><p>hermitisch: <span class="math inline">{\left\langle{v},{w}\right\rangle} = \overline{{\left\langle{w},{v}\right\rangle}}</span></p>
+<p><span class="math inline">\Rightarrow {\left\langle a_1 {v}_1 + a_2{v}_2,{w}\right\rangle} = \overline{a_1}{\left\langle{v}_1,{w}\right\rangle} + \overline{a_2} {\left\langle{v}_2,{w}\right\rangle}</span></p></li>
+<li><p>positief definiet: <span class="math inline">{v}\neq {o}\Rightarrow {\left\langle{v},{v}\right\rangle} &gt; 0</span></p></li>
+</ul></li>
+<li><p>matrixrepresentatie t.o.v. basis <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span>:</p>
+<p><span class="math inline">{\left\langle{v},{w}\right\rangle} = \overline{v^i} g_{ij} w^j</span> met <span class="math inline">g_{ij} = {\left\langle{e}_i,{e}_j\right\rangle}</span> (<strong>metriek</strong> of <strong>Gram matrix</strong>)</p></li>
+<li><p>fysica (bvb relativiteit): metriek die indefiniet (maar niet-ontaard) is</p>
+<p>(= pseudo-inner product)</p>
+<p><span class="math inline">\rightarrow</span> gaan we hier niet gebruiken</p></li>
+</ul>
+</section>
+<section id="cauchy-schwarz-ongelijkheid" class="level2">
+<h2 class="anchored" data-anchor-id="cauchy-schwarz-ongelijkheid">Cauchy-Schwarz ongelijkheid</h2>
+<ul>
+<li><p>Cauchy-Schwarz-Bunjakowski: <span class="math inline">{\left\lvert{\left\langle{v},{w}\right\rangle}\right\rvert}^2 \leq {\left\langle{v},{v}\right\rangle}{\left\langle{w},{w}\right\rangle}</span></p></li>
+<li><p>gevolg: <span class="math inline">{\left\lVert{v}\right\rVert} = \sqrt{{\left\langle{v},{v}\right\rangle}}</span> is een valabele norm</p>
+<p><span class="math inline">\Rightarrow</span> Cauchy-Schwarz ongelijkheid: <span class="math inline">{\left\lvert{\left\langle{v},{w}\right\rangle}\right\rvert} \leq {\left\lVert{v}\right\rVert}{\left\lVert{w}\right\rVert}</span></p>
+<p><span class="math inline">\Rightarrow</span> als <span class="math inline">{\mathbb{F}}={\mathbb{R}}</span>:</p>
+<ul>
+<li><span class="math inline">-1 \leq \frac{{\left\langle{v},{w}\right\rangle}}{{\left\lVert{v}\right\rVert}{\left\lVert{w}\right\rVert}} \leq +1</span></li>
+<li><span class="math inline">{\left\langle{v},{w}\right\rangle} = {\left\lVert{v}\right\rVert}{\left\lVert{w}\right\rVert}\cos(\theta)</span> definieert <span class="math inline">\theta</span></li>
+</ul></li>
+<li><p>inwendig product is continu t.o.v. de geassocieerde norm</p></li>
+<li><p><strong>Hilbertruimte</strong>: inwendig productruimte die metrisch compleet is</p></li>
+</ul>
+</section>
+<section id="inwendig-product-voorbeelden-eindig-dimensionaal" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="inwendig-product-voorbeelden-eindig-dimensionaal">Inwendig product: voorbeelden (eindig-dimensionaal)</h2>
+<ul>
+<li><p><span class="math inline">V={\mathbb{R}}^n</span>: euclidisch inwendig product <span class="math display">{\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle}= \boldsymbol{v}^{\mathsf{T}}\boldsymbol{w} = v^i \delta_{ij} w^j = \sum_{i=1}^n v^i w^i</span></p></li>
+<li><p><span class="math inline">V={\mathbb{C}}^n</span>: natuurlijke veralgemening <span class="math display">{\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle}= \boldsymbol{v}^{\mathsf{H}}\boldsymbol{w} = \overline{v^i} \delta_{ij} w^j = \sum_{i=1}^n \overline{v^i} w^i</span></p>
+<p><span class="math inline">\Rightarrow {\left\lVert{v}\right\rVert} = {\left\lVert{v}\right\rVert}_2 = \sqrt{\sum_{i=1}^n {\left\lvert v^i\right\rvert}^2}</span></p>
+<p><span class="math inline">\Rightarrow</span> Cauchy-Schwarz ongelijkheid = specifiek geval van Hölder (<span class="math inline">p=q=2</span>)</p></li>
+<li><p><span class="math inline">V = {\mathbb{F}}^{m \times n}</span>: Frobenius inwendig product</p>
+<p><span class="math display">{\left\langle{\mathsf{A}},{\mathsf{B}}\right\rangle}= \mathop{\mathrm{tr}}({\mathsf{A}}^{\mathsf{H}}{\mathsf{B}}) = \sum_{i=1}^m\sum_{j=1}^m \overline{A^i_{\ j}} B^i_{\ j}</span></p></li>
+</ul>
+</section>
+<section id="inwendig-product-voorbeelden-oneindig-dimensionaal" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="inwendig-product-voorbeelden-oneindig-dimensionaal">Inwendig product: voorbeelden (oneindig-dimensionaal)</h2>
+<ul>
+<li><p><span class="math inline">V=\ell^2({\mathbb{N}}_0, {\mathbb{F}})</span>: rijen <span class="math inline">\boldsymbol{v} = (v^i \in {\mathbb{F}})_{i\in {\mathbb{N}}_0}</span> waarvoor <span class="math inline">\sum_{i=1}^{+\infty} {\left\lvert v^i\right\rvert}^2 &lt; \infty</span></p>
+<p><span class="math display">\Rightarrow {\left\langle\boldsymbol{v},\boldsymbol{w}\right\rangle} = \sum_{i=1}^{+\infty} \overline{v^i} w^i</span></p>
+<p>(eindig, want <span class="math inline">{\left\lvert\sum_{i=1}^{+\infty} \overline{v^i} w^i\right\rvert} \leq \sum_{i=1}^{+\infty} {\left\lvert\overline{v}^i w^i\right\rvert} \leq \frac{1}{2} \sum_{i=1}^{+\infty} \left({\left\lvert v^i\right\rvert}^2 + {\left\lvert w^i\right\rvert}^2\right)</span>)</p></li>
+<li><p><span class="math inline">V = C^0([a,b],{\mathbb{F}})</span>: continue functies op <span class="math inline">[a,b]</span> <span class="math display">\Rightarrow {\left\langle f,g\right\rangle} = \int_a^b\,\overline{f(x)}g(x)\,{\mathrm{d}}x</span></p>
+<ul>
+<li>niet metrisch compleet: Cauchy rijen t.o.v. <span class="math inline">{\left\lVert\cdot \right\rVert}_2</span> die niet convergeren naar continue functies</li>
+</ul></li>
+<li><p><span class="math inline">V = L^2([a,b],{\mathbb{F}})</span>: kwadratisch integreerbare functies (zie H7)</p></li>
+</ul>
+</section>
+<section id="inwendig-product-bijkomende-eigenschappen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="inwendig-product-bijkomende-eigenschappen">Inwendig product: bijkomende eigenschappen</h2>
+<ul>
+<li><p>Parallellogram wet: voor de norm <span class="math inline">{\left\lVert{v}\right\rVert} = \sqrt{{\left\langle{v},{v}\right\rangle}}</span> geassocieerd aan een inwendig product geldt</p>
+<p><span class="math display">{\left\lVert{v}+ {w}\right\rVert}^2 + {\left\lVert{v}- {w}\right\rVert}^2 = 2({\left\lVert{v}\right\rVert}^2 + {\left\lVert{w}\right\rVert}^2)</span></p></li>
+<li><p>Gegeven een genormeerde vectorruimte <span class="math inline">(V,{\left\lVert\cdot\right\rVert})</span> waarbij de norm voldoet aan de parallellogramwet. Dan kan uit die norm een inwendig product worden gedefinieerd via de zogenaamde <strong>polarisatie-identiteit</strong>:</p>
+<p><span class="math display">\begin{align}
+  {\left\langle{v},{w}\right\rangle} = \begin{cases}
+\frac{1}{4}{\left\lVert{v}+ {w}\right\rVert}^2 - \frac{1}{4}{\left\lVert{v}- {w}\right\rVert}^2,&amp;\text{$V$ real}\\
+\frac{1}{4}{\left\lVert{v}+ {w}\right\rVert}^2 - \frac{1}{4}{\left\lVert{v}- {w}\right\rVert}^2 + \frac{{\mathrm{i}}}{4}{\left\lVert{v}- {\mathrm{i}}{w}\right\rVert}^2 - \frac{{\mathrm{i}}}{4}{\left\lVert{v}+ {\mathrm{i}}{w}\right\rVert}^2,&amp;\text{$V$ complex}
+\end{cases}
+\end{align}</span></p>
+<p>(bewijs niet te kennen)</p></li>
+</ul>
+</section>
+</section>
+<section id="orthogonaliteit-en-unitariteit" class="level1">
+<h1>Orthogonaliteit en unitariteit</h1>
+<section id="orthogonaliteit" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="orthogonaliteit">Orthogonaliteit</h2>
+<p>Gegeven een inwendig productruimte <span class="math inline">(V,{\left\langle\ ,\ \right\rangle})</span></p>
+<ul>
+<li><p>orthogonaliteit: <span class="math inline">{v}\perp {w}\iff {\left\langle{v},{w}\right\rangle}=0</span></p>
+<p>uitbreiding voor <span class="math inline">A,B \subseteq V</span>: <span class="math inline">A \perp B \iff {\left\langle{v},{w}\right\rangle}=0, \forall {v}\in A, {w}\in B</span></p></li>
+<li><p>genormaliseerde vector <span class="math inline">{v}\iff {\left\lVert{v}\right\rVert} = 1</span></p>
+<p>elke vector <span class="math inline">{v}\neq {o}</span> is proportioneel met eenheidsvector <span class="math inline">{u}= {v}/ {\left\lVert{v}\right\rVert}</span></p></li>
+<li><p>orthogonale verzameling: <span class="math inline">\{{v}_i; i \in I\} \iff {v}_i \perp {v}_j, \forall i\neq j</span></p></li>
+<li><p>orthonormale familie / systeem: <span class="math inline">\{{v}_i; i \in I\}</span> met <span class="math inline">{\left\langle{v}_i,{v}_j\right\rangle} = \delta_{i,j}</span></p>
+<p>orthonormale rij: <span class="math inline">\{{v}_n; n \in {\mathbb{N}}\}</span> met <span class="math inline">{\left\langle{v}_n,{v}_m\right\rangle} = \delta_{n,m}</span></p></li>
+<li><p>eigenschappen:</p>
+<ul>
+<li>orthogonale verzameling is lineair onafhankelijk</li>
+<li>als <span class="math inline">\mathop{\mathrm{dim}}(V)=n</span> eindig: ten hoogste <span class="math inline">n</span> orthogonale vectoren</li>
+<li>Pythagoras: orthogonale verzameling <span class="math inline">\{{v}_i; i=1,\ldots,n\}</span> <span class="math display">{\left\lVert\sum_{i=1}^n {v}_i\right\rVert}^2 = \sum_{i=1}^n {\left\lVert{v}_i\right\rVert}^2</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonaal-complement" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonaal-complement">Orthogonaal complement</h2>
+<ul>
+<li><p>verzameling <span class="math inline">S \subseteq V</span>:</p>
+<p><span class="math display">S^\perp = \{{v}\in V | {\left\langle{w},{v}\right\rangle} = 0\ \text{voor alle}\ {w}\in S\}</span></p>
+<p>eigenschappen:</p>
+<ul>
+<li><span class="math inline">S^\perp</span> is gesloten deelruimte</li>
+<li><span class="math inline">S^\perp = ({\mathbb{F}}S)^\perp = (\overline{{\mathbb{F}}S})^\perp</span></li>
+<li><span class="math inline">S \cap S^\perp = \{{o}\}</span> of <span class="math inline">\{\}</span> (afhankelijk van <span class="math inline">{o}\in S</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonale-projectie" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-projectie">Orthogonale projectie</h2>
+<p>Gegeven een <strong>gesloten (!)</strong> deelruimte <span class="math inline">W {\preccurlyeq}V</span></p>
+<ul>
+<li><p>stelling: orthogonale projectie van een vector <span class="math inline">{v}\in V</span> is de vector <span class="math inline">{w}\in W</span> die voldoet aan</p>
+<ul>
+<li><span class="math inline">{\left\lVert{v}-{w}\right\rVert} = \inf_{{w}' \in W}{\left\lVert{v}-{w}'\right\rVert}</span></li>
+<li>of: <span class="math inline">{v}- {w}\in W^\perp</span></li>
+</ul>
+<p>beide karakterisaties zijn equivalent en leiden tot een unieke oplossing</p></li>
+<li><p>Gevolg: <strong>orthogonale directe som decompositie</strong> <span class="math inline">V = W \oplus W^\perp</span></p></li>
+</ul>
+</section>
+<section id="orthogonale-projector" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonale-projector">Orthogonale projector</h2>
+<ul>
+<li><p><strong>orthogonale projector</strong> <span class="math inline">{\hat{P}}\in\mathop{\mathrm{End}}(V)</span>:</p>
+<p><span class="math inline">{\hat{P}}^2 = {\hat{P}}</span> en <span class="math inline">{\left\langle{\hat{P}}{v},{w}\right\rangle} = {\left\langle{v},{\hat{P}}{w}\right\rangle}, \forall {v},{w}\in V</span></p>
+<p><span class="math inline">\Rightarrow</span> operator norm <span class="math inline">{\left\lVert{\hat{P}}\right\rVert} = 1</span></p></li>
+<li><p>stelling:</p>
+<ul>
+<li>de projector <span class="math inline">{\hat{P}}_W</span> op gesloten deelruimte <span class="math inline">W</span> langsheen <span class="math inline">W^\perp</span> is een orthogonale projector</li>
+<li>elke orthogonale projector leidt tot een orthogonale directe som decompositie: <span class="math inline">\mathop{\mathrm{ker}}({\hat{P}}) = \mathop{\mathrm{im}}({\hat{P}})^\perp</span> en beide zijn gesloten deelruimten van <span class="math inline">V</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="orthogonaal-complement-en-directe-som" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonaal-complement-en-directe-som">Orthogonaal complement en directe som</h2>
+<p>Bijkomende eigenschappen van orthogonaal complement en orthogonale directe som:</p>
+<ul>
+<li><p>voor elke deelverzameling <span class="math inline">S</span>: <span class="math inline">V = S^\perp \oplus S^{\perp\perp}</span></p>
+<p>(aangezien <span class="math inline">S^\perp</span> gesloten deelruimte is)</p></li>
+<li><p>voor elke gesloten deelruimte <span class="math inline">W</span>: <span class="math inline">W^{\perp\perp} = W</span></p>
+<p>(aangezien orthogonaal complement van <span class="math inline">W^\perp</span> uniek is)</p></li>
+<li><p>voor elke deelverzameling <span class="math inline">S</span>: <span class="math inline">S^{\perp\perp} = \overline{{\mathbb{F}}S}</span></p>
+<p>(aangezien <span class="math inline">S^\perp = (\overline{{\mathbb{F}}S})^\perp</span> en voorgaande)</p></li>
+<li><p>voor elke complete set <span class="math inline">S</span>: <span class="math inline">S^\perp = \{0\}</span></p>
+<p>(aangezien <span class="math inline">S^\perp = (\overline{{\mathbb{F}}S})^\perp = V^\perp</span>)</p></li>
+</ul>
+</section>
+<section id="orthonormale-basis" class="level2">
+<h2 class="anchored" data-anchor-id="orthonormale-basis">Orthonormale basis</h2>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{dim}}(V)=n</span> eindig: elke verzameling van <span class="math inline">n</span> orthogonale vectoren zijn lineair onafhankelijk en vormen basis</p>
+<p>orthogonale basis maken uit gegeven basis: zie straks</p></li>
+<li><p><span class="math inline">V</span> oneindig-dimensionale Hilbertruimte (metrisch compleet): elke complete rij van orthogonale vectoren vormt een (Schauder) basis</p>
+<p><span class="math inline">\rightarrow</span> bewijs in stappen op volgende slides</p></li>
+</ul>
+</section>
+<section id="orthonormale-basis-1" class="level2">
+<h2 class="anchored" data-anchor-id="orthonormale-basis-1">Orthonormale basis</h2>
+<p>Beschouw rij <span class="math inline">({e}_n, n \in {\mathbb{N}}_0)</span> van orthonormale vectoren:</p>
+<ul>
+<li><p>Orthogonale projector op deelruimte <span class="math inline">W_n = {\mathbb{F}}\{{e}_i,i=1,\ldots,n\}</span> wordt gedefinieerd door <span class="math inline">{\hat{P}}_n {v}= \sum_{i=1}^n {e}_i {\left\langle{e}_i,{v}\right\rangle}</span></p>
+<p>(bewijs aan bord)</p>
+<p>alternatief bewijs: toon aan dat voor alle <span class="math inline">{v},{w}\in V</span> geldt</p>
+<ul>
+<li><span class="math inline">{\hat{P}}_n {v}\in W_n</span></li>
+<li><span class="math inline">{\hat{P}}_n {v}= {\hat{P}}_n^2 {v}</span></li>
+<li><span class="math inline">{\left\langle{v},{\hat{P}}_n{w}\right\rangle} = {\left\langle{\hat{P}}_n{v},{w}\right\rangle}</span></li>
+</ul>
+<p><span class="math inline">\rightarrow</span> karakteriseert uniek orthogonale projector op <span class="math inline">W_n</span></p></li>
+</ul>
+</section>
+<section id="orthonormale-basis-2" class="level2">
+<h2 class="anchored" data-anchor-id="orthonormale-basis-2">Orthonormale basis</h2>
+<ul>
+<li><p>Bessel’s ongelijkheid: <span class="math inline">\sum_{i=1}^n {\left\lvert{\left\langle{e}_i,{v}\right\rangle}\right\rvert}^2 \leq {\left\lVert{v}\right\rVert}^2</span></p>
+<p>(bewijs volgt onmiddellijk uit voorgaand bewijs)</p>
+<p><span class="math inline">\Rightarrow</span> de rij <span class="math inline">(\sum_{i=1}^n{\left\lvert{\left\langle{e}_i,{v}\right\rangle}\right\rvert}^2)_{n \in {\mathbb{N}}_0}</span> is een monotoon stijgende rij met een bovengrens, en convergeert dus naar een eindige limiet <span class="math inline">\leq {\left\lVert{v}\right\rVert}^2</span></p></li>
+<li><p><strong>expansiestelling</strong>: compleet orthonormale rij vormt Schauder basis en elke vector <span class="math inline">{v}\in V</span> kan worden geëxpandeerd als de convergente reeks <span class="math display">{v}= \sum_{i=1}^{+\infty} {e}_i {\left\langle{e}_i,{v}\right\rangle}</span></p></li>
+</ul>
+</section>
+<section id="expansiestelling-gevolgen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="expansiestelling-gevolgen">Expansiestelling: gevolgen</h2>
+<ul>
+<li><p>expansiecoefficiënten: <span class="math inline">({\left\langle{e}_i,{v}\right\rangle})_{i\in {\mathbb{N}}_0}</span></p>
+<p>ook wel: <em>veralgemeende Fourier-coefficiënten</em> (zie volgende slide)</p></li>
+<li><p>Bessel’s ongelijkheid <span class="math inline">\rightarrow</span> <strong>Plancherel’s identiteit</strong></p>
+<p><span class="math display">{\left\lVert{v}\right\rVert}^2 = \sum_{i=1}^{+\infty} {\left\lvert{\left\langle{e}_i,{v}\right\rangle}\right\rvert}^2</span></p></li>
+<li><p>meer algemeen: <strong>Parseval’s identiteit</strong></p>
+<p><span class="math display">{\left\langle{v},{w}\right\rangle} = \sum_{i=1}^{+\infty} {\left\langle{v},{e}_i\right\rangle}{\left\langle{e}_i,{w}\right\rangle} = \sum_{i=1}^{+\infty}{\overline{{\left\langle{e}_i,{v}\right\rangle}}}{\left\langle{e}_i,{w}\right\rangle} </span></p></li>
+<li><p>de lineaire afbeelding <span class="math inline">{v}\mapsto \sum_{i=1}^{+\infty} {e}_i {\left\langle{e}_i,{v}\right\rangle}</span> gedraagt zich als <span class="math inline">\mathop{\mathrm{id}}_V</span>:</p>
+<p><strong>resolutie van de identiteit</strong></p></li>
+<li><p>uit dit alles:</p>
+<p>relatie <span class="math inline">{v}\leftrightarrow ({\left\langle{e}_i,{v}\right\rangle})_{i\in {\mathbb{N}}_0}</span> is een Hilbertruimte-isomorfisme tussen <span class="math inline">V</span> en <span class="math inline">\ell^2({\mathbb{N}}_0; {\mathbb{F}})</span></p></li>
+</ul>
+</section>
+<section id="expansiestelling-voorbeeld" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="expansiestelling-voorbeeld">Expansiestelling: voorbeeld</h2>
+<ul>
+<li><p><span class="math inline">V = L^2([0,L], {\mathbb{C}})</span>: rij <span class="math inline">(f_k)_{k\in {\mathbb{Z}}}</span> met</p>
+<p><span class="math display">f_k(x) = \frac{1}{\sqrt{L}}\exp\left(+{\mathrm{i}}\frac{2\pi}{L} k x\right)</span></p>
+<p>is orthonormaal (controleer!) en compleet (geen bewijs).</p></li>
+<li><p>Basisexpansie is de Fourierreeks:</p>
+<p><span class="math display">f(x) = \frac{1}{\sqrt{L}}\sum_{k=-\infty}^{+\infty} F^k \exp\left(+{\mathrm{i}}\frac{2\pi}{L} k x\right)</span></p>
+<p>met de (dubbelzijdige) rij Fouriercoëfficiënten <span class="math inline">(F_k)_{k \in{\mathbb{Z}}} \in \ell^2({\mathbb{Z}},{\mathbb{C}})</span>, gegeven door</p>
+<p><span class="math display">F^k = {\left\langle f_k,f\right\rangle} = \frac{1}{\sqrt{L}} \int_{0}^{L} f(x) \exp\left(-{\mathrm{i}}\frac{2\pi}{L} k x\right)\,{\mathrm{d}}x</span></p></li>
+<li><p>zie hoofdstuk 7 voor meer details</p></li>
+</ul>
+</section>
+<section id="gram-schmidt" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="gram-schmidt">Gram-Schmidt</h2>
+<p>lineair onafhankelijke vectoren: <span class="math inline">S=\{{v}_1,{v}_2,\ldots\}</span></p>
+<p><span class="math inline">\rightarrow</span> orthonormale rij <span class="math inline">(q_1,q_2,\ldots)</span> die zelfde (deel)ruimte opspant</p>
+<p><span class="math inline">\rightarrow</span> meer specifiek: <span class="math inline">{\mathbb{F}}\{{v}_i, i=1,\ldots,n\} = {\mathbb{F}}\{q_i; i=1,\ldots,n\}</span> voor alle <span class="math inline">n</span></p>
+<p>Gram-Schmidt proces / algoritme:</p>
+<p><span class="math display">\begin{align*}
+    {w}_1 &amp;= {v}_1&amp; {q}_1 = {w}_1/{\left\lVert{w}_1\right\rVert}\\
+    {w}_2 &amp;= {v}_2 - {\left\langle{q}_1,{v}_2\right\rangle} {q}_1 &amp; {q}_2 = {w}_2 / {\left\lVert{w}_2\right\rVert}\\
+    &amp;\ldots\\
+    {w}_k &amp;= {v}_k - \sum_{j=1}^{k-1}{\left\langle{q}_j,{v}_k\right\rangle} {q}_j &amp; {q}_k = {w}_k / {\left\lVert{w}_k\right\rVert}\\
+    &amp;\ldots
+\end{align*}</span> <span class="math inline">\Rightarrow {v}_k = \sum_{j=1}^{k} R^{j}_{\ k} {q}_{j}</span> met <span class="math inline">R^j_{\ k} = {\left\langle q_j,{v}_k\right\rangle}</span> en <span class="math inline">R^k_{\ k} = {\left\lVert{v}_k - \sum_{j=1}^{k-1}R^j_{\ k} {q}_j\right\rVert} = {\left\lVert{w}_k\right\rVert}</span></p>
+<p>Opmerking: <span class="math inline">{w}_n</span> kan enkel nul worden als <span class="math inline">{v}_n</span> lineair afhankelijk is van <span class="math inline">\{{v}_1,\ldots,{v}_{n-1}\}</span></p>
+</section>
+<section id="gram-schmidt-en-qr-decompositie" class="level2">
+<h2 class="anchored" data-anchor-id="gram-schmidt-en-qr-decompositie">Gram-Schmidt en QR decompositie</h2>
+<p>Matrixversie: <span class="math inline">{\mathbb{F}}^n</span> met Euclidisch inwendig product</p>
+<ul>
+<li><p><span class="math inline">m</span> lineair onafhankelijke vectoren: <span class="math inline">{\mathsf{V}} = \begin{bmatrix} \boldsymbol{v}_1 | \boldsymbol{v}_2 | \dots | \boldsymbol{v}_m \end{bmatrix} \in {\mathbb{F}}^{n \times m}</span></p></li>
+<li><p>Gram-Schmidt leidt tot <span class="math inline">{\mathsf{V}} = {\mathsf{Q}} {\mathsf{R}}</span> met</p>
+<ul>
+<li><p>bovendriekhoeksmatrix <span class="math inline">{\mathsf{R}}</span></p></li>
+<li><p><span class="math inline">{\mathsf{Q}} = \begin{bmatrix} \boldsymbol{q}_1 | \boldsymbol{q}_2 | \dots | \boldsymbol{q}_m \end{bmatrix}</span></p>
+<p><span class="math inline">\Rightarrow {\left\langle\boldsymbol{q}_i,\boldsymbol{q}_j\right\rangle} = \boldsymbol{q}_i^{\mathsf{H}}\boldsymbol{q}_j = \delta_{i,j} \Rightarrow {\mathsf{Q}}^{\mathsf{H}}{\mathsf{Q}} = {\mathsf{I}}_m</span></p></li>
+</ul>
+<p><strong>QR-decompositie</strong> van een matrix</p></li>
+<li><p>numeriek: keuze algoritme van belang voor stabiliteit</p>
+<p>(classical vs modified Gram-Schmidt, Householder)</p></li>
+</ul>
+</section>
+</section>
+<section id="lineaire-functionalen-en-dualiteit-van-hilbertruimten" class="level1">
+<h1>Lineaire functionalen en dualiteit van Hilbertruimten</h1>
+<section id="lineaire-functionalen" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen">Lineaire functionalen</h2>
+<p>Gegeven een Hilbertruimte <span class="math inline">V</span>:</p>
+<ul>
+<li><p>Aan elke <span class="math inline">{v}\in V</span> associeren we een <span class="math inline">\chi_{v}\in V^\ast</span> <span class="math display">\chi_{v}: V \to {\mathbb{F}}: w \mapsto \chi_v[w] = {\left\langle{v},{w}\right\rangle}</span></p>
+<ul>
+<li>Afbeelding <span class="math inline">{v}\to \chi_{{v}}</span> is antilineair (triviaal)</li>
+<li>Afbeelding <span class="math inline">{v}\to \chi_{{v}}</span> is injectief</li>
+<li>Lineaire functionaal <span class="math inline">\chi_{v}</span> is continu en dus ook begrensd</li>
+<li>Inderdaad: <span class="math inline">{\left\lvert\chi_{v}[w]\right\rvert} \leq {\left\lVert{v}\right\rVert} {\left\lVert{w}\right\rVert}</span> (Cauchy-Schwarz)</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\Rightarrow</span> kunnen we elke (begrensde) functionaal zo bekomen?</p>
+</section>
+<section id="lineaire-functionalen-1" class="level2">
+<h2 class="anchored" data-anchor-id="lineaire-functionalen-1">Lineaire functionalen</h2>
+<p>Als <span class="math inline">V</span> eindig-dimensionaal met <span class="math inline">B_V=\{{e}_1,\ldots,{e}_n\}</span>:</p>
+<ul>
+<li><p>Duale basis <span class="math inline">B^\ast_V=\{\varepsilon^1,\ldots,\varepsilon^n\}</span>: <span class="math inline">\varepsilon^i[{e}_j] =\delta^i_{\ j}</span></p></li>
+<li><p><span class="math inline">\chi_{v}[w] = {\left\langle{v},{w}\right\rangle} = \overline{v^i} g_{ij} w^j = (\chi_{v})_j w^j</span></p>
+<p><span class="math inline">\Rightarrow \chi_{v}= \overline{v^i} g_{ij} \varepsilon^j</span></p></li>
+<li><p>Inverse metriek: <span class="math inline">{\mathsf{g}}^{-1} {\mathsf{g}} = {\mathsf{I}}\iff \underbrace{g^{ij}}_{= ({\mathsf{g}}^{-1})^{ij}} g_{jk} = \delta^i_{\ k}</span></p></li>
+<li><p><span class="math inline">\xi[{w}] = \xi_j {w}^j \rightarrow \xi[{w}] = {\left\langle{v}_\xi,{w}\right\rangle}</span></p>
+<p><span class="math inline">\Rightarrow ({v}_\xi)^j = \overline{\xi_i g^{ij}}</span></p></li>
+</ul>
+</section>
+<section id="lineaire-functionalen-en-vectoren" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="lineaire-functionalen-en-vectoren">Lineaire functionalen en vectoren</h2>
+<p>Voor <span class="math inline">V</span> eindig-dimensionaal kunnen we elke lineaire functionaal <span class="math inline">\xi</span> voorstellen als inwendig product met een geassocieerde vector <span class="math inline">{v}_\xi</span></p>
+<p>Interpretatie en gevolgen:</p>
+<ul>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}(\xi)</span> heeft codimensie <span class="math inline">1</span> (tenzij <span class="math inline">\xi=0</span>):</p>
+<p><span class="math inline">\mathop{\mathrm{ker}}(\xi) = ({v}_\xi)^\perp</span> (elkaars orthogonaal complement)</p></li>
+<li><p>Met elke <span class="math inline">{v}\in V</span> is exact één <span class="math inline">\chi \in V^\ast</span> geassocieerd en vice versa (<span class="math inline">{v}\to \chi_{v}</span> en <span class="math inline">\xi \to {v}_{\xi}</span> zijn elkaars inverse)</p></li>
+<li><p><span class="math inline">V^\ast</span> is zelf een Hilbertruimte met inwendig product</p>
+<p><span class="math display">{\left\langle\xi,\chi\right\rangle}_{V^\ast} = {\left\langle{v}_{\chi},{v}_{\xi}\right\rangle}_V = \overline{\xi_i} g^{ij} \chi_j</span></p></li>
+<li><p><span class="math inline">V</span> en <span class="math inline">V^\ast</span> zijn (anti)isomorf als Hilbertruimten:</p>
+<p>de bijectieve afbeelding <span class="math inline">{v}\to \chi_{v}</span> behoudt inwendig product en lineaire combinaties (maar met complexe toevoeging van scalaire factoren)</p></li>
+</ul>
+</section>
+<section id="representatiestelling-van-riesz" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="representatiestelling-van-riesz">Representatiestelling van Riesz</h2>
+<p>Geldt dit ook voor oneindig-dimensionale Hilbertruimten <span class="math inline">V</span>?</p>
+<ul>
+<li><p>Vanaf nu: <span class="math inline">V^\ast = \mathcal{B}(V,{\mathbb{F}})</span> (begrensde lineaire functionalen)</p></li>
+<li><p>Representatiestelling van Riesz:</p>
+<p>voor elke <span class="math inline">\xi \in V^\ast</span> bestaat er <span class="math inline">{v}_\xi \in V</span> zodat <span class="math inline">\xi[{w}] = {\left\langle{v}_\xi,{w}\right\rangle}</span> voor alle <span class="math inline">{w}\in V</span></p>
+<p>Bewijs:</p>
+<ul>
+<li><span class="math inline">\mathop{\mathrm{ker}}(\xi)</span> is gesloten wegens continuïteit</li>
+<li>orthogonaal complement is één-dimensionaal</li>
+<li>we kunnen een element uit <span class="math inline">\mathop{\mathrm{ker}}(\xi)^\perp</span> kiezen zodat gelijkheid geldt</li>
+</ul></li>
+<li><p>Gevolg: voor Hilbertruimten geldt <span class="math inline">V \cong V^\ast</span></p></li>
+</ul>
+</section>
+</section>
+<section id="begrensde-lineaire-afbeeldingen-tussen-hilbertruimten" class="level1">
+<h1>Begrensde lineaire afbeeldingen tussen Hilbertruimten</h1>
+<section id="begrensde-lineaire-afbeeldingen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="begrensde-lineaire-afbeeldingen">Begrensde lineaire afbeeldingen</h2>
+<p>Hilbertruimten <span class="math inline">(V, {\left\langle\ ,\ \right\rangle}_V)</span> en <span class="math inline">(W, {\left\langle\ ,\ \right\rangle}_W)</span>; lineaire afbeelding <span class="math inline">{\hat{A}} \in \mathcal{B}(V,W)</span></p>
+<ul>
+<li><p>Geinduceerde norm:</p>
+<p><span class="math display">\begin{align*}
+  {\left\lVert{\hat{A}}\right\rVert} &amp;= \sup_{\substack{ {v}\in V\\ {v}\neq {o}}} \frac{{\left\lVert{\hat{A}}{v}\right\rVert}_W}{{\left\lVert{v}\right\rVert}_V} = \sup_{\substack{{v}\in V\\ {\left\lVert{v}\right\rVert}_V = 1}} {\left\lVert{\hat{A}}{v}\right\rVert}_W\\
+  &amp;= \sup_{\substack{{v}\in V, {w}\in W \\ {v}\neq {o}, {w}\neq {o}}} \frac{{\left\lvert{\left\langle{w},{\hat{A}}{v}\right\rangle}_W\right\rvert}}{{\left\lVert{w}\right\rVert}_W {\left\lVert{v}\right\rVert}_V} = \sup_{\substack{{v}\in V, {w}\in V \\ {\left\lVert{v}\right\rVert}_V = 1, {\left\lVert{w}\right\rVert}_W=1}} {\left\lvert{\left\langle{w},{\hat{A}}{v}\right\rangle}_W\right\rvert}.
+\end{align*}</span></p></li>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{A}})</span> van begrensde lineaire afbeelding is altijd gesloten deelruimte</p></li>
+<li><p><span class="math inline">\mathop{\mathrm{im}}({\hat{A}})</span> is niet noodzakelijk gesloten:</p>
+<ul>
+<li>beschouw <span class="math inline">({w}_n \in \mathop{\mathrm{im}}({\hat{A}}))</span> met <span class="math inline">\lim_{n\to\infty} {w}_n ={w}</span></li>
+<li>voor elke <span class="math inline">{w}_n</span> bestaat er (niet noodzakelijk uniek) <span class="math inline">{v}_n \in V</span> met <span class="math inline">{w}_n = {\hat{A}}{v}_n</span></li>
+<li>geen garantie dat <span class="math inline">({v}_n \in V)</span> Cauchy rij is, en dus dat limiet bestaat</li>
+</ul></li>
+</ul>
+</section>
+<section id="eindig-dimensionaal-en-basisrepresentatie" class="level2">
+<h2 class="anchored" data-anchor-id="eindig-dimensionaal-en-basisrepresentatie">Eindig-dimensionaal en basisrepresentatie</h2>
+<ul>
+<li><p>Basis voor <span class="math inline">V</span>: <span class="math inline">B_V = \{{e}_1,\ldots,{e}_n\}</span></p></li>
+<li><p>Basis voor <span class="math inline">W</span>: <span class="math inline">B_W = \{{f}_1,\ldots,{f}_m\}</span></p>
+<p><span class="math inline">\Rightarrow</span> Duale basis voor <span class="math inline">W^\ast</span>: <span class="math inline">B_W^\ast = \{\varphi^1,\ldots,\varphi^m\}</span></p></li>
+<li><p>Matrixrepresentatie <span class="math inline">{\hat{A}}{e}_j = A^i_{\ j} {f}_i \Rightarrow A^i_{\ j} = \varphi^i[{\hat{A}}{e}_j]</span></p></li>
+<li><p>Als <span class="math inline">B_W</span> een orthonormale basis is: <span class="math inline">A^i_{\ j}= {\left\langle{f}_i,{\hat{A}}{e}_j\right\rangle}</span></p>
+<ul>
+<li><p>Inderdaad: <span class="math inline">\varphi^i[{f}_j] = \delta^i_{\ j} = {\left\langle{f}_i,{f}_j\right\rangle}</span></p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">{f}_i</span> is de vector die door de representatiestelling van Riesz wordt geassocieerd aan de lineaire basisfunctionaal <span class="math inline">\varphi^i</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="toegevoegde-van-een-afbeelding" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-van-een-afbeelding">Toegevoegde van een afbeelding</h2>
+<p>Voor elke <span class="math inline">{\hat{A}}\in \mathcal{B}(V,W)</span> bestaat er een afbeelding in <span class="math inline">\mathcal{B}(W,V)</span> die we noteren als <span class="math inline">{\hat{A}}^\dagger</span> en die voldoet aan</p>
+<p><span class="math display">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle},\quad \forall {w}\in W, \forall{v}\in V</span></p>
+<p>en <span class="math inline">{\left\lVert{\hat{A}}^\dagger\right\rVert}={\left\lVert{\hat{A}}\right\rVert}</span></p>
+<p>Eigenschappen van <span class="math inline">\dagger</span> (‘dagger’):</p>
+<ul>
+<li>antilineair: <span class="math inline">(a{\hat{A}} + b {\hat{B}})^\dagger = {\overline{a}} {\hat{A}}^\dagger + {\overline{b}} {\hat{B}}^\dagger</span></li>
+<li>anti-homomorphisme voor compositie: <span class="math inline">({\hat{A}}{\hat{B}})^\dagger = {\hat{B}}^\dagger {\hat{A}}^\dagger</span></li>
+<li>involutief: <span class="math inline">{\hat{A}}^{\dagger\dagger} = ({\hat{A}}^\dagger)^\dagger = {\hat{A}}</span></li>
+</ul>
+</section>
+<section id="toegevoegde-afbeelding-matrixrepresentatie" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-matrixrepresentatie">Toegevoegde afbeelding: matrixrepresentatie</h2>
+<p>Voor <span class="math inline">V</span> en <span class="math inline">W</span> eindig-dimensionaal:</p>
+<p><span class="math inline">{\left\langle{w},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle}</span> <span class="math inline">\quad\iff {\overline{w}}^i ({\mathsf{g}}_W)_{ij} A^j_{\ k} v^k = \overline{(A^\dagger)^l_{\ i} w^i} ({\mathsf{g}}_V)_{lk} v^k</span></p>
+<p><span class="math inline">\Rightarrow (A^\dagger)^l_{\ i} = \overline{({\mathsf{g}}_W)_{ij} A^j_{\ k} ({\mathsf{g}}_V^{-1})^{k l}}</span></p>
+<p>Als <span class="math inline">B_V</span> en <span class="math inline">B_W</span> orthonormaal:</p>
+<ul>
+<li><span class="math inline">(A^\dagger)^l_{\ i} = \overline{A^i_{\ l}} = ({\mathsf{A}}^{\mathsf{H}})^l_{\ i}</span></li>
+<li>toegevoegde afbeelding voorgesteld door Hermitisch toegevoegde matrixrepresentatie</li>
+</ul>
+</section>
+<section id="toegevoegde-afbeelding-eigenschappen" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-eigenschappen">Toegevoegde afbeelding: eigenschappen</h2>
+<p>Beschouw <span class="math inline">{\hat{A}}\in\mathcal{B}(V,W)</span></p>
+<ul>
+<li><p><span class="math inline">{\left\lVert{\hat{A}}^\dagger{\hat{A}}\right\rVert} = {\left\lVert{\hat{A}}{\hat{A}}^\dagger\right\rVert} = {\left\lVert{\hat{A}}\right\rVert}^2</span></p></li>
+<li><p><span class="math inline">\mathop{\mathrm{ker}}({\hat{A}}^\dagger) = \mathop{\mathrm{im}}({\hat{A}})^\perp</span></p>
+<p>Gevolgen:</p>
+<ul>
+<li><span class="math inline">W = \mathop{\mathrm{ker}}({\hat{A}}^\dagger) \oplus \overline{\mathop{\mathrm{im}}({\hat{A}})}</span></li>
+<li><span class="math inline">V = \mathop{\mathrm{ker}}({\hat{A}})\oplus \overline{\mathop{\mathrm{im}}({\hat{A}}^\dagger)}</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="toegevoegde-afbeelding-voorbeeld" class="level2">
+<h2 class="anchored" data-anchor-id="toegevoegde-afbeelding-voorbeeld">Toegevoegde afbeelding: voorbeeld</h2>
+<p>Oneindig-dimensionaal voorbeeld:</p>
+<ul>
+<li><span class="math inline">V = W = \ell^2({\mathbb{N}}_0,{\mathbb{F}})</span> (kwadratisch sommeerbare rijen)
+<ul>
+<li><span class="math inline">{\left\langle{v},vw\right\rangle} = {\overline{w^1}}v^1+{\overline{w^2}}v^2+{\overline{w^3}}v^3+\ldots</span></li>
+</ul></li>
+<li><span class="math inline">{\hat{S}}</span> en <span class="math inline">{\hat{T}}</span> zijn de rechtse en linkse “verschuif”-operatoren:
+<ul>
+<li><span class="math inline">{\hat{S}}(v^1,v^2,v^3,\dots)= (0, v^1,v^2, \dots)</span></li>
+<li><span class="math inline">{\hat{T}}(v^1,v^2,v^3,\dots)= (v^2,v^3,v^4,\dots)</span></li>
+</ul></li>
+<li><span class="math inline">{\left\langle\boldsymbol{w},{\hat{S}}\boldsymbol{v}\right\rangle} = {\overline{w^2}} v^1 + {\overline{w^3}} v^2 + {\overline{w^4}} v^3 + \dots = {\left\langle{\hat{T}}\boldsymbol{w},\boldsymbol{v}\right\rangle}</span></li>
+<li><span class="math inline">\Rightarrow {\hat{T}} = {\hat{S}}^\dagger</span></li>
+</ul>
+</section>
+<section id="zelf-toegevoegde-operatoren" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="zelf-toegevoegde-operatoren">Zelf-toegevoegde operatoren</h2>
+<p>Hilbertruimte <span class="math inline">V=W</span>: operatoren</p>
+<ul>
+<li><p>een operator is <strong>zelftoegevoegd</strong> als <span class="math inline">{\hat{A}}={\hat{A}}^\dagger</span></p>
+<p><span class="math inline">\Rightarrow</span> matrixvoorstelling ten opzichte van orthonormale basis: <span class="math inline">{\mathsf{A}} = {\mathsf{A}}^{\mathsf{H}}</span></p></li>
+<li><p>met elke operator <span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(V)</span> kunnen we een sesquilineaire vorm associëren:</p>
+<p><span class="math display">A({v},{w}) = {\left\langle{v},{\hat{A}}{w}\right\rangle}</span></p>
+<p><span class="math inline">\Rightarrow</span> eigenschappen van sesquilineaire vormen kunnen worden geassocieerd aan operatoren:</p>
+<ul>
+<li><p>(anti)Hermitisch: <span class="math inline">A({v},{w}) = \pm \overline{A({w},{v})} \iff {\left\langle{v},{\hat{A}}{w}\right\rangle} = \pm {\left\langle{\hat{A}}{v},{w}\right\rangle}</span></p>
+<p><span class="math inline">\Rightarrow</span> zelftoegevoegd impliceert Hermitisch</p>
+<p>(en vice versa, voor begrensde operatoren, zie later voor onbegrensde)</p>
+<p>(terminologie “zelftoegevoegd” en “Hermitisch” vaak door elkaar gebruikt)</p></li>
+<li><p>positief (semi)definiet: <span class="math inline">{\left\langle{v},{\hat{A}}{v}\right\rangle} &gt; 0</span> of <span class="math inline">\geq 0</span> voor alle <span class="math inline">{v}\in V</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="zelf-toegevoegde-operatoren-eigenschappen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="zelf-toegevoegde-operatoren-eigenschappen">Zelf-toegevoegde operatoren: eigenschappen</h2>
+<ul>
+<li><p><span class="math inline">{\hat{A}}\in\mathop{\mathrm{End}}(V)</span> zelftoegevoegd en <span class="math inline">{\hat{A}}{v}= \lambda {v}</span>:</p>
+<p><span class="math inline">{\left\langle{v},{\hat{A}}{v}\right\rangle} = {\left\langle{\hat{A}}{v},{v}\right\rangle} \implies \lambda = {\overline{\lambda}}</span> of dus <span class="math inline">\lambda \in {\mathbb{R}}</span></p></li>
+<li><p><span class="math inline">{\hat{A}}\in\mathop{\mathrm{End}}(V)</span> zelftoegevoegd:</p>
+<p><span class="math inline">p({\hat{A}})</span> zelftoegevoegd voor <span class="math inline">p</span> een polynoom met reële coefficiënten</p></li>
+<li><p><span class="math inline">{\hat{A}},{\hat{B}}\in\mathop{\mathrm{End}}(V)</span> zelftoegevoegd:</p>
+<p><span class="math inline">{\hat{A}}{\hat{B}}</span> zelftoegevoegd <span class="math inline">\iff</span> <span class="math inline">{\left[{\hat{A}},{\hat{B}}\right]} = {\hat{0}}</span></p></li>
+<li><p>orthogonale projector <span class="math inline">\equiv</span> zelftoegevoegde projector</p></li>
+<li><p>voorbeeld op <span class="math inline">V =L^2([a,b])</span>: <span class="math inline">{\hat{M}}_x: f(x) \mapsto x f(x)</span></p>
+<p><span class="math inline">{\left\langle g,{\hat{M}}_x f\right\rangle} = \int_a^b \overline{g(x)} (x f(x)) \,{\mathrm{d}}x = \int_{a}^b \overline{x g(x)} f(x)\,{\mathrm{d}}x = {\left\langle{\hat{M}}_x g,f\right\rangle}</span></p>
+<p><span class="math inline">\Rightarrow {\hat{M}}_x</span> is zelftoegevoegd / Hermitisch</p>
+<p>(<span class="math inline">{\hat{M}}_x</span> is begrensd voor <span class="math inline">L^2([a,b])</span> met compact interval <span class="math inline">[a,b]</span>; zie H7)</p></li>
+</ul>
+</section>
+<section id="isometrische-en-unitaire-afbeeldingen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-afbeeldingen">Isometrische en unitaire afbeeldingen</h2>
+<p>Beschouw <span class="math inline">{\hat{Q}}\in \mathcal{B}(V,W)</span>:</p>
+<ul>
+<li><p>isometrisch <span class="math inline">\iff {\hat{Q}}^\dagger{\hat{Q}}={\hat{1}}_V</span></p>
+<p>Bewijs: <span class="math inline">\forall {v},{v}' \in V</span>: <span class="math inline">d_W({\hat{Q}}{v},{\hat{Q}}{v}') = {\left\lVert{\hat{Q}}{v}- {\hat{Q}}{v}'\right\rVert} = d_V({v},{v}') = {\left\lVert{v}-{v}'\right\rVert}</span></p>
+<p><span class="math inline">\iff {\left\lVert{\hat{Q}}{v}\right\rVert} = {\left\lVert{v}\right\rVert}</span> voor alle <span class="math inline">{v}\in V</span></p>
+<p><span class="math inline">\iff {\left\langle{v},{\hat{Q}}^\dagger {\hat{Q}}{v}\right\rangle} = {\left\langle{v},{v}\right\rangle}</span> of dus <span class="math inline">{\left\langle{v},({\hat{Q}}^\dagger{\hat{Q}}-{\hat{1}}_V){v}\right\rangle}=0</span> voor alle <span class="math inline">{v}\in V</span></p>
+<p><span class="math inline">\iff {\left\langle{v},{\hat{Q}}^\dagger {\hat{Q}}{w}\right\rangle} = {\left\langle{v},{w}\right\rangle}</span> voor alle <span class="math inline">{v},{w}\in V</span></p>
+<p>(<span class="math inline">\Leftarrow</span> triviaal, <span class="math inline">\Rightarrow</span> via <span class="math inline">{\left\langle{v}+a{w},({\hat{Q}}^\dagger {\hat{Q}}-{\hat{1}}_V)({v}+a{w})\right\rangle}=0</span> en <span class="math inline">a</span> juist kiezen)</p></li>
+<li><p>uit H4: isometrisch <span class="math inline">\implies</span> injectief</p>
+<p>als ook surjectief (en dus bijectief): <strong>unitaire</strong> transformatie ( <strong>orthogonaal</strong> als <span class="math inline">{\mathbb{F}}={\mathbb{R}}</span>)</p>
+<p>als <span class="math inline">{\hat{U}}^{-1}</span> bestaat en <span class="math inline">{\hat{U}}^\dagger {\hat{U}}={\hat{1}}_V</span> <span class="math inline">\implies</span> <span class="math inline">{\hat{U}}^{-1}={\hat{U}}^\dagger</span> en dus <span class="math inline">{\hat{U}}{\hat{U}}^\dagger = {\hat{1}}_W</span></p></li>
+</ul>
+</section>
+<section id="isometrische-en-unitaire-afbeeldingen-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-afbeeldingen-1">Isometrische en unitaire afbeeldingen</h2>
+<ul>
+<li><p>(zoals steeds) <span class="math inline">V, W</span> met <span class="math inline">\mathop{\mathrm{dim}}(V) = \mathop{\mathrm{dim}}(W)</span> eindig: isometrisch <span class="math inline">\iff</span> unitair</p>
+<ul>
+<li><p>tegenvoorbeeld als oneindig-dimensionaal: <span class="math inline">V=W = \ell^2({\mathbb{N}}_0)</span></p>
+<p><span class="math inline">{\hat{T}}{\hat{S}}={\hat{S}}^\dagger{\hat{S}} = {\hat{1}}</span> en <span class="math inline">{\hat{S}}{\hat{S}}^\dagger = {\hat{P}}</span> met <span class="math inline">{\hat{P}}(v^1,v^2,v^3,\ldots) = (0, v^2, v^3,\ldots)</span></p></li>
+</ul></li>
+<li><p>als unitaire afbeelding <span class="math inline">V \to W</span> bestaat: <span class="math inline">V \cong W</span> isomorf als Hilbertruimten</p>
+<ul>
+<li><p>elke <span class="math inline">n</span>-dimensionale Hilbertruimteruimte is isomorf met <span class="math inline">{\mathbb{C}}^n</span> met Euclidisch inwendig product (via keuze van orthonormale basis)</p></li>
+<li><p>elke (separabele) oneindig-dimensionale Hilbertruimte is isomorf met <span class="math inline">\ell^2({\mathbb{N}}_0)</span> via keuze van een complete orthonormale rij = orthonormale basis</p></li>
+</ul></li>
+<li><p>voor <span class="math inline">{\hat{S}}\in\mathop{\mathrm{End}}(V)</span> met <span class="math inline">{\hat{S}} = -{\hat{S}}^\dagger</span>:</p>
+<p><span class="math inline">{\hat{U}} = \exp({\hat{S}})</span> is unitaire transformatie van <span class="math inline">V</span> naar zichzelf</p>
+<ul>
+<li><span class="math inline">\exp({\hat{S}})^{-1} = \exp(-{\hat{S}}) = \exp({\hat{S}}^\dagger)=\exp({\hat{S}})^\dagger</span></li>
+<li>vaak geschreven als <span class="math inline">{\hat{U}}=\exp({\mathrm{i}}{\hat{H}})</span> met <span class="math inline">{\hat{H}}={\hat{H}}^\dagger</span></li>
+</ul></li>
+<li><p><span class="math inline">{\hat{Q}}</span> isometrisch maar niet unitair: <span class="math inline">{\hat{Q}}{\hat{Q}}^\dagger</span> is orthogonale projector</p></li>
+</ul>
+</section>
+<section id="isometrische-en-unitaire-matrices" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="isometrische-en-unitaire-matrices">Isometrische en unitaire matrices</h2>
+<ul>
+<li><p>unitaire matrices <span class="math inline">{\mathsf{U}} \in {\mathbb{C}}^{n\times n}</span>: basistransformatie tussen orthonormale basissen</p>
+<ul>
+<li><p><span class="math inline">B_V = \{{e}_1,{e}_2,\ldots,{e}_n\}</span> en <span class="math inline">\tilde{B}_V = \{\tilde{{e}}_1,\tilde{{e}}_2,\ldots,\tilde{{e}}_n\}</span></p></li>
+<li><p><span class="math inline">\tilde{{e}}_i = U^j_{\ i} {e}_{j}</span></p></li>
+<li><p><span class="math inline">\delta_{ij} = {\left\langle\tilde{{e}}_i,\tilde{{e}}_j\right\rangle} = \overline{U^k_{\ i}} U^l_{\ j} {\left\langle{e}_k,{e}_l\right\rangle} = \overline{U^k_{\ i}} U^l_{\ j} \delta_{kl}</span> of dus <span class="math inline">{\mathsf{U}}^{\mathsf{H}}{\mathsf{U}} = {\mathsf{I}}</span></p></li>
+</ul></li>
+<li><p>isometrische matrix <span class="math inline">{\mathsf{Q}} \in {\mathbb{C}}^{m \times n}</span> met <span class="math inline">m \geq n</span>:</p>
+<ul>
+<li><p>isometrische afbeelding van <span class="math inline">{\mathbb{C}}^n</span> naar <span class="math inline">{\mathbb{C}}^m</span></p>
+<p>(of: matrixrepresentatie van isometrische afbeelding <span class="math inline">V \to W</span> ten opzichte van orthonormale basissen in <span class="math inline">V</span> en <span class="math inline">W</span>)</p></li>
+<li><p>kolommen van <span class="math inline">{\hat{Q}}</span> definiëren orthonormale basis <span class="math inline">\{\boldsymbol{q}_1,\ldots,\boldsymbol{q}_n\}</span> voor <span class="math inline">n</span>-dimensionale deelruimte <span class="math inline">W {\preccurlyeq}{\mathbb{C}}^m</span>.</p>
+<p><span class="math inline">{\mathsf{P}}_W = \sum_{i=1}^n \boldsymbol{q}_i \boldsymbol{q}_i^{\mathsf{H}}= {\mathsf{Q}}{\mathsf{Q}}^{\mathsf{H}}</span> en <span class="math inline">{\mathsf{P}}_{W^\perp} = {\mathsf{I}}- {\mathsf{Q}}{\mathsf{Q}}^{\mathsf{H}}</span></p>
+<p><span class="math inline">\rightarrow</span> andere orthonormale basis voor <span class="math inline">W</span>: <span class="math inline">{\mathsf{\tilde{Q}}} ={\mathsf{Q}} {\mathsf{U}}</span> met <span class="math inline">{\mathsf{U}}\in{\mathbb{C}}^{n\times n}</span> unitair <span class="math inline">\Rightarrow</span> <span class="math inline">{\mathsf{P}}_W = {\mathsf{\tilde{Q}}}{\mathsf{\tilde{Q}}}^\dagger = {\mathsf{Q}}{\mathsf{Q}}^\dagger</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="anti-unitaire-transformatie" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="anti-unitaire-transformatie">Anti-unitaire transformatie</h2>
+<p><span class="math inline">{\hat{A}}</span> een antilineaire operator tussen complexe Hilbertruimten <span class="math inline">V</span> en <span class="math inline">W</span></p>
+<ul>
+<li><p>Definitie van toegevoegde:</p>
+<p><span class="math display">{\left\langle{w},{\hat{A}}{v}\right\rangle} = \overline{{\left\langle{\hat{A}}^\dagger{w},{v}\right\rangle}} = {\left\langle{v},{\hat{A}}^\dagger {w}\right\rangle}, \qquad \forall {v}\in V, {w}\in W</span></p></li>
+<li><p>Antilineair en isometrisch: <span class="math inline">{\hat{A}}^\dagger {\hat{A}} = {\hat{1}}_V</span> of dus <span class="math inline">{\left\langle{\hat{A}} {v}_1,{\hat{A}} {v}_2\right\rangle} = {\left\langle{v}_2,{v}_1\right\rangle}</span>, <span class="math inline">\forall {v}_1,{v}_2 \in V</span></p></li>
+<li><p>Antilineair en isometrisch en bijectief: <strong>anti-unitair</strong></p>
+<ul>
+<li><p>belangrijke rol in kwantummechanica:</p>
+<p>alle geldige transformaties zijn unitair of anti-unitair (Wigner)</p></li>
+<li><p>voorbeeld van anti-unitair: tijdsomkeringssymmetrie</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="normale-operatoren" class="level2">
+<h2 class="anchored" data-anchor-id="normale-operatoren">Normale operatoren</h2>
+<ul>
+<li><p><span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> voldoet aan <span class="math inline">{\hat{A}}{\hat{A}}^\dagger = {\hat{A}}^\dagger{\hat{A}}</span>: <strong>normale operator</strong></p></li>
+<li><p>speciale gevallen van normaal:</p>
+<ul>
+<li>zelftoegevoegde operator: <span class="math inline">{\hat{A}} = {\hat{A}}^\dagger</span></li>
+<li>unitaire operator: <span class="math inline">{\hat{A}}{\hat{A}}^\dagger = {\hat{A}}^\dagger{\hat{A}} = {\hat{1}}_V</span></li>
+</ul></li>
+<li><p>Voor alle <span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span>: <span class="math inline">{\hat{A}} = \underbrace{\frac{{\hat{A}}+{\hat{A}}^\dagger}{2}}_{{\hat{A}}_{\text{r}}} + {\mathrm{i}}\underbrace{\frac{{\hat{A}} - {\hat{A}}^\dagger}{2{\mathrm{i}}}}_{{\hat{A}}_{\text{i}}}</span></p>
+<p>normaal <span class="math inline">\iff {\left[{\hat{A}}_{\text{r}},{\hat{A}}_{\text{i}}\right]}={\hat{0}}</span></p>
+<p><span class="math inline">\Rightarrow</span> <span class="math inline">{\hat{A}}_{\text{r}}</span> en <span class="math inline">{\hat{A}}_{\text{i}}</span> gelijktijdig diagonaliseerbaar?</p></li>
+</ul>
+</section>
+<section id="normale-operatoren-eigenschappen" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="normale-operatoren-eigenschappen">Normale operatoren: eigenschappen</h2>
+<ul>
+<li><p><span class="math inline">{\hat{A}}\in \mathop{\mathrm{End}}(V)</span>: normaal <span class="math inline">\iff</span> <span class="math inline">\forall {v}\in V: {\left\lVert{\hat{A}}{v}\right\rVert} = {\left\lVert{\hat{A}}^\dagger{v}\right\rVert}</span></p></li>
+<li><p><span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> en normaal en <span class="math inline">{\hat{A}}{v}= \lambda {v}</span>:</p>
+<ul>
+<li><p><span class="math inline">{\hat{A}}^\dagger {v}= {\overline{\lambda}} {v}</span> (uit voorgaande)</p></li>
+<li><p><span class="math inline">{\hat{A}}_{\text{r}}{v}= \mathop{\mathrm{Re}}(\lambda) {v},\quad{\hat{A}}_{\text{i}}{v}= \mathop{\mathrm{Im}}(\lambda) {v}</span> (triviaal uit voorgaande)</p></li>
+<li><p><span class="math inline">{\hat{A}}{w}= \mu {w}</span> met <span class="math inline">\mu \neq \lambda \implies {\left\langle{v},{w}\right\rangle}=0</span></p></li>
+</ul></li>
+<li><p><span class="math inline">{\hat{A}} \in \mathop{\mathrm{End}}(V)</span> en normaal: <span class="math inline">{\left\lVert{\hat{A}}^n\right\rVert} = {\left\lVert{\hat{A}}\right\rVert}^n</span></p>
+<ul>
+<li><p><span class="math inline">{\left\lVert{\hat{A}}\right\rVert} = \rho_{{\hat{A}}}</span> (spectraalstraal, volgt direct uit Gelfand’s formule)</p></li>
+<li><p><span class="math inline">{\hat{A}}</span> kan niet nilpotent zijn</p></li>
+<li><p><span class="math inline">V</span> eindig-dimensionaal:</p>
+<p><span class="math inline">{\hat{A}}</span> is diagonaliseerbaar en eigenvectoren kunnen als orthonormale basis gekozen worden (zie H6)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="hilbert-schmidt-inwendig-product" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="hilbert-schmidt-inwendig-product">Hilbert-Schmidt inwendig product</h2>
+<p>Inwendig product voor lineaire afbeeldingen <span class="math inline">{\hat{A}} \in \mathcal{B}(V,W)</span>?</p>
+<ul>
+<li><p>geïnduceerde norm is niet afkomstig van inwendig product</p></li>
+<li><p>nieuwe definitie: <em>Hilbert-Schmidt inwendig product</em></p>
+<p><span class="math inline">{\left\langle{\hat{A}},{\hat{B}}\right\rangle}_{\text{HS}} = \left.\mathop{\mathrm{tr}}\right._V({\hat{A}}^\dagger {\hat{B}})= \sum_{n} {\left\langle{e}_n,{\hat{A}}^\dagger {\hat{B}} {e}_n\right\rangle}_V = \sum_{n} {\left\langle{\hat{A}} {e}_n,{\hat{B}} {e}_n\right\rangle}_W</span> <span class="math inline">= \sum_{m,n} {\left\langle{\hat{A}}{e}_n,{f}_m\right\rangle}_W {\left\langle{f}_m,{\hat{B}}{e}_n\right\rangle}_W = \sum_{m,n} {\left\langle{e}_n,{\hat{A}}^\dagger{f}_m\right\rangle}_V {\left\langle{\hat{B}}^\dagger {f}_m,{e}_n\right\rangle}_W</span> <span class="math inline">= \sum_{m} {\left\langle{\hat{B}}^\dagger {f}_m,{\hat{A}}^\dagger {f}_m\right\rangle} = \left.\mathop{\mathrm{tr}}\right._W({\hat{B}}{\hat{A}}^\dagger)</span></p>
+<p>met dan ook Hilbert-Schmidt norm <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{\text{HS}} = \mathop{\mathrm{tr}}({\hat{A}}^\dagger {\hat{A}})^{1/2}</span></p>
+<ul>
+<li><p>eindig-dimensionaal / matrices: <span class="math inline">{\left\lVert{\mathsf{A}}\right\rVert}_{\text{HS}} = {\left\lVert{\mathsf{A}}\right\rVert}_{\text{F}}</span> (Frobenius)</p></li>
+<li><p>oneindig-dimensionaal: <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{\text{HS}}</span> kan divergeren voor begrensde operatoren</p>
+<p><span class="math inline">\rightarrow</span> voorbeeld: <span class="math inline">{\left\lVert{\hat{1}}\right\rVert}_{\text{HS}} = \sqrt{\mathop{\mathrm{dim}}(V)}</span></p></li>
+<li><p>Hilbert-Schmidt operatoren = operatoren <span class="math inline">{\hat{A}}</span> met <span class="math inline">{\left\lVert{\hat{A}}\right\rVert}_{\text{HS}}</span> eindig</p>
+<p>(spelen belangrijke theoretische rol in H7 en H8: Greense functies)</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="toepassing-kleinste-kwadratenoplossing" class="level1">
+<h1>Toepassing: kleinste-kwadratenoplossing</h1>
+<section id="overgedetermineerd-stelsel" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="overgedetermineerd-stelsel">Overgedetermineerd stelsel</h2>
+<p><span class="math inline">{\mathsf{A}} \boldsymbol{x} = \boldsymbol{y}</span> met <span class="math inline">m</span> vergelijkingen voor <span class="math inline">n &lt; m</span> onbekenden:</p>
+<ul>
+<li><p><span class="math inline">{\mathsf{A}} \in {\mathbb{F}}^{m \times n}</span>, <span class="math inline">\boldsymbol{x} \in {\mathbb{F}}^n</span> en <span class="math inline">\boldsymbol{y} \in {\mathbb{F}}^m</span></p></li>
+<li><p><span class="math inline">\mathop{\mathrm{dim}}(\mathop{\mathrm{im}}({\mathsf{A}})) = \mathop{\mathrm{rank}}({\mathsf{A}}) &lt; m</span>:</p>
+<p>niet voor alle <span class="math inline">\boldsymbol{y} \in {\mathbb{F}}^m</span> bestaat er een exacte oplossing</p></li>
+<li><p>aanname: <span class="math inline">{\mathsf{A}}</span> heeft “volle rang” / maximale rang: <span class="math inline">\mathop{\mathrm{rank}}({\mathsf{A}})=n</span></p></li>
+<li><p><strong>kleinste-kwadratenoplossing</strong>:</p>
+<p><span class="math display">\boldsymbol{x}^\ast = \mathop{\mathrm{arg\ min}}_{\boldsymbol{x} \in {\mathbb{F}}^n} {\left\lVert{\mathsf{A}}\boldsymbol{x} - \boldsymbol{y}\right\rVert}_2</span></p>
+<p>orthogonale-projectietheorema: <span class="math inline">{\mathsf{A}}\boldsymbol{x}^\ast = {\mathsf{P}}_{\mathop{\mathrm{im}}({\mathsf{A}})} \boldsymbol{y}</span></p></li>
+<li><p>met behulp van <span class="math inline">{\mathsf{A}}={\mathsf{Q}}{\mathsf{R}}</span>: <span class="math inline">{\mathsf{P}}_{\mathop{\mathrm{im}}({\mathsf{A}})} = {\mathsf{Q}}{\mathsf{Q}}^{\mathsf{H}}</span></p>
+<ul>
+<li><p><span class="math inline">{\mathsf{Q}}{\mathsf{R}}\boldsymbol{x}^\ast = {\mathsf{Q}}{\mathsf{Q}}^{\mathsf{H}}\boldsymbol{y} \implies \boldsymbol{x}^\ast = {\mathsf{R}}^{-1}{\mathsf{Q}}^{\mathsf{H}}\boldsymbol{y}</span></p></li>
+<li><p><span class="math inline">{\mathsf{R}}^{-1}{\mathsf{Q}}^{\mathsf{H}}= ({\mathsf{A}}^{\mathsf{H}}{\mathsf{A}})^{-1} {\mathsf{A}}^{\mathsf{H}}= {\mathsf{A}}^+</span> (<strong>Moore-Penrose pseudo-inverse</strong>)</p>
+<p>(meer details in volgend hoofdstuk)</p></li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

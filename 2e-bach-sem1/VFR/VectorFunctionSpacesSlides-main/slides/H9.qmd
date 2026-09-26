@@ -1,0 +1,1089 @@
+---
+title: "Hoofdstuk 9 - Fourieranalyse en distributies"
+author: "Jutho Haegeman"
+date: "12/02/2025"
+# format:
+#   revealjs:
+#     theme: solarized
+#     html-math-method: katex
+#     smaller: true
+#     chalkboard: true
+---
+
+## Doel van dit hoofdstuk
+
+
+::: {.hidden}
+$$
+% Math operators
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Unitary}{U}
+\DeclareMathOperator{\Orthogonal}{O}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{codom}
+\DeclareMathOperator{\D}{\mathcal{D}}
+\DeclareMathOperator{\E}{\mathcal{E}}
+\DeclareMathOperator{\R}{\mathcal{R}}
+\DeclareMathOperator{\Schw}{\mathcal{S}}
+\DeclareMathOperator{\im}{im}
+%\DeclareMathOperator{\ker}{ker}
+%\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convhull}{co}
+
+\newcommand{\opgreek}[1]{\begingroup\mathgroup-1 #1\endgroup}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+
+\DeclareMathOperator{\Pv}{Pv}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\adj}{adj}
+
+\DeclareMathOperator*{\varmin}{min}
+\DeclareMathOperator*{\varmax}{max}
+\DeclareMathOperator*{\argmin}{arg\ min}
+\DeclareMathOperator*{\argmax}{arg\ max}
+\DeclareMathOperator{\order}{\mathscr{O}}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\spanop}{span}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\sinc}{sinc}
+
+
+\newcommand{\commutator}[2]{{\left[#1,#2\right]}}
+\newcommand{\anticommutator}[2]{{\left\{#1,#2\right\}}}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\newcommand{\conj}[1]{{\overline{#1}}}
+\newcommand{\abs}[1]{{\left\lvert#1\right\rvert}}
+\newcommand{\norm}[1]{{\left\lVert#1\right\rVert}}
+\newcommand{\inner}[2]{{\left\langle#1,#2\right\rangle}}
+
+\newcommand{\drm}{{\mathrm{d}}}
+\newcommand{\erm}{{\mathrm{e}}}
+\newcommand{\irm}{{\mathrm{i}}}
+
+
+% VECTORS
+\newcommand{\vect}[1]{{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % specifically for vectors in F^n
+\newcommand{\zerovec}{{o}}
+\renewcommand{\vu}{\vect{u}}
+\newcommand{\vv}{\vect{v}}
+\newcommand{\vw}{\vect{w}}
+\newcommand{\ve}{\vect{e}}
+\newcommand{\vf}{\vect{f}}
+\newcommand{\vx}{\vect{x}}
+\newcommand{\vy}{\vect{y}}
+
+% MATRICES
+\newcommand{\mat}[1]{{\mathsf{#1}}}
+\newcommand{\zeromat}{\mat{O}}
+\newcommand{\idmat}{\mat{I}}
+
+% SCALARS
+\newcommand{\scalara}{{a}}
+\newcommand{\scalarb}{{b}}
+\newcommand{\scalarc}{{c}}
+
+% LINEAR MAPS
+\DeclareMathAlphabet{\mymathbb}{U}{BOONDOX-ds}{m}{n}
+\newcommand{\map}[1]{{\hat{#1}}}
+\newcommand{\idmap}{\map{1}}
+\newcommand{\zeromap}{\map{0}}
+
+\newcommand{\transpose}{{\mathsf{T}}}
+\newcommand{\hermitian}{{\mathsf{H}}}
+
+\renewcommand{\d}{{\mathrm{d}}}
+
+% FIELDS
+\newcommand{\bbF}{{\mathbb{F}}}
+\newcommand{\bbN}{{\mathbb{N}}}
+\newcommand{\bbZ}{{\mathbb{Z}}}
+\newcommand{\bbQ}{{\mathbb{Q}}}
+\newcommand{\bbR}{{\mathbb{R}}}
+\newcommand{\bbC}{{\mathbb{C}}}
+\newcommand{\bbH}{{\mathbb{H}}}
+\newcommand{\bbT}{{\mathbb{T}}}
+
+% RELATIONS
+\newcommand{\subspace}{{\preccurlyeq}}
+\newcommand{\supspace}{{\succcurlyeq}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\levicivita}{{\epsilon}}
+
+\newcommand{\sx}{{\sigma^x}}
+\newcommand{\sy}{{\sigma^y}}
+\newcommand{\sz}{{\sigma^z}}
+\renewcommand{\sp}{{\sigma^+}}
+\newcommand{\sm}{{\sigma^-}}
+
+\DeclareMathOperator*{\sumint}{
+\mathchoice
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+$$
+:::
+
+* Fouriertransformaties
+  * voornaamste eigenschappen
+  * Fouriertransformatie als unitaire transformatie $L^2(\bbR) \to L^2(\bbR)$
+  * toepassing: Gaussische distributies en centrale limietstelling
+
+* Theorie van distributies en testfuncties
+  * Reguliere en singuliere distributies = Dirac delta
+  * Distributionele afgeleiden en limieten
+  * Diracrijen
+  * Andere voorbeelden: Cauchy-hoofdwaarde
+  * Distributies en Fouriertransformaties
+
+* Verband tussen verschillende types Fouriertransformaties
+  * Discrete tijd Fourier transformatie
+  * Nyquist sampling theorema
+  * Fouriertransformaties en translatie-invariante operatoren
+
+# Fouriertransformaties
+
+## Fouriertransformatie: motivatie
+
+* Herhaling Fourierreeks: $f \in L^2(I)$ met $I = [-L/2,+L/2]$
+
+  \begin{align*}
+  &\widehat{f}_k = \inner{\varphi_k}{f} = \frac{1}{\sqrt{L}}\int_I f(x)\, \erm^{-\irm \frac{2\pi}{L} k x}\,\drm x\\
+  & \qquad \iff \qquad f(x) = \sum_{k \in \bbZ} \widehat{f}_k \varphi_k = \frac{1}{\sqrt{L}} \sum_{k \in \bbZ} \widehat{f}_k \erm^{+\irm \frac{2\pi}{L} k x}
+  \end{align*}
+
+* Limiet $L \to \infty$ ?
+
+  met $k/L \to \xi \in \bbR$ en $\widehat{f}_k \to \frac{1}{\sqrt{L}}  \widehat{f}(\xi)$:
+
+  \begin{align*}
+  &\widehat{f}(\xi) = \int_{-L/2}^{+L/2} f(x)\, \erm^{-\irm 2\pi \xi x}\,\drm x \to \int_{-\infty}^{+\infty} f(x)\, \erm^{-\irm 2\pi \xi x}\,\drm x\\
+    &\qquad \iff \qquad f(x) = \sum_{k \in \bbZ} \frac{1}{L} \widehat{f}(k/L) \erm^{+\irm 2\pi (k/L) x} \to \int_{-\infty}^{+\infty} \widehat{f}(\xi) \erm^{+\irm 2\pi \xi x}\,\drm \xi.
+  \end{align*}
+
+  * niet rigorous: geen orthonormale aftelbare basis meer
+
+## Fouriertransformatie: definitie en varianten
+
+* **Fouriertransformatie**: $\widehat{f}(\xi) = \int_{-\infty}^{+\infty} f(x)\erm^{-\irm 2\pi \xi x} \,\drm x$
+
+  **inverse Fouriertransformatie**: $\check{f}(x) = \int_{-\infty}^{+\infty} \widehat{f}(\xi)\erm^{+\irm 2\pi \xi x} \,\drm \xi$
+
+  * relatie tussen $f(x)$ en $\check{f}(x)$? zodadelijk
+
+  * $\lambda = \xi^{-1}$ golflengte 
+
+* Andere varianten:
+
+  * tijd:
+  
+    $\widetilde{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} f(t) \erm^{+\irm \omega t}\,\drm t\quad\text{en}\quad \breve{f}(t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} \widetilde{f}(\omega) \erm^{-\irm \omega t}\,\drm \omega$
+
+    * $+\irm$ en $-\irm$ omgedraaid
+    * in termen van "hoekfrequentie" $\omega = 2 \pi \nu$ met $T = 1/\nu$ de periode
+
+  * meerdimensionaal:
+  
+    $\widetilde{f}(\vec{k}) = \frac{1}{(2\pi)^{d/2}} \int_{\bbR^d} f(\vec{x}) \erm^{-\irm \vec{k} \cdot \vec{x}}\,\drm^d \vec{x}\quad\text{en}\quad \breve{f}(\vec{x}) = \frac{1}{(2\pi)^{d/2}} \int_{\bbR^d} \widetilde{f}(\vec{k}) \erm^{-\irm \vec{k}\cdot \vec{x}}\,\drm^d \vec{k}$
+
+    * $\vec{k}$ de golfvector
+
+## Fouriertransformatie: voorbeelden
+
+* $f(x) = \exp(-a \abs{x})$ met een parameter $a > 0$:
+
+  \begin{align*}
+    \widehat{f}(\xi) &= \int_{-\infty}^{+\infty} e^{-a \abs{x}} \erm^{-\irm 2\pi \xi x} \,\drm x = \int_0^{+\infty} \erm^{-(a + \irm 2\pi \xi) x}\,\drm x + \int_{-\infty}^{0} \erm^{+(a - \irm 2 \pi \xi) x}\,\drm x\nonumber\\
+    &= \frac{1}{a + \irm 2\pi \xi} + \frac{1}{a - \irm 2\pi \xi} = \frac{2a}{ a^2 + 4\pi^2 \xi^2}
+  \end{align*}
+
+* $f(x) = \exp(-a x^2)$ met een parameter $a > 0$:
+
+  \begin{align*}
+    \widehat{f}(\xi) &= \int_{-\infty}^{+\infty} \erm^{-a x^2} \erm^{-\irm 2\pi \xi x} \,\drm x = \int_{-\infty}^{+\infty} \erm^{-a \left(x + \irm \frac{\pi \xi}{a}\right)^2 - \frac{\pi^2 \xi^2}{a} }\,\drm x = \sqrt{\frac{\pi}{a}} \erm^{-\frac{\pi^2 \xi^2}{a}}
+  \end{align*}
+
+  gebruik makende van
+
+  \begin{align*}
+    \frac{\drm\ }{\drm t} \int_{-\infty}^{+\infty} \erm^{-a (x + \irm t)^2}\,\drm x &= - \irm 2a \int_{-\infty}^{+\infty} (x + \irm t) \erm^{-a (x + \irm t)^2}\,\drm x \\
+    &= \irm \int_{-\infty}^{+\infty} \frac{\drm\ }{\drm x} \erm^{-a (x + \irm t)^2}\,\drm x = \irm \left[\erm^{-a (x + \irm t)^2}\right]_{x=-\infty}^{x=+\infty} = 0
+  \end{align*}
+
+## Fouriertransformatie: voorbeelden
+
+* $f(x) = H(a - \abs{x})$ met een parameter $a>0$ (box functie)
+
+  \begin{align*}
+    \widehat{f}(\xi) &= \int_{-\infty}^{+\infty} H(a-\abs{x}) \erm^{-\irm 2\pi \xi x} \,\drm x = \int_{-a}^{+a} \erm^{-\irm 2\pi \xi x}\,\drm x \nonumber\\
+    &= \frac{\erm^{-\irm 2\pi \xi a} - \erm^{+\irm 2\pi \xi a}}{-\irm 2\pi \xi} = \frac{\sin(2\pi \xi a)}{\pi \xi}=2 a \sinc(\pi 2 a \xi)
+  \end{align*}
+  met $\sinc(x) = \sin(x)/x$
+
+  * voorbeeld waarbij $\widehat{f}(\xi)$ niet absoluut integreerbaar is
+  * is inverse Fouriertransformatie wel goed gedefinieerd?
+
+## Fouriertransformatie: eigenschappen
+
+Fourierbeeld: $\widehat{f}(\xi) = \int_{-\infty}^{+\infty} f(x)\erm^{-\irm 2\pi \xi x} \,\drm x\quad$ (gedefinieerd voor $f \in L^1(\bbR)$)
+
+* belangrijkste eigenschappen (bewijs eenvoudige oefening)
+  * lineariteit: $h(x) = a f(x) + b g(x) \implies \widehat{h}(\xi) = a \widehat{f}(\xi) + b \widehat{g}(\xi)$
+  * translatie: $h(x) = f(x-x_0) \implies \widehat{h}(\xi) = \erm^{-\irm 2\pi \xi x_0} \widehat{f}(\xi)$
+  * modulatie: $h(x) = f(x) \erm^{\irm 2\pi \xi_0 x} \implies \widehat{h}(\xi) = \widehat{f}(\xi -\xi_0)$
+  * conjugatie: $h(x) = \overline{f(x)} \implies \widehat{h}(\xi) = \overline{\widehat{f}(-\xi)}$
+  * Tijd/frequentie-omkering: $h(x) = f(-x) \implies \widehat{h}(\xi) = \widehat{f}(-\xi)$
+  * Schaling: $h(x) = f(s x) \implies \widehat{h}(\xi) = \frac{1}{s} \widehat{f}(\xi/s)$
+
+* Bijkomende eigenschappen:
+  * continu: $\widehat{f}(\xi) \in C^0(\bbR)$
+  * begrensd: $\norm{\widehat{f}}_\infty = \sup_{\xi} \abs{\widehat{f}(\xi)} \leq \norm{f}_1$
+  * verdwijnt op oneindig: $\lim_{\xi \to \pm \infty} \abs{\widehat{f}(\xi)} = 0$ (Riemann-Lebesgue lemma)
+
+## Fouriertransformatie: eigenschappen
+
+* Convolutie: $f,g \in L^1(\bbR) \implies h = f \ast g \in L^1(\bbR)$ met
+
+  $$h(x) = (f \ast g)(x) = \int_{-\infty}^{+\infty} f(x-y) g(y)\,\drm y = \int_{-\infty}^{+\infty} f(y) g(x-y)\,\drm y = (g \ast f)(x)$$
+
+  $$\Rightarrow \widehat{h}(\xi) = \widehat{f}(\xi) \widehat{g}(\xi)$$
+
+* Afgeleide: $f$ afleidbaar met stuksgewijs continue afgeleide $g=f'$ (en $f, g = f' \in L^1(\bbR)$ en $\lim_{x \to \pm \infty} \abs{f(x)}=0$)
+
+  $$\Rightarrow \widehat{g}(\xi) = \irm 2\pi \xi f(\xi)$$
+
+  bij uitbreiding indien voldoende regulier:
+  
+  $$g(x) = f^{(p)}(x) \implies \widehat{f^{(p)}}(\xi) = (\irm 2\pi \xi)^p \widehat{f}(\xi)$$
+
+  + Riemann-Lebesgue: $\widehat{f}(\xi)$ daalt sneller dan $\order(\xi^{-p})$
+
+## Fouriertransformatie als unitaire transformatie
+
+* We verwachten $\map{F}: L^2(\bbR) \to L^2(\bbR) : f \mapsto \widehat{f}$ een unitaire transformatie
+
+* $\widehat{f}$ is enkel gedefinieerd voor $f \in L^1(\bbR)$:
+  * voor eindig interval $I$ geldt $L^2(I) \subspace L^1(I)$
+  * maar niet voor $L^2(\bbR)$ (vb $f(x)= (1+x^2)^{-1/2}$)
+
+* Definieer eerst $\map{F}$ op dichte deelruimte $C^0_c(\bbR) \subspace L^2(\bbR)$
+
+  (continue functies met compacte drager)
+
+  * er geldt: $\norm{f}_2 = \norm{\widehat{f}}_2$
+  
+    $\Rightarrow \map{F}$ is begrensd (zelfs isometrisch) en kan dus uitgebreid worden tot $L^2(\bbR)$
+
+  * bewijs: als $supp(f) \in [-L/2,+L/2]$ : $f(x) = \frac{1}{\sqrt{L}} \sum_{k \in \bbZ} \widehat{f}_k \erm^{+\irm \frac{2\pi}{L} k x}$
+
+    met $\widehat{f}_k = \frac{1}{\sqrt{L}} \int_{-L/2}^{+L/2} f(x)\erm^{-\irm \frac{2\pi}{L} k x}\,\drm x = \frac{1}{\sqrt{L}} \int_{-\infty}^{+\infty} f(x)\erm^{-\irm \frac{2\pi}{L} k x}\,\drm x = \frac{1}{\sqrt{L}} \widehat{f}(k/L)$
+
+    en dus voor $g(x) = \erm^{\irm 2\pi \xi x} f(x)$: $\widehat{g}_k = \frac{1}{\sqrt{L}}\widehat{f}(k/L + \xi)$
+
+    $\Rightarrow \norm{f}_2 = \norm{g}_2 = \frac{1}{L}\sum_{k\in\bbZ} \abs{\widehat{f}(k/L + \xi)}^2$ en integreer over $\xi \in [0,1/L]$
+
+## Fouriertransformatie als unitaire transformatie
+
+Voor elke functie $f \in L^2(\bbR)$ kunnen we de **Plancherel-Fourier constructie** gebruiken:
+
+* benader $f = \lim_{n\to \infty}f_n$ met $f_n(x) = f(x) H(\abs{x}-n)$
+* bereken $\widehat{f_n}(\xi) = \int_{-n}^{+n} f(x) \erm^{-\irm 2\pi \xi x}\,\drm x$
+* er geldt $\norm{\widehat{f_n}}_2 =\norm{f_n}_2$ en dus is $\widehat{f_n}$ een Cauchy-rij
+* definieer $\widehat{f} = \lim_{n\to \infty} \widehat{f_n}$
+
+Eigenschappen (wegens continuïteit van norm/inwendig product)
+
+* Plancherel: $\norm{f} =\norm{\widehat{f}}$ voor alle $f \in L^2(\bbR)$ (en dus $\map{F}:f \mapsto \widehat{f}$ is isometrisch)
+* Parseval: $\inner{f}{g} = \inner{\widehat{f}}{\widehat{g}}$ voor alle $f,g \in L^2(\bbR)$
+* "zwakke Parseval-relatie": $\int_{-\infty}^{+\infty} f(x) \widehat{g}(x) \,\drm x = \int_{-\infty}^{+\infty} \widehat{f}(x) g(x)\,\drm x$
+
+* $\map{F}^\dagger(f) = \conj{\map{F}(\conj{f})}$ en dus is $\map{F}^\dagger$ ook isometrisch
+
+  $\Rightarrow$ $\map{F}$ is unitaire transformatie $L^2(\bbR) \to L^2(\bbR)$: $\map{F}^\dagger = \map{F}^{-1}$
+
+## Toepassing: Gaussische distributie
+
+* Gaussische distributie: $f_\sigma(x) = \frac{1}{\sigma \sqrt{2\pi}} \erm^{-\frac{x^2}{2\sigma^2}}$
+
+  $\Rightarrow \frac{\drm \widehat{f}_\sigma}{\drm \xi} (\xi) = \frac{1}{\sigma \sqrt{2\pi}}\int_{-\infty}^{+\infty} (-\irm 2\pi x) \erm^{-\frac{x^2}{2\sigma^2} - \irm 2\pi \xi x}\,\drm x$
+
+  vanwege  $\frac{\drm\ }{\drm x}\left(\erm^{-\frac{x^2}{2\sigma^2} - \irm 2\pi \xi x}\right) = -\left(\frac{x}{\sigma^2} +\irm 2\pi \xi\right) \erm^{-\frac{x^2}{2\sigma^2} - \irm 2\pi \xi x}$
+
+  $\Rightarrow \frac{\drm \widehat{f}_\sigma}{\drm \xi} (\xi) = -4\pi^2 \sigma^2 \xi \widehat{f}_\sigma(\xi)$
+  
+  in combinatie met $\widehat{f}_\sigma(0) = \frac{1}{\sigma \sqrt{2\pi}}\int_{-\infty}^{+\infty} \erm^{-\frac{x^2}{2\sigma^2}}\,\drm x = 1$ geldt dan $\widehat{f}_\sigma(\xi) = \erm^{-2\pi^2\sigma^2 \xi^2}$
+
+  $\Rightarrow$ $(f_{\sigma_1} \ast f_{\sigma_2})(x) = f_{\sqrt{\sigma_1^2+\sigma_2^2}}(x)$
+
+## Toepassing: karakteristieke functie
+
+* Voor willekeurige probabiliteitsdistributie $f_X(x)$:
+
+  * **karakteristieke functie** $\varphi_X(\xi) = \langle \erm^{-\irm 2\pi \xi X}\rangle = \widehat{f}_X(x)$
+  * genereert momenta: $\varphi_X^{(k)}(0) = (-\irm 2\pi)^k\langle  X^k \rangle \implies \varphi_X(\xi) = \sum_{k=0}^{+\infty}\frac{(-\irm 2\pi)^k}{k!}  \langle X^k \rangle \xi^k$
+  * Gaussische distributie met gemiddelde $\mu$: $\varphi_{\mu,\sigma}(\xi) = \erm^{-\irm 2\pi \xi \mu - 2\pi^2\sigma^2 \xi^2} = 1 -\irm 2\pi \mu \xi - 2\pi^2 (\mu^2+\sigma^2) \xi^2 + \ldots$
+
+  beter via logaritme: 	$\kappa_X(\xi) = \log \varphi_X(\xi) = \log \langle{\erm^{-\irm 2\pi \xi x}}\rangle$
+  * genereert cumulanten
+  * $\kappa_{\mu,\sigma}(\xi) = -\irm 2\pi \mu \xi - 2\pi^2\sigma^2 \xi^2$
+
+    $\Rightarrow$ Gaussische distributie: unieke distributie waarvoor alle cumulanten hoger dan 2de orde verdwijnen
+
+## Toepassing: centrale limietstelling
+
+Stel $n$ stochastische variabelen $X_1,\ldots, X_n$, en hun gemiddelde $\vec{X} = \frac{1}{n}(X_1 + X_2 + \ldots + X_n)$
+
+\begin{align*}
+	\varphi_X(\xi) = \langle{\erm^{-\irm 2\pi \xi X}\rangle} &= \int\drm x_1 \int \drm x_2 \ldots \int\drm x_n  \erm^{-\irm 2\pi \xi (x_1+x_2 + \ldots + x_n)/n} f_1(x_1) f_2(x_2) \ldots f_n(x_n)\nonumber\\
+	& = \varphi_{X_1}(\xi/n) \varphi_{X_2}(\xi/n) \ldots \varphi_{X_n}(\xi/n) .
+\end{align*}
+
+Als alle $\varphi_{X_i}(x)$ gelijk, met $\varphi_{X_i}(x) = \varphi(x) =  \erm^{\kappa(\xi)} = \erm^{-2\pi \irm \mu \xi - 2\pi^2 \sigma^2 \xi^2 + \mathcal{O}(\xi^3)}$:
+
+\begin{align*}
+\kappa_X(\xi) = n \log(\varphi(\xi/n)) = n \kappa(\xi/n) = -2\pi \irm \mu \xi - 2\pi^2 \left(\frac{\sigma}{\sqrt{n}}\right)^2  \xi^2 + \mathcal{O}(\xi^3/n^2).
+\end{align*} 
+
+$\Rightarrow$ **Centrale limietstelling**: gemiddelde van $n$ identiek verdeelde stochastische variabelen volgt een Gaussische verdeling met gemiddelde $\mu_X=\mu$, $\sigma_X = \sigma/\sqrt{n}$, op correcties $\order(1/n^2)$ en kleiner na.
+
+# Distributies
+
+## Distributies: motivatie
+
+* Motivatie komt uit de fysica (vb elektromagnetisme): brontermen zijn grillig op microscopische schaal maar de details hiervan zijn irrelevant voor observaties om macroscopische schaal
+
+* Distributietheorie: wiskundig rigorous formalisme om met concepten zoals "Dirac delta" (puntbron) en gelijkaardige constructies te werken. Twee ingrediënten:
+  * bijzondere limiet of veralgemening van reguliere functies $f$ met irrelevante microscopische details
+  * macroscopische uitmiddeling $\int f(x) \varphi(x)\,\drm x$, met $\varphi(x)$ een "brave" testfunctie die bijvoorbeeld het profiel van een fysisch meettoestel modelleert
+
+  * $T_f:\varphi \mapsto \int f(x) \varphi(x)\,\drm x$ is een lineaire functionaal van $\varphi$; kunnen we deze constructie veralgemenen naar lineaire functionalen $T[\varphi]$ die strict gesproken niet als zulke integraal kunnen worden beschreven, maar wel dezelfde eigenschappen hebben?
+    * continuïteit: $\lim_{n\to \infty} T[\varphi_n(x)] = T[\varphi(x)]$ als $\lim_{n\to \infty} \varphi_n(x)=\varphi(x)$
+
+      $\Rightarrow$ hangt af van wat de limiet $\lim_{n\to \infty} \varphi_n(x)=\varphi(x)$ betekent.
+
+## Testfuncties
+
+Testfuncties: gladde functies met eventuele lokaliteitsvoorwaarden, gedefinieerd op gebied $\Omega \subseteq \bbR^d$ 
+
+(hier meestal $d=1$ maar we hebben ook hoger-dimensionale veralgemening nodig)
+
+3 families $\mathcal{D}(\Omega) \subspace \mathcal{S}(\Omega) \subspace \mathcal{E}(\Omega)$ (samenvallend voor compacte $\Omega$):
+
+* $\mathcal{E}(\Omega) = C^{\infty}(\Omega)$: oneindig afleidbare (=gladde) functies
+* $\mathcal{D}(\Omega) = C^{\infty}_c(\Omega)$: gladde functies met compacte drager
+* $\mathcal{S}(\Omega)$: **Schwarz-ruimte**: gladde en voldoende snel dalende functies, zodat $\sup_{\vec{x} \in \bbR^d} \abs{x_1^{k_1} \cdots x_d^{k_d} \frac{\partial^{l_1}\ }{\partial x_1^{l_1}}\cdots \frac{\partial^{l_d}\ }{\partial x_d^{l_d}} \varphi(\vec{x})} < \infty$, voor alle $k_1,\ldots,k_d,l_1, \ldots, l_d \in \bbN$
+
+  $\Rightarrow$ voor $\varphi \in \mathcal{S}(\bbR)$: alle functies $\varphi_{k,l}(x) = x^k \frac{\partial^l \varphi(x)}{\partial x^l}$ continu en in $L^1(\bbR)$
+  
+  $\Rightarrow$ $\widehat{\varphi_{k,l}}(\xi)$ bestaat, continu en gaat naar nul op oneindig, met $\widehat{\varphi}_{k,l}(\xi) =\left(-\frac{1}{2\pi\irm}\right)^k \left(2\pi\irm\right)^l \frac{\drm^k\ }{\drm \xi^k}\left[ \xi^l \widehat{\varphi}(\xi)\right]$
+
+  $\Rightarrow$ $\widehat{\varphi}$ ook in $\mathcal{S}(\bbR)$
+
+## Testfuncties: voorbeelden
+
+* $\varphi(x) \in \mathcal{S}(\bbR)$: bekendste voorbeeld is $\varphi(x) = \exp(-x^2)$
+  * ook $\varphi(x) = p(x) \exp(-x^2)$ voor arbitraire veelterm $p(x)$
+
+* $\varphi \in \mathcal{D}(\bbR)$: gladde functie en toch compacte drager?
+  
+  * glad $\neq$ analytisch (in elk punt Taylorreeks met eindige convergentieradius)
+
+  voorbeelden:
+
+  * "bump"functies $\rho_a(x) = \begin{cases} 0, & \abs{x} > a\\ \exp\left(-\frac{a^2}{a^2 - x^2}\right),& \abs{x} \leq a \end{cases}$
+  * $(f \ast \rho_a)(x)$ met $f$ een continue functie met compacte drager
+  * $f(x)\rho_a(x)$ met $f$ een gladde functie ($f \in \mathcal{E}(\bbR)$)
+
+## Testfuncties en limieten
+
+* Distributies zijn continue lineaire functionalen op ruimte van testfuncties:
+  * notatie: $\mathcal{D}^\ast(\Omega)$, $\mathcal{S}^\ast(\Omega)$, $\mathcal{E}^\ast(\Omega)$
+  * we bekijken in eerste instantie $\mathcal{D}^\ast(\Omega)$
+  * we focussen op $\Omega = \bbR$
+
+
+* Continuïteit van distributies zal afhangen van definitie van limiet van testfuncties: hoe strikter de definitie van convergentie, hoe gemakkelijker er zal voldaan zijn aan $\lim_{n \to \infty}T[\varphi_n] = T[\lim_{n \to \infty}\varphi_n]$
+
+* Convergentie in $\mathcal{D}(\Omega)$: $\lim_{n \to \infty}\varphi_n = \varphi$ als en slechts als
+
+  * er bestaat een compacte deelverzameling $K \subseteq \Omega$ zodat $\mathrm{supp}(f_n) \subseteq K$
+  * uniforme convergentie van alle afgeleiden:
+
+    $\lim_{n\to\infty} \sup_{x \in \Omega} \abs{\varphi_n^{(p)}(x) - \varphi^{(p)}(x)} = \lim_{n\to\infty} \sup_{x \in K} \abs{\varphi_n^{(p)}(x) - \varphi^{(p)}(x)} = 0$
+
+* Convergentie in $\mathcal{S}(\Omega)$ (en $\mathcal{E}(\Omega)$): zie later $\rightarrow$ zodanig dat $\mathcal{E}^\ast(\Omega) \subspace \mathcal{S}^\ast(\Omega) \subspace \mathcal{D}^\ast(\Omega)$
+
+* Dit soort definitie voor limiet komt niet uit norm of metriek
+
+## Reguliere en singuliere distributies
+
+* **reguliere distributie**: voor elke functie $f$ die "lokaal integreerbaar is": $\int_K \abs{f(x)}\,\drm x$ bestaat voor elke compacte subset $K \subset \bbR$:
+
+  $$T_f[\varphi] = \int_{-\infty}^{+\infty} f(x)\varphi(x)\,\drm x$$
+
+  * Voorbeeld: $T_H[\varphi] = \int_0^{+\infty} \varphi(x)\,\drm x$
+
+    $\rightarrow$ Reguliere distributie horende bij $H(x) = \theta(x) = \begin{cases} 0, & x < 0\\
+	1, & x \geq 0	
+ \end{cases}$
+
+  * Goed gedefinieerd:
+
+    $\abs{T_f[\varphi]} \leq \int_{\Omega} \abs{f(x)} \abs{\varphi(x)}\,\drm x= \int_{K} \abs{f(x)} \abs{\varphi(x)}\,\drm x \leq \left(\sup_{x \in K} \abs{\varphi(x)}\right)\left(\int_K \abs{f(x)}\,\drm x\right)$
+  * Continu
+
+    $\abs{T_f[\varphi] - T_f(\varphi_n)} = \abs{\int_\Omega f(x) (\varphi(x) - \varphi_n(x))\,\drm x}\leq \int_K \abs{f(x)} \abs{\varphi(x) - \varphi_n(x)}\,\drm x$
+    $\qquad\leq \left(\sup_{x \in [a,b]} \abs{\varphi(x) - \varphi_n(x)}\right) \left(\int_K \abs{f(x)}\,\drm x\right)$
+
+## Reguliere en singuliere distributies
+
+
+* **singuliere of anomale distributie**: elke distributie die niet regulier is
+
+  * Bekendste voorbeeld: $\delta_a[\varphi] = \varphi(a)$ (Dirac delta)
+
+  * Schrijven als $\delta[\varphi] = \int_{-\infty}^{+\infty} \delta(x)\varphi(x)\,\drm x$?
+    * Er bestaat geen functie $\delta$ met deze eigenschap
+    * "Veralgemeende functies" (vooral in Russische literatuur)
+
+  * Analoog in hogere dimensies: $\delta_{\vec{a}}[\varphi] = \int_{\bbR^d} \delta_{\vec{a}}(\vec{x}) \varphi(\vec{x}) \,\drm x = \varphi(\vec{a})$
+
+## Elementaire bewerkingen met distributies
+
+Bewerkingen op distributies: translatie, herschaling, afgeleide, Fourier …
+
+* eerst op reguliere distributies $T_f$: doe bewerking op $f$ en vind manier om dit om te zetten naar bewerking op testfunctie $\varphi$
+* neem dit als een definitie die ook geldt voor singuliere distributies
+
+Translatie en herschaling: $(\map{\tau}_a f)(x) = f(x-a)$ en $(\map{\sigma}_s f)(x) = f(s x)$
+
+* $\map{\tau}_a T_f[\varphi] = \int_{\bbR} f(x-a) \varphi(x)\,\drm x = \int_{\bbR} f(y) \varphi(x+a)\,\drm y = T_f[\map{\tau}_{-a} \varphi]$
+* $\map{\sigma}_s T_f[\varphi] = \int_{\bbR} f(s x) \varphi(x)\,\drm x = \frac{1}{\abs{s}} \int_{\bbR} f(y) \varphi(y/s)\,\drm y = \frac{1}{\abs{s}} T_f[\map{\tau}_{1/s} \varphi]$
+
+Daaruit volgt (veralgemening naar meer dimensies)
+
+* $(\map{\tau}_{\vec{a}} )\delta[\varphi] = (\tau_{-\vec{a}} \varphi)(\vec{0}) = \varphi(\vec{0}+\vec{a}) = \delta_{\vec{a}}[\varphi]$
+
+  $\Rightarrow \int_{\bbR^d}\delta(\vec{x}-\vec{a})\varphi(\vec{x})\,\drm \vec{x} =\int_{\bbR^d}\delta_{\vec{a}} (\vec{x})\varphi(\vec{x})\,\drm \vec{x}$
+
+* $(\map{\sigma}_s \delta)[\varphi] = \frac{1}{\abs{s}^d} \delta[\map{\sigma}_{1/s}\varphi] = \frac{1}{\abs{s}^d} \varphi(\vec{0}/s) = \frac{1}{\abs{s}^d} \varphi(\vec{0}) = \frac{1}{\abs{s}^d} \delta[\varphi]$
+
+  $\Rightarrow \int_{\bbR^d}\delta(s \vec{x})\varphi(\vec{x})\,\drm \vec{x} = \frac{1}{\abs{s}^d} \int_{\bbR^d}\delta(\vec{x})\varphi(\vec{x})\,\drm \vec{x}$
+
+## Elementaire bewerkingen met distributies
+
+* Product van distributies? Niet gedefinieerd
+
+* Product van een distributie en een gladde functie:
+
+  * voor reguliere distributie: $(\psi T_f)[\varphi] = T_{\psi f}[\varphi] =\int_{\bbR^d} f(\vec{x}) \psi(\vec{x})\varphi(\vec{x}) \,\drm^d\vec{x} = T_f[\psi \varphi]$
+
+  * algemene definitie: $(\psi T)[\varphi] = T[\psi \varphi]$
+    
+    inderdaad: voor $\varphi \in \mathcal{D}(\bbR)$ en $\psi \in C^{\infty}(\bbR)$: puntsgewijs product $\psi \varphi \in \mathcal{D}(\bbR)$
+
+  * voorbeeld: $(\psi \delta)[\varphi] = \delta[\psi \varphi] = \psi(0)\varphi(0) = \psi(0) \delta[\varphi]$
+
+    $\Rightarrow$ "$\psi(x) \delta(x) = \psi(0) \delta(x)$"
+
+* Afgeleide van een distributie:
+
+  * voor reguliere distributie:
+    
+    $T'_f[\varphi] = T_{f'}[\varphi] = \int_{-\infty}^{+\infty} f'(x)\varphi(x)\,\drm x = - \int f(x) \varphi'(x)\,\drm x = -T_f[\varphi']$
+
+  * algemene definitie: $T'[\varphi] = T[-\varphi']$
+
+## Distributionele afgeleide: voorbeelden
+
+* $f(x) = \abs{x}$: lokaal integreerbaar, niet afleidbaar voor $x=0$
+  
+  $T'_f[\varphi]= T_f[-\varphi'] = -\int_{-\infty}^{+\infty} \abs{x} \varphi'(x)\,\drm x = +\int_{-\infty}^{0} x \varphi'(x)\,\drm x - \int_{0}^{+\infty} x \varphi'(x)\,\drm x$
+  $= -\int_{-\infty}^{0} \varphi(x)\,\drm x + \int_{0}^{+\infty} \varphi(x)\,\drm x = \int_{-\infty}^{+\infty} (-1 + 2 H(x)) \varphi(x)\,\drm x = T_g[\varphi]$
+
+  $\Rightarrow$ zelf reguliere distributie met $g(x) = (-1 + 2 H(x))$ (*zwakke afgeleide van $f(x)$*)
+
+* $f(x) = H(x)$:
+
+  $T'_H[\varphi] = -\int_0^{+\infty} \varphi'(x)\,\drm x = \varphi(0) = \delta[\varphi]$
+
+  $\Rightarrow$ distributionele afgeleide "$H'(x) = \delta(x)$"
+
+* $\delta^{(n)}[\varphi] = \int_{-\infty}^{+\infty} \delta^{(n)}(x) \varphi(x)\,\drm x = (-1)^n \varphi^{(n)}(0)$
+
+* Leibniz-regel voor distributionele afgeleide van product met gladde functie:
+
+  \begin{align*}
+    (\psi T)'[\varphi] &= - (\psi T)[\varphi'] = - T[\psi \varphi'] = -T[(\psi\varphi)' - \psi' \varphi] \nonumber\\
+  &= -T[(\psi\varphi)'] + T[\psi'\varphi]  = T'[\psi\varphi] + (\psi' T)[\varphi] = (\psi T' + \psi' T)[\varphi].
+  \end{align*}	
+
+## Uitgebreid voorbeeld: Cauchy hoofdwaarde
+
+* $\log\abs{x}$: absoluut integreerbaar (ondanks divergentie), niet afleidbaar bij $x=0$
+
+  voor $x\neq 0$: $\frac{\drm\ }{\drm x} \log\abs{x} = \frac{1}{x}$
+
+* distributionele afgeleide:
+
+  \begin{align*}
+  T_f'[\varphi] &= - \int_{-\infty}^{+\infty} \log\abs{x} \varphi'(x)\,\drm x = \lim_{\epsilon\to 0^+} \int_{\abs{x}\geq \epsilon} \log\abs{x} \varphi'(x)\,\drm x\\
+  &= \lim_{\epsilon\to 0^+} \left[-\log(\epsilon) \varphi(-\epsilon) + \log(\epsilon) \varphi(+\epsilon) + \int_{-\infty}^{-\epsilon} \frac{\varphi(x)}{x}\,\drm x + \int_{+\epsilon}^{+\infty} \frac{\varphi(x)}{x}\,\drm x\right]
+  \end{align*}
+
+  * tussenwaardestelling: $\exists x \in [-\epsilon,+\epsilon]$ zodat $\varphi(\epsilon) - \varphi(-\epsilon) = \varphi'(x) (2\epsilon)$
+
+  * $\abs{\varphi(\epsilon) - \varphi(-\epsilon)} \leq 2\epsilon \sup_{x} \abs{\varphi'(x)} \Rightarrow \lim_{\epsilon \to 0} \log(\epsilon) \big(\varphi(\epsilon) - \varphi(-\epsilon)\big) = 0$
+  
+  \begin{align*}
+    T_f'[\varphi] = \lim_{\epsilon \to 0^+} \left(\int_{-\infty}^{-\epsilon} \frac{\varphi(x)}{x}\,\drm x + \int_{+\epsilon}^{+\infty}\frac{\varphi(x)}{x}\,\drm x\right) = \lim_{\epsilon\to 0^+} \int_\epsilon^{+\infty} \frac{\varphi(x) - \varphi(-x)}{x}\,\drm x 
+  \end{align*}
+
+## Uitgebreid voorbeeld: Cauchy hoofdwaarde
+
+* beschouw een functie $g(x)$ op $I=[a,c]$ met een eerste-orde pool in $x=b \in I$: $g(x) = \frac{\varphi(x)}{x-b}$ met $\varphi(x)$ glad voor $x\in I$:
+
+  * integraal $\int_a^c g(x)\,\drm x$ bestaat niet op standaard (Riemann of Lebesgue) manier:
+    
+    daarvoor moet gelden dat beide limieten $\lim_{\delta \to 0^+}\int_a^{b-\delta} g(x)\,\drm x$ en $\lim_{\epsilon \to 0^+} \int_{b+\epsilon}^{c} g(x)\,\drm x$ onafhankelijk van elkaar bestaan
+
+  * **Cauchy hoofdwaarde**:
+  
+    $\Pv \int_{a}^{c} g(x)\,\drm x = \lim_{\epsilon \to 0^+} \left[\int_a^{b-\epsilon} g(x)\,\drm x + \int_{b+\epsilon}^{c} g(x)\,\drm x\right]$
+
+    bestaat wel
+
+* conclusie uit vorige slide:
+
+  $$T'_f[\varphi] = \Pv \int_{-\infty}^{+\infty} \frac{\varphi(x)}{x}\,\drm x$$
+
+  $\Rightarrow$ distributionele afgeleide $(\log\abs{x})' = \Pv \frac{1}{x}$
+
+## Coördinatentransformatie
+
+* Coördinatentransformatie: $\vec{x} = \vec{g}(\vec{y})$ met een glad isomorfisme $\vec{g}:\bbR^d \to \bbR^d$ (en dus goed gedefinieerd inverse $\vec{g}^{-1}$)
+
+  * binnen integraal (uit H2): $\drm \vec{x} = \abs{\det \mat{J}_{\vec{g}}(\vec{y})}\, \drm \vec{y}$
+
+  * reguliere distributie geassocieerd aan $f:\bbR^d \to \bbF$
+
+    \begin{align*}
+    (T_f  \circ \vec{g})[\varphi] &= T_{f \circ g}[\varphi] = \int_{\bbR^d} f(g(\vec{y}))\varphi(\vec{y})\,\drm \vec{y} = \int_{\bbR^d} \frac{f(\vec{x}) \varphi\big(\vec{g}^{-1}(\vec{x})\big)}{\abs{\det \mat{J}_{\vec{g}}(\vec{g}^{-1}(\vec{x}))}}\,\drm \vec{x}
+    \end{align*}
+
+  * algemene definitie: $(T \circ \vec{g})[\varphi] = T[\varphi_{\vec{g}}]$ met $\varphi_{\vec{g}}(\vec{x}) = \frac{1}{\abs{\det \mat{J}_{\vec{g}}(\vec{g}^{-1}(\vec{x}))}} \varphi(\vec{g}^{-1}(\vec{x}))$
+
+## Coördinatentransformatie: voorbeelden
+
+* $\vec{x} = \vec{g}(\vec{y}) = s \vec{y}$:
+  $(T \circ \vec{g})[\varphi] = (\map{\sigma}_s T)[\varphi] = T[\abs{s}^{-d} (\map{\sigma}_{1/s}\varphi)] = \frac{1}{\abs{s}^d} T[\map{\sigma}_{1/s} \varphi]$
+
+* $(\delta \circ \vec{g})[\varphi] = \frac{1}{\abs{\det \mat{J}_g(\vec{g}^{-1}(\vec{0}))}} \varphi(\vec{g}^{-1}(\vec{0})) = \frac{1}{\abs{\det \mat{J}_g(\vec{y}^\ast)}} \varphi(\vec{y}^\ast) =  \frac{1}{\abs{\det \mat{J}_g(\vec{y}^\ast)}} \delta_{\vec{y}^\ast}[\varphi]$
+
+  $\Rightarrow \delta \circ \vec{g} =	\frac{1}{\abs{\det \mat{J}_g(\vec{y}^\ast)}} \delta_{\vec{y}^\ast} = \frac{1}{\abs{\det \mat{J}_g(\vec{y})}}\delta_{\vec{y}^\ast}$ met $\vec{y}^\ast$ het nulpunt van $\vec{g}$
+
+* uitbreiding voor niet-monotone functie $x=g(y)$ in één-dimensie:
+
+  * splits $g$ in meerdere monotone stukken
+
+  * $\int_{-\infty}^{+\infty} \delta(g(x)) \varphi(x)\,\drm x = \sum_{i} \frac{1}{\abs{g'(y^\ast_i)}}\varphi(y^\ast_i)$
+    
+    $\Rightarrow \delta(g(x)) = \sum_{i} \frac{1}{\abs{g'(y^\ast_i)}} \delta(y - y^\ast_i)$ met $y^\ast_i$ de verschillende nulpunten van $g$
+
+* poolcoördinaten: $x = r \cos \theta, y = r \sin \theta$ $\rightarrow \det \mat{J}(r,\theta) = r$
+
+  $\delta( \vec{r} - \vec{r}_0) = \delta((x-x_0) \vec{e}_x + (y-y_0) \vec{e}_y ) = \delta(x-x_0) \delta(y-y_0)$
+
+  
+  $\delta( (r\cos \theta - x_0) \vec{e}_x + (r \sin \theta - y_0)\vec{e}_y) = \frac{1}{r} \delta(r-r_0) \delta(\theta - \theta_0)=\frac{1}{r_0} \delta(r-r_0) \delta(\theta - \theta_0)$
+
+## Convergentie van rijen van distributies
+
+* een rij distributies $(T_n \in \mathcal{D}^\ast(\Omega))_{n\in\bbN_0}$ convergeert naar een distributie $T\in \mathcal{D}^\ast(\Omega)$ als voor alle $\varphi \in \mathcal{D}(\Omega)$:
+  
+  $\lim_{n\to \infty} T_n[\varphi] = T[\varphi]$ (limiet van rij getallen)
+
+  * "**weak-$\ast$ convergence**": heel "zwakke" vorm van convergentie
+
+    (zie onderstaand voorbeeld)
+
+  * eigenschappen:
+    * $\lim_{n\to\infty} T_n' = T'$
+    * $\lim_{n\to \infty} \psi T_n = \psi T$
+
+  * voorbeeld:
+    $T_{f_n}[\varphi] = n^3 \int_{-\infty}^{+\infty} \erm^{\irm n x} \varphi(x)\,\drm x = \int_{-\infty}^{+\infty} \frac{\erm^{\irm n x}}{n} \varphi^{(4)}(x)\,\drm x$
+
+    $\Rightarrow \lim_{n \to +\infty} T_{f_n} = 0$
+
+    $\Rightarrow$ "$\lim_{n \to +\infty} n^3 \erm^{\irm n x} = 0$"
+    
+    (dit geldt voor geen enkele andere vorm van convergentie)
+
+## Sokhotski-Plemelj formule
+
+* distributionele limiet $\lim_{s\to 0^+} \frac{1}{x \pm \irm s} = \Pv\frac{1}{x} \mp \irm \pi \delta(x)$
+
+* bewijs:
+  * voor $z=r \erm^{\irm \theta}$ met $\theta \in (-\pi,+\pi)$ (voor alle $z \in \bbC \setminus \bbR_{\leq 0}$)
+  
+    complex logaritme $\log(z) = \log(r) + \irm \theta$
+  * $\lim_{s\to 0^+} \log(x \pm \irm s) = \log \abs{x} \pm \irm \pi H(-x)$
+
+  * $\lim_{s\to 0^+} \log(x \pm \irm s)' = \lim_{s\to 0^+} \frac{1}{x \pm \irm s} = (\log\abs{x} \pm \irm \pi H(-x))'$
+
+## Dirac-rijen
+
+**Dirac-rij**: een rij functies $(f_n)_{n \in \bbN_0}$ zodat distributionele limiet $\lim_{n\to\infty} T_{f_n} = \delta$
+
+* Stelling: gegeven $f \in L^1(\bbR^d)$ zodat $f(\vec{x}) \geq 0$ voor alle $\vec{x}\in\bbR^d$ en $\int_{\bbR^d} f(\vec{x}) \,\drm x = 1$
+
+  $\Rightarrow$ $f_n = n^d \map{\sigma}_n f$ of dus $f_n(\vec{x}) = n^d f(n\vec{x})$ is Dirac-rij (zonder bewijs)
+
+* Vele voorbeelden die hier en daar in de fysica opduiken:
+  * $f(x) = \begin{cases}
+ 1,&\abs{x} \leq 1/2\\
+ 0,&\abs{x} > 1/2
+ \end{cases}\quad \implies \quad \delta(x) = \lim_{n\to\infty} \begin{cases} n,&\abs{x}\leq \frac{1}{2n}\\
+ 0,	&\abs{x}> \frac{1}{2n}
+ \end{cases}$
+
+  * $f(x) = \frac{1}{\sqrt{2\pi}}\erm^{-\frac{x^2}{2}}\quad\implies\quad \delta(x)=\lim_{s\to 0^+} \frac{1}{\sqrt{2\pi} s}\erm^{-\frac{x^2}{2s^2}}$
+  * $f(x) = \frac{1}{\pi} \frac{1}{1+x^2}\quad\implies\quad\delta(x)=\lim_{s \to 0^+} \frac{1}{\pi} \frac{s}{x^2+s^2}$ (Breit-Wigner formule)
+
+## Dirac-rijen en Fouriertransformatie
+
+* "bewijs" van inverse Fourier-transformatie:
+
+  * voor $\varphi(x) \in \mathcal{D}(\bbR)$ en $\widehat{\varphi}(\xi) = \int_{-\infty}^{+\infty} \varphi(y) \erm^{-\irm 2\pi \xi y}\,\drm y$
+
+  * regulariseer inverse Fouriertransformatie
+
+    \begin{align*}
+      \lim_{s\to 0^+}	\int_{-\infty}^{+\infty} \erm^{+\irm 2\pi \xi x - s\abs{\xi}} \widehat{\varphi}(\xi)\,\drm \xi = \lim_{s\to 0^+} \int_{-\infty}^{+\infty} \left[\int_{-\infty}^{+\infty} \erm^{\irm 2\pi (x-y) \xi - s \abs{\xi}} \drm \xi\right] \varphi(y)\,\drm y.
+    \end{align*}
+
+  * Hierin geldt inderdaad
+
+    \begin{align*}
+      \lim_{s\to 0^+} \int_{-\infty}^{+\infty} \erm^{\irm 2\pi \xi x - s \abs{\xi}}\,\drm \xi &= \lim_{s\to 0^+} \left[ \int_{-\infty}^{0} \erm^{\irm 2\pi \xi x + s \xi}\,\drm \xi + \int_{0}^{+\infty} \erm^{\irm 2\pi \xi x - s\xi}\,\drm \xi\right]\nonumber\\
+      &= \lim_{s\to 0^+} \left[ \frac{1}{\irm (2\pi x) + s} - \frac{1}{\irm (2\pi x) - s}\right]\nonumber\\
+      &= \lim_{s\to 0^+} \left[\frac{2s}{(2\pi x)^2 + s^2}\right] = 2\pi \delta(2\pi x) = \delta(x)
+    \end{align*}
+
+    via Breit-Wigner (laatste lijn) of Sokhotski-Plemelj (op termen uit voorlaatste lijn)
+
+## Dirac-rijen en Fouriertransformatie
+
+Bemerk: voor regularisatie in Fourier-Plancherel constructie:
+
+* $\lim_{n \to \infty} \int_{-n}^{+n} \widehat{\varphi}(\xi) \erm^{+\irm 2\pi \xi x}\,\drm \xi = \lim_{n\to \infty} \int_{-\infty}^{+\infty} \varphi(y) \left[\int_{-n}^{+n} \erm^{+\irm 2\pi \xi (x-y)}\,\drm \xi\right]\,\drm y$
+
+* kern van de integraal gegeven door 
+  \begin{align*}
+  \int_{-n}^{+n} \erm^{+\irm 2\pi \xi (x-y)}\,\drm \xi = \frac{\erm^{+\irm 2\pi n (x-y)} - \erm^{-\irm 2\pi n (x-y)}}{2\pi \irm (x-y)} = \frac{\sin\left[2\pi n  (x-y)\right]}{\pi (x-y)}
+  \end{align*}
+
+  $\Rightarrow$ is $f_n(x) = \frac{\sin(2\pi n x)}{\pi x} = n \frac{\sin(2\pi n x)}{\pi n x}$ een Dirac-rij?
+
+  Volgt niet uit algemeen resultaat want niet voldaan aan $f_n(x) \geq 0$
+
+* algemeen resultaat (zonder bewijs):
+
+  * $f_n(x) = \frac{1}{\pi} \frac{ \sin( nx)}{x} = \frac{n}{\pi} \sinc(n x)$ is Dirac-rij
+
+  * $\Rightarrow \forall s>0$: $\lim_{n \to \infty} \frac{1}{\pi} \frac{ \sin( n sx)}{x} = s \lim_{n \to \infty} \frac{1}{\pi} \frac{ \sin( n sx)}{sx} = s \delta(s x) = \delta(x)$
+
+## Reeksen van distributies
+
+* Herhaling convergentie Fourierreeks $f_n(x) = \lim_{n\to \infty} \frac{1}{\sqrt{L}} \sum_{k=-n}^{+n} \widehat{f}_k \erm^{\irm \frac{2\pi}{L} k x}$
+
+  * als $\norm{f}_2 = \sum_{k\in\bbZ} \abs{\widehat{f}_k}^2 < \infty$: $\abs{f}_k < \order(1/k^{1/2+\epsilon})$ voor een $\epsilon>0$
+  
+    $\lim_{n\to \infty} \norm{f_n - f}_2 = 0$
+
+  * als $\sum_{k\in\bbZ} \abs{\widehat{f}_k} < \infty$: absoluut sommeerbaar: $\abs{f}_k < \order(1/k^{1+\epsilon})$ voor een $\epsilon>0$
+
+    $\Rightarrow$ uniforme convergentie $\lim_{n\to \infty} \sup_{x \in [0,L]} \abs{f_n(x) - f(x)} = 0$
+    
+    (continuïteit van $f(x)$ is noodzakelijke voorwaarde)
+
+* voorbeeld: zaagtandfunctie (periodieke extensie van $f(x)=x-\pi$ op $[0,2\pi]$ naar $\bbR$)
+
+  $f(x) = x-\pi - 2\pi \left\lfloor \frac{x}{2\pi} \right\rfloor =(x-\pi) + \sum_{n=-\infty}^{0} 2\pi H(2\pi n - x) - \sum_{n=1}^{+\infty} 2\pi H(x - 2\pi n)$
+
+  $\widehat{f}_0 = 0$ en voor $k \neq 0$:
+
+  $\widehat{f}_k = \frac{1}{\sqrt{2\pi}} \int_{0}^{2\pi} (x-\pi) \erm^{-\irm k x}\,\drm x = \frac{1}{\sqrt{2\pi}} \left(\left[\frac{(x-\pi)\erm^{-\irm k x}}{-\irm k}\right]_{0}^{2\pi} +\frac{1}{\irm k} \int_{0}^{2\pi} \erm^{-\irm k x}\,\drm x\right) = -\frac{1}{\sqrt{2\pi}} \frac{2 \pi}{\irm k}$
+
+  $\Rightarrow$ $\sum_{\substack{k \in \bbZ\\ k\neq 0}} -\frac{\erm^{\irm k x}}{\irm k} = -\sum_{k =1}^{+\infty} \frac{2\sin(k x)}{k}$ convergeert in $2$-norm maar niet uniform (Gibbs-fenomeen)
+
+## Reeksen van distributies
+
+$f(x) = x-\pi - 2\pi \left\lfloor \frac{x}{2\pi} \right\rfloor =(x-\pi) + \sum_{n=-\infty}^{0} 2\pi H(2\pi n - x) - \sum_{n=1}^{+\infty} 2\pi H(x - 2\pi n)$
+
+* primitieve:
+
+  $F(x) = \int_{\pi}^{x} f(x)\,\drm x = \frac{1}{2}\left(x-\pi - 2\pi \left\lfloor \frac{x}{2\pi}\right\rfloor\right)^2 = 2 \sum_{k=1}^{+\infty} \frac{\cos(kx)-(-1)^k}{k^2}$
+
+  $\Rightarrow$ uniforme convergentie
+
+* afgeleide: $f$ is afleidbaar voor $x \neq n 2\pi$ met $f'(x) = 1$
+
+* distributionele afgeleide: $f'(x) = 1 - \sum_{n\in \bbZ} 2\pi \delta(x - n 2\pi) = - \sum_{\substack{k=-\infty \\ k\neq 0}}^{+\infty} \erm^{\irm k x}$
+  $\Rightarrow 2\pi\sum_{n\in \bbZ}  \delta(x - n 2\pi) = \sum_{k=-\infty}^{+\infty} \erm^{\irm k x}$ (**Dirac's kam-distributie**)
+
+* "bewijst" convergentie Fourierreeks voor $\varphi \in \D([0,2\pi])=\Schw([0,2\pi]) = C^{\infty}([0,2\pi])$:
+
+  $\frac{1}{\sqrt{2\pi}} \sum_{k \in \bbZ} \widehat{\varphi}_k \erm^{\irm k x}  = \frac{1}{2\pi} \sum_{k \in \bbZ} \left[\int_{0}^{2\pi} \varphi(y) \erm^{\irm k (x - y)}\,\drm y \right]$
+  $\qquad= \int_{0}^{2\pi} \varphi(y) \sum_{n\in \bbZ} \delta(x - y - n 2\pi)\,\drm y = \varphi(x)$
+
+* polynomiaal stijgende Fourierreeks: $\sum_{k=-\infty}^{+\infty} (ik)^p \erm^{\irm k x} = 2\pi \sum_{n \in \bbZ} \delta^{(p)}(x - 2\pi n)$
+
+## Fouriertransformatie van distributies
+
+* Reguliere distributie met $f \in L^1(\bbR) \subspace L^1_{\text{loc}}(\bbR)$:
+
+  \begin{align*}
+    \widehat{T}_f[\varphi] = T_{\widehat{f}}[\varphi] &= \int_{-\infty}^{+\infty} \widehat{f}(x) \varphi(x)\,\drm x = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} f(y) \erm^{-\irm 2 \pi x y} \varphi(x)\,\drm x \,\drm y \\
+    &= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} f(y) \widehat{\varphi}(y)\,\drm y = T_f[\widehat{\varphi}]
+  \end{align*}
+
+* Algemene definitie?
+  * enkel als $\widehat{\varphi}$ ook een testfunctie is
+  * voor $\varphi(x)$ met compacte drager is $\widehat{\varphi}(\xi)$ analytisch en kan het geen compacte drager hebben: $\widehat{\varphi}\not\in \mathcal{D}(\bbR)$
+
+* Voor $\varphi \in \mathcal{S}(\bbR)$: $\widehat{\varphi}\in \mathcal{S}(\bbR)$ $\Rightarrow$ we beperken ons tot distributies in $\mathcal{S}^\ast(\bbR)$
+
+* We moeten nog bespreken wat convergentie $\lim_{n\to \infty} \varphi_n = \varphi$ in $\mathcal{S}(\bbR)$ betekent:
+
+  $\lim_{n \to \infty} \sup_{x \in \bbR} \abs{ x^k \frac{\drm^l\ }{\drm x^l} (\varphi_n(x) - \varphi(x)) } = 0$ voor alle $k, l \in \bbN$
+
+## Getemperde distributies
+
+* Met grotere ruimte van testfuncties en bijbehorende convergentiemaat:
+
+  kleinere verzameling continue lineaire functionalen $\mathcal{S}^\ast(\bbR) \subspace \mathcal{D}^\ast(\bbR)$
+
+* Welke distributies zitten er in $\mathcal{S}^\ast(\bbR)$?
+  * reguliere distributies $T_f$ met $f$ die niet "te snel" stijgt:
+
+    * er moet gelden, voor grote $\abs{x}$: $f(x) < \order(\abs{x}^p)$ voor een bepaalde $p \in \bbN$
+
+    * $f(x) = \exp(x)$ of $f(x) =\exp(x^2)$ definieert geen reguliere distributie in $\mathcal{S}^\ast(\bbR)$
+
+  * singuliere distributies:
+    * bevat Dirac delta en zijn afgeleiden
+    * bevat $\Pv \frac{1}{x}$ (als afgeleide van $\log \abs{x}$ die trager dan elke macht stijgt)
+
+$\rightarrow$ **getemperde distributies** (niet te snel stijgend)
+
+* Algemene definitie: $\widehat{T}[\varphi] = T[\widehat{\varphi}]$ voor $T \in \mathcal{S}^\ast(\bbR)$ en $\varphi \in \mathcal{S}(\bbR)$
+
+## Fouriertransformatie van getemperde distributies
+
+Voorbeelden:
+
+* $\widehat{\delta_a}[\varphi] = \delta_a[\widehat{\varphi}] = \widehat{\varphi}(a) = T_{\erm^{-\irm 2\pi a x}}[\varphi]$ $\Rightarrow$ "$\widehat{\delta}_a(x) = \erm^{-\irm 2\pi a x}$" en "$\widehat{\delta}(x) = 1$"
+
+* $\widehat{T'} = J \widehat{T}$ met $J:\xi \mapsto \irm 2\pi \xi$ en dus $\widehat{H'} = \widehat{\delta} = 1 = J \widehat{H}$
+
+  * daaruit volgt niet dat $\widehat{H}(\xi) = 1/(\irm 2\pi \xi)$
+
+  * als (distributionele) limiet: $H(x) = \lim_{s \to 0^+} \erm^{-s x} H(x)$
+
+    \begin{align*}
+      \widehat{H}(\xi) &= \lim_{s\to 0^+} \int_{-\infty}^{+\infty} \erm^{-s x} H(x) \erm^{-\irm 2\pi \xi x}\,\drm x = \lim_{s\to 0^+} \int_0^{+\infty} \erm^{-(s + \irm 2\pi \xi) x}\,\drm x \nonumber\\
+      &= \lim_{s\to 0^+} \frac{1}{s + \irm 2\pi \xi} = -\irm \lim_{s\to 0^+} \frac{1}{2\pi \xi - \irm s} = -\frac{\irm}{2\pi} \Pv\frac{1}{\xi} + \frac{1}{2} \delta(\xi).
+    \end{align*}
+
+    (compatibel met $(J \widehat{H})(\xi)=1$ want $\xi \delta(\xi) = 0$ en $\xi \Pv \frac{1}{\xi} = 1$)
+
+* $\widehat{\mathrm{sgn}}(\xi) = \frac{1}{2}(\widehat{H}(x) - \widehat{H}(-x)) = -\frac{\irm}{2\pi} \Pv \frac{1}{x}$ (gevolg van voorgaande)
+
+## Poisson sommatieformule
+
+* voor $\varphi \in \Schw(\bbR)$ (gladde functie die sneller dan elke macht van $\abs{x}$ daalt) geldt
+  $$\sum_{n \in \bbZ} \varphi(n) = \sum_{k\ \in \bbZ} \widehat{\varphi}(k)$$
+
+* bewijs:
+  * start van Dirac's kamdistributie:
+    $\sum_{n\in\bbZ} \delta(x - n)  = \sum_{k\in \bbZ} \erm^{\irm 2\pi k x}$
+  * herken $\widehat{\delta_k}(\xi) = \erm^{-\irm 2\pi k \xi}$
+    $\Rightarrow \sum_{n\in\bbZ} \delta(x - n)  = \sum_{k\in \bbZ} \widehat{\delta_k}(x)$
+
+    of dus $\sum_{n\in \bbZ} \delta_n = \sum_{k \in \bbZ} \widehat{\delta}_k$
+
+  * toegepast op testfunctie:
+
+    $\sum_{n \in \bbZ} \varphi(n)= \sum_{n\in \bbZ} \delta_n[\varphi] = \sum_{k \in \bbZ} \widehat{\delta}_k[\varphi] = \sum_{k \in \bbZ} \widehat{\varphi}(k)$
+
+* toegepast op Gaussische distributie: $\frac{1}{\sqrt{2\pi} \sigma} \sum_{n\in \bbZ} \erm^{-\frac{n^2}{2\sigma^2}} = \sum_{k\in \bbZ} \erm^{-2 \pi^2 \sigma^2 k^2}$
+
+  als ene som snel convergeert ($\sigma$ groot of klein) convergeert andere traag
+
+## Distributies en convoluties?
+
+Voor reguliere distributies geassocieerd aan $f,g \in L^1(\bbR)$: $f \ast g \in L^1(\bbR)$
+
+\begin{align*}
+	(T_f \ast T_g)[\varphi] &= T_{f \ast g}[\varphi] = \int_{-\infty}^{+\infty} (f \ast g)(x) \varphi(x)\,\drm x \\
+  &= \int_{-\infty}^{+\infty} \drm y  \int_{-\infty}^{+\infty} \drm x f(x-y) g(y) \varphi(x) \\
+	&= \int_{-\infty}^{+\infty} \drm y  \int_{-\infty}^{+\infty} \drm x f(x) g(y) \varphi(x+y)\\
+	&= \int_{-\infty}^{+\infty} g(y) T_f[\map{\tau}_{-y} \varphi] = T_g[\psi]\ \text{with}\ \psi(y) = T_f[\map{\tau}_{-y} \varphi] = (\map{\tau}_y T_f)[\varphi]\\
+	&= \int_{-\infty}^{+\infty} f(x) T_g[\map{\tau}_{-x} \varphi] = T_f[\chi]\ \text{with}\ \chi(x) = T_g[\map{\tau}_{-x} \varphi] = (\map{\tau}_x T_g)[\varphi]
+\end{align*}
+
+$\rightarrow$ algemene definitie? vereist dat $\psi$ of $\chi$ nog steeds een testfunctie is
+
+* $f(x) = x$, $\varphi(x) = \erm^{-x^2} \in \Schw(\bbR)$: $\psi(y) = \int_{-\infty}^{+\infty} x \erm^{-(x+y)^2}\,\drm x = -y \sqrt{\pi}$ 
+
+  $\rightarrow$ geen testfunctie in $\Schw(\bbR)$
+
+## Compacte distributies
+
+* "Drager van een distributie" $T$: gesloten verzameling $K \subseteq \Omega$ zodat $T[\varphi] =0$ voor alle $\varphi$ met $\mathrm{supp}(\varphi) \subseteq \Omega \setminus K$
+
+  * reguliere distributie: $\mathrm{supp}(T_f) = \mathrm{supp}(f)$
+  * $\mathrm{supp}(\delta^{(n)}) = \{0\}$
+  * $\mathrm{supp}(\Pv\frac{1}{x}) = \bbR$
+
+* als $K$ compacte deelverzameling is van $\Omega$: compacte distributie
+
+  (compacte distributies komen overeen met $\mathcal{E}^\ast(\Omega)$)
+
+* voor $S$ een compacte distributie en $\varphi$ een testfunctie in $\D(\bbR)$ of $\Schw(\bbR)$ is $\psi:y \mapsto (\map{\tau}_y S)[\varphi]$ opnieuw een testfunctie in $D(\bbR)$ of $\Schw(\bbR)$ (zonder bewijs)
+
+* Convoluties kunnen worden gedefinieerd tussen 1 (getemperde) distributie $T \in \D^{\ast}(\bbR)$ of $\Schw^\ast(\bbR)$ en 1 compacte distributie $S$ als
+  $$(S \ast T)[\varphi] = T[ y \mapsto (\map{\tau}_y S)[\varphi]]$$
+
+## Convoluties van distributies: voorbeelden
+
+* $(\delta_a \ast T)[\varphi] = T[y \mapsto (\map{\tau}_y\delta_a)[\varphi]] = T[y\mapsto \delta_{a+y}[\varphi]] = T[y \mapsto \varphi(y+a)]$
+$\qquad= T[\map{\tau}_{-a} \varphi] = (\map{\tau}_{a} T)[\varphi]$
+
+  $\Rightarrow$ $\delta$ is "neutraal element" voor convolutie
+
+* $(\delta' \ast T)[\varphi] = T[y \mapsto \delta'_y[\varphi]] = T[y\mapsto (-\varphi'(y))] = - T[\varphi'] = T'[\varphi]$
+
+  en dus $\delta^{(n)} \ast T = T^{(n)}$
+
+* niet noodzakelijk associatief:
+
+  $1 \ast (\delta' \ast H) = 1 \ast H' = 1 \ast \delta = 1$ versus $(1 \ast \delta') \ast H = 0 \ast H = 0$
+
+* lineair systeem: $u = \map{A} \varphi$ met $\map{A}$ een lineaire operator op $\D(\bbR)$ die bovendien **translatie-invariant** is: $\map{\tau}_a \map{A} = \map{A}\map{\tau}_a$
+  * $\varphi(t) = (\varphi \ast \delta)(t) = \int_{-\infty}^{+\infty} \varphi(s) \delta(t - s) \,\drm s$
+  * $u(t) = (\map{A} \varphi)(t) = \int_{-\infty}^{+\infty} \varphi(s)  (\map{A} \delta_s) (t) \,\drm s = \int_{-\infty}^{+\infty} u(s) (\map{A} \map{\tau}_s \delta)(t) \,\drm s$
+    $\qquad = \int_{-\infty}^{+\infty} u(s) (\map{\tau}_s \map{A} \delta)(t) \,\drm s = \int_{-\infty}^{+\infty} u(s) h(t - s) \,\drm s$
+  
+  $\Rightarrow h(t)=\map{A}\delta(t)$ is **impulsrespons**
+  
+  (komt overeen met Greense functie als $\map{A}=\map{G}$ of dus $\map{L} x = u$)
+
+# Fourieranalyse herbekeken
+
+## Types Fouriertransformaties
+
+Tot dusver: Fouriertransformaties gedefinieerd voor functies $f$ met domein
+
+* $\{0,\ldots,N-1\} = \bbZ / (N \bbZ) \cong \bbZ_N$: discrete Fouriertransfomratie (DFT) in H6
+* $[0,L] \cong \bbR/(L \bbZ) \cong \mathbb{T}^{(1)}_L$: Fourierreeks (H7)
+* $\bbR$: Fouriertransformatie (H9)
+
+We kunnen ook een Fouriertransformatie definiëren voor functies $f$ met domein
+
+* $\bbZ$: discrete "tijd" Fouriertransformatie (DTFT): 
+
+  \begin{equation}
+    \widehat{f}(\xi) = \sum_{j \in \bbZ} f_j \erm^{-\irm 2\pi \xi j} \quad\leftrightarrow\quad f_j = \int_{0}^{1} \widehat{f}(\xi) \erm^{+\irm 2\pi \xi j}\,\drm \xi
+  \end{equation}
+
+  met frequentie $\xi \in [0,1]$ of, meer gebruikelijk, met hoekfrequentie $\omega \in [-\pi,+\pi]$
+
+  \begin{equation}
+    \widehat{f}(\omega) = \frac{1}{\sqrt{2\pi}} \sum_{j \in \bbZ} f_j \erm^{-\irm \omega j} \quad\leftrightarrow\quad f_j = \frac{1}{\sqrt{2\pi}}\int_{0}^{2\pi} \widehat{f}(\omega) \erm^{+\irm \omega j}\,\drm \omega
+  \end{equation}
+
+## Types Fouriertransformaties
+
+* Convergentie van DTFT is volledig analoog aan Fourierreeks (beide zijn gerelateerd via omwisselen interpretatie van origineel en Fourierbeeld)
+
+* Samengevat:
+
+
+| $\dom(f)$         | Voorwaartse transformatie                                                                                     | Inverse transformatie                                                                           | $\dom(\widehat{f})$ |
+|-------------------|--------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|---------------------|
+| $\bbZ/(N\bbZ)$    | $\widehat{f}_k = \frac{1}{\sqrt{N}} \sum_{j \in \bbZ_N} f_j \erm^{-\irm \frac{2\pi}{N} k j}$           | $f_j= \frac{1}{\sqrt{N}} \sum_{k \in \bbZ_N} \widehat{f}_k \erm^{+\irm \frac{2\pi}{N} k j}$ | $\bbZ/(N\bbZ)$      |
+| $\bbR / (L \bbZ)$ | $\widehat{f}_k = \frac{1}{\sqrt{L}} \int_{\mathbb{T}_L} f(x) \erm^{-\irm \frac{2\pi}{L}  k x}\,\drm x$ | $f(x)= \frac{1}{\sqrt{L}} \sum_{k \in \bbZ} \widehat{f}_k \erm^{+\irm \frac{2\pi}{L} k x}$  | $\bbZ$              |
+| $\bbZ$            | $\widehat{f}(\xi) =  \sum_{j \in \bbZ} f_j \erm^{-\irm 2\pi \xi j}$                                    | $f_j =  \int_{\mathbb{T}_1} \widehat{f}(\xi) \erm^{+\irm 2\pi \xi j}\,\drm \xi$             | $\bbR/\bbZ$         |
+| $\bbR$            | $\widehat{f}(\xi) =  \int_{\bbR} f(x) \erm^{-\irm 2\pi \xi  x}\,\drm x$                                | $f(x) =  \int_{\bbR} \widehat{f}(\xi) \erm^{+\irm 2\pi \xi  x}\,\drm \xi$                   | $\bbR$              |
+
+
+## Fouriertransformaties relateren
+
+* functie $f$ met domein $[0,L]$ heeft Fourierreeks $f(x) = \frac{1}{\sqrt{L}} \sum_{k\in \bbZ} \widehat{f}_k \erm^{+\irm \frac{2\pi}{L} k x}$
+
+* twee mogelijke uitbreidingen naar een functie op $\bbR$:
+
+  * $f^{\text{(triv)}}(x) = \begin{cases} f(x), &x \in [0,L]\\ 0,& x \not\in [0,L]\end{cases}$ $\quad \Rightarrow$ $\widehat{f}_k = \frac{1}{\sqrt{L}} \widehat{f}^{\text{(triv)}}(k/L)$ voor alle $k \in \bbZ$.
+
+  * $f^{\text{(per)}}(x) = f(x \mod L)$ (dit is wat de Fourierreeks vanzelf doet)
+
+    $\Rightarrow$ $f^{\text{(per)}}$ is niet absoluut integreerbaar en heeft dus geen Fouriertransformatie in de klassieke zin
+
+    $\Rightarrow$ in de distributionele zin:
+
+    $\widehat{f}^{\text{(per)}}(\xi) = \frac{1}{\sqrt{L}} \sum_{k \in \bbZ} \widehat{f}_k \int_{-\infty}^{+\infty} \erm^{-i 2\pi \left(\xi - \frac{k}{L} \right) x}\,\drm x$
+    $\qquad =  \frac{1}{\sqrt{L}} \sum_{k \in \bbZ} \widehat{f}_k \delta\left(\xi - \frac{k}{L}\right) = \frac{1}{L} \sum_{k \in \bbZ} \widehat{f}^{\text{(triv)}}(k/L) \delta\left(\xi-\frac{k}{L}\right)$
+
+## Fouriertransformaties relateren
+
+* analoog voor $f$ met domein $\bbZ_N$ en zijn uitbreiding naar $\bbZ$
+
+  * discrete Fouriertransformatie: $f_j = \frac{1}{\sqrt{N}}\sum_{k \in \bbZ_N} \widehat{f}_k \erm^{+\irm\frac{2\pi}{N}k j}$
+
+  * Relatie tussen DFT van $f$ en DTFT van triviale uitbreiding naar $\bbZ$: $f^{(\text{triv})}_j = 0$ voor $j \not \in \{0,\ldots,N-1\}$
+
+    $\widehat{f}_k = \frac{1}{\sqrt{N}} \widehat{f}^{\text{(triv)}}(k/N),\quad \forall k \in \bbZ_{N}$
+
+  * Relatie met DTFT van periodieke uitbreiding naar $\bbZ$:
+
+    \begin{align*}
+      \widehat{f}^{\text{(per)}}(\xi) &= \frac{1}{\sqrt{N}}\sum_{k \in \bbZ_N} \widehat{f}_k \sum_{j \in \bbZ} \erm^{-\irm 2\pi \left(\xi - \frac{k}{N}\right)j} = \frac{1}{\sqrt{N}}\sum_{k \in \bbZ_N} \widehat{f}_k  \sum_{m \in \bbZ} \delta\left(\xi - \frac{k}{N} - m\right) \\
+      &= \frac{1}{N}\sum_{k \in \bbZ_N} \widehat{f}^{\text{(triv)}}(k/N)  \sum_{m \in \bbZ} \delta\left(\xi - \frac{k}{N} - m\right)
+    \end{align*}
+
+    $\rightarrow$ DTFT beeld $\widehat{f}^{\text{(per)}}(\xi)$ is zelf periodiek met periode $1$:
+    
+    daarvoor zorgt de som over $n$ (Dirac's kamdistributie)
+
+## Sampling en Shannon-Nyquisttheorema
+
+Beschouw functie $f(x)$ voor $x \in \bbR$, en zijn samples $F_j = f(j \epsilon)$ voor $j \in \bbZ$
+
+* DTFT van samples $F_j$ kunnen gerelateerd worden aan FT van $f(x)$:
+
+  \begin{align*}
+  \widehat{F}(\chi) &= \sum_{j\in \bbZ} F_j \erm^{-\irm 2\pi \chi j} = \sum_{j\in \bbZ} \left(\int_{\bbR} \widehat{f}(\xi) \erm^{+\irm 2\pi \xi x_j}\,\drm \xi\right) \erm^{-\irm 2\pi \chi j} \\
+  &= \int_{\bbR} \widehat{f}(\xi) \left[\sum_{j\in \bbZ} \erm^{\irm 2\pi (\xi \epsilon-\chi)j}\right]\,\drm \xi = \int_{\bbR} \widehat{f}(\xi) \left[\sum_{n \in \bbZ} \delta(\xi \epsilon - \chi -n )\right]\,\drm \xi \\
+  &= \sum_{n \in \bbZ} \frac{1}{\epsilon} \widehat{f}\left(\frac{\chi}{\epsilon} - \frac{n}{\epsilon}\right)
+  \end{align*}
+
+## Sampling en Shannon-Nyquisttheorema
+
+* $f$ heeft een gelimiteerde brandbreedte heeft met maximale frequentie $\Xi$ als $\mathrm{supp}(f) \subseteq [-\Xi,+\Xi]$
+
+* als $f$ een gelimiteerde bandbreedte heeft met maximale frequentie $\Xi$, en gesampled wordt met een samplefrequentie $1/\epsilon > 2 \Xi$ (**Nyquistfrequentie**), dan kan $\widehat{f}$ exact gereconstrueerd worden uit de DTFT $\widehat{F}$ van de samples $F_j=f(j\epsilon)$ via
+  \begin{equation}
+    \widehat{f}(\xi) = \begin{cases}
+      \epsilon \widehat{F}(\epsilon\xi),&\abs{\xi} \leq \frac{1}{2\epsilon}\\
+      0,&\abs{\xi} > \frac{1}{2\epsilon}
+    \end{cases}.
+  \end{equation}
+
+* als we een functie $f$ op $\bbR$ uit zijn samples $F_j = f(j \epsilon)$ reconstrueren via de **Whittaker–Shannon interpolatieformule**:
+
+  $f^{\text{(rec)}}(x) = \sum_{j \in \bbZ} F_j \sinc\left(\pi \frac{x - j\epsilon}{\epsilon}\right)$ (met $\sinc(x) = \sin(x)/x$)
+
+  dan geldt $\widehat{f}^{\text{(rec)}}(\xi) = H\left(\frac{1}{2\epsilon}-\abs{\xi}\right) \sum_{n \in \bbZ} \widehat{f}\left(\xi - \frac{n}{\epsilon}\right)$
+
+  $\rightarrow$ de reconstructie is exact als $f$ bandgelimiteerd is met frequentie $\Xi < \frac{1}{2\epsilon}$
+
+  $\rightarrow$ indien $f$ niet bandgelimiteerd: aliasing / moirépatronen
+
+## Translaties
+
+* voor functies op $\bbR$ of $\bbZ$:
+  * $(\map{\tau}_a f)(x) = f(x-a)$ of $(\map{\tau}_m f)_j = f_{j-m}$
+  * translaties vormen een Abelse groep: $(\bbR,+)$ of $(\bbZ,+)$
+  
+    $\map{\tau}_0 = \idmap$, $\map{\tau}_a \map{\tau}_b = \map{\tau}_b \map{\tau}_a = \map{\tau}_{a+b}$, $\map{\tau}_a \map{\tau}_{-a} = \idmap$
+
+  * voor functies op $\bbR/(L\bbZ)$ of $\bbZ/(N\bbZ)\cong \bbZ_N$: bijkomende voorwaarde:
+
+    $\map{\tau}_L = \idmap$ of $\map{\tau}_N = \idmap$
+
+* translatie-invariante operatoren: $\map{A}\map{\tau} = \map{\tau}\map{A}$
+  * op functies op $\{0,\ldots,N-1\} \cong \bbZ_N$: circulante matrices
+  * op functies op $\bbR$ of $[0,L] \cong \bbR/(L\bbZ)$:
+    * afgeleide operator $\map{D}$: $(\map{D}\map{\tau}_a f)(x) = \frac{\drm\ }{\drm x} f(x-a) = f'(x-a) = (\map{\tau}_a f')(x)= (\map{\tau}_a \map{D} f)(x)$
+    * integraaloperator $\map{A}$: als integraalkern van de vorm $A(x,y) = a(x-y)$ is
+      $(\map{A}f)(x) = \int A(x,y)f(y)\,\drm y = \int a(x-y) f(y)\,\drm y = (a \ast f)(x)$
+      
+## Eigenfuncties van translaties
+
+* $\commutator{\map{A}}{\map{\tau}_a}=\zeromap$ en alle $\commutator{\map{\tau}_a}{\map{\tau}_b} = \zeromap$ (abelse groep)
+
+  $\rightarrow$ hebben $\tau_a$ voor alle $a$ en $\map{A}$ gezamelijke eigenfuncties? zijn ze gelijktijdig "diagonaliseerbaar"?
+
+* $(\map{\tau}_a f)(x) = f(x-a) = \lambda_a f(x)$:
+  * zonder voorwaarde op de functieruimte: $f(x) = \exp(s x)$ en $\lambda_a = \exp(s a)$ voor alle $s \in \bbC$ (startpunt voor Laplace transformatie: zie cursus Complexe Analyse)
+
+  * voor functies op $[0,L] \cong \bbR/(L\bbZ)$:
+  
+    $\map{\tau}_L = \idmap \implies \exp(s L) = 1 \implies s = \irm \frac{2\pi}{L}k$ voor $k \in \bbZ$
+    * eigenfuncties $\exp(\irm \frac{2\pi}{L} k x)$ vormen basis als we ons beperken tot $L^2([0,L])$
+
+  * voor $L^2(\bbR)$:
+    * de functies $\psi_s(x) = \exp(s x)$ zijn nooit normaliseerbaar en dus niet in $L^2(\bbR)$
+    * de functies $\exp(\irm 2\pi \xi x - \epsilon \abs{x})$ zitten  (voor $\epsilon>0$) in $L^2(\bbR)$ en vormen benaderende eigenvectoren (continue spectrum)
+
+## Eigenfuncties van translaties
+
+* $(\map{\tau}_n f)_j = f_{j-n} = \lambda_n f_j$:
+  * zonder voorwaarde op de rijruimte: $f_j = \exp(s j)$ en $\lambda_n = \exp(s n)$
+  * keuzes $s$ en $s + \irm 2\pi k$ voor $k \in \bbZ$ leiden tot zelfde $\lambda_n$ voor alle $n$
+    
+    $\Rightarrow \imag(s) \in (-\pi,+\pi]$
+    
+     vaak geschreven als $f_j = z^j$ met $z = \erm^s$: startpunt voor Z-transformatie
+
+  * voor functies op $\bbZ_n$: $\map{\tau}_N = \idmap \implies s = \irm \frac{2\pi}{N} k$ met $k \in \bbZ_N$
+  * voor kwadratisch integreerbare functies:
+  
+    $s = \irm 2\pi \xi$ met $\xi \in [0,1)$ (continu spectrum)
+
+* Pontryagin dualiteit:
+  * Discreet versus continu in origineel domein: onbegrensd versus begrensd (compact) in Fourier domein
+  * Onbegrensd versus compact in origineel domein: continu versus discreet in Fourier domein
+
+## Fouriertransformaties en translatie-invariante operatoren
+
+* we weten al: DFT diagonaliseert circulante matrices
+
+* voor afgeleide-operator:
+  $\map{F}(\map{D}f)(\xi) = \map{F}(f')(\xi)= 2\pi \irm \xi \widehat{f}(\xi) = \map{M}_{2\pi \irm \xi} (\map{F}f)(\xi)$
+
+  $\Rightarrow$ $\map{F}\map{D}\map{F}^\dagger = \map{M}_{2\pi \irm \xi}$ (multiplicatie-operator op Fourierbeeld)
+
+* voor translatie-invariante integraaloperator:
+
+  $\map{F}(\map{A} f)(\xi) = \map{F}(a \ast f)(\xi) = \widehat{a}(\xi) \widehat{f}(\xi) = \map{M}_{\widehat{a}(\xi)} (\map{F}f)(\xi)$
+
+    $\Rightarrow$ $\map{F}\map{A}\map{F}^\dagger = \map{M}_{\widehat{a}(\xi)}$ (multiplicatie-operator op Fourierbeeld)
+
+* Translatie-invariante differentiaaloperatoren EN integraaloperatoren worden door Fouriertransformatie omgezet in multiplicatie-operatoren ($\approx$ diagonaal):
+  * eenvoudig te inverteren
+  * Fouriertransformatie om Greense functie te bereken
+
