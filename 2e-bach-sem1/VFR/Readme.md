@@ -1,3 +1,24 @@
+## Slides
+
+https://jutho.github.io/VectorFunctionSpacesSlides/
+
+Vector and Function Spaces – Slides
+
+
+Date	Title	Author
+Sep 21, 2026	Hoofdstuk 1 - Elementaire wiskundige structuren	Jutho Haegeman
+Sep 22, 2026	Hoofdstuk 2 - Lineaire afbeeldingen	Jutho Haegeman
+Sep 22, 2026	Hoofdstuk 3 - Lineaire operatoren en eigenwaarden	Jutho Haegeman
+Oct 21, 2025	Hoofdstuk 4 - Normen en afstanden	Jutho Haegeman
+Oct 28, 2025	Hoofdstuk 5 - Inwendig product en orthogonaliteit	Jutho Haegeman
+Nov 12, 2025	Hoofdstuk 6 - Unitaire gelijkvormigheid en unitaire equivalentie	Jutho Haegeman
+Nov 18, 2025	Hoofdstuk 7 - Functieruimten	Jutho Haegeman
+Nov 24, 2025	Hoofdstuk 8 - Lineaire differentiaaloperatoren	Jutho Haegeman
+Dec 2, 2025	Hoofdstuk 9 - Fourieranalyse en distributies	Jutho Haegeman
+Sep 21, 2026	Vector- en functieruimten	Jutho Haegeman & Lander Burgelman
+
+## Samenvatting te kennen leerstof
+
 https://jutho.github.io/VectorFunctionSpacesSummary/
 
 Vector and Function Spaces – Summary
@@ -10,7 +31,6 @@ Not covered in class: sections which we have not or only briefly covered, and ar
 Important concepts: these mostly correspond to definitions, sometimes the definition is hidden inside a proposition or theorem. You do not need to know the literal definition, but you should be able to understand and use this term or concept correctly, both for theory and exercise.
 
 Additional topics for applications / exercises: what you need to know for the exercises, in particular if it is additional material that you do not need to know for theory
-
 
 Date	        Title	                                                    Author
 Sep 23, 2025	Chapter 1 — Elementary algebraic structures	                Jutho Haegeman

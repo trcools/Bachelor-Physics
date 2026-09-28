@@ -21,6 +21,7 @@ venv/
 *.docx
 *.pptx
 *.mp4
+*.mov
 *.icloud
 
 # LaTeX build artifacts
@@ -36,6 +37,8 @@ venv/
 *.nav
 *.snm
 *.vrb
+
+*.icloud
 
 # Local-only private files
 # Put any files you want to keep ONLY on your own computer in the _lokaal/ folder.

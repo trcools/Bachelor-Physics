@@ -1,0 +1,249 @@
+\documentclass[a4paper,twoside]{article}
+
+
+% --- RUIMTE EN LAYOUT ---
+\usepackage{setspace}
+
+\usepackage{geometry} %size regulating
+\geometry{
+ a4paper,
+ left=25mm,
+ right=25mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+\usepackage{parskip} % for better spacing between paragraphs
+\usepackage{flushend} % Alleen nodig als je laatste pagina van artikel wilt vullen met tekst, zodat de kolommen even lang zijn. Anders kan je dit beter weglaten.
+
+% --- WISKUNDE ENSYMBOLEN ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm} % For nicer math format
+\usepackage{mathrsfs} % For curly arrr
+\usepackage{bm} % For bold symbols eg \bm{\nabla}
+\usepackage{esint} % For bolletje in integrals
+\usepackage{dsfont}
+\usepackage{siunitx} % Voeg deze expliciet toe voor die graden en eenheden!
+\usepackage{braket} % For bra-ket notation
+\usepackage{mathtools}
+\usepackage{url}
+\allowdisplaybreaks
+
+% --- OVERIGE ---
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref} % geen kaders om linken
+\usepackage{subcaption}
+%\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% --- Tikz packages ---
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes, babel} % for pic (angle labels)
+\usetikzlibrary{arrows.meta,decorations.markings,calc, decorations.pathmorphing, decorations.pathreplacing, positioning, shapes, shadings, patterns}
+\usepackage{xcolor}
+\usepackage{tikz-3dplot}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage{etoolbox} % ifthen
+\usepackage[outline]{contour} % glow around text
+\usepackage{xfp} % higher precision (16 digits?)
+\contourlength{1.1pt}
+
+
+
+% --- THEOREM STIJLEN MET EXTRA RUIMTE ---
+
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulaat}
+\newtheorem{definition}{Definitie}
+\newtheorem{derivation}{Afleiding}
+\newtheorem{proposition}{Propositie}
+\newtheorem{example}{Voorbeeld}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+
+% --- EXTRA COMMANDO'S ---
+
+\newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
+
+% --- Titel en Introductie --- 
+
+\title{Vectoren en Functie Ruimten}
+\author{T. Cools}
+\date{2026-2027}
+\raggedbottom
+
+% Toelaten dat pagina-overgangen plaatsvinden tussen opeenvolgende (lege) titels
+\makeatletter
+\let\old@startsection\@startsection
+\renewcommand{\@startsection}[6]{%
+  \@nobreakfalse
+  \old@startsection{#1}{#2}{#3}{#4}{#5}{#6}%
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+   Hier noteer ik de delen van de cursus die ik nog niet helemaal begrijp of moeilijk vind.
+\end{abstract}
+
+\section{ELEMENTARY ALGEBRAIC STRUCTURES}
+\subsection{Sets, maps and relations}
+\subsubsection{Sets}
+\subsubsection{Maps}
+\subsubsection{Set cardinality revisited}
+\begin{itemize}
+    \item cardinality of the continuum??
+    \item Power sets of (in)finite sets \cite{enwiki:power_set}
+\end{itemize}
+\subsubsection{Relations}
+\begin{itemize}
+    \item Example 1.2 (oefening!)
+    \item partial order relation: antisymmetric??
+    \item Example 1.4 (oefening!)
+\end{itemize}
+\subsection{Groups, rings and fields}
+\subsubsection{Groups}
+\subsubsection{Homomorphisms, isomorphisms and automorphisms}
+\subsubsection{Group actions}
+\subsubsection{Kernels, normal subgroups and quotient groups}
+\subsubsection{Rings and fields}
+\subsection{Vector spaces}
+\subsubsection{Definitions and examples}
+\subsubsection{Vector space homomorphisms, endomorphisms and isomorphisms}
+\subsubsection{Linear combination, span and completeness}
+\subsubsection{Linear independence and basis}
+\subsubsection{Index notation and Einstein summation convention}
+\subsubsection{Combining and manipulating spaces and subspaces}
+\subsection{Algebras}
+
+\section{LINEAR MAPS AND MATRICES}
+\subsection{Linear maps reviewed}
+\subsection{Kernel, image and rank-nullity theorem}
+\subsection{Matrices and determinants}
+\subsubsection{Matrix representation of linear maps}
+\subsubsection{Matrix properties and manipulations}
+\subsection{Computation and complexity of matrix multiplication}
+\subsubsection{Trace and determinant}
+\subsubsection{Application: integration measures and Jacobians}
+\subsubsection{Matrix inverse}
+\subsection{General linear group and basis transforms}
+\subsubsection{Matrix groups}
+\subsubsection{Basis transforms}
+\subsection{Functionals and dual spaces}
+\subsubsection{Dual spaces}
+\subsubsection{Basis transforms and the contragradient representation}
+\subsubsection{Dual linear maps and the transpose}
+\subsection{Systems of linear equations}
+\subsubsection{Gaussian elimination and LU decomposition}
+
+\section{LINEAR OPERATORS AND EIGENVALUES}
+\subsection{Powers and polynomials}
+\subsubsection{Powers and polynomials of operators}
+\subsubsection{Projection operators}
+\subsubsection{Annihilating polynomials}
+\subsection{Eigenvalues, eigenvectors and diagonalisation}
+\subsubsection{Eigenvalues, eigenvectors and eigenspaces}
+\subsubsection{Characteristic polynomial and Cayley-Hamilton theorem}
+\subsubsection{Diagonalisation and spectral decomposition}
+\subsubsection{Diagonalisation of commuting operators}
+\subsection{Generalised eigenspaces and Jordan canonical form}
+\subsubsection{Invariant subspaces}
+\subsubsection{Generalised eigenspaces}
+\subsubsection{Jordan canonical form}
+\subsubsection{Related eigenvalue problems}
+\subsection{Functions of linear operators}
+\subsubsection{Matrix exponential}
+\subsection{Application: dynamical systems}
+\subsubsection{Recurrence relations}
+\subsubsection{Initial value problems}
+
+\section{NORMS AND DISTANCES}
+\subsection{Normed vector spaces}
+\subsubsection{Hölder norms}
+\subsubsection{Interlude: calculus in metric spaces}
+\subsubsection{Convergence and continuity in normed vector spaces}
+\subsubsection{Equivalence of norms}
+\subsection{Banach spaces}
+\subsection{Norms for linear maps}
+\subsubsection{Continuity and subordinate norms}
+\subsubsection{Matrix norms}
+\subsubsection{Spectral radius and Gelfand formula}
+\subsection{Applications}
+\subsubsection{Sensitivity of linear systems}
+\subsubsection{Functions of operators revisited}
+
+\section{INNER PRODUCTS AND ORTHOGONALITY}
+\subsection{Prologue: bilinear and sesquilinear forms}
+\subsection{Inner product spaces}
+\subsubsection{Cauchy-Schwarz inequality and its consequences}
+\subsubsection{Examples of infinite-dimensional inner product spaces}
+\subsubsection{Parallelogram law and polarisation identity}
+\subsection{Orthogonality and unitarity}
+\subsubsection{Orthogonality and orthonormality}
+\subsubsection{Orthogonal complements and orthogonal projections}
+\subsubsection{Orthonormal basis for Hilbert spaces}
+\subsubsection{Gram-Schmidt orthonormalisation and the QR decomposition}
+\subsection{Linear functionals and the duality of Hilbert space}
+\subsubsection{Finite-dimensional case}
+\subsubsection{Riesz representation theorem}
+\subsection{Bounded linear maps in Hilbert spaces}
+\subsubsection{Preliminaries}
+\subsubsection{Adjoint of a linear map}
+\subsubsection{Self-adjoint operators}
+\subsubsection{Isometric and unitary maps}
+\subsubsection{Normal operators}
+\subsubsection{Hilbert-Schmidt inner product}
+\subsection{Application: least squares solutions}
+
+\section{MULTILINEAR ALGEBRA}
+\subsection{Tensor product of vector spaces}
+\subsubsection{Bilinear maps revisited}
+\subsubsection{Formal definition}
+\subsubsection{Tensor product of linear maps}
+\subsubsection{Multilinear maps and general tensors}
+\subsubsection{Dual spaces and linear maps revisited}
+\subsubsection{Index notation and tensor operations}
+\subsection{Tensors in inner product spaces}
+\subsubsection{Inner product in a tensor space}
+\subsubsection{Raising and lowering indices}
+\subsubsection{Tensor products of infinite dimensional Hilbert spaces}
+\subsection{Tensor algebra and exterior products}
+\subsubsection{Tensor algebra}
+\subsubsection{Symmetry under index permutation}
+\subsubsection{Wedge products, exterior algebra and alternating forms}
+
+\section{UNITARY SIMILARITY AND UNITARY EQUIVALENCE}
+\subsection{Unitary and orthogonal groups}
+\subsection{Elementary unitary transformations}
+\subsubsection{Permutation matrices}
+\subsubsection{Discrete Fourier transformation}
+\subsection{Schur decomposition and power iteration}
+\subsubsection{Schur decomposition}
+\subsubsection{Normal matrices revisited}
+\subsubsection{Power method and subspace iteration}
+\subsection{Singular value and polar decomposition}
+\subsubsection{Unitary equivalence}
+\subsubsection{Singular value decomposition}
+\subsubsection{Rank, norm, condition number}
+\subsubsection{Least squares and pseudo-inverse}
+\subsubsection{Low rank approximations}
+\subsubsection{Polar decomposition}
+
+\section{FUNCTION SPACES}
+\subsection{Function spaces and norms}
+\subsubsection{Introduction}
+
+
+\bibliographystyle{plain}
+\bibliography{/Users/tristancools/Documents/Overleaf-Latex-Typst/References/references}
+
+\end{document}
