@@ -166,12 +166,72 @@ nog verbeteren
 \subsection{Analyticity}
 \subsubsection{Oefening 1}
 HUH?
-\subsubsection{Oefening 2}
 
+Na eerst de andere oefeningen te doen, is dit nu wel gelukt.
+
+Algemeen: \(z = x+iy\)
+
+door \(f(z) = Re(z) = x \implies v(x,y) = 0 \land u(x,y) = 1 \)
+volgens cauchy-riemann moet dan \(1 = 0\), wat strijdig is.
+
+We moeten de oef volgens onze def:
+\[
+f'(z_0) = \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}
+\]
+oplossen.
+
+\[
+= \lim_{\Delta z \to 0} \frac{x_0 + \Delta x - x_0}{\Delta z} 
+= \lim_{\Delta z \to 0} \frac{\Delta x}{\Delta z}. 
+\]
+met \(\Delta z = \Delta x + i \Delta y\)
+Dan 2 gevallen: \(\Delta x \to 0\) en \(\Delta_y = 0\)  en eens \( \Delta y \to 0 \) en \(\Delta x = 0\) bekijken.
+\subsubsection{Oefening 2}
+Lukt wel, nog verbeteren.
 \subsubsection{Oefening 3}
 \subsubsection{Oefening 4}
 \subsection{The Cauchy-Riemann Equations}
-
+\subsubsection{Oefening 1}
+Ok! Wel goed verschil tussen differentiability en analyticity kennen!
+\subsubsection{Oefening 2}
+Gelukt!
+\subsubsection{Oefening 3}
+\subsubsection{Oefening 4}
+Ok, maar vergeet niet:
+\[
+\boxed{f'(z_0) = \frac{\partial u(x_0, y_0)}{\partial x} + i\frac{\partial v(x_0, y_0)}{\partial x}} 
+\qquad \text{ en } \qquad
+ \boxed{f'(z_0) = -i\frac{\partial u(x_0, y_0)}{\partial y} + \frac{\partial v(x_0, y_0)}{\partial y}}
+ \]
+ m.a.w.:
+ \[
+ f'(z) = f'(u+iv) = u_x + i v_x = -i u_y + v_y.
+ \]
 \subsection{Harmonic Functions}
+\subsubsection{Oefening 1}
+Om te voldoen aan de laplace vergelijking moet gelden:
+\[
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0
+\qquad \text{ en } \qquad
+\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0
+\]
+m.a.w.:
+\[
+u_{xx} + u_{yy} = 0 \qquad \text{ en } \qquad v_{xx} + v_{yy} = 0  
+\]
+en belangrijk, \textbf{NIET} aan : \(u_xx + v_yy = 0\)! Dit heb ik perongelijk eerst gedaan.
+
+\subsubsection{Oefening 2}
+\subsubsection{Oefening 3}
+Ik heb deze met een transformatie:
+
+\(v \to -u'\) en \(u \to v'\) aangepakt om aaan te tonen dat:
+
+\(u_x' = v_y'\) en \(u_y' = - v_x'\), wat de cauchy-riemann vergelijkingen zijn.
+Dus \(u'\) en \(v'\) zijn harmonic conjugates.
+\subsubsection{Oefening 4}
+Yes die is gelukt! Wel te veel uitgewerkt, ik moest gewooon van het begin al enkel kijken naar \(v(x,y)\).
+\subsubsection{Oefening 5}
+\subsubsection{Oefening 6}
 
 \end{document}
