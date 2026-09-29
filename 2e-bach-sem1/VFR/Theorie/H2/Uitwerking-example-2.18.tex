@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Uitwerking Multidimensional Gaussian Normalisation}
+
+Gegeven is de kansdichtheidsfunctie van een \textit{multidimensional Gaussian distribution}:
+\begin{equation}
+    f_X(\mathbf{x}) = Z \exp\left[ -\frac{1}{2} (\mathbf{x} - \boldsymbol{\mu})^T A (\mathbf{x} - \boldsymbol{\mu}) \right]
+\end{equation}
+waarbij $A \in \mathbb{R}^{n \times n}$ een symmetrische en \textit{positive definite} matrix is. De normalisatie-eis luidt:
+\begin{equation}
+    \int_{\mathbb{R}^n} f_X(\mathbf{x}) \, \mathrm{d}^n\mathbf{x} = 1
+\end{equation}
+
+\subsection*{Co\"ordinatentransformatie via LDU-decompositie}
+Omdat $A$ symmetrisch is ($A = A^T$), schrijven we de LDU-decompositie als $A = L D L^T$, waarbij $L$ een \textit{lower triangular matrix} is met enen op de diagonaal, en $D$ een \textit{diagonal matrix} met elementen $D^i_{\ i} = d_i > 0$.
+
+Definieer de nieuwe integratievariabele:
+\begin{equation}
+    \mathbf{y} = L^T (\mathbf{x} - \boldsymbol{\mu}) \implies \mathbf{x} = \boldsymbol{\mu} + (L^T)^{-1}\mathbf{y}
+\end{equation}
+
+De \textit{Jacobian matrix} $J$ van deze transformatie ($\frac{\partial \mathbf{x}}{\partial \mathbf{y}}$) is:
+\begin{equation}
+    J = (L^T)^{-1}
+\end{equation}
+Omdat $L$ \textit{lower-diagonal} is met een eenheidsdiagonaal, is $\det(L) = 1$. Bijgevolg is $\det(L^T) = 1$ en $\det(J) = \det((L^T)^{-1}) = 1$.
+
+\subsection*{Substitutie in de exponent}
+De kwadratische vorm in de exponent herschrijft zich algebra\"isch als volgt:
+\begin{align}
+    (\mathbf{x} - \boldsymbol{\mu})^T A (\mathbf{x} - \boldsymbol{\mu}) &= \left( (L^T)^{-1}\mathbf{y} \right)^T (L D L^T) \left( (L^T)^{-1}\mathbf{y} \right) \\
+    &= \mathbf{y}^T (L^T)^{-T} L D L^T (L^T)^{-1} \mathbf{y}
+\end{align}
+Aangezien de transpositie van een inverse gelijk is aan de inverse van een transpositie, geldt $(L^T)^{-T} = (L^{-1})^{-1} = L^{-1}$. Dit reduceert de vergelijking tot:
+\begin{equation}
+    \mathbf{y}^T (L^{-1} L) D (L^T (L^T)^{-1}) \mathbf{y} = \mathbf{y}^T D \mathbf{y}
+\end{equation}
+
+\subsection*{Berekening van de normalisatiefactor Z}
+De $n$-dimensionale integraal valt nu door de diagonaalmatrix $D$ uiteen in $n$ onafhankelijke 1D Gaussiaanse integralen:
+\begin{equation}
+    \int_{\mathbb{R}^n} f_X(\mathbf{x}) \, \mathrm{d}^n\mathbf{x} = Z \prod_{i=1}^n \left( \int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2} d_i (y^i)^2\right) \, \mathrm{d}y^i \right) = 1
+\end{equation}
+Met behulp van de standaardoplossing $\int_{-\infty}^{\infty} e^{-a z^2} \mathrm{d}z = \sqrt{\frac{\pi}{a}}$ (waarbij $a = d_i / 2$), bekomen we:
+\begin{equation}
+    1 = Z \prod_{i=1}^n \sqrt{\frac{2\pi}{d_i}} \implies Z = \prod_{i=1}^n \sqrt{\frac{d_i}{2\pi}}
+\end{equation}
+Omdat $\det(A) = \det(L D L^T) = \det(L)\det(D)\det(L^T) = 1 \cdot \left(\prod_{i=1}^n d_i\right) \cdot 1$, geldt $\prod_{i=1}^n d_i = \det(A)$. We herschrijven $Z$ definitief als:
+\begin{equation}
+    Z = \sqrt{\frac{\det(D)}{(2\pi)^n}} = \sqrt{\frac{\det(A)}{(2\pi)^n}}
+\end{equation}
+
+\end{document}

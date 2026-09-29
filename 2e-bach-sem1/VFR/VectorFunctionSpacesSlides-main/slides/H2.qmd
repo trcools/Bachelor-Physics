@@ -517,7 +517,7 @@ $B_V$ en $\tilde{B}_V$, alsook $B_W$ en $\tilde{B}_W$ en een lineaire afbeelding
   \begin{align*}
   \tilde{\mat{A}} &= \phi_{\tilde{B}_W} \circ \map{A} \circ \phi_{\tilde{B}_V}^{-1}\\
   & = \phi_{\tilde{B}_W} \circ (\phi_{B_W}^{-1} \circ \mat{A} \circ \phi_{B_V}) \circ \phi_{\tilde{B}_V}^{-1}\\
-  &= (\phi_{\tilde{B}_W} \circ \phi_{B_W}^{-1}) \circ \mat{A} \circ (\phi_{\tilde{B}_V} \circ \phi_{B_V})^{-1}\\
+  &= (\phi_{\tilde{B}_W} \circ \phi_{B_W}^{-1}) \circ \mat{A} \circ (\phi_{\tilde{B}_V} \circ \phi_{B_V}^{-1})^{-1}\\
   &= \mat{T}_W \cdot \mat{A} \cdot \mat{T}_V^{-1}
   \end{align*}
 
