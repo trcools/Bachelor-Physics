@@ -1,0 +1,93 @@
+\documentclass[a4paper,twoside]{article}
+
+
+% --- RUIMTE EN LAYOUT ---
+\usepackage{setspace}
+
+\usepackage{geometry} %size regulating
+\geometry{
+ a4paper,
+ left=25mm,
+ right=25mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+\usepackage{parskip} % for better spacing between paragraphs
+\usepackage{flushend} % Alleen nodig als je laatste pagina van artikel wilt vullen met tekst, zodat de kolommen even lang zijn. Anders kan je dit beter weglaten.
+
+% --- WISKUNDE ENSYMBOLEN ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm} % For nicer math format
+\usepackage{mathrsfs} % For curly arrr
+\usepackage{bm} % For bold symbols eg \bm{\nabla}
+\usepackage{esint} % For bolletje in integrals
+\usepackage{dsfont}
+\usepackage{siunitx} % Voeg deze expliciet toe voor die graden en eenheden!
+\usepackage{braket} % For bra-ket notation
+\usepackage{mathtools}
+\usepackage{url}
+\allowdisplaybreaks
+
+% --- OVERIGE ---
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref} % geen kaders om linken
+\usepackage{subcaption}
+%\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% --- Tikz packages ---
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes, babel} % for pic (angle labels)
+\usetikzlibrary{arrows.meta,decorations.markings,calc, decorations.pathmorphing, decorations.pathreplacing, positioning, shapes, shadings, patterns}
+\usepackage{xcolor}
+\usepackage{tikz-3dplot}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage{etoolbox} % ifthen
+\usepackage[outline]{contour} % glow around text
+\usepackage{xfp} % higher precision (16 digits?)
+\contourlength{1.1pt}
+
+
+
+% --- THEOREM STIJLEN MET EXTRA RUIMTE ---
+
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulaat}
+\newtheorem{definition}{Definitie}
+\newtheorem{derivation}{Afleiding}
+\newtheorem{proposition}{Propositie}
+\newtheorem{example}{Voorbeeld}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+
+% --- EXTRA COMMANDO'S ---
+
+\newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
+
+% --- Titel en Introductie --- 
+
+\title{Complexe Analyse: Moeilijkheden theorie}
+\author{T. Cools}
+\date{2026-2027}
+
+\begin{document}
+
+\maketitle
+
+\begin{align*}
+    .
+\end{align*}
+
+\textbf{4.5 changing location of the branch of log(z)}
+
+Eigenlijk alles van de argument functie nog eens bekijken!
+
+\end{document}
