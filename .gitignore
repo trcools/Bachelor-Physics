@@ -46,3 +46,12 @@ venv/
 _lokaal/**
 !_lokaal/README.md
 
+*.json
+*.css
+*.woff
+*.woff2
+*.js
+*.svg
+*.ttf
+*.eot
+*.map

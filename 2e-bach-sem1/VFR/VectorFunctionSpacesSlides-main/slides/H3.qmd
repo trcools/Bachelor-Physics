@@ -193,7 +193,7 @@ $$\underbrace{p(\map{T} \map{A} \map{T}^{-1})}_{\in \End(W)} = \map{T} \underbra
 
 ## Nilpotente operatoren
 
-* Een element $a$ fvan een ring $R$ dat voldoet aan aan $a^s = 0$ heet **nilpotent** met index $s$ (als $n=s$ de kleinste waarde is waarvoor $a^n=0$)
+* Een element $a$ van een ring $R$ dat voldoet aan aan $a^s = 0$ heet **nilpotent** met index $s$ (als $n=s$ de kleinste waarde is waarvoor $a^n=0$)
 
 * Nilpotente operatoren $\map{N} \in \End(V)$ voldoen dus aan $\map{N}^s = \zeromap$ en spelen een rol bij de veralgemeene eigenwaardendecompositie
 
@@ -482,7 +482,7 @@ met $U_\lambda$ en $U_\lambda^{\text{c}}$ beide invariante deelruimten van $\map
   $\Rightarrow$ $m_{\map{A}|_{U_\lambda}}(z) = (z-\lambda)^s$ en $k_{\map{A}|_{U_\lambda}}(z) = (z-\lambda)^{\dim(U_\lambda)}$
 * Per constructie is $\map{A}|_{U_{\lambda}^{\text{c}}}-\lambda \idmap_{U_\lambda^{\text{c}}}$ injectief/inverteerbaar, zodat $\map{A}|_{U_{\lambda}^{\text{c}}}$ geen eigenwaarden $\lambda$ kan hebben.
 
-  $\Rightarrow$ $m_{\map{A}}(z) = m_{\map{A}|_{U_\lambda}}(z) m_{\map{A}|_{U_\lambda^{\text{c}}}}(z)$ en $k_{\map{A}}(z) = k_{\map{A}|_{U_\lambda}}(z) \underbrace{k_{\map{A}|_{U_\lambda^{\text{c}}}}(z)}_{\text{geen nulpunten $\lambda$}}$
+  $\Rightarrow$ $m_{\map{A}}(z) = m_{\map{A}|_{U_\lambda}}(z) m_{\map{A}|_{U_\lambda^{\text{c}}}}(z)$ en $k_{\map{A}}(z) = k_{\map{A}|_{U_\lambda}}(z) \underbrace{k_{\map{A}|_{U_\lambda^{\text{c}}}}(z)}_{\text{geen nulpunten $\lambda $}}$
 
 $\Rightarrow$ $\dim(U_\lambda) = q_\lambda$ en $s = s_\lambda$ (macht van $(z-\lambda)$ in $m_{\map{A}}(z)$)
 

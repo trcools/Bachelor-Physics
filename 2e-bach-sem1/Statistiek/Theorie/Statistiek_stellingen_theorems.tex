@@ -1,0 +1,742 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1.8cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue}
+\usepackage{parskip}
+\setlength{\parskip}{2pt}
+
+\titlespacing*{\section}{0pt}{1.4ex}{0.6ex}
+\titleformat{\section}{\normalfont\Large\bfseries}{Hoofdstuk \thesection}{1em}{}
+
+% Custom environment for statements: #1 = kind (Stelling/Theorem), #2 = number, #3 = optional subtitle
+\newenvironment{res}[2]{%
+  \par\noindent\textbf{#1 #2.}~\ignorespaces
+}{%
+  \par\vspace{4pt}\normalfont
+}
+\newcommand{\restitle}[1]{\textbf{#1.}\ }
+
+\newlist{myenum}{enumerate}{2}
+\setlist[myenum,1]{label=(\roman*),leftmargin=1.6em,itemsep=1pt,topsep=1pt}
+
+\title{\textbf{Statistiek --- Overzicht van Stellingen en Theorems}}
+\author{T. Cools}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2em}
+\begin{center}
+\small\textit{Dit document bevat alle stellingen en theorems uit de cursus.}
+\end{center}
+\vspace{1em}
+
+%===================================================================
+\section{Gegevens}
+%===================================================================
+
+\begin{res}{Stelling}{1.2.1}
+De logaritme van het meetkundig gemiddelde is het rekenkundig gemiddelde van de afzonderlijke logaritmen.
+\end{res}
+
+\begin{res}{Stelling}{1.2.2}
+Voor continue gegevens vind je de modus door de verdeling te differenti\"eren en gelijk te stellen aan 0.
+\end{res}
+
+\begin{res}{Stelling}{1.2.3}
+De variantie is het gemiddelde van de kwadraten min het kwadraat van het gemiddelde:
+\[
+V(x) \equiv \frac{1}{N}\sum_i (x_i-\bar x)^2 \;=\; \frac{1}{N}\sum_i x_i^2 - \left(\frac{1}{N}\sum_i x\right)^2 \;=\; \overline{x^2} - \bar x^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{1.2.4}
+De Volle Breedte op Halve Hoogte van een Gaussische verdeling is $2.35\,\sigma$.
+\end{res}
+
+\begin{res}{Stelling}{1.3.1}
+De covariantie is een triviale uitbreiding van de univariabele variantie. De variantie is niets anders dan de covariantie van een variabele met zichzelf:
+\[
+V(x) \;=\; \mathrm{cov}(x,x).
+\]
+\end{res}
+
+\begin{res}{Stelling}{1.3.2}
+$\rho$ is een getal (zonder eenheid) dat begrensd is door $-1$ en $+1$.
+\end{res}
+
+\begin{res}{Stelling}{1.3.3}
+De correlatieco\"effici\"ent geeft enkel aan in welke mate er een \textbf{lineair verband} is tussen twee variabelen.
+\end{res}
+
+%===================================================================
+\section{Theoretische distributies}
+%===================================================================
+
+\begin{res}{Theorem}{2.1.1}
+\restitle{Axioma's van de waarschijnlijkheid}
+\begin{enumerate}[label=\arabic*.,leftmargin=1.8em,itemsep=1pt,topsep=1pt]
+\item $P(\omega) \ge 0$
+\item $P(\omega_1 \text{ of } \omega_2) = P(\omega_1 \cup \omega_2) = P(\omega_1) + P(\omega_2)$ als $\omega_1$ en $\omega_2$ exclusief zijn.
+\item $\sum P(\omega_i) = 1$, waarbij de som loopt over alle exclusieve evenementen.
+\end{enumerate}
+\end{res}
+
+\begin{res}{Theorem}{2.2.1}
+\restitle{De wet van grote getallen}
+De waargenomen frequenties van de gegevens komen hier niet perfect mee overeen. Maar, naarmate de grootte $n$ van de steekproef toeneemt middelen de toevallige fluctuaties meer en meer uit en de waargenomen frequenties neigen naar de theoretische waarschijnlijkheden voor $n\to\infty$.
+\end{res}
+
+\begin{res}{Stelling}{2.2.1}
+Vermits $P(X\in[x_1,x_2])$ een waarschijnlijkheid is, wordt de waarschijnlijkheidsdichtheid $f_X(x)$ gedefinieerd zodat de toevallige variabele $X$ met zekerheid een waarde aanneemt tussen $-\infty$ en $+\infty$:
+\[
+P(-\infty < X < +\infty) = \int_{-\infty}^{+\infty} f_X(x)\,dx = 1.
+\]
+\end{res}
+
+\begin{res}{Stelling}{2.2.2}
+De cumulatieve verdeling neemt waarden aan die monotoon (continue verdeling) of in stapjes (discrete verdeling) van 0 naar 1 gaan voor $X$ gaande van $-\infty$ tot $+\infty$.
+\end{res}
+
+\begin{res}{Stelling}{2.2.3}
+De verwachtingswaarde van een lineaire functie $g(X) = aX+b$, met $a$ en $b$ constanten, is:
+\[
+\langle g\rangle = a\langle X\rangle + b.
+\]
+\end{res}
+
+\begin{res}{Stelling}{2.2.4}
+De verwachtingswaarde van een som is de som van de verwachtingswaarden:
+\[
+\langle f+g\rangle = \sum (f(x)+g(x))P(x) = \sum f(x)P(x) + \sum g(x)P(x) = \langle f\rangle + \langle g\rangle.
+\]
+Anderzijds geldt dit niet noodzakelijk voor een product. In het algemeen zal
+\[
+\langle fg\rangle = \sum (f(x)g(x))P(x) \ne \sum f(x)P(x)\cdot\sum g(x)P(x) = \langle f\rangle\langle g\rangle
+\]
+tenzij $f$ en $g$ \textit{onafhankelijk} zijn.
+\end{res}
+
+\begin{res}{Stelling}{2.2.5}
+Als deze bestaat, is de $n$-de afleiding van $M_X(t)$ in $t=0$ het $n$-de moment:
+\[
+\mu_n' = \langle X^n\rangle = \left.\frac{d^n M_X(t)}{dt^n}\right|_{t=0}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{2.2.6}
+Stel dat $X$ en $Y$ twee onafhankelijke toevallige variabelen zijn, met respectieve karakteristieke functies $\phi_X(t)$ en $\phi_Y(t)$. De karakteristieke functie van de som $Z=X+Y$ is
+\[
+\phi_{X+Y}(t) = \phi_X(t)\cdot\phi_Y(t).
+\]
+\end{res}
+
+\begin{res}{Stelling}{2.3.1}
+Vermits $X$ en $Y$ zeker een waarde moeten aannemen hebben we de normalisatie voorwaarde:
+\[
+\iint_S f_{XY}(x,y)\,dx\,dy = 1,
+\]
+waarin $S$ het gebied (oppervlak) is waarbinnen $f_{XY}$ bestaat.
+\end{res}
+
+\begin{res}{Stelling}{2.3.2}
+Indien $\vec X$ een vector van \textbf{onafhankelijke} toevallige variabelen is, dan zijn de matrices (covariantiematrix $\mathbf V$ en correlatiematrix $\rho$) diagonaal.
+\end{res}
+
+\begin{res}{Stelling}{2.3.3}
+De continue toevallige variabelen zijn \textbf{onafhankelijk} indien hun gezamenlijke verdeling het product is van de marginale verdelingen van $X$ en $Y$:
+\[
+f_{XY}(x,y) = f_X(x)\,f_Y(y) \qquad \forall (x,y)\in S.
+\]
+Anders spreken we over afhankelijke variabelen.
+\end{res}
+
+%===================================================================
+\section{Belangrijke verdelingen}
+%===================================================================
+
+\begin{res}{Stelling}{3.1.1}
+De exponenti\"ele verdeling is \textbf{geheugenloos}, d.w.z.\ dat:
+\[
+P(X > x_1+x_2 \mid X > x_2) = P(X > x_1).
+\]
+\end{res}
+
+\begin{res}{Stelling}{3.2.1}
+De verwachtingswaarde van een Bernoulli toevallige variabele is gelijk aan $\langle X\rangle = p$. De variantie is gelijk aan $V(X) = p(1-p)$.
+\end{res}
+
+\begin{res}{Stelling}{3.2.2}
+De verwachtingswaarde van een binomiaal verdeelde toevallige variabele $X$ geeft het gemiddeld aantal successen weer:
+\[
+\langle X\rangle = np.
+\]
+\end{res}
+
+\begin{res}{Stelling}{3.2.3}
+De variantie (en standaardafwijking) van een binomiaal verdeelde toevallige variabele $X$ wordt gegeven door:
+\[
+V(X) = np(1-p) \qquad \sigma = \sqrt{np(1-p)}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{3.3.1}
+De verwachtingswaarde van een Poisson verdeelde toevallige variabele $X$ is $\langle X\rangle = \lambda$.
+\end{res}
+
+\begin{res}{Stelling}{3.3.2}
+De variantie en standaardafwijking van een Poisson verdeelde toevallige variabele met parameter $\lambda$ worden gegeven door:
+\[
+V(X) = \lambda \qquad \sigma_X = \sqrt\lambda.
+\]
+\end{res}
+
+\begin{res}{Stelling}{3.3.3}
+Als er twee verschillende types evenementen $a$ en $b$ gebeuren, elk volgens een Poisson statistiek met respectieve gemiddelden $\lambda_a$ en $\lambda_b$, en indien we geen onderscheid kunnen maken tussen de twee, dan is de waarschijnlijkheid voor $X$ evenementen ook Poisson verdeeld met een gemiddelde waarde gelijk aan de som van de twee individuele gemiddelden: $\lambda = \lambda_a+\lambda_b$.
+\end{res}
+
+\begin{res}{Stelling}{3.3.4}
+Voor een bepaald aantal evenementen $x$ is de verdeling van het aantal evenementen van type $a$ gegeven door een binomiale distributie $P_{\mathrm{bin}}(x_a;x,p_a)$.
+\end{res}
+
+\begin{res}{Stelling}{3.4.1}
+Indien een toevallige variabele $X$ lognormaal verdeeld is met parameters $\mu$ en $\sigma$, dan is de getransformeerde toevallige variabele $Y=\ln(X)$ normaal verdeeld met verwachtingswaarde $\mu$ en standaardafwijking $\sigma$.
+\end{res}
+
+%===================================================================
+\section{Fouten}
+%===================================================================
+
+\begin{res}{Theorem}{4.1.1}
+\restitle{Het Centrale Limiet Theorema}
+Als we de som $X$ maken van $N$ onafhankelijke variabelen $x_i$ ($i=1,2,\dots,N$), die elk afkomstig zijn van een verdeling met gemiddelde $\mu_i$ en standaardafwijking $\sigma_i$, dan geldt voor de verdeling van $X$ dat:
+\begin{enumerate}[label=\arabic*.,leftmargin=1.8em,itemsep=1pt,topsep=1pt]
+\item ze een verwachtingswaarde heeft
+\[
+\langle X\rangle = \sum_{i=1}^N \mu_i;
+\]
+\item ze een variantie heeft
+\[
+V(X) = \sum_{i=1}^N V_i = \sum_{i=1}^N \sigma_i^2;
+\]
+\item ze \textbf{Gaussisch} wordt als $N\to\infty$.
+\end{enumerate}
+\end{res}
+
+\begin{res}{Stelling}{4.1.1}
+Als de variabelen niet onafhankelijk verdeeld zijn, dan geldt nog altijd de verwachtingswaarde eigenschap (4.1), maar niet langer de variantie (4.2), want de covariantiematrix (zie Definitie 2.3.4) is niet meer diagonaal.
+\end{res}
+
+\begin{res}{Stelling}{4.2.1}
+In de veronderstelling dat alle metingen onafhankelijk zijn is de variantie van $\bar x$ gelijk aan de variantie van $X$ gedeeld door $N$:
+\[
+V(\bar x) = \frac{\sigma^2}{N}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.2.2}
+De resolutie op het gewogen gemiddelde is niets anders dan de noemer ervan:
+\[
+V(\bar x) = \frac{1}{\sum_i^N \sigma_i^{-2}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.1}
+De variantie van een toevallige variabele $f_X$ uit een lineaire functie $f=aX+b$ van een toevallige variabele $X$ is:
+\[
+V(f_X) = a^2\,V(X).
+\]
+Dit kan ook geschreven worden in termen van de standaardafwijking als:
+\[
+\sigma_f = |a|\sigma_x.
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.2}
+Een algemene functie $f(X)$ van een toevallige variabele $X$ met kleine variantie $V(x)$ (of fout $\sigma_X$) heeft als variantie (of fout):
+\[
+V(f) \approx \left(\frac{df}{dx}\right)^2 V(x).
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.3}
+De correlatie co\"effici\"ent tussen de toevallige variabele $X$ en een lineaire functie $f_X = f(X) = aX+b$ ervan is onafhankelijk van $\sigma_x$ en is altijd $\pm 1$.
+\end{res}
+
+\begin{res}{Stelling}{4.3.4}
+Een lineaire functie $f(X,Y) = aX+bY+c$ van twee toevallige variabelen $X$ en $Y$ met respectievelijke varianties $V(X)$ en $V(Y)$ heeft als variantie:
+\[
+V(f) = a^2 V(X) + b^2 V(Y) + 2ab\,\mathrm{cov}(X,Y).
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.5}
+Een algemene functie $f(X,Y)$ van twee toevallige variabelen $X$ en $Y$ met respectievelijke varianties $\sigma_x^2$ en $\sigma_y^2$ heeft als variantie - of fout:
+\[
+\sigma_f^2 = \left(\frac{df}{dx}\right)^2\sigma_x^2 + \left(\frac{df}{dy}\right)^2\sigma_y^2 + 2\left(\frac{df}{dx}\right)\left(\frac{df}{dy}\right)\rho\,\sigma_x\sigma_y,
+\]
+waarbij de afgeleiden weer ge\"evalueerd worden bij de echte of gemeten waarden $(x,y)$.
+\end{res}
+
+\begin{res}{Stelling}{4.3.6}
+De variantie van een algemene functie $f(\vec X)$ van $m$ toevallige variabelen $\vec X = \{X_{(1)},\dots,X_{(m)}\}$ is:
+\[
+V(f) = \sum_{p=1}^m \left(\frac{\partial f}{\partial X_{(p)}}\right)^2 V(X_{(p)}) + \sum_p\sum_{q\ne p} \left(\frac{\partial f}{\partial X_{(p)}}\right)\left(\frac{\partial f}{\partial X_{(q)}}\right)\mathrm{cov}(X_{(p)},X_{(q)}).
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.7}
+De covariantie tussen twee functies van $m$ variabelen $f_1(X_{(1)},X_{(2)},\dots,X_{(m)})$ en $f_2(X_{(1)},X_{(2)},\dots,X_{(m)})$ is:
+\[
+\mathrm{cov}(f_1,f_2) = \sum_{p=1}^m\sum_{q=1}^m \left(\frac{\partial f_1}{\partial X_{(p)}}\right)\left(\frac{\partial f_2}{\partial X_{(q)}}\right)\mathrm{cov}(X_{(p)},X_{(q)}).
+\]
+\end{res}
+
+\begin{res}{Theorem}{4.3.1}
+\restitle{Wet van foutenpropagatie}
+Een algemene functie $f(\vec X)$ van $m$ \textbf{onafhankelijke} toevallige variabelen met respectievelijke fout $\sigma_i$ heeft als variantie (of fout):
+\[
+\sigma_f^2 = \left(\frac{df}{dx_1}\right)^2\sigma_1^2 + \left(\frac{df}{dx_2}\right)^2\sigma_2^2 + \cdots + \left(\frac{df}{dx_m}\right)^2\sigma_m^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.3.8}
+Voor producten en quoti\"enten worden de fractionele fouten kwadratisch opgeteld.
+\[
+\left(\frac{\sigma_f}{f}\right)^2 = \left(\frac{\sigma_x}{x}\right)^2 + \left(\frac{\sigma_y}{y}\right)^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{4.4.1}
+De systematische en statistische fouten kunnen kwadratisch opgeteld worden.
+\begin{enumerate}[label=(\alph*),leftmargin=1.8em,itemsep=1pt,topsep=1pt]
+\item De variantie van $x_i$ is dan gegeven door:
+\[
+V(x_i) = \sigma_i^2 + S^2.
+\]
+\item De covariantie tussen $x_1$ en $x_2$ is alleen afhankelijk van de systematische fout:
+\[
+\mathrm{cov}(x_1,x_2) = S^2.
+\]
+\end{enumerate}
+\end{res}
+
+%===================================================================
+\section{Schatten}
+%===================================================================
+
+\begin{res}{Stelling}{5.2.1}
+De variantie van de schatter is gelijk aan:
+\[
+V(\hat\mu) = \frac{\sigma^2}{N},
+\]
+waarbij $N$ het aantal meetpunten is en $\sigma$ de standaardafwijking van de ouderdistributie.
+\end{res}
+
+\begin{res}{Stelling}{5.2.2}
+De variantie van de schatter van de variantie is
+\[
+V(\widehat{V(x)}) = \frac{(N-1)^2}{N^3}\left\langle (x-\langle x\rangle)^4\right\rangle - \frac{(N-1)(N-3)}{N^3}\left\langle (x-\langle x\rangle)^2\right\rangle^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{5.2.3}
+De schatter van de standaardafwijking $\hat\sigma_x = \sqrt{\widehat{V(x)}}$ heeft als variantie:
+\[
+V(\hat\sigma) = \frac{1}{4N\sigma^2}\left[\left\langle (x-\langle x\rangle)^4\right\rangle - \left\langle (x-\langle x\rangle)^2\right\rangle^2\right].
+\]
+\end{res}
+
+\begin{res}{Stelling}{5.3.1}
+De verwachte variantie van het totaal is de som van de groep varianties, plus een term die afkomstig is van mogelijke (binomiale) fluctuatie in de samenstelling van de steekproef:
+\[
+V(x) = f_1 V_1(x) + f_2 V_2(x) + f_1 f_2 (\mu_1-\mu_2)^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{5.3.2}
+Als er $k$ verschillende types zijn wordt de variantie gegeven door
+\[
+V = \sum_{i=0}^k f_i^2 \frac{V_i}{m_i}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{5.4.1}
+De verwachtingswaarde van een schatter van $a$ is
+\[
+\langle \hat a\rangle = \int \hat a\,\mathcal L\,dX.
+\]
+\end{res}
+
+\begin{res}{Theorem}{5.4.1}
+\restitle{Minimum Variance Bound (MVB)}
+Voor een onbevooroordeelde schatter is de MVB:
+\[
+V(\hat a) \ge \frac{1}{\left\langle \left(\frac{d\ln\mathcal L}{da}\right)^2\right\rangle},
+\]
+hetgeen ook kan geschreven worden als:
+\[
+V(\hat a) \ge \frac{-1}{\left\langle \left(\frac{d^2\ln\mathcal L}{da^2}\right)\right\rangle},
+\]
+waarbij $\mathcal L$ de likelihood functie is, gedefinieerd in Definitie 5.4.1. Als voor een bepaalde schatter $\hat a$ de $V(\hat a)$ gelijk is aan de MVB, dan zeggen we dat $\hat a$ een 'effici\"ente' schatter is. Indien niet, dan is de 'effici\"entie' gelijk aan MVB$/V(\hat a)$.
+\end{res}
+
+\begin{res}{Stelling}{5.4.2}
+Voor een bevooroordeelde schatter met bias $b$ wordt de teller in de MVB vervangen door $(1+db/da)^2$.
+\end{res}
+
+%===================================================================
+\section{Schattingsmethodes}
+%===================================================================
+
+\begin{res}{Stelling}{6.1.1}
+De fout op $\hat a$ is gegeven door
+\[
+V(\hat a) = \left(\frac{d\hat a}{d\bar x}\right)^2 \frac{1}{N(N-1)}\sum_{i=1}^N (x_i-\bar x)^2.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.1.2}
+Elke term van de covariantie matrix van de schatters is gegeven door:
+\[
+\mathrm{cov}(\hat\theta_i,\hat\theta_j) = \sum_{l,m} \frac{\partial\hat\theta_i}{\partial\hat e_l}\frac{\partial\hat\theta_j}{\partial\hat e_m}\mathrm{cov}(\hat e_l,\hat e_m),
+\]
+waar de \textbf{schatter} van de covariantie tussen de verwachtingswaardefuncties is:
+\[
+\widehat{\mathrm{cov}}(\hat e_l,\hat e_m) = \frac{1}{N(N-1)}\sum_{i=1}^N (g_l(x_i)-\bar g_l)(g_m(x_i)-\bar g_m).
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.2.1}
+MLLH schatters zijn meestal (maar niet altijd) consistent.
+
+Over het algemeen zijn ze wel bevooroordeeld.
+\end{res}
+
+\begin{res}{Stelling}{6.2.2}
+MLLH schatters zijn invariant onder parameter transformaties. Heel algemeen, als we liever een functie $f(a)$ willen schatten dan $a$ zelf, dan
+\[
+\widehat{f(a)} = f(\hat a).
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.2.3}
+Voor elke onbevooroordeelde effici\"ente MLLH schatter kan de fout erop ge\"evalueerd worden door:
+\[
+V(\hat a)^{-1} = -\left.\frac{d^2\ln\mathcal L}{da^2}\right|_{a=\hat a}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.2.4}
+\[
+\ln\mathcal L(a) = \ln\mathcal L_{\max} - \frac{(a-\hat a(\vec x))^2}{2\sigma^2}.
+\]
+Bij het punt $1\sigma$ weg van de piek is de log-likelihood met 0.5 verminderd vergeleken bij de maximum waarde. Bij de $2\sigma$ punten is ze met 2 afgenomen, bij $3\sigma$ met 4.5 enz.
+\end{res}
+
+\begin{res}{Stelling}{6.2.5}
+Voor meerdere variabelen is de covariantie matrix minus de inverse van de matrix van de tweede afgeleiden:
+\[
+\sigma_{\hat a_j}^{-2} = -\left\langle \frac{\partial^2\ln\mathcal L}{\partial a_j^2}\right\rangle \qquad \mathrm{cov}^{-1}(a_i,a_j) = -\left\langle \frac{\partial^2\ln\mathcal L}{\partial a_i\partial a_j}\right\rangle = -\left.\frac{\partial^2\ln\mathcal L}{\partial a_i\partial a_j}\right|_{a=\hat a}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.3.1}
+De kleinste kwadraten schatting van de evenredigheidsfactor is dus, en hier delen we door $N$ om de sommen om te vormen tot gemiddelden:
+\[
+\hat m = \frac{\overline{xy}}{\overline{x^2}}
+\]
+met een nauwkeurigheid:
+\[
+V(\hat m) = \frac{\sigma^2}{N\overline{x^2}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.3.2}
+Als alle $\sigma_i$ gelijk zijn, zijn de schatters voor de intercept $c$ en de helling $m$ gegeven door:
+\[
+\hat m = \frac{\overline{xy}-\bar x\bar y}{\overline{x^2}-\bar x^2} = \frac{\mathrm{cov}(x,y)}{V(x)} \qquad\text{en}\qquad \hat c = \bar y - \hat m\bar x = \frac{\overline{x^2}\,\bar y - \bar x\,\overline{xy}}{\overline{x^2}-\bar x^2}.
+\]
+De eerste uitdrukking van $\hat c$ toont overigens ook aan dat de lijn doorheen het zwaartepunt $(\bar x,\bar y)$ van de set gaat.
+\end{res}
+
+\begin{res}{Stelling}{6.3.3}
+De fouten op de schatters $\hat m$ en $\hat c$ worden gegeven door:
+\[
+V(\hat m) = \frac{1}{N(\overline{x^2}-\bar x^2)}\sigma^2 \qquad\text{en}\qquad V(\hat c) = \frac{\overline{x^2}}{N(\overline{x^2}-\bar x^2)}\sigma^2.
+\]
+De covariantie en correlatieco\"effici\"ent tussen de schatters $\hat m$ en $\hat c$ wordt gegeven door:
+\[
+\mathrm{cov}(\hat m,\hat c) = \frac{-\bar x}{N(\overline{x^2}-\bar x^2)}\sigma^2 \qquad \rho_{\hat m,\hat c} = \frac{\mathrm{cov}(\hat m,\hat c)}{\sqrt{V(\hat m)V(\hat c)}} = -\frac{\bar x}{\sqrt{\overline{x^2}}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.3.4}
+De $\chi^2$ kan berekend worden zonder de voorafgaande kennis van $\hat m$ en $\hat c$, en dan zonder de som van de afwijkingen te nemen:
+\[
+\chi^2 = N\frac{V_y}{\sigma^2}(1-\rho_{x,y}^2).
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.3.5}
+Een systematische fout op $y$ heeft geen invloed op de helling $\hat m$ maar wordt (kwadratisch) opgeteld bij de fout op het intercept $\hat c$.
+\end{res}
+
+\begin{res}{Stelling}{6.3.6}
+De fout op de ge\"extrapoleerde waarde $Y$ is:
+\[
+V(Y) = \frac{\sigma^2}{N(\overline{x^2}-\bar x^2)}(X-\bar x)^2 + \frac{\sigma^2}{N}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{6.3.7}
+De waarschijnlijkheidsdichtheid van de $\chi^2$ variabele met $n$ vrijheidsgraden is gegeven door:
+\[
+P(\chi^2;n) = \frac{2^{-n/2}}{\Gamma(n/2)}\chi^{n-2}e^{-\chi^2/2},
+\]
+waarbij $\Gamma(x)$ de standaard gamma functie is.
+\end{res}
+
+\begin{res}{Stelling}{6.3.8}
+Als 2 variabelen een $\chi^2$ verdeling volgen met $N_1$ en $N_2$ metingen, dan wordt de som van de 2 beschreven door een $\chi^2$ verdeling met $N_1+N_2$ metingen.
+\end{res}
+
+\begin{res}{Stelling}{6.3.9}
+De kleinste kwadraten schatter voor $\mathbf a$ is
+\[
+\hat{\mathbf a} = (\tilde{\mathbf C}\mathbf V^{-1}\mathbf C)^{-1}\tilde{\mathbf C}\mathbf V^{-1}\mathbf y.
+\]
+De nauwkeurigheid op deze schatter is gegeven door de covariantie matrix:
+\[
+\mathbf V(\hat{\mathbf a}) = (\tilde{\mathbf C}\mathbf V(\mathbf y)^{-1}\mathbf C)^{-1}.
+\]
+\end{res}
+
+%===================================================================
+\section{Confidentieniveaus}
+%===================================================================
+
+\begin{res}{Stelling}{7.1.1}
+\restitle{$\sigma$ vs.\ CL}
+Voor niet-Gaussische verdelingen gaat de relatie tussen confidentieniveaus en aantal $\sigma$ niet langer op.
+\end{res}
+
+\begin{res}{Stelling}{7.1.2}
+Voor de Gauss verdeling (en eigenlijk voor elke symmetrische verdeling) zijn de drie definities (symmetrisch, kortste, centraal interval) hoe dan ook equivalent.
+\end{res}
+
+\begin{res}{Stelling}{7.4.1}
+Het confidentieinterval over het gemiddelde $\mu$ van een brede steekproef van $N$ waarneming met bekende resolutie $\sigma$ is gegeven door:
+\[
+\left[\bar X - z_{\alpha/2}\frac{\sigma}{\sqrt N},\ \bar X + z_{\alpha/2}\frac{\sigma}{\sqrt N}\right].
+\]
+\end{res}
+
+\begin{res}{Stelling}{7.4.2}
+Dit interval geldt ook voor kleine steekproeven, voor zover de gegevens normaal verdeeld zijn.
+\end{res}
+
+\begin{res}{Stelling}{7.4.3}
+\restitle{Wilson score interval}
+Het confidentieinterval over de populatieproportie $\pi$ van een steekproef van $N$ waarnemingen met gemeten proportie $\hat P$ is gegeven door:
+\[
+\left[\frac{(2N\hat P+z_{\alpha/2}^2)-z_{\alpha/2}\sqrt{z_{\alpha/2}^2+4N\hat P(1-\hat P)}}{2(N+z_{\alpha/2}^2)}\ ;\ \frac{(2N\hat P+z_{\alpha/2}^2)+z_{\alpha/2}\sqrt{z_{\alpha/2}^2+4N\hat P(1-\hat P)}}{2(N+z_{\alpha/2}^2)}\right].
+\]
+\end{res}
+
+\begin{res}{Stelling}{7.4.4}
+Het confidentieinterval voor kleine $z_{\alpha/2}^2$ vereenvoudigt zich dan tot:
+\[
+\left[\hat P - z_{\alpha/2}\sqrt{\frac{\hat P(1-\hat P)}{N}},\ \hat P + z_{\alpha/2}\sqrt{\frac{\hat P(1-\hat P)}{N}}\right].
+\]
+\end{res}
+
+\begin{res}{Stelling}{7.4.5}
+$t$ is niet normaal verdeeld met variantie 1 zoals dat zou zijn als $\hat\sigma$ gelijk ware aan $\sigma$. De significantie van een afwijking tussen $X$ en $\mu$ is kleiner indien $\hat\sigma$ gebruikt wordt in plaats van $\sigma$ vanwege de extra onzekerheid op $\hat\sigma$. In werkelijkheid is het, zeker voor kleine $N$, een tamelijk slechte schatting van $\sigma$.
+\end{res}
+
+\begin{res}{Stelling}{7.4.6}
+De waarschijnlijkheidsdichtheid van de Student verdeelde toevallige variabele $t$ met \'e\'en parameter $n$ wordt gegeven door:
+\[
+f(t;n) = \frac{\Gamma\!\left(\frac{n+1}{2}\right)}{\sqrt{n\pi}\;\Gamma\!\left(\frac{n}{2}\right)\left(1+\frac{t^2}{n}\right)^{\frac{n+1}{2}}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{7.4.7}
+Het confidentieinterval over het gemiddelde $\mu$ van een brede steekproef van $N$ waarnemingen met onbekende spreiding $S$ is gegeven door:
+\[
+\left[\bar X - t_{\alpha/2;(n-1)}\frac{S}{\sqrt n},\ \bar X + t_{\alpha/2;(n-1)}\frac{S}{\sqrt n}\right],
+\]
+met $n=N$ of $N-1$ naargelang de schatter voor de spreiding $S$ zonder ($\sigma$) of met ($s$) Bessel correctie gebruikt werd.
+\end{res}
+
+%===================================================================
+\section{Beslissingen nemen}
+%===================================================================
+
+\begin{res}{Stelling}{8.1.1}
+Voor een bepaalde waarde $x$ van de teststatistiek $X$ wordt de nul hypothese met een significantie $\alpha$ verworpen indien $\Lambda(x) \ge c_\alpha$.
+\end{res}
+
+\begin{res}{Stelling}{8.2.1}
+Als je het bestaan van iets wil aantonen moet je de hypothese van het tegendeel formuleren, nl.\ dat er niet zo'n effect bestaat. Dit wordt de nul hypothese genoemd en genoteerd als $H_0$.
+\end{res}
+
+\begin{res}{Stelling}{8.2.2}
+Je kan nooit bewijzen dat een effect er niet is -- het beste dat je kan doen is een limiet zetten op een bepaald \textbf{confidentieniveau}.
+\end{res}
+
+\begin{res}{Stelling}{8.2.3}
+Een resultaat is \textbf{significant} als de waarschijnlijkheid dat het toevallig voorkomt onder de nul hypothese klein is.
+\end{res}
+
+\begin{res}{Stelling}{8.3.1}
+Als de punten gebruikt zijn om de functie te vinden, door bv.\ een kleinste kwadraten fit, dan moeten we even opletten. De $\chi^2$ zal dan kleiner zijn dan verwacht omdat je die zo klein mogelijk gemaakt hebt.
+\end{res}
+
+\begin{res}{Stelling}{8.3.2}
+Veronderstel dat er $N_B$ punten boven de lijn liggen en $N_O$ eronder, zodat $N_B+N_O=N$. De waarschijnlijkheid om $r$ (met $r$ even) runs te hebben is:
+\[
+P_r = 2\,\frac{C^{N_B-1}_{\frac r2-1}\times C^{N_O-1}_{\frac r2-1}}{C^N_{N_B}}.
+\]
+Indien $r$ oneven is wordt de waarschijnlijkheid:
+\[
+P_r = \frac{C^{N_B-1}_{r-\frac32}\times C^{N_O-1}_{r-\frac12} + C^{N_O-1}_{r-\frac32}\times C^{N_B-1}_{r-\frac12}}{C^N_{N_B}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{8.4.1}
+Dergelijke grootheid $F$ is verdeeld volgens de Fisher-(Snedecor) distributie:
+\[
+P(F) = \frac{\Gamma\!\left(\frac{f_1+f_2}{2}\right)}{\Gamma\!\left(\frac{f_1}{2}\right)\Gamma\!\left(\frac{f_2}{2}\right)}\sqrt{f_1^{f_1}f_2^{f_2}}\;\frac{F^{\frac{f_1}{2}-1}}{(f_2+f_1F)^{\frac{f_1+f_2}{2}}},
+\]
+met $f_i = N_i-1$ het aantal vrijheidsgraden van twee $\chi^2$ verdelingen.
+\end{res}
+
+\begin{res}{Stelling}{8.4.2}
+Voor grote getallen kan bewezen worden dat
+\[
+Z = \tfrac12\log F
+\]
+een verdeling heeft die redelijk goed overeenstemt met een Gauss met gemiddelde $\mu = \tfrac12\left(f_2^{-1}-f_1^{-1}\right)$ en variantie $\sigma^2 = \tfrac12\left(f_2^{-1}+f_1^{-1}\right)$.
+\end{res}
+
+%===================================================================
+\section{Wachtrijtheorie}
+%===================================================================
+
+\begin{res}{Stelling}{9.1.1}
+De verwachtingswaarde voor $I_N(t)$ is $\langle I_N\rangle = \dfrac{N}{\lambda}$.
+
+De modus is $\left.\dfrac{dI_N(t)}{dt}\right|_{t=t_m}=0 \ \Rightarrow\ t_m = \dfrac{N-1}{\lambda}$.
+\end{res}
+
+\begin{res}{Stelling}{9.1.2}
+De waarschijnlijkheid $P_k$ dat zich $k$ evenementen in een buffer van maat $N$ in evenwicht bevinden is
+\[
+P_k = \frac{(1-\mathcal R)\,\mathcal R^k}{1-\mathcal R^{N+1}},
+\]
+waarbij $\mathcal R = \lambda_I/\lambda_O$ een maat voor de belasting van het systeem is. De (cumulatieve) waarschijnlijkheid $P_{\le k}$ dat zich ten hoogste $k$ evenementen bevinden is
+\[
+P_{\le k} = \sum_{i=0}^k P_i = \frac{1-\mathcal R^{k+1}}{1-\mathcal R^{N+1}}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.1.3}
+De verwachtingswaarde en variantie van het aantal evenementen voor een oneindige buffer is:
+\[
+\langle k\rangle = \frac{\mathcal R}{1-\mathcal R} \qquad V(k) = \frac{\mathcal R}{(1-\mathcal R)^2}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.2.1}
+De elementen van de vector liggen tussen 0 en 1 en hun som is gelijk aan 1.
+\[
+\sum_{i=1}^m P_i(t) = 1 \qquad \forall t.
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.2.2}
+Om de normalisatie van het systeem te bewaren moet
+\[
+\sum_{j=1}^m \lambda_{ij} = 1 \qquad \forall i.
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.2.3}
+\restitle{Markov-eigenschap}
+Als we $t$ identificeren met "heden" dan wil de Markov-eigenschap zeggen dat alle informatie van het systeem over het gedrag in de toekomst gegeven wordt \textbf{door de huidige toestand} en dat kennis van het proces uit het verleden hier niets aan toevoegt.
+\end{res}
+
+\begin{res}{Stelling}{9.2.4}
+De evenwichtswaarschijnlijkheden (voor $k\ge1$) voor deze situatie worden gegeven door:
+\[
+P_k = \mathcal R_k\,P_0
+\]
+met
+\[
+\mathcal R_k = \frac{\prod_{i=0}^{k-1}\lambda_{I,i}}{\prod_{j=1}^k \lambda_{O,j}}
+\]
+$P_0$ volgt uit de normeringsvoorwaarde en is:
+\[
+P_0 = \left[1+\sum_{k=1}^\infty \mathcal R_k\right]^{-1}.
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.2.5}
+Voor een random walk met $p_r=p_l=1/2$ zijn de waarschijnlijkheden $P_N(d)$ om een bepaalde afstand $d$ afgelegd te hebben na $N$ stappen weergegeven door:
+\[
+P_N(d) = \begin{cases} \dfrac{1}{2^N}C^N_{\frac{d+N}{2}} & d+N \text{ even} \\[4pt] 0 & d+N \text{ oneven} \end{cases}
+\]
+\end{res}
+
+\begin{res}{Stelling}{9.2.6}
+De verwachtingswaarde voor de absolute afstand na $N$ stappen is
+\[
+\langle |d_N|\rangle = 2^{-N} \sum_{d=-N,-(N-2),\dots}^N \frac{|d|N!}{\left(\frac{N+d}{2}\right)!\left(\frac{N-d}{2}\right)!}.
+\]
+Indien $N=2J$ even is, krijgen we
+\[
+\langle |d_N|\rangle = \frac{2}{\sqrt\pi}\frac{\Gamma(\frac12+\frac12 N)}{\Gamma(\frac12 N)} = \frac{(N-1)!!}{(N-2)!!} \qquad (d\text{ even})
+\]
+waarbij we de dubbele faculteit gebruiken: $n!! = n(n-2)(n-4)\cdots$. Indien $N=2J-1$ oneven is, krijgen we
+\[
+\langle |d_N|\rangle = \frac{2}{\sqrt\pi}\frac{\Gamma(1+\frac12 N)}{\Gamma(\frac12+\frac12 N)} = \frac{N!!}{(N-1)!!} \qquad (d\text{ oneven}).
+\]
+\end{res}
+
+%===================================================================
+\section{Monte Carlo}
+%===================================================================
+
+\begin{res}{Stelling}{10.3.1}
+De vergelijking $F(x)=u$ kan dan opgelost worden naar $x$ om te vinden:
+\[
+x = F^{-1}(u).
+\]
+Op deze manier kan je een toevalsgetal $u_j$ genereren volgens een uniforme verdeling en dan $F^{-1}(u_j)$ gebruiken om $x_j$ te genereren. Deze variabele is verdeeld volgens $f(x)$.
+\end{res}
+
+\begin{res}{Stelling}{10.4.1}
+De covariantie van $\theta$ en $y$ is dan gegeven door:
+\[
+\mathrm{cov}(\theta,y) = \sin\alpha\cos\alpha\left(\sigma^2(x_2)-\sigma^2(x_1)\right).
+\]
+Er zullen dus correlaties optreden als de spreiding op $x_1$ en $x_2$ verschillend is en als zowel $\cos\alpha$ als $\sin\alpha$ verschillend zijn van 0.
+\end{res}
+
+\begin{res}{Stelling}{10.5.1}
+Als we $n$ toevalsgetallen nemen om de integraal $I$ te schatten dan is de nauwkeurigheid van deze methode evenredig met $1/\sqrt n$.
+\end{res}
+
+\begin{res}{Stelling}{10.5.2}
+De uiteindelijke schatting van $I$ heeft dus een fout van $\sigma/\sqrt n$.
+\end{res}
+
+\end{document}
