@@ -1,0 +1,258 @@
+\documentclass[a4paper,twoside]{article}
+
+
+% --- RUIMTE EN LAYOUT ---
+\usepackage{setspace}
+
+\usepackage{geometry} %size regulating
+\geometry{
+ a4paper,
+ left=25mm,
+ right=25mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+\usepackage{parskip} % for better spacing between paragraphs
+%\usepackage{flushend} % Alleen nodig als je laatste pagina van artikel wilt vullen met tekst, zodat de kolommen even lang zijn. Anders kan je dit beter weglaten.
+
+% --- WISKUNDE ENSYMBOLEN ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm} % For nicer math format
+\usepackage{mathrsfs} % For curly arrr
+\usepackage{bm} % For bold symbols eg \bm{\nabla}
+\usepackage{esint} % For bolletje in integrals
+\usepackage{dsfont}
+\usepackage{siunitx} % Voeg deze expliciet toe voor die graden en eenheden!
+\usepackage{braket} % For bra-ket notation
+\usepackage{mathtools}
+\usepackage{url}
+\allowdisplaybreaks
+
+% --- OVERIGE ---
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref} % geen kaders om linken
+\usepackage{subcaption}
+%\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% --- Tikz packages ---
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes, babel} % for pic (angle labels)
+\usetikzlibrary{arrows.meta,decorations.markings,calc, decorations.pathmorphing, decorations.pathreplacing, positioning, shapes, shadings, patterns}
+\usepackage{xcolor}
+\usepackage{tikz-3dplot}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage{etoolbox} % ifthen
+\usepackage[outline]{contour} % glow around text
+\usepackage{xfp} % higher precision (16 digits?)
+\contourlength{1.1pt}
+
+
+
+% --- THEOREM STIJLEN MET EXTRA RUIMTE ---
+
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulaat}
+\newtheorem{definition}{Definitie}
+\newtheorem{derivation}{Afleiding}
+\newtheorem{proposition}{Propositie}
+\newtheorem{example}{Voorbeeld}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+
+% --- EXTRA COMMANDO'S ---
+
+\newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
+
+% --- Titel en Introductie --- 
+
+
+\title{Statistische Fysica}
+\author{T. Cools}
+\date{2026-2027}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Dit is mijn versie van de cursus Statistische Fysica, Waar ik mezelf test op wat ik weet en begrijp van de theorie.
+     De inhoud is gebaseerd op de cursus van Prof. Dr. J. Ryckebusch.
+\end{abstract}
+
+\tableofcontents
+
+
+\section{Eerste Wet van de Thermodynamica}
+\subsection{Enkele thermische begrippen}
+\subsection{De eerste wet van de thermodynamica}
+\subsection{Reversibele en irreversibele processen}
+
+\section{Tweede Wet van de Thermodynamica}
+\subsection{De tijdsevolutie van natuurlijke processen}
+\subsection{Het statistisch gewicht van een macrotoestand}
+\subsection{Evenwicht van een ge\"isoleerd systeem}
+\subsection{Schottky defecten}
+\subsection{Equipartitietheorema en het viriaal theorema}
+\subsection{Theorema van Liouville}
+\subsection{Evenwicht van een systeem in een warmtebad}
+\subsection{Onzekerheid, informatie, entropie en de Boltzmann distributie}
+
+\section{Paramagnetisme}
+\subsection{Paramagnetische vaste stof in een warmtebad}
+\(\bm{B}\) is het extern magnetisch veld \(\bm{H}\) is ook een extern veld met de relatie \(\bm{B} \equiv \mu_0 \bm{H}\) waarbij \(\mu_0\) de magnetische permitiviteit van het vacuum is.
+
+Energie:
+\begin{itemize}
+    \item parallel aligned: \(E_+ = - \mu \bm B\)
+    \item anti-parallel aligned: \(E_- = \mu \bm B\)
+\end{itemize}
+
+
+De partitiefunctie: 
+\begin{align*}
+    Z(T,\bm B, N) 
+    &= Z(T,\bm B, N=1)\\ 
+    &= e^{\frac{E_+}{kT}}+e^{\frac{E_-}{kT}}
+    = e^{\frac{- \mu \bm B}{kT}}+e^{\frac{\mu \bm B}{kT}}\\
+    &= e^{\frac{\mu \bm B}{kT}}+e^{\frac{-\mu \bm B}{kT}}\\
+    &= 2 \cosh(\frac{\mu \bm B}{kT}) =  2 \cosh x
+\end{align*}
+
+Merk op \(x \equiv \frac{\mu \bm B}{kT}\) is dimensieloos!
+
+Waarschijnlijkheid \(p_\pm\):
+\begin{align*}
+        p_\pm 
+        &= \frac{e^{\pm \frac{\mu \bm B}{kT}}}{Z(T,\bm B, N)}\\
+        &= \frac{e^{\pm x}}{2 \cosh x}
+\end{align*}
+
+
+Dan hebben we ook nog de average values ingevoerd:
+
+\(\overline{\mu} = \mu (p_+ - p_-)= \mu \tanh x \equiv  kT \left(\frac{\partial \ln Z_1}{\partial \bm B}\right)_T = \frac{1}{\beta} \left(\frac{\partial \ln Z_1}{\partial \bm B}\right)_T\)
+
+en
+\(\overline{E_1} = -\mu \bm B (p_+ - p_-) = -\mu \bm B \tanh x \equiv -\left(\frac{\partial \ln Z_1}{\partial \beta}\right)_B\)
+
+\(\overline{E} = N \overline{E_1} = -\mu \bm B N \tanh x \)
+
+\(\bm M = N \overline{\mu} = \mu N \tanh x \)
+
+\subsection{Warmtecapaciteit en entropie}
+
+\subsection{Absolute negatieve temperatuur}
+
+\section{Evenwichtscondities van Systemen}
+\subsection{De eerste wet voor infinitesimale veranderingen}
+\subsection{De ongelijkheid van Clausius}
+\subsection{Eigenschappen van de Helmholtz vrije energie}
+\subsection{Andere thermodynamische potentialen}
+\subsection{De derde wet van de thermodynamica}
+
+\section{Warmtecapaciteit van Vaste Stoffen}
+\subsection{Inleiding}
+\subsection{Het model van Einstein}
+\subsection{Het model van Debye}
+
+\section{Klassiek Gas}
+\subsection{De definitie van een klassiek en ideaal gas}
+\subsection{De partitiefunctie voor een klassiek en ideaal gas}
+\subsection{Geldigheidscriterium voor het klassiek regime}
+\subsection{De toestandsvergelijking}
+\subsection{De entropie van een klassiek en ideaal gas}
+\subsection{De Maxwell snelheidsdistributiefunctie}
+\subsection{Re\"ele gassen}
+
+\section{Vloeistoffen en Moleculaire Dynamica}
+\subsection{Inleidende opmerkingen}
+\subsection{Paar correlatiefunctie}
+\subsubsection{Theorie}
+\subsubsection{Experimentele bepaling}
+\subsubsection{Verband met observabelen}
+\subsection{Moleculaire Dynamica}
+\subsubsection{Beschrijving van de techniek}
+\subsubsection{Een concreet voorbeeld}
+\subsection{Toepassingen van Moleculaire Dynamica}
+\subsubsection{Random walk en diffusie}
+\subsubsection{Berekening van radiale distributiefuncties}
+\subsubsection{Verband tussen diffusie en snelheidsfluctuaties}
+
+\section{Kwantumgassen}
+\subsection{Inleidende opmerkingen}
+\subsection{Statistiek voor ideaal kwantumgas in het $(T,V,N)$ systeem}
+\subsection{De partitiefunctie van een ideaal kwantumgas}
+\subsection{Kwantum microtoestanden en kwantum macrotoestanden}
+\subsubsection{Dichtheidsmatrixformalisme}
+\subsubsection{Tijdsafhankelijkheid van de kwantum dichtheidsmatrix}
+
+\section{Ideaal Fotonengas}
+\subsection{Inleidende opmerkingen}
+\subsection{De partitiefunctie voor fotonen}
+\subsection{De Wet van Planck}
+\subsection{Eigenschappen van een Zwarte Straler}
+
+\section{Groot-Canonisch Systeem}
+\subsection{De Gibbs distributie}
+\subsubsection{Inleiding}
+\subsubsection{Afleiding van de Gibbs of Groot-Canonische distributiefunctie}
+\subsection{De FD en BE distributie voor een ideaal kwantumgas}
+\subsubsection{Gemiddeld bezettingsgetal in een ideaal kwantumgas}
+\subsubsection{Fluctuaties in de bezettingsgetallen in een ideaal kwantumgas}
+\subsection{De thermodynamica van een Gibbs systeem}
+\subsection{Toestandsvergelijking voor ideale kwantumgassen}
+\subsection{Het Groot-Canonisch systeem en re\"ele gassen}
+
+\section{Ideaal Fermi Gas}
+\subsection{De FD energiedistributie}
+\subsection{De toestandsvergelijking van een ideaal Fermi gas}
+\subsubsection{Algemene uitdrukking}
+\subsubsection{De functies $f_{3/2}(z)$ en $f_{5/2}(z)$ bij kleine en grote $z$}
+\subsubsection{Kleine $z$: toestandsvergelijking in de klassieke limiet}
+\subsubsection{Grote $z$: toestandsvergelijking in het kwantummechanisch regime}
+\subsection{Het aandeel van elektronen in de soortelijke warmte van metalen}
+\subsection{Pauli paramagnetisme}
+\subsection{Het Relativistisch Fermi Gas: Witte Dwergen}
+
+\section{Ideaal Bose Gas}
+\subsection{De BE energiedistributie}
+\subsection{Toestandsvergelijking van een ideaal Bose gas}
+\subsection{Soortelijke warmte en entropie van een ideaal Bose gas}
+\subsection{Bose-Einstein condensatie in dunne atomaire gassen}
+\subsection{Supervloeibaarheid}
+
+\section{Theorie van Tweede-orde Faseovergangen}
+\subsection{Inleiding}
+\subsection{Het Ising systeem}
+\subsection{Het eendimensionaal Ising systeem}
+\subsubsection{Exacte oplossing}
+\subsubsection{Spin-spin correlatiefunctie}
+\subsection{Het tweedimensionaal Ising Systeem}
+\subsubsection{Computersimulaties}
+\subsubsection{Exacte oplossing}
+\subsection{Gemiddeld-veld theorie van het Ising systeem}
+\subsection{Universaliteit}
+\subsection{Het rooster gas}
+\subsection{Orde/wanorde transities in legeringen en universaliteit}
+
+\appendix
+
+\section{Toestandsdichtheden}
+\subsection{Aantal staande-golf oplossingen in een volume $V$}
+\subsection{Elastische golven in een continu medium}
+
+\section{Gaussische Integralen, Volumes van Hypersferen}
+\subsection{Gaussische Integralen}
+\subsection{Berekening van het volume van een $n$-dimensionale bol met straal $R$}
+\subsection{Dichtheid der toestanden voor $3N$ translationele vrijheidsgraden}
+
+\end{document}
