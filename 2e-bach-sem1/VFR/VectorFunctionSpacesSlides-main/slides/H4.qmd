@@ -297,7 +297,7 @@ We beschouwen nu een genormeerde vectorruimte $(V,\norm{\cdot})$ als metrische r
 
 Beschouw opnieuw $C^0([a,b],\bbF)$ met nu de $p=\infty$-norm, welke zich herleidt tot:^[Extremumstelling van Weierstrass: $\sup$ wordt $\max$ voor continue $f$ begrensd interval $[a,b]$]
 
-$$\norm{f}_p = \sup_{x\in [a,b]}\abs{f(x)} = \max_{x\in[a,b]}\abs{f(x)}$$
+$$\norm{f}_{\infty} = \sup_{x\in [a,b]}\abs{f(x)} = \max_{x\in[a,b]}\abs{f(x)}$$
 
 Convergentie: $\lim_{n\to \infty} f_n = f$ als
 
@@ -354,7 +354,7 @@ Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n
 
 ## Compacte verzamelingen
 
-In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijkcompact.
+In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijk compact.
 
 * Voorbeeld: $C^0([a,b],\bbF)$ met $\norm{\cdot}_\infty$
   
