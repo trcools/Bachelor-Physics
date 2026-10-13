@@ -23,6 +23,7 @@ venv/
 *.mp4
 *.mov
 *.icloud
+*.png
 
 # LaTeX build artifacts
 *.fls
