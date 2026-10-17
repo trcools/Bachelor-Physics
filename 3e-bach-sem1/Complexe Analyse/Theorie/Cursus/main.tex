@@ -1,0 +1,172 @@
+\documentclass[a4paper,11pt]{report}
+
+% --- LAYOUT & SPACING ---
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  left=25mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm
+}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+
+% --- FONTS & LANGUAGE ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[english]{babel}
+
+% --- MATH SYMBOLS & PACKAGES ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{esint}
+\usepackage{siunitx}
+\allowdisplaybreaks
+
+% --- GRAPHICS & TIKZ ---
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{angles, quotes, arrows.meta, positioning, calc}
+
+% --- HYPERREF ---
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=green!50!black,
+    urlcolor=blue!70!black
+}
+
+% --- ELEGANT BOX STYLES (Clean, legible, no heavy background glare) ---
+\usepackage[most]{tcolorbox}
+
+% Colors
+\definecolor{defblue}{RGB}{28, 64, 112}
+\definecolor{thmpurple}{RGB}{95, 39, 105}
+\definecolor{propteal}{RGB}{20, 100, 100}
+\definecolor{exgray}{RGB}{60, 60, 60}
+
+% Definition Box
+\newtcbtheorem[number within=chapter]{definition}{Definition}{
+    enhanced,
+    sharp corners,
+    boxrule=0pt,
+    leftrule=3.5pt,
+    colback=defblue!4,
+    colframe=defblue,
+    fonttitle=\bfseries\color{defblue},
+    description font=\bfseries\color{black},
+    separator sign={\ ---\ },
+    attach title to upper,
+    after title={\par\smallskip},
+    top=6pt,
+    bottom=6pt,
+    left=10pt,
+    right=10pt,
+    breakable
+}{def}
+
+% Theorem Box
+\newtcbtheorem[use counter from=definition, number within=chapter]{theorem}{Theorem}{
+    enhanced,
+    sharp corners,
+    boxrule=0pt,
+    leftrule=3.5pt,
+    colback=thmpurple!4,
+    colframe=thmpurple,
+    fonttitle=\bfseries\color{thmpurple},
+    description font=\bfseries\color{black},
+    separator sign={\ ---\ },
+    attach title to upper,
+    after title={\par\smallskip},
+    top=6pt,
+    bottom=6pt,
+    left=10pt,
+    right=10pt,
+    breakable
+}{thm}
+
+% Proposition / Property Box
+\newtcbtheorem[use counter from=definition, number within=chapter]{proposition}{Proposition}{
+    enhanced,
+    sharp corners,
+    boxrule=0pt,
+    leftrule=3.5pt,
+    colback=propteal!4,
+    colframe=propteal,
+    fonttitle=\bfseries\color{propteal},
+    description font=\bfseries\color{black},
+    separator sign={\ ---\ },
+    attach title to upper,
+    after title={\par\smallskip},
+    top=6pt,
+    bottom=6pt,
+    left=10pt,
+    right=10pt,
+    breakable
+}{prop}
+
+% Example Box
+\newtcbtheorem[use counter from=definition, number within=chapter]{example}{Example}{
+    enhanced,
+    sharp corners,
+    boxrule=0pt,
+    leftrule=2pt,
+    colback=gray!4,
+    colframe=exgray,
+    fonttitle=\bfseries\color{exgray},
+    description font=\bfseries\color{black},
+    separator sign={\ ---\ },
+    attach title to upper,
+    after title={\par\smallskip},
+    top=5pt,
+    bottom=5pt,
+    left=10pt,
+    right=10pt,
+    breakable
+}{ex}
+
+% Remark Environment
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[chapter]
+
+% Custom math commands
+\newcommand{\cis}{\operatorname{cis}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\renewcommand{\arg}{\operatorname{arg}}
+\newcommand{\Res}{\operatorname{Res}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% Title & Author
+\title{\Huge\textbf{Complex Analysis}\\[0.5em]
+\Large Core Theory, Formulas \& Results -- Without Proofs\\[0.3em]}
+\author{Based on the course by Dr. Robin Van Den Abeele \& Prof. Nele Vandersickel}
+\date{Academic Year 2025--2026}
+
+\begin{document}
+
+\pagenumbering{roman}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+% --- CHAPTERS ---
+\include{chapters/ch1_complex_numbers}
+\include{chapters/ch2_analytic_functions}
+\include{chapters/ch3_elementary_functions}
+\include{chapters/ch4_complex_integration}
+\include{chapters/ch5_series_representations}
+\include{chapters/ch6_residue_theory}
+\include{chapters/ch7_transforms}
+
+\end{document}

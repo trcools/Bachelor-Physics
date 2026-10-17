@@ -1,0 +1,357 @@
+\chapter{Analytic Functions}
+
+\section{Functions of a Complex Variable}
+
+\begin{definition}{Domain, Image, and Range}{complex_func_domain}
+A complex function $f$ assigns to each element $z$ in a set $A \subseteq \mathbb{C}$ a unique complex value $w = f(z) \in \mathbb{C}$.
+\begin{itemize}
+    \item The set $A$ is called the \textbf{domain of definition} of $f$ (unless stated otherwise, taken as the largest set of $z \in \mathbb{C}$ for which $f(z)$ is well-defined).
+    \item The value $w = f(z)$ is called the \textbf{image} of $z$ under $f$.
+    \item The set of all images, $\{f(z) : z \in A\}$, is called the \textbf{range} of $f$.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Domain of Definition}{domain_ex}
+The rational function
+\begin{equation}
+f(z) = \frac{z^2 - 1}{z^2 + 1}
+\end{equation}
+is well-defined for all $z \in \mathbb{C}$ except where the denominator vanishes: $z^2 + 1 = 0 \iff z = \pm i$. Hence, its domain is $\mathbb{C} \setminus \{i, -i\}$.
+\end{example}
+
+\begin{definition}{Complex Function as a Pair of Real Functions}{complex_func_parts}
+Writing $z = x + iy$ and $w = f(z) = u + iv$, a complex function is equivalent to a pair of real-valued functions of two real variables:
+\begin{equation}
+w = f(z) = u(x, y) + i v(x, y),
+\end{equation}
+where:
+\begin{equation}
+u(x, y) = \Re\big(f(z)\big), \qquad v(x, y) = \Im\big(f(z)\big).
+\end{equation}
+\end{definition}
+
+\begin{example}{Decomposition into Real and Imaginary Parts}{parts_ex}
+For $w = f(z) = z^2 + 2z$:
+\begin{align}
+f(z) &= (x + iy)^2 + 2(x + iy) \nonumber \\
+     &= (x^2 - y^2 + 2x) + i(2xy + 2y).
+\end{align}
+Thus:
+\begin{equation}
+u(x, y) = x^2 - y^2 + 2x, \qquad v(x, y) = 2xy + 2y.
+\end{equation}
+\end{example}
+
+\begin{remark}[Graphical Representation via Mapping]
+Because a complex function involves two input and two output dimensions (requiring 4 real dimensions), one cannot plot $f(z)$ as a standard 2D graph. Instead, complex functions are visualized as \textbf{mappings} or transformations from the $z$-plane (domain) to the $w$-plane (range).
+\end{remark}
+
+
+\section{Limits and Continuity}
+
+\begin{definition}{Limit of a Sequence}{seq_limit}
+A sequence of complex numbers $\{z_n\}_{n=1}^\infty$ converges to the limit $z_0$, written
+\begin{equation}
+\lim_{n \to \infty} z_n = z_0,
+\end{equation}
+if for every $\varepsilon > 0$, there exists an integer $N \in \mathbb{N}$ such that
+\begin{equation}
+|z_n - z_0| < \varepsilon \quad \forall n > N.
+\end{equation}
+Geometrically, for $n > N$, every point $z_n$ lies strictly inside the open disk of radius $\varepsilon$ centered at $z_0$.
+\end{definition}
+
+\begin{definition}{Limit of a Complex Function}{func_limit}
+Let $f(z)$ be defined in a deleted neighborhood of $z_0$, i.e., $0 < |z - z_0| < r$. We say that $f(z)$ has the \textbf{limit} $w_0$ as $z \to z_0$, written
+\begin{equation}
+\lim_{z \to z_0} f(z) = w_0,
+\end{equation}
+if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that
+\begin{equation}
+|f(z) - w_0| < \varepsilon \quad \text{whenever} \quad 0 < |z - z_0| < \delta.
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Characterization via Sequences}{heine_limits}
+The function limit $\lim_{z \to z_0} f(z) = w_0$ holds if and only if for every sequence $\{z_n\}_{n=1}^\infty$ with $z_n \neq z_0$ that converges to $z_0$, the image sequence $\{f(z_n)\}_{n=1}^\infty$ converges to $w_0$:
+\begin{equation}
+\lim_{n \to \infty} z_n = z_0 \implies \lim_{n \to \infty} f(z_n) = w_0.
+\end{equation}
+\end{proposition}
+
+\begin{definition}{Limits Involving Infinity}{limits_infinity}
+\begin{itemize}
+    \item A sequence satisfies $\lim_{n \to \infty} z_n = \infty$ if for every $M > 0$, there exists $N \in \mathbb{N}$ such that $|z_n| > M$ for all $n > N$.
+    \item A function satisfies $\lim_{z \to z_0} f(z) = \infty$ if for every $M > 0$, there exists $\delta > 0$ such that $|f(z)| > M$ whenever $0 < |z - z_0| < \delta$.
+    \item A function satisfies $\lim_{z \to \infty} f(z) = w_0$ if for every $\varepsilon > 0$, there exists $R > 0$ such that $|f(z) - w_0| < \varepsilon$ whenever $|z| > R$.
+\end{itemize}
+In the complex plane, approaching $\infty$ means that the modulus $|z| \to +\infty$ regardless of direction.
+\end{definition}
+
+\begin{example}{Limits at Finite Points and Infinity}{limits_ex}
+\begin{equation}
+\lim_{z \to 3i} \frac{z}{z^2 + 9} = \infty, \qquad \lim_{z \to \infty} \frac{iz - 2}{4z + i} = \frac{i}{4}, \qquad \lim_{z \to \infty} \frac{z^3 + 3i}{z^2 + 5z} = \infty.
+\end{equation}
+\end{example}
+
+\begin{definition}{Continuity}{continuity}
+Let $f(z)$ be defined in a neighborhood of $z_0$. The function $f$ is \textbf{continuous at $z_0$} if
+\begin{equation}
+\lim_{z \to z_0} f(z) = f(z_0).
+\end{equation}
+$f$ is \textbf{continuous on a set $S$} if it is continuous at every point $z \in S$.
+\end{definition}
+
+\begin{proposition}{Component-wise Continuity and Algebraic Rules}{cont_properties}
+Let $f(z) = u(x, y) + i v(x, y)$ with $z_0 = x_0 + i y_0$.
+\begin{enumerate}
+    \item $f$ is continuous at $z_0$ if and only if both real-valued functions $u(x, y)$ and $v(x, y)$ are continuous at $(x_0, y_0)$.
+    \item If $f$ and $g$ are continuous at $z_0$, then so are:
+    \begin{equation}
+    f \pm g, \qquad f \cdot g, \qquad \frac{f}{g} \quad \big(\text{provided } g(z_0) \neq 0\big).
+    \end{equation}
+    \item Constant functions and $f(z) = z$ are continuous on all of $\mathbb{C}$.
+    \item Every polynomial $P(z) = a_n z^n + \dots + a_1 z + a_0$ is continuous on all of $\mathbb{C}$.
+    \item Every rational function $R(z) = P(z)/Q(z)$ is continuous at all points where $Q(z) \neq 0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}{Removable Discontinuity}{removable_disc}
+If a function $f$ is not defined at $z_0$, or discontinuous at $z_0$, but $\lim_{z \to z_0} f(z)$ exists, the discontinuity is called \textbf{removable}. By setting (or redefining) $f(z_0) := \lim_{z \to z_0} f(z)$, the function becomes continuous at $z_0$.
+\end{definition}
+
+
+\section{Analyticity and the Complex Derivative}
+
+\subsection{Background: Admissible Functions of \texorpdfstring{$z$}{z}}
+
+In complex analysis, we seek functions that depend purely on the complex variable $z = x + iy$, rather than separately on $x$ and $y$ or on the complex conjugate $\bar{z} = x - iy$.
+Using the relations
+\begin{equation}
+x = \frac{z + \bar{z}}{2}, \qquad y = \frac{z - \bar{z}}{2i},
+\end{equation}
+any function $f(x, y) = u(x, y) + iv(x, y)$ can formally be rewritten in terms of $z$ and $\bar{z}$. A function is admissible in complex analysis only if it does not depend on $\bar{z}$ (i.e., $\partial f / \partial \bar{z} = 0$). Functions such as $\Re(z)$, $\Im(z)$, and $|z| = \sqrt{z\bar{z}}$ explicitly involve $\bar{z}$ and are not differentiable in the complex sense.
+
+\subsection{Complex Differentiability}
+
+\begin{definition}{Complex Derivative}{complex_derivative}
+Let $f$ be a complex function defined in a neighborhood of $z_0 \in \mathbb{C}$. The \textbf{derivative} of $f$ at $z_0$ is defined as
+\begin{equation}
+f'(z_0) \equiv \frac{df}{dz}(z_0) := \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z},
+\end{equation}
+provided this limit exists. If the limit exists, $f$ is said to be \textbf{complex differentiable} at $z_0$.
+\end{definition}
+
+\begin{remark}[Path Independence of $\Delta z \to 0$]
+For $f'(z_0)$ to exist, the difference quotient must tend to the \textbf{same unique value} regardless of the path or direction along which $\Delta z \to 0$ in the complex plane (horizontally, vertically, diagonally, or along curves).
+\end{remark}
+
+\begin{proposition}{Non-differentiability of $\bar{z}$, $\Re(z)$, and $|z|$}{non_diff}
+The functions $f(z) = \bar{z}$, $f(z) = \Re(z)$, $f(z) = \Im(z)$, and $f(z) = |z|$ are nowhere differentiable in $\mathbb{C}$, because the quotient $[f(z_0 + \Delta z) - f(z_0)]/\Delta z$ yields different limits when $\Delta z$ approaches $0$ along the real axis ($\Delta z = \Delta x$) versus along the imaginary axis ($\Delta z = i\Delta y$).
+\end{proposition}
+
+\begin{proposition}{Differentiation Rules}{diff_rules}
+Let $f$ and $g$ be differentiable at $z$, and let $c \in \mathbb{C}$ be a constant.
+\begin{enumerate}
+    \item \textbf{Power Rule}: For any positive integer $n \in \mathbb{N}^+$:
+    \begin{equation}
+    \frac{d}{dz} z^n = n z^{n-1}.
+    \end{equation}
+    \item \textbf{Linearity}:
+    \begin{equation}
+    (cf)'(z) = c f'(z), \qquad (f \pm g)'(z) = f'(z) \pm g'(z).
+    \end{equation}
+    \item \textbf{Product Rule}:
+    \begin{equation}
+    (fg)'(z) = f'(z) g(z) + f(z) g'(z).
+    \end{equation}
+    \item \textbf{Quotient Rule}: If $g(z) \neq 0$:
+    \begin{equation}
+    \left(\frac{f}{g}\right)'(z) = \frac{f'(z)g(z) - f(z)g'(z)}{[g(z)]^2}.
+    \end{equation}
+    \item \textbf{Chain Rule}: If $g$ is differentiable at $z$ and $f$ is differentiable at $g(z)$:
+    \begin{equation}
+    \frac{d}{dz} f\big(g(z)\big) = f'\big(g(z)\big) g'(z).
+    \end{equation}
+    \item \textbf{Differentiability implies Continuity}: If $f$ is differentiable at $z_0$, then $f$ is continuous at $z_0$.
+\end{enumerate}
+\end{proposition}
+
+\subsection{Analytic Functions and Entire Functions}
+
+\begin{definition}{Analytic Function}{analytic_def}
+\begin{itemize}
+    \item A function $f(z)$ is said to be \textbf{analytic} (or \textbf{holomorphic}) on an open set $G \subseteq \mathbb{C}$ if it is differentiable at every point of $G$.
+    \item $f$ is \textbf{analytic at a point $z_0$} if $f$ is analytic in some open neighborhood of $z_0$.
+    \item A point $z_0$ where $f$ fails to be analytic, but which is a limit point of points where $f$ is analytic, is called a \textbf{singularity} (or \textbf{singular point}) of $f$.
+    \item A function that is analytic on the \textbf{entire complex plane} $\mathbb{C}$ is called an \textbf{entire function}.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Polynomial and Rational Functions}{poly_rat_analytic}
+\begin{itemize}
+    \item Any polynomial $P(z) = a_n z^n + \dots + a_0$ is differentiable everywhere on $\mathbb{C}$; hence, all polynomials are \textbf{entire functions}.
+    \item Any rational function $R(z) = P(z)/Q(z)$ is analytic on $\mathbb{C} \setminus \{z : Q(z) = 0\}$. The isolated roots of $Q(z) = 0$ are its singularities.
+\end{itemize}
+\end{example}
+
+
+\section{The Cauchy-Riemann Equations}
+
+\begin{theorem}{Cauchy-Riemann Equations (Necessary Conditions)}{cauchy_riemann_necessary}
+Let $f(z) = u(x, y) + i v(x, y)$ be defined in a neighborhood of $z_0 = x_0 + i y_0$.
+If $f$ is differentiable at $z_0$, then the first-order partial derivatives of $u$ and $v$ exist at $(x_0, y_0)$ and satisfy the \textbf{Cauchy-Riemann equations}:
+\begin{equation}
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
+\end{equation}
+Furthermore, the derivative $f'(z_0)$ can be expressed in terms of these partial derivatives as:
+\begin{equation}
+f'(z_0) = \frac{\partial u}{\partial x}(x_0, y_0) + i \frac{\partial v}{\partial x}(x_0, y_0) = \frac{\partial v}{\partial y}(x_0, y_0) - i \frac{\partial u}{\partial y}(x_0, y_0).
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Memory Aid for Cauchy-Riemann]
+Equating the horizontal derivative ($\Delta z = \Delta x$) to the vertical derivative ($\Delta z = i\Delta y$):
+\begin{equation}
+\frac{\partial f}{\partial x} = \frac{1}{i}\frac{\partial f}{\partial y} = -i \frac{\partial f}{\partial y}.
+\end{equation}
+Separating into real and imaginary parts immediately recovers:
+\begin{equation}
+u_x + i v_x = -i(u_y + i v_y) = v_y - i u_y \implies u_x = v_y, \quad v_x = -u_y.
+\end{equation}
+\end{remark}
+
+\begin{theorem}{Sufficient Conditions for Differentiability and Analyticity}{cauchy_riemann_sufficient}
+Let $f(z) = u(x, y) + i v(x, y)$ be defined on an open set $G$ containing $z_0$. If:
+\begin{enumerate}
+    \item The first partial derivatives $u_x, u_y, v_x, v_y$ exist throughout $G$,
+    \item These partial derivatives are \textbf{continuous} at $z_0$,
+    \item The Cauchy-Riemann equations hold at $z_0$:
+    \begin{equation}
+    u_x(x_0, y_0) = v_y(x_0, y_0) \quad \text{and} \quad u_y(x_0, y_0) = -v_x(x_0, y_0),
+    \end{equation}
+\end{enumerate}
+then $f$ is differentiable at $z_0$.
+Consequently, if $u_x, u_y, v_x, v_y$ are continuous and satisfy the Cauchy-Riemann equations at \textbf{all} points of $G$, then $f$ is \textbf{analytic} on $G$.
+\end{theorem}
+
+\begin{example}{Analyticity of the Complex Exponential}{exp_entire}
+For $f(z) = e^z = e^x \cos y + i e^x \sin y$:
+\begin{equation}
+u = e^x \cos y, \qquad v = e^x \sin y.
+\end{equation}
+The partial derivatives are:
+\begin{equation}
+u_x = e^x \cos y, \quad u_y = -e^x \sin y, \quad v_x = e^x \sin y, \quad v_y = e^x \cos y.
+\end{equation}
+They are continuous everywhere on $\mathbb{R}^2$ and identically satisfy $u_x = v_y$ and $u_y = -v_x$.
+Therefore, $e^z$ is an \textbf{entire function}, and its derivative is:
+\begin{equation}
+\frac{d}{dz} e^z = u_x + i v_x = e^x \cos y + i e^x \sin y = e^z.
+\end{equation}
+\end{example}
+
+\begin{theorem}{Vanishing Derivative on a Domain}{zero_derivative}
+If $f(z)$ is analytic in a domain $D$, and
+\begin{equation}
+f'(z) = 0 \quad \forall z \in D,
+\end{equation}
+then $f(z)$ is identically \textbf{constant} throughout $D$.
+\end{theorem}
+
+\begin{proposition}{Constancy Conditions for Analytic Functions}{constancy_criteria}
+Let $f(z) = u(x, y) + i v(x, y)$ be analytic in a domain $D$. If any of the following conditions holds throughout $D$:
+\begin{enumerate}
+    \item $\Re\big(f(z)\big) = u(x, y)$ is constant,
+    \item $\Im\big(f(z)\big) = v(x, y)$ is constant,
+    \item $|f(z)|$ is constant,
+    \item $\overline{f(z)}$ is analytic in $D$,
+\end{enumerate}
+then $f(z)$ is \textbf{constant} on $D$.
+Furthermore, if two functions $f$ and $g$ are analytic in $D$ and have identical derivatives $f'(z) = g'(z)$ on $D$, then $f(z) = g(z) + C$ for some constant $C \in \mathbb{C}$.
+\end{proposition}
+
+
+\section{Harmonic Functions}
+
+\begin{definition}{Harmonic Function and Laplace's Equation}{harmonic_func}
+A real-valued function $\phi(x, y)$ is called \textbf{harmonic} in a domain $D \subset \mathbb{R}^2$ if:
+\begin{enumerate}
+    \item All second-order partial derivatives of $\phi$ exist and are continuous on $D$,
+    \item $\phi$ satisfies \textbf{Laplace's equation} at every point of $D$:
+    \begin{equation}
+    \nabla^2 \phi := \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} = 0.
+    \end{equation}
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}{Real and Imaginary Parts of Analytic Functions are Harmonic}{analytic_harmonic}
+If $f(z) = u(x, y) + i v(x, y)$ is analytic in a domain $D$, then both $u(x, y)$ and $v(x, y)$ are \textbf{harmonic functions} in $D$:
+\begin{equation}
+\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0, \qquad \nabla^2 v = \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0.
+\end{equation}
+\end{theorem}
+
+\begin{definition}{Harmonic Conjugate}{harmonic_conj}
+Let $u(x, y)$ be a harmonic function in a simply connected domain $D$ (such as an open disk). A harmonic function $v(x, y)$ is called the \textbf{harmonic conjugate} of $u$ if the pair $(u, v)$ satisfies the Cauchy-Riemann equations throughout $D$:
+\begin{equation}
+u_x = v_y \quad \text{and} \quad u_y = -v_x.
+\end{equation}
+Equivalently, $v$ is a harmonic conjugate of $u$ if and only if $f(z) = u(x, y) + i v(x, y)$ is an analytic function of $z$ on $D$.
+\end{definition}
+
+\begin{example}{Construction of the Harmonic Conjugate}{construct_harmonic_conj}
+Consider the function
+\begin{equation}
+u(x, y) = x^3 - 3xy^2 + y.
+\end{equation}
+\begin{enumerate}
+    \item \textbf{Verify that $u$ is harmonic}:
+    \begin{equation}
+    u_{xx} = 6x, \quad u_{yy} = -6x \implies \nabla^2 u = 6x - 6x = 0.
+    \end{equation}
+    \item \textbf{Apply Cauchy-Riemann equations to find $v$}:
+    \begin{align}
+    \frac{\partial v}{\partial y} &= \frac{\partial u}{\partial x} = 3x^2 - 3y^2, \\
+    \frac{\partial v}{\partial x} &= -\frac{\partial u}{\partial y} = 6xy - 1.
+    \end{align}
+    \item \textbf{Integrate with respect to $y$}:
+    \begin{equation}
+    v(x, y) = \int (3x^2 - 3y^2)\, dy = 3x^2 y - y^3 + \psi(x).
+    \end{equation}
+    \item \textbf{Differentiate with respect to $x$ and equate to $v_x$}:
+    \begin{equation}
+    \frac{\partial v}{\partial x} = 6xy + \psi'(x) = 6xy - 1 \implies \psi'(x) = -1.
+    \end{equation}
+    Hence $\psi(x) = -x + C$, where $C \in \mathbb{R}$ is an arbitrary real constant.
+    \item \textbf{Conclusion}: The harmonic conjugate is:
+    \begin{equation}
+    v(x, y) = 3x^2 y - y^3 - x + C.
+    \end{equation}
+    The resulting analytic function is:
+    \begin{equation}
+    f(z) = u + iv = (x^3 - 3xy^2 + y) + i(3x^2 y - y^3 - x + C) = z^3 - i(z - C).
+    \end{equation}
+\end{enumerate}
+\end{example}
+
+\begin{proposition}{Orthogonality of Level Curves}{level_curves}
+Let $f(z) = u(x, y) + i v(x, y)$ be analytic in a domain $D$. The families of level curves (or \textbf{isotimic curves})
+\begin{equation}
+u(x, y) = c_1 \quad \text{and} \quad v(x, y) = c_2
+\end{equation}
+intersect \textbf{orthogonally} (at right angles) at every point where $f'(z) \neq 0$.
+The gradient vectors $\nabla u = (u_x, u_y)$ and $\nabla v = (v_x, v_y)$ satisfy:
+\begin{equation}
+\nabla u \cdot \nabla v = u_x v_x + u_y v_y = v_y v_x + (-v_x) v_y = 0.
+\end{equation}
+\end{proposition}
+
+\begin{example}{Level Curves for $f(z) = z^2$}{level_curves_z2}
+For $f(z) = z^2 = (x^2 - y^2) + i(2xy)$:
+\begin{itemize}
+    \item The level curves $u(x, y) = x^2 - y^2 = c_1$ form a family of orthogonal hyperbolas with asymptotes $y = \pm x$.
+    \item The level curves $v(x, y) = 2xy = c_2$ form a family of orthogonal hyperbolas with the coordinate axes as asymptotes.
+\end{itemize}
+These two families of hyperbolas intersect everywhere perpendicularly (except at the origin $z=0$, where $f'(0) = 0$).
+\end{example}
