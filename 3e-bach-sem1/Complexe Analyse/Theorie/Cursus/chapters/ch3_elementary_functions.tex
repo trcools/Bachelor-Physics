@@ -1,0 +1,375 @@
+\chapter{Elementary Functions}
+
+\section{Polynomials}
+
+\begin{definition}{Polynomial Function}{polynomial_def}
+A \textbf{polynomial} of the complex variable $z$ is a function of the form
+\begin{equation}
+p_n(z) = a_0 + a_1 z + a_2 z^2 + \dots + a_n z^n = \sum_{k=0}^n a_k z^k,
+\end{equation}
+where $a_0, a_1, \dots, a_n \in \mathbb{C}$ are complex constants.
+If $a_n \neq 0$, $n$ is called the \textbf{degree} of the polynomial.
+Every polynomial is an \textbf{entire function}.
+\end{definition}
+
+\begin{theorem}{Factorization of Polynomials}{poly_factorization}
+Every polynomial $p_n(z)$ of degree $n \ge 1$ can be factored completely into $n$ linear factors over $\mathbb{C}$:
+\begin{equation}
+p_n(z) = a_n(z - z_1)(z - z_2)\cdots(z - z_n),
+\end{equation}
+where $z_1, z_2, \dots, z_n \in \mathbb{C}$ are the zeros of $p_n(z)$ (counting multiplicity).
+\begin{itemize}
+    \item A polynomial of degree $n$ has exactly $n$ zeros (counting multiplicity).
+    \item A polynomial is completely determined by its zeros up to the constant leading coefficient $a_n$.
+    \item A point $z_0$ is a zero of multiplicity $k$ if and only if
+    \begin{equation}
+    p_n(z) = (z - z_0)^k q(z) \quad \text{with } q(z_0) \neq 0.
+    \end{equation}
+\end{itemize}
+\end{theorem}
+
+\begin{example}{Polynomial Factorization}{factor_ex}
+\begin{enumerate}
+    \item $p_3(z) = -2z^3 - 4z^2 + 10z + 12 = -2(z - 2)(z + 1)(z + 3)$. (All zeros are real: $2, -1, -3$).
+    \item $p(z) = z^3 + (2 - i)z^2 - 2iz = z(z^2 + (2-i)z - 2i) = z(z + 2)(z - i)$. (Zeros: $0, -2, i$).
+\end{enumerate}
+\end{example}
+
+\begin{proposition}{Polynomials with Real Coefficients}{real_poly_factors}
+Let $p(z)$ be a polynomial with all coefficients real ($a_k \in \mathbb{R}$). If $z_0$ is a zero of $p(z)$, then its complex conjugate $\bar{z}_0$ is also a zero of $p(z)$ with the same multiplicity.
+Consequently, any polynomial with real coefficients can be factored over $\mathbb{R}$ into a product of real linear factors and irreducible real quadratic factors of the form:
+\begin{equation}
+(z - z_1)(z - \bar{z}_1) = z^2 - 2\Re(z_1)z + |z_1|^2.
+\end{equation}
+\end{proposition}
+
+\begin{example}{Real Factorization of $z^5 - 1$}{z5_factor}
+The fifth roots of unity yield:
+\begin{equation}
+z^5 - 1 = (z - 1)\left(z^2 - 2\cos\left(\frac{2\pi}{5}\right)z + 1\right)\left(z^2 - 2\cos\left(\frac{4\pi}{5}\right)z + 1\right).
+\end{equation}
+\end{example}
+
+\begin{theorem}{Taylor Expansion of a Polynomial}{poly_taylor}
+Every polynomial $p_n(z)$ of degree $n$ can be expanded in powers of $(z - z_0)$ about any point $z_0 \in \mathbb{C}$:
+\begin{equation}
+p_n(z) = \sum_{k=0}^n \frac{p_n^{(k)}(z_0)}{k!} (z - z_0)^k.
+\end{equation}
+\begin{itemize}
+    \item If $z_0 = 0$, this is the \textbf{Maclaurin expansion}.
+    \item $z_0$ is a zero of $p_n(z)$ if and only if $p_n(z_0) = 0$.
+    \item $z_0$ is a zero of \textbf{multiplicity $k$} if and only if:
+    \begin{equation}
+    p_n(z_0) = p'_n(z_0) = \dots = p_n^{(k-1)}(z_0) = 0 \quad \text{and} \quad p_n^{(k)}(z_0) \neq 0.
+    \end{equation}
+\end{itemize}
+\end{theorem}
+
+
+\section{Rational Functions and Partial Fraction Decomposition}
+
+\subsection{General Rational Functions}
+
+\begin{definition}{Rational Function, Zeros, and Poles}{rational_func_def}
+A \textbf{rational function} is the ratio of two polynomials:
+\begin{equation}
+R_{m, n}(z) = \frac{P_m(z)}{Q_n(z)} = \frac{a_0 + a_1 z + \dots + a_m z^m}{b_0 + b_1 z + \dots + b_n z^n} \quad (a_m \neq 0, \, b_n \neq 0).
+\end{equation}
+Assuming all common factors have been canceled:
+\begin{itemize}
+    \item The zeros of $P_m(z)$ are the \textbf{zeros} of $R_{m, n}(z)$.
+    \item The zeros of $Q_n(z)$ are the \textbf{poles} of $R_{m, n}(z)$ (points where $R_{m, n}(z) \to \infty$).
+    \item $R_{m, n}(z)$ is analytic everywhere in $\mathbb{C}$ except at its poles.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}{Polynomial Division for Rational Functions}{rat_poly_div}
+If the degree of the numerator $m$ is greater than or equal to the degree of the denominator $n$ ($m \ge n$), Euclidean polynomial division guarantees the unique decomposition:
+\begin{equation}
+\frac{P_m(z)}{Q_n(z)} = E_{m-n}(z) + \frac{F_\ell(z)}{Q_n(z)},
+\end{equation}
+where $E_{m-n}(z)$ is a polynomial of degree $m-n$, and $F_\ell(z)$ is a polynomial of degree $\ell < n$.
+\end{proposition}
+
+\subsection{Partial Fraction Decomposition}
+
+\begin{theorem}{Partial Fraction Decomposition}{pfd_theorem}
+Let $R(z) = \frac{P(z)}{Q(z)}$ be a strictly proper rational function ($\deg P < \deg Q = n$). Let the distinct poles of $R(z)$ be $\zeta_1, \zeta_2, \dots, \zeta_r$ with respective multiplicities $d_1, d_2, \dots, d_r$ (such that $\sum_{j=1}^r d_j = n$):
+\begin{equation}
+Q(z) = b_n (z - \zeta_1)^{d_1} (z - \zeta_2)^{d_2} \cdots (z - \zeta_r)^{d_r}.
+\end{equation}
+Then $R(z)$ has a unique \textbf{partial fraction decomposition}:
+\begin{equation}
+R(z) = \sum_{j=1}^r \left[ \frac{A_0^{(j)}}{(z - \zeta_j)^{d_j}} + \frac{A_1^{(j)}}{(z - \zeta_j)^{d_j - 1}} + \dots + \frac{A_{d_j - 1}^{(j)}}{z - \zeta_j} \right] = \sum_{j=1}^r \sum_{s=0}^{d_j - 1} \frac{A_s^{(j)}}{(z - \zeta_j)^{d_j - s}},
+\end{equation}
+where the coefficients are given by the \textbf{derivative method}:
+\begin{equation}
+A_s^{(j)} = \lim_{z \to \zeta_j} \frac{1}{s!} \frac{d^s}{dz^s} \left[ (z - \zeta_j)^{d_j} R(z) \right], \quad s = 0, 1, \dots, d_j - 1.
+\end{equation}
+\end{theorem}
+
+\begin{example}{Partial Fraction Decomposition with Repeated Poles}{pfd_ex}
+Consider
+\begin{equation}
+R(z) = \frac{4z + 4}{z(z - 1)(z - 2)^2} = \frac{A^{(1)}}{z} + \frac{A^{(2)}}{z - 1} + \frac{A_0^{(3)}}{(z - 2)^2} + \frac{A_1^{(3)}}{z - 2}.
+\end{equation}
+\begin{itemize}
+    \item Simple pole at $z = 0$:
+    \begin{equation}
+    A^{(1)} = \lim_{z \to 0} z R(z) = \frac{4}{(0 - 1)(0 - 2)^2} = -1.
+    \end{equation}
+    \item Simple pole at $z = 1$:
+    \begin{equation}
+    A^{(2)} = \lim_{z \to 1} (z - 1) R(z) = \frac{8}{1(1 - 2)^2} = 8.
+    \end{equation}
+    \item Double pole at $z = 2$:
+    \begin{align}
+    A_0^{(3)} &= \lim_{z \to 2} (z - 2)^2 R(z) = \lim_{z \to 2} \frac{4z + 4}{z(z - 1)} = \frac{12}{2(1)} = 6, \\
+    A_1^{(3)} &= \lim_{z \to 2} \frac{d}{dz}\left[\frac{4z + 4}{z^2 - z}\right] = \lim_{z \to 2} \frac{4(z^2 - z) - (4z + 4)(2z - 1)}{(z^2 - z)^2} = \frac{4(2) - (12)(3)}{2^2} = -7.
+    \end{align}
+\end{itemize}
+Hence:
+\begin{equation}
+R(z) = -\frac{1}{z} + \frac{8}{z - 1} + \frac{6}{(z - 2)^2} - \frac{7}{z - 2}.
+\end{equation}
+\end{example}
+
+
+\section{The Exponential, Trigonometric, and Hyperbolic Functions}
+
+\subsection{The Complex Exponential}
+
+\begin{proposition}{Properties of the Complex Exponential Function}{exp_func_props}
+For $z = x + iy$:
+\begin{equation}
+e^z = e^x(\cos y + i \sin y).
+\end{equation}
+\begin{itemize}
+    \item $e^z$ is \textbf{entire} and satisfies $\frac{d}{dz} e^z = e^z$.
+    \item Polar coordinates: $|e^z| = e^x > 0$ (so $e^z \neq 0$ for all $z \in \mathbb{C}$), and $\arg(e^z) = y + 2k\pi$.
+    \item \textbf{Periodicity}: $e^z$ is periodic with pure imaginary period $2\pi i$:
+    \begin{equation}
+    e^{z_1} = e^{z_2} \iff z_1 = z_2 + 2k\pi i \quad (k \in \mathbb{Z}).
+    \end{equation}
+    In particular, $e^z = 1 \iff z = 2k\pi i$.
+    \item \textbf{Fundamental Region}: $e^z$ is one-to-one on any horizontal strip of width $2\pi$:
+    \begin{equation}
+    S_k := \{z \in \mathbb{C} : (2k - 1)\pi < \Im(z) \le (2k + 1)\pi\}, \quad k \in \mathbb{Z}.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+\subsection{Complex Trigonometric Functions}
+
+\begin{definition}{Complex Sine and Cosine}{trig_defs}
+For any complex number $z \in \mathbb{C}$, the sine and cosine functions are defined by:
+\begin{equation}
+\sin z := \frac{e^{iz} - e^{-iz}}{2i}, \qquad \cos z := \frac{e^{iz} + e^{-iz}}{2}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Properties of Sine and Cosine}{trig_props}
+\begin{itemize}
+    \item Both $\sin z$ and $\cos z$ are \textbf{entire functions}.
+    \item \textbf{Derivatives}:
+    \begin{equation}
+    \frac{d}{dz} \sin z = \cos z, \qquad \frac{d}{dz} \cos z = -\sin z.
+    \end{equation}
+    \item \textbf{Fundamental Identities} (identical to the real case):
+    \begin{align}
+    \sin^2 z + \cos^2 z &= 1, \\
+    \sin(z + 2\pi) = \sin z, &\qquad \cos(z + 2\pi) = \cos z, \\
+    \sin(-z) = -\sin z, &\qquad \cos(-z) = \cos z, \\
+    \sin(z_1 \pm z_2) &= \sin z_1 \cos z_2 \pm \cos z_1 \sin z_2, \\
+    \cos(z_1 \pm z_2) &= \cos z_1 \cos z_2 \mp \sin z_1 \sin z_2.
+    \end{align}
+    \item \textbf{Zeros}: All zeros of $\sin z$ and $\cos z$ are strictly \textbf{real}:
+    \begin{align}
+    \sin z = 0 &\iff z = k\pi \quad (k \in \mathbb{Z}), \\
+    \cos z = 0 &\iff z = \frac{\pi}{2} + k\pi \quad (k \in \mathbb{Z}).
+    \end{align}
+    \item \textbf{Unboundedness}: Unlike the real cosine, $\cos z$ is unbounded in $\mathbb{C}$. For $z = iy$:
+    \begin{equation}
+    |\cos(iy)| = \left|\frac{e^{-y} + e^y}{2}\right| = \cosh y \xrightarrow{y \to \pm\infty} +\infty.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+\begin{definition}{Tangent, Cotangent, Secant, and Cosecant}{other_trig}
+\begin{equation}
+\tan z := \frac{\sin z}{\cos z}, \quad \cot z := \frac{\cos z}{\sin z}, \quad \sec z := \frac{1}{\cos z}, \quad \csc z := \frac{1}{\sin z}.
+\end{equation}
+Their domains of analyticity and derivatives are:
+\begin{align}
+\frac{d}{dz}\tan z &= \sec^2 z \quad \left(z \neq \frac{\pi}{2} + k\pi\right), & \frac{d}{dz}\cot z &= -\csc^2 z \quad (z \neq k\pi), \\
+\frac{d}{dz}\sec z &= \sec z \tan z \quad \left(z \neq \frac{\pi}{2} + k\pi\right), & \frac{d}{dz}\csc z &= -\csc z \cot z \quad (z \neq k\pi).
+\end{align}
+\end{definition}
+
+\subsection{Complex Hyperbolic Functions}
+
+\begin{definition}{Complex Hyperbolic Functions}{hyperbolic_defs}
+For any $z \in \mathbb{C}$:
+\begin{equation}
+\sinh z := \frac{e^z - e^{-z}}{2}, \qquad \cosh z := \frac{e^z + e^{-z}}{2}.
+\end{equation}
+They are entire functions satisfying:
+\begin{equation}
+\frac{d}{dz}\sinh z = \cosh z, \qquad \frac{d}{dz}\cosh z = \sinh z.
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Relations between Trigonometric and Hyperbolic Functions}{trig_hyperbolic_rel}
+\begin{align}
+\sin(iz) &= i \sinh z, & \cos(iz) &= \cosh z, \\
+\sinh(iz) &= i \sin z, & \cosh(iz) &= \cos z.
+\end{align}
+Consequently:
+\begin{equation}
+\cosh^2 z - \sinh^2 z = 1.
+\end{equation}
+The remaining hyperbolic functions are:
+\begin{equation}
+\tanh z := \frac{\sinh z}{\cosh z}, \quad \coth z := \frac{\cosh z}{\sinh z}, \quad \operatorname{sech} z := \frac{1}{\cosh z}, \quad \operatorname{csch} z := \frac{1}{\sinh z}.
+\end{equation}
+\end{proposition}
+
+
+\section{The Complex Logarithmic Function}
+
+\subsection{Definition of the Multi-valued Logarithm}
+
+\begin{definition}{The Logarithmic Function}{log_def}
+For any $z \neq 0$, the \textbf{complex logarithm} $\log z$ is defined as the multi-valued function:
+\begin{equation}
+\log z := \log|z| + i \arg(z) = \log|z| + i\Arg(z) + 2k\pi i \quad (k \in \mathbb{Z}),
+\end{equation}
+where $\log|z|$ is the ordinary real natural logarithm of the positive real number $|z|$.
+\end{definition}
+
+\begin{example}{Values of $\log z$}{log_vals}
+\begin{itemize}
+    \item $\log 3 = \log 3 + 2k\pi i$.
+    \item $\log(-1) = \log 1 + i(\pi + 2k\pi) = (2k + 1)\pi i$.
+    \item $\log(1 + i) = \log\sqrt{2} + i\left(\frac{\pi}{4} + 2k\pi\right) = \frac{1}{2}\log 2 + i\left(\frac{\pi}{4} + 2k\pi\right)$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}{Algebraic Properties of Multi-valued $\log z$}{log_properties}
+For non-zero complex numbers:
+\begin{enumerate}
+    \item $e^{\log z} = z$ (holds for every value of $\log z$).
+    \item $\log(e^z) = z + 2k\pi i$ ($k \in \mathbb{Z}$).
+    \item \textbf{Addition and Subtraction} (understood in the sense of set equality):
+    \begin{align}
+    \log(z_1 z_2) &= \log z_1 + \log z_2, \\
+    \log\left(\frac{z_1}{z_2}\right) &= \log z_1 - \log z_2.
+    \end{align}
+\end{enumerate}
+\end{proposition}
+
+\subsection{The Principal Value \texorpdfstring{$\operatorname{Log} z$}{Log z} and Branches}
+
+\begin{definition}{Principal Value of the Logarithm}{principal_log}
+The \textbf{principal value} of the logarithm, denoted $\operatorname{Log} z$, is obtained by selecting the principal argument $\Arg(z) \in (-\pi, \pi]$:
+\begin{equation}
+\operatorname{Log} z := \log|z| + i \Arg(z).
+\end{equation}
+$\operatorname{Log} z$ is a single-valued function. Its line of discontinuity is the non-positive real axis $(-\infty, 0]$, called the \textbf{branch cut}.
+\end{definition}
+
+\begin{theorem}{Analyticity and Derivative of $\operatorname{Log} z$}{log_analytic}
+$\operatorname{Log} z$ is analytic in the cut plane (or slit domain):
+\begin{equation}
+D^* := \mathbb{C} \setminus \{x \in \mathbb{R} : x \le 0\}.
+\end{equation}
+Its derivative in $D^*$ is:
+\begin{equation}
+\frac{d}{dz} \operatorname{Log} z = \frac{1}{z} \quad \forall z \in D^*.
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Failure of Identities for Principal Values]
+Identities valid for multi-valued $\log z$ do not necessarily hold for the principal value $\operatorname{Log} z$.
+For example, for $z_1 = z_2 = -1$:
+\begin{equation}
+\operatorname{Log}((-1)(-1)) = \operatorname{Log}(1) = 0, \quad \text{but} \quad \operatorname{Log}(-1) + \operatorname{Log}(-1) = i\pi + i\pi = 2\pi i \neq 0.
+\end{equation}
+\end{remark}
+
+\begin{definition}{Branches of the Logarithm}{branches_log}
+A \textbf{branch} of $\log z$ is any single-valued function $L(z)$, analytic in a domain $D$, such that $e^{L(z)} = z$ for all $z \in D$.
+For any real angle $\tau$, the branch taking values in $(\tau, \tau + 2\pi]$ is:
+\begin{equation}
+L_\tau(z) = \log|z| + i \arg_\tau(z),
+\end{equation}
+which is analytic in the domain obtained by deleting the ray $\arg z = \tau$ from $\mathbb{C}$. In this domain:
+\begin{equation}
+\frac{d}{dz} L_\tau(z) = \frac{1}{z}.
+\end{equation}
+\end{definition}
+
+
+\section{Complex Powers}
+
+\begin{definition}{Complex Power $z^\alpha$}{complex_powers}
+Let $\alpha \in \mathbb{C}$ and $z \neq 0$. The \textbf{complex power} $z^\alpha$ is defined by:
+\begin{equation}
+z^\alpha := e^{\alpha \log z} = e^{\alpha(\log|z| + i\Arg(z) + 2k\pi i)} \quad (k \in \mathbb{Z}).
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Multiplicity of Values of $z^\alpha$}{power_multiplicity}
+The number of distinct values assumed by $z^\alpha$ depends on the exponent $\alpha$:
+\begin{enumerate}
+    \item \textbf{$\alpha \in \mathbb{Z}$ (an integer)}: $z^\alpha$ is \textbf{single-valued} (giving the standard power $z^n$).
+    \item \textbf{$\alpha = \frac{p}{q} \in \mathbb{Q}$ (a reduced rational number, $q > 0$)}: $z^\alpha$ has \textbf{exactly $q$ distinct values}:
+    \begin{equation}
+    z^{p/q} = \sqrt[q]{|z|^p} \exp\left[i \frac{p}{q}(\Arg(z) + 2k\pi)\right], \quad k = 0, 1, \dots, q-1.
+    \end{equation}
+    \item \textbf{$\alpha$ is irrational or non-real complex}: $z^\alpha$ has \textbf{infinitely many distinct values}.
+\end{enumerate}
+\end{proposition}
+
+\begin{example}{Infinitely Many Values of $(-2)^i$}{power_ex}
+\begin{equation}
+(-2)^i = e^{i \log(-2)} = e^{i(\log 2 + i(2k+1)\pi)} = e^{-(2k+1)\pi} e^{i \log 2} \quad (k \in \mathbb{Z}).
+\end{equation}
+\end{example}
+
+\begin{definition}{Principal Branch and Derivative of $z^\alpha$}{principal_power}
+The \textbf{principal branch} of $z^\alpha$ is defined using the principal value of the logarithm:
+\begin{equation}
+z^\alpha := e^{\alpha \operatorname{Log} z}.
+\end{equation}
+It is analytic in the slit domain $D^* = \mathbb{C} \setminus (-\infty, 0]$, with derivative:
+\begin{equation}
+\frac{d}{dz} (z^\alpha) = \alpha z^{\alpha - 1}.
+\end{equation}
+\end{definition}
+
+
+\section{Inverse Trigonometric and Hyperbolic Functions}
+
+\begin{proposition}{Inverse Trigonometric Functions as Logarithms}{inv_trig}
+The inverse trigonometric functions are multi-valued functions expressible in terms of the complex logarithm:
+\begin{align}
+\sin^{-1} z &= -i \log\left[iz + (1 - z^2)^{1/2}\right], \\
+\cos^{-1} z &= -i \log\left[z + (z^2 - 1)^{1/2}\right], \\
+\tan^{-1} z &= \frac{i}{2} \log\left(\frac{i + z}{i - z}\right) = \frac{i}{2} \log\left(\frac{1 - iz}{1 + iz}\right) \quad (z \neq \pm i).
+\end{align}
+Their derivatives (for any consistently chosen branch) are:
+\begin{align}
+\frac{d}{dz}\sin^{-1} z &= \frac{1}{(1 - z^2)^{1/2}} \quad (z \neq \pm 1), \\
+\frac{d}{dz}\cos^{-1} z &= -\frac{1}{(1 - z^2)^{1/2}} \quad (z \neq \pm 1), \\
+\frac{d}{dz}\tan^{-1} z &= \frac{1}{1 + z^2} \quad (z \neq \pm i).
+\end{align}
+\end{proposition}
+
+\begin{proposition}{Inverse Hyperbolic Functions as Logarithms}{inv_hyperbolic}
+\begin{align}
+\sinh^{-1} z &= \log\left[z + (z^2 + 1)^{1/2}\right], \\
+\cosh^{-1} z &= \log\left[z + (z^2 - 1)^{1/2}\right], \\
+\tanh^{-1} z &= \frac{1}{2} \log\left(\frac{1 + z}{1 - z}\right) \quad (z \neq \pm 1).
+\end{align}
+\end{proposition}

@@ -1,6 +1,6 @@
-# Security Guidelines
+# Security & Academic Guidelines
 
-This repository contains study material for the 2nd-year bachelor in Physics. To keep things safe, respectful, and academically clean, please follow these guidelines. Thanks for helping keep the repo healthy for everyone.
+This repository contains study material, lecture notes, exercises, and code across the entire **Bachelor in Physics and Astronomy**. To keep things safe, respectful, and academically compliant, please follow these guidelines. Thank you for helping keep the repository organized and secure for everyone.
 
 ## What NOT to commit
 

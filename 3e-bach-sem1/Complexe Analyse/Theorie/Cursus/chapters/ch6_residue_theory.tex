@@ -1,0 +1,236 @@
+\chapter{Residue Theory}
+
+\section{The Residue Theorem}
+
+\begin{definition}{Residue at an Isolated Singularity}{residue_def}
+Let $z_0$ be an isolated singularity of $f(z)$, and let the Laurent expansion of $f(z)$ in the punctured disk $0 < |z - z_0| < R$ be:
+\begin{equation}
+f(z) = \sum_{j=-\infty}^\infty a_j (z - z_0)^j = \dots + \frac{a_{-2}}{(z - z_0)^2} + \frac{a_{-1}}{z - z_0} + a_0 + a_1(z - z_0) + \dots.
+\end{equation}
+The coefficient $a_{-1}$ of the term $\frac{1}{z - z_0}$ is called the \textbf{residue} of $f$ at $z_0$, denoted:
+\begin{equation}
+\Res(f; z_0) \quad \text{or} \quad \Res(z_0) := a_{-1} = \frac{1}{2\pi i} \oint_C f(z)\, dz,
+\end{equation}
+where $C$ is any positively oriented simple closed contour enclosing $z_0$ and no other singularities.
+\end{definition}
+
+\begin{theorem}{Cauchy's Residue Theorem}{cauchy_residue_theorem}
+Let $\Gamma$ be a simple closed positively oriented contour. If $f(z)$ is analytic inside and on $\Gamma$ except at a finite number of isolated singularities $z_1, z_2, \dots, z_m$ lying in the interior of $\Gamma$, then:
+\begin{equation}
+\oint_\Gamma f(z)\, dz = 2\pi i \sum_{k=1}^m \Res(f; z_k).
+\end{equation}
+\end{theorem}
+
+\subsection{Formulas for Calculating Residues}
+
+\begin{proposition}{Residue at a Simple Pole}{residue_simple_pole}
+If $z_0$ is a \textbf{simple pole} (pole of order 1) of $f(z)$, then:
+\begin{equation}
+\Res(f; z_0) = \lim_{z \to z_0} (z - z_0) f(z).
+\end{equation}
+In particular, if $f(z) = \frac{P(z)}{Q(z)}$ where $P(z_0) \neq 0$, $Q(z_0) = 0$, and $Q'(z_0) \neq 0$ (so $Q$ has a simple zero at $z_0$), then:
+\begin{equation}
+\Res\left(\frac{P}{Q}; z_0\right) = \frac{P(z_0)}{Q'(z_0)}.
+\end{equation}
+\end{proposition}
+
+\begin{proposition}{Residue at a Pole of Order $m$}{residue_pole_m}
+If $z_0$ is a \textbf{pole of order $m \ge 1$} of $f(z)$, then:
+\begin{equation}
+\Res(f; z_0) = \frac{1}{(m - 1)!} \lim_{z \to z_0} \frac{d^{m-1}}{dz^{m-1}} \left[ (z - z_0)^m f(z) \right].
+\end{equation}
+\end{proposition}
+
+\begin{example}{Residue Calculations}{residue_examples}
+\begin{enumerate}
+    \item $f(z) = \frac{1}{z^2 + 1} = \frac{1}{(z-i)(z+i)}$. At $z = i$ (simple pole):
+    \begin{equation}
+    \Res(f; i) = \lim_{z \to i} (z - i)\frac{1}{(z - i)(z + i)} = \frac{1}{2i} = -\frac{i}{2}.
+    \end{equation}
+    Alternatively, using $\frac{P(z)}{Q'(z)}$ with $P(z) = 1, Q'(z) = 2z$: $\Res(f; i) = \frac{1}{2i}$.
+    \item $f(z) = \frac{e^z}{(z - 1)^3}$ at $z = 1$ (pole of order 3):
+    \begin{equation}
+    \Res(f; 1) = \frac{1}{2!} \lim_{z \to 1} \frac{d^2}{dz^2}\left[ (z - 1)^3 \frac{e^z}{(z - 1)^3} \right] = \frac{1}{2} \lim_{z \to 1} e^z = \frac{e}{2}.
+    \end{equation}
+    \item $f(z) = z^2 \sin\left(\frac{1}{z}\right)$ at $z = 0$ (essential singularity):
+    \begin{equation}
+    f(z) = z^2 \left( \frac{1}{z} - \frac{1}{6z^3} + \frac{1}{120z^5} - \dots \right) = z - \frac{1}{6z} + \frac{1}{120z^3} - \dots \implies \Res(f; 0) = -\frac{1}{6}.
+    \end{equation}
+\end{enumerate}
+\end{example}
+
+
+\section{Trigonometric Integrals over \texorpdfstring{$[0, 2\pi]$}{[0, 2pi]}}
+
+\begin{proposition}{Transformation of Trigonometric Integrals}{trig_integrals}
+Definite integrals of the form
+\begin{equation}
+I = \int_0^{2\pi} U(\cos\theta, \sin\theta)\, d\theta
+\end{equation}
+can be evaluated by substituting $z = e^{i\theta}$ ($0 \le \theta \le 2\pi$), mapping the interval $[0, 2\pi]$ onto the unit circle $C: |z| = 1$:
+\begin{equation}
+dz = i e^{i\theta}\, d\theta = i z\, d\theta \implies d\theta = \frac{dz}{iz},
+\end{equation}
+and using Euler's formulas:
+\begin{equation}
+\cos\theta = \frac{z + z^{-1}}{2} = \frac{z^2 + 1}{2z}, \qquad \sin\theta = \frac{z - z^{-1}}{2i} = \frac{z^2 - 1}{2iz}.
+\end{equation}
+This yields a contour integral around the unit circle:
+\begin{equation}
+I = \oint_{|z|=1} U\left(\frac{z^2+1}{2z}, \frac{z^2-1}{2iz}\right) \frac{dz}{iz} = 2\pi i \sum_{|z_k| < 1} \Res\big(F(z); z_k\big),
+\end{equation}
+summing only over poles $z_k$ lying \textbf{strictly inside} the unit disk $|z| < 1$.
+\end{proposition}
+
+
+\section{Improper Real Integrals over \texorpdfstring{$(-\infty, \infty)$}{(-infinity, infinity)}}
+
+\begin{definition}{Cauchy Principal Value}{cpv_def}
+The \textbf{Cauchy Principal Value} (P.V.) of an improper integral over $(-\infty, \infty)$ is defined as:
+\begin{equation}
+\text{P.V.} \int_{-\infty}^\infty f(x)\, dx := \lim_{R \to \infty} \int_{-R}^R f(x)\, dx.
+\end{equation}
+If the standard improper integral $\int_{-\infty}^\infty f(x)\, dx$ converges, its value equals the Cauchy Principal Value.
+\end{definition}
+
+\begin{theorem}{Improper Integrals of Rational Functions}{improper_rational}
+Let $f(x) = \frac{P(x)}{Q(x)}$ be a rational function where:
+\begin{enumerate}
+    \item $Q(x) \neq 0$ for all real $x$ (no poles on the real axis),
+    \item $\deg Q \ge \deg P + 2$ (the degree of the denominator exceeds that of the numerator by at least 2).
+\end{enumerate}
+Closing the contour with a semicircle $C_R^+$ in the upper half-plane ($\Im(z) \ge 0$), the integral along $C_R^+$ vanishes as $R \to \infty$, yielding:
+\begin{equation}
+\int_{-\infty}^\infty \frac{P(x)}{Q(x)}\, dx = 2\pi i \sum_{\Im(z_k) > 0} \Res\left(\frac{P}{Q}; z_k\right),
+\end{equation}
+summed over all poles $z_k$ in the \textbf{upper half-plane}.
+\end{theorem}
+
+
+\section{Improper Integrals Involving Trigonometric Functions}
+
+\begin{theorem}{Fourier-type Integrals and Jordan's Lemma}{jordan_integrals}
+To evaluate integrals of the form
+\begin{equation}
+\int_{-\infty}^\infty \frac{P(x)}{Q(x)} \cos(mx)\, dx \quad \text{or} \quad \int_{-\infty}^\infty \frac{P(x)}{Q(x)} \sin(mx)\, dx \quad (m > 0),
+\end{equation}
+we consider the complex integral involving $e^{imz}$:
+\begin{equation}
+\int_{-\infty}^\infty \frac{P(x)}{Q(x)} e^{imx}\, dx = \int_{-\infty}^\infty \frac{P(x)}{Q(x)} \cos(mx)\, dx + i \int_{-\infty}^\infty \frac{P(x)}{Q(x)} \sin(mx)\, dx.
+\end{equation}
+\textbf{Jordan's Lemma}: If $m > 0$ and $|f(z)| \le M_R \to 0$ as $R \to \infty$ along the upper semicircle $C_R^+ = \{R e^{i\theta} : 0 \le \theta \le \pi\}$, then:
+\begin{equation}
+\lim_{R \to \infty} \int_{C_R^+} f(z) e^{imz}\, dz = 0.
+\end{equation}
+Consequently, if $Q(x)$ has no real zeros and $\deg Q \ge \deg P + 1$:
+\begin{equation}
+\int_{-\infty}^\infty \frac{P(x)}{Q(x)} e^{imx}\, dx = 2\pi i \sum_{\Im(z_k) > 0} \Res\left(\frac{P(z)}{Q(z)} e^{imz}; z_k\right).
+\end{equation}
+Taking real and imaginary parts gives the respective cosine and sine integrals.
+\end{theorem}
+
+
+\section{Indented Contours and Real Poles}
+
+\begin{theorem}{Fractional Residue Theorem (Semicircular Indentation)}{fractional_residue}
+Let $f(z)$ have a simple pole at a point $x_0$ on the real axis with residue $B_0 = \Res(f; x_0)$.
+Let $C_\varepsilon$ be a clockwise-oriented semicircle of radius $\varepsilon$ centered at $x_0$ in the upper half-plane: $z(\theta) = x_0 + \varepsilon e^{i\theta}$ ($\pi \ge \theta \ge 0$). Then:
+\begin{equation}
+\lim_{\varepsilon \to 0^+} \int_{C_\varepsilon} f(z)\, dz = -\pi i \Res(f; x_0).
+\end{equation}
+(More generally, traversing an angle $\alpha$ clockwise around a simple pole yields $-\alpha i \Res(f; x_0)$).
+\end{theorem}
+
+\begin{example}{The Dirichlet Integral}{dirichlet_integral}
+Using an indented contour around the simple pole at the origin $z = 0$ for $f(z) = \frac{e^{iz}}{z}$:
+\begin{equation}
+\text{P.V.} \int_{-\infty}^\infty \frac{e^{ix}}{x}\, dx - \pi i \Res\left(\frac{e^{iz}}{z}; 0\right) = 0 \implies \text{P.V.} \int_{-\infty}^\infty \frac{e^{ix}}{x}\, dx = \pi i (1) = \pi i.
+\end{equation}
+Equating imaginary parts yields the celebrated Dirichlet integral:
+\begin{equation}
+\int_{-\infty}^\infty \frac{\sin x}{x}\, dx = \pi \implies \int_0^\infty \frac{\sin x}{x}\, dx = \frac{\pi}{2}.
+\end{equation}
+\end{example}
+
+
+\section{Integrals Involving Multi-Valued Functions (Branch Cuts)}
+
+\begin{proposition}{Keyhole (Pacman) Contours for Fractional Powers}{keyhole_contours}
+To evaluate integrals of the form $\int_0^\infty x^\alpha f(x)\, dx$ (where $\alpha$ is not an integer), we select the branch of $z^\alpha = e^{\alpha \log z}$ with branch cut along the positive real axis $[0, \infty)$ ($\arg z \in [0, 2\pi)$).
+Integrating along a keyhole contour enclosing all poles of $f(z)$ in $\mathbb{C} \setminus [0, \infty)$:
+\begin{itemize}
+    \item On the top edge of the cut ($z = x + i0$): $z^\alpha = x^\alpha$.
+    \item On the bottom edge of the cut ($z = x - i0$): $z^\alpha = x^\alpha e^{i 2\pi\alpha}$.
+\end{itemize}
+Taking the limits as the outer radius $R \to \infty$ and the inner radius $\varepsilon \to 0^+$:
+\begin{equation}
+(1 - e^{i 2\pi\alpha}) \int_0^\infty x^\alpha f(x)\, dx = 2\pi i \sum \Res\big(z^\alpha f(z); z_k\big).
+\end{equation}
+\end{proposition}
+
+
+\section{The Argument Principle and Rouché's Theorem}
+
+\subsection{The Argument Principle}
+
+\begin{definition}{Meromorphic Function}{meromorphic_def}
+A function $f(z)$ is \textbf{meromorphic} in a domain $D$ if it is analytic throughout $D$ except possibly for isolated poles.
+\end{definition}
+
+\begin{proposition}{Residues of the Logarithmic Derivative}{log_derivative_residues}
+Let $f(z)$ be meromorphic. The logarithmic derivative is $\frac{f'(z)}{f(z)}$.
+\begin{itemize}
+    \item If $z_0$ is a zero of $f(z)$ of order $m$, then $\frac{f'(z)}{f(z)}$ has a \textbf{simple pole} at $z_0$ with residue:
+    \begin{equation}
+    \Res\left(\frac{f'}{f}; z_0\right) = m.
+    \end{equation}
+    \item If $z_0$ is a pole of $f(z)$ of order $p$, then $\frac{f'(z)}{f(z)}$ has a \textbf{simple pole} at $z_0$ with residue:
+    \begin{equation}
+    \Res\left(\frac{f'}{f}; z_0\right) = -p.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}{The Argument Principle}{argument_principle}
+Let $f(z)$ be meromorphic inside and on a simple closed positively oriented contour $C$, and suppose $f$ has no zeros or poles on $C$.
+Then:
+\begin{equation}
+\frac{1}{2\pi i} \oint_C \frac{f'(z)}{f(z)}\, dz = Z - P,
+\end{equation}
+where $Z$ is the total number of zeros of $f$ inside $C$ and $P$ is the total number of poles of $f$ inside $C$ (counting multiplicities).
+Geometrically, this equals the winding number of the image curve $f(C)$ about the origin:
+\begin{equation}
+\frac{1}{2\pi} \Delta_C \arg f(z) = Z - P.
+\end{equation}
+\end{theorem}
+
+\subsection{Rouché's Theorem}
+
+\begin{theorem}{Rouché's Theorem}{rouches_theorem}
+Let $f(z)$ and $g(z)$ be analytic inside and on a simple closed contour $C$.
+If the strict inequality
+\begin{equation}
+|f(z) - g(z)| < |f(z)| \quad \forall z \in C
+\end{equation}
+holds at every point on the contour $C$, then $f(z)$ and $g(z)$ have the \textbf{same number of zeros} (counting multiplicity) inside $C$.
+\end{theorem}
+
+\begin{remark}[Alternative Formulation of Rouché's Theorem]
+Writing $g(z) = f(z) + h(z)$, where $h(z)$ is viewed as a perturbation:
+If $|h(z)| < |f(z)|$ for all $z \in C$, then the unperturbed function $f(z)$ and the perturbed function $f(z) + h(z)$ have the same number of zeros inside $C$.
+\end{remark}
+
+\begin{example}{Locating Zeros using Rouché's Theorem}{rouche_ex}
+To find the number of roots of $P(z) = z^7 - 4z^3 + z - 1 = 0$ inside the unit circle $|z| = 1$:
+Choose the dominant term on $|z| = 1$:
+\begin{equation}
+f(z) = -4z^3, \qquad h(z) = z^7 + z - 1.
+\end{equation}
+On $|z| = 1$:
+\begin{equation}
+|f(z)| = 4|z|^3 = 4, \qquad |h(z)| \le |z|^7 + |z| + 1 = 1 + 1 + 1 = 3.
+\end{equation}
+Since $|h(z)| = 3 < 4 = |f(z)|$ on $|z| = 1$, by Rouché's theorem $P(z) = f(z) + h(z)$ has the same number of zeros inside $|z| < 1$ as $f(z) = -4z^3$, which has a triple root at $z = 0$.
+Thus, $P(z)$ has \textbf{exactly 3 roots} inside the unit disk $|z| < 1$.
+\end{example}
+

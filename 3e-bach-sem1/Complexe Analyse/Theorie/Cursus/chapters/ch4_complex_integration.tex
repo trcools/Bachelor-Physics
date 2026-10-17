@@ -1,0 +1,261 @@
+\chapter{Complex Integration}
+
+\section{Contours}
+
+\subsection{Curves and Parametrizations}
+
+\begin{definition}{Parametrized Curve}{parametrized_curve}
+A \textbf{curve} $\gamma$ in the complex plane is the range of a continuous function $z(t)$ of a real parameter $t \in [a, b]$:
+\begin{equation}
+z(t) = x(t) + i y(t), \quad a \le t \le b.
+\end{equation}
+\begin{itemize}
+    \item $z(a)$ is the \textbf{initial point} and $z(b)$ is the \textbf{terminal point}.
+    \item $\gamma$ is \textbf{smooth} (or \textbf{regular}) if $z'(t) = x'(t) + i y'(t)$ exists and is continuous on $[a, b]$, $z'(t) \neq 0$ for all $t \in [a, b]$, and $z(t)$ is one-to-one on $[a, b]$.
+    \item $\gamma$ is a \textbf{smooth closed curve} if $z(t)$ satisfies the above conditions on $[a, b)$, but $z(b) = z(a)$ and $z'(b) = z'(a)$.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Standard Parametrizations}{param_ex}
+\begin{itemize}
+    \item \textbf{Line segment} from $z_1$ to $z_2$:
+    \begin{equation}
+    z(t) = z_1 + t(z_2 - z_1) = (1 - t)z_1 + t z_2, \quad 0 \le t \le 1.
+    \end{equation}
+    \item \textbf{Circle} centered at $z_0$ with radius $r$, traversed counterclockwise:
+    \begin{equation}
+    z(t) = z_0 + r e^{it} = z_0 + r(\cos t + i \sin t), \quad 0 \le t \le 2\pi.
+    \end{equation}
+\end{itemize}
+\end{example}
+
+\subsection{Contours and Orientations}
+
+\begin{definition}{Contour (Piecewise Smooth Curve)}{contour_def}
+A \textbf{contour} $\Gamma$ is a continuous chain of a finite number of directed smooth curves $\gamma_1, \gamma_2, \dots, \gamma_n$, where the terminal point of $\gamma_k$ coincides with the initial point of $\gamma_{k+1}$ ($k = 1, \dots, n-1$). We write:
+\begin{equation}
+\Gamma = \gamma_1 + \gamma_2 + \dots + \gamma_n.
+\end{equation}
+\begin{itemize}
+    \item If the initial point of $\gamma_1$ coincides with the terminal point of $\gamma_n$, $\Gamma$ is a \textbf{closed contour}.
+    \item A \textbf{simple closed contour} (or \textbf{Jordan contour}) is a closed contour that does not cross itself.
+    \item The \textbf{opposite contour} $-\Gamma$ denotes the contour $\Gamma$ traversed in the opposite direction.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}{Jordan Curve Theorem and Orientation}{jordan_curve}
+Every simple closed contour $\Gamma$ divides the complex plane into precisely two disjoint domains: a bounded \textbf{interior} $\operatorname{Int}(\Gamma)$ and an unbounded \textbf{exterior} $\operatorname{Ext}(\Gamma)$, with $\Gamma$ as their common boundary.
+\begin{itemize}
+    \item \textbf{Positive (counterclockwise) orientation}: As one traverses $\Gamma$, the interior domain lies always to the left.
+    \item \textbf{Negative (clockwise) orientation}: As one traverses $\Gamma$, the interior lies to the right.
+\end{itemize}
+\end{theorem}
+
+\begin{definition}{Arc Length of a Contour}{arc_length}
+The \textbf{arc length} $L(\Gamma)$ of a contour $\Gamma$ consisting of smooth segments $z_k(t)$ ($t \in [a_k, b_k]$) is:
+\begin{equation}
+L(\Gamma) := \sum_{k=1}^n \int_{a_k}^{b_k} |z'_k(t)|\, dt = \sum_{k=1}^n \int_{a_k}^{b_k} \sqrt{[x'_k(t)]^2 + [y'_k(t)]^2}\, dt.
+\end{equation}
+\end{definition}
+
+
+\section{Contour Integrals}
+
+\begin{definition}{Contour Integral}{contour_integral_def}
+Let $f(z)$ be continuous on a smooth curve $\gamma$ parametrized by $z(t)$ ($a \le t \le b$). The \textbf{complex contour integral} of $f$ along $\gamma$ is defined as the limit of Riemann sums, or equivalently by:
+\begin{equation}
+\int_\gamma f(z)\, dz := \int_a^b f\big(z(t)\big) z'(t)\, dt.
+\end{equation}
+For a general contour $\Gamma = \gamma_1 + \dots + \gamma_n$:
+\begin{equation}
+\int_\Gamma f(z)\, dz := \sum_{k=1}^n \int_{\gamma_k} f(z)\, dz.
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Properties of Contour Integrals}{int_properties}
+Let $f, g$ be continuous on a contour $\Gamma$, and let $c \in \mathbb{C}$.
+\begin{enumerate}
+    \item \textbf{Linearity}:
+    \begin{equation}
+    \int_\Gamma \big(f(z) + g(z)\big)\, dz = \int_\Gamma f(z)\, dz + \int_\Gamma g(z)\, dz, \qquad \int_\Gamma c f(z)\, dz = c \int_\Gamma f(z)\, dz.
+    \end{equation}
+    \item \textbf{Reversal of Orientation}:
+    \begin{equation}
+    \int_{-\Gamma} f(z)\, dz = -\int_\Gamma f(z)\, dz.
+    \end{equation}
+    \item \textbf{Subdivision of Path}:
+    \begin{equation}
+    \int_{\Gamma_1 + \Gamma_2} f(z)\, dz = \int_{\Gamma_1} f(z)\, dz + \int_{\Gamma_2} f(z)\, dz.
+    \end{equation}
+    \item \textbf{Connection to Real Line Integrals}: Writing $f(z) = u + iv$ and $dz = dx + i\,dy$:
+    \begin{equation}
+    \int_\Gamma f(z)\, dz = \int_\Gamma (u\, dx - v\, dy) + i \int_\Gamma (v\, dx + u\, dy).
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}{$ML$-Inequality (Upper Bound Estimate)}{ml_inequality}
+If $f(z)$ is continuous on a contour $\Gamma$ of length $L$, and if $|f(z)| \le M$ for all $z \in \Gamma$, then:
+\begin{equation}
+\left| \int_\Gamma f(z)\, dz \right| \le M L.
+\end{equation}
+\end{theorem}
+
+
+\section{Independence of Path and Antiderivatives}
+
+\begin{definition}{Antiderivative}{antiderivative_def}
+Let $f(z)$ be continuous in a domain $D$. A function $F(z)$ is an \textbf{antiderivative} (or \textbf{primitive}) of $f(z)$ in $D$ if $F$ is analytic in $D$ and
+\begin{equation}
+F'(z) = f(z) \quad \forall z \in D.
+\end{equation}
+\end{definition}
+
+\begin{theorem}{Path Independence and the Fundamental Theorem of Calculus}{path_independence}
+Let $f(z)$ be continuous in a domain $D$. The following three statements are equivalent:
+\begin{enumerate}
+    \item $f(z)$ has an antiderivative $F(z)$ throughout $D$.
+    \item The integral of $f(z)$ along any contour in $D$ depends only on the endpoints $z_1$ and $z_2$:
+    \begin{equation}
+    \int_\Gamma f(z)\, dz = F(z_2) - F(z_1).
+    \end{equation}
+    \item The integral of $f(z)$ around every closed contour $C$ lying entirely in $D$ is zero:
+    \begin{equation}
+    \oint_C f(z)\, dz = 0.
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{example}{Integrals of Monomials and Rational Functions}{antideriv_ex}
+\begin{itemize}
+    \item For any integer $n \neq -1$, $z^n$ has the antiderivative $\frac{z^{n+1}}{n+1}$ in $\mathbb{C}$ (or $\mathbb{C} \setminus \{0\}$ if $n \le -2$). Thus:
+    \begin{equation}
+    \oint_C z^n\, dz = 0 \quad \forall n \in \mathbb{Z} \setminus \{-1\}
+    \end{equation}
+    for any closed contour $C$ not passing through the origin.
+    \item For $f(z) = 1/z$, any branch of $\log z$ is an antiderivative only on a slit plane. On a closed loop enclosing the origin (e.g., $z(t) = r e^{it}, 0 \le t \le 2\pi$):
+    \begin{equation}
+    \oint_C \frac{1}{z}\, dz = \int_0^{2\pi} \frac{1}{r e^{it}} i r e^{it}\, dt = 2\pi i \neq 0.
+    \end{equation}
+\end{itemize}
+\end{example}
+
+
+\section{Cauchy's Integral Theorem}
+
+\subsection{Simply Connected Domains}
+
+\begin{definition}{Simply Connected Domain}{simply_connected}
+A domain $D \subseteq \mathbb{C}$ is \textbf{simply connected} if every simple closed contour in $D$ encloses only points that belong to $D$ (intuitively, $D$ contains no ``holes'').
+A domain that is not simply connected is called \textbf{multiply connected}.
+\end{definition}
+
+\begin{theorem}{Cauchy's Integral Theorem}{cauchy_integral_theorem}
+If $f(z)$ is analytic in a simply connected domain $D$, then for every closed contour $C$ lying in $D$:
+\begin{equation}
+\oint_C f(z)\, dz = 0.
+\end{equation}
+\end{theorem}
+
+\subsection{Deformation of Contours and Multiply Connected Domains}
+
+\begin{theorem}{Deformation of Contours Principle}{deformation_contours}
+Let $C_1$ and $C_2$ be two simple closed positively oriented contours, where $C_2$ lies entirely in the interior of $C_1$.
+If $f(z)$ is analytic on $C_1$, $C_2$, and throughout the annular region between them, then:
+\begin{equation}
+\oint_{C_1} f(z)\, dz = \oint_{C_2} f(z)\, dz.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Cauchy's Theorem for Multiply Connected Domains}{cauchy_multiply_connected}
+Let $C$ be a simple closed positively oriented contour, and let $C_1, C_2, \dots, C_m$ be simple closed positively oriented contours lying in the interior of $C$ with disjoint interiors.
+If $f(z)$ is analytic on all contours and throughout the region between $C$ and the inner contours $C_j$, then:
+\begin{equation}
+\oint_C f(z)\, dz = \sum_{j=1}^m \oint_{C_j} f(z)\, dz.
+\end{equation}
+\end{theorem}
+
+\begin{proposition}{Fundamental Contour Integral of $(z - z_0)^n$}{fundamental_contour_int}
+Let $C$ be any simple closed contour positively oriented enclosing the point $z_0$. For any integer $n \in \mathbb{Z}$:
+\begin{equation}
+\oint_C (z - z_0)^n\, dz = \begin{cases}
+2\pi i & \text{if } n = -1, \\
+0 & \text{if } n \neq -1.
+\end{cases}
+\end{equation}
+\end{proposition}
+
+
+\section{Cauchy's Integral Formula and Its Consequences}
+
+\subsection{Cauchy's Integral Formula}
+
+\begin{theorem}{Cauchy's Integral Formula}{cauchy_formula}
+Let $f(z)$ be analytic everywhere inside and on a simple closed positively oriented contour $C$. If $z_0$ is any point in the interior of $C$, then:
+\begin{equation}
+f(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - z_0}\, dz.
+\end{equation}
+\end{theorem}
+
+\begin{example}{Evaluating Integrals via Cauchy's Formula}{cif_ex}
+To evaluate $\oint_{|z|=2} \frac{e^z}{z - 1}\, dz$:
+Here $f(z) = e^z$ is entire and $z_0 = 1$ lies inside $|z| = 2$. By Cauchy's formula:
+\begin{equation}
+\oint_{|z|=2} \frac{e^z}{z - 1}\, dz = 2\pi i f(1) = 2\pi i e.
+\end{equation}
+\end{example}
+
+\subsection{Cauchy's Integral Formula for Derivatives}
+
+\begin{theorem}{Generalized Cauchy Integral Formula for Derivatives}{cauchy_derivatives}
+Let $f(z)$ be analytic inside and on a simple closed positively oriented contour $C$. Then $f(z)$ has derivatives of \textbf{all orders} at each interior point $z_0 \in \operatorname{Int}(C)$, given by:
+\begin{equation}
+f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z - z_0)^{n+1}}\, dz, \quad n = 1, 2, 3, \dots.
+\end{equation}
+\end{theorem}
+
+\begin{proposition}{Infinite Differentiability of Analytic Functions}{infinite_diff}
+If a function $f(z)$ is analytic in an open set $G$, then it is infinitely differentiable on $G$. Furthermore, all of its derivatives $f'(z), f''(z), \dots, f^{(n)}(z)$ are also analytic in $G$.
+Consequently, the real and imaginary parts $u$ and $v$ have continuous partial derivatives of all orders.
+\end{proposition}
+
+
+\section{Bounds for Analytic Functions and Fundamental Theorems}
+
+\begin{theorem}{Cauchy's Estimates (Cauchy's Inequality)}{cauchy_estimates}
+Let $f(z)$ be analytic inside and on the circle $C_R = \{z : |z - z_0| = R\}$. If $|f(z)| \le M_R$ for all $z \in C_R$, then:
+\begin{equation}
+|f^{(n)}(z_0)| \le \frac{n! M_R}{R^n}, \quad n = 0, 1, 2, \dots.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Liouville's Theorem}{liouville}
+Every \textbf{bounded entire function} is constant:
+\begin{equation}
+f \text{ entire and } |f(z)| \le M \quad \forall z \in \mathbb{C} \implies f(z) \equiv \text{constant}.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Fundamental Theorem of Algebra}{fund_thm_algebra}
+Every non-constant polynomial $P(z) = a_n z^n + \dots + a_0$ ($n \ge 1$, $a_n \neq 0$) with complex coefficients has at least one root in $\mathbb{C}$.
+Consequently, $P(z)$ has exactly $n$ roots in $\mathbb{C}$ (counting multiplicity).
+\end{theorem}
+
+\begin{theorem}{Gauss's Mean Value Property}{mean_value_property}
+If $f(z)$ is analytic in a disk $|z - z_0| \le R$, then the value of $f$ at the center is the arithmetic mean of its values on the boundary circle:
+\begin{equation}
+f(z_0) = \frac{1}{2\pi} \int_0^{2\pi} f(z_0 + R e^{i\theta})\, d\theta.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Maximum Modulus Principle}{max_modulus}
+Let $f(z)$ be analytic in a domain $D$.
+\begin{enumerate}
+    \item If $|f(z)|$ attains a local maximum at any point $z_0 \in D$, then $f(z)$ is identically \textbf{constant} throughout $D$.
+    \item If $D$ is a bounded domain and $f$ is continuous on the closure $\overline{D} = D \cup \partial D$, then the maximum of $|f(z)|$ on $\overline{D}$ is achieved on the \textbf{boundary} $\partial D$:
+    \begin{equation}
+    \max_{z \in \overline{D}} |f(z)| = \max_{z \in \partial D} |f(z)|.
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+

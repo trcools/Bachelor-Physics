@@ -1,0 +1,512 @@
+\chapter{Complex Numbers}
+
+\section{The Algebra of Complex Numbers}
+
+\begin{definition}{Complex Number}{complex_number}
+A \textbf{complex number} $z$ is an expression of the form
+\begin{equation}
+z = a + bi,
+\end{equation}
+where $a$ and $b$ are real numbers ($a, b \in \mathbb{R}$), and $i$ is the imaginary unit satisfying $i^2 = -1$.
+\begin{itemize}
+    \item $a = \Re(z)$ is called the \textbf{real part} of $z$.
+    \item $b = \Im(z)$ is called the \textbf{imaginary part} of $z$.
+\end{itemize}
+Thus, we write:
+\begin{equation}
+z = \Re(z) + i \Im(z).
+\end{equation}
+If $a = 0$, $z$ is called a \textbf{pure imaginary number}.
+\end{definition}
+
+\begin{definition}{Equality of Complex Numbers}{complex_equality}
+Two complex numbers $z_1 = a + bi$ and $z_2 = c + di$ are \textbf{equal}, denoted $a + bi = c + di$, if and only if
+\begin{equation}
+a = c \quad \text{and} \quad b = d.
+\end{equation}
+Equality of two complex numbers is therefore equivalent to a pair of real equations.
+\end{definition}
+
+\begin{proposition}{Basic Algebraic Operations}{alg_operations}
+Let $z_1 = a + bi$ and $z_2 = c + di$. The standard arithmetic operations are defined as:
+\begin{itemize}
+    \item \textbf{Addition and Subtraction}:
+    \begin{equation}
+    (a + bi) \pm (c + di) := (a \pm c) + (b \pm d)i.
+    \end{equation}
+    \item \textbf{Multiplication}:
+    \begin{equation}
+    (a + bi)(c + di) := (ac - bd) + (bc + ad)i,
+    \end{equation}
+    which follows from the distributive law and $i^2 = -1$.
+    \item \textbf{Division}: If $c^2 + d^2 \neq 0$ (i.e., $z_2 \neq 0$), division is defined by rationalizing the denominator:
+    \begin{equation}
+    \frac{a + bi}{c + di} := \frac{(a + bi)(c - di)}{(c + di)(c - di)} = \left(\frac{ac + bd}{c^2 + d^2}\right) + \left(\frac{bc - ad}{c^2 + d^2}\right)i.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}{Algebraic Properties of $\mathbb{C}$}{alg_properties}
+The set of all complex numbers, denoted by $\mathbb{C}$, forms a field under addition and multiplication. In particular:
+\begin{itemize}
+    \item \textbf{Commutativity}: $z_1 + z_2 = z_2 + z_1$ and $z_1 z_2 = z_2 z_1$.
+    \item \textbf{Associativity}: $(z_1 + z_2) + z_3 = z_1 + (z_2 + z_3)$ and $(z_1 z_2)z_3 = z_1(z_2 z_3)$.
+    \item \textbf{Distributivity}: $z_1(z_2 + z_3) = z_1 z_2 + z_1 z_3$.
+    \item \textbf{Identities}: $0 = 0 + 0i$ is the additive identity; $1 = 1 + 0i$ is the multiplicative identity.
+    \item \textbf{Inverses}: Each $z = a + bi$ has an additive inverse $-z = -a - bi$. Each $z \neq 0$ has a unique multiplicative inverse $z^{-1} = 1/z$.
+\end{itemize}
+\end{proposition}
+
+\begin{remark}[Lack of Natural Ordering]
+Unlike the real numbers $\mathbb{R}$, there is \textbf{no natural ordering} on $\mathbb{C}$ compatible with its field operations. Statements such as $2 + 3i < 3 + 2i$ or $i > 0$ are mathematically meaningless.
+\end{remark}
+
+\begin{definition}{Absolute Value (Modulus)}{modulus}
+The \textbf{absolute value} or \textbf{modulus} of a complex number $z = a + bi$ is denoted by $|z|$ and defined as:
+\begin{equation}
+|z| := \sqrt{a^2 + b^2}.
+\end{equation}
+\begin{itemize}
+    \item $|z|$ is always a non-negative real number: $|z| \ge 0$.
+    \item $|z| = 0$ if and only if $z = 0$.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Modulus Calculations}{modulus_ex}
+\begin{itemize}
+    \item $|0| = 0$,
+    \item $\left|\frac{i}{2}\right| = \frac{1}{2}$,
+    \item $|3 - 4i| = \sqrt{3^2 + (-4)^2} = \sqrt{9 + 16} = 5$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}{Distance and Circles in $\mathbb{C}$}{distance_circles}
+Let $z_1 = a_1 + b_1 i$ and $z_2 = a_2 + b_2 i$.
+\begin{itemize}
+    \item The modulus of the difference represents the Euclidean distance between $(a_1, b_1)$ and $(a_2, b_2)$:
+    \begin{equation}
+    |z_1 - z_2| = |(a_1 - a_2) + (b_1 - b_2)i| = \sqrt{(a_1 - a_2)^2 + (b_1 - b_2)^2}.
+    \end{equation}
+    \item For a fixed point $z_0 \in \mathbb{C}$ and $r > 0$, the equation of a circle centered at $z_0$ with radius $r$ is:
+    \begin{equation}
+    |z - z_0| = r.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+
+\section{Complex Conjugates}
+
+\begin{definition}{Complex Conjugate}{conjugate}
+The \textbf{complex conjugate} of $z = a + bi$ is denoted by $\bar{z}$ (or $z^*$) and defined by:
+\begin{equation}
+\bar{z} := a - bi.
+\end{equation}
+Geometrically, $\bar{z}$ is the reflection of the point $z$ across the real axis.
+\end{definition}
+
+\begin{example}{Complex Conjugates}{conj_ex}
+\begin{itemize}
+    \item $\overline{-1 + 5i} = -1 - 5i$,
+    \item $\overline{\pi - i} = \pi + i$,
+    \item $\overline{8} = 8$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}{Properties of the Complex Conjugate}{conj_properties}
+For all $z, z_1, z_2 \in \mathbb{C}$:
+\begin{enumerate}
+    \item \textbf{Real characterization}:
+    \begin{equation}
+    z = \bar{z} \iff z \in \mathbb{R}.
+    \end{equation}
+    \item \textbf{Sum and difference}:
+    \begin{equation}
+    \overline{z_1 \pm z_2} = \bar{z}_1 \pm \bar{z}_2.
+    \end{equation}
+    \item \textbf{Multiplication}:
+    \begin{equation}
+    \overline{z_1 z_2} = \bar{z}_1 \bar{z}_2.
+    \end{equation}
+    \item \textbf{Division}:
+    \begin{equation}
+    \overline{\left(\frac{z_1}{z_2}\right)} = \frac{\bar{z}_1}{\bar{z}_2} \quad (z_2 \neq 0).
+    \end{equation}
+    \item \textbf{Real and Imaginary parts}:
+    \begin{equation}
+    \Re(z) = \frac{z + \bar{z}}{2}, \qquad \Im(z) = \frac{z - \bar{z}}{2i}.
+    \end{equation}
+    \item \textbf{Involution}:
+    \begin{equation}
+    \overline{(\bar{z})} = z.
+    \end{equation}
+    \item \textbf{Modulus}:
+    \begin{equation}
+    |z| = |\bar{z}|.
+    \end{equation}
+    \item \textbf{Product with conjugate}:
+    \begin{equation}
+    z\bar{z} = |z|^2.
+    \end{equation}
+    \item \textbf{Reciprocal and quotient}:
+    \begin{equation}
+    \frac{1}{z} = \frac{\bar{z}}{|z|^2} \quad (z \neq 0), \qquad \frac{z_1}{z_2} = \frac{z_1 \bar{z}_2}{|z_2|^2} \quad (z_2 \neq 0).
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+
+\section{Vectors}
+
+\begin{proposition}{Vector Representation and Triangle Inequalities}{vectors_triangle}
+A complex number $z = x + iy$ can be identified with the two-dimensional vector $\mathbf{v} = (x, y)$ in the plane, having Euclidean norm $\|\mathbf{v}\| = |z|$.
+Addition of complex numbers corresponds to vector addition via the parallelogram law.
+
+For any two complex numbers $z_1, z_2 \in \mathbb{C}$:
+\begin{enumerate}
+    \item \textbf{Triangle Inequality I}:
+    \begin{equation}
+    |z_1 + z_2| \le |z_1| + |z_2|.
+    \end{equation}
+    \item \textbf{Triangle Inequality II (Reverse Triangle Inequality)}:
+    \begin{equation}
+    |z_2 - z_1| \ge \big||z_2| - |z_1|\big| \ge |z_2| - |z_1|.
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+
+\section{Polar Coordinates}
+
+\begin{definition}{Polar Coordinates and Polar Form}{polar_coords}
+A non-zero complex number $z = x + iy$ can be expressed in terms of polar coordinates $(r, \theta)$:
+\begin{equation}
+x = r \cos\theta, \qquad y = r \sin\theta,
+\end{equation}
+where:
+\begin{itemize}
+    \item $r = |z| = \sqrt{x^2 + y^2} > 0$ is the \textbf{modulus}.
+    \item $\theta$ is the \textbf{polar angle} (in radians), uniquely determined up to integer multiples of $2\pi$ by:
+    \begin{equation}
+    \cos\theta = \frac{x}{|z|}, \qquad \sin\theta = \frac{y}{|z|}.
+    \end{equation}
+\end{itemize}
+The \textbf{polar form} of $z$ is:
+\begin{equation}
+z = r(\cos\theta + i\sin\theta) =: r \cis\theta.
+\end{equation}
+\end{definition}
+
+\begin{remark}[Quadrant Adjustment for $\arctan$]
+While $\tan\theta = y/x$ whenever $x \neq 0$, the relation $\theta = \arctan(y/x)$ only yields the correct angle for points in the 1st and 4th quadrants. For points in the 2nd and 3rd quadrants, one must add or subtract $\pi$:
+\begin{equation}
+\theta = \begin{cases}
+\arctan(y/x) & \text{if } x > 0, \\
+\arctan(y/x) + \pi & \text{if } x < 0 \text{ and } y \ge 0, \\
+\arctan(y/x) - \pi & \text{if } x < 0 \text{ and } y < 0, \\
++\frac{\pi}{2} & \text{if } x = 0 \text{ and } y > 0, \\
+-\frac{\pi}{2} & \text{if } x = 0 \text{ and } y < 0.
+\end{cases}
+\end{equation}
+\end{remark}
+
+\begin{definition}{The Argument Function, Branches, and Principal Value}{argument_branch}
+For $z \neq 0$:
+\begin{itemize}
+    \item The \textbf{argument function} $\arg(z)$ is multi-valued, defined as:
+    \begin{equation}
+    \arg(z) := \theta + 2k\pi \quad (k \in \mathbb{Z}).
+    \end{equation}
+    \item A \textbf{branch} of $\arg(z)$ is any single-valued selection taking values in a half-open interval of length $2\pi$, denoted $(\tau, \tau + 2\pi]$:
+    \begin{equation}
+    \arg_\tau(z) \in (\tau, \tau + 2\pi].
+    \end{equation}
+    \item The \textbf{principal value} of the argument, denoted $\Arg(z)$, corresponds to the branch taking values in $(-\pi, \pi]$:
+    \begin{equation}
+    \Arg(z) := \arg_{-\pi}(z) \in (-\pi, \pi].
+    \end{equation}
+    Consequently:
+    \begin{equation}
+    \arg(z) = \Arg(z) + 2k\pi \quad (k \in \mathbb{Z}).
+    \end{equation}
+    \item \textbf{Branch Cut}: $\Arg(z)$ is discontinuous across the negative real axis (a discontinuity jump of $2\pi$). This line of discontinuity is called the \textbf{branch cut}.
+    \item The value $\arg(0)$ is not defined for any branch.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Other Branches of $\arg(z)$}{branch_ex}
+\begin{itemize}
+    \item $\arg_0(z)$ takes values in $(0, 2\pi]$ and has its branch cut along the positive real axis.
+    \item $\arg_{2\pi}(z)$ takes values in $(2\pi, 4\pi]$ with its branch cut along the positive real axis.
+\end{itemize}
+\end{example}
+
+\begin{proposition}{Geometric Interpretation of Multiplication and Division}{geom_mult_div}
+Let $z_1 = r_1 \cis\theta_1$ and $z_2 = r_2 \cis\theta_2$.
+\begin{enumerate}
+    \item \textbf{Product}:
+    \begin{equation}
+    z_1 z_2 = r_1 r_2 \big[\cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2)\big].
+    \end{equation}
+    Hence:
+    \begin{align}
+    |z_1 z_2| &= |z_1| |z_2|, \\
+    \arg(z_1 z_2) &= \arg(z_1) + \arg(z_2) \pmod{2\pi}.
+    \end{align}
+    \item \textbf{Quotient}: For $z_2 \neq 0$:
+    \begin{equation}
+    \frac{z_1}{z_2} = \frac{r_1}{r_2} \big[\cos(\theta_1 - \theta_2) + i \sin(\theta_1 - \theta_2)\big].
+    \end{equation}
+    Hence:
+    \begin{align}
+    \left|\frac{z_1}{z_2}\right| &= \frac{|z_1|}{|z_2|}, \\
+    \arg\left(\frac{z_1}{z_2}\right) &= \arg(z_1) - \arg(z_2) \pmod{2\pi}.
+    \end{align}
+    \item \textbf{Conjugate and Reciprocal}:
+    \begin{equation}
+    \arg(\bar{z}) = -\arg(z) \pmod{2\pi}, \qquad \arg\left(\frac{1}{z}\right) = -\arg(z) \pmod{2\pi}.
+    \end{equation}
+    The vectors $\bar{z}$ and $z^{-1}$ point in the same direction (parallel vectors).
+\end{enumerate}
+\end{proposition}
+
+
+\section{The Complex Exponential}
+
+\begin{definition}{The Complex Exponential and Euler's Formula}{complex_exp}
+For a purely imaginary number $iy$, \textbf{Euler's formula} states:
+\begin{equation}
+e^{iy} := \cos y + i \sin y.
+\end{equation}
+For a general complex number $z = x + iy$, the \textbf{complex exponential} is defined by:
+\begin{equation}
+e^z := e^{x+iy} = e^x e^{iy} = e^x (\cos y + i \sin y).
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Properties of the Complex Exponential}{exp_properties}
+\begin{enumerate}
+    \item \textbf{Multiplicative Property}:
+    \begin{equation}
+    e^{z_1} e^{z_2} = e^{z_1 + z_2}.
+    \end{equation}
+    \item \textbf{Division Rule}:
+    \begin{equation}
+    \frac{e^{z_1}}{e^{z_2}} = e^{z_1 - z_2}.
+    \end{equation}
+    \item \textbf{Derivative}:
+    \begin{equation}
+    \frac{d}{dz} e^z = e^z.
+    \end{equation}
+    \item \textbf{Modulus and Argument}:
+    \begin{equation}
+    |e^z| = e^{\Re(z)} = e^x, \qquad \arg(e^z) = \Im(z) + 2k\pi = y + 2k\pi.
+    \end{equation}
+    In particular, for any real $\theta$:
+    \begin{equation}
+    |e^{i\theta}| = 1.
+    \end{equation}
+    \item \textbf{Periodicity}: $e^z$ is periodic with purely imaginary period $2\pi i$:
+    \begin{equation}
+    e^{z + 2\pi i} = e^z \quad \forall z \in \mathbb{C}.
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}{Exponential Form and Key Identities}{exp_identities}
+Using Euler's formula, any non-zero complex number $z$ can be written in \textbf{exponential polar form}:
+\begin{equation}
+z = r e^{i\theta} = |z| e^{i \arg(z)}.
+\end{equation}
+\begin{itemize}
+    \item \textbf{Key Values}:
+    \begin{equation}
+    e^{i0} = 1, \quad e^{i\pi/2} = i, \quad e^{-i\pi/2} = -i, \quad e^{i\pi} = -1, \quad e^{2k\pi i} = 1 \quad (k \in \mathbb{Z}).
+    \end{equation}
+    \item \textbf{Trigonometric Relations}:
+    \begin{equation}
+    \cos\theta = \Re(e^{i\theta}) = \frac{e^{i\theta} + e^{-i\theta}}{2}, \qquad \sin\theta = \Im(e^{i\theta}) = \frac{e^{i\theta} - e^{-i\theta}}{2i}.
+    \end{equation}
+    \item \textbf{Multiplication and Division}:
+    \begin{equation}
+    z_1 z_2 = (r_1 e^{i\theta_1})(r_2 e^{i\theta_2}) = (r_1 r_2) e^{i(\theta_1 + \theta_2)}, \qquad \frac{z_1}{z_2} = \frac{r_1 e^{i\theta_1}}{r_2 e^{i\theta_2}} = \left(\frac{r_1}{r_2}\right) e^{i(\theta_1 - \theta_2)}.
+    \end{equation}
+    \item \textbf{Conjugation}:
+    \begin{equation}
+    \bar{z} = \overline{r e^{i\theta}} = r e^{-i\theta}.
+    \end{equation}
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}{De Moivre's Formula}{de_moivre}
+For any integer $n \in \mathbb{Z}$ and real number $\theta \in \mathbb{R}$:
+\begin{equation}
+(e^{i\theta})^n = e^{i n\theta},
+\end{equation}
+which is equivalent to:
+\begin{equation}
+(\cos\theta + i \sin\theta)^n = \cos(n\theta) + i \sin(n\theta).
+\end{equation}
+\end{theorem}
+
+
+\section{Powers and Roots}
+
+\subsection{Powers}
+
+\begin{proposition}{Integer Powers of a Complex Number}{integer_powers}
+Let $z = r e^{i\theta} = r(\cos\theta + i\sin\theta)$. For any integer $n \in \mathbb{Z}$:
+\begin{equation}
+z^n = r^n e^{i n\theta} = r^n \big(\cos(n\theta) + i \sin(n\theta)\big).
+\end{equation}
+In particular:
+\begin{align}
+z^2 &= r^2 e^{i 2\theta}, \\
+z^3 &= r^3 e^{i 3\theta}.
+\end{align}
+\end{proposition}
+
+\subsection{Roots}
+
+\begin{definition}{$m$-th Roots of a Complex Number}{mth_roots}
+Let $z \in \mathbb{C}$ with $z \neq 0$, and let $m \in \mathbb{N}^+$. A complex number $\zeta$ is an \textbf{$m$-th root} of $z$ if:
+\begin{equation}
+\zeta^m = z.
+\end{equation}
+Every non-zero complex number $z = r e^{i\theta}$ has \textbf{exactly $m$ distinct $m$-th roots}, denoted $z^{1/m}$, given by:
+\begin{equation}
+z^{1/m} = \sqrt[m]{r} \, e^{i(\theta + 2k\pi)/m} = \sqrt[m]{|z|} \left[\cos\left(\frac{\theta + 2k\pi}{m}\right) + i \sin\left(\frac{\theta + 2k\pi}{m}\right)\right]
+\end{equation}
+for $k = 0, 1, 2, \dots, m-1$, where $\sqrt[m]{r}$ denotes the unique positive real $m$-th root of $r$.
+\end{definition}
+
+\begin{example}{Roots of $\zeta^4 = 1$}{roots_unity_4}
+The four solutions of $\zeta^4 = 1$ are obtained from $1 = e^{i 2k\pi}$ ($k=0,1,2,3$):
+\begin{itemize}
+    \item $k = 0 \implies \zeta_0 = e^{i 0} = 1$,
+    \item $k = 1 \implies \zeta_1 = e^{i\pi/2} = i$,
+    \item $k = 2 \implies \zeta_2 = e^{i\pi} = -1$,
+    \item $k = 3 \implies \zeta_3 = e^{i 3\pi/2} = -i$.
+\end{itemize}
+\end{example}
+
+\begin{definition}{Roots of Unity and Primitive Roots}{roots_of_unity}
+The $m$ distinct $m$-th roots of unity, denoted $1^{1/m}$, are:
+\begin{equation}
+1^{1/m} = e^{i 2k\pi/m} = \cos\left(\frac{2k\pi}{m}\right) + i \sin\left(\frac{2k\pi}{m}\right), \quad k = 0, 1, \dots, m-1.
+\end{equation}
+Defining the principal generator
+\begin{equation}
+\omega_m := e^{i 2\pi/m} = \cos\left(\frac{2\pi}{m}\right) + i \sin\left(\frac{2\pi}{m}\right),
+\end{equation}
+the complete set of $m$-th roots of unity can be expressed as:
+\begin{equation}
+\{1, \omega_m, \omega_m^2, \dots, \omega_m^{m-1}\}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}{Geometric Interpretation and Sum of Roots}{geom_roots}
+\begin{enumerate}
+    \item \textbf{Geometric Distribution}: The $m$ roots of unity lie equally spaced along the unit circle, separated by angular increments of $2\pi/m$ radians, forming the vertices of a regular $m$-sided polygon inscribed in the unit circle.
+    \begin{itemize}
+        \item For $m = 3$ (Cube roots of unity): Vertices of an equilateral triangle:
+        \begin{equation}
+        1, \quad \omega_3 = e^{i 2\pi/3} = -\frac{1}{2} + i\frac{\sqrt{3}}{2}, \quad \omega_3^2 = e^{i 4\pi/3} = -\frac{1}{2} - i\frac{\sqrt{3}}{2}.
+        \end{equation}
+        \item For $m = 4$: Vertices of a square: $\{1, i, -1, -i\}$.
+        \item For $m = 5$: Vertices of a regular pentagon.
+    \end{itemize}
+    \item \textbf{Sum of Roots of Unity}: The center of mass of the roots is at the origin:
+    \begin{equation}
+    1 + \omega_m + \omega_m^2 + \dots + \omega_m^{m-1} = \sum_{k=0}^{m-1} \omega_m^k = 0.
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+
+\section{Planar Sets and Topology in \texorpdfstring{$\mathbb{C}$}{C}}
+
+\begin{definition}{Neighborhoods and Disks}{neighborhoods}
+Let $z_0 \in \mathbb{C}$ and $\rho > 0$.
+\begin{itemize}
+    \item The \textbf{open disk} (or \textbf{circular neighborhood}) of radius $\rho$ centered at $z_0$ is:
+    \begin{equation}
+    B(z_0, \rho) := \{z \in \mathbb{C} : |z - z_0| < \rho\}.
+    \end{equation}
+    The \textbf{open unit disk} is the set $\{z \in \mathbb{C} : |z| < 1\}$.
+    \item The \textbf{closed disk} of radius $\rho$ centered at $z_0$ is:
+    \begin{equation}
+    \overline{B}(z_0, \rho) := \{z \in \mathbb{C} : |z - z_0| \le \rho\}.
+    \end{equation}
+\end{itemize}
+\end{definition}
+
+\begin{definition}{Interior Points and Open Sets}{open_sets}
+Let $S \subset \mathbb{C}$.
+\begin{itemize}
+    \item A point $z_0 \in S$ is an \textbf{interior point} of $S$ if there exists some $\rho > 0$ such that the neighborhood $B(z_0, \rho)$ is completely contained within $S$:
+    \begin{equation}
+    B(z_0, \rho) \subset S.
+    \end{equation}
+    \item A set $S$ is called an \textbf{open set} if every point of $S$ is an interior point of $S$.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Open and Non-Open Sets}{open_ex}
+\begin{itemize}
+    \item Every open disk $B(z_0, \rho)$ is an open set.
+    \item Annuli $\rho_1 < |z - z_0| < \rho_2$ are open sets.
+    \item Half-planes such as $\Im(z) > 0$ or $\Re(z) > 0$, and strips $1 < \Re(z) < 2$, are open sets.
+    \item The set $\{z : |z - 3| \ge 2\}$ is \textbf{not} open, because no point on the circle $|z - 3| = 2$ is an interior point.
+    \item An open interval of the real line (e.g., $(0, 1) \subset \mathbb{C}$) is \textbf{not} an open set in $\mathbb{C}$, because it contains no 2D open disk.
+\end{itemize}
+\end{example}
+
+\begin{definition}{Polygonal Paths and Connectedness (Domains)}{domains}
+\begin{itemize}
+    \item A \textbf{polygonal path} joining $w_1$ to $w_{n+1}$ is a continuous chain of line segments $l_1, l_2, \dots, l_n$, where each $l_k$ is the line segment joining $w_k$ to $w_{k+1}$.
+    \item An open set $S$ is \textbf{connected} if any two points $z_1, z_2 \in S$ can be joined by a polygonal path that lies entirely within $S$.
+    \item A non-empty, connected open set is called a \textbf{domain}.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Connected vs. Disconnected Sets}{conn_ex}
+The set $\mathbb{C} \setminus \{z : |z| = 1\}$ (all points in the plane not on the unit circle) is an open set, but it is \textbf{not connected} (and thus not a domain), because any path from a point inside $|z|<1$ to a point outside $|z|>1$ must cross the unit circle.
+\end{example}
+
+\begin{theorem}{Zero Partial Derivatives in a Domain}{const_derivative}
+Let $u(x, y)$ be a real-valued function with continuous partial derivatives defined on a domain $D$. If
+\begin{equation}
+\frac{\partial u}{\partial x} = 0 \quad \text{and} \quad \frac{\partial u}{\partial y} = 0 \quad \forall (x, y) \in D,
+\end{equation}
+then $u(x, y)$ is identically \textbf{constant} throughout $D$:
+\begin{equation}
+u(x, y) \equiv \text{constant} \quad \text{in } D.
+\end{equation}
+\end{theorem}
+
+\begin{definition}{Boundary Points and Closed Sets}{boundary_closed}
+Let $S \subset \mathbb{C}$.
+\begin{itemize}
+    \item A point $z_0$ is a \textbf{boundary point} of $S$ if every neighborhood $B(z_0, \rho)$ contains at least one point in $S$ and at least one point not in $S$.
+    \item The set of all boundary points of $S$ is called the \textbf{boundary} (or \textbf{frontier}) of $S$, denoted $\partial S$.
+    \item A domain contains none of its boundary points ($D \cap \partial D = \emptyset$).
+    \item A set $S$ is \textbf{closed} if it contains all of its boundary points ($\partial S \subset S$).
+\end{itemize}
+\end{definition}
+
+\begin{example}{Boundary and Non-Closed Sets}{bound_ex}
+\begin{itemize}
+    \item The boundary of the open disk $B(z_0, \rho)$ is the circle $|z - z_0| = \rho$.
+    \item The puncture disk $0 < |z| \le 1$ is \textbf{neither} open (it contains boundary points $|z|=1$) \textbf{nor} closed (it does not contain the boundary point $z = 0$).
+    \item The closed disk $|z - z_0| \le \rho$ contains its boundary and is closed.
+\end{itemize}
+\end{example}
+
+\begin{definition}{Bounded, Compact Sets and Regions}{compact_region}
+\begin{itemize}
+    \item A set $S$ is \textbf{bounded} if there exists $R > 0$ such that $|z| < R$ for all $z \in S$ (i.e., $S$ is contained in some ball around the origin). Otherwise, $S$ is \textbf{unbounded}.
+    \item A set $S$ is \textbf{compact} if it is both \textbf{closed} and \textbf{bounded}.
+    \item A \textbf{region} is a domain together with some, none, or all of its boundary points. A closed region is the closure of a domain ($\overline{D} = D \cup \partial D$).
+\end{itemize}
+\end{definition}
