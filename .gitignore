@@ -1,10 +1,14 @@
 # macOS
 .DS_Store
+**/.DS_Store
 
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 venv/
+.venv/
+env/
 .env
 
 # Jupyter
@@ -23,6 +27,7 @@ venv/
 *.mp4
 *.mov
 *.icloud
+*.png
 
 # LaTeX build artifacts
 *.fls
@@ -37,8 +42,10 @@ venv/
 *.nav
 *.snm
 *.vrb
-
-*.icloud
+*.lof
+*.lot
+*.run.xml
+*.bcf
 
 # Local-only private files
 # Put any files you want to keep ONLY on your own computer in the _lokaal/ folder.

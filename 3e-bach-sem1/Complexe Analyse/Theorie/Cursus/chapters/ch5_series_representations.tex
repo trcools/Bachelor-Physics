@@ -1,0 +1,332 @@
+\chapter{Series Representations for Analytic Functions}
+
+\section{Sequences and Series}
+
+\begin{definition}{Sequence and Limit}{seq_def}
+A sequence of complex numbers $\{c_n\}_{n=1}^\infty$ has limit $S$, written
+\begin{equation}
+\lim_{n \to \infty} c_n = S,
+\end{equation}
+if for every $\varepsilon > 0$ there exists an integer $N$ such that $|c_n - S| < \varepsilon$ for all $n > N$.
+\end{definition}
+
+\begin{definition}{Series, Partial Sums, and Convergence}{series_def}
+Given a sequence $\{c_j\}_{j=0}^\infty$, the formal expression
+\begin{equation}
+\sum_{j=0}^\infty c_j = c_0 + c_1 + c_2 + \dots
+\end{equation}
+is called an \textbf{infinite series}. The $n$-th \textbf{partial sum} is:
+\begin{equation}
+S_n := \sum_{j=0}^n c_j = c_0 + c_1 + \dots + c_n.
+\end{equation}
+If the sequence of partial sums converges, $\lim_{n \to \infty} S_n = S$, the series is said to \textbf{converge} to the sum $S$:
+\begin{equation}
+S = \sum_{j=0}^\infty c_j.
+\end{equation}
+Otherwise, the series is said to \textbf{diverge}.
+\end{definition}
+
+\begin{proposition}{Divergence Test (Necessary Condition)}{div_test}
+If the series $\sum_{j=0}^\infty c_j$ converges, then
+\begin{equation}
+\lim_{n \to \infty} c_n = 0.
+\end{equation}
+Equivalently, if $\lim_{n \to \infty} c_n \neq 0$ or does not exist, the series diverges.
+\end{proposition}
+
+\begin{proposition}{Geometric Series}{geometric_series}
+For any complex number $c \in \mathbb{C}$:
+\begin{equation}
+\sum_{j=0}^\infty c^j = 1 + c + c^2 + \dots = \frac{1}{1 - c} \quad \iff \quad |c| < 1.
+\end{equation}
+If $|c| \ge 1$, the geometric series diverges.
+\end{proposition}
+
+\begin{theorem}{Convergence Tests for Series of Constants}{series_tests}
+\begin{enumerate}
+    \item \textbf{Comparison Test}: If $|c_j| \le M_j$ for all $j \ge J$, and $\sum_{j=0}^\infty M_j$ is a convergent series of non-negative real numbers, then $\sum_{j=0}^\infty c_j$ converges.
+    \item \textbf{Ratio Test}: Let $c_j \neq 0$ and suppose $\lim_{j \to \infty} \left| \frac{c_{j+1}}{c_j} \right| = L$.
+    \begin{itemize}
+        \item If $L < 1$, the series converges (absolutely).
+        \item If $L > 1$, the series diverges.
+        \item If $L = 1$, the test is inconclusive.
+    \end{itemize}
+    \item \textbf{Absolute Convergence}: A series is \textbf{absolutely convergent} if $\sum_{j=0}^\infty |c_j|$ converges. Absolute convergence implies convergence:
+    \begin{equation}
+    \sum_{j=0}^\infty |c_j| < \infty \implies \sum_{j=0}^\infty c_j \text{ converges}, \quad \text{and} \quad \left| \sum_{j=0}^\infty c_j \right| \le \sum_{j=0}^\infty |c_j|.
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\subsection{Sequences and Series of Functions}
+
+\begin{definition}{Uniform Convergence}{uniform_convergence}
+A sequence of functions $\{F_n(z)\}_{n=1}^\infty$ converges \textbf{uniformly} to $F(z)$ on a set $T \subseteq \mathbb{C}$ if for every $\varepsilon > 0$ there exists an integer $N$ (depending only on $\varepsilon$, not on $z$) such that
+\begin{equation}
+|F_n(z) - F(z)| < \varepsilon \quad \forall n > N, \quad \forall z \in T.
+\end{equation}
+A series of functions $\sum_{j=0}^\infty f_j(z)$ converges uniformly on $T$ if its sequence of partial sums $S_n(z) = \sum_{j=0}^n f_j(z)$ converges uniformly on $T$.
+\end{definition}
+
+\begin{theorem}{Weierstrass $M$-Test}{weierstrass_m_test}
+Suppose $f_j(z)$ are defined on a set $T$ and there exist positive real constants $M_j$ such that
+\begin{equation}
+|f_j(z)| \le M_j \quad \forall z \in T, \quad \forall j \ge 0.
+\end{equation}
+If $\sum_{j=0}^\infty M_j$ converges, then the series of functions $\sum_{j=0}^\infty f_j(z)$ converges \textbf{uniformly and absolutely} on $T$.
+\end{theorem}
+
+\begin{proposition}{Properties of Uniformly Convergent Series}{uniform_props}
+Let $\sum_{j=0}^\infty f_j(z)$ converge uniformly to $S(z)$ on a set $T$.
+\begin{enumerate}
+    \item \textbf{Continuity}: If each $f_j(z)$ is continuous on $T$, then the sum function $S(z)$ is continuous on $T$.
+    \item \textbf{Term-by-Term Integration}: If $\Gamma \subset T$ is a contour of finite length, then:
+    \begin{equation}
+    \int_\Gamma S(z)\, dz = \sum_{j=0}^\infty \int_\Gamma f_j(z)\, dz.
+    \end{equation}
+\end{enumerate}
+\end{proposition}
+
+
+\section{Taylor Series}
+
+\begin{theorem}{Taylor's Theorem}{taylors_theorem}
+Let $f(z)$ be analytic in an open disk $B(z_0, R) = \{z \in \mathbb{C} : |z - z_0| < R\}$. Then $f(z)$ has a unique power series representation centered at $z_0$:
+\begin{equation}
+f(z) = \sum_{j=0}^\infty a_j (z - z_0)^j = \sum_{j=0}^\infty \frac{f^{(j)}(z_0)}{j!} (z - z_0)^j,
+\end{equation}
+which converges for all $z \in B(z_0, R)$. The convergence is uniform on every closed subdisk $|z - z_0| \le R' < R$.
+The coefficients are uniquely determined by:
+\begin{equation}
+a_j = \frac{f^{(j)}(z_0)}{j!} = \frac{1}{2\pi i} \oint_C \frac{f(w)}{(w - z_0)^{j+1}}\, dw,
+\end{equation}
+where $C$ is any positively oriented circle $|w - z_0| = r < R$.
+\end{theorem}
+
+\begin{remark}[Radius of Convergence of Taylor Series]
+The radius of convergence $R$ of the Taylor series of an analytic function $f$ centered at $z_0$ is precisely the distance from $z_0$ to the \textbf{nearest singularity} of $f$:
+\begin{equation}
+R = \operatorname{dist}(z_0, \text{singularities of } f).
+\end{equation}
+\end{remark}
+
+\begin{proposition}{Standard Maclaurin Series ($z_0 = 0$)}{standard_maclaurin}
+\begin{align}
+\frac{1}{1 - z} &= \sum_{j=0}^\infty z^j = 1 + z + z^2 + z^3 + \dots & (|z| < 1), \\
+e^z &= \sum_{j=0}^\infty \frac{z^j}{j!} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \dots & (|z| < \infty), \\
+\sin z &= \sum_{j=0}^\infty \frac{(-1)^j z^{2j+1}}{(2j+1)!} = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \dots & (|z| < \infty), \\
+\cos z &= \sum_{j=0}^\infty \frac{(-1)^j z^{2j}}{(2j)!} = 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \dots & (|z| < \infty), \\
+\sinh z &= \sum_{j=0}^\infty \frac{z^{2j+1}}{(2j+1)!} = z + \frac{z^3}{3!} + \frac{z^5}{5!} + \dots & (|z| < \infty), \\
+\cosh z &= \sum_{j=0}^\infty \frac{z^{2j}}{(2j)!} = 1 + \frac{z^2}{2!} + \frac{z^4}{4!} + \dots & (|z| < \infty), \\
+\operatorname{Log}(1 + z) &= \sum_{j=1}^\infty \frac{(-1)^{j-1} z^j}{j} = z - \frac{z^2}{2} + \frac{z^3}{3} - \dots & (|z| < 1).
+\end{align}
+\end{proposition}
+
+
+\section{Power Series}
+
+\begin{definition}{Power Series and Circle of Convergence}{power_series_def}
+A \textbf{power series} centered at $z_0$ is a series of the form:
+\begin{equation}
+\sum_{j=0}^\infty a_j (z - z_0)^j.
+\end{equation}
+There exists a unique number $R \in [0, \infty]$, called the \textbf{radius of convergence}, such that:
+\begin{itemize}
+    \item The series converges absolutely for all $z$ with $|z - z_0| < R$.
+    \item The series converges uniformly on every closed disk $|z - z_0| \le R' < R$.
+    \item The series diverges for all $z$ with $|z - z_0| > R$.
+\end{itemize}
+The radius of convergence can be computed by the \textbf{Ratio Test} (when the limit exists) or the \textbf{Cauchy-Hadamard formula}:
+\begin{equation}
+R = \lim_{j \to \infty} \left| \frac{a_j}{a_{j+1}} \right| \quad \text{or} \quad \frac{1}{R} = \limsup_{j \to \infty} \sqrt[j]{|a_j|}.
+\end{equation}
+\end{definition}
+
+\begin{theorem}{Analyticity and Term-by-Term Operations}{power_series_analytic}
+Let $f(z) = \sum_{j=0}^\infty a_j (z - z_0)^j$ have radius of convergence $R > 0$.
+\begin{enumerate}
+    \item $f(z)$ is \textbf{analytic} in the open disk of convergence $|z - z_0| < R$.
+    \item The derivative $f'(z)$ exists throughout $|z - z_0| < R$ and is obtained by \textbf{term-by-term differentiation}:
+    \begin{equation}
+    f'(z) = \sum_{j=1}^\infty j a_j (z - z_0)^{j-1},
+    \end{equation}
+    which has the \textbf{exact same radius of convergence} $R$.
+    \item The antiderivative of $f(z)$ is obtained by \textbf{term-by-term integration}:
+    \begin{equation}
+    \int_{z_0}^z f(w)\, dw = \sum_{j=0}^\infty \frac{a_j}{j+1} (z - z_0)^{j+1} \quad (|z - z_0| < R).
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+
+\section{Laurent Series}
+
+\begin{theorem}{Laurent's Theorem}{laurent_theorem}
+Let $f(z)$ be analytic throughout an open annulus centered at $z_0$:
+\begin{equation}
+A(z_0; r, R) := \{z \in \mathbb{C} : r < |z - z_0| < R\} \quad (0 \le r < R \le \infty).
+\end{equation}
+Then $f(z)$ can be expanded uniquely as a two-sided series in integer powers of $(z - z_0)$:
+\begin{equation}
+f(z) = \sum_{j=-\infty}^\infty a_j (z - z_0)^j = \underbrace{\sum_{j=0}^\infty a_j (z - z_0)^j}_{\text{Analytic part}} + \underbrace{\sum_{j=1}^\infty \frac{a_{-j}}{(z - z_0)^j}}_{\text{Principal part}},
+\end{equation}
+converging for all $z \in A(z_0; r, R)$ (and converging uniformly on closed subannuli $r < r' \le |z - z_0| \le R' < R$).
+The coefficients are given by:
+\begin{equation}
+a_j = \frac{1}{2\pi i} \oint_C \frac{f(w)}{(w - z_0)^{j+1}}\, dw, \quad j \in \mathbb{Z},
+\end{equation}
+where $C$ is any positively oriented simple closed contour lying in the annulus and enclosing $z_0$.
+\end{theorem}
+
+\begin{example}{Laurent Series in Different Annuli}{laurent_ex}
+Consider $f(z) = \frac{1}{z(z - 1)}$ centered at $z_0 = 0$. Using partial fractions:
+\begin{equation}
+f(z) = -\frac{1}{z} + \frac{1}{z - 1} = -\frac{1}{z} - \frac{1}{1 - z}.
+\end{equation}
+\begin{itemize}
+    \item In the punctured disk $0 < |z| < 1$:
+    \begin{equation}
+    f(z) = -\frac{1}{z} - \sum_{j=0}^\infty z^j = -\frac{1}{z} - 1 - z - z^2 - \dots.
+    \end{equation}
+    \item In the exterior region $|z| > 1$:
+    \begin{equation}
+    f(z) = -\frac{1}{z} + \frac{1}{z\left(1 - \frac{1}{z}\right)} = -\frac{1}{z} + \sum_{j=0}^\infty \frac{1}{z^{j+1}} = \sum_{j=2}^\infty \frac{1}{z^j} = \frac{1}{z^2} + \frac{1}{z^3} + \dots.
+    \end{equation}
+\end{itemize}
+\end{example}
+
+
+\section{Zeros of Analytic Functions}
+
+\begin{definition}{Order of a Zero}{zero_order}
+Let $f(z)$ be analytic at $z_0$. The point $z_0$ is a \textbf{zero of order $m$} ($m \in \mathbb{N}^+$) of $f$ if:
+\begin{equation}
+f(z_0) = f'(z_0) = f''(z_0) = \dots = f^{(m-1)}(z_0) = 0 \quad \text{and} \quad f^{(m)}(z_0) \neq 0.
+\end{equation}
+Equivalently, $z_0$ is a zero of order $m$ if and only if $f(z)$ can be factored as:
+\begin{equation}
+f(z) = (z - z_0)^m g(z),
+\end{equation}
+where $g(z)$ is analytic at $z_0$ and $g(z_0) \neq 0$. If $m = 1$, $z_0$ is called a \textbf{simple zero}.
+\end{definition}
+
+\begin{theorem}{Isolated Zeros Theorem}{isolated_zeros}
+If $f(z)$ is analytic in a domain $D$ and is not identically zero on $D$, then every zero of $f(z)$ in $D$ is \textbf{isolated} (i.e., around each zero $z_0$, there exists a deleted neighborhood $0 < |z - z_0| < \delta$ in which $f(z) \neq 0$).
+\end{theorem}
+
+\begin{theorem}{Identity Theorem (Uniqueness Theorem)}{identity_theorem}
+Let $f$ and $g$ be analytic in a domain $D$. If $f(z) = g(z)$ on a set with an accumulation point in $D$ (for example, on a sequence of distinct points converging to a point in $D$), then
+\begin{equation}
+f(z) \equiv g(z) \quad \forall z \in D.
+\end{equation}
+\end{theorem}
+
+
+\section{Singularities}
+
+\begin{definition}{Isolated Singularity}{isolated_singularity}
+A point $z_0$ is an \textbf{isolated singularity} of $f(z)$ if $f(z)$ is not analytic at $z_0$, but is analytic in a punctured disk $0 < |z - z_0| < R$.
+In this punctured disk, $f(z)$ has a Laurent series expansion:
+\begin{equation}
+f(z) = \sum_{j=-\infty}^\infty a_j (z - z_0)^j = \sum_{j=0}^\infty a_j (z - z_0)^j + \sum_{k=1}^\infty \frac{a_{-k}}{(z - z_0)^k}.
+\end{equation}
+\end{definition}
+
+\subsection{Classification of Isolated Singularities}
+
+\begin{definition}{Removable Singularity}{removable_sing}
+An isolated singularity $z_0$ is a \textbf{removable singularity} if the principal part of the Laurent series is identically zero ($a_{-k} = 0$ for all $k \ge 1$):
+\begin{equation}
+f(z) = a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \dots.
+\end{equation}
+\begin{itemize}
+    \item \textbf{Criterion (Riemann's Theorem)}: $z_0$ is removable if and only if $\lim_{z \to z_0} f(z)$ exists and is finite (or $|f(z)|$ is bounded near $z_0$).
+    \item By defining $f(z_0) := \lim_{z \to z_0} f(z)$, $f$ becomes analytic at $z_0$.
+\end{itemize}
+\end{definition}
+
+\begin{example}{Removable Singularity}{removable_ex}
+For $f(z) = \frac{\sin z}{z}$ at $z_0 = 0$:
+\begin{equation}
+f(z) = \frac{1}{z}\left(z - \frac{z^3}{6} + \dots\right) = 1 - \frac{z^2}{6} + \dots.
+\end{equation}
+All negative powers vanish, $\lim_{z \to 0} \frac{\sin z}{z} = 1$, so $z_0 = 0$ is a removable singularity.
+\end{example}
+
+\begin{definition}{Pole of Order $m$}{pole_def}
+An isolated singularity $z_0$ is a \textbf{pole of order $m$} ($m \in \mathbb{N}^+$) if the principal part of the Laurent series has a finite number of terms and terminates at power $m$:
+\begin{equation}
+f(z) = \frac{a_{-m}}{(z - z_0)^m} + \dots + \frac{a_{-1}}{z - z_0} + \sum_{j=0}^\infty a_j (z - z_0)^j \quad (a_{-m} \neq 0).
+\end{equation}
+\begin{itemize}
+    \item If $m = 1$, $z_0$ is called a \textbf{simple pole}.
+    \item \textbf{Criterion}: $z_0$ is a pole of order $m$ if and only if:
+    \begin{equation}
+    \lim_{z \to z_0} (z - z_0)^m f(z) = a_{-m} \neq 0 \quad (\text{finite}),
+    \end{equation}
+    or equivalently, $1/f(z)$ has a zero of order $m$ at $z_0$.
+    \item For every pole: $\lim_{z \to z_0} |f(z)| = \infty$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}{Essential Singularity}{essential_sing}
+An isolated singularity $z_0$ is an \textbf{essential singularity} if the principal part of the Laurent series contains \textbf{infinitely many} non-zero terms:
+\begin{equation}
+a_{-k} \neq 0 \quad \text{for infinitely many } k \ge 1.
+\end{equation}
+\end{definition}
+
+\begin{example}{Essential Singularity}{essential_ex}
+For $f(z) = e^{1/z}$ at $z_0 = 0$:
+\begin{equation}
+e^{1/z} = 1 + \frac{1}{z} + \frac{1}{2! z^2} + \frac{1}{3! z^3} + \dots.
+\end{equation}
+There are infinitely many negative powers of $z$; hence $z = 0$ is an essential singularity.
+\end{example}
+
+\begin{theorem}{Casorati-Weierstrass Theorem}{casorati_weierstrass}
+If $z_0$ is an essential singularity of $f(z)$, then in every punctured neighborhood $0 < |z - z_0| < \delta$, the values assumed by $f(z)$ are \textbf{dense} in the complex plane $\mathbb{C}$. That is, for every $w_0 \in \mathbb{C}$ and every $\varepsilon > 0$, there exists a point $z$ with $0 < |z - z_0| < \delta$ such that $|f(z) - w_0| < \varepsilon$.
+\end{theorem}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Type of Singularity} & \textbf{Principal Part of Laurent Series} & \textbf{Limit $\lim_{z \to z_0} |f(z)|$} \\ \hline
+\textbf{Removable} & No negative powers ($a_{-k} = 0 \ \forall k \ge 1$) & Exists and is finite \\ \hline
+\textbf{Pole of order $m$} & Exactly $m$ negative terms ($a_{-m} \neq 0$) & Equals $\infty$ \\ \hline
+\textbf{Essential} & Infinitely many negative powers & Does not exist (wild oscillation) \\ \hline
+\end{tabular}
+\caption{Classification of Isolated Singularities.}
+\end{table}
+
+
+\section{The Point at Infinity}
+
+\begin{definition}{Behavior at Infinity}{point_at_infinity}
+To analyze the behavior of $f(z)$ at the \textbf{point at infinity} ($z = \infty$), we perform the substitution $z = 1/w$ and investigate the function
+\begin{equation}
+g(w) := f\left(\frac{1}{w}\right)
+\end{equation}
+at $w = 0$.
+\begin{itemize}
+    \item $f(z)$ is analytic at $\infty$ if $g(w)$ has a removable singularity at $w = 0$.
+    \item $f(z)$ has a zero (or pole) of order $m$ at $\infty$ if $g(w)$ has a zero (or pole) of order $m$ at $w = 0$.
+    \item $f(z)$ has an essential singularity at $\infty$ if $g(w)$ has an essential singularity at $w = 0$.
+\end{itemize}
+\end{definition}
+
+
+\section{Analytic Continuation}
+
+\begin{definition}{Analytic Continuation}{analytic_continuation}
+Let $f_1(z)$ be analytic in a domain $D_1$, and let $f_2(z)$ be analytic in a domain $D_2$, where $D_1 \cap D_2 \neq \emptyset$.
+If
+\begin{equation}
+f_1(z) = f_2(z) \quad \forall z \in D_1 \cap D_2,
+\end{equation}
+then $f_2(z)$ is called an \textbf{analytic continuation} of $f_1(z)$ to the domain $D_2$ (and vice versa).
+By the Identity Theorem, the analytic continuation to $D_2$ is \textbf{uniquely determined}.
+\end{definition}
+

@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+
+\noindent De uitdrukking evalueert de \textit{improper integral} van een \textit{power law} functie:
+\begin{equation*}
+I = \int_{1}^{+\infty} \alpha x^{1-\alpha} \, dx
+\end{equation*}
+
+\noindent 1. \textit{Antiderivative} via de \textit{power rule} (geldig voor $\alpha \neq 2$):
+\begin{equation*}
+I = \left[ \frac{\alpha}{-\alpha + 2} x^{-\alpha + 2} \right]_{1}^{+\infty}
+\end{equation*}
+
+\noindent 2. \textit{Limit evaluation} bij het boven- en onderlimiet:
+\begin{equation*}
+I = \lim_{b \to +\infty} \left( \frac{\alpha}{-\alpha + 2} b^{2-\alpha} \right) - \frac{\alpha}{-\alpha + 2} (1)^{2-\alpha}
+\end{equation*}
+
+\noindent 3. \textit{Case analysis} op basis van het teken van de exponent $(2 - \alpha)$:
+\begin{itemize}
+    \item \textbf{Geval $\alpha > 2 \implies (2 - \alpha) < 0$:}
+    \begin{equation*}
+    \lim_{b \to +\infty} b^{2-\alpha} = 0 \implies I = 0 - \frac{\alpha}{-\alpha + 2} = \frac{\alpha}{\alpha - 2} \quad (\text{\textit{convergent}})
+    \end{equation*}
+
+    \item \textbf{Geval $\alpha < 2 \implies (2 - \alpha) > 0$:}
+    \begin{equation*}
+    \lim_{b \to +\infty} b^{2-\alpha} = +\infty \implies I = +\infty \quad (\text{\textit{divergent}})
+    \end{equation*}
+
+    \item \textbf{Geval $\alpha = 2$ (\textit{singularity} in \textit{power rule}):}
+    \begin{equation*}
+    I = \int_{1}^{+\infty} 2 x^{-1} \, dx = \left[ 2 \ln(x) \right]_{1}^{+\infty} = +\infty \quad (\text{\textit{divergent}})
+    \end{equation*}
+\end{itemize}
+
+\noindent Dit leidt tot de piecewise functie:
+\begin{equation*}
+I = \begin{cases} 
++\infty & \alpha \le 2 \\ 
+\dfrac{\alpha}{\alpha - 2} & \alpha > 2 
+\end{cases}
+\end{equation*}
+
+\end{document}
