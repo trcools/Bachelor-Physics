@@ -1,7 +1,7 @@
 \subsection{Frobenius Schur Indicator}
 
 Stel we hebben een zelf conjugerende representatie, per definitie bestaat er een unitaire matrix \(X\) zodat \(\bar{U}(g) = X U(g) X^{-1} = XU(g)X^{\dagger} \) voor alle \(g \in G\).
-Als we de geconjugeerde van deze vergelijking nemen, krijgen we 
+Als we de geconjugeerde van deze vergelijking nemen, krijgen we
 \[U(g) = \bar{X} \bar{U}(g) \bar{X}^{-1} = \bar{X} X U(g) X^{-1} \bar{X}^{-1}\]
 
 Hieruit volgt dat \(\bar{X} X\) een matrix is die commuteert met alle \(U(g)\) voor \(g \in G\).
@@ -29,31 +29,31 @@ Nu zullen we bewijzen dat \(c=1 \implies\) dat we de irrep steeds real kunnen ma
 
 met \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = i \sigma_Y\).
 \begin{proof}
-    We splitsen op in 2 gevallen, afhankelijk van de waarde van \(c\).  
+    We splitsen op in 2 gevallen, afhankelijk van de waarde van \(c\).
 \begin{itemize}
-    \item[\(c=+1\)] 
+    \item[\(c=+1\)]
     In dit geval is \(X = X^T\) een symmetrische matrix,
     en we kunnen een \textbf{Takagi decompositie} toepassen \footnote{Singular Value decompositie (SVD) voor complexe symmetrische matrices.}
-    op \(X\), zodat we \(X\) kunnen schrijven als \(X = QQ^T\) voor een unitaire matrix \(Q\). 
-    
-    Nu willlen we een gelijkvormige matrix \(Y\) vinden voor een gelijkvormigheidstransformatie zodat 
+    op \(X\), zodat we \(X\) kunnen schrijven als \(X = QQ^T\) voor een unitaire matrix \(Q\).
+
+    Nu willlen we een gelijkvormige matrix \(Y\) vinden voor een gelijkvormigheidstransformatie zodat
     \[\overline{YU(g)Y^{-1}} = Y U(g) Y^{-1} \qquad \text{of} \qquad \bar{Y}XU(g)X^{-1}\bar{Y}^{-1} = YU(g)Y^{-1}\]
-    
+
     Dit kan door \(Y\) te kiezen als \(\boxed{Y = Q^{T}}\). Merk op dat \(\bar{Y}=Q^{\dagger}\), dus
 
     \[\bar{Y}XU(g)X^{-1}\bar{Y}^{-1} = Q^{\dagger}(QQ^{T})U(g)(QQ^{T})^{-1}Q^{\dagger}
     = (Q^{\dagger}Q)Q^{T}U(g)(Q^{T})^{-1}(Q^{\dagger}Q) = Q^{T}U(g)(Q^{T})^{-1} = YU(g)Y^{-1}\]
-    
+
     In dit geval kunnen we de irreducibele representatie altijd reëel maken.
 
     \item[\(c=-1\)]
     In dit geval is \(X = -X^T\) een antisymmetrische matrix, en de diagonaal elementen moeten verdwijnen.
     We kunnen dit doen meet een \textbf{Householder transformatie} van de vorm \(WXW^T\).
-    Zo een matrix is alleen unitair als de tweede matrix verdwijnt, dus \(W\) is een orthogonale matrix. 
+    Zo een matrix is alleen unitair als de tweede matrix verdwijnt, dus \(W\) is een orthogonale matrix.
     We kunnen schrijven dat:
     \[ X = W (\epsilon \otimes D)W^T \]
     met \(D\) een diagonaal matrix.  We kunnen de wortels van de diagonaal elementen van \(D\) nemen en deze opnemen in \(W\), zodat we \(X\) kunnen schrijven als
-    \[X = W(\epsilon \otimes \mathds{1})W^T\] 
+    \[X = W(\epsilon \otimes \mathds{1})W^T\]
     Of, meer expliciet:
     \[X = W \begin{pmatrix}
             0 & 1 & 0 & 0 & \cdots \\
@@ -62,12 +62,12 @@ met \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = i \sigma_Y\).
             0 & 0 & -1 & 0 & \cdots \\
             \vdots & \vdots & \vdots & \vdots & \ddots
             \end{pmatrix} W^T\]
-    Zoals eerder vermeld kan deze matrix worden geschreven als \(X = W (\epsilon \otimes \mathds{1}) W^T\), waarbij \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\) de antisymmetrische blokmatrix is. 
+    Zoals eerder vermeld kan deze matrix worden geschreven als \(X = W (\epsilon \otimes \mathds{1}) W^T\), waarbij \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\) de antisymmetrische blokmatrix is.
 
     Kies nu \(\boxed{Y = W^{T}}\). Omdat \(X = W(\epsilon\otimes\mathds{1})W^{T}\) en \(\bar{Y}=W\), geldt:
 
     \begin{align*}
-        \overline{W^TU(g)\bar{W}}  
+        \overline{W^TU(g)\bar{W}}
         &= \bar{Y}XU(g)X^{-1}\bar{Y}^{-1} \\
         &= W\,W(\epsilon\otimes\mathds{1})W^{T}U(g)W(\epsilon\otimes\mathds{1})^{-1}W^{T}W^{-1}\\
         &= (\epsilon\otimes\mathds{1})W^TU(g)\bar{W}(-\epsilon \otimes\mathds{1})
@@ -111,7 +111,7 @@ met \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = i \sigma_Y\).
 \end{proof}
 
 \begin{derivation}
-    Wanneer is de eerste Schur indicator niet gelijk aan nul? 
+    Wanneer is de eerste Schur indicator niet gelijk aan nul?
 
     \[
     \frac{1}{|G|} \sum_{g \in G} \chi(g) \neq 0
@@ -120,7 +120,6 @@ met \(\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} = i \sigma_Y\).
     Dit is het geval als en slechts als de irrep de triviale representatie bevat,
     wat betekent dat er een vector \(\bm v\) bestaat zodat \(U(g)\bm v = \bm v\) voor alle \(g \in G\).
 
-    Stel dat \(U\) de triviale representatie bevat, dan is er een vector \(\bm v\) zodat \(U(g)\bm v = \bm v\) voor alle \(g \in G\). We kunnen deze vector normaliseren zodat \(\langle \bm v | \bm v \rangle = 1\). Dan is het karakter van \(U\) gelijk aan de dimensie van de irrep, dus \(\chi(g) = d\) voor alle \(g \in G\). Daarom is de eerste Schur indicator gelijk aan 1.   
+    Stel dat \(U\) de triviale representatie bevat, dan is er een vector \(\bm v\) zodat \(U(g)\bm v = \bm v\) voor alle \(g \in G\). We kunnen deze vector normaliseren zodat \(\langle \bm v | \bm v \rangle = 1\). Dan is het karakter van \(U\) gelijk aan de dimensie van de irrep, dus \(\chi(g) = d\) voor alle \(g \in G\). Daarom is de eerste Schur indicator gelijk aan 1.
     Stel nu dat de eerste Schur indicator niet gelijk is aan nul, dan is er een vector \(\bm v\) zodat \(\langle \bm v | U(g) | \bm v \rangle = 1\) voor alle \(g \in G\). Dit betekent dat \(U(g)\bm v = \bm v\) voor alle \(g \in G\), dus de irrep bevat de triviale representatie.
 \end{derivation}
-

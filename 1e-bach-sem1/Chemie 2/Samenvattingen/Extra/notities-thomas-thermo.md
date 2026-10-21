@@ -1,8 +1,8 @@
 # Notities thermo (net) — alle afleidingen uitgeschreven (markdown)
 
-> Conventie (zoals typisch in chemie):  
-> $\delta q>0$ als warmte *naar* het systeem gaat.  
-> $\delta w>0$ als arbeid *op* het systeem wordt verricht.  
+> Conventie (zoals typisch in chemie):
+> $\delta q>0$ als warmte *naar* het systeem gaat.
+> $\delta w>0$ als arbeid *op* het systeem wordt verricht.
 > (Dus expansiewerk door het systeem zelf is negatief.)
 
 ---

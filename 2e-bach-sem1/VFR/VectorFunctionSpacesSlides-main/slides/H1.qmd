@@ -159,7 +159,7 @@ $$
 
 ## Verzamelingen
 
-* verzameling met hoofdletters $A, B, \ldots$ 
+* verzameling met hoofdletters $A, B, \ldots$
 * elementen $a, b, c \in A$ met kleine letters
 * deelverzameling $B \subseteq A$
 * unie $A \cup B$, doorsnede $A \cap B$, verschil $A \setminus B$
@@ -207,13 +207,13 @@ Notatie: $\vert A \vert$ of $\# A$
 * Eindig: $I_n = \{1,2,\ldots,n\} \Rightarrow \vert I_n\vert = n$
 * Oneindig:
   - Aftelbaar: $\bbN$, $\bbZ$, $\bbQ$
-    
+
     Je kan de elementen nummeren = bijectie met $\bbN$
 
   - Onaftelbaar: $\bbR$, $\bbC$
 
 * Werken met oneindige cardinaliteit:
-  
+
   $\vert A \vert \leq \vert B \vert \Leftrightarrow$ er bestaat een injectieve afbeelding van $A$ naar $B$
 
 ## Relaties
@@ -229,19 +229,19 @@ Relatie tussen elementen $a \in A$ en $b \in B$ = deelverzameling van koppels $(
       - verschillende equivalentieklassen zijn disjunct: $\lnot(a \sim b) \Rightarrow [a] \cap [b] = \{\}$
       - equivalentieklassen partitioneren $A$
       - quotiëntverzameling $A/
-      \sim$ = verzameling van equivalentieklassen 
+      \sim$ = verzameling van equivalentieklassen
 
 ## Relaties
 
 1.  Equivalentierelatie $\sim$ tussen elementen $a, b, c \in A$
     * Voorbeeld (dat vaak terugkomt):
-      
+
       $\forall a,b \in \bbZ$, $a \sim b \Leftrightarrow (b-a) \in n \bbZ$
 
       $[a] = \{ b \in \bbZ | b \mod n = a\}$
 
       $\bbZ / \sim = \bbZ / (n \bbZ)$
-      
+
       in fysica: $\bbZ_n$: gehele getallen modulo $n$
 
 ## Relaties
@@ -252,24 +252,24 @@ Relatie tussen elementen $a \in A$ en $b \in B$ = deelverzameling van koppels $(
       - transitiviteit: $a \preccurlyeq b$ en $b \preccurlyeq c$ impliceert $a \preccurlyeq c$
     * Eigenschappen:
       - grootste element $a$: $b \preccurlyeq a$ voor alle $b \in A$
-      
+
         (uniek maar hoeft niet te bestaan)
       - maximaal element $a$: $a \preccurlyeq b$ impliceert $b = a$
-        
+
         (niet uniek)
 
 # Groepen, ringen en velden
 
 ## Bineaire operatie
 
-Een afbeelding $\cdot: A \times A \to A: (a,b) \mapsto a \cdot b$ 
+Een afbeelding $\cdot: A \times A \to A: (a,b) \mapsto a \cdot b$
 
 Mogelijke eigenschappen ($\forall a, b, c \in A$)
 
 * Associativiteit: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
 * Neutraal element: $\exists e \in A : a \cdot e = a = e \cdot a$
 * Inverses: $\exists a^{-1} \in A: a \cdot a^{-1} = a^{-1} \cdot a = e$
-* Commutativiteit: $a \cdot b = b \cdot a$ 
+* Commutativiteit: $a \cdot b = b \cdot a$
 
 ## Groep
 
@@ -318,7 +318,7 @@ Voorbeeld:
   * Groep 2: $C_n = \{\omega^k ; k=0,\ldots, n-1\}$ met $\omega = \erm^{\irm \frac{2\pi}{n}}$ en vermenigvuldiging (cyclische groep)
 
 * Isomorphisme: $k \in \bbZ_n \mapsto \omega^k \in C_n$
-  
+
   $\Rightarrow$ isomorfisme $\bbZ_n \cong C_n$
 
 * Surjectief homomorphisme: $a \in C_{2n} \mapsto a^2 \in C_{n}$
@@ -358,9 +358,9 @@ Van permutatiegroep $S_n$ naar $\bbZ_2$:
   - $g \sim h$ als $g^{-1} h \in N$, en dus ook $h g^{-1} \in N$
   - $[g] = \{g \cdot n, \forall n \in N\} = \{n'\cdot g, \forall n \in N\}$
   - $G/N$: groep van equivalentieklassen met operatie
-    
+
     $[g_1] \cdot [g_2] = [g_1 \cdot g_2]$
-    
+
     hangt niet af van gekozen representant:
     $(g_1 \cdot n_1) \cdot (g_2 \cdot n_2) = (g_1 \cdot g_2) \cdot (g_2^{-1} \cdot n_1 \cdot g_2) \cdot n_2$
     $= (g_1 \cdot g_2) \cdot n_1' \cdot n_2 = (g_1 \cdot g_2) \cdot n_3$
@@ -378,9 +378,9 @@ Voorbeelden:
 * triviale ring $(\{0=1\}, +, \cdot)$
 * $R[x]$: polynomen in $x$ met coefficienten uit ring $R$
 * $R^{n \times n}$: $n \times n$ matrices met elementen uit $R$
-  
+
   (in dat geval is $\cdot$ niet commutatief)
-  
+
 ## Ring
 
 In een ring is er een neutraal element $0$ van $+$ en een neutraal element $1$ van $\cdot$. Verder kunnen er nog elementen zijn met een speciale rol:
@@ -404,7 +404,7 @@ Belangrijkste voorbeeld van delingsring: quaternionen $\bbH$
 
 # Vectorruimten
 
-## Vectorruimte 
+## Vectorruimte
 
 Een vectorruimte $V=\{\zerovec_V, \vv,\vw,\ldots\}$ over een veld $\bbF=\{0,1,a,b,c,\ldots)$ (scalairen genoemd) is een abelse groep $(V,+)$ met een afbeelding $\bbF \times V \to V$ (vermenigvuldigen met scalairen), met als eigenschappen
 
@@ -490,7 +490,7 @@ met $a^i \in \bbF$, $\vv_i \in S$ voor $i=1,\ldots,m$ voor een eindige integer $
 
 ## Lineaire onafhankelijkheid en basis
 
-* Een deelverzameling $S \subseteq V$ van een vectorruimte $V$ over $\bbF$ wordt **lineair onafhankelijk** genoemd als voor elke lineaire combinatie 
+* Een deelverzameling $S \subseteq V$ van een vectorruimte $V$ over $\bbF$ wordt **lineair onafhankelijk** genoemd als voor elke lineaire combinatie
 $\sum_{i=1}^m a^i \vv_i$ geldt dat de vergelijking $\sum_{i=1}^m a^i \vv_i = \zerovec_V$ impliceert dat $a^i = 0$ voor $i=1,\ldots,m$.
 
 * Een verzameling $S$ die tegelijkertijd lineair onafhankelijk is en compleet is ($V$ voortbrengt) wordt een *basis* genoemd
@@ -531,14 +531,14 @@ Gegeven een basis $B = \{\ve_i, i=1,\ldots,n\}$ voor een eindig-dimensionale vec
 
 * Kronecker-delta: $\delta^i_j = \begin{cases} 1, i=j\\ 0, i \neq j\end{cases}$
 
-## Bewerkingen met deelruimten 
+## Bewerkingen met deelruimten
 
 * $W \subspace V$ impliceert $\dim(W) \leq \dim(V)$
-* Als $V$ eindig-dimensionaal is: 
+* Als $V$ eindig-dimensionaal is:
 
   $\dim(W) = \dim(V)$ impliceert $W = V$
 
-## Bewerkingen met deelruimten 
+## Bewerkingen met deelruimten
 
 Voor deelruimten $W_1,W_2 \subspace V$:
 
@@ -553,8 +553,8 @@ Voor deelruimten $W_1,W_2 \subspace V$:
   * $\dim(W_1 \oplus W_2) = \dim(W_1) + \dim(W_2)$
 
 * $\bigoplus_{i=1}^n W_i$: vereist dat $W_{k+1} \cap \left(\bigoplus_{i=1}^{k} W_i\right) = \{\zerovec\}$ voor $k=1,2,\ldots,n-1$
-  
-## Bewerkingen met deelruimten 
+
+## Bewerkingen met deelruimten
 
 Voor vectorruimten $V_1$ en $V_2$: $V_1 \times V_2$ is vectorruimte
 
@@ -566,7 +566,7 @@ Voor vectorruimten $V_1$ en $V_2$: $V_1 \times V_2$ is vectorruimte
 
 $\Rightarrow$ geen onderscheid tussen interne en externe directe som
 
-## Bewerkingen met deelruimten 
+## Bewerkingen met deelruimten
 
 Gegeven een deelruimte $W \subseteq V$:
 
@@ -625,7 +625,7 @@ $(v^i \ve_i) \odot (w^j \ve_j) = v^i w^j (\ve_i \odot \ve_j) = v^i v^j \underbra
 <!-- * Lie-algebra: algebra met alternered product, genoteerd als $[\vv, \vw] = -[\vw,\vv]$ dat voldoet aan Jacobi-identiteit
 
   $[\vu,[\vv,\vw]] + [\vv,[\vw,\vu]] + [\vw,[\vu,\vv]] = 0$
-  
+
   $\rightarrow$ kan gemaakt worden uit associatieve algebra m.b.v. commutator (controleer!) -->
 
 

@@ -194,4 +194,3 @@ Dit document bevat alle afleidingen die je moet kennen voor het vak Sterren en P
 3. Oefen met de numerieke oplossing van de Kepler vergelijking
 4. Begrijp de fysische betekenis van alle baanelementen
 5. Ken het verschil tussen siderische en synodische periode
-

@@ -129,7 +129,7 @@ De sleutel is dat we een **rechthoekige** Ampère-lus gebruiken, niet circulair:
 
 Rechthoekige lus in het $(s, z)$-vlak:
 - Binnenbeen (parallel aan z-as) op $s_1 < R$
-- Buitenbeen op $s_2 > R$  
+- Buitenbeen op $s_2 > R$
 - Beide benen hebben lengte $\Delta z$
 
 **Ingesloten stroom:**
@@ -147,7 +147,7 @@ Dit geeft een **uniform veld** in de z-richting binnenin de cilinder.
 
 ### Samenvatting Problem 2
 
-$$\boxed{\vec{B}(\vec{r}) = \begin{cases} 
+$$\boxed{\vec{B}(\vec{r}) = \begin{cases}
 \mu_0 K \hat{z} & \text{voor } s < R \text{ (binnenin)} \\
 0 & \text{voor } s > R \text{ (buitenin)}
 \end{cases}}$$
@@ -347,7 +347,7 @@ waarbij $\hat{n}$ de uitwendige normaal is.
 
 ### Deel B: Meissner Effect
 
-**Scenario:** 
+**Scenario:**
 - Begin met supergeleider **boven** $T_c$ (normaal geleider), in extern veld $\vec{B}_0$
 - Koelen naar beneden $T_c$ (wordt supergeleider)
 - Wat gebeurt er?
@@ -378,7 +378,7 @@ Dit is het teken van een **quantum-effect**!
 ### Deel C: Oppervlaktestroom-verdeling
 
 **Gegeven:**
-- Supergeleiding-cilinder met straal $R$ 
+- Supergeleiding-cilinder met straal $R$
 - Geplaatst langs z-richting
 - Uniform extern veld: $\vec{B}_{\text{ext}} = B_0 \hat{z}$
 

@@ -16,7 +16,7 @@ for r in range(2, ws.max_row + 1):
     snr_i = ws.cell(row=r, column=11).value
     m_i_abs = ws.cell(row=r, column=23).value
     color_bi = ws.cell(row=r, column=25).value
-    
+
     reason = None
     if not star_id or not star_type:
         reason = f"Leeg: star_id={star_id}, star_type={star_type}"
@@ -33,7 +33,7 @@ for r in range(2, ws.max_row + 1):
             valid += 1
         except (TypeError, ValueError) as e:
             reason = f"Conversion failed: {e}"
-    
+
     if reason:
         skipped.append((r, star_id, reason))
 

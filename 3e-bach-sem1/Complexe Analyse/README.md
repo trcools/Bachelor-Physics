@@ -72,4 +72,3 @@ latexmk -pdf main.tex
 # Clean up temporary build files:
 latexmk -c
 ```
-

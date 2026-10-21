@@ -186,7 +186,7 @@ versus
   * Fourier-analyse (alsook Lapace- en Z-transformaties)
   * Begin- en randvoorwaardeproblemen: Greense functies
   * Numerieke lineaire algebra en numerieke integratie
-  * Numerieke optimalisatie en root finding: 
+  * Numerieke optimalisatie en root finding:
     * Newton-Raphson methode, gradient descent, conjugate gradient, quasi-Newton methoden, …
 
 ## Lesgevers en lesschema
@@ -208,7 +208,7 @@ versus
 * Theorie en oefeningen tellen elk voor 50%
 
   * Examen voor 18 van de 20 punten:
-  
+
     * open boek voor beide onderdelen
     * theorie-gedeelte: analoog aan Lineaire Algebra,
       waar-valsvragen, bewijzen toelichten, korte theoretische oefeningen
@@ -231,7 +231,7 @@ versus
 
   * Beide documenten zijn momenteel nog niet volledig klaar en zullen nog onderhevig zijn aan wijzigingen, voornamelijk vanaf na Hoofdstuk 6.
 
-* Oefeningen: 
+* Oefeningen:
 
   * Zie eerste oefeningenles
 
@@ -240,11 +240,11 @@ versus
 ## Vragen en opmerkingen
 
 * Inhoudelijke vragen over de cursus of oefeningen:
-  
+
   * Tijdens de les (of pauze).
-  
+
   * Via het discussieforum op Ufora:
-  
+
     voor iedereen zichtbaar, iedereen kan antwoorden, docenten en assistenten volgen mee en zullen ook antwoorden.
 
   * Inhoudelijke vragen via mail worden toch naar het forum doorverwezen.

@@ -20,4 +20,3 @@ Overview of courses, lecture notes, exercise sheets, and code for the first seme
 - [Complexe Analyse README](Complexe%20Analyse/README.md)
 - [Kwantummechanica II README](Kwantum%20II/README.md)
 - [Statistische Fysica README](Statistische/README.md)
-

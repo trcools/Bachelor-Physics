@@ -23,7 +23,7 @@
     Wegens (Stelling 4.2.5)  $\exists P \in \operatorname{GL}_n(K)$ zodat:
     \[A = P^{-1}BP\]
     \begin{align*}
-        \det(xI_n - A) 
+        \det(xI_n - A)
         &= \det(xI_n - P^{-1}BP)\\
          &= \det(P(xI_n - P^{-1}BP)P^{-1})\\
          &= \det(xPI_nP^{-1} - PP^{-1}BPP^{-1})\\
@@ -51,7 +51,7 @@
 
 
 
-    $$\det(xI_n - A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \prod_{i=1}^n B_{i, \sigma(i)} $$ 
+    $$\det(xI_n - A) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \prod_{i=1}^n B_{i, \sigma(i)} $$
 
     De hoogste graad is \(n\) (lemma 6.1.4), deze komt overeen met de permutatie \(\sigma = id\).
     Doordat een permutatie 2 elementen wisselt, is de hoogste graad wanneer \(\sigma \neq id, \, n-2\).
@@ -95,7 +95,7 @@
     \end{align*}
 \end{proof}
 \begin{proof}(ii)
-    Kies een willekeurige basis \(\mathcal{B}\) van \(V\) en \(\beta \colon V \to K^n\) het  coördinatenisomorfisme. 
+    Kies een willekeurige basis \(\mathcal{B}\) van \(V\) en \(\beta \colon V \to K^n\) het  coördinatenisomorfisme.
     Als \(A := A_{f,\mathcal{B},\mathcal{B}}\) de matrixvoorstelling van \(f\) tov \(\mathcal{B}\).
 
     Wegens Opmerking 4.1.5 (ii) geldt \( \forall v \in V: \beta(f(v)) = A\beta(v)\).
@@ -115,10 +115,10 @@
 \begin{proof}
     Uit (lemma 6.1.4) volgt dat \(\chi_f(x)\) een monische veelterm is van graad \(n\).
 
-    Uit (stelling 6.2.5) (ii) is \(\lambda\) een eigenwaarde  
+    Uit (stelling 6.2.5) (ii) is \(\lambda\) een eigenwaarde
     \(\iff \chi_f(\lambda) = 0. \)
 
-    Een veelterm in \(K\) heeft hoogstens \(n\) wortels, waaruit het gevraagde geldt. 
+    Een veelterm in \(K\) heeft hoogstens \(n\) wortels, waaruit het gevraagde geldt.
 
 \end{proof}
 
@@ -149,10 +149,10 @@
 \end{lemma}
 \begin{proof}
     \([\Rightarrow]\) \(A\) is diagonaliseerbaar:
-    
+
     Er bestaat een basis \(\mathcal{B} = (b_1, \dots, b_n)\) uit eigenvectoren.
 
-    Als \(P = (b_1, \dots, b_n)\), dan is \(AP = (\lambda_1 b_1, \dots, \lambda_n b_n) = \operatorname{diag}(b_1, \dots, b_n) \cdot (\lambda_1,\dots,\lambda_n)\). 
+    Als \(P = (b_1, \dots, b_n)\), dan is \(AP = (\lambda_1 b_1, \dots, \lambda_n b_n) = \operatorname{diag}(b_1, \dots, b_n) \cdot (\lambda_1,\dots,\lambda_n)\).
     En \(P^{-1}AP = \operatorname{diag}(\lambda_1,\dots\lambda_n)\).
 
     \([\Leftarrow]\) Omgekeerd, \(P^{-1}AP= \operatorname{diag}(\lambda_1,\dots\lambda_n)\) :
@@ -164,7 +164,7 @@
     \(\implies A(b_1, \dots , b_n)= P \operatorname{diag}(\lambda_1,\dots\lambda_n)\)
 
     Het is duidelijk dat \(L_A \) tov \(\mathcal{B}\) de diagonaalmatrix \(P^{-1}AP\) is.
-    
+
 \end{proof}
 
 \begin{stelling}[6.3.4]
@@ -194,7 +194,7 @@
 \end{proof}
 \begin{proof}(ii)
     Uit (i) zijn de eigenvectoren lineair onafhankelijk. Uit (stelling 2.4.12 (i)) vormen de eigenvectoren een basis voor V.
-    Uit (stelling 6.3.1) is \(f\) diagonaliseerbaar. 
+    Uit (stelling 6.3.1) is \(f\) diagonaliseerbaar.
 \end{proof}
 \begin{proof}(iii)
     Doordat de eigenruimten die bij verschillende eigenvectoren horen lineair onafhankelijk zijn,
@@ -202,15 +202,15 @@
 \end{proof}
 \begin{proof}(iii)
     Zij $\lambda_1, \dots, \lambda_\ell$ de verschillende eigenwaarden van $f$.
-    Aangezien $f$ diagonaliseerbaar is, bestaat er wegens Stelling 6.3.1 een basis $\mathcal{B}$ voor $V$ die volledig bestaat uit eigenvectoren van $f$. 
-    
+    Aangezien $f$ diagonaliseerbaar is, bestaat er wegens Stelling 6.3.1 een basis $\mathcal{B}$ voor $V$ die volledig bestaat uit eigenvectoren van $f$.
+
     We kunnen deze basis $\mathcal{B}$ schrijven als de disjuncte unie van deelverzamelingen:
     \(\mathcal{B} = \mathcal{B}_1 \cup \dots \cup \mathcal{B}_\ell \)
     waarbij elke $\mathcal{B}_i$ precies de basisvectoren uit $\mathcal{B}$ bevat die horen bij de eigenwaarde $\lambda_i$.
-    
+
     Per definitie van de eigenruimten geldt dat de eigenruimte $V_i$ behorende bij $\lambda_i$ gelijk is aan:
     \(V_i = \operatorname{span}(\mathcal{B}_i). \)
-    
+
     Omdat $\mathcal{B}$ een basis is voor $V$ en de disjuncte unie is van de verzamelingen $\mathcal{B}_i$, volgt uit de transformatiestelling voor basissen (Stelling 2.5.5, recursief toegepast op $\ell$ delen) onmiddellijk dat:
     \[ V = \operatorname{span}(\mathcal{B}_1) \oplus \dots \oplus \operatorname{span}(\mathcal{B}_\ell) \]
     \[ \implies V = V_1 \oplus \dots \oplus V_\ell. \]
@@ -231,7 +231,7 @@
      Kies een basis $\{v_1, \dots, v_r\}$ voor $V_i$.
       Wegens Gevolg 2.4.8(i) breiden we deze lineair onafhankelijke verzameling uit tot een basis voor de totale ruimte $V$:
     \[ \mathcal{B} = \{v_1, \dots, v_r, w_1, \dots, w_s\} \quad \text{met } s = n - r. \]
-    Omdat $f(v_j) = \lambda v_j , \, \forall 1 \le j \le r$, 
+    Omdat $f(v_j) = \lambda v_j , \, \forall 1 \le j \le r$,
     ziet de matrixvoorstelling $A$ van $f$ tov de basis $\mathcal{B}$ er als volgt uit:
     \[ A = \begin{pmatrix} \lambda I_r & B \\ 0 & C \end{pmatrix} \]
     voor zekere matrices $B \in M_{r,n-r}(K)$ and $C \in M_{n-r}(K)$. Er geldt nu dat:
@@ -260,7 +260,7 @@
     vormt $\mathcal{C}$ een basis van $V$ bestaande uit eigenvectoren van $f$.
     Wegens Stelling 6.3.1 is $f$ bijgevolg diagonaliseerbaar.
 
-    \([\Rightarrow]\) 
+    \([\Rightarrow]\)
     Veronderstel dat $\dim(V_i) < n_i$ voor een bepaalde index $i$.
      Aangezien voor elke andere index wegens Lemma 6.3.9 geldt dat $\dim(V_j) \le n_j$,
     is het totale aantal elementen in de lineair onafhankelijke verzameling $\mathcal{C}$ strikt kleiner dan $n$:

@@ -9,4 +9,3 @@ Overview of coursework, exercises, notes, and derivation summaries for the secon
 | Course | Code | Topics & Highlights | Link |
 | :--- | :--- | :--- | :--- |
 | **Sterren en Planeten** | `C004206A` | Spherical astronomy, celestial coordinates, culmination, time reckoning, stellar radiation, magnitudes & derivations | [`Sterren-en-Planeten/`](Sterren-en-Planeten/) |
-

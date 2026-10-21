@@ -145,7 +145,7 @@ $$
 :::
 
 * Concept van inwendig product:
-  
+
   * geeft aanleiding tot lengte, oriëntatie, geometrie (bvb Pythogoras)
   * geeft ook aanleiding tot (antilinear) isomorfisme tussen vector ruimte en zijn duale
 
@@ -161,7 +161,7 @@ $$
 # Proloog: Bilineaire en sesquilineaire vormen
 
 ## Bilineaire vormen
-* herhaling: bilineaire afbeelding $B:V_1 \times V_2 \to V_3$ 
+* herhaling: bilineaire afbeelding $B:V_1 \times V_2 \to V_3$
   * $B(a \vv_1 + b \vw_1, \vv_2) = a B(\vv_1,\vv_2) + b B(\vw_1,\vv_2)$
   * $B(\vv_1, a \vv_2 + b \vw_2) = a B(\vv_1,\vv_2) + b B(\vv_1,\vw_2)$
 * bilineaire vorm = bilineaire afbeelding $V \times V \to \bbF$
@@ -172,7 +172,7 @@ $$
 ## Bilineaire vormen en matrices
 
 * basisrepresentatie: $B_V=\{\ve_1,\ldots,\ve_n\}$
-  
+
   $\Rightarrow B(\vv,\vw) = \vv^i \underbrace{B(\ve_i,\ve_j)}_{B_{ij}\Rightarrow \mat{B}\in\bbF^{n\times n}} w^j = \vec{v}^\transpose \mat{B} \vec{w}$
 
   * (anti)symmetrisch : $\mat{B} = \pm \mat{B}^{\transpose} \Leftrightarrow B_{ij} = \pm B_{ji}$
@@ -196,7 +196,7 @@ $$
   een bilineaire vorm is (er geldt dan $q(\vv)=B(\vv,\vv)$)
 
   * kwadratische vorm equivalent met symmetrische bilineaire vorm
-  
+
     (antisymmetrisch stuk geeft geen bijdrage in $B(\vv,\vv)$)
 
 ## Kwadratische vormen: toepassingen
@@ -213,10 +213,10 @@ $$
 
 ## Sesquilineaire vormen
 
-Complexe vectorruimte $V$: 
+Complexe vectorruimte $V$:
 
 * Sesquilinaire vorm is afbeelding $C:V \times V \to \bbF$ met
-  
+
   * $C(\scalara \vu + \scalarb \vv,\vw) = \conj{\scalara} C(\vu,\vw) + \conj{\scalarb} C(\vv,\vw)$
   * $C(\vu,\scalara \vv + \scalarb \vw) = \scalara C(\vu,\vv) + \scalarb C(\vu,\vw)$
 
@@ -229,7 +229,7 @@ Herleidt zich tot (symmetrische of antisymmetrische) bilineaire vormen voor $\bb
 ## Sesquilineaire vormen en matrices
 
 * basisrepresentatie: $B_V=\{\ve_1,\ldots,\ve_n\}$
-  
+
   $C(\vv,\vw) = \overline{v^i} C(\ve_i,\ve_j) w^j = \vec{v}^\hermitian \mat{C} \vec{w}$ met $C_{ij} = C(\ve_i,\ve_j) \Rightarrow \mat{C} \in \bbF^{n \times n}$
 
   * (anti)hermitisch : $\mat{C} = \pm \mat{C}^{\hermitian} \Leftrightarrow C_{ij} = \pm \overline{C_{ji}}$
@@ -268,15 +268,15 @@ Inwendig product op vectorruimte $V$ = hermitische, positief definiete sesquilin
 * eigenschappen:
   * lineair in tweede argument: $\inner{\vv}{a_1 \vw_1 + a_2 \vw_2} = a_1 \inner{\vv}{\vw_1} + a_2 \inner{\vv}{\vw_2}$
   * hermitisch: $\inner{\vv}{\vw} = \overline{\inner{\vw}{\vv}}$
-  
+
     $\Rightarrow \inner{a_1 \vv_1 + a_2\vv_2}{\vw} = \overline{a_1}\inner{\vv_1}{\vw} + \overline{a_2} \inner{\vv_2}{\vw}$
   * positief definiet: $\vv \neq \zerovec \Rightarrow \inner{\vv}{\vv} > 0$
 
 * matrixrepresentatie t.o.v. basis $B_V=\{\ve_1,\ldots,\ve_n\}$:
-  
+
   $\inner{\vv}{\vw} = \overline{v^i} g_{ij} w^j$ met $g_{ij} = \inner{\ve_i}{\ve_j}$ (**metriek** of **Gram matrix**)
 
-* fysica (bvb relativiteit): metriek die indefiniet (maar niet-ontaard) is 
+* fysica (bvb relativiteit): metriek die indefiniet (maar niet-ontaard) is
 
   (= pseudo-inner product)
 
@@ -285,11 +285,11 @@ Inwendig product op vectorruimte $V$ = hermitische, positief definiete sesquilin
 ## Cauchy-Schwarz ongelijkheid
 
 * Cauchy-Schwarz-Bunjakowski: $\abs{\inner{\vv}{\vw}}^2 \leq \inner{\vv}{\vv}\inner{\vw}{\vw}$
-  
+
 * gevolg: $\norm{\vv} = \sqrt{\inner{\vv}{\vv}}$ is een valabele norm
 
   $\Rightarrow$ Cauchy-Schwarz ongelijkheid: $\abs{\inner{\vv}{\vw}} \leq \norm{\vv}\norm{\vw}$
-  
+
   $\Rightarrow$ als $\bbF=\bbR$:
   * $-1 \leq \frac{\inner{\vv}{\vw}}{\norm{\vv}\norm{\vw}} \leq +1$
   * $\inner{\vv}{\vw} = \norm{\vv}\norm{\vw}\cos(\theta)$ definieert $\theta$
@@ -359,7 +359,7 @@ Gegeven een inwendig productruimte $(V,\inner{\ }{\ })$
   uitbreiding voor $A,B \subseteq V$: $A \perp B \iff \inner{\vv}{\vw}=0, \forall \vv \in A, \vw \in B$
 
 * genormaliseerde vector $\vv \iff \norm{\vv} = 1$
-  
+
   elke vector $\vv \neq \zerovec$ is proportioneel met eenheidsvector $\vu = \vv / \norm{\vv}$
 
 * orthogonale verzameling: $\{\vv_i; i \in I\} \iff \vv_i \perp \vv_j, \forall i\neq j$
@@ -493,9 +493,9 @@ Beschouw rij $(\ve_n, n \in \bbN_0)$ van orthonormale vectoren:
 
   $$f_k(x) = \frac{1}{\sqrt{L}}\exp\left(+\irm \frac{2\pi}{L} k x\right)$$
 
-  is orthonormaal (controleer!) en compleet (geen bewijs). 
-  
-* Basisexpansie is de Fourierreeks: 
+  is orthonormaal (controleer!) en compleet (geen bewijs).
+
+* Basisexpansie is de Fourierreeks:
 
   $$f(x) = \frac{1}{\sqrt{L}}\sum_{k=-\infty}^{+\infty} F^k \exp\left(+\irm \frac{2\pi}{L} k x\right)$$
 
@@ -507,7 +507,7 @@ Beschouw rij $(\ve_n, n \in \bbN_0)$ van orthonormale vectoren:
 
 ## Gram-Schmidt {.smaller}
 
-lineair onafhankelijke vectoren: $S=\{\vv_1,\vv_2,\ldots\}$ 
+lineair onafhankelijke vectoren: $S=\{\vv_1,\vv_2,\ldots\}$
 
 $\rightarrow$ orthonormale rij $(q_1,q_2,\ldots)$ die zelfde (deel)ruimte opspant
 
@@ -560,7 +560,7 @@ Gegeven een Hilbertruimte $V$:
 
 $\Rightarrow$ kunnen we elke (begrensde) functionaal zo bekomen?
 
-## Lineaire functionalen 
+## Lineaire functionalen
 
 Als $V$ eindig-dimensionaal met $B_V=\{\ve_1,\ldots,\ve_n\}$:
 
@@ -581,14 +581,14 @@ Voor $V$ eindig-dimensionaal kunnen we elke lineaire functionaal $\xi$ voorstell
 
 Interpretatie en gevolgen:
 
-* $\ker(\xi)$ heeft codimensie $1$ (tenzij $\xi=0$): 
+* $\ker(\xi)$ heeft codimensie $1$ (tenzij $\xi=0$):
 
   $\ker(\xi) = (\vv_\xi)^\perp$ (elkaars orthogonaal complement)
 
 * Met elke $\vv \in V$ is exact één $\chi \in V^\ast$ geassocieerd en vice versa ($\vv \to \chi_\vv$ en $\xi \to \vv_{\xi}$ zijn elkaars inverse)
 * $V^\ast$ is zelf een Hilbertruimte met inwendig product
 
-  $$\inner{\xi}{\chi}_{V^\ast} = \inner{\vv_{\chi}}{\vv_{\xi}}_V = \overline{\xi_i} g^{ij} \chi_j$$ 
+  $$\inner{\xi}{\chi}_{V^\ast} = \inner{\vv_{\chi}}{\vv_{\xi}}_V = \overline{\xi_i} g^{ij} \chi_j$$
 
 * $V$ en $V^\ast$ zijn (anti)isomorf als Hilbertruimten:
 
@@ -671,7 +671,7 @@ $\quad\iff \conj{w}^i (\mat{g}_W)_{ij} A^j_{\ k} v^k = \overline{(A^\dagger)^l_{
 
 $\Rightarrow 	(A^\dagger)^l_{\ i} = \overline{(\mat{g}_W)_{ij} A^j_{\ k} (\mat{g}_V^{-1})^{k l}}$
 
-Als $B_V$ en $B_W$ orthonormaal: 
+Als $B_V$ en $B_W$ orthonormaal:
 
 * $(A^\dagger)^l_{\ i} = \overline{A^i_{\ l}} = (\mat{A}^\hermitian)^l_{\ i}$
 * toegevoegde afbeelding voorgesteld door Hermitisch toegevoegde matrixrepresentatie
@@ -717,9 +717,9 @@ Hilbertruimte $V=W$: operatoren
   * (anti)Hermitisch: $A(\vv,\vw) = \pm \overline{A(\vw,\vv)} \iff \inner{\vv}{\map{A}\vw} = \pm \inner{\map{A}\vv}{\vw}$
 
     $\Rightarrow$ zelftoegevoegd impliceert Hermitisch
-    
+
     (en vice versa, voor begrensde operatoren, zie later voor onbegrensde)
-    
+
     (terminologie "zelftoegevoegd" en "Hermitisch" vaak door elkaar gebruikt)
 
   * positief (semi)definiet: $\inner{\vv}{\map{A}\vv} > 0$ of $\geq 0$ voor alle $\vv \in V$
@@ -742,7 +742,7 @@ Hilbertruimte $V=W$: operatoren
 
 * voorbeeld op $V =L^2([a,b])$: $\map{M}_x: f(x) \mapsto x f(x)$
 
-  $\inner{g}{\map{M}_x f} = \int_a^b \overline{g(x)} (x f(x)) \,\drm x 
+  $\inner{g}{\map{M}_x f} = \int_a^b \overline{g(x)} (x f(x)) \,\drm x
   = \int_{a}^b \overline{x g(x)} f(x)\,\drm x = \inner{\map{M}_x g}{f}$
 
   $\Rightarrow \map{M}_x$ is zelftoegevoegd / Hermitisch
@@ -763,13 +763,13 @@ Beschouw $\map{Q}\in \mathcal{B}(V,W)$:
   $\iff \inner{\vv}{\map{Q}^\dagger \map{Q}\vv} = \inner{\vv}{\vv}$ of dus $\inner{\vv}{(\map{Q}^\dagger\map{Q}-\idmap_V)\vv}=0$ voor alle $\vv \in V$
 
   $\iff \inner{\vv}{\map{Q}^\dagger \map{Q}\vw} = \inner{\vv}{\vw}$ voor alle $\vv,\vw \in V$
-  
+
   ($\Leftarrow$ triviaal, $\Rightarrow$ via $\inner{\vv+a\vw}{(\map{Q}^\dagger \map{Q}-\idmap_V)(\vv+a\vw)}=0$ en $a$ juist kiezen)
 
 * uit H4: isometrisch $\implies$ injectief
 
-  als ook surjectief (en dus bijectief): **unitaire** transformatie ( **orthogonaal** als $\bbF=\bbR$) 
-  
+  als ook surjectief (en dus bijectief): **unitaire** transformatie ( **orthogonaal** als $\bbF=\bbR$)
+
   als $\map{U}^{-1}$ bestaat en $\map{U}^\dagger \map{U}=\idmap_V$ $\implies$ $\map{U}^{-1}=\map{U}^\dagger$ en dus $\map{U}\map{U}^\dagger = \idmap_W$
 
 ## Isometrische en unitaire afbeeldingen {.smaller}
@@ -777,7 +777,7 @@ Beschouw $\map{Q}\in \mathcal{B}(V,W)$:
 * (zoals steeds) $V, W$ met $\dim(V) = \dim(W)$ eindig: isometrisch $\iff$ unitair
 
   * tegenvoorbeeld als oneindig-dimensionaal: $V=W = \ell^2(\bbN_0)$
-  
+
     $\map{T}\map{S}=\map{S}^\dagger\map{S} = \idmap$ en $\map{S}\map{S}^\dagger = \map{P}$ met $\map{P}(v^1,v^2,v^3,\ldots) = (0, v^2, v^3,\ldots)$
 
 * als unitaire afbeelding $V \to W$ bestaat: $V \cong W$ isomorf als Hilbertruimten
@@ -800,7 +800,7 @@ Beschouw $\map{Q}\in \mathcal{B}(V,W)$:
 * unitaire matrices $\mat{U} \in \bbC^{n\times n}$: basistransformatie tussen orthonormale basissen
 
   * $B_V = \{\ve_1,\ve_2,\ldots,\ve_n\}$ en $\tilde{B}_V = \{\tilde{\ve}_1,\tilde{\ve}_2,\ldots,\tilde{\ve}_n\}$
-  
+
   * $\tilde{\ve}_i = U^j_{\ i} \ve_{j}$
 
   * $\delta_{ij} = \inner{\tilde{\ve}_i}{\tilde{\ve}_j} = \overline{U^k_{\ i}} U^l_{\ j} \inner{\ve_k}{\ve_l} = \overline{U^k_{\ i}} U^l_{\ j} \delta_{kl}$ of dus $\mat{U}^\hermitian \mat{U} = \idmat$
@@ -810,9 +810,9 @@ Beschouw $\map{Q}\in \mathcal{B}(V,W)$:
   * isometrische afbeelding van $\bbC^n$ naar $\bbC^m$
 
     (of: matrixrepresentatie van isometrische afbeelding $V \to W$ ten opzichte van orthonormale basissen in $V$ en $W$)
-  
+
   * kolommen van $\map{Q}$ definiëren orthonormale basis $\{\vec{q}_1,\ldots,\vec{q}_n\}$ voor $n$-dimensionale deelruimte $W \subspace \bbC^m$.
-    
+
     $\mat{P}_W = \sum_{i=1}^n \vec{q}_i \vec{q}_i^\hermitian = \mat{Q}\mat{Q}^\hermitian$ en $\mat{P}_{W^\perp} = \idmat - \mat{Q}\mat{Q}^\hermitian$
 
     $\rightarrow$ andere orthonormale basis voor $W$: $\mat{\tilde{Q}} =\mat{Q} \mat{U}$ met $\mat{U}\in\bbC^{n\times n}$ unitair $\Rightarrow$ $\mat{P}_W = \mat{\tilde{Q}}\mat{\tilde{Q}}^\dagger = \mat{Q}\mat{Q}^\dagger$
@@ -830,7 +830,7 @@ $\map{A}$ een antilineaire operator tussen complexe Hilbertruimten $V$ en $W$
 * Antilineair en isometrisch en bijectief: **anti-unitair**
 
   * belangrijke rol in kwantummechanica:
-  
+
     alle geldige transformaties zijn unitair of anti-unitair (Wigner)
 
   * voorbeeld van anti-unitair: tijdsomkeringssymmetrie
@@ -856,10 +856,10 @@ $\map{A}$ een antilineaire operator tussen complexe Hilbertruimten $V$ en $W$
 * $\map{A} \in \End(V)$ en normaal en $\map{A}\vv = \lambda \vv$:
 
   * $\map{A}^\dagger \vv = \conj{\lambda} \vv$ (uit voorgaande)
-  
+
   * $\map{A}_{\text{r}}\vv = \real(\lambda) \vv,\quad\map{A}_{\text{i}}\vv = \imag(\lambda) \vv$ (triviaal uit voorgaande)
 
-  * $\map{A}\vw = \mu \vw$ met $\mu \neq \lambda \implies \inner{\vv}{\vw}=0$ 
+  * $\map{A}\vw = \mu \vw$ met $\mu \neq \lambda \implies \inner{\vv}{\vw}=0$
 
 * $\map{A} \in \End(V)$ en normaal: $\norm{\map{A}^n} = \norm{\map{A}}^n$
 
@@ -905,7 +905,7 @@ $\mat{A} \vec{x} = \vec{y}$ met $m$ vergelijkingen voor $n < m$ onbekenden:
 * aanname: $\mat{A}$ heeft "volle rang" / maximale rang: $\rank(\mat{A})=n$
 
 * **kleinste-kwadratenoplossing**:
-  
+
   $$\vec{x}^\ast = \argmin_{\vec{x} \in \bbF^n} \norm{\mat{A}\vec{x} - \vec{y}}_2$$
 
   orthogonale-projectietheorema: $\mat{A}\vec{x}^\ast = \mat{P}_{\im(\mat{A})} \vec{y}$
@@ -917,11 +917,3 @@ $\mat{A} \vec{x} = \vec{y}$ met $m$ vergelijkingen voor $n < m$ onbekenden:
   * $\mat{R}^{-1}\mat{Q}^\hermitian = (\mat{A}^\hermitian \mat{A})^{-1} \mat{A}^\hermitian = \mat{A}^+$ (**Moore-Penrose pseudo-inverse**)
 
     (meer details in volgend hoofdstuk)
-
-
-
-
-    
-
-
-

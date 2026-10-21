@@ -119,7 +119,7 @@ Op de sublimatiekromme:
 \left(\frac{\partial S}{\partial V}\right)_T &= \left(\frac{\partial P}{\partial T}\right)_V \\
 \left(\frac{\partial S}{\partial P}\right)_T &= -\left(\frac{\partial V}{\partial T}\right)_P \\
 \end{align*}
-\end{derivation}   
+\end{derivation}
 Als we totale differentiaalen hebben van de vorm:
 \[df = Mdx + Ndy\]
 Dan geldt dat:
@@ -132,7 +132,7 @@ dU = TdS - PdV
 Hieruit kunnen we de partiële afgeleiden van \(T\) en \(P\) ten opzichte van \(S\) en \(V\) bepalen. Door de symmetrie van de tweede afgeleiden van \(U\) (of een andere thermodynamische functie) te gebruiken, kunnen we de Maxwellbetrekkingen afleiden. Bijvoorbeeld, door de tweede afgeleiden van \(U\) te vergelijken, krijgen we:
 \[\left(\frac{\partial T}{\partial V}\right)_S = -\left(\frac{\partial P}{\partial S}\right)_V\]
 Op dezelfde manier kunnen we de andere Maxwellbetrekkingen afleiden door de differentiaalvormen van \(H, F, G\) te gebruiken.
-\end{derivation}    
+\end{derivation}
 \subsection{De TdS-vergelijkingen}
 
 
@@ -159,7 +159,7 @@ Als V = cst (isochoor proces):
 \[\dbar Q = T\left(\frac{\partial S}{\partial T}\right)_V dT \implies C_V = T\left(\frac{\partial S}{\partial T}\right)_V\]
 
 \begin{align*}
-    TdS &= T\left(\frac{\partial S}{\partial T}\right)_V dT + T\left(\frac{\partial S}{\partial V}\right)_T dV \\ 
+    TdS &= T\left(\frac{\partial S}{\partial T}\right)_V dT + T\left(\frac{\partial S}{\partial V}\right)_T dV \\
     &= C_V dT + T\left(\frac{\partial S}{\partial V}\right)_T   dV \\
 \end{align*}
 
@@ -179,7 +179,7 @@ Als \(P = cst\) (isobaar proces):
 \[\dbar Q = T\left(\frac{\partial S}{\partial T}\right)_P dT \implies C_P = T\left(\frac{\partial S}{\partial T}\right)_P\]
 
 \[
-\boxed{TdS = C_PdT + T\left(\frac{\partial S}{\partial P}\right)_T dP} 
+\boxed{TdS = C_PdT + T\left(\frac{\partial S}{\partial P}\right)_T dP}
 \]
 
 Maxwellbetrekking \(\left(\frac{\partial S}{\partial P}\right)_T = -\left(\frac{\partial V}{\partial T}\right)_P\) geeft:
@@ -263,7 +263,7 @@ De tweede energievergelijking:
 \begin{align*}
 dH &= TdS + VdP \\
 \frac{dH}{dP} &= T \frac{d S}{d P}+ V  \\
-\left(\frac{\partial H}{\partial P}\right)_T &= T \left(\frac{\partial S}{\partial P}\right)_T + V 
+\left(\frac{\partial H}{\partial P}\right)_T &= T \left(\frac{\partial S}{\partial P}\right)_T + V
 \end{align*}
 De eerste enthalpievergelijking:
 \[\boxed{\left(\frac{\partial H}{\partial P}\right)_T = T \left(\frac{\partial S}{\partial P}\right)_T + V}\]
@@ -280,9 +280,9 @@ De tweede enthalpievergelijking:
 \subsection{De Vergelijkingen van de Warmtecapaciteiten}
 
 We stellen de eerste twee TdS-vergelijkingen gelijk aan elkaar:
-\[C_V dT + T\left(\frac{\partial P}{\partial T}\right)_V dV = C_PdT - T\left(\frac{\partial V}{\partial T}\right)_P dP\]    
+\[C_V dT + T\left(\frac{\partial P}{\partial T}\right)_V dV = C_PdT - T\left(\frac{\partial V}{\partial T}\right)_P dP\]
 Oplossen naar \(dT\):
-\[dT = \frac{T\left(\frac{\partial V}{\partial T}\right)_P }{C_P - C_V}dP + \frac{T\left(\frac{\partial P}{\partial T}\right)_V }{C_P - C_V}dV\]  
+\[dT = \frac{T\left(\frac{\partial V}{\partial T}\right)_P }{C_P - C_V}dP + \frac{T\left(\frac{\partial P}{\partial T}\right)_V }{C_P - C_V}dV\]
 
 Maar \(T=T(P,V)\), dus:
 \[dT = \left(\frac{\partial T}{\partial P}\right)_V dP + \left(\frac{\partial T}{\partial V}\right)_P dV\]
@@ -300,14 +300,14 @@ C_P - C_V = T \left(\frac{\partial P}{\partial T}\right)_V \left(\frac{\partial 
 \]
 
 Met de eigenschap van de determinant van de Jacobiaan:
-\[\left(\frac{\partial P}{\partial T}\right)_V \left(\frac{\partial T}{\partial V}\right)_P \left(\frac{\partial V}{\partial P}\right)_T = -1\] 
+\[\left(\frac{\partial P}{\partial T}\right)_V \left(\frac{\partial T}{\partial V}\right)_P \left(\frac{\partial V}{\partial P}\right)_T = -1\]
 vinden we:
-\[\boxed{C_P - C_V = -T \left(\frac{\partial P}{\partial T}\right)_V^2 \left(\frac{\partial V}{\partial P}\right)_T}\]  
+\[\boxed{C_P - C_V = -T \left(\frac{\partial P}{\partial T}\right)_V^2 \left(\frac{\partial V}{\partial P}\right)_T}\]
 Dit is blijkbaar één van de belangrijkste vergelijkingen in de thermodynamica, omdat het een relatie geeft tussen de warmtecapaciteiten \(C_P\) en \(C_V\) en de eigenschappen van het systeem zoals uitgedrukt door de partiële afgeleiden van \(P\) en \(V\) ten opzichte van \(T\).
 
 Deze toont aan dat als \(T \to 0 \implies C_P \to C_V\).
 
-Als \(\left(\frac{\partial V}{\partial T}\right)_P = 0 \implies C_P = C_V\). 
+Als \(\left(\frac{\partial V}{\partial T}\right)_P = 0 \implies C_P = C_V\).
 
 En doordat \(\left(\frac{\partial P}{\partial V}\right)_T\) altijd negatief is en \(\left(\frac{\partial V}{\partial T}\right)^2_P\) positief is, volgt dat \(C_P > C_V\) voor alle systemen.
 
@@ -321,7 +321,7 @@ vinden we de eerste vorm van de vergelijking van de warmtecapaciteiten:
 
 De tweede vorm vinden we door de \(TdS\)-vgl te gebruiken bij \(dS = 0\)
 \[C_V dT = - T\left(\frac{\partial P}{\partial T}\right)_V dV_S\]
-en 
+en
 \[C_PdT = T \left(\frac{\partial V}{\partial T}\right)_P dP_S\]
 
 \[\frac{C_P}{C_V} = \frac{T \left(\frac{\partial V}{\partial T}\right)_P}{- T\left(\frac{\partial P}{\partial T}\right)_V} \left(\frac{\partial P}{\partial V}\right)_S = -\frac{\left(\frac{\partial P}{\partial V}\right)_S}{\left(\frac{\partial P}{\partial V}\right)_T}\]
@@ -342,10 +342,10 @@ De fractie van een stof \(x\) kan getransoformeerd worden als:
 (\(S\) en \(V\) zijn lineaire functies van \(s_i, s_f\) en \(v_i, v_f\))
 
 Bij reversibile fase-overgangen is de latente warmte \(L\) gedefinieerd als:
-\[L = T(s_f - s_i)\] 
+\[L = T(s_f - s_i)\]
 de overgedragen warmte bij de fase-overgang.
 
-Uit 
+Uit
 \[dG = VdP-SdT\]
 volgt:
 \[\left(\frac{\partial G}{\partial P}\right)_T = V \qquad\text{en}\qquad -\left(\frac{\partial G}{\partial T}\right)_P = S\]
@@ -412,8 +412,8 @@ Op een nabijgelegen punt op de overgangskromme geldt:
 \[V_i + dV_i = V_f + dV_f\]
 \[\implies dV_i = dV_f\]
 
-\[\left(\frac{\partial V_i}{\partial T}\right)_P + \left(\frac{\partial V_{i}}{\partial P}\right)_T 
-= 
+\[\left(\frac{\partial V_i}{\partial T}\right)_P + \left(\frac{\partial V_{i}}{\partial P}\right)_T
+=
 \left(\frac{\partial V_f}{\partial T}\right)_P + \left(\frac{\partial V_f}{\partial P}\right)_T dP\]
 en:
 \[\beta_i V_i dT - \kappa_i V_i dP = \beta_f V_f dT - \kappa_f V_f dP\]
@@ -421,7 +421,6 @@ en:
 Dit is de tweede vergelijking van Ehrenfest.
 
 \begin{definition}[Lambda-transities]
-    Een lambda-transitie is een 2e-orde fase-overgang waarbij de warmtecapaciteit \(C_P\) divergeert, maar \(\beta\) en \(\kappa\) niet. De vergelijking van Ehrenfest is dan niet meer geldig, omdat de teller oneindig wordt. 
+    Een lambda-transitie is een 2e-orde fase-overgang waarbij de warmtecapaciteit \(C_P\) divergeert, maar \(\beta\) en \(\kappa\) niet. De vergelijking van Ehrenfest is dan niet meer geldig, omdat de teller oneindig wordt.
     \(T, P, G, S \) en \(V\) zijn constant, maar \(C_P, \beta\) en \(\kappa\) zijn oneindig groot.
 \end{definition}
-

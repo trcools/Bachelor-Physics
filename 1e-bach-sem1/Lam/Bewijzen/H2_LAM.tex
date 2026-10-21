@@ -25,15 +25,15 @@
 \end{proof}
 \begin{proof}(ii)
     Stel niet uniek, dan \(\exists v', v'': v + v' = 0_V \quad \text{en} \quad v + v'' = 0_V\).
-    
+
     We vertrekken uit:
     \begin{align*}
-        v + v' 
+        v + v'
         &= 0_V \\
         \implies
         v + v'+ v'' &= v'' \\
         (v+v'')+v' &= v'' \\
-        v'&=v'' 
+        v'&=v''
     \end{align*}
 \end{proof}
 \begin{proof}(iii)
@@ -45,17 +45,17 @@
 \end{proof}
 \begin{proof}(iv)
     \(
-        0_V 
-        = \lambda v + (- \lambda v) 
-        = \lambda(v + (-v)) 
+        0_V
+        = \lambda v + (- \lambda v)
+        = \lambda(v + (-v))
         = \lambda 0_V
     \)
 \end{proof}
 \begin{proof}(v)
     \(
-        0_V 
-        = \lambda v + (- \lambda v) 
-        = (\lambda + (-\lambda))v 
+        0_V
+        = \lambda v + (- \lambda v)
+        = (\lambda + (-\lambda))v
         =  0_K v
     \)
 \end{proof}
@@ -65,14 +65,14 @@
         (1 + (-1))v &= 0_V \\
         (1)v + (-1)v &= 0_V \\
         -v + v + (-1)v &= -v \\
-        (-1)v = -v 
+        (-1)v = -v
     \end{align*}
 \end{proof}
 \begin{proof}(vii)
     stel \(\lambda \neq 0_K: \exists \lambda^{-1}: \lambda \lambda^{-1} = \lambda^{-1} \lambda = 1\)
 
     Dan:
-    \(\lambda v = 0 
+    \(\lambda v = 0
     \implies \lambda^{-1}\lambda v = \lambda^{-1}0 = 0
         \implies v = 0
     \)
@@ -107,7 +107,7 @@
 
     \(W\) is inderdaad een deelruimte.
 
-    \([\Rightarrow]\) Omgekeerd: Als \(W\) een deelruimte is van \(V\) dan voldoet 
+    \([\Rightarrow]\) Omgekeerd: Als \(W\) een deelruimte is van \(V\) dan voldoet
     \( \lambda_1 w_1 + \lambda_2 w_2 \in W .\)
 
     Dit is per definitie van de uniciteit voor een vectorruimte.
@@ -126,16 +126,16 @@
     \([\Rightarrow]\) Stel \(S \subseteq V\), dan is \(\operatorname{span}(S) \neq \emptyset\) een deelruimte van \(V\) als \(\operatorname{span}(S)\) een vectorruimte is.
 
     Om aan te tonen dat \(\operatorname{span}(S)\) een vectorruimte is moet die voldoen aan \(\lambda_1 w_1 + \lambda_2 w_2 \in \operatorname{span}(S)\) met \(w_1,w_2 \in \operatorname{span}(S) \)
-    en \(\lambda_1,\lambda_2 \in K\). 
+    en \(\lambda_1,\lambda_2 \in K\).
 
     Met \(w_1 = \sum_{i} \nu_i s_i\) en \(w_2 = \sum_{j} \mu_j s_j\).
 
-    Dan: 
-    \(\lambda_1 w_1 + \lambda_2 w_2 = \lambda_1 \sum_{i} \nu_i s_i + \lambda_2 \sum_{j} \mu_j s_j = \sum_{k=i+j} \gamma_k s_k \in \operatorname{span}(S) \).    
+    Dan:
+    \(\lambda_1 w_1 + \lambda_2 w_2 = \lambda_1 \sum_{i} \nu_i s_i + \lambda_2 \sum_{j} \mu_j s_j = \sum_{k=i+j} \gamma_k s_k \in \operatorname{span}(S) \).
 \end{proof}
 \begin{proof}(ii)
     \([\Rightarrow]\) Als \(S \subseteq T\) dan is \(\operatorname{span}(S) = \sum_{i} \lambda_i s_i \in S \)
-    en \(\operatorname{span}(T) = \left[\sum_{i} \lambda_i s_i + \sum_{i} \mu_i t_i \right] \in T\) 
+    en \(\operatorname{span}(T) = \left[\sum_{i} \lambda_i s_i + \sum_{i} \mu_i t_i \right] \in T\)
     waarbij \(t_i \notin S\) maar wel \(t_i \in T\). Bijgevolg is \(\operatorname{span}(S) \subseteq \operatorname{span}(T)\).
 \end{proof}
 
@@ -157,7 +157,7 @@
     Dit wil zeggen dat \(\mu_1 v_1 + \mu_2 v_2 = 0\) met \(v_1, v_2 \neq 0\) en \(\mu_1, \mu_2 \in K\).
 
     Er volgt dat \(v_1 = -\frac{\mu_2}{\mu_1}v_2\).
-    
+
     \([\Leftarrow]\) Omgekeerd \(v_1 = c v_2\) een veelvoud;
     dan kunnen we op dezelfde manier redeneren dat nu \(v_1 - c v_2 = 0\) waarbij beide voorfactoren niet gelijk zijn aan 0.
 \end{proof}
@@ -169,7 +169,7 @@
 \end{stelling}
 \begin{proof}
     \([\Rightarrow]\) Stel $\mathcal{B} \subseteq V$ een basis voor $V$, per definitie is \(\mathcal{B} \) voortbrengend voor \(V\).
-    
+
     Uniciteit: stel \(v = \sum_{i}^{n} \mu_i b_i = \sum_{i}^{n} \nu_i b_i\) met minstens één \( \mu_i \neq 0 \neq \nu_i\) op twee verschillende manieren te schrijven.
     Dan geldt:
     \[
@@ -200,20 +200,20 @@
     \]
     Omdat $S$ de ruimte voortbrengt en $U \subseteq V$, kan elke $u_i$ geschreven worden als een lineaire combinatie van $S$:
     \[
-    u_i = \sum_{j=1}^{n} \mu_{ij} s_j \quad \text{voor } i \in \{1, \dots, n+1\} 
+    u_i = \sum_{j=1}^{n} \mu_{ij} s_j \quad \text{voor } i \in \{1, \dots, n+1\}
     \]
     We vullen dit in onze oorspronkelijke som in:
     \[
-        \sum_{i=1}^{n+1} \gamma_i u_i 
-        = \sum_{i=1}^{n+1} \gamma_i \left( \sum_{j=1}^{n} \mu_{ij} s_j \right) 
-        = \sum_{i=1}^{n+1} \sum_{j=1}^{n} \gamma_i \mu_{ij} s_j 
+        \sum_{i=1}^{n+1} \gamma_i u_i
+        = \sum_{i=1}^{n+1} \gamma_i \left( \sum_{j=1}^{n} \mu_{ij} s_j \right)
+        = \sum_{i=1}^{n+1} \sum_{j=1}^{n} \gamma_i \mu_{ij} s_j
         = \sum_{j=1}^{n} \left( \sum_{i=1}^{n+1} \gamma_i \mu_{ij} \right) s_j = 0
     \]
     Om te zorgen dat deze totale lineaire combinatie nul wordt,
     is het voldoende als de coëfficiënt voor elke $s_j$ gelijk is aan nul.
     We zoeken dus oplossingen $\gamma_i$ zodanig dat:
     \[ \sum_{i=1}^{n+1} \gamma_i \mu_{ij} = 0 \quad \text{voor elke } j \in \{1, \dots, n\} \]
-    Dit levert een homogeen stelsel op van $n$ vergelijkingen ($\forall j$) in $n+1$ onbekenden (de $\gamma_i$'s). 
+    Dit levert een homogeen stelsel op van $n$ vergelijkingen ($\forall j$) in $n+1$ onbekenden (de $\gamma_i$'s).
     Omdat dit stelsel meer onbekenden dan vergelijkingen heeft,
     heeft het gegarandeerd minstens één vrije variabele.
     Er bestaat dus een niet-triviale oplossing (minstens één $\gamma_i \neq 0$).
@@ -229,17 +229,17 @@
 \begin{proof}
     Als \(T\) niet voortbrengend is, dan kunnen we deze aanvullen met een lineair onafhankelijk element uit \(S\)
     tot de nieuwe verzameling \(\mathcal{B}\) wel voortbrengend is en dus een basis vormt waarbij \(T \subseteq \mathcal{B}\).
-    
-    Stel dat dit niet zo is, dan zou \(T \cup s \in S\) lineair afhankelijk zijn. 
+
+    Stel dat dit niet zo is, dan zou \(T \cup s \in S\) lineair afhankelijk zijn.
     Dan zouden we \(\sum \nu_i t_i + \mu_j s = 0\) kunnen vinden waarbij niet alle \(\nu_i, \mu_j = 0\),
-    en \(s = -\sum \frac{\nu_i}{\mu_j} t_i \in \operatorname{Span}(T)\). 
+    en \(s = -\sum \frac{\nu_i}{\mu_j} t_i \in \operatorname{Span}(T)\).
     Omdat \(s \in S\) willekeurig gekozen werd betekend dit dat \(S \subseteq\operatorname{Span}(T)\).
 
-    \(\implies S = T\), dus \(T\) voortbrengend. Dit is in strijd met het gestelde. 
+    \(\implies S = T\), dus \(T\) voortbrengend. Dit is in strijd met het gestelde.
 
     Is \(S\) niet lineair onafhankelijk,
     dan vinden we een combinatie \(s_i = -\sum_{j} \frac{\mu_j}{\mu_i}s_j\).
-    Waarbij deze \(s_i\) verwijderd kan worden zonder de voortbrengendheid te schenden. 
+    Waarbij deze \(s_i\) verwijderd kan worden zonder de voortbrengendheid te schenden.
     Deze actie kan opnieuw gedaan worden zolang \(S\) lineair afhankelijk is.
 \end{proof}
 
@@ -314,7 +314,7 @@
     Stel dat \(w = w_1 + w_2 = w_1' + w_2' \implies w_1 - w_1' = w_2' - w_2 \in W_1 \cap W_2\).
 
     Doordat \( W_1 \cap W_2 = 0\) is \(w_1 - w_1' =0 \implies w_1 = w_1'\) en \( w_2' - w_2= 0 \implies w_2 = w_2'\).
-    
+
     Dus \(w = w_1 + w_2\) is uniek.
     Wegens \(W = W_1 + W_2\) is \(W = W_1 \oplus W_2\)
 \end{proof}
@@ -343,8 +343,8 @@
     Uit \(W = W_1 + W_2\) volgt \(\forall w \in W: w = \sum_{i}^{n} \mu_i b_i + \sum_{j}^{m} \nu_j c_j\).
 \end{proof}
 \begin{proof}(ii)
-    \(\dim(W)= |\mathcal{B} \cup \mathcal{C}| \) het aantal elementen van de basis voor \(W\), doordat \(\mathcal{B} \cap \mathcal{C} = \{0\}\).  
-    
+    \(\dim(W)= |\mathcal{B} \cup \mathcal{C}| \) het aantal elementen van de basis voor \(W\), doordat \(\mathcal{B} \cap \mathcal{C} = \{0\}\).
+
     \(\dim(W)=  \dim(\mathcal{B} \cup \mathcal{C}) = \dim(\mathcal{B}) + \dim(\mathcal{C}) = \dim W_1 + \dim W_2. \)
 \end{proof}
 
@@ -392,8 +392,8 @@
     We tonen nu aan dat de verzameling $\mathcal{B} = \{u_1, \dots, u_k, v_1, \dots, v_r, w_1, \dots, w_s\}$ een basis vormt voor de somruimte $W_1 + W_2$.
 
     $\mathcal{B}$ is voortbrengend voor $W_1 + W_2$:
-    Zij $x \in W_1 + W_2$. 
-    
+    Zij $x \in W_1 + W_2$.
+
     Per definitie $\exists x_1 \in W_1$ en $x_2 \in W_2: x = x_1 + x_2$.
     Omdat $x_1 \in \operatorname{span}(\mathcal{B}_1)$ en $x_2 \in \operatorname{span}(\mathcal{B}_2)$:
     $$ x_1 = \sum_{i=1}^k \alpha_i u_i + \sum_{j=1}^r \beta_j v_j \quad \text{en} \quad x_2 = \sum_{i=1}^k \alpha'_i u_i + \sum_{m=1}^s \gamma_m w_m $$
@@ -403,14 +403,14 @@
 
     $\mathcal{B}$ is lineair onafhankelijk:
     Stel dat er scalairen $\alpha_i, \beta_j, \gamma_m \in K$ bestaan zodanig dat:
-    $$ \sum_{i=1}^k \alpha_i u_i + \sum_{j=1}^r \beta_j v_j + \sum_{m=1}^s \gamma_m w_m = 0 
+    $$ \sum_{i=1}^k \alpha_i u_i + \sum_{j=1}^r \beta_j v_j + \sum_{m=1}^s \gamma_m w_m = 0
      \implies \sum_{i=1}^k \alpha_i u_i + \sum_{j=1}^r \beta_j v_j = -\sum_{m=1}^s \gamma_m w_m $$
-    Het linkerlid is een element van $W_1$ (combinatie uit $\mathcal{B}_1$). Het rechterlid is een element van $W_2$ (combinatie uit $\mathcal{B}_2$). 
+    Het linkerlid is een element van $W_1$ (combinatie uit $\mathcal{B}_1$). Het rechterlid is een element van $W_2$ (combinatie uit $\mathcal{B}_2$).
     Dit betekent dat de vector $y = -\sum_{m=1}^s \gamma_m w_m$ tot de doorsnede $W_1 \cap W_2$ behoort.
     Omdat $y \in W_1 \cap W_2$:
-    $$ y = -\sum_{m=1}^s \gamma_m w_m = \sum_{i=1}^k \delta_i u_i 
+    $$ y = -\sum_{m=1}^s \gamma_m w_m = \sum_{i=1}^k \delta_i u_i
     \implies \sum_{i=1}^k \delta_i u_i + \sum_{m=1}^s \gamma_m w_m = 0 $$
-    Aangezien $\{u_1, \dots, u_k, w_1, \dots, w_s\} = \mathcal{B}_2$ een basis is voor $W_2$, 
+    Aangezien $\{u_1, \dots, u_k, w_1, \dots, w_s\} = \mathcal{B}_2$ een basis is voor $W_2$,
     zijn deze vectoren lineair onafhankelijk, $\implies \gamma_m = 0$ voor alle $m \in \{1, \dots, s\}$.
     Als we $\gamma_m = 0$ invullen in onze eerste combinatie, houden we over:
     $$ \sum_{i=1}^k \alpha_i u_i + \sum_{j=1}^r \beta_j v_j = 0 $$
@@ -428,7 +428,7 @@
 \end{proof}
 
 \begin{lemma}[2.5.8]
-    Zij $W, U$ deelruimten van een $K$-vectorruimte $V$. Als $V = W + U$ dan bestaat er een deelruimte $Y \subseteq U$ zodat $V = W \oplus Y$. 
+    Zij $W, U$ deelruimten van een $K$-vectorruimte $V$. Als $V = W + U$ dan bestaat er een deelruimte $Y \subseteq U$ zodat $V = W \oplus Y$.
     In het bijzonder heeft elke deelruimte $W \subseteq V$ een complement in $V$.
 \end{lemma}
 \begin{proof}
@@ -439,7 +439,7 @@
 
     Neem \(\mathcal{B}_1 = \mathcal{B}_0 \cup (w_1,\dots,w_{n-k}) \) een basis voor \(W\), \(\mathcal{B}_2 = \mathcal{B}_0 \cup (z_1,\dots,z_{m-k}) \) een basis voor \(U\) waarbij deze basissen de uitgebreide basissen zijn van \(\mathcal{B}_0\).
 
-    Definieer nu de deelruimte $Y := \operatorname{span}(z_1, \dots, z_{m-k})$. 
+    Definieer nu de deelruimte $Y := \operatorname{span}(z_1, \dots, z_{m-k})$.
     Omdat alle $z_i \in U$, geldt dat $Y \subseteq U$. We tonen aan dat $V = W \oplus Y$.
 
     Kies een willekeurige vector $x \in W \cap Y$.
@@ -453,12 +453,12 @@
     \[ \sum_{i=1}^{k} \mu_i v_i + \sum_{j=1}^{n-k} \nu_j w_j = \sum_{l=1}^{m-k} \lambda_l z_l \implies \sum_{i=1}^{k} \mu_i v_i + \sum_{j=1}^{n-k} \nu_j w_j - \sum_{l=1}^{m-k} \lambda_l z_l = 0 \]
     Wegens (Stelling 2.5.6) is:
     \[ \mathcal{B} = \mathcal{B}_1 \cup \{z_1, \dots, z_{m-k}\} = \{v_1, \dots, v_k, w_1, \dots, w_{n-k}, z_1, \dots, z_{m-k}\} \]
-    een basis voor $W + U = V$. 
+    een basis voor $W + U = V$.
     \( \implies \mu_i = 0, \quad \nu_j = 0, \quad \lambda_l = 0 \).
     $\implies x = 0$, wat bewijst dat $W \cap Y = \{0\}$.
 
     \(\implies V = \operatorname{span}(\mathcal{B}) = \operatorname{span}(\mathcal{B}_1) + \operatorname{span}(z_1, \dots, z_{m-k}) = W + Y \).
-    
+
     Bijgevolg is \(V = W \oplus Y\).
 \end{proof}
 
@@ -486,13 +486,13 @@
 
     (V6) Triviaal met \(\lambda = 1\).
 
-    (V7) \((\lambda + \mu )\cdot (a_1, \dots, a_m) 
+    (V7) \((\lambda + \mu )\cdot (a_1, \dots, a_m)
     =  ((\lambda + \mu )a_1, \dots, (\lambda + \mu )a_m)
     = (\lambda a_1 + \mu a_1, \dots, \lambda a_m + \mu a_m)
     = \lambda \cdot (a_1, \dots, a_m) +  \mu \cdot (a_1, \dots, a_m)\)
 
-    en 
-    
+    en
+
     \(
     \mu \cdot((a_1, \dots, a_m) + (b_1, \dots, b_m))
     = \mu \cdot (a_1 + b_1, \dots, a_m + b_m)

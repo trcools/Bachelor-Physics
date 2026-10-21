@@ -44,13 +44,16 @@ from personalized_layout import legend_dedup
 EPS = 1e-12
 TOL = 1e-9
 
+
 def f_radial(r, mu):
     """dr/dt = μr + r^3 - r^5."""
     return mu * r + r**3 - r**5
 
+
 def df_radial(r, mu):
     """∂/∂r (μr + r^3 - r^5) = μ + 3r^2 - 5r^4."""
-    return mu + 3*r**2 - 5*r**4
+    return mu + 3 * r**2 - 5 * r**4
+
 
 def jacobian(fun, x, args=(), h=1e-6):
     """
@@ -62,11 +65,13 @@ def jacobian(fun, x, args=(), h=1e-6):
     J = np.zeros((m, n), dtype=float)
 
     for i in range(n):
-        dx = np.zeros(n); dx[i] = h
+        dx = np.zeros(n)
+        dx[i] = h
         fp = np.asarray(fun(x + dx, *args), dtype=float)
         fm = np.asarray(fun(x - dx, *args), dtype=float)
-        J[:, i] = (fp - fm) / (2*h)
+        J[:, i] = (fp - fm) / (2 * h)
     return J
+
 
 # ============================================================
 # Classification and grouping of equilibria
@@ -82,15 +87,17 @@ def find_roots_1D(mu, include_negative=True, r_max=3.0, n=5000, tol=1e-12, uniq=
 
     roots = [0.0]
     for i in range(n - 1):
-        a, b = r_grid[i], r_grid[i+1]
-        fa, fb = f_grid[i], f_grid[i+1]
+        a, b = r_grid[i], r_grid[i + 1]
+        fa, fb = f_grid[i], f_grid[i + 1]
 
         if abs(fa) < tol:
             roots.append(a)
             continue
 
         if fa * fb < 0:
-            sol = root_scalar(lambda r: f_radial(r, mu), bracket=(a, b), method="brentq")
+            sol = root_scalar(
+                lambda r: f_radial(r, mu), bracket=(a, b), method="brentq"
+            )
             if sol.converged:
                 roots.append(float(sol.root))
 
@@ -107,6 +114,7 @@ def find_roots_1D(mu, include_negative=True, r_max=3.0, n=5000, tol=1e-12, uniq=
         out = [r for r in out if r >= -tol]
     return out
 
+
 def classify_stability_1d(r_eq, mu, tol=1e-10):
     """
     1D stability of an equilibrium r_eq for r' = f(r,μ):
@@ -117,6 +125,7 @@ def classify_stability_1d(r_eq, mu, tol=1e-10):
     if abs(stability) < tol:
         return "neutral"
     return "stable" if stability < 0 else "unstable"
+
 
 def equilibrium_classification(eigvals):
     """
@@ -148,46 +157,47 @@ def equilibrium_classification(eigvals):
     real_eigvals = np.real(eigvals)
     im_eigvals = np.imag(eigvals)
     has_complex = np.any(np.abs(im_eigvals) > tol)
-    
+
     # Count the number 'n' of positive, negative and zero eigenvalues
-    n_pos = np.sum(real_eigvals >  tol)
+    n_pos = np.sum(real_eigvals > tol)
     n_neg = np.sum(real_eigvals < -tol)
     n_zero = len(eigvals) - n_pos - n_neg
-    
+
     # 1) All real parts < 0  -> stable
     if n_pos == 0 and n_zero == 0:
         return "stable spiral" if has_complex else "stable node"
-    
+
     # 2) At least one > 0, none negative -> purely unstable
     if n_pos > 0 and n_neg == 0 and n_zero == 0:
         return "unstable spiral" if has_complex else "unstable node"
-    
+
     # 3) Both positive and negative real parts -> saddle / saddle-focus
     if n_pos > 0 and n_neg > 0:
         return "saddle spiral" if has_complex else "saddle point"
-    
+
     # 4) At least one eigenvalue ≈ 0, all real -> pitchfork
     if n_zero > 0 and not has_complex and n_pos == 0:
         return "pitchfork bifurcation"
-    
+
     # 5) At least one eigenvalue ≈ 0, complex pair present -> Hopf
     if n_zero > 0 and has_complex and n_pos == 0:
         return "subcritical Hopf bifurcation"
     # 6) Exotic / other cases
     return "other equilibrium"
 
+
 def classify_stability_2d(r_eq, mu, omega=1.0):
     """
     2D stability of a limit cycle at radius r_eq for the Cartesian system
     using equilibrium_classification().
-    
+
     For a limit cycle, the eigenvalues are:
       λ = df_radial(r_eq, mu) ± iω
-    
+
     Special cases:
     - r ≈ 0 with Re(λ) ≈ 0: Hopf bifurcation at origin
     - r > 0 with Re(λ) ≈ 0: Saddle-node bifurcation of limit cycles
-    
+
     Parameters
     ----------
     r_eq : float
@@ -196,29 +206,30 @@ def classify_stability_2d(r_eq, mu, omega=1.0):
         System parameter
     omega : float
         Angular velocity (default 1.0)
-    
+
     Returns
     -------
     classification : str
         Equilibrium type from equilibrium_classification()
     """
     tol = TOL
-    
-    if r_eq <= EPS: 
+
+    if r_eq <= EPS:
         # Origin: eigenvalues are μ ± iω
-        eigvals = np.array([mu + 1j*omega, mu - 1j*omega])
+        eigvals = np.array([mu + 1j * omega, mu - 1j * omega])
         return equilibrium_classification(eigvals)
 
     # Limit cycle: eigenvalues are df_radial(r_eq, mu) ± iω
     # Numerical derivative using Jacobian
     lam_radial = jacobian(lambda r_arr: [f_radial(r_arr[0], mu)], [r_eq])[0, 0]
-        
+
     # Check if this is a saddle-node bifurcation (f'(r) ≈ 0 at r > 0)
     if abs(lam_radial) < tol:
         # Saddle-node: two limit cycles collide
         return "saddle-node bifurcation"
-    
+
     return "stable limit cycle" if lam_radial < 0 else "unstable limit cycle"
+
 
 def sample_equilibria(mu_values, include_negative=True):
     """Sample equilibria and split into stable/unstable (neutral kept separately)."""
@@ -230,17 +241,21 @@ def sample_equilibria(mu_values, include_negative=True):
         for r in find_roots_1D(mu, include_negative=include_negative):
             st = classify_stability_1d(r, mu)
             if st == "stable":
-                stable_mu.append(mu); stable_r.append(r)
+                stable_mu.append(mu)
+                stable_r.append(r)
             elif st == "unstable":
-                unstable_mu.append(mu); unstable_r.append(r)
+                unstable_mu.append(mu)
+                unstable_r.append(r)
             else:
-                neutral_mu.append(mu); neutral_r.append(r)
+                neutral_mu.append(mu)
+                neutral_r.append(r)
 
     return {
-        "stable":   (np.array(stable_mu),   np.array(stable_r)),
+        "stable": (np.array(stable_mu), np.array(stable_r)),
         "unstable": (np.array(unstable_mu), np.array(unstable_r)),
-        "neutral":  (np.array(neutral_mu),  np.array(neutral_r)),
+        "neutral": (np.array(neutral_mu), np.array(neutral_r)),
     }
+
 
 def get_groups(dim="1D"):
     """
@@ -260,22 +275,42 @@ def get_groups(dim="1D"):
     """
     if dim not in {"1D", "2D"}:
         raise ValueError(f"dim must be '1D' or '2D', got {dim!r}")
-        
-    
-    base_styles = {"stable node": dict(marker="o", s=10, label="stable node"),
-                   "stable spiral": dict(marker="o", s=10, label="stable spiral"),
-                   "unstable node": dict(marker="x", s=10, label="unstable node"),
-                   "unstable spiral": dict(marker="x", s=10, label="unstable spiral"),
-                   "saddle point": dict(marker="o", s=10, label="saddle point"),
-                   "saddle spiral": dict(marker="o", s=10, label="saddle spiral"),
-                   "saddle-node bifurcation": dict(marker="^", s=50, facecolors="#00bcd4", edgecolors="black", label="saddle-node bifurcation"),
-                   "pitchfork bifurcation": dict(marker="D", s=50, facecolors="blue", edgecolors="blue",label="pitchfork bifurcation"),
-                   "Hopf bifurcation": dict(marker="D", s=50, facecolors="#ff9800", edgecolors="black", label="Hopf bifurcation"),
-                   "other equilibrium": dict(marker="^", color="gray", s=20, label="other / unspecified"),
-                   "stable limit cycle": dict(marker="o", s=12, label="stable limit cycle"),
-                   "unstable limit cycle": dict(marker="x", s=12, label="unstable limit cycle")
-                   }
-    
+
+    base_styles = {
+        "stable node": dict(marker="o", s=10, label="stable node"),
+        "stable spiral": dict(marker="o", s=10, label="stable spiral"),
+        "unstable node": dict(marker="x", s=10, label="unstable node"),
+        "unstable spiral": dict(marker="x", s=10, label="unstable spiral"),
+        "saddle point": dict(marker="o", s=10, label="saddle point"),
+        "saddle spiral": dict(marker="o", s=10, label="saddle spiral"),
+        "saddle-node bifurcation": dict(
+            marker="^",
+            s=50,
+            facecolors="#00bcd4",
+            edgecolors="black",
+            label="saddle-node bifurcation",
+        ),
+        "pitchfork bifurcation": dict(
+            marker="D",
+            s=50,
+            facecolors="blue",
+            edgecolors="blue",
+            label="pitchfork bifurcation",
+        ),
+        "Hopf bifurcation": dict(
+            marker="D",
+            s=50,
+            facecolors="#ff9800",
+            edgecolors="black",
+            label="Hopf bifurcation",
+        ),
+        "other equilibrium": dict(
+            marker="^", color="gray", s=20, label="other / unspecified"
+        ),
+        "stable limit cycle": dict(marker="o", s=12, label="stable limit cycle"),
+        "unstable limit cycle": dict(marker="x", s=12, label="unstable limit cycle"),
+    }
+
     groups = {}
 
     if dim == "2D":
@@ -286,7 +321,7 @@ def get_groups(dim="1D"):
                 "v2": [],
                 "style": style.copy(),
             }
-    else: # dim == "1D"
+    else:  # dim == "1D"
         for key, style in base_styles.items():
             groups[key] = {
                 "c": [],
@@ -296,9 +331,11 @@ def get_groups(dim="1D"):
 
     return groups
 
+
 # ============================================================
 # QUESTION 2.1: 1D Bifurcation Analysis
 # ============================================================
+
 
 def saddle_node_cycles_numeric(mu_range=(-0.3, -0.2), omega=1.0, r_max=1.5, n_mu=1000):
     """
@@ -329,13 +366,16 @@ def saddle_node_cycles_numeric(mu_range=(-0.3, -0.2), omega=1.0, r_max=1.5, n_mu
         return np.array([f_radial(r, mu), df_radial(r, mu)])
 
     # Use the general numerical jacobian function
-    sol = root(F, x0=np.array([r0, mu0]), 
-               jac=lambda z: jacobian(F, z), 
-               method="hybr", options={'maxfev': 2000})
+    sol = root(
+        F,
+        x0=np.array([r0, mu0]),
+        jac=lambda z: jacobian(F, z),
+        method="hybr",
+        options={"maxfev": 2000},
+    )
     if not sol.success:
         # Try without jacobian
-        sol = root(F, x0=np.array([r0, mu0]), method="hybr", 
-                  options={'maxfev': 2000})
+        sol = root(F, x0=np.array([r0, mu0]), method="hybr", options={"maxfev": 2000})
         if not sol.success:
             raise RuntimeError(f"SN root failed: {sol.message}")
 
@@ -346,11 +386,13 @@ def saddle_node_cycles_numeric(mu_range=(-0.3, -0.2), omega=1.0, r_max=1.5, n_mu
     typ = classify_stability_2d(r_sn, mu_sn, omega=omega)
     return float(r_sn), float(mu_sn), typ
 
+
 def hopf_origin_numeric(omega=1.0, mu_bracket=(-1.0, 1.0), hJ=1e-6):
     """
     Hopf at origin numerically:
     g(mu) = max Re(eig(J(0,0;mu))). Find g(mu)=0 with brentq.
     """
+
     def rhs_xy(xy, mu, omega):
         return np.array(cartesian_rhs(0.0, xy, mu, omega=omega), dtype=float)
 
@@ -383,18 +425,19 @@ def hopf_origin_numeric(omega=1.0, mu_bracket=(-1.0, 1.0), hJ=1e-6):
     typ = classify_stability_2d(0.0, mu_h, omega=omega)
     return 0.0, mu_h, typ
 
+
 def bifurcation_points(omega=1.0):
     """
     Compute bifurcation markers numerically and classify them.
 
     - Saddle-node of cycles: find numerically where f(r,mu)=0 and df/dr=0 for r>0.
     - Hopf at origin: find numerically where Re(eigs) = 0 at origin.
-    
+
     Parameters
     ----------
     omega : float
         Angular velocity for 2D system classification (default 1.0)
-    
+
     Returns
     -------
     list of dict
@@ -402,10 +445,12 @@ def bifurcation_points(omega=1.0):
     """
     # Get styles for different equilibrium types
     groups = get_groups(dim="1D")
-    
+
     # --- Saddle-node: numerical search ---
-    r_sn, mu_sn, type_sn = saddle_node_cycles_numeric(mu_range=(-0.3, -0.2), omega=omega)
-    
+    r_sn, mu_sn, type_sn = saddle_node_cycles_numeric(
+        mu_range=(-0.3, -0.2), omega=omega
+    )
+
     # Get style for this type
     if type_sn in groups:
         style_sn = groups[type_sn]["style"]
@@ -415,8 +460,10 @@ def bifurcation_points(omega=1.0):
         marker_sn, color_sn = "^", "#00bcd4"
 
     # --- Hopf at origin: numerical search ---
-    r_hopf, mu_hopf, type_hopf = hopf_origin_numeric(omega=omega, mu_bracket=(-0.5, 0.5))
-    
+    r_hopf, mu_hopf, type_hopf = hopf_origin_numeric(
+        omega=omega, mu_bracket=(-0.5, 0.5)
+    )
+
     # Get style for this type
     if type_hopf in groups:
         style_hopf = groups[type_hopf]["style"]
@@ -426,16 +473,36 @@ def bifurcation_points(omega=1.0):
         marker_hopf, color_hopf = "D", "#ff9800"
 
     return [
-        dict(mu=mu_sn, type=type_sn, r_eq=r_sn,
-             label=f"{type_sn} ",
-             color=color_sn, marker=marker_sn, linestyle="--"),
-        dict(mu=mu_hopf, type=type_hopf, r_eq=r_hopf,
-             label=f"{type_hopf}",
-             color=color_hopf, marker=marker_hopf, linestyle=":")]
+        dict(
+            mu=mu_sn,
+            type=type_sn,
+            r_eq=r_sn,
+            label=f"{type_sn} ",
+            color=color_sn,
+            marker=marker_sn,
+            linestyle="--",
+        ),
+        dict(
+            mu=mu_hopf,
+            type=type_hopf,
+            r_eq=r_hopf,
+            label=f"{type_hopf}",
+            color=color_hopf,
+            marker=marker_hopf,
+            linestyle=":",
+        ),
+    ]
 
-def plot_bifurcation_1d(mu_range=(-3, 3), r_range=(-2, 2),
-                        n_mu=3000, include_negative=True,
-                        ax=None, show_bif_points=True, legend=True):
+
+def plot_bifurcation_1d(
+    mu_range=(-3, 3),
+    r_range=(-2, 2),
+    n_mu=3000,
+    include_negative=True,
+    ax=None,
+    show_bif_points=True,
+    legend=True,
+):
     """Bifurcation diagram: equilibria r vs parameter μ."""
     mu_min, mu_max = mu_range
     mu_values = np.linspace(mu_min, mu_max, n_mu)
@@ -455,11 +522,28 @@ def plot_bifurcation_1d(mu_range=(-3, 3), r_range=(-2, 2),
     if show_bif_points:
         for b in bifurcation_points():
             ax.axvline(b["mu"], color="k", ls=b["linestyle"], lw=1.8)
-            ax.scatter([b["mu"]], [b["r_eq"]], color=b["color"], marker=b["marker"],
-                       s=80, edgecolors="black", linewidths=1.2, label=b["label"], zorder=10)
+            ax.scatter(
+                [b["mu"]],
+                [b["r_eq"]],
+                color=b["color"],
+                marker=b["marker"],
+                s=80,
+                edgecolors="black",
+                linewidths=1.2,
+                label=b["label"],
+                zorder=10,
+            )
             if include_negative and b["r_eq"] != 0:
-                ax.scatter([b["mu"]], [-b["r_eq"]], color=b["color"], marker=b["marker"],
-                           s=80, edgecolors="black", linewidths=1.2, zorder=10)
+                ax.scatter(
+                    [b["mu"]],
+                    [-b["r_eq"]],
+                    color=b["color"],
+                    marker=b["marker"],
+                    s=80,
+                    edgecolors="black",
+                    linewidths=1.2,
+                    zorder=10,
+                )
 
     ax.set_xlim(mu_min, mu_max)
     if r_range is not None:
@@ -471,43 +555,65 @@ def plot_bifurcation_1d(mu_range=(-3, 3), r_range=(-2, 2),
     ax.grid(True, alpha=0.3)
 
     if legend:
-        legend_dedup(ax, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.15),
-                    frameon=True, fontsize=10, edgecolor='black')
-    
-    plt.tight_layout(rect=[0, -0.15, 1, 1]) 
+        legend_dedup(
+            ax,
+            loc="lower center",
+            ncol=4,
+            bbox_to_anchor=(0.5, -0.15),
+            frameon=True,
+            fontsize=10,
+            edgecolor="black",
+        )
+
+    plt.tight_layout(rect=[0, -0.15, 1, 1])
 
     return fig, ax
+
 
 def plot_eigenvalues_vs_mu(mu_range=(-0.3, 0.2), n_points=800, omega=1.0):
     """Plot stability (eigenvalues) vs μ for all equilibria."""
     mu_min, mu_max = mu_range
     mu_vals = np.linspace(mu_min, mu_max, n_points)
-    
+
     MU_st, LAM_st = [], []
     MU_un, LAM_un = [], []
-    
+
     for mu in mu_vals:
         for r_eq in find_roots_1D(mu, include_negative=False):
             if r_eq > 1e-12:
                 # Floquet exponent (radial): numerical derivative
-                lam_radial = jacobian(lambda r_arr: [f_radial(r_arr[0], mu)], [r_eq])[0, 0]
+                lam_radial = jacobian(lambda r_arr: [f_radial(r_arr[0], mu)], [r_eq])[
+                    0, 0
+                ]
                 st = classify_stability_1d(r_eq, mu)
                 if st == "stable":
-                    MU_st.append(mu); LAM_st.append(lam_radial)
+                    MU_st.append(mu)
+                    LAM_st.append(lam_radial)
                 elif st == "unstable":
-                    MU_un.append(mu); LAM_un.append(lam_radial)
-    
+                    MU_un.append(mu)
+                    LAM_un.append(lam_radial)
+
     fig, ax = plt.subplots(figsize=(11, 6))
-    
+
     # Origin line
-    ax.plot(mu_vals, mu_vals, lw=2.5, color="darkblue", label=r"Origin: $\mathrm{Re}(\lambda)=\mu$")
-    
+    ax.plot(
+        mu_vals,
+        mu_vals,
+        lw=2.5,
+        color="darkblue",
+        label=r"Origin: $\mathrm{Re}(\lambda)=\mu$",
+    )
+
     # Stable limit cycles (blue dots)
-    ax.scatter(MU_st, LAM_st, s=10, alpha=0.4, color="blue", label="Stable limit cycles ")
-    
+    ax.scatter(
+        MU_st, LAM_st, s=10, alpha=0.4, color="blue", label="Stable limit cycles "
+    )
+
     # Unstable limit cycles (red dots)
-    ax.scatter(MU_un, LAM_un, s=10, alpha=0.4, color="red", label="Unstable limit cycles ")
-    
+    ax.scatter(
+        MU_un, LAM_un, s=10, alpha=0.4, color="red", label="Unstable limit cycles "
+    )
+
     # Stability boundary
     ax.axhline(0, ls="--", lw=1.5, color="black", alpha=0.5, label="Stability boundary")
 
@@ -518,16 +624,24 @@ def plot_eigenvalues_vs_mu(mu_range=(-0.3, 0.2), n_points=800, omega=1.0):
     ax.set_xlim(mu_min, mu_max)
     ax.set_xlabel(r"$\mu$")
     ax.set_ylabel(r"Real eigenvalue $\lambda_r$")
-    
+
     ax.set_title(r"Stability of Equilibria when varying $\mu$ with $\omega=1.0$ fixed")
     ax.grid(True, alpha=0.25, linestyle=":")
-    
+
     # Legend with default horizontal bar below plot
-    legend_dedup(ax, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.15),
-                    frameon=True, fontsize=10, edgecolor='black')
-    
-    plt.tight_layout(rect=[0, -0.15, 1, 1]) 
+    legend_dedup(
+        ax,
+        loc="lower center",
+        ncol=4,
+        bbox_to_anchor=(0.5, -0.15),
+        frameon=True,
+        fontsize=10,
+        edgecolor="black",
+    )
+
+    plt.tight_layout(rect=[0, -0.15, 1, 1])
     return fig, ax
+
 
 # ============================================================
 # QUESTION 2.2: 2D System and Phase Portraits
@@ -545,20 +659,28 @@ def cartesian_rhs(t, state, mu, omega=1.0):
 
     if r < 1e-12:
         # limit r->0 : f(r,mu)/r ~ mu
-        return [mu*x - omega*y, mu*y + omega*x]
+        return [mu * x - omega * y, mu * y + omega * x]
 
     g = f_radial(r, mu) / r
-    return [g*x - omega*y, g*y + omega*x]
+    return [g * x - omega * y, g * y + omega * x]
 
-def integrate_trajectory(x0, y0, mu, t_span=(0, 50), omega=1.0, n_points=2000,
-                         rtol=1e-8, atol=1e-10):
+
+def integrate_trajectory(
+    x0, y0, mu, t_span=(0, 50), omega=1.0, n_points=2000, rtol=1e-8, atol=1e-10
+):
     """Integrate one trajectory in the 2D system."""
     t_eval = np.linspace(t_span[0], t_span[1], n_points)
     sol = solve_ivp(
         lambda t, z: cartesian_rhs(t, z, mu, omega=omega),
-        t_span, [x0, y0], t_eval=t_eval, method="RK45", rtol=rtol, atol=atol
+        t_span,
+        [x0, y0],
+        t_eval=t_eval,
+        method="RK45",
+        rtol=rtol,
+        atol=atol,
     )
     return sol
+
 
 def plot_phase_portrait(mu, omega=1.0, ax=None, n_trajectories=8, t_max=30):
     """Phase portrait with trajectories + circles indicating limit cycles (r equilibria)."""
@@ -571,13 +693,19 @@ def plot_phase_portrait(mu, omega=1.0, ax=None, n_trajectories=8, t_max=30):
     r_max = (max(r_pos) * 1.5) if r_pos else 2.0
 
     # Draw limit cycles (as circles) for r_eq>0
-    theta = np.linspace(0, 2*np.pi, 400)
+    theta = np.linspace(0, 2 * np.pi, 400)
     for r_eq in r_pos:
         st = classify_stability_1d(r_eq, mu)
         col = "green" if st == "stable" else "red"
-        ls  = "-" if st == "stable" else "--"
-        ax.plot(r_eq*np.cos(theta), r_eq*np.sin(theta), color=col, ls=ls, lw=2,
-                label=f"limit cycle r={r_eq:.3f} ({st})")
+        ls = "-" if st == "stable" else "--"
+        ax.plot(
+            r_eq * np.cos(theta),
+            r_eq * np.sin(theta),
+            color=col,
+            ls=ls,
+            lw=2,
+            label=f"limit cycle r={r_eq:.3f} ({st})",
+        )
 
     # Origin (fixed point)
     ax.plot(0, 0, "ko", ms=7, label="origin (fixed point)")
@@ -598,11 +726,19 @@ def plot_phase_portrait(mu, omega=1.0, ax=None, n_trajectories=8, t_max=30):
     ax.set_title(f"Phase portrait (μ={mu:.3f}, ω={omega})")
     ax.grid(True, alpha=0.3)
 
-    legend_dedup(ax, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.15),
-                    frameon=True, fontsize=10, edgecolor='black')
-    
-    plt.tight_layout(rect=[0, -0.15, 1, 1]) 
+    legend_dedup(
+        ax,
+        loc="lower center",
+        ncol=4,
+        bbox_to_anchor=(0.5, -0.15),
+        frameon=True,
+        fontsize=10,
+        edgecolor="black",
+    )
+
+    plt.tight_layout(rect=[0, -0.15, 1, 1])
     return ax
+
 
 def plot_radial_time_evolution(x0, y0, mu, omega=1.0, t_max=50):
     """Plot r(t) for a single 2D trajectory, plus equilibrium radii."""
@@ -613,7 +749,7 @@ def plot_radial_time_evolution(x0, y0, mu, omega=1.0, t_max=50):
     ax.plot(sol.t, r_t, lw=2)
     ax.set_xlabel("t")
     ax.set_ylabel("r(t)")
-    ax.set_title(f"Radial evolution (μ={mu:.3f}, ω={omega}, r0={np.hypot(x0,y0):.3f})")
+    ax.set_title(f"Radial evolution (μ={mu:.3f}, ω={omega}, r0={np.hypot(x0, y0):.3f})")
     ax.grid(True, alpha=0.3)
 
     # Mark positive equilibrium radii
@@ -622,24 +758,34 @@ def plot_radial_time_evolution(x0, y0, mu, omega=1.0, t_max=50):
         if r_eq > 1e-12:
             st = classify_stability_1d(r_eq, mu)
             col = "green" if st == "stable" else "red"
-            ax.axhline(r_eq, color=col, ls="--", alpha=0.7, label=f"r={r_eq:.3f} ({st})")
+            ax.axhline(
+                r_eq, color=col, ls="--", alpha=0.7, label=f"r={r_eq:.3f} ({st})"
+            )
 
-    legend_dedup(ax, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.15),
-                         frameon=True, fontsize=10, edgecolor='black')
+    legend_dedup(
+        ax,
+        loc="lower center",
+        ncol=4,
+        bbox_to_anchor=(0.5, -0.15),
+        frameon=True,
+        fontsize=10,
+        edgecolor="black",
+    )
 
-    plt.tight_layout(rect=[0, -0.15, 1, 1]) 
+    plt.tight_layout(rect=[0, -0.15, 1, 1])
     return fig, ax
+
 
 def plot_three_regimes():
     """Plot bifurcation diagram and phase portraits for three regimes."""
     from matplotlib.gridspec import GridSpec
-    
+
     mu_vals = [-0.5, -0.15, 0.3]
     titles = [r"$\mu < -1/4$", r"$-1/4 < \mu < 0$", r"$\mu > 0$"]
-    
+
     fig = plt.figure(figsize=(18, 10))
     gs = GridSpec(2, 3, figure=fig, height_ratios=[1.1, 1])
-    
+
     # Top: 1D bifurcation
     ax0 = fig.add_subplot(gs[0, :])
     plot_bifurcation_1d(
@@ -651,49 +797,64 @@ def plot_three_regimes():
         show_bif_points=True,
         legend=True,
     )
-    
+
     # Bottom: phase portraits
     for i, (mu, t) in enumerate(zip(mu_vals, titles)):
         ax = fig.add_subplot(gs[1, i])
         plot_phase_portrait(mu, omega=1.0, ax=ax, n_trajectories=8, t_max=30)
         ax.set_title(t)
-    
+
     plt.tight_layout()
     return fig
 
-def plot_radial_time_subplots(mu=-0.1, initial_radii=[0.3, 0.6, 1.0], omega=1.0, t_max=50):
+
+def plot_radial_time_subplots(
+    mu=-0.1, initial_radii=[0.3, 0.6, 1.0], omega=1.0, t_max=50
+):
     """Plot time evolution of radius for multiple initial conditions in subplots."""
-    fig, axes = plt.subplots(1, len(initial_radii), figsize=(6*len(initial_radii), 4), sharey=True)
+    fig, axes = plt.subplots(
+        1, len(initial_radii), figsize=(6 * len(initial_radii), 4), sharey=True
+    )
     if len(initial_radii) == 1:
         axes = [axes]
-    
+
     # Get positive equilibrium radii for reference
     eq_pos = [r for r in find_roots_1D(mu, include_negative=False) if r > 1e-12]
-    
+
     for idx, r0 in enumerate(initial_radii):
         # Integrate trajectory
-        sol = integrate_trajectory(r0, 0.0, mu, t_span=(0, t_max), omega=omega, n_points=2000)
+        sol = integrate_trajectory(
+            r0, 0.0, mu, t_span=(0, t_max), omega=omega, n_points=2000
+        )
         r_t = np.hypot(sol.y[0], sol.y[1])
-        
+
         # Plot on subplot
         axes[idx].plot(sol.t, r_t, lw=2)
         axes[idx].set_title(f"$r_0={r0}$")
         axes[idx].set_xlabel("t")
         axes[idx].grid(True, alpha=0.3)
-        
+
         # Mark limit cycles
         for r_eq in eq_pos:
             st = classify_stability_1d(r_eq, mu)
             col = "green" if st == "stable" else "red"
             ls = "-" if st == "stable" else "--"
-            axes[idx].axhline(r_eq, color=col, ls=ls, alpha=0.7, label=f"r={r_eq:.3f} ({st})")
-        
-    
-    legend_dedup(axes[1], loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.25), # axes[1] chosen to get center of the figure
-                         frameon=True, fontsize=10, edgecolor='black')
+            axes[idx].axhline(
+                r_eq, color=col, ls=ls, alpha=0.7, label=f"r={r_eq:.3f} ({st})"
+            )
+
+    legend_dedup(
+        axes[1],
+        loc="lower center",
+        ncol=4,
+        bbox_to_anchor=(0.5, -0.25),  # axes[1] chosen to get center of the figure
+        frameon=True,
+        fontsize=10,
+        edgecolor="black",
+    )
     plt.tight_layout(rect=[0, -0.25, 1, 1])
-    
+
     axes[0].set_ylabel("r(t)")
     fig.suptitle(rf"Radial time evolution ($\mu={mu}$, $\omega={omega}$)", y=1.02)
-    
+
     return fig

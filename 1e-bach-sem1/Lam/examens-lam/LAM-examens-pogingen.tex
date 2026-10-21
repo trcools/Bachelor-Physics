@@ -33,7 +33,7 @@
     '' Verklaar dit. Leg hierbij ook uit waarom de assumptie dat de $f(b)$'s twee aan twee verschillend zijn relevant is.
     \begin{oplossing}
        Doordat \(0= \sum_{b \in \mathcal{B}} 0 f(b)\), geldt is wegens de lineair onafhankelijkheid van de \(f(b)\)'s, dat voor ieder andere combinatie \( \sum_{b \in \mathcal{B}}  \lambda_b f(b) = 0\), \(\lambda_b = 0\).
-       
+
        Stel dat de $f(b)$'s niet twee aan twee  verschillend zijn, en \(f(b_1) = f(b_2)\), dan geldt \(\lambda_{b_1}b_1 + \lambda_{b_2} b_2 = 0\) voor \(\lambda_{b_1} = - \lambda_{b_2}\) waarbij ze niet persee \(0\) hoeeven te zijn!
        Hieruit volgt dat het twee aan twee verschillend zijn een noodzakelijke voorwaarde is.
        \qed
@@ -69,10 +69,10 @@
         Passen we definitie 4.1.2 hierop toe, dan is \(f(b'_j) = \sum_{i=1}^{n} a_{ij}b_i\).
         \(f(b') = b', \,\forall b' \in \mathcal{B}' \iff f = \operatorname{id} \), waarbij we bij definitie 4.2.1 de transitiematrix toekomen.
         De laatste \(\iff\) relatie geldt uit lemma 3.2.6 (i), \(f\) is volledig bepaald door de beelden van de basiselementen.
-        
+
         Inverteerbaarheid volgt door hetzelfde te doen maar met \(\mathcal{B} \to \mathcal{B}'\) en \(\mathcal{B}' \to \mathcal{B}\).
         \qed
-    \end{oplossing} 
+    \end{oplossing}
     \item[(iv)] Het bewijs van Gevolg 5.3.3 begint met ``Aangezien $\text{rk}(A)=n$ moet ook $\text{rk}(A|w)=n$''. Verklaar dit.
     \begin{oplossing}
         \(A|w\) is een matrix met \(n\) rijen en \(n+1\) kolommen. Uit stelling 5.1.2 kan \(\dim\operatorname{span}(A_1, \dots ,A_n,w ) \leq n\).
@@ -83,7 +83,7 @@
     \end{oplossing}
     \item[(v)] In het bewijs van Lemma 6.1.6 staat ``Vermits $x$ enkel voorkomt in de elementen op de diagonaal van $B$, is er maar één term van graad $\geq n-1$''. Verklaar dit.
     \begin{oplossing}
-        Uit 
+        Uit
         \[\det (Ix-A) = \sum_{\sigma \in S_n} \operatorname{sgn} (\sigma)((x\delta_{\sigma (1),1}-a)_{\sigma (1),1 }\dots , (x\delta_{\sigma (n),n}-a)_{\sigma (n),n})\]
         zien we dat als we permutaties uitvoeren minstens 2 elementen van plaats wisselen.
         Doordat alle \(x\) zich op de diagonaal bevinden is door permutaties uit te voeren dat niet de identiteit is,
@@ -104,11 +104,11 @@
         met \(v_{n_1 + \dots + n_{l}} = v_n\).
 
         Wegens dat \(\mathcal{B} = \{v_1, \dots , v_n\}\) een basis van \(V\) voorstelt, is \(V_1 + \dots + V_l = V\) en zijn de eigenvectoren lineair onafhankelijk.
-        
+
         Stellen we \(\mathcal{B}_i\) een basis voor \(V_i\), dan is \(\mathcal{B} = \mathcal{B}_1 \cup \dots \cup \mathcal{B}_l\),
         en uit het lineair onafhankelijk zijn \(\mathcal{B}_i \cap \mathcal{B}_j = \emptyset\) voor \((i\neq j )\le l\).
         Uit stelling 2.5.5 volgt dat \(V = V_{1}\oplus V_{2}\oplus \dots \oplus V_{l}\).
-        
+
         \qed
     \end{oplossing}
 \end{enumerate}
@@ -129,7 +129,7 @@
             2 & 2
         \end{pmatrix}
         \)
-        en 
+        en
         \(B =
         \begin{pmatrix}
             1 & 0 \\
@@ -137,7 +137,7 @@
         \end{pmatrix}
         \).
 
-        Dan is 
+        Dan is
         \(AB =
         \begin{pmatrix}
             0 & 0 \\
@@ -168,9 +168,9 @@
         \)
         en
         \(g: \begin{pmatrix}
-            a \\ b \\ c 
+            a \\ b \\ c
         \end{pmatrix}
-        \mapsto 
+        \mapsto
         \begin{pmatrix}
             a \\ b
         \end{pmatrix}\).
@@ -182,7 +182,7 @@
         =
         g\left( \begin{pmatrix}
             a \\ b \\ a+b
-        \end{pmatrix}\right) 
+        \end{pmatrix}\right)
         =
         \begin{pmatrix}
             a \\ b
@@ -202,7 +202,7 @@
 
         \(f(w-v) = -(w-v) \implies \lambda_3 = -1\).
 
-        Drie verschillende eigenwaarden voor \(\mathbb{R}^3 \implies f\) diagonaliseerbaar. \qed 
+        Drie verschillende eigenwaarden voor \(\mathbb{R}^3 \implies f\) diagonaliseerbaar. \qed
     \end{oplossing}
     \item[(iv)] Beschouw een eindig-dimensionale reële inproductruimte $V$ met deelruimten $U$ en $W$. Als $V=U \oplus W$, dan is ook $V=U^{\perp} \oplus W^{\perp}$.
     \begin{oplossing}
@@ -214,13 +214,13 @@
         \(\dim U^\perp = \dim V - \dim U\)
 
         \(\dim V = \dim U + \dim W \)
-        
+
         \(\implies \dim V = \dim V - \dim U^\perp + \dim V - \dim W^\perp \implies \dim V = \dim U^\perp + \dim W^\perp\).
 
         Nu tonen we aan dat \(U^\perp \cap W^\perp = \{0\}\).
 
         Stel \(t \in U^\perp \cap W^\perp \), dan \(\langle t,w \rangle = \langle t,u \rangle = 0 ,\, \forall w \in W, \, u \in U \implies \langle t,v \rangle = 0 , \, \forall v \in V .\)
-    
+
         Dit laatste kan enkel als \(v=0\). \qed
     \end{oplossing}
 \
@@ -286,13 +286,13 @@ A = \begin{pmatrix}
     \begin{oplossing}
     Lemma 3.2.6(i): $f$ is volledig bepaald door de beelden v.d. basis $f(b) \quad \forall b \in B$.
 
-    
+
 
     $v \in V: v = \sum_i^n \lambda_i b_i \implies f(v) = \sum_i^n \lambda_i f(b_i) \quad (f \text{ is lineair})$
 
 
     doordat $v$ willekeurig is, is $f$ volledig bepaald.
-    Uniciteit volgt uit dat alle $v \in V$ op een unieke manier als lineaire combinatie uit te schrijven zijn. 
+    Uniciteit volgt uit dat alle $v \in V$ op een unieke manier als lineaire combinatie uit te schrijven zijn.
     \end{oplossing} \qed
 
     \item[(ii)] Stel $\mathcal{B}$ is een basis van een vectorruimte $V$ en $f : V \to V$ een endomorfisme zodat de geassocieerde matrix $A_{f,\mathcal{B}}$ gelijk is aan
@@ -314,22 +314,22 @@ A = \begin{pmatrix}
     \end{pmatrix}.
     \]
     Stel eveneens de overgangsmatrix van $\mathcal{B}$ naar $\mathcal{C}$ op.
-    
+
     \item[(iii)] Zij $A \in M_n(K)$ en $T_A$ de verzameling van matrices $B$ in $M_n(K)$ zodat $ABA^{-1}$ een diagonaalmatrix is. Toon aan dat $T_A$ een $n$-dimensionale deelruimte is van $M_n(K)$.
     \begin{oplossing}
         Hier zit ik nog vast!
     \end{oplossing}
     \begin{oplossing}
-        \(T_A\) is een deelruimte als: 
+        \(T_A\) is een deelruimte als:
         \[
         \lambda B_1 + \mu B_2 \in T_A \qquad \forall \mu, \lambda \in K \text{ en } B_1 , B_2 \in T_A.
         \]
-        We heten de diagonaalmatrix van een matrix \(B_i \in T_A: \operatorname{diag}(B_i)\). 
+        We heten de diagonaalmatrix van een matrix \(B_i \in T_A: \operatorname{diag}(B_i)\).
         De notatie is vrij vanzichzelf uitsprekend.
 
         Dan is
         \begin{align*}
-            A \left(\lambda B_1 + \mu B_2\right) A^{-1} 
+            A \left(\lambda B_1 + \mu B_2\right) A^{-1}
             &= A \lambda B_1 A^{-1} + A \mu B_2 A^{-1} \\
             &=  \lambda A B_1 A^{-1} + \mu A  B_2 A^{-1} \\
             &=   \lambda \operatorname{diag}(B_1) + \mu \operatorname{diag}(B_2) \\
@@ -338,7 +338,7 @@ A = \begin{pmatrix}
         \end{align*}\qed
     \end{oplossing}
     \item[(iv)] Zij $V$ een $n$-dimensionale vectorruimte. Toon aan dat de doorsnede van $k < n$ deelruimten van dimensie $n-1$ minstens dimensie $n-k$ heeft.
-    
+
     \begin{oplossing}
         Idee: bewijzen via inductie \dots
 
@@ -361,7 +361,7 @@ A = \begin{pmatrix}
         Neem nu \(W'_s\), de doorsnede van \(W_1 \cap W_2 \cap \dots \cap W_s \) met \(s < k < n\) deelruimten van dimensie \(n-1\), en stel \(\dim(W'_s) \geq n-s\).
         Dan tonen we aan dat \(\dim(W'_s \cap W_{s+1}) \geq n-(s+1)\):
         \begin{align*}
-            \dim(W'_s \cap W_{s+1}) 
+            \dim(W'_s \cap W_{s+1})
             &= \dim(W'_s) + \dim (W_{s+1}) - \dim(W'_s + W_{s+1})\\
             &\geq \dim(W'_s) + \dim (W_{s+1}) - \dim(V)\\
             &\geq (n-s) + (n-1) - n = n- (s+1).
@@ -381,7 +381,7 @@ A = \begin{pmatrix}
         \[\implies A(Bv) = \lambda(Bv).\]
         \(Bv\) is dus ook een eigenvector van \(A\) met dezelfde eigenwaarde \(\lambda\).
         \begin{align*}
-            L_B (\operatorname{Eigr}_\lambda (A)) 
+            L_B (\operatorname{Eigr}_\lambda (A))
             &= \{ v\in K^n | B(\lambda I_n - A)v = 0)\} \\
             &= \{ v\in K^n | (B\lambda I_n - BA)v = 0)\} \\
             &=\{ v\in K^n | (\lambda I_n B - A B)v = 0)\} \\
@@ -395,15 +395,15 @@ A = \begin{pmatrix}
     \end{oplossing}
     \item[(iii)] Toon aan dat als $L_A$ en $L_B$ diagonaliseerbaar zijn t.o.v.\ dezelfde basis voor $\mathbb{C}^n$, dan is $AB = BA$.
     \begin{oplossing}
-        Stel \(P^{-1} A P = \operatorname{diag}(\lambda_1,\dots,\lambda_n)\) en \(P^{-1} B P = \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\) 
+        Stel \(P^{-1} A P = \operatorname{diag}(\lambda_1,\dots,\lambda_n)\) en \(P^{-1} B P = \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\)
         Dan:
         \begin{align*}
-            (P^{-1} A P)(P^{-1} B P) 
+            (P^{-1} A P)(P^{-1} B P)
             &= P^{-1} AB P\\
             &=  \operatorname{diag}(\lambda_1,\dots,\lambda_n)  \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\\
             &= \operatorname{diag}(\lambda_1\lambda'_1,\dots,\lambda_n\lambda'_n),\\
             \\
-            (P^{-1} B P)(P^{-1} A P) 
+            (P^{-1} B P)(P^{-1} A P)
             &= P^{-1} BA P\\
             &=  \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)  \operatorname{diag}(\lambda_1,\dots,\lambda_n)\\
             &= \operatorname{diag}(\lambda_1\lambda'_1,\dots,\lambda_n\lambda'_n). \\
@@ -432,7 +432,7 @@ A = \begin{pmatrix}
     \begin{oplossing}
         \textbf{Fout!} Stel \(A en B\) hebben elk \(n\) verschillende eigenwaarden. Dan stelt deze uitspraak dat \(AB\), \(n^2\) eigenwaarden heeft.
         Maar \(AB\) heeft hoogstens \(\operatorname{rk}=n\), waardoor de karakteristieke veelterm van \(AB\) niet meer dan \(n\) eigenwaarden kan hebben.
-        Wat strijdig is met de uitspraak. 
+        Wat strijdig is met de uitspraak.
 
         Vb:
         \(A = \begin{pmatrix}
@@ -440,7 +440,7 @@ A = \begin{pmatrix}
             0 & 5
         \end{pmatrix}
         \)
-        en 
+        en
         \(B = \begin{pmatrix}
             2 & 0 \\
             0 & 3
@@ -449,14 +449,14 @@ A = \begin{pmatrix}
         Overduidelijk is:
         \(\lambda_{A,1} = 1, \lambda_{A,2} = 5 \) en \(\lambda_{B,1} = 2, \lambda_{B,2} = 3\).
 
-        Nu is 
+        Nu is
         \(AB = \begin{pmatrix}
             2 & 0 \\
             0 & 15
         \end{pmatrix}
-        \) 
-        met 
-        \(\lambda_{AB,1} = 2, \lambda_{AB,2} = 15\). 
+        \)
+        met
+        \(\lambda_{AB,1} = 2, \lambda_{AB,2} = 15\).
 
         Het is duidelijk dat \(\lambda_{A,1}\lambda_{B,2} = 5 \notin \lambda_{AB}\).\qed
     \end{oplossing}
@@ -495,11 +495,11 @@ A = \begin{pmatrix}
             0
         \end{pmatrix}
          \).
-         
+
          Dan is \(f \left(\begin{pmatrix}
             x \\
             y
-        \end{pmatrix}\right) 
+        \end{pmatrix}\right)
         = \begin{pmatrix}
             x \\
             0
@@ -601,8 +601,8 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
     \begin{oplossing}
         \(C = AB = \sum_{j=1}^{n} a_{ij}b_{jk}\).
 
-        \(C_k 
-        = \left(\sum_{j=1}^{n} a_{ij}b_{j}\right)_k  
+        \(C_k
+        = \left(\sum_{j=1}^{n} a_{ij}b_{j}\right)_k
         = \sum_{j=1}^{n} b_{j,k}a_{ij}
         = \sum_{j=1}^{n} b_{j,k}A_j\). \qed
     \end{oplossing}
@@ -622,7 +622,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
             0 & 1
         \end{pmatrix}
         \)
-        en 
+        en
         \(
         B = \begin{pmatrix}
             1 & 0 \\
@@ -630,7 +630,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
         \end{pmatrix}
         \).
 
-        Hier is 
+        Hier is
         \(
         AB = \begin{pmatrix}
             0 & 0 \\
@@ -649,15 +649,15 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
     \end{oplossing}
     \item[(ii)] Toon aan dat als $A$ en $B$ simultaan zijn, dat dan $AB = BA$.
     \begin{oplossing}
-        Stel \(S^{-1} A S = \operatorname{diag}(\lambda_1,\dots,\lambda_n)\) en \(S^{-1} B S = \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\) 
+        Stel \(S^{-1} A S = \operatorname{diag}(\lambda_1,\dots,\lambda_n)\) en \(S^{-1} B S = \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\)
         Dan:
         \begin{align*}
-            (S^{-1} A S)(S^{-1} B S) 
+            (S^{-1} A S)(S^{-1} B S)
             &= S^{-1} AB S\\
             &=  \operatorname{diag}(\lambda_1,\dots,\lambda_n)  \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)\\
             &= \operatorname{diag}(\lambda_1\lambda'_1,\dots,\lambda_n\lambda'_n),\\
             \\
-            (S^{-1} B S)(S^{-1} A S) 
+            (S^{-1} B S)(S^{-1} A S)
             &= S^{-1} BA S\\
             &=  \operatorname{diag}(\lambda'_1,\dots,\lambda'_n)  \operatorname{diag}(\lambda_1,\dots,\lambda_n)\\
             &= \operatorname{diag}(\lambda_1\lambda'_1,\dots,\lambda_n\lambda'_n). \\
@@ -675,7 +675,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
         \[\implies B(Av) = \mu(Av).\]
         Idem is \(Av\) ook een eigenvector van \(B\) met dezelfde eigenwaarde \(\mu\).
         \begin{align*}
-            L_B (\operatorname{Eigr}_\lambda (A)) 
+            L_B (\operatorname{Eigr}_\lambda (A))
             &= \{ v\in K^n | B(\lambda I_n - A)v = 0)\} \\
             &= \{ v\in K^n | (B\lambda I_n - BA)v = 0)\} \\
             &=\{ v\in K^n | (\lambda I_n B - A B)v = 0)\} \\
@@ -685,8 +685,8 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
         Als we dit omgekeerd doen zien we dat ook \(L_A (\operatorname{Eigr}_\mu (B))\subseteq \operatorname{Eigr}_\mu (B)\).
 
         Doordat \(A\) \(n\) verschillende eigenwaarden heeft, zijn de eigenvectoren en dus ook de eigenruimten lineair onafhankelijk en vormen ze een basis.
-        
-        Dit betekend dat er een basis bestaat zodat \(A\) en \(B\) diagonaal matrices worden. 
+
+        Dit betekend dat er een basis bestaat zodat \(A\) en \(B\) diagonaal matrices worden.
         \qed
     \end{oplossing}
 \end{itemize}
@@ -703,7 +703,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
             \vdots \\
             i \in \mathbb{N} \\
             \vdots \\
-        \end{pmatrix} \mapsto 
+        \end{pmatrix} \mapsto
         \begin{pmatrix}
             x^{0}\\
             x^{1} \\
@@ -722,9 +722,9 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
         \(A \subseteq A + C = A \cap B \implies C \subseteq A \subseteq B\).
 
         Uit \(C \subseteq A \text{ en } A \subseteq B \subseteq C \text{ is } C = A \).
-        
-        Uit \( B \subseteq C \text{ en } C \subseteq A \subseteq B \text{ is } C = B\). 
-        
+
+        Uit \( B \subseteq C \text{ en } C \subseteq A \subseteq B \text{ is } C = B\).
+
         Hieruit volgt $A = B = C$. \qed
     \end{oplossing}
     \item[(iii)] Als $A, B$ diagonaliseerbare $n \times n$-matrices zijn dan is $A+B$ diagonaliseerbaar.
@@ -737,7 +737,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
             0 & 1 & -1
         \end{pmatrix}\).
 
-        Maar met bv: 
+        Maar met bv:
         \(A  = \begin{pmatrix}
             -5 & 0 & 0 \\
             0 & 1 & 0\\
@@ -750,7 +750,7 @@ Met deze bewerkingen vormt $V$ een vectorruimte.
             0 & 0 & -4
         \end{pmatrix}\),
         zijn \(A\) en \(B\) duidelijk diagonaliseerbaar.
-        
+
         Maar \(A+B\) is niet diagonaliseerbaar, dit is dus een geldig tegenvoorbeeld. \qed
     \end{oplossing}
 \end{itemize}

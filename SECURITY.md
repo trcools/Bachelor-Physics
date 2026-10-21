@@ -66,9 +66,7 @@ pre-commit run --all-files
 
 ## Keep PDFs and documents private
 
-Want to store PDFs (slides, syllabi, textbooks) without making them public? You have three options:
-
-### Option 1 — `_lokaal/` folder (recommended for local use)
+Want to store PDFs (slides, syllabi, textbooks) without making them public?
 
 There is a special `_lokaal/` folder in this repository. Anything placed there is **never** tracked by Git.
 
@@ -81,15 +79,6 @@ git status  # _lokaal/*.pdf will NOT appear in the output
 ```
 
 See [`_lokaal/README.md`](_lokaal/README.md) for a recommended folder structure.
-
-### Option 2 — Make the repository private
-
-Go to **GitHub → Settings → Danger Zone → Change visibility → Make private**.  
-Then you can store everything in the repository and only you (and invited collaborators) can see it.
-
-### Option 3 — Separate private repository
-
-Create a second, private GitHub repository (for example `2e-bachelor-Fysica-lokaal`) and keep private files there. The public repository stays clean for your own work.
 
 ---
 

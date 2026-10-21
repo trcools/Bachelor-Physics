@@ -3,12 +3,12 @@
 \subsection{Schur's lemma}
 
 \begin{theorem}[Schur's first lemma]
-    If \(U(g)\) is an irrep and \(\forall g : \ XU(g) = U(g)X\), then \(X = c \mathds{1}\) for a constant \(c \in \mathbb{C}\). 
+    If \(U(g)\) is an irrep and \(\forall g : \ XU(g) = U(g)X\), then \(X = c \mathds{1}\) for a constant \(c \in \mathbb{C}\).
 \end{theorem}
 
 \begin{proof}
-    Omdat we werken over \(\mathbb{C}\), heeft \(X\) minstens 1 eigenwaarde \(\lambda \in \mathbb{C}\). 
-    
+    Omdat we werken over \(\mathbb{C}\), heeft \(X\) minstens 1 eigenwaarde \(\lambda \in \mathbb{C}\).
+
     Bijhorende eigenruimte (lam):
     \[
         V_\lambda := \ker(X - \lambda\mathds{1}) = \{\, \bm v \in V \mid X \bm v = \lambda \bm v \,\}.
@@ -21,7 +21,7 @@
     want \(X\) commuteert met \(U(g)\). Dus \(U(g) \bm v \in V_\lambda \ \forall g \implies V_\lambda\) invariante deelruimte van representatie \(U\).
 
     Omdat \(U(g)\) een irrep is, heeft ze per definitie geen niet-triviale invariante deelruimtes.
-    
+
     Door \(V_\lambda \neq \{0\}\) is enkel \( V_\lambda = V \) mogelijk.
 
   \(V_\lambda = V \implies \forall \bm v \in V: \ X \bm v = \lambda \bm v\), dus:
@@ -31,7 +31,7 @@
 \end{proof}
 
  Waarom de Jordan-vorm van \(X\) geen niet-triviale blokken kan bevatten?
- 
+
  Als \(X\) een Jordan-blok van dimensie \(n_i>1\) zou hebben,
  is de corresponderende eigenruimte strikt kleiner dan de corresponderende gegeneraliseerde eigenruimte \footnote{een Jordan-blok van grootte \(n_i\) heeft een 1-dim eigenruimte,
  maar een \(n_i\)-dim gegeneraliseerde eigenruimte}.  \(\implies V_\lambda \subsetneq V\), in tegenspraak met \(V_\lambda = V\) dat we hadden.
@@ -51,8 +51,8 @@
     \[
         T\big(U(g) \bm v\big) = V(g)\big(T \bm v\big) = V(g)\cdot 0 = 0,
     \]
-    dus \(U(g) \bm v \in \ker (T)\). 
-    
+    dus \(U(g) \bm v \in \ker (T)\).
+
     Omdat \(U(g)\) irreducibel is, geldt
     \[
         \ker (T) = \{0\} \quad \text{of} \quad \ker (T) = \mathbb{C}^n.
@@ -78,15 +78,15 @@
         Gevolg: \(T\) is een vierkante, bijectieve (dus inverteerbare) matrix.
     \end{itemize}
 
-   %equivalentie van \(U\) en \(V\). 
+   %equivalentie van \(U\) en \(V\).
    Uit \(TU(g) = V(g)T\) en de inverteerbaarheid van \(T\) volgt:
     \[
         U(g) = T^{-1}V(g)T \qquad \forall g,
     \]
 
     Stel dat ook \(S \neq 0\) voldoet aan \(SU(g) = V(g)S \ \forall g\).\footnote{Onglukkige naamgeving van de cursus.}
-    Dan is \(S\) dan ook inverteerbaar. 
-    
+    Dan is \(S\) dan ook inverteerbaar.
+
     \(V(g) = SU(g)S^{-1}\) met \(V(g) = TU(g)T^{-1}\) geeft:
     \[
         TU(g)T^{-1} = SU(g)S^{-1} \quad\Longrightarrow\quad \big(S^{-1}T\big)U(g) = U(g)\big(S^{-1}T\big) \qquad \forall g.

@@ -43,7 +43,9 @@ def ocr_formula_block(
 ) -> str | None:
     clip = fitz.Rect(*bbox)
     try:
-        pixmap = page.get_pixmap(matrix=fitz.Matrix(render_scale, render_scale), clip=clip, alpha=False)
+        pixmap = page.get_pixmap(
+            matrix=fitz.Matrix(render_scale, render_scale), clip=clip, alpha=False
+        )
     except Exception:
         return None
 
@@ -85,10 +87,14 @@ def ocr_formula_block(
     if not fragments:
         return None
 
-    fragments.sort(key=lambda item: (fragment_score(item[0]) + item[1], len(item[0])), reverse=True)
+    fragments.sort(
+        key=lambda item: (fragment_score(item[0]) + item[1], len(item[0])), reverse=True
+    )
     best = fragments[0][0]
 
-    if len(best) < 4 and not any(symbol in best for symbol in ("=", "+", "-", "\\", "^", "_")):
+    if len(best) < 4 and not any(
+        symbol in best for symbol in ("=", "+", "-", "\\", "^", "_")
+    ):
         return None
 
     if not any(symbol in best for symbol in ("=", "+", "-", "\\", "^")):
@@ -96,7 +102,9 @@ def ocr_formula_block(
             (
                 frag
                 for frag, _conf in fragments[1:]
-                if any(token in frag.lower() for token in ("varepsilon", "epsilon", "ε"))
+                if any(
+                    token in frag.lower() for token in ("varepsilon", "epsilon", "ε")
+                )
             ),
             None,
         )
@@ -112,7 +120,9 @@ def ocr_formula_block(
 def ocr_full_page(ocr: RapidOCR, page: fitz.Page, render_scale: int) -> str | None:
     """OCR the entire page and return cleaned text or None."""
     try:
-        pixmap = page.get_pixmap(matrix=fitz.Matrix(render_scale, render_scale), alpha=False)
+        pixmap = page.get_pixmap(
+            matrix=fitz.Matrix(render_scale, render_scale), alpha=False
+        )
     except Exception:
         return None
 
@@ -178,7 +188,10 @@ def write_markdown(
 
     for page_number, page in enumerate(doc, start=1):
         blocks = page.get_text("dict")["blocks"]
-        ordered_blocks = sorted(blocks, key=lambda block: (round(block["bbox"][1], 1), round(block["bbox"][0], 1)))
+        ordered_blocks = sorted(
+            blocks,
+            key=lambda block: (round(block["bbox"][1], 1), round(block["bbox"][0], 1)),
+        )
 
         chunks.append(f"## Page {page_number}")
         chunks.append("")
@@ -186,7 +199,9 @@ def write_markdown(
         for block in ordered_blocks:
             if block["type"] == 0:
                 for line in block.get("lines", []):
-                    line_text = "".join(span["text"] for span in line.get("spans", [])).rstrip()
+                    line_text = "".join(
+                        span["text"] for span in line.get("spans", [])
+                    ).rstrip()
                     if line_text:
                         chunks.append(line_text)
                 chunks.append("")
@@ -195,7 +210,9 @@ def write_markdown(
                 width = x1 - x0
                 height = y1 - y0
                 if width <= formula_max_width and height <= formula_max_height:
-                    formula_text = ocr_formula_block(ocr, page, block["bbox"], render_scale)
+                    formula_text = ocr_formula_block(
+                        ocr, page, block["bbox"], render_scale
+                    )
                     if formula_text:
                         formula_count += 1
                         chunks.append(f"$$ {formula_text} $$")
@@ -212,7 +229,9 @@ def write_markdown(
                 if not no_images:
                     image_count += 1
                     extension = block.get("ext", "png")
-                    image_name = f"page{page_number:02d}_img{image_count:03d}.{extension}"
+                    image_name = (
+                        f"page{page_number:02d}_img{image_count:03d}.{extension}"
+                    )
                     (assets_dir / image_name).write_bytes(block["image"])
                     chunks.append(f"![]({assets_dir.name}/{image_name})")
                     chunks.append("")
@@ -223,7 +242,7 @@ def write_markdown(
         # If page produced no textual content (only header), optionally OCR whole page
         # and append the OCR result when requested.
         page_body_only_header = True
-        for i in range(len(chunks)-1, -1, -1):
+        for i in range(len(chunks) - 1, -1, -1):
             if chunks[i].startswith("## Page "):
                 # reached the page header; if no other content found, page is empty
                 break
@@ -313,13 +332,23 @@ def main() -> None:
         if not single.exists() or not single.is_file():
             raise SystemExit(f"Input file does not exist: {single}")
         pdf_files = [single]
-        output_dir = Path(args.output_dir).expanduser().resolve() if args.output_dir else single.parent
+        output_dir = (
+            Path(args.output_dir).expanduser().resolve()
+            if args.output_dir
+            else single.parent
+        )
         output_dir.mkdir(parents=True, exist_ok=True)
     else:
         if not args.input_dir:
-            raise SystemExit("--input-dir is required when --input-file is not provided")
+            raise SystemExit(
+                "--input-dir is required when --input-file is not provided"
+            )
         input_dir = Path(args.input_dir).expanduser().resolve()
-        output_dir = Path(args.output_dir).expanduser().resolve() if args.output_dir else input_dir
+        output_dir = (
+            Path(args.output_dir).expanduser().resolve()
+            if args.output_dir
+            else input_dir
+        )
         output_dir.mkdir(parents=True, exist_ok=True)
 
         if not input_dir.exists() or not input_dir.is_dir():
@@ -347,7 +376,9 @@ def main() -> None:
         )
         total_formulas += formulas
         total_images += images
-        print(f"{pdf_path.name}: {formulas} formulas, {images} images -> {pdf_path.stem}.md")
+        print(
+            f"{pdf_path.name}: {formulas} formulas, {images} images -> {pdf_path.stem}.md"
+        )
 
     print(
         f"Done. Processed {len(pdf_files)} PDFs, converted {total_formulas} formulas, kept {total_images} images."

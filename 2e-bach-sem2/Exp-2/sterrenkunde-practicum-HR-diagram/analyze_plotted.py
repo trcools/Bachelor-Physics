@@ -16,12 +16,12 @@ for r in range(2, ws.max_row + 1):
     star_type = ws.cell(row=r, column=3).value
     color_bi = ws.cell(row=r, column=25).value
     m_i_abs = ws.cell(row=r, column=23).value
-    
+
     if not star_id:
         continue
-    
+
     star_type_str = str(star_type).strip().lower() if star_type else "target"
-    
+
     # Check if plotted (only targets and finite coordinates)
     reason = None
     if star_type_str.startswith("comparison"):
@@ -34,7 +34,7 @@ for r in range(2, ws.max_row + 1):
             float(m_i_abs)
         except ValueError:
             reason = f"Invalid format: M_I={m_i_abs}, color={color_bi}"
-    
+
     if reason:
         not_plotted.append((str(star_id).strip(), reason))
 

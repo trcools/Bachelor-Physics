@@ -14,4 +14,3 @@ Overview of courses, experimental projects, theoretical physics summaries, and c
 | **Relativiteit & Elektromagnetisme** (REM) | Special relativity, Maxwell equations, waveguides, 4-vectors | Assignments, theory notes, cheatsheet, Gmsh mesh | [`REM/`](REM/) |
 | **Sterrenstelsels** | Galactic structure, kinematics, rotation curves, stellar populations | Python code, notebooks, formula sheets | [`Sterrenstelsels/`](Sterrenstelsels/) |
 | **Thermische Fysica** | Classical thermodynamics, heat engines, thermodynamic relations | Exercises, slides, exam preparation LaTeX, Python | [`Thermische-Fysica/`](Thermische-Fysica/) |
-

@@ -5,4 +5,3 @@ listing:
   sort: "title asc"
   type: table
 ---
-

@@ -20,7 +20,7 @@
 \begin{proof}
     \(\ker (f) = \{ v \in V |f(v) = 0\}. \)
     \(\ker (f)\) is niet ledig want \(f(0) = 0\).
-    
+
     Als \(v_1\) en \(v_2 \in \ker (f):\)
     \(f(\lambda v_1 + \mu v_2) = \lambda f( v_1) + \mu f( v_2)
     = \lambda 0 + \mu 0
@@ -28,13 +28,13 @@
 
     \(\implies \lambda v_1 + \mu v_2 \in \ker (f)\).
 
-    Als \(w_3\) en \(w_4 \in \operatorname{im} f: f(v_3) = w_3\) en \(f(v_4) = w_4 \in W\) 
+    Als \(w_3\) en \(w_4 \in \operatorname{im} f: f(v_3) = w_3\) en \(f(v_4) = w_4 \in W\)
     waarbij \(v_3,v_4 \in V\).
 
     Ook \(\operatorname{im}(f)\) is niet leeg want: \(f(0_V) = 0_W\).
 
-    Dan 
-    \(\lambda w_3 + \mu w_4 
+    Dan
+    \(\lambda w_3 + \mu w_4
     = \lambda f( v_3) + \mu f( v_4)
     =f(\lambda v_3 + \mu v_4) \)
     \(\implies \lambda w_3 + \mu w_4  \in \operatorname{im}(f) \).
@@ -55,10 +55,10 @@
 
     \([\Leftarrow]\) Stel omgekeerd \(\ker (f) = \{0\}\):
 
-    Stel 
+    Stel
     \(
         f(v) = f(w)
-         \implies f(v) - f(w) = 0 
+         \implies f(v) - f(w) = 0
             \implies f(v-w) = 0
          \implies v-w = 0
          \implies v = w.
@@ -137,7 +137,7 @@
         \implies 0= \sum_{i} \mu_i f(b_i) - \sum_{i} \nu_i f(b_i)
         = \sum_{i} \left( \mu_i  -  \nu_i \right) f(b_i).
     \]
-    
+
     Wegens lineair onafhankelijk zijn is \(\mu_i = \nu_i\).
     \(  f(v_1) = f(v_2)  \implies v_1 = v_2\).
 \end{proof}
@@ -145,10 +145,10 @@
 
      \([\Rightarrow]\) Stel \(f\) surjectief:
 
-     \(\forall w \in W \, \exists v \in V: f(v) = w 
+     \(\forall w \in W \, \exists v \in V: f(v) = w
      \implies \forall w \in W: w = f(v) = \sum_{i} \mu_i f(b_i)\).
      \begin{align*}
-        \operatorname{span}(f(b)) 
+        \operatorname{span}(f(b))
         &= \{\sum_{i} \mu_i f(b_i) | \mu_i \in K\}\\
         &= \{w | w \in W\} = W\\
      \end{align*}
@@ -158,7 +158,7 @@
     \)
 
     Volgens lemma 3.2.6 (ii) is \(\operatorname{span}(\{f(b)\mid b \in \mathcal{B}\}) = \operatorname{im}(f)\implies \operatorname{im}(f) =W\).
-    
+
     \(\operatorname{im}f := \{w \in W | \exists v \in V: f(v) = w\} = W\).
      Wat de definitie van surjectiviteit is.
 \end{proof}
@@ -184,7 +184,7 @@
 
     We definieren een lin afb: \(f \colon V \to W: \sum_i \mu_i b_i \to \sum_i \mu_i \beta(b_i)\)
 
-    Wegens ze evenveel elementen bevatten zijn ze 2 aan 2 verschillend. 
+    Wegens ze evenveel elementen bevatten zijn ze 2 aan 2 verschillend.
     Uit stelling 3.3.1 volgt nu dat \(f\) een bijectie dus isomorfisme is.
 \end{proof}
 
@@ -206,12 +206,12 @@
 
     \(\forall v \in V: v = \sum_{i}^{n} \lambda_i b_i \implies f(v) = \sum_{i}^{n} \lambda_i f(b_i) = w \in W \).
 
-    \(\ker f 
+    \(\ker f
     = \{v \in V | f(v) = 0\}
     = \{\lambda_i \in K | \sum_{i}^{n} \lambda_i f(b_i) = 0\}
     \).
 
-    We gebruiken lemma 3.2.6, dat \(f\) volledig bepaald is door de beelden \(f(b)\). 
+    We gebruiken lemma 3.2.6, dat \(f\) volledig bepaald is door de beelden \(f(b)\).
 
     Dit impliceerd dat als er \(0 \neq v \in V: \sum_{i}^{n} \lambda_i f(b_i) = 0 \), dat dan \(\lambda_i f(b_i) =  \sum_{j\neq i}^{n-1}\lambda_j f(b_j)\) een lineaire combinatie is van de andere beelden \(f(b_j)\) van de basiselementen.
     Nu gebruiken we gevolg 2.4.8 (ii) \(n-m\) keer tot we een basis krijgen met \(m\) elementen.
@@ -247,7 +247,7 @@
     Nu hoeven we enkel nog \(f\) injectief \(\iff f\) surjectief aan te tonen.
 
     \(
-        f \text{ bijectief} 
+        f \text{ bijectief}
         \iff \ker f = \{0\}
         \iff \dim\ker f = 0
         \iff \dim V = \dim\operatorname{im}f
@@ -264,7 +264,7 @@
 \end{stelling}
 \begin{proof}
     $$ \operatorname{Hom}_K(V,W) := \{f \colon V \to W \mid f \text{ is een lineaire afbeelding}\} $$
-    
+
     Zij $n = \dim V = |\mathcal{B}|$ met basis $\mathcal{B} = (b_1, \dots, b_n)$ en $m = \dim W = |\mathcal{C}|$ met basis $\mathcal{C} = (c_1, \dots, c_m)$.
 
     Een lineaire afbeelding $f$ ligt volledig vast door de beelden van de basisvectoren van het domein, namelijk $(f(b_1), \dots, f(b_n))$
@@ -275,10 +275,10 @@
 
     Neem nu een willekeurige vector $v \in V$, die we schrijven als $v = \sum_{i=1}^{n} \lambda_i b_i$. Wegens de lineariteit van $f$ geldt:
     $$ f(v) = \sum_{i=1}^{n} \lambda_i f(b_i) $$
-    
+
     Als we de uitdrukking voor $f(b_i)$ hierin substitueren, krijgen we:
     \[
-        f(v) = \sum_{i=1}^{n} \lambda_i \left( \sum_{j=1}^{m} \mu_{ij} c_j \right) 
+        f(v) = \sum_{i=1}^{n} \lambda_i \left( \sum_{j=1}^{m} \mu_{ij} c_j \right)
         \implies f(v) = \sum_{i=1}^{n} \sum_{j=1}^{m} \lambda_i \mu_{ij} c_j
     \]
     Omdat elke lineaire afbeelding $f$ op deze manier volledig en uniek bepaald wordt door de $n \cdot m$ scalairen $\mu_{ij}$, volgt hieruit dat:
@@ -298,12 +298,12 @@
 
     Als \(\lambda,\mu \in K\) en \(v,v' \in V\):
 
-    \( 
-        (f \circ g)(\lambda v + \mu v') 
-        = f(g(\lambda v + \mu v'))  
+    \(
+        (f \circ g)(\lambda v + \mu v')
+        = f(g(\lambda v + \mu v'))
         = f(\lambda g(v) + \mu g(v'))
-        = \lambda f(g(v)) + \mu f(g(v'))  
-        = \lambda (f \circ g)(v) + \mu (f \circ g)(v') 
+        = \lambda f(g(v)) + \mu f(g(v'))
+        = \lambda (f \circ g)(v) + \mu (f \circ g)(v')
     \).
 
     Hieruit volgt dat \(f \circ g\) lineair is, dus \(f \circ g \in \operatorname{Hom}(V, U)\).

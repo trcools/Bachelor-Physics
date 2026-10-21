@@ -31,7 +31,7 @@ def read_rows(xlsx_path: Path, sheet_name: str = "Opdracht-2-Data"):
         try:
             # Use default star_type if empty (for red giants, etc.)
             star_type_str = str(star_type).strip().lower() if star_type else "target"
-            
+
             row = {
                 "star_id": str(star_id).strip(),
                 "star_type": star_type_str,
@@ -144,7 +144,9 @@ def main():
     args = parser.parse_args()
 
     input_path = args.input if args.input.is_absolute() else PROJECT_ROOT / args.input
-    output_path = args.output if args.output.is_absolute() else PROJECT_ROOT / args.output
+    output_path = (
+        args.output if args.output.is_absolute() else PROJECT_ROOT / args.output
+    )
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     if not input_path.exists():
@@ -161,7 +163,6 @@ def main():
         raise ValueError(
             "Geen geldige sterren over na filtering. Verlaag --min-snr of controleer inputdata."
         )
-
 
     make_plot(filtered_rows, output_path, color_by=args.color_by)
 

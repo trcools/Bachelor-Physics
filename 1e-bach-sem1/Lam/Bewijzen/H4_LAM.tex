@@ -13,7 +13,7 @@
 \begin{proof}(i)
     We definiëren de beelden van de basisvectoren $b_j \in \mathcal{B}$ adhvd kolommen van de matrix $A$:
     \[f(b_j) = \sum_{i}^m a_{ij} c_i \quad  j \in \{ 1, \dots, n\}.\]
-    Wegens Lemma 3.2.6 (i) \(\exists\) een unieke lineaire afbeelding $f \colon V \to W$ die $\mathcal{B}$ afbeeldt op die vectoren. 
+    Wegens Lemma 3.2.6 (i) \(\exists\) een unieke lineaire afbeelding $f \colon V \to W$ die $\mathcal{B}$ afbeeldt op die vectoren.
 
     Per definitie van transformatiematrix $A_{f,\mathcal{B},\mathcal{C}}$ bevat
     de $j$-de kolom de coördinaten van $f(b_j)$ tov $\mathcal{C}$.
@@ -48,10 +48,10 @@
 
     Dit kan ook via lemma 4.1.4 (ii) aangetoont worden:
     \begin{align*}
-    f(v) &= f\left(\sum_{j=1}^n v_j e_j\right) 
-    = \sum_{j=1}^n v_j f(e_j) 
-    = \sum_{j=1}^n v_j \left( \sum_{i=1}^m a_{ij} e_i \right) 
-    = \sum_{i=1}^m \left( \sum_{j=1}^n a_{ij} v_j \right) e_i 
+    f(v) &= f\left(\sum_{j=1}^n v_j e_j\right)
+    = \sum_{j=1}^n v_j f(e_j)
+    = \sum_{j=1}^n v_j \left( \sum_{i=1}^m a_{ij} e_i \right)
+    = \sum_{i=1}^m \left( \sum_{j=1}^n a_{ij} v_j \right) e_i
     = A v = L_A(v)
     \end{align*}
 \end{proof}
@@ -60,13 +60,13 @@
     Zij $V$ een $n$-dimensionale vectorruimte met basis $\mathcal{B}$, en zij $\beta \colon V \to K^n$ het coördinatenisomorfisme ten opzichte van $\mathcal{B}$. Zij $A, B \in M_{m,n}(K)$. Als voor alle $v \in V$ geldt dat $A\beta(v) = B\beta(v)$, dan is $A = B$.
 \end{lemma}
 \begin{proof}
-    We hebben de basis \(\mathcal{B} = (b_1,\dots,b_n)\). 
+    We hebben de basis \(\mathcal{B} = (b_1,\dots,b_n)\).
 
     We kunnen \(v\) schrijven als lineaire som: \(v = \sum_i^n \mu_i b_i\). Dan is de isomorfisme \(\beta (v) = (\mu_1,\dots,\mu_n)^t\).
 
     Kies \(v = b_j \implies \beta (v)= \beta(b_j) = e_j\). (Want het gegeven stelt dat dit geldt \(\forall v \in V\)!)
 
-    Bijgevolg is 
+    Bijgevolg is
     \(A \beta(b_j) = A_{e_j} \text{ en } B \beta(b_j) =  B_{e_j} \implies A_{e_j} = B_{e_j} \forall j \in \{1,\dots,n\} \implies A=B\).
 \end{proof}
 
@@ -94,12 +94,12 @@
 \begin{equation*}
 \begin{tikzcd}[row sep=large, column sep=large]
     % Bovenste rij: de vectorruimten en lineaire afbeeldingen
-    V \arrow[r, "f"] \arrow[d, "\beta"'] \arrow[rr, "g \circ f", bend left=25] & 
-    W \arrow[r, "g"] \arrow[d, "\gamma"'] & 
+    V \arrow[r, "f"] \arrow[d, "\beta"'] \arrow[rr, "g \circ f", bend left=25] &
+    W \arrow[r, "g"] \arrow[d, "\gamma"'] &
     U \arrow[d, "\eta"] \\
     % Onderste rij: de coördinatenruimten en matrixvermenigvuldigingen
-    K^n \arrow[r, "A_f"'] \arrow[rr, "A_g A_f"', bend right=25] & 
-    K^m \arrow[r, "A_g"'] & 
+    K^n \arrow[r, "A_f"'] \arrow[rr, "A_g A_f"', bend right=25] &
+    K^m \arrow[r, "A_g"'] &
     K^t
 \end{tikzcd}
 \end{equation*}
@@ -109,11 +109,11 @@
     We moeten aantonen dat \(A_{\lambda g + \mu f} = \lambda A_g + \mu A_f\).
 
 
-    \(A_{\lambda g + \mu f} \beta(v) 
-    = \gamma((\lambda g + \mu f)(v)) 
-    = \gamma(\lambda g(v) + \mu f(v)) 
+    \(A_{\lambda g + \mu f} \beta(v)
+    = \gamma((\lambda g + \mu f)(v))
+    = \gamma(\lambda g(v) + \mu f(v))
     =\lambda \gamma(g(v)) + \mu \gamma(f(v))
-    = \lambda A_g \beta(v) + \mu A_f \beta(v) 
+    = \lambda A_g \beta(v) + \mu A_f \beta(v)
     =  (\lambda A_g  + \mu A_f) \beta(v)\)
 
     Uit lemma 4.1.7 volgt dat \(A_{\lambda g + \mu f} = (\lambda A_g  + \mu A_f)  \).
@@ -127,8 +127,8 @@
 
     We zien dat \(A_{g\circ f} \beta (v) = \eta (g \circ f)(v)\).
 
-    \(A_{g \circ  f} \beta(v) 
-    = \eta(g \circ  f)(v) 
+    \(A_{g \circ  f} \beta(v)
+    = \eta(g \circ  f)(v)
     = A_g \gamma(f(v))
     = A_g A_f \beta(v)
     \)
@@ -142,7 +142,7 @@
     Nemen we het commutatief diagram met \(W = U = V\).
 
     \([\Rightarrow]\) Stel \(f\) inverteerbaar:
-    
+
     \(f \circ f^{-1} = f^{-1} \circ f = id_v\) uit (ii) volgt \(A_{f \circ f^{-1}} = A_f  A_{f^{-1}}  = A_{id_v} = I_n =  A_{f^{-1}}A_f = A_{f^{-1}\circ f}\).
 
     Nu is \((A_f)^{-1} = A_{f^{-1}}\) omdat de inverse matrix uniek is.
@@ -188,21 +188,21 @@
         Dan is \[ Q \begin{pmatrix} \lambda_1' \\ \vdots \\ \lambda_n' \end{pmatrix} = \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix} \quad \text{en} \quad \begin{pmatrix} \lambda_1' \\ \vdots \\ \lambda_n' \end{pmatrix} = Q^{-1} \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix}. \]
     \end{enumerate}
 \end{lemma}
-\begin{proof}(i) 
+\begin{proof}(i)
     Per definitie is: \(b'_j = \sum_i^n q_{ij}b_i\).
 
-    Dan 
+    Dan
     \begin{align*}
-        \gamma (b'_j) 
+        \gamma (b'_j)
         &=  \gamma(\sum_i^n q_{ij}b_i)
-        =  \sum_i^n q_{ij}\gamma(b_i)\\ 
+        =  \sum_i^n q_{ij}\gamma(b_i)\\
     \end{align*}
     Als
        \( B = (\gamma(b_1),
        \dots, \gamma(b_n)) \text{ en } B' = (\gamma(b_1'), \dots, \gamma(b_n')),\)
        dan geldt: \(B Q = B'\).
 \end{proof}
-\begin{proof}(ii) 
+\begin{proof}(ii)
     Dit geldt uit stelling (4.1.8) (iv), met \(f:V\to V = id_v\).
 \end{proof}
 \begin{proof}(iii)
@@ -248,7 +248,7 @@
 
     \(A Q \beta'(v) = P \gamma'(f(v)) = PA' \beta'(v)\)
 
-    Via lemma 4.1.7 is \(AQ = PA'\) 
+    Via lemma 4.1.7 is \(AQ = PA'\)
 
     Via lemma 4.2.3 (ii) is \( P\) inverteerbaar.
     \(\implies A' = P^{-1}AQ\).
@@ -265,7 +265,7 @@
 \begin{proof}
     Zij $k = \dim(\operatorname{Im}(f))$. Volgens de dimensiestelling geldt $\dim(\ker(f)) = n - k$.
 
-    Kies een basis $\{v_{k+1}, \dots, v_n\}$ voor $\ker(f)$. Omdat ze lineair onafhankelijk is in $V$, kunnen we deze aanvullen tot een volledige basis voor $V$. 
+    Kies een basis $\{v_{k+1}, \dots, v_n\}$ voor $\ker(f)$. Omdat ze lineair onafhankelijk is in $V$, kunnen we deze aanvullen tot een volledige basis voor $V$.
     Zij $\mathcal{B} = \{v_1, \dots, v_k, v_{k+1}, \dots, v_n\}$ deze nieuwe basis voor $V$.
 
     We definiëren de vectoren in het codomein als $w_i = f(v_i), \, \forall i \in \{ 1, \dots, k\}$.
@@ -283,22 +283,22 @@
     We kunnen deze verzameling aanvullen tot een basis $\mathcal{C} = \{w_1, \dots, w_k, w_{k+1}, \dots, w_m\}$ voor de volledige vectorruimte $W$.
 
     Nu bepalen we de transformatiematrix $A_{f,\mathcal{B},\mathcal{C}}$ door de beelden van de basisvectoren van $\mathcal{B}$ uit te drukken in de nieuwe basis $\mathcal{C}$:
-    $$\begin{aligned} 
-        f(v_1) &= w_1 = 1\cdot w_1 + 0\cdot w_2 + \dots + 0\cdot w_m \\ 
-        &\vdots \\ 
-        f(v_k) &= w_k = 0\cdot w_1 + \dots + 1\cdot w_k + \dots + 0\cdot w_m \\ 
-        f(v_{k+1}) &= 0 = 0\cdot w_1 + \dots + 0\cdot w_m \quad (\text{want } v_{k+1} \in \ker(f)) \\ 
-        &\vdots \\ 
-        f(v_n) &= 0 = 0\cdot w_1 + \dots + 0\cdot w_m \quad (\text{want } v_n \in \ker(f)) 
+    $$\begin{aligned}
+        f(v_1) &= w_1 = 1\cdot w_1 + 0\cdot w_2 + \dots + 0\cdot w_m \\
+        &\vdots \\
+        f(v_k) &= w_k = 0\cdot w_1 + \dots + 1\cdot w_k + \dots + 0\cdot w_m \\
+        f(v_{k+1}) &= 0 = 0\cdot w_1 + \dots + 0\cdot w_m \quad (\text{want } v_{k+1} \in \ker(f)) \\
+        &\vdots \\
+        f(v_n) &= 0 = 0\cdot w_1 + \dots + 0\cdot w_m \quad (\text{want } v_n \in \ker(f))
     \end{aligned}$$
 
-    De coördinaten van deze beelden vormen de kolommen van de matrix $A_{f,\mathcal{B},\mathcal{C}}$. 
+    De coördinaten van deze beelden vormen de kolommen van de matrix $A_{f,\mathcal{B},\mathcal{C}}$.
     De eerste $k$ kolommen bevatten opeenvolgend de eerste $k$ eenheidsvectoren, wat resulteert in de identiteitsmatrix $I_k$ in de linkerbovenhoek.
-    De laatste $n-k$ kolommen bestaan uitsluitend uit nullen, omdat deze basisvectoren via de kern op nul worden afgebeeld. 
+    De laatste $n-k$ kolommen bestaan uitsluitend uit nullen, omdat deze basisvectoren via de kern op nul worden afgebeeld.
     De resterende $m-k$ coördinaten onder de identiteitsmatrix in $W$ worden nergens geraakt, waardoor deze rijen eveneens nul zijn.
     Dit resulteert in:
-    $$A_{f,\mathcal{B},\mathcal{C}} = \left(\begin{array}{c|c} 
-        I_k & 0_{k,n-k} \\ \hline 
-        0_{m-k,k} & 0_{m-k,n-k} 
+    $$A_{f,\mathcal{B},\mathcal{C}} = \left(\begin{array}{c|c}
+        I_k & 0_{k,n-k} \\ \hline
+        0_{m-k,k} & 0_{m-k,n-k}
     \end{array}\right)$$
 \end{proof}

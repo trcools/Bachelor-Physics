@@ -32,7 +32,7 @@ In de context van thermische fysica, wordt arbeid vaak geassocieerd met processe
 dW = F \cdot dx = -PAdx = -PdV
 \]
 
-Een negatief teken betekent dat een volumevergroting gepaard gaat met een negatieve arbeid, terwijl een volumeverkleining gepaard gaat met een positieve arbeid. 
+Een negatief teken betekent dat een volumevergroting gepaard gaat met een negatieve arbeid, terwijl een volumeverkleining gepaard gaat met een positieve arbeid.
 
 Voor een quasistatisch proces geldt:
 \begin{equation}
@@ -65,13 +65,13 @@ Onze conventie voor cyclussen is als volgt: wijzerzin betekend dat er negatieve 
     \textbf{Arbeid is padafhankelijk}: Stel we kunnen van punt 1 naar punt 2 gaan via twee verschillende paden, namelijk pad A en pad C. (Zie figuur \ref{fig:work-gas-pv}.)
     We kunnen ook een cyclus maken door van punt 1 naar punt 2 te gaan via pad C, en vervolgens terug te gaan van punt 2 naar punt 1 via pad A. De netto arbeid verricht tijdens deze cyclus is:
     \begin{align*}
-        W_{cyclus} &= W_{21}(C) + W_{12}(A) 
-        = -|W_{21}(C)| + |W_{12}(A)| < 0 
+        W_{cyclus} &= W_{21}(C) + W_{12}(A)
+        = -|W_{21}(C)| + |W_{12}(A)| < 0
         \implies |W_{21}(C)| > |W_{12}(A)| \\
     \end{align*}
     Als we nu proces A van 2 naar 1 laten verlopen, dan is de netto arbeid:
     \begin{align*}
-        W_{21}(A) &= -W_{12}(A) <0 \implies |W_{21}(A)| = |W_{12}(A)| \\ 
+        W_{21}(A) &= -W_{12}(A) <0 \implies |W_{21}(A)| = |W_{12}(A)| \\
     \end{align*}
     Uit \(|W_{21}(C)| > |W_{12}(A)|\) en \(|W_{21}(A)| = |W_{12}(A)|\) volgt dat \(|W_{21}(C)| > |W_{21}(A)|\). (Of stel dat beide negatief zijn, dan is \(W_{21}(C) < W_{21}(A)\).)
     Dit betekent dat de arbeid die wordt verricht tijdens het proces van 2 naar 1 via pad C groter is dan de arbeid die wordt verricht tijdens het proces van 2 naar 1 via pad A.
@@ -93,12 +93,12 @@ Voor een  \textbf{isochoor} proces is de arbeid triviaal 0.
 \[
 W = - \int_{V_i}^{V_f} P(V)dV
 \]
-Waarbij de toestandsfunctie \(P(V, T)\) nu enkel van het volume afhangt \(P(V)\). 
+Waarbij de toestandsfunctie \(P(V, T)\) nu enkel van het volume afhangt \(P(V)\).
 Voor een ideaal gas is \(P = \frac{nRT}{V}\), dus de arbeid wordt:
 \begin{equation}
 \label{eq: isotherme-arbeid-ideaal-gas}
 W = - \int_{V_i}^{V_f} \frac{nRT}{V}dV = -nRT \ln\left( \frac{V_f}{V_i} \right) \qquad (T = cst)
-\end{equation} 
+\end{equation}
 
 \textbf{Isotherme toename van druk op een vaste stof}:
 \[
@@ -108,7 +108,7 @@ Waar we formule \eqref{eq:isothermische-drukbaarheid} hebben gebruikt, nu volgt 
 \begin{equation}
 \label{eq: isotherme-arbeid-vast-stof}
 W = - \int_{P_i}^{P_f} \kappa VP  dP \qquad (T = cst)
-\end{equation} 
+\end{equation}
 
 Het is niet moeilijk te realiseren dat als de temperatuur constant is, een vaste stof niet veel zal uitzetten, waardoor we \(V,\kappa \approx cst\) kunnen beschouwen.
 
@@ -132,7 +132,7 @@ Herinner de wet van hooke, \(F = k(L - L_0)\), waarbij \(k\) de veerconstante is
 
 \subsubsection{Elektrolyse cel herzien}
 
-\( \dbar W = V_\epsilon dQ \) met \(dQ\) het aantal verplaatste elektronen inde cel tijdens de reactie en \(V_\epsilon\) de elektrische potentiaal. De arbeid wordt: 
+\( \dbar W = V_\epsilon dQ \) met \(dQ\) het aantal verplaatste elektronen inde cel tijdens de reactie en \(V_\epsilon\) de elektrische potentiaal. De arbeid wordt:
 \[W = \int_{Q_i}^{Q_f} V_\epsilon dQ = \int_{t_i}^{t_f} V_\epsilon \frac{dQ}{dt} dt = \int_{t_i}^{t_f} V_\epsilon I dt\]
 
 \subsubsection{Verandering vd polarisatie van een diëlektricum herzien}
@@ -146,7 +146,7 @@ Herinner de wet van hooke, \(F = k(L - L_0)\), waarbij \(k\) de veerconstante is
 \end{figure}
 
 
-\(\dbar W = V_\epsilon dQ =EldQ\) met \(E = \frac{V_\epsilon}{l}\) het elektrische veld. (zie figuur \ref{fig:di-electric-polarization}) 
+\(\dbar W = V_\epsilon dQ =EldQ\) met \(E = \frac{V_\epsilon}{l}\) het elektrische veld. (zie figuur \ref{fig:di-electric-polarization})
 
 \(Q = A(\bm D \cdot \bm n) \) met \(\bm n\) de normaal op het oppervlak (in ons geval staat alles loodrecht dus wordt dit geen probleem).
 
@@ -170,7 +170,7 @@ Doordat enkel de tweeede term de polarisatie beïnvloed negeren we de eerste ter
     \label{fig:magnetization-work}
 \end{figure}
 
-Uit de inductiewet van Faraday volgt dat \( V_\epsilon = \frac{d\Phi}{dt} = -NA \frac{dB}{dt} \) met (\(A = cst\) en \(N\) het aantal windingen van de spoel zie figuur \ref{fig:magnetization-work}). 
+Uit de inductiewet van Faraday volgt dat \( V_\epsilon = \frac{d\Phi}{dt} = -NA \frac{dB}{dt} \) met (\(A = cst\) en \(N\) het aantal windingen van de spoel zie figuur \ref{fig:magnetization-work}).
 
 \[\dbar W = -V_\epsilon dQ = -NA \frac{dB}{dt} dQ = -NA \frac{dQ}{dt} dB = -NAI dB \]
 
