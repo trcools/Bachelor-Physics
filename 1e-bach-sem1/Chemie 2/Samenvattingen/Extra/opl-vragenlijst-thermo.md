@@ -569,7 +569,7 @@ $$
 \frac{\Delta H}{R}\int_{T_1}^{T_2}\frac{1}{T^2}\,dT.
 $$
 
-Links: $\ln(P_2/P_1)$. 
+Links: $\ln(P_2/P_1)$.
 
 Rechts: $\frac{\Delta H}{R}\left[-\frac{1}{T}\right]_{T_1}^{T_2} =\frac{\Delta H}{R}\left(-\frac{1}{T_2}+\frac{1}{T_1}\right)$.
 Dus:

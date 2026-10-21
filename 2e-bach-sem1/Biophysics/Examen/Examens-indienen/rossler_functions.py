@@ -24,7 +24,7 @@ naming, and documentation for readability and maintainability.
 # Imports
 # =============================================================================
 
-import numpy as np 
+import numpy as np
 from sympy.solvers import solve
 from sympy import symbols, Eq
 from scipy.signal import find_peaks
@@ -33,41 +33,43 @@ from scipy.signal import find_peaks
 # General Parameters
 # =============================================================================
 
+
 def get_parameters():
-    
     # Rössler system parameters
     a = 0.2
     b = 0.2
     c = 5.7
     # c will be varied as the bifurcation parameter
-        
+
     # --- Time settings ---
     t_min, t_max = 0.0, 200.0  # Longer time for Rössler to show attractor
     dt = 0.01
-        
+
     # --- Initial conditions ---
     x0, y0, z0 = 1, 1, 1
     initial_condition = (x0, y0, z0)
-    
+
     initial_conditions = [
         (0.1, 0.1, 0.1),
         (5.0, 5.0, 5.0),
         (-5.0, 2.0, 1.0),
-        (0.5, 0.5, 0.5)
+        (0.5, 0.5, 0.5),
     ]
     return a, b, c, t_min, t_max, dt, initial_condition, initial_conditions
+
 
 # ------- parameters ----
 
 a, b, c, t_min, t_max, dt, initial_condition, initial_conditions = get_parameters()
 
 # ============================================================
-# 1. Numerical integration 
+# 1. Numerical integration
 # ============================================================
 
-    # ========================================
-    # 1.1. Time grid and state arrays
-    # ========================================
+# ========================================
+# 1.1. Time grid and state arrays
+# ========================================
+
 
 def get_time_array(t_min=t_min, t_max=t_max, dt=dt):
     """
@@ -88,17 +90,18 @@ def get_time_array(t_min=t_min, t_max=t_max, dt=dt):
     t = np.arange(t_min, t_max, dt)
     return t
 
+
 def get_state_arrays(n, initial_condition):
     """
     Initialize state arrays for numerical integration.
-    
+
     Parameters
     ----------
     n : int
         Number of time points
     initial_condition : tuple of float
         Initial state (x0, y0, z0)
-        
+
     Returns
     -------
     x, y, z : ndarray
@@ -119,14 +122,14 @@ def get_state_arrays(n, initial_condition):
 def rossler_rhs(state, a=0.2, b=0.2, c=5.7):
     """
     Compute the right-hand side of the Rössler system.
-    
+
     Parameters
     ----------
     state : array-like, shape (3,)
         Current state (x, y, z)
     a, b, c : float
         System parameters
-        
+
     Returns
     -------
     dstate : ndarray, shape (3,)
@@ -164,6 +167,7 @@ def get_euler_vectors(a, b, c, initial_condition, t_min, t_max, h):
 # 1.4. Manual Integrator : RK4
 # ============================================================
 
+
 def rk4_integrate_rossler(a, b, c, initial_condition, t_min, t_max, h):
     """
     Classic RK4 integrator for the 3D Rössler system.
@@ -185,13 +189,15 @@ def rk4_integrate_rossler(a, b, c, initial_condition, t_min, t_max, h):
         k3 = f(s + 0.5 * h * k2)
         k4 = f(s + h * k3)
 
-        s_new = s + (h / 6.0) * (k1 + 2*k2 + 2*k3 + k4)
+        s_new = s + (h / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
         x[i + 1], y[i + 1], z[i + 1] = s_new[0], s_new[1], s_new[2]
 
     return t, x, y, z
 
-def get_RK4_vectors(a=a, b=b, c=c, initial_condition=initial_condition,
-                    t_min=t_min, t_max=t_max, dt=dt):
+
+def get_RK4_vectors(
+    a=a, b=b, c=c, initial_condition=initial_condition, t_min=t_min, t_max=t_max, dt=dt
+):
     "Wrapper function to get RK4 vectors."
     t, x, y, z = rk4_integrate_rossler(a, b, c, initial_condition, t_min, t_max, dt)
     return t, x, y, z
@@ -213,24 +219,24 @@ def get_solutions():
     (x, y, z) : tuple of SymPy symbols
         The state variables used in the symbolic system.
     """
-    x, y, z, c, a_sym, b_sym = symbols('x y z c a b', real=True)
+    x, y, z, c, a_sym, b_sym = symbols("x y z c a b", real=True)
 
-    eqs = [
-        Eq(-y - z, 0),
-        Eq(x + a_sym * y, 0),
-        Eq(b_sym + z * (x - c), 0)]
-    
+    eqs = [Eq(-y - z, 0), Eq(x + a_sym * y, 0), Eq(b_sym + z * (x - c), 0)]
+
     solutions = solve(eqs, (x, y, z), dict=True)
 
     return solutions, (x, y, z)
+
 
 def print_solutions():
     """
     Print all symbolic equilibria in a human-readable format.
     """
     solutions, (x, y, z) = get_solutions()
-    for i,solution in enumerate(solutions):
-        print(f"Solution {i+1}:\n X = {solution[x]} Y = {solution[y]} Z = {solution[z]} \n")
+    for i, solution in enumerate(solutions):
+        print(
+            f"Solution {i + 1}:\n X = {solution[x]} Y = {solution[y]} Z = {solution[z]} \n"
+        )
 
 
 # ============================================================
@@ -268,35 +274,36 @@ def equilibrium_classification(eigvals):
     re = np.real(eigvals)
     im = np.imag(eigvals)
     has_complex = np.any(np.abs(im) > tol)
-    
+
     # Count the number 'n' of positive, negative and zero eigenvalues
     n_pos = np.sum(re > tol)
     n_neg = np.sum(re < -tol)
     n_zero = len(eigvals) - n_pos - n_neg
-    
+
     # 1) All real parts < 0  -> stable
     if n_pos == 0 and n_zero == 0:
         return "stable spiral" if has_complex else "stable node"
-    
+
     # 2) At least one > 0, none negative -> purely unstable
     if n_pos > 0 and n_neg == 0 and n_zero == 0:
         return "unstable spiral" if has_complex else "unstable node"
-    
+
     # 3) Both positive and negative real parts -> saddle / saddle-focus
     if n_pos > 0 and n_neg > 0:
         return "saddle spiral" if has_complex else "saddle point"
-    
+
     # 4) At least one eigenvalue ≈ 0, all real -> pitchfork
     if n_zero > 0 and not has_complex and n_pos == 0:
         return "pitchfork bifurcation"
-    
+
     # 5) At least one eigenvalue ≈ 0, complex pair present -> Hopf
     if n_zero > 0 and has_complex and n_pos == 0:
         return "Hopf bifurcation"
-    
+
     # 6) Exotic / other cases
     return "other equilibrium"
- 
+
+
 def get_groups(dim="1D"):
     """
     Create plotting groups for equilibria.
@@ -315,10 +322,9 @@ def get_groups(dim="1D"):
     """
     if dim not in {"1D", "2D"}:
         raise ValueError(f"dim must be '1D' or '2D', got {dim!r}")
-        
-    
+
     base_styles = styles_for_equilibria()
-                  
+
     groups = {}
 
     if dim == "2D":
@@ -329,7 +335,7 @@ def get_groups(dim="1D"):
                 "v2": [],
                 "style": style.copy(),
             }
-    else: # dim == "1D"
+    else:  # dim == "1D"
         for key, style in base_styles.items():
             groups[key] = {
                 "c": [],
@@ -338,6 +344,7 @@ def get_groups(dim="1D"):
             }
 
     return groups
+
 
 def styles_for_equilibria():
     """Return the full style mapping for all equilibrium types."""
@@ -348,42 +355,45 @@ def styles_for_equilibria():
         "unstable spiral": dict(marker="x", color="black", label="unstable-spiral"),
         "saddle point": dict(marker="o", color="orange", label="saddle"),
         "saddle spiral": dict(marker="o", color="green", label="saddle-spiral"),
-        "pitchfork bifurcation": dict(marker="o", color="red", label="Pitchfork bifurcation"),
+        "pitchfork bifurcation": dict(
+            marker="o", color="red", label="Pitchfork bifurcation"
+        ),
         "Hopf bifurcation": dict(marker="o", color="blue", label="Hopf bifurcation"),
     }
 
 
 def styles_for_equilibrium(eq_type):
     """Return the style for a single equilibrium type."""
-    return styles_for_equilibria().get(eq_type, dict(marker="o", color="gray", label=eq_type))
+    return styles_for_equilibria().get(
+        eq_type, dict(marker="o", color="gray", label=eq_type)
+    )
+
 
 # ============================================================
 # 4. Jacobian, equilibria and eigenvalues as function of c
 # ============================================================
 
+
 def jacobian_rossler(state, a, b, c):
     """
     Compute Jacobian matrix of Rössler system at a given state.
-    
+
     Parameters
     ----------
     state : array-like, shape (3,)
         Current state (x, y, z)
     a, b, c : float
         Rössler parameters
-        
+
     Returns
     -------
     J : ndarray, shape (3, 3)
         Jacobian matrix at state
     """
     x, y, z = state
-    J = np.array([
-        [0.0,   -1.0,   -1.0    ],
-        [1.0,    a,      0.0    ],
-        [z,      0.0,   x - c   ]
-    ], dtype=float)
-    return J 
+    J = np.array([[0.0, -1.0, -1.0], [1.0, a, 0.0], [z, 0.0, x - c]], dtype=float)
+    return J
+
 
 def get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a, b_val=b):
     """
@@ -417,7 +427,7 @@ def get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a, b_va
     x_expr = sol[x]
     y_expr = sol[y]
     z_expr = sol[z]
-        
+
     subs_dict = {c_sym: c_val, a_sym: a_val, b_sym: b_val}
 
     # Here we substitute c, a and b into the symbolic equations
@@ -426,10 +436,10 @@ def get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a, b_va
     z_num = z_expr.subs(subs_dict).evalf()
     # evalf: evaluate to a floating-point number
 
-    #Only keep real solutions
+    # Only keep real solutions
     if not (x_num.is_real and y_num.is_real and z_num.is_real):
         return None
-                
+
     xsol = float(x_num)
     ysol = float(y_num)
     zsol = float(z_num)
@@ -439,7 +449,7 @@ def get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a, b_va
 
     eigvals, _ = np.linalg.eig(J_eq)
     eq_type = equilibrium_classification(eigvals)
-            
+
     return {
         "c": c_val,
         "x_eq": xsol,
@@ -447,10 +457,13 @@ def get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a, b_va
         "z_eq": zsol,
         "J": J_eq,
         "eigvals": eigvals,
-        "eq_type": eq_type}
-    
-def get_equilibria_from_jacobian(sol, x, y, z, c_sym, a_sym, b_sym, c_values,
-                                 a_val=a, b_val=b):
+        "eq_type": eq_type,
+    }
+
+
+def get_equilibria_from_jacobian(
+    sol, x, y, z, c_sym, a_sym, b_sym, c_values, a_val=a, b_val=b
+):
     """
     Helper function: compute equilibria for many c values for a single solution.
 
@@ -473,13 +486,15 @@ def get_equilibria_from_jacobian(sol, x, y, z, c_sym, a_sym, b_sym, c_values,
         List of equilibrium dictionaries (see get_equilibria_for_c).
     """
     equilibrium = []
-    
+
     for c_val in c_values:
-        eq = get_equilibria_for_c(sol, x, y, z, c_sym, a_sym, b_sym, c_val,
-                                    a_val=a_val, b_val=b_val)
+        eq = get_equilibria_for_c(
+            sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a_val, b_val=b_val
+        )
         if eq is not None:
-                equilibrium.append(eq)
+            equilibrium.append(eq)
     return equilibrium
+
 
 def compute_jacobian_and_stability(sols, x, y, z, small_c=False):
     """
@@ -501,22 +516,26 @@ def compute_jacobian_and_stability(sols, x, y, z, small_c=False):
         Each dict contains keys:
         {"c", "x_eq", "y_eq", "z_eq", "J", "eigvals", "eq_type"}.
     """
-    c_sym, a_sym, b_sym = symbols('c a b', real=True)
+    c_sym, a_sym, b_sym = symbols("c a b", real=True)
     all_equilibria = []
-    
-    if small_c: 
+
+    if small_c:
         c_values = np.linspace(0, 2, 51)
     else:
         c_values = np.linspace(0, 18, 181)
-        
+
     for sol in sols:
-        all_equilibria.extend(get_equilibria_from_jacobian(sol, x, y, z,
-                                                           c_sym, a_sym, b_sym,
-                                                           c_values,
-                                                           a_val=a, b_val=b))
+        all_equilibria.extend(
+            get_equilibria_from_jacobian(
+                sol, x, y, z, c_sym, a_sym, b_sym, c_values, a_val=a, b_val=b
+            )
+        )
     return all_equilibria
- 
-def get_eigvals_for_c(sols, x, y, z, c_sym, a_sym, b_sym, a_val=a, b_val=b, h=dt, small_c=False):
+
+
+def get_eigvals_for_c(
+    sols, x, y, z, c_sym, a_sym, b_sym, a_val=a, b_val=b, h=dt, small_c=False
+):
     """
     Collect the Jacobian eigenvalues of all real equilibria as a function of c.
 
@@ -552,14 +571,15 @@ def get_eigvals_for_c(sols, x, y, z, c_sym, a_sym, b_sym, a_val=a, b_val=b, h=dt
     for c_val in c_values:
         eigvals_list = []
         for sol in sols:
-            eq = get_equilibria_for_c(sol, x, y, z,
-                                        c_sym, a_sym, b_sym, c_val,
-                                        a_val=a_val, b_val=b_val)
+            eq = get_equilibria_for_c(
+                sol, x, y, z, c_sym, a_sym, b_sym, c_val, a_val=a_val, b_val=b_val
+            )
             if eq is not None:
                 eigvals_list.append(eq["eigvals"])
         eigvals_by_c[c_val] = eigvals_list
 
     return eigvals_by_c
+
 
 def equilibria_at_c(c_val, a_val=a, b_val=b):
     sols, (x_sym, y_sym, z_sym) = get_solutions()
@@ -567,16 +587,25 @@ def equilibria_at_c(c_val, a_val=a, b_val=b):
 
     eqs = []
     for sol in sols:
-        eq = get_equilibria_for_c(sol, x_sym, y_sym, z_sym,
-                                  c_sym, a_sym, b_sym,
-                                  c_val, a_val=a_val, b_val=b_val)
+        eq = get_equilibria_for_c(
+            sol,
+            x_sym,
+            y_sym,
+            z_sym,
+            c_sym,
+            a_sym,
+            b_sym,
+            c_val,
+            a_val=a_val,
+            b_val=b_val,
+        )
         if eq is not None:
             eqs.append(eq)
     return eqs
 
 
 # ============================================================
-#  Find fitting Euler dt for given RK4 precision 
+#  Find fitting Euler dt for given RK4 precision
 # ============================================================
 
 
@@ -585,13 +614,16 @@ def max_abs_error_on_common_grid(t_ref, x_ref, t_test, x_test):
     x_test_on_ref = np.interp(t_ref, t_test, x_test)
     return np.max(np.abs(x_test_on_ref - x_ref))
 
-def find_euler_dt_for_rk4_precision(a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_euler=0.1, max_halvings=20):
+
+def find_euler_dt_for_rk4_precision(
+    a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_euler=0.1, max_halvings=20
+):
     """
     Find Euler step size that achieves comparable accuracy to RK4 reference.
-    
-    Uses RK4 with step h_rk4 as reference. Halves Euler step size until 
+
+    Uses RK4 with step h_rk4 as reference. Halves Euler step size until
     error <= RK4 baseline error.
-    
+
     Returns
     -------
     h_best, err_best : tuple[float, float]
@@ -603,12 +635,15 @@ def find_euler_dt_for_rk4_precision(a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_eul
 
     # Baseline "precision target": use RK4 vs RK4 with smaller h as internal reference
     # Avoids needing an exact solution (theory from course python for scientists)
-    t_fine, x_fine, y_fine, z_fine = rk4_integrate_rossler(a, b, c, ic, t_min, t_max, h_rk4/2)
+    t_fine, x_fine, y_fine, z_fine = rk4_integrate_rossler(
+        a, b, c, ic, t_min, t_max, h_rk4 / 2
+    )
 
     target = max(
         max_abs_error_on_common_grid(t_ref, x_ref, t_fine, x_fine),
         max_abs_error_on_common_grid(t_ref, y_ref, t_fine, y_fine),
-        max_abs_error_on_common_grid(t_ref, z_ref, t_fine, z_fine))
+        max_abs_error_on_common_grid(t_ref, z_ref, t_fine, z_fine),
+    )
 
     h = h0_euler
     best_h = None
@@ -619,7 +654,8 @@ def find_euler_dt_for_rk4_precision(a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_eul
         err = max(
             max_abs_error_on_common_grid(t_ref, x_ref, t_eu, x_eu),
             max_abs_error_on_common_grid(t_ref, y_ref, t_eu, y_eu),
-            max_abs_error_on_common_grid(t_ref, z_ref, t_eu, z_eu))
+            max_abs_error_on_common_grid(t_ref, z_ref, t_eu, z_eu),
+        )
 
         # If error is not finite (overflow/NaN), reduce step and continue
         if not np.isfinite(err):
@@ -642,7 +678,8 @@ def find_euler_dt_for_rk4_precision(a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_eul
         err = max(
             max_abs_error_on_common_grid(t_ref, x_ref, t_eu, x_eu),
             max_abs_error_on_common_grid(t_ref, y_ref, t_eu, y_eu),
-            max_abs_error_on_common_grid(t_ref, z_ref, t_eu, z_eu))
+            max_abs_error_on_common_grid(t_ref, z_ref, t_eu, z_eu),
+        )
         return h, err
 
 
@@ -651,8 +688,18 @@ def find_euler_dt_for_rk4_precision(a, b, c, ic, t_min, t_max, h_rk4=0.1, h0_eul
 # ============================================================
 
 
-def get_Z_maxima(a, b, c, initial_condition, skip_first=5, t_min=0, t_max=100, dt=0.01,
-                 prominence=None, distance=None):
+def get_Z_maxima(
+    a,
+    b,
+    c,
+    initial_condition,
+    skip_first=5,
+    t_min=0,
+    t_max=100,
+    dt=0.01,
+    prominence=None,
+    distance=None,
+):
     """
     Determine the local maxima Z_n of Z(t) for a given c.
 
@@ -683,8 +730,15 @@ def get_Z_maxima(a, b, c, initial_condition, skip_first=5, t_min=0, t_max=100, d
     Z_max : ndarray
         Values of Z at those maxima.
     """
-    t, _, _, z = get_RK4_vectors(a=a, b=b, c=c, initial_condition=initial_condition,
-                             t_min=t_min, t_max=t_max, dt=dt)
+    t, _, _, z = get_RK4_vectors(
+        a=a,
+        b=b,
+        c=c,
+        initial_condition=initial_condition,
+        t_min=t_min,
+        t_max=t_max,
+        dt=dt,
+    )
 
     # Robust peak detection using prominence/distance to suppress noise-driven peaks
     peaks, _ = find_peaks(z, prominence=prominence, distance=distance)
@@ -698,6 +752,7 @@ def get_Z_maxima(a, b, c, initial_condition, skip_first=5, t_min=0, t_max=100, d
         t_max = t_max[skip_first:]
 
     return t_max, Z_max, t, z
+
 
 def rossler_return_map_from_data(Z_n):
     """
@@ -727,16 +782,26 @@ def rossler_return_map_from_data(Z_n):
 
     return F
 
+
 def local_maxima(values):
     values = np.asarray(values)
     idx = np.where((values[1:-1] > values[:-2]) & (values[1:-1] > values[2:]))[0] + 1
     return idx
 
-def lyapunov_exponent_estimate(a=0.2, b=0.2, c=5.7, initial_condition=initial_condition,
-                               t_min=0, t_max=100, dt=dt, eps=1e-8):
+
+def lyapunov_exponent_estimate(
+    a=0.2,
+    b=0.2,
+    c=5.7,
+    initial_condition=initial_condition,
+    t_min=0,
+    t_max=100,
+    dt=dt,
+    eps=1e-8,
+):
     """
     Estimate the largest Lyapunov exponent numerically.
-    
+
     Parameters
     ----------
     x0, y0, z0 : float
@@ -747,7 +812,7 @@ def lyapunov_exponent_estimate(a=0.2, b=0.2, c=5.7, initial_condition=initial_co
         Time interval
     eps : float
         Initial perturbation magnitude
-        
+
     Returns
     -------
     t : ndarray
@@ -757,26 +822,36 @@ def lyapunov_exponent_estimate(a=0.2, b=0.2, c=5.7, initial_condition=initial_co
     """
     # Reference trajectory
     t, x1, y1, z1 = get_RK4_vectors(
-        a=a, b=b, c=c,
+        a=a,
+        b=b,
+        c=c,
         initial_condition=initial_condition,
-        t_min=t_min, t_max=t_max, dt=dt
-        )
-    
+        t_min=t_min,
+        t_max=t_max,
+        dt=dt,
+    )
+
     # Perturbed trajectory
     t, x2, y2, z2 = get_RK4_vectors(
-        a=a, b=b, c=c,
-        initial_condition=(initial_condition[0] + eps,
-                           initial_condition[1],
-                           initial_condition[2]),
-        t_min=t_min, t_max=t_max, dt=dt
-        )
-    
+        a=a,
+        b=b,
+        c=c,
+        initial_condition=(
+            initial_condition[0] + eps,
+            initial_condition[1],
+            initial_condition[2],
+        ),
+        t_min=t_min,
+        t_max=t_max,
+        dt=dt,
+    )
+
     # Distance between trajectories
     dx = x2 - x1
     dy = y2 - y1
     dz = z2 - z1
     distance = np.sqrt(dx**2 + dy**2 + dz**2)
-    
+
     # Avoid log(0)
     distance = np.maximum(distance, 1e-12)
 
@@ -785,15 +860,17 @@ def lyapunov_exponent_estimate(a=0.2, b=0.2, c=5.7, initial_condition=initial_co
         mask = (t >= t_fit[0]) & (t <= t_fit[1])
         y = np.log(distance[mask] / eps)
         x = t[mask]
-        lam = np.polyfit(x, y, 1)[0]   # slope
+        lam = np.polyfit(x, y, 1)[0]  # slope
         return lam
-    
+
     lam = lyapunov_from_two_trajs(t, distance, eps=1e-8, t_fit=(20, 60))
     print("Largest Lyapunov exponent ≈", lam)
     return
 
-def bifurcation_maxima_X(param_name, param_values, a, b, c, ic,
-                         t_min=0.0, t_max=200.0, h=0.01, skip_frac=0.5):
+
+def bifurcation_maxima_X(
+    param_name, param_values, a, b, c, ic, t_min=0.0, t_max=200.0, h=0.01, skip_frac=0.5
+):
     """
     Returns arrays (p_plot, x_max_plot) for maxima of X after transients.
     param_name: "b" or "c"
@@ -827,11 +904,20 @@ def bifurcation_maxima_X(param_name, param_values, a, b, c, ic,
 # ============================================================
 
 
-def find_optimal_euler_step(a, b, c, initial_condition, t_min=0.0, t_max=60.0, 
-                            h_rk4=0.1, h0_euler=0.1, max_halvings=20):
+def find_optimal_euler_step(
+    a,
+    b,
+    c,
+    initial_condition,
+    t_min=0.0,
+    t_max=60.0,
+    h_rk4=0.1,
+    h0_euler=0.1,
+    max_halvings=20,
+):
     """
     Find optimal Euler step size for comparable accuracy to RK4 reference.
-    
+
     Parameters
     ----------
     a, b, c : float
@@ -846,7 +932,7 @@ def find_optimal_euler_step(a, b, c, initial_condition, t_min=0.0, t_max=60.0,
         Initial Euler step size for halving search
     max_halvings : int
         Maximum number of step halvings to attempt
-    
+
     Returns
     -------
     h_best : float
@@ -859,14 +945,25 @@ def find_optimal_euler_step(a, b, c, initial_condition, t_min=0.0, t_max=60.0,
     )
     return h_best, err_best
 
-def compare_euler_vs_rk4(a, b, c, initial_condition, t_min=0.0, t_max=60.0,
-                         h_rk4=0.1, h_euler=None, h0_euler=0.1, max_halvings=20):
+
+def compare_euler_vs_rk4(
+    a,
+    b,
+    c,
+    initial_condition,
+    t_min=0.0,
+    t_max=60.0,
+    h_rk4=0.1,
+    h_euler=None,
+    h0_euler=0.1,
+    max_halvings=20,
+):
     """
     Compare Euler and RK4 integration methods for Rössler system.
-    
+
     Integrates with both methods and returns trajectories plus error statistics.
     If h_euler is not specified, finds optimal step size automatically.
-    
+
     Parameters
     ----------
     a, b, c : float
@@ -883,7 +980,7 @@ def compare_euler_vs_rk4(a, b, c, initial_condition, t_min=0.0, t_max=60.0,
         Initial step size for automatic search (if h_euler is None)
     max_halvings : int
         Max halving iterations for automatic search (if h_euler is None)
-    
+
     Returns
     -------
     results : dict
@@ -896,32 +993,45 @@ def compare_euler_vs_rk4(a, b, c, initial_condition, t_min=0.0, t_max=60.0,
         - 'max_err_x', 'max_err_y', 'max_err_z': Maximum component errors
     """
     # RK4 reference solution
-    t_ref, x_ref, y_ref, z_ref = rk4_integrate_rossler(a, b, c, initial_condition, 
-                                                         t_min, t_max, h_rk4)
-    
+    t_ref, x_ref, y_ref, z_ref = rk4_integrate_rossler(
+        a, b, c, initial_condition, t_min, t_max, h_rk4
+    )
+
     # Determine Euler step size
     if h_euler is None:
-        h_euler, _ = find_optimal_euler_step(a, b, c, initial_condition, t_min, t_max, 
-                                            h_rk4, h0_euler, max_halvings)
-    
+        h_euler, _ = find_optimal_euler_step(
+            a, b, c, initial_condition, t_min, t_max, h_rk4, h0_euler, max_halvings
+        )
+
     # Euler solution
-    t_eu, x_eu, y_eu, z_eu = get_euler_vectors(a, b, c, initial_condition, 
-                                                t_min, t_max, h_euler)
-    
+    t_eu, x_eu, y_eu, z_eu = get_euler_vectors(
+        a, b, c, initial_condition, t_min, t_max, h_euler
+    )
+
     # Interpolate Euler results on RK4 grid for error estimation
     x_eu_on_ref = np.interp(t_ref, t_eu, x_eu)
     y_eu_on_ref = np.interp(t_ref, t_eu, y_eu)
     z_eu_on_ref = np.interp(t_ref, t_eu, z_eu)
-    
+
     err_x = np.abs(x_eu_on_ref - x_ref)
     err_y = np.abs(y_eu_on_ref - y_ref)
     err_z = np.abs(z_eu_on_ref - z_ref)
-    
+
     return {
-        't_ref': t_ref, 'x_ref': x_ref, 'y_ref': y_ref, 'z_ref': z_ref,
-        't_eu': t_eu, 'x_eu': x_eu, 'y_eu': y_eu, 'z_eu': z_eu,
-        'h_rk4': h_rk4,
-        'h_euler': h_euler,
-        'err_x': err_x, 'err_y': err_y, 'err_z': err_z,
-        'max_err_x': err_x.max(), 'max_err_y': err_y.max(), 'max_err_z': err_z.max()
+        "t_ref": t_ref,
+        "x_ref": x_ref,
+        "y_ref": y_ref,
+        "z_ref": z_ref,
+        "t_eu": t_eu,
+        "x_eu": x_eu,
+        "y_eu": y_eu,
+        "z_eu": z_eu,
+        "h_rk4": h_rk4,
+        "h_euler": h_euler,
+        "err_x": err_x,
+        "err_y": err_y,
+        "err_z": err_z,
+        "max_err_x": err_x.max(),
+        "max_err_y": err_y.max(),
+        "max_err_z": err_z.max(),
     }

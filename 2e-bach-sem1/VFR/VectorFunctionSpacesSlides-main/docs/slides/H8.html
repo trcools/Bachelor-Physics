@@ -27,7 +27,7 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
   </style>
@@ -56,11 +56,11 @@
 
   .callout {
     margin-top: 1em;
-    margin-bottom: 1em;  
+    margin-bottom: 1em;
     border-radius: .25rem;
   }
 
-  .callout.callout-style-simple { 
+  .callout.callout-style-simple {
     padding: 0em 0.5em;
     border-left: solid #acacac .3rem;
     border-right: solid 1px silver;
@@ -111,7 +111,7 @@
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-    
+
   .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
@@ -162,7 +162,7 @@
   .callout-title {
     display: flex
   }
-    
+
   .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
@@ -275,12 +275,12 @@
     }
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
     .reveal .footnotes ol li > p:first-child {
       display: inline-block;
@@ -322,19 +322,19 @@
     .reveal .slide > img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-left,
     .reveal .slide > img.r-stretch.quarto-figure-left  {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-right,
     .reveal .slide > img.r-stretch.quarto-figure-right  {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
   </style>
 </head>
@@ -348,7 +348,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jutho Haegeman 
+Jutho Haegeman
 </div>
 </div>
 </div>
@@ -470,7 +470,7 @@ Jutho Haegeman
 <li><p><strong>superpositie</strong> = belangrijkste eigenschap/gevolg van lineariteit</p>
 <p><span class="math display">\begin{align*}
   {\hat{L}} u_1 &amp;= f_1 &amp;\text{met}&amp;&amp;B_i[ u_1 ] = \gamma_{1,i}, \forall i =1,\ldots,m\\
-  {\hat{L}} u_2 &amp;= f_2 &amp;\text{met}&amp;&amp;B_i[ u_2 ] = \gamma_{2,i}, \forall i =1,\ldots,m    
+  {\hat{L}} u_2 &amp;= f_2 &amp;\text{met}&amp;&amp;B_i[ u_2 ] = \gamma_{2,i}, \forall i =1,\ldots,m
 \end{align*}</span></p>
 <p><span class="math inline">\Rightarrow</span> <span class="math inline">u =a^1 u_1 + a^2 u_2</span> is de oplossing van <span class="math display">\begin{align*}
   {\hat{L}} u&amp;= a^1 f_1 + a^2 f_2 &amp;\text{met}&amp;&amp;B_i[ u ] = a^1 \gamma_{1,i} + a^2 \gamma_{2,i}, \forall i =1,\ldots,m
@@ -761,7 +761,7 @@ Jutho Haegeman
 <h2>Tijdsordening en tijdsgeordende exponentiële</h2>
 <p>In de (kwantum)fysica wordt vaak de <strong>tijdsordening</strong> “operator” (procedure) ingevoerd:</p>
 <p><span class="math display">\mathcal{T}\left[{\mathsf{A}}(t_1){\mathsf{A}}(t_2)\right] = \begin{cases} {\mathsf{A}}(t_1){\mathsf{A}}(t_2),&amp;t_1 &gt; t_2\\
-{\mathsf{A}}(t_2){\mathsf{A}}(t_1),&amp;t_2 &gt; t_1\\   
+{\mathsf{A}}(t_2){\mathsf{A}}(t_1),&amp;t_2 &gt; t_1\\
 \end{cases}</span></p>
 <p>Daarmee geldt: <span class="math inline">\int_c^t{\mathrm{d}}t_1\int_c^{t_1}{\mathrm{d}}t_2 {\mathsf{A}}(t_1){\mathsf{A}}(t_2) =\frac{1}{2} \int_c^t{\mathrm{d}}t_2\int_{c}^{t}{\mathrm{d}}t_1 \mathcal{T}\left[{\mathsf{A}}(t_1){\mathsf{A}}(t_2)\right]</span></p>
 <p><span class="math display">\begin{align*}
@@ -1144,7 +1144,7 @@ u_j(a) &amp; u_j'(a) &amp; \ldots &amp; u^{(p-1)}_j(a) &amp; u_j(b) &amp; u_j'(b
 <li><span class="math inline">W(x) = x (-1) - (1-x) = -1</span> en <span class="math inline">a_2(x) = -1</span></li>
 </ul>
 <p><span class="math display">g(x,\xi) = \begin{cases} x(1-\xi),&amp;a &lt; x &lt; \xi\\
-\xi (1-x), &amp;\xi &lt; x &lt; b    
+\xi (1-x), &amp;\xi &lt; x &lt; b
 \end{cases}</span></p>
 <p><span class="math display">\begin{align*}
       \Rightarrow u_f(x) &amp;= \int_x^1 x(1-\xi) f(\xi)\,{\mathrm{d}}\xi + \int_0^x \xi (1-x) f(\xi) \,{\mathrm{d}}\xi\\
@@ -1487,7 +1487,7 @@ y (1-x), &amp;y &lt; x &lt; 1
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../site_libs/revealjs/plugin/search/search.js"></script>
@@ -1507,7 +1507,7 @@ y (1-x), &amp;y &lt; x &lt; 1
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': true,
- 
+
         // Display controls in the bottom right corner
         controls: false,
 
@@ -1686,14 +1686,14 @@ y (1-x), &amp;y &lt; x &lt; 1
           toggleBodyColorMode(bsSheetEl);
         }
       }
-      toggleBodyColorPrimary();  
+      toggleBodyColorPrimary();
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
       const isCodeAnnotation = (el) => {
         for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
+          if (clz.startsWith('code-annotation-')) {
             return true;
           }
         }
@@ -1713,11 +1713,11 @@ y (1-x), &amp;y &lt; x &lt; 1
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
           button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
+          tooltip = new bootstrap.Tooltip(button,
+            { trigger: "manual",
               customClass: "code-copy-button-tooltip",
               offset: [0, -8]});
-          tooltip.show();    
+          tooltip.show();
         }
         setTimeout(function() {
           if (tooltip) {
@@ -1797,7 +1797,7 @@ y (1-x), &amp;y &lt; x &lt; 1
         }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
-        window.tippy(el, config); 
+        window.tippy(el, config);
       }
       const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
       for (var i=0; i<noterefs.length; i++) {
@@ -1854,6 +1854,6 @@ y (1-x), &amp;y &lt; x &lt; 1
       }
     });
     </script>
-    
+
 
 </body></html>

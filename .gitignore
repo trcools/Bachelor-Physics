@@ -28,6 +28,7 @@ env/
 *.mov
 *.icloud
 *.png
+*.jpg
 
 # LaTeX build artifacts
 *.fls

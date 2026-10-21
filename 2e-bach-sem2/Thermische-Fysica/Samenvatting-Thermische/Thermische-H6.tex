@@ -26,7 +26,7 @@ Twee types machines:
 
 \begin{definition}
     \textbf{Stoommachine}: een uitwendige verbrandingsmachine die gebruik maakt van de expansie van stoom om arbeid te verrichten.
-\end{definition}    
+\end{definition}
 
 Onze benaderende cyclus is de \textbf{Rankine-cyclus}, bestaande uit volgende zes processen:
 \begin{itemize}
@@ -88,12 +88,12 @@ Hier zijn we opnieuw uitgegaan van een aantal veronderstellingen:
 \end{itemize}
 
 Processen 1 \(\to\) 5 en 5 \(\to \) 1 compenseren elkaar en wordt niet meer in rekening gebracht bij de berekening van het rendement.
-Er zijn namelijk nog twee processen waar er warmte wordt uitgewisseld, namelijk 2 \(\to\) 3 en 4 \(\to\) 1. 
+Er zijn namelijk nog twee processen waar er warmte wordt uitgewisseld, namelijk 2 \(\to\) 3 en 4 \(\to\) 1.
 We kunnen schrijven:
 \[Q_H = C_V (T_3-T_2) = |Q_H|\]
-en 
+en
 \[Q_K = C_V (T_1-T_4) = -|Q_K|\]
-Hieruit volgt dat het rendement van de Otto-cyclus gelijk is aan: 
+Hieruit volgt dat het rendement van de Otto-cyclus gelijk is aan:
 \[\eta = 1 - \frac{|Q_K|}{|Q_H|} = 1 - \frac{T_4-T_1}{T_3-T_2}\]
 
 Maar we willen een uitdrukking in functie van het volume in plaats van de temperatuur, want het volume is makkelijker te beheersen.
@@ -108,7 +108,7 @@ Met \(r = \frac{V_1}{V_2}\) als compressieverhouding, kunnen we het rendement va
 \subsection{De Dieselmotor}
 
 Er zijn opnieuw zes processen waarvan er vier nodig zijn voor de cyclus waar we geïnteresseerd in zijn:
-Waar we de volgende effecten genegeren: chemische reacties, warmteverlies, wrijving, niet-ideale gassen, niet-quasistatische processen, enzovoort.   
+Waar we de volgende effecten genegeren: chemische reacties, warmteverlies, wrijving, niet-ideale gassen, niet-quasistatische processen, enzovoort.
 
 Onze cyclus is nu de \textbf{lucht-gestandardiseerde dieselcyclus}, bestaande uit volgende zes (waarvan vier essentieel) processen:
 \begin{itemize}
@@ -120,7 +120,7 @@ Onze cyclus is nu de \textbf{lucht-gestandardiseerde dieselcyclus}, bestaande ui
     \item 1 \(\to\)5: Quasistatische isobare uitlaat van de verbrande gassen bij atmosferische druk.
 \end{itemize}
 
-Het grote verschil met de Otto-cyclus is dat het verbrandingsproces (2\(\to\)3) nu isobaar is in plaats van isochore. In deze stap zal 
+Het grote verschil met de Otto-cyclus is dat het verbrandingsproces (2\(\to\)3) nu isobaar is in plaats van isochore. In deze stap zal
 \[Q_H = C_P(T_3 -T_2) = |Q_H|\]
 waardoor het rendement van de dieselcyclus gelijk is aan:
 \[\eta = 1 - \frac{|Q_K|}{|Q_H|} = 1 - \frac{C_V(T_4-T_1)}{C_P(T_3 - T_2)} = 1 - \frac{T_4-T_1}{\gamma (T_3 - T_2)}\]
@@ -130,7 +130,7 @@ Hieruit volgt dat:
 \[(T_4-T_1)V_1^{\gamma - 1} = T_3V_3^{\gamma - 1}-T_2V_2^{\gamma - 1}\]
 \[\implies T_4-T_1 = \frac{T_3V_3^{\gamma - 1}-T_2V_2^{\gamma - 1}}{V_1^{\gamma - 1}}\]
 Omdat we een isobaar hebben van 2\(\to\)3, kunnen we schrijven dat \(T_3/T_2 = V_3/V_2 \implies T_2 = T_3 \frac{V_2}{V_3}\). Hieruit volgt dat:
-\[\eta = 1 - \frac{\frac{V_3^{\gamma-1}}{V_1^{\gamma-1} }- \frac{V_2^{\gamma-1}}{V_3V_1^{\gamma-1}}}{1 - \frac{V_2}{V_3}} 
+\[\eta = 1 - \frac{\frac{V_3^{\gamma-1}}{V_1^{\gamma-1} }- \frac{V_2^{\gamma-1}}{V_3V_1^{\gamma-1}}}{1 - \frac{V_2}{V_3}}
 = 1 - \frac{\left(\frac{V_3}{V_1}\right)^\gamma-\left(\frac{V_2}{V_1}\right)^{\gamma}}{\frac{V_3}{V_1}- \frac{V_2}{V_1}}\]
 Als we de \textbf{expansieverhouding}:
 \[r_E = \frac{V_1}{V_3} \]
@@ -138,7 +138,7 @@ en de \textbf{compressieverhouding}:
 \[r_C = \frac{V_1}{V_2}\]
 definiëren, kunnen we het rendement van de dieselcyclus schrijven als:
 \[
-\eta = 1 - \frac{1}{\gamma} \frac{(\frac{1}{r_E})^{\gamma} - (\frac{1}{r_C})^{\gamma}}{\frac{1}{r_E} - \frac{1}{r_C}} 
+\eta = 1 - \frac{1}{\gamma} \frac{(\frac{1}{r_E})^{\gamma} - (\frac{1}{r_C})^{\gamma}}{\frac{1}{r_E} - \frac{1}{r_C}}
 = 1 - \frac{1}{\gamma} \frac{r_E^{-\gamma} - r_C^{-\gamma}}{r_E^{-1} - r_C^{-1}}
 \]
 
@@ -151,7 +151,7 @@ definiëren, kunnen we het rendement van de dieselcyclus schrijven als:
     \textbf{koude bron}: een systeem dat in staat is om warmte op te nemen zonder zelf van toestand te veranderen.
 \end{definition}
 \begin{postulate}
-    Het is onmogelijk om een cyclus te hebben waarvan het enige resultaat is dat er warmte wordt onttrokken aan een warme bron en volledig wordt omgezet in arbeid. 
+    Het is onmogelijk om een cyclus te hebben waarvan het enige resultaat is dat er warmte wordt onttrokken aan een warme bron en volledig wordt omgezet in arbeid.
 \end{postulate}
 \begin{postulate}
     \textbf{Kelvin formulering}: "Het is onmogelijk door tussenkomst van niet-levende materie, mechanische effecten te bekomen uit een deel van deze materie, door ze af te koelen beneden de temperatuur van het koudste object in de omgeving."
@@ -187,7 +187,7 @@ De vier processen zijn nu:
 De meeste koelmachines steunen op het \textbf{Joule-Kelvin-smoorproces}, waar men op de eigenschap van gesatureerde vloeistoffen steunt.
 Het proces van de geïdealiseerde koelmachine, dus wanneer wrijving, warmteverlies, turbulentie, enzovoort worden genegeerd, bestaat uit volgende stappen:
 \begin{itemize}
-    \item 1\(\to\)2: Smoorproces met druk en temperatuurafname van het vloeibare koelmiddel. (Kan hier niet met thermodynamische coördinaten beschreven worden.) 
+    \item 1\(\to\)2: Smoorproces met druk en temperatuurafname van het vloeibare koelmiddel. (Kan hier niet met thermodynamische coördinaten beschreven worden.)
     \item 2\(\to\)3: Isotherme en isobare verdamping waarbij een hoeveelheid warmte \(Q_K\) onttrokken wordt.
     \item 3\(\to\)4: Adiabatische compressie waarbij het gasvormige koelmiddel wordt samengeperst tot een hoge druk en temperatuur.
     \item 4\(\to\)1: Isobare afkoeling waarbij het koelmiddel condenseert en warmte \(Q_H\) afgeeft aan de omgeving.
@@ -197,32 +197,32 @@ Het proces van de geïdealiseerde koelmachine, dus wanneer wrijving, warmteverli
 
 \begin{postulate}
     \textbf{Clausius formulering}: "Geen enkel proces is mogelijk waarvan het enige resultaat is dat er warmte van een koud reservoir naar een warm reservoir wordt getransporteerd."
-\end{postulate} 
+\end{postulate}
 
 \subsection{Gelijkwaardigheid Kelvin-Planck (K) en Clausiusformulering (C) van de Tweede Hoofdwet}
 
 \begin{derivation}
     \textbf{Bewijs van de gelijkwaardigheid van de Kelvin-Planck en Clausius formulering van de tweede hoofdwet.}
 \begin{itemize}
-    \item \textbf{K \(\implies\) C}: 
-    
+    \item \textbf{K \(\implies\) C}:
+
     Stel dat een arbeidsmachine niet voldoet aan de Kelvin-Planck formulering, dan moeten we bewijzen dat ze ook niet voldoet aan de Clausius formulering.
 
-    Stel dat er een proces is waarbij warmte van een koud reservoir naar een warm reservoir wordt getransporteerd zonder arbeid te verrichten. 
+    Stel dat er een proces is waarbij warmte van een koud reservoir naar een warm reservoir wordt getransporteerd zonder arbeid te verrichten.
     Er wordt dus alleen een hoeveelheid warmte \(Q_1\) onttrokken van de warme bron en een arbeid \(W\) op de omgeving verricht.
 
-        \(|Q_1| =  |W|\) 
-    
+        \(|Q_1| =  |W|\)
+
     Deze arbeid wordt nu gebruikt om een warmtepomp die een hoeveelheid warmte \(Q_2\) onttrekt van een koud reservoir en een hoeveelheid warmte afgeeft aan een warm reservoir te laten werken.
     We kunnen volgens de eerste wet schrijven dat:
     \[|Q'_H | = |Q_2| + |W| = |Q_1| + |Q_2|\]
     Er is dus een netto warmteoverdracht van \(Q_2\) van het koude reservoir naar het warme reservoir, wat in strijd is met de Clausius formulering van de tweede hoofdwet.
-    
-    \item \textbf{C \(\implies\) K}: 
-    
+
+    \item \textbf{C \(\implies\) K}:
+
     Stel dat een machine niet voldoet aan de Clausius formulering, dan moeten we bewijzen dat ze ook niet voldoet aan de Kelvin-Planck formulering.
 
-    Stel dat er een machine is die de Kelvin-Planck formulering overtreedt, dus een machine die warmte volledig omzet in arbeid. 
+    Stel dat er een machine is die de Kelvin-Planck formulering overtreedt, dus een machine die warmte volledig omzet in arbeid.
     Veronderstel dat de arbeidsmachine een hoeveelheid warmte \(Q_1\) onttrekt van een warme bron en een hoeveelheid arbeid \(W\) verricht, waarbij ze een hoeveelheid warmte \(|Q_2|\) afstaat aan de koude bron.
     Dan zegt de eerste hoofdwet dat:
     \[|Q_1| = |W| + |Q_2| \implies |W| = |Q_1| - |Q_2|\]

@@ -1,7 +1,7 @@
 # 1. Eindige Groepen (Hoofdstuk 2)
 from sympy.combinatorics import DihedralGroup
 
-G = DihedralGroup(3) # Symmetriegroep van een gelijkzijdige driehoek
+G = DihedralGroup(3)  # Symmetriegroep van een gelijkzijdige driehoek
 print("Is de groep Abels?:", G.is_abelian)
 print("Aantal elementen (orde):", G.order())
 
@@ -14,10 +14,9 @@ print("Clebsch-Gordan waarde:", cg.doit())
 
 
 from scipy.spatial.transform import Rotation as R
-import numpy as np
 
 # Maak een rotatie aan (bijv. 90 graden rond de z-as)
-rot = R.from_euler('z', 90, degrees=True)
+rot = R.from_euler("z", 90, degrees=True)
 
 # Bekijk de matrix representatie (Hoofdstuk 4)
 print("Rotatiematrix SO(3):\n", rot.as_matrix())

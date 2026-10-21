@@ -114,12 +114,12 @@ def plot_and_animate():
     fig, ax = plt.subplots(num="animate_name", clear=True)
     # Setup plot
     (line,) = plt.plot([], [], 'o', markersize=10)
-  
+
     def animate(i):
         # Update data
         line.set_data([x], [y])
         return (line,)
-  
+
     return FuncAnimation(fig, animate, frames=20, interval=1000, repeat=False)
 ```
 
@@ -136,7 +136,7 @@ def plot_and_animate():
 ```python
 def newton_method(f, fp, x, niter):
     """Illustrative implementation of Newton's method.
-  
+
     Parameters
     ----------
     f : callable
@@ -147,7 +147,7 @@ def newton_method(f, fp, x, niter):
         Initial guess.
     niter : int
         Number of iterations.
-  
+
     Returns
     -------
     float
@@ -170,7 +170,7 @@ After showing educational implementations, notebooks demonstrate production tool
 
 ```python
 # After custom implementation, show the SciPy equivalent:
-optimize.root_scalar(func_cube, method="newton", x0=25, 
+optimize.root_scalar(func_cube, method="newton", x0=25,
                     fprime=func_cube_prime, xtol=1e-16, maxiter=500)
 ```
 

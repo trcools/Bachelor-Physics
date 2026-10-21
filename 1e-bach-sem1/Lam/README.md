@@ -50,4 +50,3 @@ Launch Jupyter to explore the interactive visual demonstrations:
 ```bash
 jupyter lab "H3-Lineaire-Afbeeldingen/dimensie-homomorfisme.ipynb"
 ```
-

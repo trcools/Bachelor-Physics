@@ -167,7 +167,7 @@ Nieuw (?)
 
 Homomorfismen tussen vectorruimten: $\varphi \in \Hom(V,W)$
 
-* Structuurbehoud: 
+* Structuurbehoud:
   * Additiviteit: $\varphi(\vv_1 + \vv_2) = \varphi(\vv_1) + \varphi(\vv_2)$
   * Homogeniteit: $\varphi(a \vv) = a \varphi(\vv)$
 
@@ -185,12 +185,12 @@ Homomorfismen tussen vectorruimten: $\varphi \in \Hom(V,W)$
   $(\map{D}f)(x) = \frac{\drm f}{\drm x}(x) = f'(x)$
   * Domein $C^k(I,\bbF) \Rightarrow$ codomein $C^{k-1}(I,\bbF)$
   * Domein $C^{\infty}(I,\bbF)$ = codomain: lineaire operator
-* Integraaltransformaties: Fouriertransformatie, Laplace-transformatie, 
+* Integraaltransformaties: Fouriertransformatie, Laplace-transformatie,
 
 ## Eigenschappen
 
-* $\Hom(V,W)$ is zelf een vectorruimte over $\bbF$, 
-  * Puntsgewijze definitie, gebruik makende van vectorstructuur die bestaat in codomein $W$: $(\map{A}+\map{B})(\vv) = \map{A}(\vv) + \map{B}(\vv)$ en $(a \map{A})(\vv) = a \map{A}(v)$. 
+* $\Hom(V,W)$ is zelf een vectorruimte over $\bbF$,
+  * Puntsgewijze definitie, gebruik makende van vectorstructuur die bestaat in codomein $W$: $(\map{A}+\map{B})(\vv) = \map{A}(\vv) + \map{B}(\vv)$ en $(a \map{A})(\vv) = a \map{A}(v)$.
   * 'Nulvector' is de nulafbeelding $\map{0}$ die voldoet aan $\map{0} \vv= \zerovec_W$, $\forall \vv \in V$
 * Compositie van lineaire afbeeldingen:
   * $\circ: \Hom(V,W) \times \Hom(U,V) \to \Hom(U,W)$
@@ -234,7 +234,7 @@ Gegeven een afbeelding $\map{A}:V \to W$
 * Voor $V$ eindig-dimensionaal:
 
   $\dim(\im(\map{A})) = \dim(V/\ker(\map{A})) = \dim(V) - \dim(\ker(\map{A}))$
- 
+
   $\Rightarrow\rank(\map{A}) + \nullity(\map{A}) = \dim(V)$
 
 ## Rang-nulliteitsstelling
@@ -270,7 +270,7 @@ Beschouw een lineaire afbeelding $\map{A}:V \to W$ waar $V$ en $W$ eindig-dimens
 
 $$\map{A}(\ve_j) = \vf_i A^i_{\ j} \Rightarrow \vw= \map{A}(\vv) = v^j \map{A}(\ve_j) = (A^i_{\ j} v^j) \vf_i = w^i \vf_i$$
 
-Met behulp van 
+Met behulp van
 
 * $\vec{v} = \phi_{B_V}(\vv) \in \bbF^n$, $\vec{w} = \phi_{B_W}(\vw) \in \bbF^m$
 * $\mat{A} = \Phi_{B_W,B_V}(\map{A}) = \phi_{B_W}\circ \map{A} \circ \phi_{B_V}^{-1} \in \bbF^{m \times n}$ : **matrixvoorstelling**
@@ -296,11 +296,11 @@ Enkele eigenschappen van matrixvermenigvuldiging:
 * Voor een verzameling $S$ waarvan we de elementen $\{a_1, a_2,\ldots\}$ beschouwen als abstracte entiteiten zonder vooraf bestaande vectorstructuur:
   * de **vrije vectorruimte** $\bbF S$ bestaat uit alle "formele" lineaire combinaties, waarbij we de elementen van $S$ als abstracte basisvectoren beschouwen (zie H1)
 
-* Voor verzamelingen $S,S'$ en een afbeelding $\varphi:S\to S'$: 
-  * De **lineaire extensie** van $\varphi$ is een lineaire afbeelding $\Hom(\bbF S, \bbF S')$, gedefinieerd als 
-  
+* Voor verzamelingen $S,S'$ en een afbeelding $\varphi:S\to S'$:
+  * De **lineaire extensie** van $\varphi$ is een lineaire afbeelding $\Hom(\bbF S, \bbF S')$, gedefinieerd als
+
     $$\map{\varphi}(\vv) = v^i \map{\varphi}(a_i) = v^i \varphi(a_i)$$
-  
+
     met $\varphi(a_i)$ een element uit $S'$ (= basisvector uit $\bbF S'$).
 
 ## Voorbeeld van lineaire extensie (1)
@@ -379,7 +379,7 @@ Gegeven een vierkante matrix $\mat{A} \in \bbF^{n \times n}$
 
   **Levi-Civita symbool**
 
-* $n!$ termen met elk $n$ vermenigvuldigingen ? 
+* $n!$ termen met elk $n$ vermenigvuldigingen ?
 
   praktische algoritmes voor determinant hebben complexiteit $\order(n^3)$
 
@@ -392,7 +392,7 @@ Gegeven een vierkante matrix $\mat{A} \in \bbF^{n \times n}$
   * eenheidsmatrix $\idmat_n \eqsim$ standaardbasis $(\vec{e}_1,\ldots,\vec{e}_n)$ $\Rightarrow \det = 1$
 
 * eigenschappen die je verwacht voor het **volume** van een parallellopipidum opgespannen door $(\vec{a}_1, \ldots,\vec{a}_n)$
-  
+
   $\Rightarrow \det(\mat{A})$ is de volumeverandering door de lineaire afbeelding $\mat{A}$
 
 ## Determinant: verdere eigenschappen
@@ -420,15 +420,15 @@ x^i &= f^i(\vec{y}) = f^i(\vec{y}_k + (\vec{y}-\vec{y}_k)) \\
 
 ## Determinant: toepassing
 
-De **Jacobiaan** $\mat{J}_{\vec{f}}(\vec{y})$ met componenten 
+De **Jacobiaan** $\mat{J}_{\vec{f}}(\vec{y})$ met componenten
 
 $$ (\mat{J}_{\vec{f}}(\vec{y}))^i_{\ j} = \frac{\partial f^i}{\partial y^j}(\vec{y}) $$
 
-beschrijft de lineaire benadering van $\vec{f}$ in de buurt van het punt $\vec{y}$. 
+beschrijft de lineaire benadering van $\vec{f}$ in de buurt van het punt $\vec{y}$.
 
 Dit brengt een volumeverandering teweeg gegeven door
 
-$$ \drm x^1 \drm x^2 \cdots \drm x^n = \abs{\det(\mat{J}_{\vec{f}}(\vec{y}))} \drm y^1 \drm y^2 \cdots \drm y^n$$ 
+$$ \drm x^1 \drm x^2 \cdots \drm x^n = \abs{\det(\mat{J}_{\vec{f}}(\vec{y}))} \drm y^1 \drm y^2 \cdots \drm y^n$$
 
 $\Rightarrow\int_V g(\vec{x}) \drm x^1 \drm x^2 \cdots \drm x^n$ $\qquad =\int_{V'} g(\vec{f}(\vec{y})) \abs{\det(\mat{J}_{\vec{f}}(\vec{y}))} \drm y^1 \drm y^2 \cdots \drm y^n$
 
@@ -473,7 +473,7 @@ Opmerking:
 Beschouw een matrixwaardige functie $\mat{A}(t)$, i.e. een matrix waarvan de elementen (continue, afleidbare) functies zijn van de tijd.
 
 * **Jacobi's formule:**
-  
+
   \begin{align*}
   \frac{\drm\ }{\drm t} \det(\mat{A}(t)) &= \tr\left[\adj(\mat{A}(t)) \frac{\drm \mat{A}}{\drm t}(t)\right]\\
   &= \det(\mat{A}(t)) \tr\left[\mat{A}^{-1}(t) \frac{\drm \mat{A}}{\drm t}(t)\right]
@@ -483,13 +483,13 @@ Beschouw een matrixwaardige functie $\mat{A}(t)$, i.e. een matrix waarvan de ele
 
 ## Lineaire groep
 
-* $\Aut(V)$ voor vectorruimte $V$ wordt genoteerd als $\GL(V)$ en de "algemene lineaire groep" voor $V$ genoemd. 
+* $\Aut(V)$ voor vectorruimte $V$ wordt genoteerd als $\GL(V)$ en de "algemene lineaire groep" voor $V$ genoemd.
 
 * $\GL(\bbF^n)= \GL(n;\bbF)$: inverteerbare $n \times n$ matrices
 
   * vierkante matrices waarvoor $\det(\mat{A}) \neq 0$
   * voor $\bbF=\bbR$: $\det(\mat{A}) > 0$ of $\det(\mat{A}) < 0$
-    
+
     $\Rightarrow$ twee onsamenhangende delen
   * voor $\bbF = \bbC$: samenhangend
 
@@ -504,7 +504,7 @@ $B = \{\ve_1,\ve_2,\ldots,\ve_n\}$ en $\tilde{B} = \{\tilde{\ve}_1,\ldots,\tilde
 * $\vec{v} = \phi_{B}(\vv)$ en $\tilde{\vec{v}} = \phi_{\tilde{B}}(\vv)$
 
   $\Rightarrow \tilde{\vec{v}} = \phi_{\tilde{B}} \circ \phi_B^{-1}(\vec{v})$
-  
+
   $\Rightarrow \mat{T} = \phi_{\tilde{B}} \circ \phi_B^{-1}: \bbF^n \to \bbF^n$; $\mat{T} \in \GL(n;\bbF)$
 
 ## Basistransformaties
@@ -558,7 +558,7 @@ Voor $V = W$ en dus een lineaire operator $\map{A}$ op V
 
 Beschouw eindigdimensionale vectorruimte $V$ met basis $B = \{\ve_1,\ldots,\ve_n\}$:
 
-* Lineaire functionaal = duale vector = covector 
+* Lineaire functionaal = duale vector = covector
 
   $\xi[\vv] = v^i \xi[\ve_i] = \begin{bmatrix} \xi[\ve_1] & \cdots & \xi[\ve_n] \end{bmatrix} \begin{bmatrix} v^1 \\ \vdots \\ v^n\end{bmatrix}$
 
@@ -586,7 +586,7 @@ Beschouw eindigdimensionale vectorruimte $V$ met basis $B = \{\ve_1,\ldots,\ve_n
   met $M$ de massa-matrix, volgt uit kinetische energie als kwadratische vorm (zie H5) van snelheid: $T = \frac{1}{2} v^i M_{ij} v^j$
 
 * Continue functies $V = C(\bbR; \bbF)$: Dirac-delta $\delta_a[f] = f(a)$
-  
+
   $\Rightarrow$ zie H9 voor theorie van distributies
 
 ## Lineaire functionalen: meer voorbeelden van duale basis
@@ -597,7 +597,7 @@ Beschouw eindigdimensionale vectorruimte $V$ met basis $B = \{\ve_1,\ldots,\ve_n
 
 * Ruimte $\bbF_n[x]$ van $n$de-graads polynomen:
   * n+1 verschillende punten $\{x^0,\ldots,x^n\} \subseteq \bbR$ geven aanleiding tot duale basis
-    $\tilde{B}^* = \{\varphi^i, i=0,\ldots,n\}$ waarbij $\varphi^i[p] = p(x^i)$ 
+    $\tilde{B}^* = \{\varphi^i, i=0,\ldots,n\}$ waarbij $\varphi^i[p] = p(x^i)$
   * $\Rightarrow$ geassocieerde basis voor $\bbF_n[x]$ bestaat uit de Lagrange veeltermen:
     $$f_j(x) = \prod_{\substack{i=0 \\ i\neq j}}^n \frac{(x - x_i)}{(x_j - x_i)}$$
 
@@ -647,7 +647,7 @@ $\Rightarrow$ transponeren geeft de matrix-representatie van de duale lineaire a
 ## Affiene transformaties
 
 * Affiene transformaties:
-  * lineaire transformaties $\map{T} \in \GL(V)$ kunnen werken als $P \mapsto P' = O + \map{T}(x_{PO})$ 
+  * lineaire transformaties $\map{T} \in \GL(V)$ kunnen werken als $P \mapsto P' = O + \map{T}(x_{PO})$
   * translaties: vectoren $\vv \in V$ kunnen werken als $P \mapsto P' = O + \vv + x_{PO}$
   * beide samen: $(\map{T},\vv): P \mapsto P' = O + \vv + \map{T} x_{PO}$
 
@@ -669,7 +669,7 @@ $$ 	\begin{bmatrix}
 	\end{bmatrix}
 $$
 
-In abstracte termen: 
+In abstracte termen:
 
 $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
@@ -677,14 +677,14 @@ $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
 ## Van reële naar complexe ruimte
 
-* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
-  * Eindigdimensionaal: Kies basis $B \Rightarrow W \cong \bbR^n$, breidt uit tot $\bbC^n$, d.w.z. laat complexe expansiecoëfficiënten toe, of dus, $W = \bbR B \Rightarrow W^{\bbC} = \bbC B$. 
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$?
+  * Eindigdimensionaal: Kies basis $B \Rightarrow W \cong \bbR^n$, breidt uit tot $\bbC^n$, d.w.z. laat complexe expansiecoëfficiënten toe, of dus, $W = \bbR B \Rightarrow W^{\bbC} = \bbC B$.
   * Bemerk dat $\dim_{\bbR}(W) = \dim_{\bbC}(W^{\bbC})$
   * We zullen dit vaak impliciet doen, bvb. voor eigenwaarden en eigenvectoren van een reële matrix.
 
 ## Van reële naar complexe ruimte
 
-* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$?
   * Basisonafhankelijke constructie:
 
     Definieer $W^\bbC = W \times W$, met
@@ -697,14 +697,14 @@ $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
 * Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
   * Behoudt dezelfde verzameling van vectoren $V^{\bbR} = V$, beperk de vermenigvuldiging met scalairen tot reële scalairen
-  
+
   $\Rightarrow$ dit verandert de betekenis van "lineaire afhankelijkheid", "lineaire span", "voortbrengendheid", "compleetheid", "basis" en "dimensie"
 
 ## Van complexe naar reële ruimte:
 
 * Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
 
-  * Stel $V$ eindig-dimensionaal met basis $B=\{\ve_1,\ldots,\ve_n\}$. Om elke vector te kunnne expanderen met behulp van reële coefficiënten moeten we de basis uitbreiden tot $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm \ve_1, \ldots, \irm \ve_n\}$. 
+  * Stel $V$ eindig-dimensionaal met basis $B=\{\ve_1,\ldots,\ve_n\}$. Om elke vector te kunnne expanderen met behulp van reële coefficiënten moeten we de basis uitbreiden tot $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm \ve_1, \ldots, \irm \ve_n\}$.
 
   * $\dim_{\bbC}(V) = n \Rightarrow \dim_{\bbR}(V^\bbR) = 2 n = 2 \dim_{\bbC}(V)$
 
@@ -732,7 +732,7 @@ Als matrix: $\mat{A}^\bbR = \begin{bmatrix} \real(\mat{A}) & -\imag(\mat{A}) \\ 
 
 Niet alle afbeeldingen in $\Hom_{\bbR}(V^\bbR,W^\bbR)$ komen overeen met complexe lineaire afbeeldingen $\map{A} \in \Hom_{\bbC}(V,W)$.
 
-Wat is de betekenis van de andere, en is er een natuurlijke keuze voor het complement? 
+Wat is de betekenis van de andere, en is er een natuurlijke keuze voor het complement?
 
 ## Complexe lineaire afbeeldingen
 
@@ -812,10 +812,10 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 * Stel: $\psi_p(x) \sim \erm^{\irm p x} \Rightarrow \map{T} \psi_p = \psi_{-p}$
 
 * Golffunctie in momentumruimte ($\cong$ Fouriertransformatie)
-  
+
   $\Psi(p) \sim \int \erm^{-\irm p x} \psi(x)\,\drm x$
 
-* Actie van tijdsomkering op momentum-golffunctie 
+* Actie van tijdsomkering op momentum-golffunctie
 
   $\Rightarrow (\map{T} \Psi) = \conj{\Psi(-p)}$
 
@@ -896,7 +896,7 @@ $f_{\vec{X}}(\vec{x}) = Z \erm^{-\frac{1}{2} (\vec{x}-\vec{\mu})^\transpose \mat
   * substitutie: $\vec{y} = \mat{L}^\transpose(\vec{x}-\vec{\mu}) \Leftrightarrow \vec{x}=\vec{\mu} + \vec{L}^{-\transpose}\vec{y}$
 
     $\Rightarrow \mat{J} = \mat{L}^{-\transpose}, \det(\mat{J}) = 1$
-  
+
   * $\int f_{\vec{X}}(\vec{x})\,\drm^n \vec{x} = \int_{\bbR^n} Z \exp\left[-\frac{1}{2}\vec{y}^\transpose \mat{D} \vec{y} \right] \,\drm^n \vec{y} \\
   = Z \prod_{i=1}^n\left( \int_{-\infty}^{+\infty} \erm^{-\frac{1}{2} d_i (y^i)^2}\,\drm y^i\right)\\
    = Z \prod_{i=1}^n \sqrt{\frac{2\pi}{d_i}} = Z \frac{(2\pi)^{n/2}}{\sqrt{\det(\mat{D})}} =Z \frac{(2\pi)^{n/2}}{\sqrt{\det(\mat{A})}}$
@@ -920,11 +920,11 @@ $f_{\vec{X}}(\vec{x}) = Z \erm^{-\frac{1}{2} (\vec{x}-\vec{\mu})^\transpose \mat
 * Lineair stelsel dat bestaat uit twee delen voor 1 groep onbekenden: $\map{A}_1 \vx = \vy_1$ en $\map{A}_2 \vx = \vy_2$
 
   $\Rightarrow \begin{bmatrix}
-		\mat{A}_1 \\ \mat{A}_2 
+		\mat{A}_1 \\ \mat{A}_2
 	\end{bmatrix} \vec{x} = \begin{bmatrix}
 		\vec{y}_1 \\ \vec{y}_2
 	\end{bmatrix}$
-  
+
   * $\mat{A}_1 \in \bbF^{m_1 \times n}, \mat{A}_2 \in \bbF^{m_2 \times n}$
   * (technisch: directe som $\vy_1 \oplus \vy_2$)
 
@@ -957,7 +957,7 @@ $\begin{bmatrix}
 	\end{bmatrix}}_{\mat{L}}
 	\underbrace{\begin{bmatrix}
 		\mat{A}_{11}& \zeromat\\
-		\zeromat & \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12} 
+		\zeromat & \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12}
 	\end{bmatrix}}_{\mat{D}}
 	\underbrace{\begin{bmatrix}
 		\idmat_{n_1} &  \mat{A}_{11}^{-1} \mat{A}_{12}\\
@@ -979,13 +979,13 @@ $\begin{bmatrix}
 		\zeromat & \idmat_{n_2}
 	\end{bmatrix}\begin{bmatrix}
 		\mat{A}_{11}^{-1}& \zeromat\\
-		\zeromat & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+		\zeromat & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}
 	\end{bmatrix}\begin{bmatrix}
 		\idmat_{n_1} & \zeromat \\ -\mat{A}_{21} \mat{A}_{11}^{-1} & \idmat_{n_2}
 	\end{bmatrix}	\nonumber\\
 	&= \begin{bmatrix}
 	\mat{A}_{11}^{-1} + \mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & -\mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_12)^{-1}\\
-		-(\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+		-(\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}
 	\end{bmatrix}
 \end{align*}
 

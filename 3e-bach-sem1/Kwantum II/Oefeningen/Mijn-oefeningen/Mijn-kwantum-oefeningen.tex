@@ -1,0 +1,161 @@
+\documentclass[a4paper,twoside]{article}
+
+
+% --- RUIMTE EN LAYOUT ---
+\usepackage{setspace}
+
+\usepackage{geometry} %size regulating
+\geometry{
+ a4paper,
+ left=25mm,
+ right=25mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+\usepackage{parskip} % for better spacing between paragraphs
+\usepackage{flushend} % Alleen nodig als je laatste pagina van artikel wilt vullen met tekst, zodat de kolommen even lang zijn. Anders kan je dit beter weglaten.
+
+% --- WISKUNDE ENSYMBOLEN ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm} % For nicer math format
+\usepackage{mathrsfs} % For curly arrr
+\usepackage{bm} % For bold symbols eg \bm{\nabla}
+\usepackage{esint} % For bolletje in integrals
+\usepackage{dsfont}
+\usepackage{siunitx} % Voeg deze expliciet toe voor die graden en eenheden!
+\usepackage{braket} % For bra-ket notation
+\usepackage{mathtools}
+\usepackage{url}
+\allowdisplaybreaks
+
+% --- OVERIGE ---
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref} % geen kaders om linken
+\usepackage{subcaption}
+%\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% --- Tikz packages ---
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes, babel} % for pic (angle labels)
+\usetikzlibrary{arrows.meta,decorations.markings,calc, decorations.pathmorphing, decorations.pathreplacing, positioning, shapes, shadings, patterns}
+\usepackage{xcolor}
+\usepackage{tikz-3dplot}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage{etoolbox} % ifthen
+\usepackage[outline]{contour} % glow around text
+\usepackage{xfp} % higher precision (16 digits?)
+\contourlength{1.1pt}
+
+
+
+% --- THEOREM STIJLEN MET EXTRA RUIMTE ---
+
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulaat}
+\newtheorem{definition}{Definitie}
+\newtheorem{derivation}{Afleiding}
+\newtheorem{proposition}{Propositie}
+\newtheorem{example}{Voorbeeld}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+
+% --- EXTRA COMMANDO'S ---
+
+\newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
+
+% --- Titel en Introductie ---
+
+\title{Kwantum II - Mijn oefeningen}
+\author{T. Cools}
+\date{2026-2027}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    In dit document hou ik bij hoe ik ervoor sta met de oefeningen van het vak Kwantum II.
+\end{abstract}
+
+\section{Formele ontwikkeling van de kwantummechanica}
+\subsection{Oefening 1.1}
+a) juist, maar misse fractie?\\
+b) Juist\\
+c) ?\\
+\subsection{Oefening 1.2}
+a) correct\\
+b), c) en d) In de les aan bord gebracht.\\
+\subsection{Oefening 1.3}
+a) correct\\
+b) geen idee, ik heb het niet zo uitgeeschreven\\
+c) Heb ik wel gevonden\\
+d) wss fout...
+e) nog te doen
+\subsection{Oefening 1.4}
+Geen oplossingen van online?
+\subsection{Oefening 1.5}
+Geen oplossingen van online?
+\subsection{Oefening 1.6}
+Oplossing is yap
+\subsection{Oefening 1.7}
+Ik heb de eigenwaarden gevonden, maar mijn eigenvectoren zijn anders, ik heb die niet gecontrolleerd.
+\subsection{Oefening 1.8}
+Geen oplossing van online
+\subsection{Oefening 1.9}
+a) Hamiltoniaan in matrixvorm is juist.\\
+b) Ik denk dat de oplossing \(  \hbar = 1\) heeft gekozen, dan heb ik dezelfde oplossing.\\
+\subsection{Oefening 1.10}
+Ziet er me correect uit!
+\subsection{Oefening 1.11}
+Geen oplossing van online
+\subsection{Oefening 1.12}
+Gevonden, wel nog zelfstandig de waarden van \(A\) en \(B\) vinden in \(A\sin(\omega t) + B\cos(\omega t)\) met behulp van randvoorwaarden.
+\subsection{Oefening 1.13}
+Geen oplossing van online.
+\subsection{Oefening 1.14}
+\subsubsection{Deelvraag a}
+Mijn antwoord:
+\[
+\hat{p}(t) = \hat{p}(0)\cos(\omega t) - m \omega  \hat{x}(0) \sin(\omega t)
+\]
+\[
+\hat{x}(t) = \hat{x}(0)\cos(\omega t) + \frac{\hat{p}(0)}{m \omega} \sin(\omega t)
+\]
+
+\textbf{Correct!}
+\subsubsection{Deelvraag b}
+\([\hat a , \hat{a}^\dagger] = \hat{\mathds{1}}\)
+Had een rekenfouotje, zou normaal terug hetzelfde moeten uitkomen!
+\subsection{Oefening 1.15}
+Geen oplossing van online.
+\subsection{Oefening 1.16}
+Geen oplossing van online.
+\section{Symmetrieën en behoudswetten in kwantummechanica}
+\subsection{Oefening 2.1}
+Ik kom uit op:
+\[
+[[\hat H , \hat x], \hat x] = -\frac{\hbar^2}{m} \hat{\mathds{1}}
+\]
+\[
+[\hat H , \hat x] = -\frac{i\hbar \hat p}{m} \hat{\mathds{1}}
+\]
+Ik kom uit op:
+\[
+\sum_{n'} |\bra{\psi_{n}}\hat x \ket{\psi_{n'}}|^2 (E_{n'} - E_n) = \bra{\psi_n} [\hat x, \hat H \hat x] \ket{\psi_n}
+\]
+waar ik nu vast zit\dots
+\subsection{Oefening 2.2}
+Ik heb:
+\[
+\frac{d(\hat x \hat p)}{dt} = [\hat H, \hat x \hat p] = -\frac{i \hbar}{m} \hat p \hat p + i \hbar \hat x \bm \nabla (V(\hat x))
+\]
+\subsection{Oefening 2.3}
+
+\end{document}

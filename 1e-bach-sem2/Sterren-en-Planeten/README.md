@@ -40,4 +40,3 @@ Sterren-en-Planeten/
 ```bash
 pdflatex handige-tips-oef.tex
 ```
-

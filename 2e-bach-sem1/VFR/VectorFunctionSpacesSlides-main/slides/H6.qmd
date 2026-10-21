@@ -149,7 +149,7 @@ $$
   * permutaties,
   * Givens & Householder transformaties
   * discrete Fouriertransformatie
-* QR decompositie 
+* QR decompositie
 
 ## Doel van dit hoofdstuk
 
@@ -166,12 +166,12 @@ $$
   * normen voor matrices
   * lage-rang benaderingen
 
-# Unitaire en orthogonale groep 
+# Unitaire en orthogonale groep
 
 ## Unitaire groep en speciaal unitaire groep {.smaller}
 
 * unitaire groep: $\Unitary(n) = \{\mat{U}\in\bbC^{n\times n} | \mat{U}^\hermitian \mat{U} = \idmat_n = \mat{U}\mat{U}^\hermitian\}$
-  
+
   * compacte deelverzameling van $\bbC^{n \times n}$ (geen deelruimte)
 
     $\Rightarrow$ belangrijk voor numerieke stabiliteit
@@ -189,7 +189,7 @@ $$
 ## Orthogonale groep en speciaal orthogonale groep {.smaller}
 
 * orthogonale groep: $\Orthogonal(n) = \{\mat{O}\in\bbR^{n\times n} | \mat{O}^\transpose \mat{O} = \idmat_n = \mat{O}\mat{O}^\hermitian\} = \Unitary(n) \cap \bbR^{n \times n}$
-  
+
   * $\det(\mat{O}) = \pm 1 \implies \Orthogonal(n)$ niet samenhangend
   * deelgroep: $\SO(n) = \{\mat{O}\in \Orthogonal(n) | \det(\mat{O})=1\}$: "rotaties"
   * $\mat{O}(t) = \exp(t\mat{A})$ met $\mat{A} = -\mat{A}^\transpose$ $\implies \mat{O}(t) \in \SO(n)$
@@ -219,12 +219,12 @@ $\mat{G} \in \bbF^{n \times n}$ met
 en $1 \leq i < j \leq n$ en $\abs{c}^2 + \abs{s}^2 = 1$
 
 * Interpretatie $\bbF=\bbR$:
-  
+
   rotatie in het vlak opgespannen door coördinaatassen $i$ en $j$
 
 * Voornaamste toepassing:
-  
-  basistransformatie zodat een specifiek element uit een vector nul wordt 
+
+  basistransformatie zodat een specifiek element uit een vector nul wordt
 
   voor rij $i$ en rij $j$ krijgen we
   \begin{align}
@@ -251,13 +251,13 @@ $\Rightarrow \mat{H}^\hermitian = \mat{H}^{-1} = \mat{H}$
   spiegeling omheen het (hyper)vlak (codimensie 1) loodrecht op $\vec{v}$ ($\det{\mat{H}}=-1$)
 
 * Voornaamste toepassing:
-  
+
   basistransformatie zodat op één na alle elementen uit een vector $\vec{w}=(w^1,\ldots,w^n)$ op nul worden afgebeeld
 
   $$\mat{H} \vec{w} = \vec{w} - \frac{2\vec{v}^\hermitian\vec{w}}{\vec{v}^\hermitian\vec{v}} \vec{v} = \erm^{\irm \theta} \norm{\vec{w}} \vec{e}_1\quad\text{(norm moet behouden blijven)}$$
 
   Oplossing (niet uniek): $\vec{v} = \vec{w} + \alpha \vec{e}_1$ met $\alpha =\pm \frac{w^1}{\abs{w^1}}\norm{w}$
-  
+
   $\Rightarrow \mat{H}\vec{w} = \mp \frac{w^1}{\abs{w^1}}\norm{w} \vec{e}_1$
 
 ## Discrete Fouriertransformatie {.smaller}
@@ -305,7 +305,7 @@ Functies $f:\{0,\ldots,n-1\} \to \bbC$ $\quad(\eqsim (f_0,f_1,\ldots,f_{n-1})=\v
 
 ## QR decompositie van algemene matrices {.smaller}
 
-Vorig hoofdstuk: $\mat{A} \in \bbF^{m \times n}$ met $m \geq n$: 
+Vorig hoofdstuk: $\mat{A} \in \bbF^{m \times n}$ met $m \geq n$:
 
 $\mat{A} = \mat{Q} \mat{R}$ via Gram-Schmidt
 
@@ -334,7 +334,7 @@ Alternatieve voorstelling:
   * $H_3$ werkt op rijen 3 tot $m$ ...
   * ...
   * $H_{k}$ met $k=\min(m-1,n)$ werkt op rij $k$ en $k+1$, transformeert kolom $k$ naar $\sim\vec{e}_{k}$ $\longrightarrow$ bovendriehoeksmatrix $\tilde{\mat{R}}$
-    
+
   $\Rightarrow$ numerieke stabiliteit en precisie in $\mat{Q}^\hermitian \mat{Q}=\idmat$ veel beter dan met Gram-Schmidt algoritme (zonder bewijs)
 
 * decompositie $\mat{A}=\mat{Q}\mat{R}$ heeft vrijheid $\mat{Q}\leftarrow \mat{Q}\mat{D}$ en $\mat{R}\leftarrow \mat{D}^{-1}\mat{R}$ met $\mat{D}$ een unitaire diagonaalmatrix (complexe fasen op de diagonaal)
@@ -347,7 +347,7 @@ Alternatieve voorstelling:
 
 Beschouw vierkante matrices $\mat{A} \in \bbC^{n \times n}$
 
-* Gelijkvormigheidstransformaties: 
+* Gelijkvormigheidstransformaties:
 
   $\tilde{\mat{A}}=\mat{V}^{-1} \mat{A} \mat{V}$ met $\mat{V} \in \GL(n)$
 
@@ -357,7 +357,7 @@ Beschouw vierkante matrices $\mat{A} \in \bbC^{n \times n}$
 
   $\tilde{\mat{A}}=\mat{Z}^{\hermitian} \mat{A} \mat{Z}$ met $\mat{Z} \in \Unitary(n)$
 
-  $\Rightarrow$ canonische vorm is de Schur bovendriehoeksvorm: 
+  $\Rightarrow$ canonische vorm is de Schur bovendriehoeksvorm:
 
   **Schur-decompositie:** $\mat{A} = \mat{Z} \mat{T}\mat{Z}^\hermitian$ met $T^i_{\ j}=0$ voor $1 \leq j < i \leq n$
 
@@ -377,8 +377,8 @@ Normale matrix: $\mat{A}^\hermitian \mat{A} = \mat{A}\mat{A}^\hermitian$
 
 * normale bovendriehoeksmatrix $\mat{T}$ moet zuiver diagonaal zijn
 
-  Bewijs: 
-  
+  Bewijs:
+
   * $(\mat{T}^\hermitian \mat{T})^1_{\ 1} = \abs{T^1_{ 1}}^2=
 (\mat{T} \mat{T}^\hermitian)^1_{\ 1} = \sum_{k=1}^n \abs{T^1_{ k}}^2 \Rightarrow T^1_{\ k} =0$ voor $k=2,\ldots,n$
   * ...
@@ -395,10 +395,10 @@ Normale matrix: $\mat{A}^\hermitian \mat{A} = \mat{A}\mat{A}^\hermitian$
 
 Gegeven $\mat{A}\in \bbF^{n\times n}$:
 
-* Machtsmethode/machtsiteratie (power method/iteration): 
+* Machtsmethode/machtsiteratie (power method/iteration):
 
   startende van willekeurige vector $\vec{v}_0$, herhaal voor $k=0,1,2,\ldots$:
-  
+
   * $\vec{q}_k =\vec{v}_k / \norm{\vec{v}_k}$
   * $\vec{v}_{k+1} = \mat{A}\vec{q}_k$
   * $\mu_{k} = \inner{\vec{q}_k}{\vec{v}_{k+1}}= \vec{q}_k^\hermitian \mat{A}\vec{q}_k$
@@ -420,7 +420,7 @@ Gegeven $\mat{A}\in \bbF^{n\times n}$:
 Gegeven $\mat{A}\in \bbF^{n\times n}$:
 
 * deelruimte-iteratie (subspace iteration):
-  
+
   startende van $p\leq n$ willekeurige vectoren verzamelend als de kolommen van een matrix $\mat{V}_0 \in \bbF^{n \times p}$ herhaal voor $k=0,1,2,\ldots$:
   * $\mat{Q}_k \mat{R}_k = \mat{V}_k$ (QR decompositie)
   * $\mat{V}_{k+1} = \mat{A}\mat{Q}_k$
@@ -455,11 +455,11 @@ Gegeven $\mat{A}\in \bbF^{n\times n}$:
   * Startende van $\mat{Z}_0=\mat{Q}_0 = \idmat$ en $\mat{T}_0 = \mat{A}$ herhaal voor $k=1,2,\ldots$:
 	  * $\mat{Q}_k \mat{R}_k = \mat{T}_{k-1}$ en $\mat{Z}_k = \mat{Z}_{k-1} \mat{Q}_k$
 	  * $\mat{T}_{k} = \mat{R}_k \mat{Q}_k$
-  
+
     $\Rightarrow \mat{A} = \mat{T}_0 = \mat{Q}_1 \mat{R}_1 = \mat{Q}_1 \mat{T}_1 \mat{Q}_1^\hermitian = \ldots = \underbrace{(\mat{Q}_1 \mat{Q}_2 \cdots \mat{Q}_k)}_{\mat{Z}_k}\mat{T}_{k} 	\underbrace{(\mat{Q}_1 \mat{Q}_2 \cdots \mat{Q}_k)^\hermitian}_{\mat{Z}_k^\hermitian}$
 
     Convergentie: $\mat{Q}_k \to \idmat \Rightarrow \mat{T}_k \to \mat{T}$ en ook $\mat{R}_k \to \mat{T}$ en $\mat{Z}_k \to \mat{Z}$
-    
+
     $\Rightarrow \mat{A}=\mat{Z}\mat{T}\mat{Z}^\hermitian$: Schurdecompositie
 
     * Praktijk: bijkomende trucs voor lagere kost en snellere convergentie
@@ -476,7 +476,7 @@ Gegeven $\mat{A}\in \bbF^{n\times n}$:
 
 * Matrixcongruentie: $\mat{\tilde{C}} = \mat{T}^{-\hermitian} \mat{C} \mat{T}^{-1}$
 
-  $\rightarrow$ behoudt spectrum etc niet, behoudt wel rang en nulliteit 
+  $\rightarrow$ behoudt spectrum etc niet, behoudt wel rang en nulliteit
 
   $\rightarrow$ canonische vorm: ?
 
@@ -501,14 +501,14 @@ We beperken ons nu tot reële bilineaire vormen $B:V \times V \to \bbR$ (met $V$
   waarbij we de eigenwaarden kunnen sorteren zodat we eerst de positieve eigenwaarden, dan de negatieve eigenwaarden en dan de eigenwaarden nul hebben.
 
   We kunnen deze vorm nog verder reduceren, aangezien matrixcongruentie niet beperkt is tot $\mat{Q}$ unitair/orthogonaal.
-  
+
 ## Kwadratische en symmetrische bilineaire vormen {.smaller}
 
 * Gegeven $\mat{B} = \mat{Q}\mat{D}\mat{Q}^\transpose$
 
   Met $\vec{q}_k$ de $k$de kolom van $\mat{Q}$ en $\vec{v}_k$ de $k$de kolom van een nieuwe matrix $\mat{V}$:
-  
-  $\rightarrow$ $\vec{v}_k = \begin{cases} \abs{D_{kk}}^{-1/2} \vec{q}_k,& D_{kk}\neq 0\\ \vec{q}_k,& D_{kk}=0 \end{cases}$ 
+
+  $\rightarrow$ $\vec{v}_k = \begin{cases} \abs{D_{kk}}^{-1/2} \vec{q}_k,& D_{kk}\neq 0\\ \vec{q}_k,& D_{kk}=0 \end{cases}$
 
   $\Rightarrow\mat{V}^\transpose	\mat{B} \mat{V} = \mathrm{diag}(\underbrace{+1,\ldots,+1}_{n_+\ \text{times}}, \underbrace{-1,\ldots,-1}_{n_-\ \text{times}}, \underbrace{0,\ldots,0}_{n_0\ \text{times}})$
 
@@ -529,11 +529,11 @@ We beperken ons nu tot reële bilineaire vormen $B:V \times V \to \bbR$ (met $V$
 
 ## Kwadratische en symmetrische bilineaire vormen {.smaller}
 
-* Praktisch algoritme voor canonische vorm: 
+* Praktisch algoritme voor canonische vorm:
   * eigenwaarden niet van belang, dus misschien mogelijk in eindig aantal stappen
   * $\mat{B} = \mat{L}\mat{D}\mat{L}^\transpose$ en absorbeer opnieuw de vierkantswortel van de absolute waarde van de niet-nul elementen van $\mat{D}$ in de kolommen van $\mat{L}$
   * dit komt neer op Lagrange-reductie van de kwadratische vorm:
-    	
+
     $q(\vec{x})=\vec{x}^\transpose \mat{B} \vec{x} = \sum_{i,j=1}^{n} B_{ij} x^i x^j = B_{11} (x^1)^2 + 2 B_{12} x^1x^2 + \dots$
 
     * Vervolledig alle termen met $x^1$ tot een kwadraat $\sign(B_{11}) (\sqrt{\abs{B_{11}}} x^1 + \sum_{k=2}^n B_{1k}/\sqrt{\abs{B_{11}}} x^k)^2$
@@ -589,7 +589,7 @@ Bewijs:
 * bereken $\mat{A}\mat{V} = \mat{Q} \mat{R}$ met $\mat{Q} \in \Unitary(m)$, $\mat{R} \in \bbF^{m \times n}$ en bovendriehoeksmatrix
   * $\Rightarrow \mat{A}^\hermitian \mat{A} = \mat{R}^\hermitian \mat{R} = \mat{\Lambda}$ (diagonaal)
   * $\Rightarrow$ $\mat{R}$ is diagonaal met $\abs{R^i_{\ i}}^2 = \sigma_i^2$.
-  
+
   * Absorbeer fases van $\mat{R}^i_{\ i}$ in $\mat{Q}$: $\mat{R} \to \mat{S}, \mat{Q}\to \mat{U}$
 
 * $\mat{A}\mat{A}^\hermitian = \mat{U} \mat{S}\mat{S}^\hermitian \mat{U}^\hermitian$: zelfde niet-nul eigenwaarden als $\mat{A}^\hermitian \mat{A}$
@@ -607,9 +607,9 @@ Bewijs:
 
   $\Leftrightarrow \mat{A} \vec{v}_i = \sigma_i \vec{u}_i$ en $\mat{A}^\hermitian \vec{u}_i = \sigma_i \vec{v}_i$ voor alle $i=1,\ldots, \min(m,n)$
 * Uniciteit van SVD:
-  
+
   * Singuliere waarden: uniek
-  
+
   * Singuliere vectoren: $\mat{U}_p \to \mat{U}_p\mat{Q}$ en $\mat{V}_\to \mat{V}_p\mat{Q}$ met $\mat{Q} \in \Unitary(p)$ en $[\mat{Q},\mat{S}]=0$. Indien geen degeneraties in $\mat{S}$: $\mat{Q}$ diagonaal met complexe fasen op diagonaal
 
   * Op de kolommen $p+1,\ldots,m$ van $\mat{U}$ en $p+1,\ldots,n$ van $\mat{V}$ kunnen onafhankelijke unitaire rotaties worden uitgevoerd
@@ -669,7 +669,7 @@ Beschouw een lineair stelsel $\mat{A}\mat{x} = \mat{y}$ met $\mat{A}\in\bbF^{m \
     $L = \{\vec{x} \in \bbF^n | \norm{\mat{A}\vec{x} - \vec{y}}_2 = \min_{\vec{x}' \in \bbF^n} \norm{\mat{A}\vec{x}' - \vec{y}}_2\}$
   * kleinste kwadratenoplossing met minimale norm (uniek):
     $\vec{x}^\ast = \argmin_{\vec{x} \in L} \norm{\vec{x}}$
-    
+
     $$\Rightarrow \vec{x}^\ast = \underbrace{\mat{V}_p \mat{S}_p^{-1} \mat{U}_p^\hermitian}_{=\mat{A}^+} \vec{y}$$
 
 * Moore-Penrose pseudo-inverse gekarakteriseerd door
@@ -684,8 +684,8 @@ Beschouw een lineair stelsel $\mat{A}\mat{x} = \mat{y}$ met $\mat{A}\in\bbF^{m \
 
 * **Eckart-Young-Mirsky theorema**:
 
-  oplossing $\mat{B}= \mat{U}_r \mat{S}_r \mat{V}_r^\hermitian$ 
-  
+  oplossing $\mat{B}= \mat{U}_r \mat{S}_r \mat{V}_r^\hermitian$
+
   (getruncteerde singulierenwaardendecompositie)
 
   * voor $\norm{\mat{A}-\mat{B}}_{2 \times 2}$

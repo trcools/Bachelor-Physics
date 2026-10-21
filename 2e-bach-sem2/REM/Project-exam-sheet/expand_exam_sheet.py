@@ -12,7 +12,6 @@ Install it with:
     pip install pypdf
 """
 
-import re
 from pathlib import Path
 
 try:
@@ -88,7 +87,7 @@ chapter_mapping = {
 def extract_text_from_pdf(filepath):
     """Extract text from PDF file"""
     try:
-        with open(filepath, 'rb') as f:
+        with open(filepath, "rb") as f:
             reader = PdfReader(f)
             text = ""
             for page in reader.pages:
@@ -101,9 +100,9 @@ def extract_text_from_pdf(filepath):
 
 def extract_formulas_and_key_lines(text, keywords, max_lines=50):
     """Extract lines containing formulas or keywords from text"""
-    lines = text.split('\n')
+    lines = text.split("\n")
     extracted = []
-    
+
     for i, line in enumerate(lines):
         # Look for lines with math symbols or keywords
         if any(kw.lower() in line.lower() for kw in keywords):
@@ -115,14 +114,14 @@ def extract_formulas_and_key_lines(text, keywords, max_lines=50):
                     extracted.append(lines[j].strip())
                     if len(extracted) >= max_lines:
                         break
-        
+
         # Also look for lines with mathematical symbols
-        if any(sym in line for sym in ['$', '=', '∇', '×', '·', '∂', '∫']):
+        if any(sym in line for sym in ["$", "=", "∇", "×", "·", "∂", "∫"]):
             if line.strip() and line not in extracted:
                 extracted.append(line.strip())
                 if len(extracted) >= max_lines:
                     break
-    
+
     return extracted[:max_lines]
 
 
@@ -130,7 +129,7 @@ def generate_latex_content_for_chapter(chapter_key, text):
     """Generate LaTeX content for a chapter from extracted text"""
     info = chapter_mapping[chapter_key]
     extracted = extract_formulas_and_key_lines(text, info["keywords"], max_lines=40)
-    
+
     # Format as LaTeX bullet points
     latex_content = []
     for line in extracted:
@@ -139,7 +138,7 @@ def generate_latex_content_for_chapter(chapter_key, text):
         if cleaned and len(cleaned) > 3:
             # Escape LaTeX special characters if needed
             latex_content.append(f"• {cleaned[:100]}")  # Limit line length for space
-    
+
     return latex_content[:15]  # Max 15 bullet points per chapter
 
 
@@ -147,36 +146,37 @@ def main():
     print("=" * 70)
     print("REM Exam Sheet - Comprehensive Content Extractor")
     print("=" * 70)
-    
+
     all_chapter_content = {}
-    
+
     for chapter_key in sorted(chapter_mapping.keys()):
         info = chapter_mapping[chapter_key]
         pdf_path = BASE_DIR / info["file"]
-        
+
         if pdf_path.exists():
             print(f"\n✓ Processing {chapter_key}...")
             text = extract_text_from_pdf(str(pdf_path))
             content_lines = generate_latex_content_for_chapter(chapter_key, text)
             all_chapter_content[chapter_key] = content_lines
-            
+
             # Show sample
             print(f"  Found {len(content_lines)} key lines for {chapter_key}")
             if content_lines:
                 print(f"  Sample: {content_lines[0][:70]}...")
         else:
             print(f"✗ File not found: {pdf_path}")
-    
+
     # Now we have all content, let's generate the expanded LaTeX
     print("\n" + "=" * 70)
     print("Generating expanded LaTeX document...")
     print("=" * 70)
-    
+
     # Store content for use in next step
-    with open('chapter_content.txt', 'w') as f:
+    with open("chapter_content.txt", "w") as f:
         import json
+
         json.dump(all_chapter_content, f, indent=2)
-    
+
     print("\n✓ Content extraction complete. Stored in chapter_content.txt")
     print("Ready to generate expanded exam sheet...")
 

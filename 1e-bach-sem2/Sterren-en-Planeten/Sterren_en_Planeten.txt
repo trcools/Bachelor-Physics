@@ -3912,7 +3912,7 @@ H(h) =kT(h)
 gµ(h)(7.31)
 geïntroduceerd. Bovenstaande vergelijking kan geïntegreerd worden van het planeetoppervlak, waar
 h= 0enP=P0tot een hoogte hwaar de druk een waarde P(h)heeft, met als resultaat dat
-P(h) =P0exp 
+P(h) =P0exp
 −Zh
 0dh′
 H(h′)!
@@ -3938,7 +3938,7 @@ de samenstelling van de atmosfeer afhangt van de hoogte h.
 Elk gas is apart in hydrostatisch evenwicht zodat
 dPi
 Pi=−gµi
-kTdh→Pi=Pi0exp 
+kTdh→Pi=Pi0exp
 −Zh
 0dh′
 Hi(h′)!
@@ -4076,7 +4076,7 @@ T= 21/4Tatm≈1.19Tatm. (7.50)
 De temperatuur van het aardoppervlak is dus ruwweg 19% hoger dan de temperatuur van de at-
 mosfeer . Dit laat ons toe om Tatmte elimineren uit de energiebalans van het aardoppervlak, met als
 resultaat
-T= 
+T=
 1−A
 4 
 1−ε

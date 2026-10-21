@@ -67,7 +67,7 @@
 
 \newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
 
-% --- Titel en Introductie --- 
+% --- Titel en Introductie ---
 
 \title{Formularium voor oefeningen Sterrenstelsels}
 \author{T. Cools}
@@ -103,7 +103,7 @@ Absolute magnitude:
 
 \begin{equation}
     M_X - m_X = - 5 \log \left( \frac{d}{10 \text{ pc}} \right)
-\end{equation}  
+\end{equation}
 
 Merk op dat:
 \begin{align*}
@@ -153,7 +153,7 @@ De centrale logaritmische oppervlaktehelderheid \(\mu_X (R=0)\):
 \end{equation}
 
 Of soms:
-\[ 
+\[
 \mu_X = -2.5 \log \left(\frac{S_X}{F_{X,0}}\right)
 \]
 
@@ -164,8 +164,8 @@ De lineaire oppervlaktehelderheid \(S_X [mag/arcsec^2]\):
 
 Relatie tussen \(\mu_X\) en \(S_X\):
 \begin{equation}
-    \mu_X = -2.5 \log \left( \frac{S_X}{F_{X,0}} \right) = -2.5 \log \left( \frac{F_X/\Omega}{F_{X,0}} \right) 
-\end{equation}  
+    \mu_X = -2.5 \log \left( \frac{S_X}{F_{X,0}} \right) = -2.5 \log \left( \frac{F_X/\Omega}{F_{X,0}} \right)
+\end{equation}
 
 Uit mijn notities:
 \[
@@ -186,7 +186,7 @@ Het handige hiervan is dat we deze kunnen vergelijken met de absolute magnitude 
 
 De openingshoek staat in dimensie [arcsec\(^2\)], om deze te kunnen gebruiken in de formules moeten we deze omzetten naar [sterad]:
 \[
-\Omega[arcsec^2] = \Omega [sterad] \left(\frac{3600 \cdot 180}{\pi}\right)^2  
+\Omega[arcsec^2] = \Omega [sterad] \left(\frac{3600 \cdot 180}{\pi}\right)^2
 \]
 
 Dit is handig omdat:
@@ -208,9 +208,9 @@ Schaallengte \(h\) (zie \textbf{formularium} Eq. 5):
     I_X (R) = I_X (0) e^{-R/h}
 \end{equation}
 
-met 
+met
 \[
-dL_X = I_X dA 
+dL_X = I_X dA
 \]
 wordt de totale lichtkracht \(L_X\) van het object:
 \begin{align*}
@@ -273,7 +273,7 @@ met \(\beta = 2\) voor de emissie en \(\beta = 0\) voor de absorptie term. \(\la
 Interstellair stralingsveld \(J_\nu\):
 \begin{equation}
     J_\nu 4 \pi = \int I_\nu d\Omega
-\end{equation}  
+\end{equation}
 (Denk ik, laat me weten als je hier meer info over hebt.)
 
 
@@ -282,7 +282,7 @@ Interstellair stralingsveld als som van twee gedempte zwarte stralers:
 4\pi J_\lambda = \sum_i^2 c_i B_\lambda (T_i)
 \]
 Dit kan uiteraard naar meerdere uitgebreid worden.
-De coefficiënten \(c_i\) zijn de gewichtsfactoren voor de relatieve bijdragen van de verschillende componenten aan het totale stralingsveld. 
+De coefficiënten \(c_i\) zijn de gewichtsfactoren voor de relatieve bijdragen van de verschillende componenten aan het totale stralingsveld.
 
 
 Intermezzo:
@@ -290,9 +290,9 @@ Intermezzo:
 Een korte triviale uitwerking waar de jacobiaan bij nodig is:
 \begin{align*}
     B_\lambda(T)d\lambda &= B_\nu(T) d\nu \\
-    B_\lambda(T) &= B_\nu(T) \left| \frac{d\nu}{d\lambda} \right| 
-    = B_\nu(T) \left| \frac{d \left( \frac{c}{\lambda} \right) }{d\lambda} \right| 
-    = B_\nu(T) \frac{c}{\lambda^2}  
+    B_\lambda(T) &= B_\nu(T) \left| \frac{d\nu}{d\lambda} \right|
+    = B_\nu(T) \left| \frac{d \left( \frac{c}{\lambda} \right) }{d\lambda} \right|
+    = B_\nu(T) \frac{c}{\lambda^2}
 \end{align*}
 De rest vind je zelf wel met Eq. 11 vh formularium.
 
@@ -301,7 +301,7 @@ De rest vind je zelf wel met Eq. 11 vh formularium.
 
 Deze hadden we random nodig om \(J^{em}\) en \(J^{abs}\) uit te rekenen:
 \[
-\int_{0}^{\infty}\kappa_\lambda B_\lambda d \lambda 
+\int_{0}^{\infty}\kappa_\lambda B_\lambda d \lambda
 \]
 Gebruik het vierde gegeven (de derde integraal) van het formularium om deze integraal op te lossen.
 
@@ -310,7 +310,7 @@ Gebruik het vierde gegeven (de derde integraal) van het formularium om deze inte
 Conditie voor thermisch evenwicht:
 \begin{equation}
     J^\text{abs} = J^\text{em}
-\end{equation}  
+\end{equation}
 
 \section{Oefenset 4}
 
@@ -323,7 +323,7 @@ Ook \eqref{eq:handig1} en \eqref{eq:handig2} van oefenset 2 waren hier handig.
 Straal HIII-regio:
 \begin{equation}
     R_s = \left( \frac{3 Q_0}{4 \pi n_H^2 \alpha_B (T)} \right)^{1/3}
-\end{equation}  
+\end{equation}
 met \(Q_0\) het aantal ioniserende fotonen per seconde, \(n_H\) de waterstofdichtheid en \(\alpha_B\) de recombinatiecoëfficiënt.
 
 Bijbehorende massa:
@@ -370,12 +370,12 @@ Opnieuw twee belangrijke vergelijkingen die niet in het formularium staan, maar 
 \[
 \langle v \rangle = \int_0^\infty  F (v) v dv
 \]
-en 
+en
 \[
 \sigma^2 = \int_{-\infty}^{+\infty} F(v) (v - \langle v \rangle)^2 dv
 \]
 
-We hebben ook 
+We hebben ook
 \[
 \int_{-\infty}^{+\infty} F(v) dv = 1
 \]

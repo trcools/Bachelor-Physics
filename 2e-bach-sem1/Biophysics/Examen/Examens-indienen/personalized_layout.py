@@ -15,7 +15,12 @@ naming, and documentation for readability and maintainability.
 # Imports
 # =============================================================================
 
-from ipywidgets import interact, FloatSlider, HBox, interactive_output, Checkbox, Output, VBox
+from ipywidgets import (
+    FloatSlider,
+    HBox,
+    Output,
+    VBox,
+)
 from IPython.display import display, update_display
 from collections import OrderedDict
 import matplotlib.pyplot as plt
@@ -36,7 +41,10 @@ I tried some code what from AI recommanded to fix my problem, but this only made
 Now I am in some time issues, so I will just leave it like this for now.
 """
 
-def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=None, extra_widgets_inline=False):
+
+def create_interactive_plot(
+    plot_func, slider_configs, n_cols=3, extra_widgets=None, extra_widgets_inline=False
+):
     # --- build widgets ---
     sliders = {}
     for name, cfg in slider_configs.items():
@@ -50,7 +58,9 @@ def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=N
         )
 
     slider_list = list(sliders.values())
-    rows = [HBox(slider_list[i:i+n_cols]) for i in range(0, len(slider_list), n_cols)]
+    rows = [
+        HBox(slider_list[i : i + n_cols]) for i in range(0, len(slider_list), n_cols)
+    ]
 
     all_widgets = dict(sliders)
     if extra_widgets:
@@ -65,9 +75,8 @@ def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=N
     out = Output()
     display(out)
 
-    
     last_call = 0.0
-    MIN_DT = 0.15  
+    MIN_DT = 0.15
 
     display_id = None
 
@@ -87,7 +96,6 @@ def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=N
             return
 
         with out:
-        
             if display_id is None:
                 h = display(fig, display_id=True)
                 display_id = h.display_id
@@ -102,7 +110,6 @@ def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=N
             return
         render()
 
-  
     for w in all_widgets.values():
         w.observe(on_change, names="value")
 
@@ -113,12 +120,13 @@ def create_interactive_plot(plot_func, slider_configs, n_cols=3, extra_widgets=N
 # Legend Helper Functions
 # =============================================================================
 
+
 def legend_dedup(ax, *, loc="best", **kwargs):
     """
     Create a legend on ax, deduplicating entries by (label, handle_type).
-    
+
     Removes "_nolegend_" entries and empty labels.
-    
+
     Parameters
     ----------
     ax : matplotlib.axes.Axes
@@ -136,9 +144,12 @@ def legend_dedup(ax, *, loc="best", **kwargs):
         key = (lab, type(h).__name__)
         uniq.setdefault(key, (h, lab))
     if uniq:
-        legend = ax.legend([h for h, _ in uniq.values()],
-                           [lab for _, lab in uniq.values()],
-                           loc=loc, **kwargs)
+        legend = ax.legend(
+            [h for h, _ in uniq.values()],
+            [lab for _, lab in uniq.values()],
+            loc=loc,
+            **kwargs,
+        )
         # Ensure a thin border when frameon=True
         if legend and legend.get_frame():
             legend.get_frame().set_linewidth(0.5)
@@ -147,9 +158,9 @@ def legend_dedup(ax, *, loc="best", **kwargs):
 def fig_legend_dedup(fig, ax_list, *, loc="best", **kwargs):
     """
     Create a shared legend on figure, collecting and deduplicating from multiple axes.
-    
+
     Removes "_nolegend_" entries and empty labels.
-    
+
     Parameters
     ----------
     fig : matplotlib.figure.Figure
@@ -160,7 +171,7 @@ def fig_legend_dedup(fig, ax_list, *, loc="best", **kwargs):
         Legend location (passed to fig.legend).
     **kwargs : dict
         Additional keyword arguments passed to fig.legend.
-    
+
     Returns
     -------
     legend : matplotlib.legend.Legend
@@ -168,7 +179,7 @@ def fig_legend_dedup(fig, ax_list, *, loc="best", **kwargs):
     """
     if not isinstance(ax_list, list):
         ax_list = [ax_list]
-    
+
     uniq = OrderedDict()
     for ax in ax_list:
         handles, labels = ax.get_legend_handles_labels()
@@ -177,11 +188,14 @@ def fig_legend_dedup(fig, ax_list, *, loc="best", **kwargs):
                 continue
             key = (lab, type(h).__name__)
             uniq.setdefault(key, (h, lab))
-    
+
     if uniq:
-        legend = fig.legend([h for h, _ in uniq.values()],
-                            [lab for _, lab in uniq.values()],
-                            loc=loc, **kwargs)
+        legend = fig.legend(
+            [h for h, _ in uniq.values()],
+            [lab for _, lab in uniq.values()],
+            loc=loc,
+            **kwargs,
+        )
         # Ensure a thin border when frameon=True
         if legend and legend.get_frame():
             legend.get_frame().set_linewidth(0.5)

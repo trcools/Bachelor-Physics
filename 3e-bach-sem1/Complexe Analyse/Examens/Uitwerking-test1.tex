@@ -1,0 +1,143 @@
+\documentclass[a4paper,twoside]{article}
+
+
+% --- RUIMTE EN LAYOUT ---
+\usepackage{setspace}
+
+\usepackage{geometry} %size regulating
+\geometry{
+ a4paper,
+ left=25mm,
+ right=25mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+\usepackage{parskip} % for better spacing between paragraphs
+\usepackage{flushend} % Alleen nodig als je laatste pagina van artikel wilt vullen met tekst, zodat de kolommen even lang zijn. Anders kan je dit beter weglaten.
+
+% --- WISKUNDE ENSYMBOLEN ---
+\usepackage{amsmath, amssymb, amsfonts, amsthm} % For nicer math format
+\usepackage{mathrsfs} % For curly arrr
+\usepackage{bm} % For bold symbols eg \bm{\nabla}
+\usepackage{esint} % For bolletje in integrals
+\usepackage{dsfont}
+\usepackage{siunitx} % Voeg deze expliciet toe voor die graden en eenheden!
+\usepackage{braket} % For bra-ket notation
+\usepackage{mathtools}
+\usepackage{url}
+\allowdisplaybreaks
+
+% --- OVERIGE ---
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref} % geen kaders om linken
+\usepackage{subcaption}
+%\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+
+% --- Tikz packages ---
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes, babel} % for pic (angle labels)
+\usetikzlibrary{arrows.meta,decorations.markings,calc, decorations.pathmorphing, decorations.pathreplacing, positioning, shapes, shadings, patterns}
+\usepackage{xcolor}
+\usepackage{tikz-3dplot}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage{etoolbox} % ifthen
+\usepackage[outline]{contour} % glow around text
+\usepackage{xfp} % higher precision (16 digits?)
+\contourlength{1.1pt}
+
+
+
+% --- THEOREM STIJLEN MET EXTRA RUIMTE ---
+
+\theoremstyle{definition}
+\newtheorem{postulate}{Postulaat}
+\newtheorem{definition}{Definitie}
+\newtheorem{derivation}{Afleiding}
+\newtheorem{proposition}{Propositie}
+\newtheorem{example}{Voorbeeld}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+
+% --- EXTRA COMMANDO'S ---
+
+\newcommand{\dbar}{{\mkern+3mu\mathchar'26\mkern-12mu d}}
+
+% --- Titel en Introductie ---
+
+\title{Complexe Analyse: Uitwerking test 1}
+\author{T. Cools}
+\date{2026-2027}
+
+\begin{document}
+
+
+\begin{abstract}
+    Uitwerking van test 1 uit het jaar 2023-2024.
+\end{abstract}
+
+\section{Opgave 1}
+\subsection{Mijn Oplossing}
+\subsubsection{Paramatrisatie}
+\begin{align*}
+    \Gamma_1: \qquad & z_1(t) = \cos(t) -2 - i \sin(t) \qquad & 0 \leq t \leq 2\pi \\
+    \Gamma_2: \qquad & z_2(t) = t-1 \qquad & 0 \leq t \leq 2 \\
+    \Gamma_3: \qquad & z_3(t) = 2-\cos(t) - i \sin(t) \qquad & 0 \leq t \leq 2\pi \\
+\end{align*}
+
+\subsubsection{Totale lengte}
+\[l(\Gamma) = 4\pi +2\]
+\subsubsection{Rescaling + lijmen}
+
+\[
+z(t) = \begin{cases}
+    \cos((4\pi +2)t)-2-i\sin((4\pi + 2)t) & \left(0 \leq t \leq \frac{2\pi}{4\pi + 2}\right) \\
+    (4\pi + 2)\left(t-\frac{2\pi}{4\pi + 2}\right)-1 & \left(\frac{2\pi}{4\pi + 2} \leq t \leq \frac{2\pi + 2}{4\pi + 2}\right) \\
+    2-\cos\left((4\pi +2)\left(t- \frac{2\pi + 2}{4\pi + 2}\right)\right)-i\sin\left((4\pi + 2)\left(t- \frac{2\pi + 2}{4\pi + 2}\right)\right) & \left(\frac{2\pi + 2}{4\pi + 2} \leq t \leq 1\right)
+\end{cases}
+\]
+Vereenvoudigd:
+\[
+z(t) = \begin{cases}
+    \cos((4\pi +2)t)-2-i\sin((4\pi + 2)t) & \left(0 \leq t \leq \frac{\pi}{\pi + 1}\right) \\
+    (4\pi + 2)\left(t-\frac{\pi}{2\pi + 1}\right)-1 & \left(\frac{\pi}{2\pi + 1} \leq t \leq \frac{\pi + 1}{2\pi + 1}\right) \\
+    2-\cos\left((4\pi +2)\left(t- \frac{\pi + 1}{2\pi + 1}\right)\right)-i\sin\left((4\pi + 2)\left(t- \frac{\pi + 1}{2\pi + 1}\right)\right) & \left(\frac{\pi + 1}{2\pi + 1} \leq t \leq 1\right)
+\end{cases}
+\]
+
+\section{Opgave 2}
+\subsection{Mijn oplossing}
+\subsubsection{Stap 1: Partial fraction decomposition}
+
+\[f(z) = \frac{2z^2 - z + 1}{(z-1)^2(z+2)} = \frac{A_0^{(0)}}{z+2} + \frac{A_0^{(1)}}{(z-1)^2} + \frac{A_1^{(1)}}{z-1}\]
+Uitwerken\dots
+\[f(z) = \frac{2z^2 - z + 1}{(z-1)^2(z+2)} = \frac{7}{z+2} + \frac{2}{3(z-1)^2} + \frac{11}{9(z-1)}\]
+\subsubsection{Stap 2: Integraal}
+\[
+\int_\Gamma f(z)dz = \int_\Gamma\frac{7}{z+2}dz  + \int_\Gamma\frac{2}{3(z-1)^2} dz + \int_\Gamma\frac{11}{9(z-1) }dz
+\]
+
+We gebruiken eq. (4.52) uit de cursus:
+\[
+\int_{C_r} (z-z_0)^n dz = \begin{cases}
+    0 \quad & n \neq -1\\
+    2 \pi i \quad & n = -1
+\end{cases}
+\]
+\begin{align*}
+    \int_\Gamma f(z)dz &= \int_\Gamma\frac{7}{z+2}dz  + \int_\Gamma\frac{11}{9(z-1) }dz\\
+    &= 7 \int_\Gamma\frac{1}{z+2}dz  +  \frac{11}{9}\int_\Gamma\frac{1}{z-1} dz\\
+    &= 7 \cdot 2\pi i + (-1) \frac{11}{9} 2\pi i\\
+    &= \pi i \frac{104}{9}\\
+\end{align*}
+\textbf{Let op: we hebben maal een factor -1 genomen doordat het punt 1 op de tekening in wijzerzin ligt. (zie figuur!)}
+\end{document}

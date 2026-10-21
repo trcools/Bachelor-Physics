@@ -38,4 +38,3 @@ Curriculum, timetable schedules, and course modules for the second semester of t
    - Crystal structures, Bravais lattices, reciprocal lattice, X-ray diffraction (Bragg and Laue conditions).
    - Phonons and lattice vibrations, heat capacity (Einstein and Debye models).
    - Free electron Fermi gas, energy bands (Bloch theorem, Kronig-Penney model), metals, semiconductors, and insulators.
-

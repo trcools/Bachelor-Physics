@@ -184,7 +184,7 @@ Lineaire operator = endomorfisme: $\map{A} \in \End(V) = \Hom(V,V)$
 ## Eigenschappen van veeltermen
 
 * Voor twee veeltermen $p(x)$ en $q(x)$ en $\map{A}\in \End(V)$ geldt
- 
+
 $$[p(\map{A}),q(\map{A})] = p(\map{A})q(\map{A}) - q(\map{A})p(\map{A}) = \zeromap$$
 
 * Voor een veelterm $p(x)$, een lineaire operator $\map{A}\in \End(V)$ en een lineaire transformatie (=inverteerbare lineaire afbeelding) $\map{T} \in \Hom(V,W)$ geldt
@@ -256,7 +256,7 @@ $$\underbrace{p(\map{T} \map{A} \map{T}^{-1})}_{\in \End(W)} = \map{T} \underbra
 
 * $V$ eindigdimensionaal: $r_\lambda > 0 \Rightarrow \rank(\map{A}-\lambda \idmap) < \dim(V)$ en dus is $\map{A}-\lambda \idmap$ niet injectief en niet-inverteerbaar. Er geldt dus ook $\det(\map{A}-\lambda \idmap)=0$.
 
-## Spectrum 
+## Spectrum
 * Spectrum: $\sigma_{\map{A}} = \{ \lambda \in \bbF | (\map{A} - \lambda)$ heeft geen 'goed gedefinieerde inverse'$\}$
 
 * $V$ eindig-dimensionaal: $\sigma = \{\lambda_1,\ldots,\lambda_m\}$ bevat alleen eigenwaarden
@@ -264,7 +264,7 @@ $$\underbrace{p(\map{T} \map{A} \map{T}^{-1})}_{\in \End(W)} = \map{T} \underbra
 * $V$ oneindig-dimensionaal: zie later
 
 * Terzijde: $\map{R}_{\map{A}}(z) = (z\idmap-\map{A})^{-1}$ voor waarden $z \in \bbC \setminus \sigma_{\map{A}}$ is de *resolvent*.
-  
+
   Nuttig in theoretische fysica met behulp van technieken uit de complexe analyse.
 
 ## Eigenschappen van eigenwaarden en eigenruimten
@@ -305,7 +305,7 @@ met $c_{n-1} = - \tr(\map{A})$ en $c_0 = (-1)^n \det(\map{A})$.
 
 Gegeven een veelterm $p(z) = z^n + p_{n-1} z^{n-1} + \ldots + p_0 \in \bbF[z]$, construeer een matrix $\mat{A} \in \bbF^n$ zodat $p(z) = k_{\mat{A}}(z)$?
 
-* **Companion matrix** 
+* **Companion matrix**
 $$	\mat{C}_p = \begin{bmatrix}
 		0 & 1 & 0 & \ldots & 0 & 0\\
 		0 & 0 & 1 &\ldots & 0 & 0\\
@@ -324,8 +324,8 @@ $$
 
   $\Rightarrow k_{\map{A}}(z) = \prod_{\lambda \in \sigma_{\map{A}}}(z - \lambda)^{q_\lambda}$, $m_{\map{A}}(z) = \prod_{\lambda \in \sigma_{\map{A}}}(z - \lambda)^{s_\lambda}$ met $s_\lambda \leq q_\lambda$
 
-* Toepassingen: 
-  
+* Toepassingen:
+
   $\map{A}^n = - c_{n-1} \map{A}^{n-1} - \ldots - c_1 \map{A} - c_0 \idmap$
 
   en als $c_0 = (-1)^n \det(\map{A}) \neq 0$:
@@ -438,7 +438,7 @@ Voor $\map{A}\in \End(V)$, een invariante deelruimte is een deelruimte $U \subsp
 
 * Notatie: $\mat{A} = \mat{A}_U \oplus \mat{A}_{U^\text{c}}$ (directe som van matrices)
 
-* Directe som van operatoren: gegeven $\map{A}_i \in \End(V_i)$ voor $i=1,2$, we definiëren $\map{A} = \map{A}_1 \oplus \map{A}_2 \in \End(V_1 \oplus V_2)$ via de eigenschap dat $\left.\map{A}\right|_{V_i} = \map{A}_i$ voor $i=1,2$. 
+* Directe som van operatoren: gegeven $\map{A}_i \in \End(V_i)$ voor $i=1,2$, we definiëren $\map{A} = \map{A}_1 \oplus \map{A}_2 \in \End(V_1 \oplus V_2)$ via de eigenschap dat $\left.\map{A}\right|_{V_i} = \map{A}_i$ voor $i=1,2$.
 
 ## Invariante deelruimten: voorbeelden en eigenschappen
 
@@ -455,11 +455,11 @@ Invariante deelruimte van een gegeven operator $\map{A}\in\End(V)$
 
 * Twee reeksen van invariante deelruimten:
   * $\{\zerovec\} = \ker((\map{A}-\scalara\idmap)^0) \subspace	\ker(\map{A}-\scalara\idmap) \subspace$
-    
+
     $\qquad\qquad\ker((\map{A}-\scalara\idmap)^2) \subspace \ldots \subspace \ker((\map{A}-\scalara\idmap)^k) \subspace \ldots$
 
   * $V = \im((\map{A}-\scalara\idmap)^0) \supspace 	\im(\map{A}-\scalara\idmap) \supspace$
-    
+
     $\qquad\qquad\im((\map{A}-\scalara\idmap)^2) \supspace \ldots \supspace \im((\map{A}-\scalara\idmap)^k) \supspace \ldots$
 
   Dimensie van deze deelruimten is monotoon stijgend (strikte relatie, eigenlijke deelruimten) in de eerste reeks, en monotoon dalend in de tweede, tot een bepaalde index $k=s$, waar beide reeksen stabiliseren:
@@ -497,7 +497,7 @@ $p(z) = (z-1)(z+1)^2 = z^3 + z^2 - z - 1 \Rightarrow \mat{C}_p = \begin{bmatrix}
 
 * $\vec{v}_{-1} = (1,-1,1)$: $V_{-1} = \bbF \vec{v}_{-1}$
 * $U_{-1} = \ker((\mat{C}_p - (-1) \idmat)^2) = \ker\left(\begin{bmatrix}
-		1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 1 & 0 
+		1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 1 & 0
 	\end{bmatrix}^2\right) = \ker\left(\begin{bmatrix} 1 & 2 & 1 \\ 1 & 2 & 1 \\ 1 & 2 & 1 \end{bmatrix}\right)$
 
 ## Veralgemeende eigenruimten: voorbeeld
@@ -505,7 +505,7 @@ $p(z) = (z-1)(z+1)^2 = z^3 + z^2 - z - 1 \Rightarrow \mat{C}_p = \begin{bmatrix}
 $p(z) = (z-1)(z+1)^2 = z^3 + z^2 - z - 1 \Rightarrow \mat{C}_p = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & -1 \end{bmatrix}$:
 
 * $U_{-1} = \ker((\mat{C}_p - (-1) \idmat)^2) = \ker\left(\begin{bmatrix}
-		1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 1 & 0 
+		1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 1 & 0
 	\end{bmatrix}^2\right) = \ker\left(\begin{bmatrix} 1 & 2 & 1 \\ 1 & 2 & 1 \\ 1 & 2 & 1 \end{bmatrix}\right)$
 
 * basis voor $U_{-1}$: $\{\vec{v}_{-1}=(+1,-1,+1), \vec{w}_{-1} = (1, 0, -1)\}$
@@ -532,7 +532,7 @@ $p(z) = (z-1)(z+1)^2 = z^3 + z^2 - z - 1 \Rightarrow \mat{C}_p = \begin{bmatrix}
 * Beschouw de $k \times k$ matrix $\mat{N}_k = \begin{bmatrix} 0 & 1 & 0 & \cdots & 0 & 0\\ 0 & 0 & 1 & \cdots & 0 & 0 \\
  	\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
  	0 & 0 & 0 & \cdots & 0 & 1\\
- 	0 & 0 & 0 & \cdots & 0 & 0 
+ 	0 & 0 & 0 & \cdots & 0 & 0
  \end{bmatrix}$
 
   $\Rightarrow$ nilpotent met index $k$
@@ -548,9 +548,9 @@ $p(z) = (z-1)(z+1)^2 = z^3 + z^2 - z - 1 \Rightarrow \mat{C}_p = \begin{bmatrix}
 * Jordan normaalvorm / canonische vorm: er bestaat een basis $B$ zodat
 
   $$\mat{J}_{\map{A}}= \Phi_B(\map{A}) = \bigoplus_{\lambda \in \sigma_{\map{A}}} \bigoplus_{k=1}^{s_\lambda} \bigoplus_{i=1}^{p_{\lambda,k}} \mat{J}_k(\lambda)$$
-  
+
   met $J_k(\lambda) = \lambda \idmat_{k} + \mat{N}_k$ (Jordan-blokken)
-  
+
   en $p_{\lambda,k} \geq 0$ voor $k=1,\ldots,s_\lambda-1$ en $p_{\lambda,s_\lambda} > 0$
 
 * Per Jordan-blok is er 1 eigenvector: $r_\lambda = \sum_{k=1}^{s_\lambda} p_{\lambda,k}$ en $q_\lambda = \sum_{k=1}^{s_\lambda} k p_{\lambda,k}$
@@ -589,7 +589,7 @@ Voor een companion matrix $\mat{C} \in \bbF^{n \times n}$ met (unieke) eigenwaar
 ## Sensitiviteit van eigenwaarden en eigenruimten
 
 * Voorbeeld 1: $\mat{A}_1(\eps)	= \begin{bmatrix}
-	 0 & 1\\ \eps & 0	
+	 0 & 1\\ \eps & 0
 	\end{bmatrix}$
 
   * $\eps = 0$: $\sigma_{\mat{A}}=\{0\}$ met $q_0 = s_0 = 2$, $r_0=1$: 1 Jordan blok
@@ -598,7 +598,7 @@ Voor een companion matrix $\mat{C} \in \bbF^{n \times n}$ met (unieke) eigenwaar
 	\end{bmatrix}$
 
 * Voorbeeld 2: $\mat{A}_2(\eps)	= \begin{bmatrix}
-	 0 & 1\\ 0 & \eps	
+	 0 & 1\\ 0 & \eps
 	\end{bmatrix}$
 
   * $\eps = 0$: $\sigma_{\mat{A}}=\{0\}$ met $q_0 = s_0 = 2$, $r_0=1$: 1 Jordan blok
@@ -625,7 +625,7 @@ Problemen omdat $\GL(V)$ niet compact is: limieten van inverteerbare matrices ku
   $\vec{w}^\transpose \mat{A} = \lambda \vec{w}^\transpose \iff \mat{A}^\transpose \vec{w} = \lambda \vec{w}$
 
   * Intrinsieke betekenis:
-  
+
     als $\mat{A} = \Phi_B(\map{A})$ voor een basis $B=\{\ve_1,\ldots,\ve_n\}$, beschouw dan duale basis $B^\ast=\{\varepsilon^1,\ldots,\varepsilon^n\}$ met $\varepsilon^i[\ve_j] = \delta^i_{\ j}$:
 
     $\omega = w_i \varepsilon^i$ voldoet aan $\map{A}^\ast(\omega) = \lambda \omega$
@@ -638,7 +638,7 @@ Stel $\map{A}^\ast(\omega') = \lambda' \omega'$ en $\map{A}\vv = \lambda \vv$:
 
 * $\lambda \neq \lambda' \Rightarrow \omega'[\vv] = 0$
 
-* $\lambda = \lambda'$ : $\omega[\vv] \neq 0$? 
+* $\lambda = \lambda'$ : $\omega[\vv] \neq 0$?
 
 * Uit Jordan-decompositie $\mat{J}_{\mat{A}} = \bigoplus_{\lambda \in \sigma_{\map{A}}} \bigoplus_{k=1}^{s_\lambda} \bigoplus_{i=1}^{p^{(\lambda)}_{k-1}} \mat{J}^{(k)}(\lambda)$ leren we dat elke Jordan-blok één rechtse eigenvector oplevert (de basisvector geassocieerd met de eerste kolom van het blok), en één linkse eigenvector (de basisvector geassocieerd met de laatste rij van het blok)
 
@@ -707,7 +707,7 @@ Betekenis van een reeks van een operator? Convergentie? Zie Hoofdstuk 4
 	\end{bmatrix} + \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)!}\begin{bmatrix}
 		0 & -\theta^{2n+1}\\ \theta^{2n+1} & 0
 	\end{bmatrix}$
-  
+
   $\qquad = \begin{bmatrix}
 			\cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta)
 		\end{bmatrix}$
@@ -771,7 +771,7 @@ Maar niet:
 
 * **Baker-Campbell-Haussdorf formule**: $e^{t\map{A}} e^{t\map{B}} = e^{\map{C}}$ met
   $\map{C} = t(\map{A} + \map{B}) + \frac{t^2}{2} \commutator{\map{A}}{\map{B}} +$
-  
+
   $\qquad \frac{t^3}{12} \commutator{\map{A}}{\commutator{\map{A}}{\map{B}}}- \frac{t^3}{12} \commutator{\map{B}}{\commutator{\map{A}}{\map{B}}}+\order(t^4)$
 
 * **Zassenhaus formule**
@@ -790,7 +790,7 @@ $f(z) = \log(z)$ of $f(z)=z^{\alpha}$ met $\alpha \not\in\bbN$: geen Taylorreeks
 \end{align*}
 
 \begin{equation}
-	z^\alpha = \lambda^\alpha\left(1 + \frac{z-\lambda}{\lambda}\right)^\alpha = \lambda^\alpha \sum_{n=0}^{+\infty} \frac{\alpha (\alpha-1) 
+	z^\alpha = \lambda^\alpha\left(1 + \frac{z-\lambda}{\lambda}\right)^\alpha = \lambda^\alpha \sum_{n=0}^{+\infty} \frac{\alpha (\alpha-1)
 	\cdots (\alpha - n + 1)}{n!}\left(\frac{z-\lambda}{\lambda}\right)^n
 \end{equation}
 
@@ -810,7 +810,7 @@ $\Rightarrow$ typisch niet uniek (meerdere $\map{B}$ voldoen aan $\map{A}=\exp(\
 
 ## Dynamische systemen
 
-Een **dynamisch systeem** is een algemene naam voor de wiskundige modellering van een tijdsafhankelijk fenomeen of process van natuurlijke of menselijke origine (fysisch, chemisch, biologisch, ecologisch, economisch, sociaal, …). 
+Een **dynamisch systeem** is een algemene naam voor de wiskundige modellering van een tijdsafhankelijk fenomeen of process van natuurlijke of menselijke origine (fysisch, chemisch, biologisch, ecologisch, economisch, sociaal, …).
 
 ## Dynamische systemen
 
@@ -905,7 +905,7 @@ Voor $k=1$ ($x_n$ scalair): $y_{n+1} = \mat{C} \vec{y}_n = \mat{C}^{n+1}\vec{y}_
 
   * Polynoom voor $\lambda$ kan gevonden worden door oplossingen $x_n=\lambda^n$ in te vullen in de recurrentierelatie
 
-  * Lineaire combinatie vinden door te "matchen" met beginvoorwaarden $x_0,\ldots,x_{k-1}$. 
+  * Lineaire combinatie vinden door te "matchen" met beginvoorwaarden $x_0,\ldots,x_{k-1}$.
 
 ## Recurrentierelatie: voorbeeld
 
@@ -960,6 +960,4 @@ $\dot{\vec{x}}(t) = \vec{\varphi}(\vec{x}(t))$ (eerste orde differentiaalvergeli
 
   * Polynoom voor $\lambda$ kan gevonden worden door oplossingen $x(t)=\erm^{\lambda t}$ in te vullen in de recurrentierelatie
 
-  * Lineaire combinatie vinden door te "matchen" met beginvoorwaarden $x(0),\dot{x}(0),\ldots,x^{(k-1)}(0)$. 
-
-
+  * Lineaire combinatie vinden door te "matchen" met beginvoorwaarden $x(0),\dot{x}(0),\ldots,x^{(k-1)}(0)$.

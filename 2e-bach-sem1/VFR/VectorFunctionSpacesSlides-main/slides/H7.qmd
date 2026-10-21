@@ -181,7 +181,7 @@ Voorbeelden:
 
 * $Y = \bbF$, $X = \{1,\ldots,n\}$: $Y^X \cong \bbF^n$
 * $Y = \bbF$, $X = \bbN_0$: vectorruimte van oneindig lange rijen
-  
+
 $\rightarrow$ functieruimte wordt typisch gebruikt in de context waar $X$ onaftelbaar is:
 
   * $X = [a,b]$, $X = \bbR$, $X = \Omega \subseteq \bbR^d$
@@ -218,7 +218,7 @@ $\mathcal{L}^p(I,\bbF)$ is de verzameling van functies $f:I\to \bbF$ (met dus $I
 * het geval $p=\infty$ laten we voorlopig buiten beschouwing
 * $\mathcal{L}^p(I,\bbF)$ vormt een vectorruimte (lineaire combinaties van twee integreerbare functies is integreerbaar, integraal van $\abs{a f(x) + b g(x)}^p$ can begrensd worden met behulp van convexiteit van $\abs{\cdot}^p$
 * resulterende definitie $\norm{f}_p = \left(\int_I \abs{f(x)}^p \,\drm x\right)^{1/p}$ voldoet aan driehoeksongelijkheid (Minkowski)
-* $\norm{f}_p$ is niet positief definiet, er zijn niet-triviale functies waarvoor $\norm{f}_p = 0$ 
+* $\norm{f}_p$ is niet positief definiet, er zijn niet-triviale functies waarvoor $\norm{f}_p = 0$
 
   $\Rightarrow$ seminorm
 
@@ -226,10 +226,10 @@ $\mathcal{L}^p(I,\bbF)$ is de verzameling van functies $f:I\to \bbF$ (met dus $I
 
 Observatie 1:voor $f,g \in \mathcal{L}^p(I,\bbF)$
 
-* $\norm{f}_p = 0$ en $\norm{g}_p = 0$ $\Rightarrow \norm{a f + b g}_p = 0$ 
-  
+* $\norm{f}_p = 0$ en $\norm{g}_p = 0$ $\Rightarrow \norm{a f + b g}_p = 0$
+
   (wegens driehoeksongelijkheid en absolute homogeniteit)
-  
+
   $\Rightarrow$ verzameling $U = \{f | \norm{f}_p = 0\}$ vormt deelruimte van $\mathcal{L}^p(I,\bbF)$
 
 * functies waarvoor $\norm{f - g}_{p} = 0 \Leftrightarrow f-g \in U$ noemen we "bijna overal" gelijk; dit is een equivalentierelatie
@@ -267,10 +267,10 @@ Observatie 2: voor $f,g \in \mathcal{L}^p(I,\bbF)$
 * Riemann-integraal $\int_a^b f(x)\,\drm x$:
   * partitie $P$ van $[a,b]$: $\Delta_k = [x_{k-1},x_k]$ met $a = x_0 < x_1 < \ldots < x_{n_1} < x_n=b$
   * $m_k = \inf_{x \in \Delta_k} f(x)$ en $M_k = \sup_{x \in \Delta_k} f(x)$:
-  
+
     $s_{f,P} = \sum_{k=1}^{n} m_k (x_k - x_{k-1})$ en $S_{f,P} = \sum_{k=1}^{n} M_k (x_k - x_{k-1})$
   * integraal bestaat als $s_f = \sup_{P} s_{f,P} =  \inf_{P} S_{f,P} = S_f$
-    
+
     (functies met "niet te veel" discontinuïteiten)
 
   werkt niet voor bvb $\chi_\bbQ(x) = \begin{cases} 1,& x \in \bbQ\\ 0,& x \in \bbR\setminus \bbQ \end{cases}$ (Dirichlet functie)
@@ -284,7 +284,7 @@ Observatie 2: voor $f,g \in \mathcal{L}^p(I,\bbF)$
   * partitie van $[0,M]$: $0 = y_0 < y_1 < \ldots < y_{n-1} < y_n = M$
   * invers beeld (pre-image) $E_k = f^{-1}([y_{k-1},y_k))$
   * $l_{f,P} = \sum_{k=1}^{n} y_{k-1} \mu(E_k)$ en $L_{f,P} = \sum_{k=1}^{n} y_k \mu(E_k)$
-  
+
     met $\mu(E_k)$ de "grootte" (maat) van $E_k$
 
   ![](riemannlebesgue.png)
@@ -337,7 +337,7 @@ Observatie 2: voor $f,g \in \mathcal{L}^p(I,\bbF)$
 
   * $L^p_w(I,\bbF)$ met norm $\norm{f}_{p,w} = \left(\int_{I} w(x) \abs{f(x)}^p \,\drm x\right)^{1/p}$
     voor integreerbare functie $w$ met $w(x)>0$ voor alle $x \in I$
-  
+
 ## Bijkomende opmeringen
 
 * $I = [a,b]$ (compact): $L^p(I,\bbF) \subspace L^q(I,\bbF)$ als $p > q$
@@ -358,9 +358,9 @@ Observatie 2: voor $f,g \in \mathcal{L}^p(I,\bbF)$
     $\rightarrow$ $\mathrm{supp}(f) = \overline{\{ x \in I |\ f(x) \neq 0\}} \subseteq I$
 
 * $L^p(I,\bbF)$ is "separabel": laat aftelbare fundamentele verzameling $S$ toe
-  
-  (verzameling waarvoor geldt dat $\overline{\bbF S} = L^p(I,\bbF)$, niet noodzakelijk een basis) 
-  
+
+  (verzameling waarvoor geldt dat $\overline{\bbF S} = L^p(I,\bbF)$, niet noodzakelijk een basis)
+
   * $I$ compact: $S=\{x^k,k\in\bbN\}$, $S=\{\exp(\irm \frac{2\pi}{L} k x), k \in\bbZ\}$, \dots
   * $I = \bbR$: $S=\{x^n \chi_{[-N,N]}, n \in \bbN, N \in \bbN\}$
 
@@ -405,17 +405,17 @@ Gram-Schmidt algoritme toegepast op $\{x^n, n\in\bbN_0\}$ $\Rightarrow$ $\{p_n(x
   * $p_n(x)$ is orthogonaal op alle met polynomen van graad $<n$
   * niet steeds genormaliseerd: $\inner{p_n}{p_m}_w \sim C_n \delta_{n,m}$
   * voor symmetrisch interval en $w(x)=w(-x)$:
-  
+
     $p_n$ bevat enkel even (oneven) machten van $x$ voor $n$ even (oneven)
 
 * $x p_n(x) = a_{n} p_{n+1}(x) + b_n p_{n}(x) + c_{n} p_{n-1}(x)$
 
   met $c_0 = 0$ en $c_{n} \inner{p_{n-1}}{p_{n-1}}_w = a_{n-1} \inner{p_n}{p_n}_w$ $\Rightarrow c_n = a_{n-1}$
-  
+
   * vermenigvuldigen met $x$ heeft tridiagonale "matrixrepresentatie" t.o.v. basis $p_n$
 
   * als normalisatie van basis $n$-onafhankelijk:
-  
+
     $c_n = a_{n-1} \Leftrightarrow$ symmetrische matrixrepresentatie
 
 ## Orthogonale veeltermen
@@ -453,7 +453,7 @@ Gram-Schmidt algoritme toegepast op $\{x^n, n\in\bbN_0\}$ $\Rightarrow$ $\{p_n(x
 
   * uit afgeleide naar $t$ $\rightarrow$ Bonnet recursieformule:
 
-    $(n+1) P_{n+1}(x) + n P_{n-1}(x) = (2n+1) x P_n(x)$ 
+    $(n+1) P_{n+1}(x) + n P_{n-1}(x) = (2n+1) x P_n(x)$
 
   * Rodrigues formule: $P_n(x) = \frac{1}{2^n n!} \frac{\drm^n\ }{\drm x^n} (x^2 -1)^n$
 
@@ -477,7 +477,7 @@ Gram-Schmidt algoritme toegepast op $\{x^n, n\in\bbN_0\}$ $\Rightarrow$ $\{p_n(x
 
   * uit afgeleide naar $t$ $\rightarrow$ Bonnet recursieformule:
 
-    $H_{n+1}(x) + 2n H_{n-1}(x) = 2 x H_{n}(x)$ 
+    $H_{n+1}(x) + 2n H_{n-1}(x) = 2 x H_{n}(x)$
 
   * Rodrigues formule: $H_n(x) = (-1)^n \erm^{x^2} \frac{\drm^n}{\drm x^n} \erm^{-x^2}$
 
@@ -505,7 +505,7 @@ Gram-Schmidt algoritme toegepast op $\{x^n, n\in\bbN_0\}$ $\Rightarrow$ $\{p_n(x
 
   * uit afgeleide naar $t$ $\rightarrow$ Bonnet recursieformule:
 
-    $(n+1) L_{n+1}(x) + n L_{n-1}(x) = (2n + 1 - x) L_n(x)$ 
+    $(n+1) L_{n+1}(x) + n L_{n-1}(x) = (2n + 1 - x) L_n(x)$
 
   * Rodrigues formule: $L_n(x) = \frac{\erm^x}{n!} \frac{\drm^n\ }{\drm x^n} (x^n \erm^{-x})$
 
@@ -526,7 +526,7 @@ Gram-Schmidt algoritme toegepast op $\{x^n, n\in\bbN_0\}$ $\Rightarrow$ $\{p_n(x
   * $T_n(x) = T_n(\cos \theta) = \cos(n \theta) = \cos(n \arccos x)$
   * \begin{align*}
 	\inner{T_m}{T_n}_w = \int_{-1}^{+1} \frac{T_m(x) T_n(x)}{\sqrt{1-x^2}} \,\drm x
-	 = \int_0^{+\pi} \cos(m\theta)\cos(n\theta)\,\drm \theta 
+	 = \int_0^{+\pi} \cos(m\theta)\cos(n\theta)\,\drm \theta
 	= \begin{cases} \pi, & m = n = 0\\ \frac{\pi}{2}	\delta_{n,m}, &\text{otherwise}\end{cases}
 \end{align*}
   * $T_{n\pm 1}(\cos \theta) = \cos(\theta) \cos(n \theta) \mp \sin(\theta) \sin(n\theta)$:
@@ -538,9 +538,9 @@ $\rightarrow$ vooral in numerieke analyse, statistiek, minder in fysica
 ## Toepassing: Gaussische kwadratuur
 
 * Numerieke benadering van integraal op basis van functiewaarden op een discrete, eindige verzameling $\{x_i \in I; i=1,\ldots,n\}$:
-  
+
   $$\int_I w(x) f(x)\,\drm x \approx \sum_{i=1}^{n} a^i f(x_i)$$
-  
+
   $\rightarrow$ moet lineaire functionaal zijn van de functiewaarden $\{f(x_i)\}$
 
 * met $n$ punten: benadering exact voor veeltermen van graad $\leq n-1$
@@ -566,24 +566,24 @@ $\rightarrow$ vooral in numerieke analyse, statistiek, minder in fysica
 ## Toepassing: Gaussische kwadratuur
 
 * Kunnen we beter doen als we de $\{x_i\}$ slim kiezen?
-  
+
   Kunnnen we de benadering exact maken voor veeltermen tot graad $\leq 2n-1$ ?
 
 * Moeilijk niet-lineair probleem?
 
   Gauss: kies $\{x_i; i=1,\ldots,n\}$ als nulpunten van de orthogonale veelterm $p_n$ geassocieerd aan $I$ en $w$
-  
+
   * we kiezen $a^i$ zodat exact voor veeltermen tot graad $n-1$
   * $\int w(x) p_n(x) q(x)\,\drm x = 0$ voor elke $q$ van graad $\leq n-1$
-    
+
     $\rightarrow$ benaderingsformule correct als $p_n(x_i) =0$ voor elke $x_i$
   * willekeurige polynoom van graad $\leq 2n-1$:
-    
+
     $f(x) = p_n(x) q(x) + r(x)$ met $r(x)$ veelterm met graad $\leq n-1$
 
     $\Rightarrow \int w(x) f(x)\,\drm x = \int w(x) r(x)\,\drm x = \sum a^i r(x_i) = \sum a^i f(x_i)$
 
-* Vandermonde-matrix inverteren is numeriek instabiel: 
+* Vandermonde-matrix inverteren is numeriek instabiel:
   eigenschappen van orthogonale veeltermen kunnen ook helpen om $a^i$ te vinden
 
   $\rightarrow$: niet te kennen
@@ -596,7 +596,7 @@ $\rightarrow$ vooral in numerieke analyse, statistiek, minder in fysica
   * functie op circel $\cong$ 1-dimensionale torus $\bbT^1 = \bbR/(L\bbZ)$.
 
 * trigonometische veelterm van graad $n$:
-  
+
   \begin{align*}
   f(x) &= \frac{a_0}{2} + \sum_{k=1}^{n} a_k \cos\left(\frac{2\pi}{L} k x\right) + \sum_{k=1}^n b_k \sin\left(\frac{2\pi}{L} k x\right)= \sum_{k=-n}^{+n} c_k \exp\left(\irm \frac{2\pi}{L} k x\right)
   \end{align*}
@@ -605,7 +605,7 @@ $\rightarrow$ vooral in numerieke analyse, statistiek, minder in fysica
 
   * orthonormale basis: $S=\left\{ \varphi_k(x) = \frac{1}{\sqrt{L}} \erm^{+\irm \frac{2\pi}{L} k x};\ k =-n,-n+1,\dots,0,\dots, n-1, n\right\}$
 
-* meerdimensionale Fourier-basis ($\vec{x} \in \mathbb{T}^d = L_1 \times L_2 \times \cdots \times L_d$): 
+* meerdimensionale Fourier-basis ($\vec{x} \in \mathbb{T}^d = L_1 \times L_2 \times \cdots \times L_d$):
 
 	$$\left\{\varphi_{\vec{k}}(\vec{x}) = \frac{1}{(L_1 L_2 \dots L_d)^{1/2}} \erm^{+\irm (\frac{2\pi}{L_1} k_1 x_1 + \dots + \frac{2\pi}{L_d} k_d x_d)}; \vec{k} \in \bbZ^d\right\}$$
 
@@ -660,18 +660,18 @@ $$\widehat{f}_k = \inner{\varphi_k}{f} = \frac{1}{\sqrt{L}} \int_{0}^{L} f(x) \e
 * De Fourierbasis is een fundamentele verzameling in $L^1([0,L],\bbF)$:
 
   er bestaat een rij $(\tilde{f}_n)$ van trigonometrische veeltermen zodat
-  
+
   $$\lim_{n\to \infty} \norm{\tilde{f}_n - f}_1 = 0$$
 
   voor alle $f \in L^1([0,L],\bbF)$ (concreet: $\tilde{f}_n = \frac{f_0 + f_1+f_2+\ldots+f_n}{n+1}$).
 
-* Wat zegt dit over $\lim_{n\to \infty} \norm{f_n - f}_2$ ? 
+* Wat zegt dit over $\lim_{n\to \infty} \norm{f_n - f}_2$ ?
   * bemerk dat $L^2([0,L],\bbF) \subspace L^1([0,L],\bbF)$
   * maar $\norm{\cdot }_2$ is strengere maat van convergentie
   * $L^2([0,L],\bbF)$ kan geen niet-triviale functies bevatten die loodrecht staan op alle Fourier/trigonometrische polynomen
 
   $\rightarrow$ expansiestelling: $\lim_{n\to \infty} \norm{f_n - f}_2=0$
-  
+
   $\implies \sum_{k \in \bbZ} \abs{\widehat{f}_k}^2 = \norm{\widehat{f}}_2^2$ en dus voor grote $k$: $\abs{\widehat{f}_k}$ daalt sneller dan $\abs{k}^{-1/2}$
 
 ## Gladheid en convergentiesnelheid
@@ -823,7 +823,7 @@ Voor functies met domein $\bbR^d$:
 * Sommige operatoren hebben niet de volledige Hilbertruimte als domein:
   * $\map{D}$ kan enkel op afleidbare functies werken
   * $\map{M}_h f$ is mogelijks niet meer kwadratisch integreerbaar
- 
+
   $\rightarrow$ domein is deel~~verzameling~~ruimte van $H$
 
 * beschouw operator $\map{A}$ met domein $\D_{\map{A}} \subspace H$:
@@ -859,7 +859,7 @@ Voor functies met domein $\bbR^d$:
 * Integraaloperator:
 
   $\norm{\map{A}f}^2 = \int_I \underbrace{\abs{\int_I A(x,y) f(y)\,\drm y}^2}_{\Downarrow\ \text{Cauchy-Schwarz}} \,\drm x$
-  
+
   $\quad\leq \int_I \left(\int_I \abs{A(x,y)}^2\,\drm y\right)^2 \left(\int_I f(y),\drm y\right)^2\,\drm x = \left(\int_I\int_I \abs{A(x,y)}^2 \,\drm y\drm x\right) \norm{f}^2$
 
   $\Rightarrow$ begrensd als $\left(\int_I\int_I \abs{A(x,y)}^2 \,\drm y\drm x\right) < \infty$
@@ -879,11 +879,11 @@ Voor functies met domein $\bbR^d$:
     $\rightarrow$ $\norm{f_k}_2 = 1$ en $\norm{\map{D}f_k}_2 = \frac{2\pi}{L} \abs{k}$ voor arbitraire $k \in \bbZ$
 
   * op $L^2(\bbR,\bbC)$:
-  
+
   $f_n(x) = \begin{cases} \sin(\frac{2\pi}{L}n x),&x \in [0,L]\\
   0,& x \not\in [0,L]
   \end{cases}$
-  
+
   $\rightarrow (\map{D}f_n)(x) = f'_n(x) = \begin{cases} \frac{2\pi}{L} n \cos(\frac{2\pi}{L}n x),&x \in [0,L]\\
   0,& x \not\in [0,L]\end{cases}$
 
@@ -911,7 +911,7 @@ Voor functies met domein $\bbR^d$:
     \end{cases}, &\map{A}^+\ve_{n} = \sqrt{n+1} \ve_{n+1}.
     \end{align*}
 
-  * $\commutator{\map{A}^-}{\map{A}^+} \ve_n = \ve_n$ 
+  * $\commutator{\map{A}^-}{\map{A}^+} \ve_n = \ve_n$
 
     (beide onbegrensd; domein $\D_{\map{A}^\pm} = \{\vv \in \ell^2(\bbN) | \sum_{n \in \bbN} n \abs{\vv_n}^2 < \infty\}$)
 
@@ -955,7 +955,7 @@ Voor functies met domein $\bbR^d$:
   (symmetrisch wordt ook gebruikt in complexe geval)
 
 * **zelftoegevoegde operatoren**:
-  
+
   $$\map{A}^\dagger = \map{A} \Leftrightarrow \D\,\!_{\map{A}^\dagger}=\D\,\!_{\map{A}}\ \text{en}\ \map{A}\vv = \map{A}^\dagger\vv,\forall \vv \in \D\,\!_{\map{A}}$$
 
   (zelftoegevoegd $\Rightarrow$ symmetrisch)
@@ -963,7 +963,7 @@ Voor functies met domein $\bbR^d$:
 * symmetrische operator:
 
   $\D_{\map{A}}\subspace \D_{\map{A}^\dagger}$ en $\map{A}^\dagger \vv = \map{A}\vv$ voor alle $\vv \in \D_{\map{A}}$
-  
+
 
   $$\Rightarrow \map{A} \subset \map{A}^\dagger \Rightarrow \map{A}^{\dagger\dagger} \subset \map{A}^\dagger$$
   $$\Rightarrow \map{A} \subset \map{A}^{\dagger\dagger} \subset \map{A}^\dagger$$
@@ -1011,16 +1011,16 @@ Beschouw de operator $\map{P}$ met actie $(\map{P}f)(x)=-\irm f'(x)$ en de ident
 
 ## Uitgebreid voorbeeld
 
-Kunnen we een extensie vinden van $\map{P}_2$ waarvoor $\map{P}_3 = \map{P}_3^\dagger$ ? 
+Kunnen we een extensie vinden van $\map{P}_2$ waarvoor $\map{P}_3 = \map{P}_3^\dagger$ ?
 
-* Stel $\map{P}_3$ met $\D_3 =\{f \in \D_1 | f(b) = \erm^s f(a)\}$ voor een $s \in \bbC$ 
+* Stel $\map{P}_3$ met $\D_3 =\{f \in \D_1 | f(b) = \erm^s f(a)\}$ voor een $s \in \bbC$
   * er geldt inderdaad $\D_2 \subspace \D_3 \subspace \D_1$
   * symmetrisch? als $-\irm [\erm^{\overline{s}+s} - 1] \overline{g(a)}f(a) = 0 \Rightarrow$ $s$ zuiver imaginair
   * toegevoegde operator? $\D_{\map{P}_3^\dagger} = \{g \in \D_1 | g(b) = \erm^{-\conj{s}} g(a)\}$
 
   $\Rightarrow$ voor $\erm^s = \erm^{\irm \theta}$ (voor een $\theta \in [0,2\pi)$): zelf-toegevoegd (en dus symmetrisch)
   * "verdraaide (twisted) randvoorwaarden"
-    
+
     omvat periodiek ($\theta=0$, $f(a)=f(b)$) en antiperiodiek ($\theta=\pi$, $f(b)=-f(a)$)
 
 * Belang: eigenwaarden en eigenvectoren
@@ -1073,7 +1073,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
   * klasse van operatoren die zich meer als een "matrix" gedragen
   * van belang voor de (theoretische) ontwikkeling van Greense functies etc
   * technische definitie: $\map{A}$ is compact als, voor elke begrensde rij $(\vv_n \in H)_{n \in \bbN_0}$, $(w_n =\map{A}\vv_n)_{n \in \bbN_0}$ een convergerende deelrij bevat
-    
+
     (m.a.w.: begrensde deelverzameling $\stackrel{\map{A}}{\longrightarrow}$ compacte deelverzameling)
   * bevat de klasse van Hilbert-Schmidt operatoren:
 
@@ -1088,7 +1088,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
 * zelftoegevoegde compacte operator $\map{A}$ beschikt over een spectrale decompositie
 
   $$\map{A} = \sum_{n} \lambda_n \map{P}_{\lambda_n}\quad \implies H = V_0 \bigoplus_{n} V_{\lambda_n}$$
-  
+
   * $\lambda_n \in \bbR$
   * aantal eigenwaarden $\lambda_n \neq 0$ eindig of aftelbaar oneindig
   * elke $V_{\lambda_n \neq 0}$ is eindig-dimensionaal, $V_0$ kan oneindig-dimensionaal zijn
@@ -1099,7 +1099,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
 ## Compacte operatoren
 
 * algemene compacte operator $\map{A}$ beschikt over **Schmidt-decompositie**:
-  
+
   niet-stijgende rij positieve getallen $(\sigma_n \in \bbR_{\geq 0})_{n \in \bbN_0}$ en verzamelingen orthonormale vectoren $(u_n \in H)_{n \in \bbN_0}$ en $(v_n \in H)_{n \in \bbN_0}$ met $\map{A}u_n = \sigma_n v_n$ en $\map{A}^\dagger v_n = \sigma_n u_n$ zodat
 
   $$\map{A} \vw = \sum_{n} \sigma_n \vu_n \inner{\vv_n}{\vw}, \forall \vw \in H$$
@@ -1110,7 +1110,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
 ## Spectrum van algemene operatoren
 
 * Operator $\map{A}$ met dicht domein $\D_{\map{A}}$ en bereik $\mathcal{R}_{\map{A}}$ is injectief indien $\ker(\map{A})=\{\zerovec\}$
-  
+
   $\Rightarrow$ we kunnen de inverse $\map{A}^{-1}$ definiëren als operator met domein $\mathcal{R}_{\map{A}}$
 
   $\Rightarrow$ deze inverse is enkel "dicht gedefinieerd" als $\overline{\mathcal{R}_{\map{A}}} = H$
@@ -1170,7 +1170,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
 ## Spectrum van algemene operatoren: voorbeelden
 
 * Op $H = \ell^2(\bbN_0)$: verschuivingsoperatoren
-	
+
   $$\map{L} (v^0, v^1, v^2, \ldots) = (v^1, v^2, v^3, \ldots),\quad\map{R} (v^0, v^1, v^2,\ldots) = (0, v^0, v^1, \ldots)$$
 
   * $\map{L}^\dagger = \map{R}$ en vice versa, $\norm{\map{L}} = \norm{\map{R}}=1 \implies \abs{\lambda} > 1$ niet in spectrum
@@ -1178,7 +1178,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
   * $\ker(\map{R} - \lambda \idmap) =\{0\}$ voor alle $\lambda$: $\sigma^{(\text{p})}_{\map{R}} = \emptyset$
   * $\vv_\lambda = \sum_{n=0}^{+\infty} \lambda^n \ve_n$ is eigenvector van $\map{L}$ met eigenwaarde $\lambda$: $\vv_\lambda$ is normaliseerbaar voor $\abs{\lambda}<1$ $\Rightarrow$ $\sigma^{(\text{p})}_{\map{L}} = \{\lambda \in \bbC | \abs{\lambda}< 1\}$
   * m.b.v. $\im(\map{R}-\lambda \idmap)^\perp = \ker((\map{R}-\lambda \idmap)^\dagger) = \ker(\map{L}-\conj{\lambda}\idmap)$
-    
+
     $\implies \im(\map{R}-\lambda \idmap)^{\perp\perp} = \overline{\im(\map{R}-\lambda \idmap)} = \ker(\map{L} - \overline{\lambda}\idmap)^\perp$
 
     $\implies (\map{R}-\lambda \idmap)^{-1}$ niet dicht gedefinieerd als $\conj{\lambda}$ eigenwaarde is van $\map{R}^\dagger = \map{L}$
@@ -1187,7 +1187,7 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
 ## Spectrum van algemene operatoren: voorbeelden
 
 * Op $H = \ell^2(\bbN_0)$: verschuivingsoperatoren
-	
+
   $$\map{L} (v^0, v^1, v^2, \ldots) = (v^1, v^2, v^3, \ldots),\quad\map{R} (v^0, v^1, v^2,\ldots) = (0, v^0, v^1, \ldots)$$
 
   * $\sigma_{\map{L}}^{(\text{c})} = \sigma_{\map{R}}^{(\text{c})} = \{\lambda \in \bbC | \abs{\lambda}= 1\}$: benaderende eigenvectoren
@@ -1212,5 +1212,3 @@ Eigenwaarden van operatoren op oneindig-dimensionale Hilbertruimten:
   $\Rightarrow$ er kan een soort spectrale decompositie worden opgeschreven die zowel het puntspectrum als het continue spectrum omvat
 
   $\Rightarrow$ in de fysica schrijven we dit met "eigenvectoren" met een "Dirac-delta normalisering"
-
-

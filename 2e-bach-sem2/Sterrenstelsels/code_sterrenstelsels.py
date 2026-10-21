@@ -47,8 +47,13 @@ def show_parsec():
     # Parallaxhoek p
     angle_radius = 1.8
     theta = np.linspace(-p_rad, p_rad, 80)
-    ax.plot(angle_radius * np.cos(theta), angle_radius * np.sin(theta), color="tab:red", lw=2.2)
-    ax.text(angle_radius + 0.25, 0.25, "p = 1\"", color="tab:red", fontsize=11)
+    ax.plot(
+        angle_radius * np.cos(theta),
+        angle_radius * np.sin(theta),
+        color="tab:red",
+        lw=2.2,
+    )
+    ax.text(angle_radius + 0.25, 0.25, 'p = 1"', color="tab:red", fontsize=11)
     ax.annotate(
         "parallaxhoek",
         xy=(angle_radius, 0),
@@ -60,7 +65,13 @@ def show_parsec():
 
     # Labels
     ax.scatter([sun[0]], [sun[1]], color="gold", s=140, label="Zon")
-    ax.scatter([earth1[0], earth2[0]], [earth1[1], earth2[1]], color="tab:green", s=80, label="Aarde (6 maanden apart)")
+    ax.scatter(
+        [earth1[0], earth2[0]],
+        [earth1[1], earth2[1]],
+        color="tab:green",
+        s=80,
+        label="Aarde (6 maanden apart)",
+    )
     ax.scatter([star[0]], [star[1]], color="tab:orange", s=120, label="Ster")
     ax.text(sun[0] - 0.2, sun[1] - 0.4, "Zon", fontsize=10, ha="right")
     ax.text(star[0] + 0.4, star[1], "Ster", va="center", fontsize=11)
@@ -71,7 +82,7 @@ def show_parsec():
     ax.set_xlim(-2, 13)
     ax.set_ylim(-4, 4)
     ax.axis("off")
-    ax.set_title("Definitie van 1 parsec (parallax 1\")", fontsize=12)
+    ax.set_title('Definitie van 1 parsec (parallax 1")', fontsize=12)
     ax.legend(loc="upper right", frameon=True, fontsize=10)
 
     plt.show()

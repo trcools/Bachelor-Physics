@@ -158,14 +158,14 @@ Gegeven een vectorruimte $V$. Een norm is een afbeelding $V \to \bbR : \vv \maps
 
 * absolute homogeniteit: $\norm{\scalara \vv} = \abs{\scalara} \norm{\vv}$
 
-  $\Rightarrow \norm{\zerovec} = 0$ , 
+  $\Rightarrow \norm{\zerovec} = 0$ ,
 * subadditiviteit / driehoeksongelijkheid: $\norm{\vv + \vw } \leq \norm{\vv} + \norm{\vw}$
 
-  $\Rightarrow \norm{\zerovec} = 0 \leq \norm{\vv} + \norm{-\vv} = 2 \norm{\vv}$ 
+  $\Rightarrow \norm{\zerovec} = 0 \leq \norm{\vv} + \norm{-\vv} = 2 \norm{\vv}$
 
 * positief definiet: $\norm{\vv} = 0 \Leftrightarrow \vv = 0$
 
-Voor de eerste eigenschap hebben we op het veld van scalairen $\bbF$ een **absolute waarde** $\abs{\scalara}$ nodig. Voor $\bbR$ en $\bbC$ komt dit overeen met de gekende definitie. 
+Voor de eerste eigenschap hebben we op het veld van scalairen $\bbF$ een **absolute waarde** $\abs{\scalara}$ nodig. Voor $\bbR$ en $\bbC$ komt dit overeen met de gekende definitie.
 
 ## Nuttige eigenschap
 
@@ -215,7 +215,7 @@ Uitbreiding naar oneindig-dimensionale ruimten:
     * norm $\norm{\vv}_p = \left[\sum_{i=1}^{+\infty} \abs{v^i}^p\right]^{1/p}$ is eindig
 
     * speciaal geval $p=\infty$:
-    
+
       $\norm{\vv}_\infty = \sup\{\abs{v^i}, i\in \bbN_0\}$ (supremum norm)
 
       $\ell^\infty(\bbN_0,\bbF)$: ruimte van begrensde rijen
@@ -319,10 +319,10 @@ Convergentie: $\lim_{n\to \infty} f_n = f$ als
 Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n x)$
 
 * $(f_n)$ convergeert puntsgewijs naar de (niet-continue!) functie
-  
+
   $g(x) = \begin{cases} 1, x=0 \\ 0, x \in (0,1]\end{cases}$
 * $(f_n)$ convergeert volgens de $p=1$ norm naar de continue functie
-  
+
   $h(x) = 0, \forall x \in [0,1]$
 * $(f_n)$ convergeert niet volgens de $p= \infty$ norm
 
@@ -333,8 +333,8 @@ Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n
 
 * Stelling: twee normen $\norm{\cdot}_a$ en $\norm{\cdot}_b$ zijn equivalent als en slechts als er constanten $C \geq c > 0$ bestaan zodat $c \norm{\vv}_a \leq \norm{\vv}_b \leq C\norm{\vv}_a$ voor alle $\vv \in V$
 
- 
-* Stelling: voor een eindig-dimensionale vectorruimte $V$ zijn alle normen equivalent 
+
+* Stelling: voor een eindig-dimensionale vectorruimte $V$ zijn alle normen equivalent
 
 
 * Voorbeelden voor $\vec{v} \in \bbF^n$:
@@ -347,7 +347,7 @@ Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n
 
   * Wanneer $U$ wordt bedekt door open verzamelingen $\mathcal{V}=\{V_1,V_2,\ldots,\}$ (i.e. $U \subseteq \bigcup \mathcal{V}$), dan wordt $U$ ook bedekt door een eindig aantal van die verzamelingen
   * Elke rij $(\vv_n \in U)$ heeft een convergerende deelrij met limietpunt in $U$
-  
+
   (equivalente karakterisaties in metrische ruimten)
 
 * Stelling: in een eindig-dimensionale vectorruimte $V$ is een deelverzameling $U$ compact als en slechts als $U$ begrensd en gesloten is (analoog aan Vectoranalayse).
@@ -357,7 +357,7 @@ Beschouw de rij $(f_n \in C^0([0,1],\bbR))_{n \in \bbN_0}$ met $f_n(x) = \exp(-n
 In een oneindig-dimensionale vectorruimte zijn gesloten begrensde deelverzamelingen niet noodzakelijk compact.
 
 * Voorbeeld: $C^0([a,b],\bbF)$ met $\norm{\cdot}_\infty$
-  
+
   * Beschouw de gesloten eenheidsbol: $\overline{B_1(\zerovec)} = \{\vv \in V|\norm{\vv} \leq 1\}$
   * Beschouw de rij $\{f_n(x)=x^n\}$ met elke $\norm{f_n} = 1$. Er bestaat geen  convergente deelrij.
 
@@ -399,12 +399,12 @@ Tegenvoorbeeld:
 
 ## Banachruimten: complete verzameling
 
-Aangezien (oneindig-dimensionale) deelruimten $W \subspace V$ niet noodzakelijk gesloten zijn (in tegenstelling tot eindig-dimensionale deelruimten), kunnen we hun sluiting $\overline{W}$ bekijken. 
+Aangezien (oneindig-dimensionale) deelruimten $W \subspace V$ niet noodzakelijk gesloten zijn (in tegenstelling tot eindig-dimensionale deelruimten), kunnen we hun sluiting $\overline{W}$ bekijken.
 
 * Zoals eerder: als $\overline{W}=V$, dan is $W$ een **dichte** deelruimte
 
   Elke vector $\vv \in V$ kan arbitrair dicht benaderd worden door een vector $\vw \in W$:
-  
+
   $\forall \epsilon > 0, \vv \in V : \exists \vw \in W$ zodat $\norm{\vv-\vw}<\epsilon$
 
 * Een verzameling $S$ waarvoor $\bbF S$ dicht is, of dus $\overline{\bbF S}=V$, wordt een totale, fundamentele of complete verzameling genoemd
@@ -453,7 +453,7 @@ $\Rightarrow$ allerlei technische subtiliteiten die verdwijnen in het geval van 
 
 ## Normen voor matrices
 
-Gegeven $\mat{A} \in \bbF^{m \times n}$: 
+Gegeven $\mat{A} \in \bbF^{m \times n}$:
 
 * 'vectoriseer' $\mat{A}$ (vergeet de matrixstructuur) via $\bbF^{m \times n} \cong \bbF^{m n}$ (vectorruimte-isomorphisme) en gebruik een vectornorm
 
@@ -530,11 +530,11 @@ Beschouw nu specifiek $\map{A}\in \End(V)$ voor een Banachruimte $(V,\norm{\cdot
 
 Gegeven een familie van normen $\{\norm{\cdot}^{(m \times n)}: \bbF^{m\times n} \to \bbR_{\geq 0}; \forall m, n \in \bbN\}$ voor matrices van alle groottes:
 
-* deze worden **consistent** genoemd als 
+* deze worden **consistent** genoemd als
 $$\norm{\mat{A}\mat{B}}^{(m \times n)} \leq \norm{\mat{A}}^{(m \times k)} \norm{\mat{B}}^{(k \times n)}$$
 voor alle $\mat{A}\in\bbF^{m\times k}$ en $\mat{B}\in\bbF^{k\times n}$
 
-* de normen $\norm{\mat{A}}_{p\to p}$ zijn consistent 
+* de normen $\norm{\mat{A}}_{p\to p}$ zijn consistent
 * de norm $\norm{\mat{A}}_{\text{F}}=\norm{\text{vectorize}(\mat{A})}_2$ is consistent
 * de norm $\norm{\text{vectorize}(\mat{A})}_\infty$ is niet consistent
 

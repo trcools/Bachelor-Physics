@@ -12,17 +12,17 @@
 \begin{proof}(i)
     \(\langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle\) geldt uit (definitie 8.1.1) lineair in het eerste argument met \(a=b=1\).
 
-    En 
+    En
     \(
-        \langle u, v + w \rangle 
-        = \overline{\langle v + w, u \rangle} 
+        \langle u, v + w \rangle
+        = \overline{\langle v + w, u \rangle}
         = \overline{\langle v , u \rangle} + \overline{\langle w, u \rangle}
         =\langle u, v \rangle + \langle u, w \rangle
     \)
 \end{proof}
 \begin{proof}(ii)
     \(
-        \langle \lambda v, \mu w \rangle 
+        \langle \lambda v, \mu w \rangle
         = \lambda \langle  v, \mu w \rangle
         = \lambda \overline{\langle \mu w ,v\rangle}
         = \lambda \overline{\mu} \overline{\langle  w ,v\rangle}
@@ -30,8 +30,8 @@
     \)
 \end{proof}
 \begin{proof}(iii)
-    \(\|\lambda v\| 
-    = \sqrt{\langle \lambda v, \lambda v \rangle} 
+    \(\|\lambda v\|
+    = \sqrt{\langle \lambda v, \lambda v \rangle}
     = \sqrt{\lambda \overline{\lambda} \cdot \langle v, v \rangle}
     = \sqrt{\lambda \overline{\lambda}} \sqrt{ \langle v, v \rangle}
     = |\lambda| \cdot \|v\|\)
@@ -64,15 +64,15 @@ Omdat \(\langle v, v \rangle \ngtr 0\) moet volgens (definitie 8.1.1) het positi
 \end{lemma}
 \begin{proof}
     Uit (lemma 8.2.2) volgt  \(W \cap W^\perp = \{0\}\).
-    
+
     Nu moeten we nog \(W + W^\perp = V\) aantonen.
-    
+
     Als \(\{b_1, \dots, b_d\}\) een orthogonale basis voor \(W\) en \(v\in V\):
      \[v=\sum_{i=1}^{k} \langle v,b_i\rangle b_i + \left(v - \sum_{i=1}^{k} \langle v,b_i\rangle b_i \right).\]
-    De eerste term is een element van \(W\). 
+    De eerste term is een element van \(W\).
     Neem \(b_j \in \{b_1,\dots,b_d\}\) willekeurig, dan is
     \[
-    \langle v - \sum_{i}^{d} \langle v,b_j \rangle b_i, b_j \rangle 
+    \langle v - \sum_{i}^{d} \langle v,b_j \rangle b_i, b_j \rangle
     = \langle v,b_j\rangle - \sum_{i}^{d} \langle v,b_i \rangle \langle b_i,b_j \rangle
     = \langle v,b_j \rangle - \langle v,b_j \rangle = 0.
     \]
@@ -103,6 +103,3 @@ Omdat \(\langle v, v \rangle \ngtr 0\) moet volgens (definitie 8.1.1) het positi
     Net als in het bewijs van gevolg 8.2.5 is
     \[v=\sum_{i=1}^{k} \langle v,w_i\rangle w_i + \left(v - \sum_{i=1}^{k} \langle v,w_i\rangle w_i \right) \in W \oplus W^\perp.\]
 \end{proof}
-
-
-

@@ -32,7 +32,7 @@ def read_rows_from_sheet(xlsx_path: Path, sheet_name: str):
         try:
             # Use default star_type if empty (for red giants, etc.)
             star_type_str = str(star_type).strip().lower() if star_type else "target"
-            
+
             row = {
                 "star_id": str(star_id).strip(),
                 "star_type": star_type_str,
@@ -82,11 +82,15 @@ def make_plot(rows, output_path: Path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Maak HR-plot rechtstreeks uit Opdracht-2-Data Excel-tabblad")
+    parser = argparse.ArgumentParser(
+        description="Maak HR-plot rechtstreeks uit Opdracht-2-Data Excel-tabblad"
+    )
     parser.add_argument("--xlsx", type=Path, default=DEFAULT_XLSX)
     parser.add_argument("--sheet", type=str, default=DEFAULT_SHEET)
     parser.add_argument("--min-snr", type=float, default=0.0)
-    parser.add_argument("--all-stars", action="store_true", help="Neem ook comparison stars op")
+    parser.add_argument(
+        "--all-stars", action="store_true", help="Neem ook comparison stars op"
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 

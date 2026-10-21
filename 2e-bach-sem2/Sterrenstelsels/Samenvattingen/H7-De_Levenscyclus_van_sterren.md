@@ -170,7 +170,7 @@ Merk de dramatisch kortere tijdschalen op! De reacties moeten sneller doorgaan o
 
 **Voorbij ijzer:**
 
-- Kernfusie is **endotherm** 
+- Kernfusie is **endotherm**
 - Kan geen energie meer leveren
 
 ---
@@ -278,7 +278,7 @@ Afhankelijk van massa doorlopen massieve sterren:
 - Voornamelijk: kern-instorting supernovae
 - **PERÒ** zwaarste elementen (goud, platina):
   - **r-process nucleosynthese**
-  - Bij samensmelting twee **neutronensterren** 
+  - Bij samensmelting twee **neutronensterren**
 
 ---
 

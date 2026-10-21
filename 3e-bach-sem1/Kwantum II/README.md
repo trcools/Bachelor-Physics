@@ -37,4 +37,3 @@ To compile LaTeX notes:
 cd Theorie
 pdflatex Moeilijkheden-kwantum-II.tex
 ```
-

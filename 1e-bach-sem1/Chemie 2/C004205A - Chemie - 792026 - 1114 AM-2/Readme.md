@@ -11,11 +11,11 @@
 │   └── 10_Oefeningen_en_Vraagstukken/ (15 HTML)
 │
 ├── CENTRALE RESOURCES
-│   ├── _Afbeeldingen/ 
-│   ├── _Oefeningen_en_Videos/ 
+│   ├── _Afbeeldingen/
+│   ├── _Oefeningen_en_Videos/
 │   ├── _Cursussen/
 │   ├── _Oefeningen-Apart/
-│   ├── _Naamgeving/ 
-│   └── _Presentaties/ 
+│   ├── _Naamgeving/
+│   └── _Presentaties/
 │
 └── Leerpaden/ (aanvullend studiemateriaal)

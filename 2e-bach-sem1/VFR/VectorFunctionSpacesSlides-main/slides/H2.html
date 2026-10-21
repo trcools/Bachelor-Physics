@@ -27,7 +27,7 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
       vertical-align: middle;
     }
   </style>
@@ -56,11 +56,11 @@
 
   .callout {
     margin-top: 1em;
-    margin-bottom: 1em;  
+    margin-bottom: 1em;
     border-radius: .25rem;
   }
 
-  .callout.callout-style-simple { 
+  .callout.callout-style-simple {
     padding: 0em 0.5em;
     border-left: solid #acacac .3rem;
     border-right: solid 1px silver;
@@ -111,7 +111,7 @@
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-    
+
   .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
@@ -162,7 +162,7 @@
   .callout-title {
     display: flex
   }
-    
+
   .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
@@ -275,12 +275,12 @@
     }
     .reveal .footnotes ol {
       counter-reset: ol;
-      list-style-type: none; 
+      list-style-type: none;
       margin-left: 0;
     }
     .reveal .footnotes ol li:before {
       counter-increment: ol;
-      content: counter(ol) ". "; 
+      content: counter(ol) ". ";
     }
     .reveal .footnotes ol li > p:first-child {
       display: inline-block;
@@ -322,19 +322,19 @@
     .reveal .slide > img.r-stretch.quarto-figure-center {
       display: block;
       margin-left: auto;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-left,
     .reveal .slide > img.r-stretch.quarto-figure-left  {
       display: block;
       margin-left: 0;
-      margin-right: auto; 
+      margin-right: auto;
     }
     .reveal .slide > img.stretch.quarto-figure-right,
     .reveal .slide > img.r-stretch.quarto-figure-right  {
       display: block;
       margin-left: auto;
-      margin-right: 0; 
+      margin-right: 0;
     }
   </style>
 </head>
@@ -348,7 +348,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jutho Haegeman 
+Jutho Haegeman
 </div>
 </div>
 </div>
@@ -526,11 +526,11 @@ Jutho Haegeman
 * Voor een verzameling $S$ waarvan we de elementen $\{a_1, a_2,\ldots\}$ beschouwen als abstracte entiteiten zonder vooraf bestaande vectorstructuur:
   * de **vrije vectorruimte** $\bbF S$ bestaat uit alle "formele" lineaire combinaties, waarbij we de elementen van $S$ als abstracte basisvectoren beschouwen (zie H1)
 
-* Voor verzamelingen $S,S'$ en een afbeelding $\varphi:S\to S'$: 
-  * De **lineaire extensie** van $\varphi$ is een lineaire afbeelding $\Hom(\bbF S, \bbF S')$, gedefinieerd als 
-  
+* Voor verzamelingen $S,S'$ en een afbeelding $\varphi:S\to S'$:
+  * De **lineaire extensie** van $\varphi$ is een lineaire afbeelding $\Hom(\bbF S, \bbF S')$, gedefinieerd als
+
     $$\map{\varphi}(\vv) = v^i \map{\varphi}(a_i) = v^i \varphi(a_i)$$
-  
+
     met $\varphi(a_i)$ een element uit $S'$ (= basisvector uit $\bbF S'$).
 
 ## Voorbeeld van lineaire extensie (1)
@@ -856,7 +856,7 @@ x^i &amp;= f^i(\boldsymbol{y}) = f^i(\boldsymbol{y}_k + (\boldsymbol{y}-\boldsym
 ## Affiene transformaties
 
 * Affiene transformaties:
-  * lineaire transformaties $\map{T} \in \GL(V)$ kunnen werken als $P \mapsto P' = O + \map{T}(x_{PO})$ 
+  * lineaire transformaties $\map{T} \in \GL(V)$ kunnen werken als $P \mapsto P' = O + \map{T}(x_{PO})$
   * translaties: vectoren $\vv \in V$ kunnen werken als $P \mapsto P' = O + \vv + x_{PO}$
   * beide samen: $(\map{T},\vv): P \mapsto P' = O + \vv + \map{T} x_{PO}$
 
@@ -878,7 +878,7 @@ $$  \begin{bmatrix}
     \end{bmatrix}
 $$
 
-In abstracte termen: 
+In abstracte termen:
 
 $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
@@ -886,14 +886,14 @@ $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
 ## Van reële naar complexe ruimte
 
-* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
-  * Eindigdimensionaal: Kies basis $B \Rightarrow W \cong \bbR^n$, breidt uit tot $\bbC^n$, d.w.z. laat complexe expansiecoëfficiënten toe, of dus, $W = \bbR B \Rightarrow W^{\bbC} = \bbC B$. 
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$?
+  * Eindigdimensionaal: Kies basis $B \Rightarrow W \cong \bbR^n$, breidt uit tot $\bbC^n$, d.w.z. laat complexe expansiecoëfficiënten toe, of dus, $W = \bbR B \Rightarrow W^{\bbC} = \bbC B$.
   * Bemerk dat $\dim_{\bbR}(W) = \dim_{\bbC}(W^{\bbC})$
   * We zullen dit vaak impliciet doen, bvb. voor eigenwaarden en eigenvectoren van een reële matrix.
 
 ## Van reële naar complexe ruimte
 
-* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$? 
+* Gegeven een reële vectorruimte $W$. Kunnen we $W$ 'uitbreiden' tot een vectorruimte over $\bbC$?
   * Basisonafhankelijke constructie:
 
     Definieer $W^\bbC = W \times W$, met
@@ -906,14 +906,14 @@ $\Aff(V)$ is een deelgroep van $\GL(V \oplus \bbF)$
 
 * Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
   * Behoudt dezelfde verzameling van vectoren $V^{\bbR} = V$, beperk de vermenigvuldiging met scalairen tot reële scalairen
-  
+
   $\Rightarrow$ dit verandert de betekenis van "lineaire afhankelijkheid", "lineaire span", "voortbrengendheid", "compleetheid", "basis" en "dimensie"
 
 ## Van complexe naar reële ruimte:
 
 * Gegeven een complexe vectorruimte $V$. Kunnen we $V$ 'herinterpreteren' als een vectorruimte over $\bbR$?
 
-  * Stel $V$ eindig-dimensionaal met basis $B=\{\ve_1,\ldots,\ve_n\}$. Om elke vector te kunnne expanderen met behulp van reële coefficiënten moeten we de basis uitbreiden tot $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm \ve_1, \ldots, \irm \ve_n\}$. 
+  * Stel $V$ eindig-dimensionaal met basis $B=\{\ve_1,\ldots,\ve_n\}$. Om elke vector te kunnne expanderen met behulp van reële coefficiënten moeten we de basis uitbreiden tot $B^\bbR = \{\ve_1,\ldots,\ve_n,\irm \ve_1, \ldots, \irm \ve_n\}$.
 
   * $\dim_{\bbC}(V) = n \Rightarrow \dim_{\bbR}(V^\bbR) = 2 n = 2 \dim_{\bbC}(V)$
 
@@ -941,7 +941,7 @@ Als matrix: $\mat{A}^\bbR = \begin{bmatrix} \real(\mat{A}) & -\imag(\mat{A}) \\ 
 
 Niet alle afbeeldingen in $\Hom_{\bbR}(V^\bbR,W^\bbR)$ komen overeen met complexe lineaire afbeeldingen $\map{A} \in \Hom_{\bbC}(V,W)$.
 
-Wat is de betekenis van de andere, en is er een natuurlijke keuze voor het complement? 
+Wat is de betekenis van de andere, en is er een natuurlijke keuze voor het complement?
 
 ## Complexe lineaire afbeeldingen
 
@@ -1021,10 +1021,10 @@ Tijdsomkeringsymmetrie in kwantummechanica:
 * Stel: $\psi_p(x) \sim \erm^{\irm p x} \Rightarrow \map{T} \psi_p = \psi_{-p}$
 
 * Golffunctie in momentumruimte ($\cong$ Fouriertransformatie)
-  
+
   $\Psi(p) \sim \int \erm^{-\irm p x} \psi(x)\,\drm x$
 
-* Actie van tijdsomkering op momentum-golffunctie 
+* Actie van tijdsomkering op momentum-golffunctie
 
   $\Rightarrow (\map{T} \Psi) = \conj{\Psi(-p)}$
 
@@ -1136,11 +1136,11 @@ f(0) = f_0 \end{cases}</span></p>
 * Lineair stelsel dat bestaat uit twee delen voor 1 groep onbekenden: $\map{A}_1 \vx = \vy_1$ en $\map{A}_2 \vx = \vy_2$
 
   $\Rightarrow \begin{bmatrix}
-        \mat{A}_1 \\ \mat{A}_2 
+        \mat{A}_1 \\ \mat{A}_2
     \end{bmatrix} \vec{x} = \begin{bmatrix}
         \vec{y}_1 \\ \vec{y}_2
     \end{bmatrix}$
-  
+
   * $\mat{A}_1 \in \bbF^{m_1 \times n}, \mat{A}_2 \in \bbF^{m_2 \times n}$
   * (technisch: directe som $\vy_1 \oplus \vy_2$)
 
@@ -1173,7 +1173,7 @@ $\begin{bmatrix}
     \end{bmatrix}}_{\mat{L}}
     \underbrace{\begin{bmatrix}
         \mat{A}_{11}& \zeromat\\
-        \zeromat & \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12} 
+        \zeromat & \mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12}
     \end{bmatrix}}_{\mat{D}}
     \underbrace{\begin{bmatrix}
         \idmat_{n_1} &  \mat{A}_{11}^{-1} \mat{A}_{12}\\
@@ -1195,13 +1195,13 @@ $\begin{bmatrix}
         \zeromat & \idmat_{n_2}
     \end{bmatrix}\begin{bmatrix}
         \mat{A}_{11}^{-1}& \zeromat\\
-        \zeromat & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+        \zeromat & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}
     \end{bmatrix}\begin{bmatrix}
         \idmat_{n_1} & \zeromat \\ -\mat{A}_{21} \mat{A}_{11}^{-1} & \idmat_{n_2}
     \end{bmatrix}   \nonumber\\
     &= \begin{bmatrix}
     \mat{A}_{11}^{-1} + \mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & -\mat{A}_{11}^{-1} \mat{A}_{12} (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_12)^{-1}\\
-        -(\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1} 
+        -(\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}  \mat{A}_{21} \mat{A}_{11}^{-1} & (\mat{A}_{22} - \mat{A}_{21} \mat{A}_{11}^{-1} \mat{A}_{12})^{-1}
     \end{bmatrix}
 \end{align*}
 
@@ -1285,7 +1285,7 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
   <script src="H2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="H2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="H2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
+
 
   <script src="H2_files/libs/revealjs/plugin/notes/notes.js"></script>
   <script src="H2_files/libs/revealjs/plugin/search/search.js"></script>
@@ -1305,7 +1305,7 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': true,
- 
+
         // Display controls in the bottom right corner
         controls: false,
 
@@ -1484,14 +1484,14 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
           toggleBodyColorMode(bsSheetEl);
         }
       }
-      toggleBodyColorPrimary();  
+      toggleBodyColorPrimary();
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
       const isCodeAnnotation = (el) => {
         for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
+          if (clz.startsWith('code-annotation-')) {
             return true;
           }
         }
@@ -1511,11 +1511,11 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
           button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
+          tooltip = new bootstrap.Tooltip(button,
+            { trigger: "manual",
               customClass: "code-copy-button-tooltip",
               offset: [0, -8]});
-          tooltip.show();    
+          tooltip.show();
         }
         setTimeout(function() {
           if (tooltip) {
@@ -1595,7 +1595,7 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
         }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
-        window.tippy(el, config); 
+        window.tippy(el, config);
       }
       const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
       for (var i=0; i<noterefs.length; i++) {
@@ -1652,6 +1652,6 @@ Voor vierkante matrices $\mat{A} \in \bbF^{n\times n}$, $\mat{C} \in \bbF^{k \ti
       }
     });
     </script>
-    
+
 
 </body></html>
