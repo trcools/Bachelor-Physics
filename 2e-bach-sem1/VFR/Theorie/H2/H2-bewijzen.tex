@@ -1,0 +1,151 @@
+\section{Linear Maps and Matrices}
+
+\begin{res}{Proposition}{2.1}
+The set of linear maps $\operatorname{Hom}(V,W)$ can itself be given the structure of a vector space by introducing an addition and scalar multiplication operators in terms of those from the codomain $W$ as follows:
+\begin{itemize}
+\item $\forall\hat A,\hat B\in\operatorname{Hom}(V,W)$, $(\hat A+\hat B):V\to W:v\mapsto(\hat A+\hat B)(v)=\hat A(v)+\hat B(v)$;
+\item $\forall\hat A\in\operatorname{Hom}(V,W)$, $\forall a\in\mathbb F$, $(a\hat A):V\to W:v\mapsto(a\hat A)(v)=a(\hat A(v))$.
+\end{itemize}
+The additive neutral element is the \textbf{zero map} $\hat 0:V\to W$, which maps any $v\in V$ to $o\in W$.
+\end{res}
+
+\begin{res}{Proposition}{2.2}
+The composition operator
+\[\circ:\operatorname{Hom}(V,W)\times\operatorname{Hom}(U,V)\to\operatorname{Hom}(U,W):(\hat A,\hat B)\to\hat A\circ\hat B\]
+is bilinear with respect to this addition and scalar multiplication on the Hom spaces.
+\end{res}
+
+\begin{res}{Corollary}{2.3}
+The space of linear operators $\operatorname{End}(V)$ in combination with the composition operator $\circ$ has the structure of an (associative) algebra (and thus of a ring) with the \textbf{identity map} $\hat 1=\hat 1_V=\mathrm{id}_V:v\mapsto v$ as multiplicative unit.
+\end{res}
+
+\begin{res}{Proposition}{2.4}
+The kernel of $\hat A\in\operatorname{Hom}(V,W)$ has the structure of a subspace of $V$, i.e.\ $\ker(\hat A)=\hat A^{-1}(o_W)\preccurlyeq V$. It is referred to as the \textbf{null space} (\textit{nulruimte}) of $\hat A$.
+\end{res}
+
+\begin{res}{Proposition}{2.5}
+The \textbf{image} (\textit{beeld} of \textit{beeldruimte}) of the linear map $\hat A:V\to W$ also has the structure of a subspace of $W$, i.e.\ $\operatorname{im}(\hat A)=\hat A(V)\preccurlyeq W$.
+\end{res}
+
+\begin{res}{Corollary}{2.6}
+More generally, a linear map $\hat A:V\to W$ maps subspaces $U\preccurlyeq V$ to subspaces $\hat AU\preccurlyeq W$.
+\end{res}
+
+\begin{res}{Proposition}{2.7}
+A map $\hat A\in\operatorname{Hom}(V,W)$ is injective if and only if $\operatorname{nullity}(\hat A)=0$.
+\end{res}
+
+\begin{res}{Proposition}{2.8}
+Injective linear maps $\hat A$ preserve linear independence of vectors, and thus, dimensionality of subspaces, i.e.\ for any subspace $U\preccurlyeq V$, $\dim(U)=\dim(\hat AU)$.
+\end{res}
+
+\begin{res}{Proposition}{2.9}
+For finite-dimensional $W$, a map $\hat A\in\operatorname{Hom}(V,W)$ is surjective if and only if $\operatorname{rank}(\hat A)=\dim(W)$.
+\end{res}
+
+\begin{res}{Proposition}{2.10}
+For $\hat A\in\operatorname{Hom}(V,W)$, $\operatorname{im}(\hat A)$ is isomorphic to $V/\ker(\hat A)$.
+\end{res}
+
+\begin{res}[Rank-nullity theorem]{Theorem}{2.11}
+For $\hat A\in\operatorname{Hom}(V,W)$ it holds that
+\[\operatorname{rank}(\hat A)+\operatorname{nullity}(\hat A)=\dim(\operatorname{im}(\hat A)+\dim(\ker(\hat A))=\dim(V)=\dim(\operatorname{dom}(\hat A)).\]
+\end{res}
+
+\begin{res}{Corollary}{2.12}
+For $\hat A\in\operatorname{Hom}(V,W)$ with $V$ and $W$ finite-dimensional and $\dim(V)=\dim(W)$, the following properties are equivalent
+\begin{itemize}
+\item $\hat A$ is injective.
+\item $\hat A$ is surjective.
+\item $\hat A$ is bijective.
+\end{itemize}
+\end{res}
+
+\begin{res}{Proposition}{2.13}
+The row and column rank of a matrix coincide, or thus, $\operatorname{rank}(\mathsf A)=\operatorname{rank}(\mathsf A^{\mathsf T})$.
+\end{res}
+
+\begin{res}{Proposition}{2.14}
+For two matrices $\mathsf A$ and $\mathsf B$, we have $\operatorname{rank}(\mathsf{AB})\le\operatorname{rank}(\mathsf A)$ and $\operatorname{rank}(\mathsf{AB})\le\operatorname{rank}(\mathsf B)$.
+\end{res}
+
+\begin{res}{Proposition}{2.15}
+The (straightforward) evaluation the multiplication of a matrix $\mathsf A\in\mathbb F^{m\times p}$ with a matrix $\mathsf B\in\mathbb F^{p\times n}$ in order to produce a matrix $\mathsf C=\mathsf{AB}\in\mathbb F^{m\times n}$ requires $mnp$ scalar multiplications (and $mn(p-1)$ scalar additions).
+\end{res}
+
+\begin{res}{Proposition}{2.16}
+For $\mathsf A,\mathsf B\in\mathbb F^{n\times n}$, the trace has the cyclic property $\operatorname{tr}(\mathsf{AB})=\operatorname{tr}(\mathsf{BA})$
+\end{res}
+
+\begin{res}{Proposition}{2.17}
+When interpreting the determinant as a function of the $n$ columns $\boldsymbol a_j=(A^i{}_j)_{i=1,\dots,n}$ of $\mathsf A$, it is uniquely characterized by the following three properties
+\begin{itemize}
+\item The determinant is linear in each of the $n$ columns, i.e.\ it is a multilinear function of $(\boldsymbol a_1,\boldsymbol a_2,\dots,\boldsymbol a_n)$.
+\item The determinant is alternating in any two subsequent arguments, i.e.\ if $\boldsymbol a_j=\boldsymbol a_{j+1}$ for any $j=1,\dots,n-1$, then $\det(\mathsf A)=0$.
+\item The determinant of the identity matrix, or thus of the standard basis $\boldsymbol a_j=\boldsymbol e_j$, is $\det(\mathsf I_n)=1$.
+\end{itemize}
+\end{res}
+
+\begin{res}{Proposition}{2.18}
+For a square matrix $\mathsf A\in\mathbb F^{n\times n}$, $\det(\mathsf A)=0$ if and only if $\operatorname{rank}(\mathsf A)<n$.
+\end{res}
+
+\begin{res}{Lemma}{2.19}
+\begin{equation}\epsilon^{j_1j_2\ldots j_n}A^{i_1}{}_{j_1}A^{i_2}{}_{j_2}\ldots A^{i_n}{}_{j_n}=\det(\mathsf A)\,\epsilon^{i_1i_2\ldots i_n}.\tag{2.12}\end{equation}
+\end{res}
+
+\begin{res}{Theorem}{2.20}
+For two matrices $\mathsf A,\mathsf B\in\mathbb F^{n\times n}$, we have $\det(\mathsf{AB})=\det(\mathsf A)\det(\mathsf B)$.
+\end{res}
+
+\begin{res}{Proposition}{2.21}
+For $\mathsf A\in\mathbb F^{n\times n}$, $\det(\mathsf A^{\mathsf T})=\det(\mathsf A)$ and $\det(\mathsf A^{\mathsf H})=\overline{\det(\mathsf A)}$.
+\end{res}
+
+\begin{res}{Proposition}{2.22}
+An explicit expression for the $(k,l)$-minor $M_k{}^l$ of the matrix $\mathsf A\in\mathbb F^{n\times n}$ is given by
+\begin{equation}M_k{}^l=\sum_{j_1,\dots,j_{k-1},j_{k+1},\dots,j_n}(-1)^{l-k}\epsilon^{j_1j_2\ldots j_{k-1}\,l\,j_{k+1}\ldots j_n}A^1{}_{j_1}\ldots A^{k-1}{}_{j_{k-1}}A^{k+1}{}_{j_{k+1}}\ldots A^n{}_{j_n}\tag{2.18}\end{equation}
+\end{res}
+
+\begin{res}[Laplace expansion]{Corollary}{2.23}
+It now follows trivially that the determinant of $\mathsf A$ can be written as
+\begin{equation}\det(\mathsf A)=\sum_l A^k{}_l(-1)^{k-l}M_k{}^l\quad\text{(no summation over $k$).}\tag{2.19}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{2.24}
+Let $\mathsf A\in\mathbb F^{n\times n}$. We have
+\begin{equation}\mathsf A\cdot\operatorname{adj}(\mathsf A)=\det(\mathsf A)\mathsf I_n\tag{2.22}\end{equation}
+or thus, whenever $\det(\mathsf A)\ne0$.
+\begin{equation}\mathsf A^{-1}=\det(\mathsf A)^{-1}\operatorname{adj}(\mathsf A).\tag{2.23}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{2.25}
+The matrix inverse has the following properties
+\[\det(\mathsf A^{-1})=\det(\mathsf A)^{-1},\qquad(\mathsf A^{-1})^{-1}=\mathsf A,\qquad(\mathsf{AB})^{-1}=\mathsf B^{-1}\mathsf A^{-1}.\]
+\end{res}
+
+\begin{res}[Jacobi's formula]{Proposition}{2.26}
+Given a one-parameter family of square matrices $\mathsf A(t)\in\mathbb F^{n\times n}$, it holds that
+\begin{equation}\frac{\mathrm d}{\mathrm dt}\det\bigl(\mathsf A(t)\bigr)=\det\bigl(\mathsf A(t)\bigr)\operatorname{tr}\!\left(\mathsf A(t)^{-1}\frac{\mathrm d\mathsf A}{\mathrm dt}(t)\right).\tag{2.24}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{2.27}
+On the space $\mathbb F^{n\times n}$ of square matrices, being related by a similarity transform, i.e.\ $\mathsf A\sim\mathsf B$ if $\exists\mathsf T\in\mathrm{GL}(n,\mathbb F)$ such that $\mathsf B=\mathsf{TAT}^{-1}$ is an equivalence relation.
+\end{res}
+
+\begin{res}{Proposition}{2.28}
+The matrix trace and determinant are basis independent.
+\end{res}
+
+\begin{res}{Proposition}{2.29}
+For a finite-dimensional vector space $V$, a choice of a basis $B=\{e_1,\dots,e_n\}$ induces a canonical basis for $V^*$, which we denote as $B^*=\{\varepsilon^1,\dots,\varepsilon^n\}$ and refer to as the \textbf{dual basis}. It is defined via
+\begin{equation}\varepsilon^i[e_j]=\delta^i{}_j.\tag{2.30}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{2.30}
+Consider $\xi,\chi\in V^*$. We have $\ker(\xi)=\ker(\chi)$ if and only if there exists a non-zero scalar $a\in\mathbb F$ for which $\xi=a\chi$.
+\end{res}
+
+\begin{res}{Proposition}{2.31}
+The inverse of an upper/lower triangular matrix $\mathsf A$ is upper/lower triangular.
+\end{res}

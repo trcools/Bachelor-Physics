@@ -1,0 +1,138 @@
+\section{Linear Operators and Eigenvalues}
+
+\begin{res}{Proposition}{3.1}
+Let $p,q\in\mathbb F[x]$ be two arbitrary univariate polynomials and $\hat A\in\operatorname{End}V$ be a linear operator on $V$. We have
+\begin{equation}\bigl[p(\hat A),q(\hat A)\bigr]=\hat 0\tag{3.4}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{3.2}
+Let $p\in\mathbb F[x]$ be an arbitrary univariate polynomial, $\hat A\in\operatorname{End}V$ a linear operator on $V$ and $\hat G\in\mathrm{GL}(V)\subseteq\operatorname{End}(V)$ and invertible linear operator. We have
+\begin{equation}p(\hat G^{-1}\hat A\hat G)=\hat G^{-1}p(\hat A)\hat G\tag{3.5}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{3.3}
+Let $\hat P$ be an idempotent operator on $V$, then $V=\operatorname{im}(\hat P)\oplus\ker(\hat P)$.
+\end{res}
+
+\begin{res}{Proposition}{3.4}
+For a given linear operator $\hat A\in\operatorname{End}(V)$ where $V$ is a finite-dimensional vector space, there exists a unique monic polynomial of lowest degree $s$ that annihilates $\hat A$. This polynomial is known as the \textbf{minimal annihilating polynomial} $m_{\hat A}(x)=x^s+\dots$.
+\end{res}
+
+\begin{res}{Proposition}{3.5}
+For a given operator $\hat A\in\operatorname{End}(V)$, if $p\in\mathbb F[x]$ annihilates $\hat A$, then $p(x)=m_{\hat A}(x)q(x)$ for some other polynomial $q\in\mathbb F[x]$.
+\end{res}
+
+\begin{res}{Proposition}{3.6}
+Consider a linear operator $\hat A\in\operatorname{End}(V)$, an eigenvalue-eigenvector pair $(\lambda,v)$ and a polynomial $p\in\mathbb F[x]$. It follows that $p(\hat A)v=p(\lambda)v$.
+\end{res}
+
+\begin{res}{Corollary}{3.7}
+If $p\in\mathbb F[x]$ is an annihilating polynomial of $\hat A$, any eigenvalue $\lambda$ of $\hat A$ is a root of $p$, i.e.\ $p(\lambda)=0$. In particular, any eigenvalue $\lambda$ is a root of the minimal annihilating polynomial $m_{\hat A}(z)$.
+\end{res}
+
+\begin{res}{Proposition}{3.8}
+A set of eigenvectors $\{v_i;\ i=1,\dots,k\}$ of a linear operator $\hat A$ associated with mutually distinct eigenvalues $\lambda_i$, for $i=1,\dots,k$ (that is, $\lambda_i\ne\lambda_j$ for $i\ne j$) is linearly independent.
+\end{res}
+
+\begin{res}{Proposition}{3.9}
+For a set of eigenspaces $\{V_{\lambda_i};\ i=1,\dots,k\}$ of a linear operator $\hat A$ associated with mutually distinct eigenvalues $\lambda_i$, for $i=1,\dots,k$ (that is, $\lambda_i\ne\lambda_j$ for $i\ne j$), the sum $\sum_{i=1}^kV_{\lambda_i}$ is actually a direct sum $\bigoplus_{i=1}^kV_{\lambda_i}$.
+\end{res}
+
+\begin{res}{Corollary}{3.10}
+Let $V$ be a finite-dimensional vector space and $\hat A$ a linear operator on $V$ with eigenvalues $\sigma_{\hat A}=\{\lambda_1,\dots,\lambda_m\}$ and corresponding eigenspaces $V_{\lambda_i}$ for $i=1,\dots,m$. Because $\bigoplus_{\lambda\in\sigma_{\hat A}}V_\lambda\preccurlyeq V$, we find
+\begin{equation}\sum_{\lambda\in\sigma_{\hat A}}r_\lambda\le\dim(V).\tag{3.12}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{3.11}
+Consider linear maps $\hat A\in\operatorname{Hom}(V,W)$ and $\hat B\in\operatorname{Hom}(W,V)$ for two vector space $V$ and $W$ (which could be equal). Any \textbf{nonzero} eigenvalue $\lambda$ of $\hat B\hat A$ with eigenspace $V_\lambda$ is also an eigenvalue of $\hat A\hat B$ with eigenspace $W_\lambda=\hat AV_\lambda$, and with $\dim(V_\lambda)=\dim(W_\lambda)$.
+\end{res}
+
+\begin{res}{Proposition}{3.12}
+Let $p(z)=z^n+p_{n-1}z^{n-1}+\ldots+p_0$ be a monic polynomial of degree $n$. The Frobenius \textbf{companion matrix} $\mathsf C_p\in\mathbb F^{n\times n}$ associated with $p$ is given by
+\begin{equation}\mathsf C_p=\begin{bmatrix}0&1&0&\ldots&0&0\\0&0&1&\ldots&0&0\\\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&0&\ldots&0&1\\-p_0&-p_1&-p_2&\ldots&-p_{n-2}&-p_{n-1}\end{bmatrix}\tag{3.17}\end{equation}
+and satisfies $k_{\mathsf C_p}(z)=\det(z\mathsf I-\mathsf C_p)=p(z)$.
+\end{res}
+
+\begin{res}[Cayley-Hamilton]{Theorem}{3.13}
+The characteristic polynomial $k_{\hat A}(z)$ of a linear operator $\hat A\in\operatorname{End}(V)$ annihilates $\hat A$.
+\end{res}
+
+\begin{res}{Proposition}{3.14}
+Let $V$ be a finite-dimensional vector space and $\hat A$ a linear operator on $V$ with eigenvalues $\sigma_{\hat A}=\{\lambda_1,\dots,\lambda_m\}$. The operator $\hat A$ is \textbf{diagonalisable} if and only if the minimal annihilating polynomial takes the form
+\begin{equation}m_{\hat A}(z)=\prod_{\lambda\in\sigma_{\hat A}}(z-\lambda),\tag{3.27}\end{equation}
+i.e.\ if $s_{\lambda_i}=1$ for all $i=1,\dots,m$.
+\end{res}
+
+\begin{res}{Corollary}{3.15}
+A defective operator has $s_\lambda>1$ for at least one eigenvalue $\lambda$.
+\end{res}
+
+\begin{res}{Corollary}{3.16}
+For an operator $\hat A\in\operatorname{End}(V)$ with $\dim(V)=n$, the property of $k_{\hat A}(z)$ having $n$ distinct roots is a sufficient criterion for being diagonalisable, since this implies that $q_\lambda=1$ and thus also $s_\lambda$ since $s_\lambda\le q_\lambda$.
+\end{res}
+
+\begin{res}{Theorem}{3.17}
+Let $\hat A,\hat B\in\operatorname{End}(V)$ be diagonalisable operators that satisfy $[\hat A,\hat B]=\hat 0$. They then admit a common spectral decomposition, i.e.\ there exists a set of projectors $\{\hat P_i;i\in I\}$ with $I$ some indexing set, such that
+\begin{equation}\hat P_i\hat P_j=\delta_{i,j}\hat P_i,\qquad\sum_{i\in I}\hat P_i=\hat 1_V,\qquad\hat A=\sum_{i\in I}\lambda_i\hat P_i\qquad\hat B=\sum_{i\in I}\mu_i\hat P_i\tag{3.33}\end{equation}
+\end{res}
+
+\begin{res}{Lemma}{3.18}
+If $U\preccurlyeq V$ is an invariant subspace of $\hat A\in\operatorname{End}(V)$, it is also an invariant subspace of $\hat A+a\hat 1$ for any $a\in\mathbb F$.
+\end{res}
+
+\begin{res}{Proposition}{3.19}
+For any operator $\hat A$ on a finite-dimensional space $V$, any subspace in the following two sequences of nested subspaces
+\begin{align*}
+\{o\}&=\ker((\hat A-a\hat 1)^0)\preccurlyeq\ker(\hat A-a\hat 1)\preccurlyeq\ker((\hat A-a\hat 1)^2)\preccurlyeq\ldots\preccurlyeq\ker((\hat A-a\hat 1)^k)\preccurlyeq\ldots\\
+V&=\operatorname{im}((\hat A-a\hat 1)^0)\succcurlyeq\operatorname{im}(\hat A-a\hat 1)\succcurlyeq\operatorname{im}((\hat A-a\hat 1)^2)\succcurlyeq\ldots\succcurlyeq\operatorname{im}((\hat A-a\hat 1)^k)\succcurlyeq\ldots
+\end{align*}
+is an invariant subspace for any scalar $a\in\mathbb F$. Furthermore, the dimension of the spaces $\ker((\hat A-a\hat 1)^k)$ is strictly increasing up to a value $k=s$, after which it remains constant for any $k\ge s$, thus implying that the first sequence stabilises, i.e.\ all subspaces for $k\ge s$ are the same. At the same time, the dimension of $\operatorname{im}((\hat A-a\hat 1)^k)$ is strictly decreasing up to $k=s$, after which the second sequence stabilises. Finally, for any $k\ge s$, we have $V=\ker((\hat A-a\hat 1)^k)\oplus\operatorname{im}((\hat A-a\hat 1)^k)$.
+\end{res}
+
+\begin{res}{Theorem}{3.20}
+Let $\hat A$ be a linear operator on a finite-dimensional vector space $V$. We can construct a direct sum decomposition of $V$ as
+\begin{equation}V=\bigoplus_{\lambda\in\sigma_{\hat A}}U_\lambda=U_{\lambda_1}\oplus U_{\lambda_2}\oplus\ldots\oplus U_{\lambda_m}\tag{3.45}\end{equation}
+in terms of the generalised eigenspaces $U_\lambda=\ker((\hat A-\lambda\hat 1)^{s_\lambda})$ with $s_\lambda$ the exponent of the factor $(z-\lambda)$ in the minimal annihilating polynomial $m_{\hat A}(z)$. Each component $U_\lambda$ is an invariant subspace of $\hat A$ and has dimension $\dim(U_\lambda)=q_\lambda$, the algebraic multiplicity, or thus, the exponent of $(z-\lambda)$ in the characteristic polynomial $k_{\hat A}(z)$. The restriction of $\hat A$ to $U_\lambda$ takes the form
+\begin{equation}\hat A|_{U_\lambda}=\lambda\hat 1_{U_\lambda}+\hat N_\lambda\tag{3.46}\end{equation}
+with $\hat N_\lambda$ a nilpotent operator on $U_\lambda$ with index $s_\lambda$.
+\end{res}
+
+\begin{res}{Proposition}{3.21}
+Let $\hat N$ be a nilpotent operator of index $s$ on a space $U$ with $\dim(U)=q$. There exists a basis $B$ for $U$ such that $\mathsf N=\Phi_B(\hat N)=\bigoplus_{k=1}^s\bigoplus_{i=1}^{p_k}\mathsf N_k$, where the $k\times k$ matrices $\mathsf N_k$ take the canonical form
+\begin{equation}\mathsf N_k=\begin{bmatrix}0&1&0&\ldots&0&0\\0&0&1&\ldots&0&0\\\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&0&\ldots&0&1\\0&0&0&\ldots&0&0\end{bmatrix}\tag{3.52}\end{equation}
+and are nilpotent with index $k$, i.e.\ they satisfy $(\mathsf N_k)^k=\mathsf O$.
+\end{res}
+
+\begin{res}[Jordan decomposition]{Theorem}{3.22}
+Any linear operator $\hat A\in\operatorname{End}(V)$ on a finite-dimensional space $V$ over $\mathbb C$ admits a choice of basis $B$, known as a Jordan basis, so that it acquires a block diagonal matrix representation
+\begin{equation}\mathsf J_{\hat A}=\Phi_B(\hat A)=\bigoplus_{\lambda\in\sigma_{\hat A}}\bigoplus_{k=1}^{s_\lambda}\bigoplus_{i=1}^{p_{\lambda,k}}\mathsf J_k(\lambda)\qquad\text{(with $p_{\lambda,k}\ge0$ for $k=1,\dots,s_\lambda-1$ and $p_{\lambda,s_\lambda}>0$)}\tag{3.56}\end{equation}
+known as the \textbf{Jordan canonical form} (a.k.a.\ Jordan normal form), in which the blocks on the diagonal take the form of the elementary Jordan blocks from Definition 3.15. Equivalently, for any matrix $\mathsf A\in\mathbb C^{n\times n}$, there exists a basis transform $\mathsf V\in\mathrm{GL}(n,\mathbb C)$ that brings $\mathsf A$ into the Jordan canonical form
+\begin{equation}\mathsf A=\mathsf V\mathsf J_{\mathsf A}\mathsf V^{-1}=\mathsf V\left[\bigoplus_{\lambda\in\sigma_{\mathsf A}}\bigoplus_{k=1}^{s_\lambda}\bigoplus_{i=1}^{p_{\lambda,k}}\mathsf J_k(\lambda)\right]\mathsf V^{-1},\tag{3.57}\end{equation}
+which is also referred to as the \textbf{Jordan decomposition}.
+\end{res}
+
+\begin{res}{Proposition}{3.23}
+Consider a companion matrix $\mathsf C_p\in\mathbb C^{n\times n}$ associated with an $n$th degree monic polynomial $p\in\mathbb C[z]$, as defined in Eq.~(3.17) of Proposition 3.12. The matrix $\mathsf C_p$ is non-derogatory, i.e.\ every root $\lambda$ of $p$ defines a one-dimensional eigenspace (thus $r_\lambda=1$), and a single Jordan block of order $q_\lambda$, the algebraic multiplicity defined by $p$ itself. The generalised eigenvectors take the form
+\begin{equation}(\boldsymbol u_{\lambda,k})^i=\frac1{k!}\frac{\mathrm d^k}{\mathrm d\lambda^k}\lambda^{i-1}=\begin{cases}\binom{i-1}{k}\lambda^{i-1-k},&k<i\\0,&k\ge i\end{cases}\tag{3.58}\end{equation}
+for $i=1,\dots,n$ and $k=0,\dots,q_\lambda-1$ with $\binom{i-1}{k}=\frac{(i-1)!}{k!(i-k-1)!}$ the binomial coefficients. In particular, $\boldsymbol v_\lambda=\boldsymbol u_{\lambda,0}=(1,\lambda,\lambda^2,\dots,\lambda^{n-1})$ corresponds to the eigenvector.
+\end{res}
+
+\begin{res}{Theorem}{3.24}
+Consider a scalar-valued, linear, $k$th order recurrence relation
+\begin{equation}x_{n+k}=a_0x_n+a_1x_{n+1}+\dots+a_{k-2}x_{n+k-2}+a_{k-1}x_{n+k-1}.\tag{3.85}\end{equation}
+A general solution can be written as a linear combination of $k$ elementary solutions, where with every root $\lambda$ of multiplicity $q_\lambda$ of the polynomial
+\begin{equation}p(z)=z^k-a_{k-1}z^{k-1}-a_{k-2}z^{k-2}-\dots-a_1z-a_0\tag{3.86}\end{equation}
+gives rise to $q_\lambda$ elementary solutions of the form
+\begin{equation}x_n=n^j\lambda^n,\quad j=0,\dots,q_\lambda-1.\tag{3.87}\end{equation}
+The expansion coefficients of a general trajectory in terms of these elementary solutions are completely fixed by specifying $k$ initial values $(x_{-k+1},x_{-k+2},\dots,x_0)$.
+\end{res}
+
+\begin{res}{Theorem}{3.25}
+Consider a scalar-valued, linear, $k$th order differential equation
+\begin{equation}x^{(k)}(t)=a_0x(t)+a_1\dot x(t)+\dots+a_{k-2}x^{(k-2)}(t)+a_{k-1}x^{(k-1)}(t).\tag{3.95}\end{equation}
+A general solution can be written as a linear combination of $k$ elementary solutions, where with every root $\lambda$ of multiplicity $q_\lambda$ of the polynomial
+\begin{equation}p(z)=z^k-a_{k-1}z^{k-1}-a_{k-2}z^{k-2}-\dots-a_1z-a_0\tag{3.96}\end{equation}
+gives rise to $q_\lambda$ elementary solutions of the form
+\begin{equation}x(t)=t^j\mathrm e^{\lambda t},\quad j=0,\dots,q_\lambda-1.\tag{3.97}\end{equation}
+The expansion coefficients of a general solution are completely fixed by specifying $k$ initial values $\bigl(x(0),\dot x(0),\ddot x(0),\dots,x^{(k-1)}(0)\bigr)$.
+\end{res}

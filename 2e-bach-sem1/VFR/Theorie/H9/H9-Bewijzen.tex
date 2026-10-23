@@ -1,0 +1,139 @@
+\section{Fourier Calculus and Distributions}
+
+\begin{res}{Proposition}{9.1}
+The map from a function $f\in L^1([0,L])$ to its Fourier transform $\widehat f\in C_{\mathrm b}(\mathbb R)$ has the following elementary properties:
+\begin{enumerate}
+\item \textbf{Linearity}:
+\begin{equation}h(x)=af(x)+bg(x)\implies\widehat h(\xi)=a\widehat f(\xi)+b\widehat g(\xi),\quad\forall f,g\in L^1(\mathbb R),\forall a,b\in\mathbb C\tag{9.9}\end{equation}
+\item \textbf{Translation} (shift in space/time):
+\begin{equation}h(x)=f(x-x_0)\implies\widehat h(\xi)=\mathrm e^{-\mathrm i2\pi\xi x_0}\widehat f(\xi),\quad\forall f\in L^1(\mathbb R),\forall x_0\in\mathbb R\tag{9.10}\end{equation}
+\item \textbf{Modulation} (shift in frequency):
+\begin{equation}h(x)=f(x)\mathrm e^{\mathrm i2\pi\xi_0x}\implies\widehat h(\xi)=\widehat f(\xi-\xi_0),\quad\forall f\in L^1(\mathbb R),\forall\xi_0\in\mathbb R\tag{9.11}\end{equation}
+\item \textbf{Conjugation}:
+\begin{equation}h(x)=\overline{f(x)}\implies\widehat h(\xi)=\overline{\widehat f(-\xi)},\quad\forall f\in L^1(\mathbb R)\tag{9.12}\end{equation}
+\item \textbf{Time/frequency reversal}:
+\begin{equation}h(x)=f(-x)\implies\widehat h(\xi)=\widehat f(-\xi),\quad\forall f\in L^1(\mathbb R)\tag{9.13}\end{equation}
+\item \textbf{Scaling}:
+\begin{equation}h(x)=f(sx)\implies\widehat h(\xi)=\frac1s\widehat f(\xi/s)\quad\forall f\in L^1(\mathbb R),\forall s\in\mathbb R_{>0}\tag{9.14}\end{equation}
+\end{enumerate}
+The last two properties could be combined in $h(x)=f(sx)\implies\widehat h(\xi)=\frac1{|s|}\widehat f(\xi/s)$, $\forall s\in\mathbb R_{\ne0}$.
+\end{res}
+
+\begin{res}{Theorem}{9.2}
+For any function $f\in L^1(\mathbb R)$, the Fourier transform $\widehat f(\xi)$ is
+\begin{itemize}
+\item continuous: $\widehat f(\xi)\in C^0(\mathbb R)$;
+\item bounded: $\left\|\widehat f\right\|_\infty=\sup_\xi\left|\widehat f(\xi)\right|\le\|f\|_1$;
+\item vanishing at infinity: $\lim_{\xi\to\pm\infty}\left|\widehat f(\xi)\right|=0$ (known as the Riemann-Lebesgue lemma).
+\end{itemize}
+This is written as $\widehat f\in C^0_0(\mathbb R)$, the space of continuous functions that vanish at infinity.
+\end{res}
+
+\begin{res}[Convolution]{Theorem}{9.3}
+For functions $f,g\in L^1(\mathbb R)$ and $h=f*g$, we find
+\begin{equation}\widehat h(\xi)=\widehat f(\xi)\widehat g(\xi).\tag{9.16}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.4}
+For a continuous differentiable function $f$ with a piecewise continuous derivative $g$ such that $f,g=f'\in L^1(\mathbb R)$ and $\lim_{x\to\pm\infty}|f(x)|=0$, it holds that\footnote{The condition that $f$ goes to zero at infinite might seem redundant. It is certainly not implied by $f\in L^1(\mathbb R)$, you could easily imagine a function that takes the value 1 in a small region of width $2^{-|n|}$ for any integer $n\in\mathbb Z$, for which the total integral is well defined. If $f$ needs to be differentiable (and thus continuous) and furthermore have a derivative $f'\in L^1(\mathbb R)$, that's already more stringent, but to actually be a sufficient condition to prove $\lim_{x\to\pm\infty}|f(x)|=0$, $f$ needs to be absolutely continuous.}
+\[\widehat g(\xi)=\mathrm i2\pi\xi\widehat f(\xi)\]
+\end{res}
+
+\begin{res}{Lemma}{9.5}
+For a continuous function $f$ supported on a compact interval $I\subseteq\mathbb R$, it holds that $\|f\|_2=\left\|\widehat f\right\|_2$ and thus $\widehat f\in L^2(\mathbb R)$.
+\end{res}
+
+\begin{res}[Plancherel]{Theorem}{9.6}
+For all $f\in L^2(\mathbb R)$ it holds that $\|f\|_2=\|\hat F(f)\|_2=\left\|\widehat f\right\|_2$.
+\end{res}
+
+\begin{res}[Parseval]{Theorem}{9.7}
+For all $f,g\in L^2(\mathbb R)$, it holds that $\langle f,g\rangle=\langle\hat F(f),\hat F(g)\rangle=\left\langle\widehat f,\widehat g\right\rangle$.
+\end{res}
+
+\begin{res}[Weak Parseval's relation]{Theorem}{9.8}
+For all $f,g\in L^2(\mathbb R)$, it holds that
+\begin{equation}\int_{-\infty}^{+\infty}f(x)\widehat g(x)\,\mathrm dx=\int_{-\infty}^{+\infty}\widehat f(x)g(x)\,\mathrm dx\tag{9.20}\end{equation}
+\end{res}
+
+\begin{res}{Corollary}{9.9}
+The adjoint of $\hat F$ is given by $\hat F^\dagger(f)=\overline{\hat F(\overline f)}$, or thus, by
+\begin{equation}(\hat F^\dagger f)(x)=\lim_{n\to\infty}\int_{-n}^{+n}f(\xi)\mathrm e^{+\mathrm i2\pi\xi x}\,\mathrm d\xi.\tag{9.21}\end{equation}
+\end{res}
+
+\begin{res}{Theorem}{9.10}
+The Plancherel-Fourier operator $\hat F$ defined in Definition 9.4 is a unitary transformation from $L^2(\mathbb R)$ onto itself, and for all $f\in L^2(\mathbb R)$ and $\widehat f=\hat F(f)$, we have the relations
+\begin{align}
+\lim_{n\to\infty}\left\|\widehat f(\xi)-\int_{-n}^{+n}f(x)\mathrm e^{-\mathrm i2\pi\xi x}\,\mathrm dx\right\|_2&=0\tag{9.22}\\
+\lim_{n\to\infty}\left\|f(x)-\int_{-n}^{+n}f(x)\mathrm e^{+\mathrm i2\pi\xi x}\,\mathrm d\xi\right\|_2&=0\tag{9.23}
+\end{align}
+If $f$ is absolutely integrable ($f\in L^1(\mathbb R)\cap L^2(\mathbb R)$) then $\widehat f$ is continuous and the first relation holds pointwise, whereas the second relation holds pointwise if $\widehat f$ is absolutely integrable (which then implies that $f\in C_0(\mathbb R)$).
+\end{res}
+
+\begin{res}{Proposition}{9.11}
+For test functions $\varphi\in\mathcal S(\mathbb R)$, the Fourier transform satisfies $\widehat\varphi\in\mathcal S(\mathbb R)$.
+\end{res}
+
+\begin{res}{Proposition}{9.12}
+Any function $f\in L^1_{\mathrm{loc}}(\Omega)$ defines a distribution $T_f$, known as the \textbf{regular distribution} associated with $f$, using the prescription
+\begin{equation}T_f[\varphi]=\int_\Omega f(x)\varphi(x)\,\mathrm dx.\tag{9.40}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.13}
+The product of a smooth function $\psi$ and a distribution $T$ satisfies the Leibniz rule
+\begin{equation}(\psi T)'=\psi'T+\psi T'.\tag{9.56}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.14}
+For a converging sequence of distributions $(T_n)_{n\in\mathbb N_0}$ in $\mathcal D^*(\mathbb R)$ and a smooth function $\psi\in C^\infty(\mathbb R)$, it holds that
+\begin{equation}\lim_{n\to\infty}T_n'=T',\qquad\lim_{n\to\infty}\psi T_n=\psi T.\tag{9.73}\end{equation}
+\end{res}
+
+\begin{res}[Sokhotski--Plemelj]{Theorem}{9.15}
+The distributional limit of $\frac1{x\pm\mathrm is}$ for $s\to0^+$ is given by
+\begin{equation}\lim_{s\to0^+}\frac1{x\pm\mathrm is}=\operatorname{Pv}\frac1x\mp\mathrm i\pi\delta(x).\tag{9.74}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.16}
+Let $f\in L^1(\mathbb R^d)$ be a nonnegative function with
+\begin{equation}\int_{\mathbb R^d}f(\boldsymbol x)\,\mathrm d^d\boldsymbol x=1.\tag{9.78}\end{equation}
+Then $f_n=n^d\hat\sigma_nf$ or thus $f_n(\boldsymbol x)=n^df(n\boldsymbol x)$ defines a Dirac sequence, i.e.
+\begin{equation}\lim_{n\to\infty}T_{f_n}[\varphi]=\lim_{n\to\infty}\int_{\mathbb R^d}n^df(n\boldsymbol x)\varphi(\boldsymbol x)\,\mathrm d^d\boldsymbol x=\varphi(\boldsymbol 0),\quad\forall\varphi\in\mathcal D(\mathbb R^d).\tag{9.79}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.17}
+The sequence of functions
+\begin{equation}f_n(x)=\frac1\pi\frac{\sin(nx)}{x}=\frac n\pi\operatorname{sinc}(nx)\tag{9.89}\end{equation}
+with $\operatorname{sinc}(x)=\sin(x)/x$ is a Dirac sequence, i.e.\ $\lim_{n\to\infty}T_{f_n}=\delta$.
+\end{res}
+
+\begin{res}[Poisson summation formula]{Theorem}{9.18}
+For a function $\varphi\in\mathcal S(\mathbb R)$, i.e.\ a function that is smooth and decaying faster than any polynomial, it holds that
+\begin{equation}\sum_{n\in\mathbb Z}\varphi(n)=\sum_{k\in\mathbb Z}\widehat\varphi(k).\tag{9.110}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.19}
+For a linear system $x=\hat Au$ with a translation invariant linear operator $\hat A$, the response $x(t)$ can be obtained as the convolution $u*h$, where $h=\hat A\delta$ is known as the \textbf{impulse response}.
+\end{res}
+
+\begin{res}{Proposition}{9.20}
+Consider the samples $F_j=f(x_j)$ of the function $f$ on $\mathbb R$, for all $x_j=j\epsilon$ with $j\in\mathbb Z$ and $\epsilon$ a sampling period. The discrete-time Fourier transform of the samples $F=(F_j)_{j\in\mathbb Z}$ is related to the Fourier transform of $f$ as
+\begin{equation}\widehat F(\chi)=\sum_{n\in\mathbb Z}\frac1\epsilon\widehat f\left(\frac\chi\epsilon-\frac n\epsilon\right).\tag{9.125}\end{equation}
+\end{res}
+
+\begin{res}{Corollary}{9.21}
+When the function $f$ is bandwidth limited with frequency $\Xi$, then by choosing a sampling rate $1/\epsilon>2\Xi$, known as the \textbf{Nyquist rate}, the Fourier transform $\widehat f$ of $f$ can be perfectly reconstructed from the discrete-time Fourier transform $\widehat F$ of the samples $F_j=f(j\epsilon)$, namely as
+\begin{equation}\widehat f(\xi)=\begin{cases}\epsilon\widehat F(\epsilon\xi),&|\xi|\le\frac1{2\epsilon}\\0,&|\xi|>\frac1{2\epsilon}\end{cases}.\tag{9.126}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{9.22}
+Consider a function $f$ on $\mathbb R$ and samples $F_j=f(j\epsilon)$ with sampling period $\epsilon$. Define a reconstruction of $f$ from its samples via the \textbf{Whittaker--Shannon interpolation formula}
+\begin{equation}f^{(\mathrm{rec})}(x)=\sum_{j\in\mathbb Z}F_j\operatorname{sinc}\left(\pi\frac{x-j\epsilon}{\epsilon}\right)\tag{9.127}\end{equation}
+with $\operatorname{sinc}(x)=\sin(x)/x$. It follows that
+\begin{equation}\widehat{f}^{(\mathrm{rec})}(\xi)=H\left(\frac1{2\epsilon}-|\xi|\right)\sum_{n\in\mathbb Z}\widehat f\left(\xi-\frac n\epsilon\right)\tag{9.128}\end{equation}
+and, if $f$ is bandwidth limited with $\Xi<\frac1{2\epsilon}$, then $f(x)=f^{(\mathrm{rec})}(x)$ for all $x\in\mathbb R$.
+\end{res}
+
+\begin{res}{Proposition}{9.23}
+For the different translation operators on each of the four domains $\mathbb Z/(N\mathbb Z)$, $\mathbb Z$, $\mathbb R/(L\mathbb Z)$ and $\mathbb R$, the Fourier modes on these domains are eigenvectors.
+\end{res}

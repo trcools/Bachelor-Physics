@@ -1,0 +1,104 @@
+\section{Elementary Algebraic Structures}
+
+\begin{res}{Proposition}{1.1}
+If $\ker\varphi=\{e_G\}$, then $\varphi$ is injective.
+\end{res}
+%\begin{proof}
+%    We hebben dat \(\phi(e_G) = 0\)
+%\end{proof}
+
+\begin{res}{Proposition}{1.2}
+The kernel of a group homomorphism $\varphi:G\to H$ is a subgroup of $G$.
+\end{res}
+
+\begin{res}[Quotient group]{Proposition}{1.3}
+For a group $G$ and normal subgroup $N$, the relation $g\sim h$ if $\exists n\in N$ such that $g\cdot n=h$ is an equivalence relation. The quotient set $G/\!\sim$ is typically denoted as $G/N$ and can be given the structure of a group, referred to as the quotient group.
+\end{res}
+
+\begin{res}{Proposition}{1.4}
+In a finite ring, all elements must either have multiplicative inverses, or must be zero divisors.
+\end{res}
+
+\begin{res}{Proposition}{1.5}
+For a set $S\subseteq V$ that is linearly independent, the decomposition of any vector $v\in\operatorname{span}(S)$ as a linear combination of the form Eq.~(1.9) is unique.
+\end{res}
+
+\begin{res}{Proposition}{1.6}
+Let $S\subseteq V$ be linearly independent, such that no $v\in V$ can be added to $S$ without making it linearly dependent. Then $\operatorname{span}(S)=V$ and $S$ is a basis of $V$.
+\end{res}
+
+\begin{res}{Proposition}{1.7}
+From any complete set $S\subseteq V$, we can extract a subset that is a basis for $V$.
+\end{res}
+
+\begin{res}{Proposition}{1.8}
+Every vector space admits a basis.
+\end{res}
+
+\begin{res}{Proposition}{1.9}
+Any linearly independent set $S\subseteq V$ can be extended to be a basis for $V$, i.e.\ there exists a set $S'\subseteq V$ such that $V=\mathbb F(S\cup S')$.
+\end{res}
+
+\begin{res}{Proposition}{1.10}
+Let $S=\{v_1,\dots,v_m\}$ be a linearly independent subset of $V$, then $m\le\dim(V)=n$, i.e.\ an $n$-dimensional space does not admit more than $n$ linearly independent vectors.
+\end{res}
+
+\begin{res}{Corollary}{1.11}
+Any basis $B$ of a finite-dimensional vector space $V$ has $|B|=\dim(V)$, and any linearly independent set $S$ with $|S|=\dim(V)$ is complete and thus a basis.
+\end{res}
+
+\begin{res}{Proposition}{1.12}
+Any two finite-dimensional vector spaces $V$ and $W$ with $\dim(V)=\dim(W)=n$ are isomorphic, henceforth denoted as $V\cong W$.
+\end{res}
+
+\begin{res}{Proposition}{1.13}
+The relation $W\preccurlyeq V$ implies that $\dim(W)\le\dim(V)$.
+\end{res}
+
+\begin{res}{Proposition}{1.14}
+Let $W\preccurlyeq V$ where $V$ (and thus also $W$) are finite-dimensional; then $\dim(W)=\dim(V)$ implies $W=V$
+\end{res}
+
+\begin{res}{Proposition}{1.15}
+Given two subspaces $W_i\preccurlyeq V$, $i=1,2$, then their \textbf{intersection} (by just interpreting them as sets) is still a subspace $W_1\cap W_2\preccurlyeq V$.
+\end{res}
+
+\begin{res}{Proposition}{1.16}
+If $W_1$ and $W_2$ are finite-dimensional, then
+\begin{equation}\dim(W_1+W_2)=\dim(W_1)+\dim(W_2)-\dim(W_1\cap W_2).\tag{1.16}\end{equation}
+\end{res}
+\begin{proof}
+    Dit is een stelling van het vorig vak \textbf{LAM}, waarbij we een basis \(B = \{b_1,\dots,b_n\}\) voor \(W_1\)
+    en basis \(B' = \{b'_1, \dots, b'_m \}\) voor \(W_2\) kiezen,
+    met natuurlijk \(\dim(W_1) = n\) en \(\dim(W_2) = m\).
+
+    Nu nemen we een set \(S = \{b_1,\dots,b_n,b'_1,\dots,b'_m \}\) en proberen hieruit een basis te vinden voor \(W_1 + W_2\).
+
+    Per definitie van \(S\), is \(\operatorname{span}(S)\) voortbrengend voor \(W_1 + W_2\), uit \textbf{Proposition 1.7}, kunnen we \(S\) reduceren tot basis voor \(W_1+W_2\).
+\end{proof}
+
+
+\begin{res}{Proposition}{1.17}
+Given a subspace $W\preccurlyeq V$, there always exists a complementary space $U\preccurlyeq V$ such that $V=U\oplus W$.
+\end{res}
+
+\begin{res}{Proposition}{1.18}
+For two vector spaces $W_1$ and $W_2$ over a common field $\mathbb F$ the Cartesian product $W_1\times W_2=\{(w_1,w_2),\forall w_1\in W_1,w_2\in W_2\}$ can be made into a vector space over $\mathbb F$ by defining vector addition as $(v_1,v_2)+(w_1,w_2)=(w_1+v_1,w_2+v_2)$ and scalar multiplication as $a(w_1,w_2)=(aw_1,aw_2)$, $\forall a\in\mathbb F$.
+\end{res}
+
+\begin{res}{Proposition}{1.19}
+If $W_1$ and $W_2$ are two complementary subspaces of some bigger space $V=W_1\oplus W_2$, then the (internal) direct sum construction is isomorphic to $W_1\times W_2$.
+\end{res}
+
+\begin{res}{Proposition}{1.20}
+Given a subspace $W\preccurlyeq V$, the quotient set $V/\!\sim$ under the equivalence relation $v_1\sim v_2$ if $v_1-v_2\in W$ can be given the structure of a vector space, referred to as the \textbf{quotient space} $V/W$, by defining addition and scalar multiplication of the equivalence classes as
+\begin{equation}(v_1+W)+(v_2+W)=(v_1+v_2+W),\qquad a(v+W)=(av+W).\tag{1.17}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{1.21}
+$\dim(V/W)=\dim(V)-\dim(W)$
+\end{res}
+
+\begin{res}{Corollary}{1.22}
+A direct consequence of this proof is also that all complements of a given subspace $W\preccurlyeq V$ are isomorphic to $W/V$, and thus also to each other.
+\end{res}

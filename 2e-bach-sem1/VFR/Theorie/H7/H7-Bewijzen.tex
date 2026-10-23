@@ -1,0 +1,69 @@
+\section{Unitary Similarity and Unitary Equivalence}
+
+\begin{res}{Proposition}{7.1}
+The inverse of the discrete Fourier transformation is given by
+\begin{equation}f_j=\frac1{\sqrt n}\sum_{k=0}^{n-1}F_k\exp\left(+\mathrm i\frac{2\pi}{n}jk\right),\qquad\forall j=0,\dots,n-1.\tag{7.3}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{7.2}
+A circulant matrix $\mathsf A\in\mathbb F^{n\times n}$ is diagonalised by the Fourier transform matrix $\mathsf U\in\mathbb F^{n\times n}$, i.e.\ $\mathsf{AU}=\mathsf{U\Lambda}$ with $\mathsf\Lambda=\operatorname{diag}(\lambda_0,\lambda_1,\dots,\lambda_{n-1})$, where the eigenvalues are given by
+\begin{equation}\lambda_k=\sum_{j=0}^{n-1}f_j\omega^{kj}=\sum_{j=0}^{n-1}f_j\mathrm e^{-\mathrm i\frac{2\pi}{n}kj}.\tag{7.5}\end{equation}
+\end{res}
+
+\begin{res}[Schur triangulation]{Theorem}{7.3}
+Any matrix $\mathsf A\in\mathbb F^{n\times n}$ admits a \textbf{Schur decomposition}, which takes the form
+\begin{equation}\mathsf A=\mathsf{ZTZ}^{\mathsf H}\tag{7.6}\end{equation}
+where $\mathsf Z\in\mathrm U(n)$ and $\mathsf T\in\mathbb F^{n\times n}$ is upper triangular.
+\end{res}
+
+\begin{res}{Proposition}{7.4}
+If $\mathsf A$ is a normal matrix, then for any of its Schur decompositions, the upper triangular matrix $\mathsf T$ is diagonal. Put differently, $\mathsf A$ is diagonalised by a unitary matrix and the Schur and eigenvalue decomposition coincide.
+\end{res}
+
+\begin{res}{Proposition}{7.5}
+Let $\mathsf A\in\mathbb F^{n\times n}$ be such that it has a unique eigenvalue $\lambda_1$ with largest magnitude, i.e.\ $|\lambda_1|=\rho_{\mathsf A}$ (the spectral radius) and all other eigenvalues of $\mathsf A$ satisfy $|\lambda_i|<\rho_{\mathsf A}$. Assume that the eigenvalue $\lambda_1$ is simple or semisimple, i.e.\ its geometric and algebraic multiplicity coincide and there are no non-trivial Jordan blocks associated with $\lambda_1$. Let $\mathsf P_1$ be the projector onto the eigenspace $V_{\lambda_1}$ along the direct sum of all other eigenspaces and generalised eigenspaces. For any vector $\boldsymbol v$ for which $\mathsf P_1\boldsymbol v\ne\boldsymbol 0$, the power method will converge with $\mu_\infty=\lim_{k\to\infty}\mu_k=\lambda_1$ and $\boldsymbol q_\infty=\lim_{k\to\infty}\boldsymbol q_k$ a normalised eigenvector in $V_{\lambda_1}$.
+\end{res}
+
+\begin{res}{Proposition}{7.6}
+Given a matrix $\mathsf A\in\mathbb F^{m\times n}$, there exist unitary matrices $\mathsf U\in\mathrm U(m)$ and $\mathsf V\in\mathrm U(n)$ so that
+\begin{equation}\mathsf A=\mathsf{USV}^{\mathsf H}\tag{7.12}\end{equation}
+where $\mathsf S\in\mathbb F^{m\times n}$ has only nonzero elements on the diagonal, which can be made positive and ordered such that $S^1{}_1=\sigma_1\ge S^2{}_2=\sigma_2\ge\ldots\ge S^p{}_p=\sigma_p>0$ for some $p\le\min(m,n)$. The numbers $(\sigma_1,\dots,\sigma_p)$ are known as the \textbf{singular values} of $\mathsf A$ and Eq.~(7.12) is referred to as the (full) \textbf{singular value decomposition} of $\mathsf A$.
+\end{res}
+
+\begin{res}{Proposition}{7.7}
+The singular value decomposition exposes the rank of a matrix, namely $\operatorname{rank}(\mathsf A)=p$, the number of (non-zero) singular values. Correspondingly, $\mathsf U_p$, the column of $\mathsf U$ corresponding to the non-zero singular values, constitute an orthonormal basis for $\operatorname{im}(\mathsf A)$, while the columns $k=p+1,\dots,n$ of $\mathsf V$ provide an orthonormal basis for $\ker(\mathsf A)$.
+\end{res}
+
+\begin{res}{Proposition}{7.8}
+Let $\mathsf A\in\mathbb F^{m\times n}$ represent a linear map between the standard spaces $\mathbb F^n$ and $\mathbb F^m$, for which we use the Euclidean norm $\|\cdot\|_2$. The induced norm on $\mathsf A$ is given by $\|\mathsf A\|_2=\sigma_1$, the largest singular value of $\mathsf A$.
+\end{res}
+
+\begin{res}{Proposition}{7.9}
+The Frobenius norm of $\mathsf A\in\mathbb F^{m\times n}$ is given by $\|\mathsf A\|_{\mathrm F}=\sqrt{\sum_{i=1}^p\sigma_i^2}$.
+\end{res}
+
+\begin{res}{Proposition}{7.10}
+The condition number of an invertible matrix $\mathsf A\in\mathbb F^{n\times n}$ is given by $\kappa(\mathsf A)=\sigma_1/\sigma_n$.
+\end{res}
+
+\begin{res}{Proposition}{7.11}
+Consider a general matrix $\mathsf A\in\mathbb F^{m\times n}$. The minimum-norm least-squares solution associated with the linear system $\mathsf A\boldsymbol x=\boldsymbol y$ is unique and given by $\boldsymbol x^*=\mathsf V_p\mathsf S_p^{-1}\mathsf U_p^{\mathsf H}\boldsymbol y$, using the compact singular value decomposition of $\mathsf A$.
+\end{res}
+
+\begin{res}{Theorem}{7.12}
+Given $\mathsf A\in\mathbb F^{m\times n}$, the rank $r$ matrix $\mathsf B$ that minimises $\|\mathsf A-\mathsf B\|_2$ using the induced 2-norm is given by the truncated singular value decomposition $\mathsf B=\mathsf U_r\mathsf S_r\mathsf V_r^{\mathsf H}$ of $\mathsf A$.
+\end{res}
+
+\begin{res}{Theorem}{7.13}
+Given $\mathsf A\in\mathbb F^{m\times n}$, the rank $r$ matrix $\mathsf B$ that minimises $\|\mathsf A-\mathsf B\|_{\mathrm F}$ using the Frobenius norm is given by the truncated singular value decomposition $\mathsf B=\mathsf U_r\mathsf S_r\mathsf V_r^{\mathsf H}$ of $\mathsf A$.
+\end{res}
+
+\begin{res}{Proposition}{7.14}
+Consider a matrix $\mathsf A\in\mathbb F^{m\times n}$ with $m\ge n$. It can be decomposed as
+\begin{equation}\mathsf A=\mathsf{UP}\tag{7.17}\end{equation}
+where $\mathsf U\in\mathbb F^{m\times n}$ is isometric ($\mathsf U^{\mathsf H}\mathsf U=\mathsf I_n$) and $\mathsf P\in\mathbb F^{n\times n}$ is Hermitian and positive semidefinite. This decomposition is known as the \textbf{polar decomposition}.
+\end{res}
+
+\begin{res}{Proposition}{7.15}
+Given $\mathsf A\in\mathbb F^{m\times n}$ with $m\ge n$, the isometric matrix $\mathsf B$ that minimises $\|\mathsf A-\mathsf B\|_{\mathrm F}$ is given by the isometric factor in the polar decomposition of $\mathsf A$.
+\end{res}
