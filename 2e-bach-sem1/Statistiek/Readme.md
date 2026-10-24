@@ -1,5 +1,8 @@
 Reminder voor mezelf: Maak zeker nog de "voor de lezer" oefeningen op de powerpoints en bewijis alle stellingen uit de cursus.
 
+Het lange bewijs van stelling 5.2.2 heb ik nog even achterwege gelaten (kom hier zekeer nog op terug!)
+
+
 2e-bach-sem1/Statistiek/
 ├── Cursus/
 │   └── Statistiek.pdf
