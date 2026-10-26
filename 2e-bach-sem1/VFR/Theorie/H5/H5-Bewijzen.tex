@@ -1,0 +1,183 @@
+\section{Inner Products and Orthogonality}
+
+\begin{res}{Proposition}{5.1}
+If the sesquilinear form $C$ is positive semidefinite but not positive definite, it is degenerate.
+\end{res}
+
+\begin{res}{Theorem}{5.2}
+In an inner product space $(V,\langle\cdot,\cdot\rangle)$, all vectors $v,w\in V$ satisfy the \textbf{Cauchy-Schwarz-(Bunjakowski) inequality}
+\begin{equation}|\langle v,w\rangle|^2\le\langle v,v\rangle\langle w,w\rangle\tag{5.9}\end{equation}
+The inequality becomes an equality if and only if $v$ and $w$ are linearly dependent.
+\end{res}
+
+\begin{res}{Proposition}{5.3}
+An inner product space $(V,\langle\ ,\ \rangle)$ is a normed vector space using the associated \textit{canonical norm} $\|v\|=\sqrt{\langle v,v\rangle}$.
+\end{res}
+
+\begin{res}{Proposition}{5.4}
+The inner product $\langle\ ,\ \rangle:V\times V\to\mathbb F$ is continuous with respect to the norm it induces.
+\end{res}
+
+\begin{res}{Proposition}{5.5}
+Consider an inner product space $(V,\langle\ ,\ \rangle)$. The associated norm satisfies the \textbf{parallelogram law}
+\begin{equation}\|v+w\|^2+\|v-w\|^2=2(\|v\|^2+\|w\|^2),\tag{5.18}\end{equation}
+the name of which clearly originates from a geometric property satisfied by two-dimensional parallellogramma in the two-dimensional Euclidean plane (see Figure 5.1).
+\end{res}
+
+\begin{res}{Theorem}{5.6}
+Let $(V,\|\cdot\|)$ be a normed vector space such that the norm satisfies the parallelogram law in Eq.~(5.18). Then $V$ becomes an inner product space where the inner product induces the norm $\|\cdot\|$ by defining the inner product as
+\begin{equation}\langle v,w\rangle=\begin{cases}\tfrac14\|v+w\|^2-\tfrac14\|v-w\|^2,&V\text{ real}\\[2pt]\tfrac14\|v+w\|^2-\tfrac14\|v-w\|^2+\tfrac{\mathrm i}4\|v-\mathrm iw\|^2-\tfrac{\mathrm i}4\|v+\mathrm iw\|^2,&V\text{ complex}\end{cases}\tag{5.19}\end{equation}
+which is known as the \textbf{polarisation identity}.
+\end{res}
+
+\begin{res}{Proposition}{5.7}
+A set of orthogonal vectors is linearly independent.
+\end{res}
+
+\begin{res}{Corollary}{5.8}
+In a finite-dimensional vector space $V$, we can construct at most $n=\dim(V)$ orthogonal vectors.
+\end{res}
+
+\begin{res}[Pythagoras]{Theorem}{5.9}
+Given a finite set of orthogonal vectors $\{v_i;i=1,\dots,n\}\subseteq V$, then
+\begin{equation}\left\|\sum_{i=1}^nv_i\right\|^2=\sum_{i=1}^n\|v_i\|^2.\tag{5.21}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{5.10}
+The orthogonal complement $S^\perp$ is a closed subspace of $V$.
+\end{res}
+
+\begin{res}{Proposition}{5.11}
+Given a subset $S\subseteq V$, it holds that $S^\perp=(\mathbb FS)^\perp=(\overline{\mathbb FS})^\perp$.
+\end{res}
+
+\begin{res}{Proposition}{5.12}
+Given a subset $S\subseteq V$. The intersection $S\cap S^\perp$ is $\{o\}$ if the zero vector is contained in $S$, and is empty otherwise.
+\end{res}
+
+\begin{res}{Theorem}{5.13} \textbf{(Projection)}
+Consider a closed subspace $W\preccurlyeq V$ of a Hilbert space $V$.
+\begin{itemize}
+\item For any vector $v\in V$, there exists a unique closest vector $w\in W$ such that
+\begin{equation}\|v-w\|=\inf_{w'\in W}\|v-w'\|.\tag{5.23}\end{equation}
+\item The vector $w\in W$ closest to $v$ is the unique vector in $W$ such that $v-w\in W^\perp$.
+\end{itemize}
+The vector $w\in W$ is known as the \textbf{orthogonal projection} of $v$ onto $W$.
+\end{res}
+
+\begin{res}{Corollary}{5.14}
+Let $W$ be a closed subspace of a Hilbert space $V$, then $V=W\oplus W^\perp$ and this \textbf{orthogonal direct sum} decomposition is unique.
+\end{res}
+
+\begin{res}{Lemma}{5.15}
+Any nonzero orthogonal projector $\hat P$ on a Hilbert space $V$ has operator norm $\|P\|=1$. It is thus bounded and continuous.
+\end{res}
+
+\begin{res}{Proposition}{5.16}
+Consider a Hilbert space $V$. Let $W$ be a closed subspace, so that $V=W\oplus W^\perp$, then the associated projection operator $\hat P_W$ is an orthogonal projector as characterised in Definition 5.19. Vice versa, any orthogonal projector gives rise to an orthogonal direct sum decomposition $V=\operatorname{im}(\hat P)\oplus\ker(\hat P)$, where $\operatorname{im}(\hat P)=\ker(\hat P)^\perp$ and both are closed subspaces.
+\end{res}
+
+\begin{res}{Proposition}{5.17}
+For any subset $S$ of a Hilbert space $V$, it holds that $V=S^\perp\oplus S^{\perp\perp}$ where $S^{\perp\perp}=(S^\perp)^\perp$.
+\end{res}
+
+\begin{res}{Proposition}{5.18}
+For any closed subspace $W$ of a Hilbert space $V$, $W^{\perp\perp}=W$.
+\end{res}
+
+\begin{res}{Proposition}{5.19}
+For any subset $S$ of a Hilbert space $V$, it holds that $S^{\perp\perp}=\overline{\mathbb FS}$.
+\end{res}
+
+\begin{res}{Proposition}{5.20}
+If $S$ is a complete set of a Hilbert space $V$, in the sense that the span of $S$ is dense in $V$, or thus $\overline{\mathbb FS}=V$, then $S^\perp=\{o\}$.
+\end{res}
+
+\begin{res}{Lemma}{5.21}
+Consider an infinite-dimensional Hilbert space $V$ and an orthonormal sequence $(e_i)_{i\in\mathbb N_0}$. The orthogonal projection of a given vector $v\in V$ onto the subspace $W_n=\mathbb F\{e_i;i=1,\dots,n\}$ is given by $v_n=\sum_{i=1}^ne_i\langle e_i,v\rangle$.
+\end{res}
+
+\begin{res}{Lemma}{5.22}
+For an infinite-dimensional Hilbert space $V$ and an orthonormal sequence $(e_i)_{i\in\mathbb N_0}$, \textbf{Bessel's inequality} states that for any $n\in\mathbb N_0$ and any $v\in V$
+\begin{equation}\sum_{i=1}^n|\langle e_i,v\rangle|^2\le\|v\|^2.\tag{5.25}\end{equation}
+so that in particular the series $\sum_{i=1}^{+\infty}|\langle e_i,v\rangle|^2$ converges to a value upper bounded by $\|v\|^2$.
+\end{res}
+
+\begin{res}[Expansion theorem]{Theorem}{5.23}
+Let $V$ be a Hilbert space and $S=(e_i)_{i\in\mathbb N_0}$ a complete orthonormal sequence. Then $(e_i)_{i\in\mathbb N_0}$ is a Schauder basis and any vector $v\in V$ can be expanded as
+\begin{equation}v=\sum_{i=1}^{+\infty}\langle e_i,v\rangle\,e_i.\tag{5.26}\end{equation}
+\end{res}
+
+\begin{res}{Corollary}{5.24}
+Bessel's inequality becomes an equality
+\begin{equation}\|v\|^2=\langle v,v\rangle=\sum_{i=1}^{+\infty}|\langle e_i,v\rangle|^2=\sum_{i=1}^{+\infty}\langle v,e_i\rangle\langle e_i,v\rangle\tag{5.28}\end{equation}
+known as \textbf{Plancherel's identity}.
+\end{res}
+
+\begin{res}{Proposition}{5.25}
+Let $V$ be a Hilbert space and $S=(e_i)_{i\in\mathbb N_0}$ a complete orthonormal sequence. It holds that
+\begin{equation}\langle v,w\rangle=\sum_{i=1}^{+\infty}\langle v,e_i\rangle\langle e_i,w\rangle\tag{5.29}\end{equation}
+which is known as \textbf{Parseval's identity}.
+\end{res}
+
+\begin{res}{Proposition}{5.26}
+On a Hilbert space $V$, the inner product structure defines a canonical injective antilinear map $V\to V^*:v\mapsto\chi_v$, defined via the action
+\[\chi_v(w)=\langle v,w\rangle,\qquad\forall w\in V.\]
+Furthermore, the resulting linear functional $\chi_v$ is continuous and thus bounded.
+\end{res}
+
+\begin{res}[Riesz representation theorem]{Theorem}{5.27}
+Every bounded linear functional $\xi$ on Hilbert space $V$ is uniquely associated with a vector $v_\xi\in V$ such that $\xi[w]=\langle v_\xi,w\rangle$ for all $w\in W$.
+\end{res}
+
+\begin{res}{Proposition}{5.28}
+For every map $\hat A\in\mathcal B(V,W)$, we can construct a map in $\mathcal B(W,V)$, denoted as $\hat A^\dagger$ and referred to as the \textbf{adjoint} or \textbf{dagger} of $\hat A$, such that for any $v\in V$, $w\in W$,
+\begin{equation}\langle w,\hat Av\rangle_W=\left\langle\hat A^\dagger w,v\right\rangle_V.\tag{5.40}\end{equation}
+It furthermore holds that $\|\hat A\|=\|\hat A^\dagger\|$.
+\end{res}
+
+\begin{res}{Proposition}{5.29}
+Let $\hat A$ be a bounded linear map between Hilbert spaces $V$ and $W$, then
+\begin{equation}\left\|\hat A^\dagger\hat A\right\|=\left\|\hat A\hat A^\dagger\right\|=\left\|\hat A\right\|^2.\tag{5.44}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{5.30}
+Let $\hat A$ be a bounded linear map between Hilbert spaces $V$ and $W$. We have $\ker(\hat A^\dagger)=\operatorname{im}(\hat A)^\perp$ and thus
+\begin{equation}W=\ker(\hat A^\dagger)\oplus\overline{\operatorname{im}(\hat A)},\qquad V=\ker(\hat A)\oplus\overline{\operatorname{im}(\hat A^\dagger)}\tag{5.45}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{5.31}
+A linear map $\hat Q:V\to W$ between Hilbert spaces $V$ and $W$ is isometric with respect to $d_W(w',w)=\|w'-w\|_W$ and $d_V(v',v)=\|v-v'\|_V$ if and only if
+\begin{equation}\hat Q^\dagger\hat Q=\hat 1_V\tag{5.48}\end{equation}
+Such a map is said to be a (linear) \textbf{isometry}.
+\end{res}
+
+\begin{res}{Proposition}{5.32}
+An isometry $\hat U:V\to W$ that is furthermore surjective, and thus invertible, has $\hat U^\dagger$ as its inverse, and thus satisfies
+\begin{equation}\hat U^\dagger\hat U=\hat 1_V,\qquad\hat U\hat U^\dagger=\hat 1_W.\tag{5.49}\end{equation}
+Such a linear map is said to be \textbf{unitary} or, when $\mathbb F=\mathbb R$, \textbf{orthogonal}.
+\end{res}
+
+\begin{res}{Proposition}{5.33}
+An operator $\hat A$ on a Hilbert space $V$ is normal if and only if $\|\hat Av\|=\|\hat A^\dagger v\|$ for all $v\in V$.
+\end{res}
+
+\begin{res}{Proposition}{5.34}
+Let $v$ be an eigenvector with eigenvalue $\lambda$ fo a normal operator $\hat A$ on $V$, then $\hat A^\dagger v=\overline\lambda v$, i.e.\ $\hat A$ and $\hat A^\dagger$ share eigenspaces (up to complex conjugation of the corresponding eigenvalue).
+\end{res}
+
+\begin{res}{Proposition}{5.35}
+For a normal operator $\hat A$, eigenvectors $v_\lambda$ and $v_\mu$ associated with distinct eigenvalues $\lambda\ne\mu$ are orthogonal.
+\end{res}
+
+\begin{res}{Lemma}{5.36}
+Using the operator norm, a normal operator $\hat A$ on a Hilbert space $V$ satisfies $\|\hat A^n\|=\|\hat A\|^n$ for all $n\in\mathbb N$.
+\end{res}
+
+\begin{res}{Proposition}{5.37}
+For a normal operator $\hat A$, $\|\hat A\|=\rho_{\hat A}$, i.e.\ the operator norm equals the spectral radius.
+\end{res}
+
+\begin{res}{Proposition}{5.38}
+A normal operator $\hat A$ cannot be nilpotent.
+\end{res}

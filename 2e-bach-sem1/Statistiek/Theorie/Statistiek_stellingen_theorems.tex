@@ -2,39 +2,52 @@
 \usepackage[a4paper,margin=1.8cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{mathrsfs}
+\usepackage{amsmath,amssymb,amsfonts,mathtools, amsthm, mathrsfs}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue}
 \usepackage{parskip}
+\usepackage[most]{tcolorbox}
 \setlength{\parskip}{2pt}
 
 \titlespacing*{\section}{0pt}{1.4ex}{0.6ex}
 \titleformat{\section}{\normalfont\Large\bfseries}{Hoofdstuk \thesection}{1em}{}
 
 % Custom environment for statements: #1 = kind (Stelling/Theorem), #2 = number, #3 = optional subtitle
-\newenvironment{res}[2]{%
-  \par\noindent\textbf{#1 #2.}~\ignorespaces
+%\newenvironment{res}[2]{%
+%  \par\noindent\textbf{#1 #2.}~\ignorespaces
+%}{%
+%  \par\vspace{4pt}\normalfont
+%}
+\newenvironment{res}[3][]{%
+  \begin{tcolorbox}[
+    breakable,          % Essentieel: staat page breaks toe binnen lange bewijzen
+    colback=gray!10,    % Grijze achtergrondkleur
+    colframe=gray!40,   % Donkergrijze rand
+    boxrule=0.5pt,      % Dikte van de kaderlijn
+    left=6pt, right=6pt, top=6pt, bottom=6pt % Padding binnen de box
+  ]
+  % Exact dezelfde header-rendering als je originele definitie
+  \noindent\textbf{#2 #3}\if\relax\detokenize{#1}\relax\else\ \textbf{(#1)}\fi\textbf{.}~\ignorespaces
 }{%
-  \par\vspace{4pt}\normalfont
+  \end{tcolorbox}
 }
 \newcommand{\restitle}[1]{\textbf{#1.}\ }
 
 \newlist{myenum}{enumerate}{2}
 \setlist[myenum,1]{label=(\roman*),leftmargin=1.6em,itemsep=1pt,topsep=1pt}
 
-\title{\textbf{Statistiek --- Overzicht van Stellingen en Theorems}}
+\title{\textbf{Statistiek --- Mijn bewijzen}}
 \author{T. Cools}
 \date{}
 
 \begin{document}
 \maketitle
 \vspace{-2em}
-\begin{center}
-\small\textit{Dit document bevat alle stellingen en theorems uit de cursus.}
-\end{center}
+\begin{abstract}
+Dit document bevat mijn bewijzen van de stellingen uit de cursus.
+\end{abstract}
 \vspace{1em}
 
 %===================================================================
@@ -228,6 +241,25 @@ V(X) = \sum_{i=1}^N V_i = \sum_{i=1}^N \sigma_i^2;
 \item ze \textbf{Gaussisch} wordt als $N\to\infty$.
 \end{enumerate}
 \end{res}
+\begin{proof} 1)
+
+  Eerst en vooral hebbben we dat \(X = \sum_{i=1}^{N}x_i\).
+  \begin{align*}
+    \langle X \rangle &=
+    \langle \sum_{i=1}^{N}x_i \rangle
+    = \sum_{i=1}^{N} \langle x_i \rangle
+    =\sum_{i=1}^{N} \mu_i
+  \end{align*}
+\end{proof}
+\begin{proof} 2)
+  \begin{align*}
+    V(X) &= \langle X^2 \rangle - \langle X \rangle^2
+    = \sum_{i=1}^{N}\langle x_i^2 \rangle - \left(\sum_{i=1}^{N} \mu_i\right)^2
+  \end{align*}
+  \textbf{Nog verder behandelen!}
+\end{proof}
+
+
 
 \begin{res}{Stelling}{4.1.1}
 Als de variabelen niet onafhankelijk verdeeld zijn, dan geldt nog altijd de verwachtingswaarde eigenschap (4.1), maar niet langer de variantie (4.2), want de covariantiematrix (zie Definitie 2.3.4) is niet meer diagonaal.
@@ -338,6 +370,11 @@ V(\hat\mu) = \frac{\sigma^2}{N},
 \]
 waarbij $N$ het aantal meetpunten is en $\sigma$ de standaardafwijking van de ouderdistributie.
 \end{res}
+\begin{proof}
+  \(\hat{\mu} = \bar{x}\)
+
+  \textbf{De rest is nog uit te rekenen (triviaal)}
+\end{proof}
 
 \begin{res}{Stelling}{5.2.2}
 De variantie van de schatter van de variantie is
@@ -345,6 +382,9 @@ De variantie van de schatter van de variantie is
 V(\widehat{V(x)}) = \frac{(N-1)^2}{N^3}\left\langle (x-\langle x\rangle)^4\right\rangle - \frac{(N-1)(N-3)}{N^3}\left\langle (x-\langle x\rangle)^2\right\rangle^2.
 \]
 \end{res}
+\begin{proof}
+  \textbf{Dit bewijs is lang en lastig volgens de cursus!}
+\end{proof}
 
 \begin{res}{Stelling}{5.2.3}
 De schatter van de standaardafwijking $\hat\sigma_x = \sqrt{\widehat{V(x)}}$ heeft als variantie:

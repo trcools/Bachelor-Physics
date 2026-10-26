@@ -1,0 +1,221 @@
+\section{Function Spaces}
+
+\begin{res}{Proposition}{8.1}
+The set $\mathcal L^p(I;\mathbb F)$ is actually a vector space (a subspace of $\mathbb F^I$).
+\end{res}
+
+\begin{res}{Proposition}{8.2}
+On the space $\mathcal L^p(I;\mathbb F)$, the prescription $f\mapsto\|f\|_p$ given in Eq.~(8.1) is a seminorm.
+\end{res}
+
+\begin{res}[Riesz-Fischer]{Theorem}{8.3}
+The Lebesgue spaces $L^p(I)$ for $p\ge1$ are metric complete, i.e.\ they are Banach spaces.
+\end{res}
+
+\begin{res}{Proposition}{8.4}
+The space $L^2(I)$ admits an inner product given by
+\begin{equation}\langle f,g\rangle=\int_I\overline{f(x)}g(x)\,\mathrm dx\tag{8.12}\end{equation}
+which is such that $\langle f,f\rangle=(\|f\|_2)^2$.
+\end{res}
+
+\begin{res}{Proposition}{8.5}
+The set of orthogonal polynomials $\{p_n;n\in\mathbb N\}$ constructed on $L^2_w(I)$ is such that every $p_n(x)$ is real-valued polynomial of degree $n$, that is orthogonal to any polynomial of lower degree.
+\end{res}
+
+\begin{res}{Proposition}{8.6}
+The set of orthogonal polynomials $\{p_n;n\in\mathbb N\}$ constructed on $L^2_w(I)$ is governed by a recurrence relation of the form
+\begin{equation}xp_n(x)=a_np_{n+1}(x)+b_np_n(x)+c_np_{n-1}(x)\tag{8.15}\end{equation}
+for all $n\in\mathbb N$, where clearly the last term is not present for $n=0$, i.e.\ $c_0=0$. It furthermore holds that $c_n\langle p_{n-1},p_{n-1}\rangle_w=a_{n-1}\langle p_n,p_n\rangle_w$, or thus $c_n=a_{n-1}$ if the different $p_n(x)$ are normalised to have an $n$-independent norm.
+\end{res}
+
+\begin{res}{Proposition}{8.7}
+For the set of orthogonal polynomials $\{p_n;n\in\mathbb N\}$ constructed on $L^2_w(I)$, the orthogonal projector onto the first $n$ polynomials is given by
+\begin{equation}(\hat P_nf)(x)=\int_Iw(y)K_n(x,y)f(y)\,\mathrm dy=\int_Iw(y)\left[\sum_{k=0}^n\frac{p_k(x)p_k(y)}{\langle p_k,p_k\rangle_w}\right]f(y)\,\mathrm dy\tag{8.16}\end{equation}
+where $K(x,y)$ is given by the \textit{Christoffel-Darboux formula}
+\begin{equation}\sum_{k=0}^n\frac{p_k(x)p_k(y)}{\langle p_k,p_k\rangle_w}=\begin{cases}\dfrac{a_n}{\langle p_n,p_n\rangle_w}\dfrac{p_{n+1}(x)p_n(y)-p_n(x)p_{n+1}(y)}{x-y},&x\ne y\\[8pt]\dfrac{a_n}{\langle p_n,p_n\rangle_w}\bigl(p'_{n+1}(x)p_n(y)-p'_n(x)p_{n+1}(y)\bigr),&x=y\end{cases}.\tag{8.17}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.8}
+For the set of orthogonal polynomials $\{p_n;n\in\mathbb N\}$ constructed on $L^2_w(I)$, $p_n(x)$ has $n$ distinct roots on $I$. Furthermore, the zeros of $p_n$ and $p_{n+1}$ alternate, i.e.\ the roots of $p_n$ lie in between those of $p_{n+1}$.
+\end{res}
+
+\begin{res}{Proposition}{8.9}
+The numerical approximation $\sum_{i=1}^na^if(x_i)$ to the integral $\int_Iw(x)f(x)\,\mathrm dx$ can be made exact for any $f(x)$ that is a polynomial of at most degree $n-1$
+\end{res}
+
+\begin{res}{Theorem}{8.10}
+The numerical approximation $\sum_{i=1}^na^if(x_i)$ to the integral $\int_Iw(x)f(x)\,\mathrm dx$ can be made exact for any $f(x)$ that is a polynomial of at most degree $2n-1$, if the set of points $x_i$, $i=1,\dots,n$ is chosen to coincide with the roots of the degree $n$ orthogonal polynomial $p_n(x)$ constructed on $I$ with weight function $w(x)$.
+\end{res}
+
+\begin{res}{Proposition}{8.11}
+On the Hilbert space $L^2([0,L])$, the set of Fourier modes
+\begin{equation}S=\left\{\varphi_k(x)=\frac1{\sqrt L}\mathrm e^{+\mathrm i\frac{2\pi}{L}kx};\ k=-n,-n+1,\dots,0,\dots,n-1,n\right\}\tag{8.56}\end{equation}
+constitutes an orthonormal basis for the space of trigonometric polynomials.
+\end{res}
+
+\begin{res}{Proposition}{8.12}
+The orthogonal projection of a function $f\in L^2([0,L])$ onto the subspace of trigonometric polynomials of maximal degree $n$ given by
+\begin{align}
+f_n(x)=(\hat P_nf)(x)&=\sum_{k=-n}^{+n}\langle\varphi_k,f\rangle\varphi_k(x)=\sum_{k=-n}^{+n}\widehat f_k\varphi_k(x)=\frac1{\sqrt L}\sum_{k=-n}^{+n}\widehat f_k\mathrm e^{+\mathrm i\frac{2\pi}{L}kx}\tag{8.60}\\
+&=\sum_{k=-n}^{+n}\frac1L\int_0^Lf(t)\mathrm e^{+\mathrm i\frac{2\pi}{L}k(x-t)}\,\mathrm dt=\int_0^LD_n(x-t)f(t)\,\mathrm dt\tag{8.61}
+\end{align}
+where we have introduced the \textbf{Dirichlet kernel}
+\begin{equation}D_n(x)=\frac1L\sum_{k=-n}^{+n}\mathrm e^{+\mathrm i\frac{2\pi}{L}kx}=\frac{\sin\left(\frac{(2n+1)\pi}{L}x\right)}{L\sin\left(\frac\pi Lx\right)}.\tag{8.62}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.13}
+The Fourier coefficients $\widehat f_k$ in Eq.~(8.59) are well defined for any function $f\in L^1([0,L])$, and satisfy
+\begin{equation}\left|\widehat f_k\right|\le\frac1{\sqrt L}\int_0^L\left|f(x)\mathrm e^{-\mathrm i\frac{2\pi}{L}kx}\right|\mathrm dx=\frac1{\sqrt L}\int_0^L|f(x)|\,\mathrm dx=\frac{\|f\|_1}{\sqrt L},\quad\forall k\in\mathbb Z.\tag{8.65}\end{equation}
+Denoting the double-sided sequence of Fourier coefficients as $\widehat f=(\widehat f_k)_{k\in\mathbb Z}$, we thus find $\left\|\widehat f\right\|_\infty=\sup_{k\in\mathbb Z}\left|\widehat f_k\right|<\infty$, i.e.\ $\widehat f\in\ell^\infty(\mathbb Z)$.
+\end{res}
+
+\begin{res}{Proposition}{8.14}
+The map from a function $f\in L^1([0,L])$ to its sequence of Fourier coefficients $\widehat f\in\ell^\infty(\mathbb Z)$ has the following elementary properties:
+\begin{enumerate}
+\item \textbf{Linearity}:
+\begin{equation}h(x)=af(x)+bg(x)\implies\widehat h_k=a\widehat f_k+b\widehat g_k,\quad\forall f,g\in L^1([0,L]),\forall a,b\in\mathbb C\tag{8.66}\end{equation}
+\item \textbf{Translation} (shift in space/time):
+\begin{equation}h(x)=f(x-x_0)\implies\widehat h_k=\mathrm e^{-\mathrm i\frac{2\pi}{L}kx_0}\widehat f_k,\quad\forall f\in L^1([0,L]),\forall x_0\in\mathbb R\tag{8.67}\end{equation}
+\item \textbf{Modulation} (shift in frequency):
+\begin{equation}h(x)=f(x)\mathrm e^{\mathrm i\frac{2\pi}{L}k_0x}\implies\widehat h_k=\widehat f_{k-k_0},\quad\forall f\in L^1([0,L]),\forall k_0\in\mathbb Z\tag{8.68}\end{equation}
+\item \textbf{Conjugation}:
+\begin{equation}h(x)=\overline{f(x)}\implies\widehat h_k=\overline{\widehat f_{-k}},\quad\forall f\in L^1([0,L])\tag{8.69}\end{equation}
+\item \textbf{Time/frequency reversal}:
+\begin{equation}h(x)=f(-x)\implies\widehat h_k=\widehat f_{-k},\quad\forall f\in L^1([0,L])\tag{8.70}\end{equation}
+\item \textbf{Discrete scaling}:
+\begin{equation}h(x)=f(sx)\implies\widehat h_k=\begin{cases}\frac1s\widehat f_{k/s},&k\text{ is a multiple of }s\\0,&\text{otherwise}\end{cases},\quad\forall f\in L^1([0,L]),\forall s\in\mathbb N_0\tag{8.71}\end{equation}
+\end{enumerate}
+In properties 2, 5 en 6, we furthermore assume that $f$ is extended periodically outside of $[0,L)$ in order to define $h$. For property 2, we could also have written $h(x)=f((x-x_0)\bmod L)$, which illustrates that this property is also periodic in $x_0$ with period $L$. For property 5, we could have defined $h(x)=f(L-x)$. For property 6, note the importance of the scale factor $s$ to be an integer, in order for $h(x)=f(sx)$ to also be a periodic function with period $L$ (although $h$ is actually periodic with smallest period $L/s$).
+\end{res}
+
+\begin{res}{Proposition}{8.15}
+The (periodic) convolution $f*g$ of two functions $f,g\in L^1([0,L])$ is again a function in $L^1([0,L])$.
+\end{res}
+
+\begin{res}{Proposition}{8.16}
+For functions $f,g\in L^1([0,L])$ and $h=f*g$, we find
+\begin{equation}h(x)=(f*g)(x)=\int_0^Lf(x-y\bmod L)g(y)\,\mathrm dy\implies\widehat h_k=\sqrt L\,\widehat f_k\widehat g_k.\tag{8.73}\end{equation}
+\end{res}
+
+\begin{res}{Theorem}{8.17}
+Consider a function $f\in L^1([0,L])$ and $f_n$ its approximation as a trigonometric polynomial in Eq.~(8.61). It holds that
+\begin{equation}f=\lim_{n\to\infty}\frac{f_0+f_1+\ldots+f_n}{n+1}=\lim_{n\to\infty}\tilde f_n=\lim_{n\to\infty}\hat Q_nf\tag{8.75}\end{equation}
+in 1-norm, i.e.\ $\lim_{n\to\infty}\left\|\tilde f_n-f\right\|_1=0$.
+\end{res}
+
+\begin{res}[Riemann-Lebesgue]{Lemma}{8.18}
+The Fourier coefficients of a function $f\in L^1([0,L])$ satisfy $\lim_{k\to\pm\infty}\widehat f_k=0$
+\end{res}
+
+\begin{res}{Theorem}{8.19}
+Consider a function $f\in L^2([0,L])$. The associated Fourier series satisfies
+\begin{equation}f=\lim_{n\to\infty}f_n=\lim_{n\to\infty}\frac1{\sqrt L}\sum_{k=-n}^{+n}\widehat f_k\mathrm e^{+\mathrm i\frac{2\pi}{L}kx}\tag{8.76}\end{equation}
+in 2-norm, i.e.\ $\lim_{n\to\infty}\|f_n-f\|_2=0$. The map between $f$ and its sequence of Fourier components is a unitary map from $L^2([0,L])$ to $\ell^2(\mathbb Z)$, with thus in particular
+\begin{equation}\|f\|_2=\int_0^L|f(x)|^2\,\mathrm dx=\sum_{k\in\mathbb Z}\left|\widehat f_k\right|^2=\left\|\widehat f\right\|_2.\tag{8.77}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.20}
+For $f\in C^p(\mathbb T^1_L)$, i.e.\ $f$ and all of its derivatives up to $f^{(p)}$ are continuous (and thus square integrable) on the circle of circumference $L$, we find
+\begin{equation}h(x)=f^{(p)}(x)\implies\widehat h_k=\left(\mathrm i\frac{2\pi}{L}k\right)^p\widehat f_k.\tag{8.80}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.21}
+If $f\in H^p([0,L])$ with $p>1/2$, which means that $\sum_{k\in\mathbb Z}|k|^{2p}\left|\widehat f_k\right|^2$ is finite, then the sequence of partial sums of the Fourier series of $f$ converges uniformly, and it holds that there is a constant $C_p$ such that
+\begin{equation}\|f_n-f\|_\infty\le\frac{C_p}{n^{p-1/2}}\left[\sum_{k\in\mathbb Z}|k|^{2p}\left|\widehat f_k\right|^2\right]^{1/2}.\tag{8.84}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.22}
+For $f,g\in L^2([0,L])$, the convolution $h=f*g$ is a continuous function with uniformly converging Fourier series.
+\end{res}
+
+\begin{res}{Proposition}{8.23}
+For functions $f,g\in C(\mathbb T_L)$ which are such that $\widehat f,\widehat g\in\ell^1(\mathbb Z)$, we find
+\begin{equation}h(x)=f(x)g(x)\implies\widehat h_k=\frac1{\sqrt L}(\widehat f*\widehat g)_k=\frac1{\sqrt L}\sum_{\ell\in\mathbb Z}\widehat f_{k-l}\widehat g_l.\tag{8.86}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.24}
+An integral operator on $L^2(I)$ with kernel $A:I\times I\to\mathbb C$ is bounded if $\int_I\int_I|A(x,y)|^2\,\mathrm dy\mathrm dx$ is finite.
+\end{res}
+
+\begin{res}{Proposition}{8.25}
+The multiplication operator $\hat M_h=h(\hat X)$ is bounded if $\operatorname*{ess\,sup}_{x\in I}|h(x)|$ is finite.
+\end{res}
+
+\begin{res}{Proposition}{8.26}
+Differential operators on $L^2(I)$ are always unbounded.
+\end{res}
+
+\begin{res}{Proposition}{8.27}
+Consider two bounded operators $\hat A$ and $\hat B$ on a Hilbert space $H$; the commutator $\hat C=\hat A\hat B-\hat B\hat A=[\hat A,\hat B]$ cannot equal the identity operator.
+\end{res}
+
+\begin{res}{Proposition}{8.28}
+For a densely defined unbounded operator $\hat A$ on a Hilbert space $A$ with domain $\mathcal D_{\hat A}$, there exits an adjoint operator $\hat A^\dagger$ such that
+\begin{equation}\langle w,\hat Av\rangle=\langle\hat A^\dagger w,v\rangle,\quad\forall v\in\mathcal D_{\hat A},w\in\mathcal D_{\hat A^\dagger}.\tag{8.105}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.29}
+For two densely defined operators $\hat A$, $\hat B$ on a Hilbert space $H$, it holds that
+\begin{equation}\hat A\subset\hat B\implies\hat B^\dagger\subset\hat A^\dagger.\tag{8.106}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.30}
+Consider a densely defined operator $\hat A$ on $H$, for which also $\hat A^\dagger$ is densely defined. We can then also define $\hat A^{\dagger\dagger}$, and it holds that $\hat A\subset\hat A^{\dagger\dagger}$.
+\end{res}
+
+\begin{res}{Proposition}{8.31}
+If a densely defined operator $\hat A$ is symmetric, then $\hat A^\dagger$ is densely defined and it holds that
+\begin{equation}\hat A\subset\hat A^{\dagger\dagger}\subset\hat A^\dagger.\tag{8.108}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{8.32}
+A linear combination of compact operators is compact.
+\end{res}
+
+\begin{res}{Proposition}{8.33}
+The composition of a compact operator with a bounded operator is compact.
+\end{res}
+
+\begin{res}{Proposition}{8.34}
+The adjoint of a compact operator is compact.
+\end{res}
+
+\begin{res}{Proposition}{8.35}
+If a sequence $(\hat A_n)_{n\in\mathbb N_0}$ of compact operators $\hat A_n$ has a limit $\lim_{n\to\infty}\hat A_n=\hat A$ (with respect to the induced operator norm), then $\hat A$ is compact.
+\end{res}
+
+\begin{res}{Proposition}{8.36}
+Any Hilbert-Schmidt operator is compact.
+\end{res}
+
+\begin{res}{Lemma}{8.37}
+A self-adjoint compact operator necessarily has a real eigenvalue $\lambda$ equal to plus or minus $\|A\|$.
+\end{res}
+
+\begin{res}{Theorem}{8.38}
+A compact self-adjoint operator admits a spectral decomposition
+\begin{equation}\hat A=\sum_n\lambda_n\hat P_{\lambda_n}\tag{8.116}\end{equation}
+which provides a direct sum decomposition of the Hilbert space
+\begin{equation}H=V_0\bigoplus_nV_{\lambda_n}.\tag{8.117}\end{equation}
+Here, $V_0=\ker(\hat A)$ is the kernel of $\hat A$ (which can be infinite dimensional). We have not denoted the summation limits of $n$ which labels the non-zero eigenvalues $\lambda_n$, as this can be an infinite (but countable) or finite range. It furthermore holds that $|\lambda_n|$ is non-increasing and, when it is an infinite sequence, $\lim_{n\to\infty}|\lambda_n|=0$.
+\end{res}
+
+\begin{res}{Theorem}{8.39}
+For a compact operator $\hat A$, there exists a non-increasing sequence $(\sigma_n)_{n\in\mathbb N_0}$ of nonnegative numbers $\sigma_n\ge0$ with associated vectors $u_n$ and $v_n$ satisfying
+\begin{equation}\hat Au_n=\sigma_nv_n,\qquad\hat A^\dagger v_n=\sigma_nu_n,\tag{8.118}\end{equation}
+so that the action of $\hat A$ on a general vector can then be written as
+\begin{equation}\hat Aw=\sum_n\sigma_nu_n\langle v_n,w\rangle.\tag{8.119}\end{equation}
+Furthermore, if the number of terms is infinite, then $\lim_{n\to\infty}\sigma_n=0$. This representation is known as the \textbf{Schmidt decomposition}.
+\end{res}
+
+\begin{res}{Proposition}{8.40}
+The resolvent set is an open set.
+\end{res}
+
+\begin{res}{Proposition}{8.41}
+For a self-adjoint operator $\hat A$, it holds that $\sigma^{(\mathrm r)}_{\hat A}=\emptyset$ and $\sigma_{\hat A}=\sigma^{(\mathrm p)}_{\hat A}\cup\sigma^{(\mathrm c)}_{\hat A}\subseteq\mathbb R$.
+\end{res}
+
+\begin{res}{Proposition}{8.42}
+For a self-adjoint operator $\hat A$ on a separable Hilbert space $H$, the point spectrum $\sigma^{(\mathrm p)}_{\hat A}$ must be countable.
+\end{res}

@@ -1,0 +1,156 @@
+\section{Linear Differential Operators}
+
+\begin{res}{Proposition}{10.1}
+Let $\hat A$ be a densely defined operator on a Hilbert space $H$. For all $v\in\mathcal R_{\hat A}$ and all $w\in\ker(\hat A^\dagger)$, it holds that $\langle w,v\rangle=0$.
+\end{res}
+
+\begin{res}[Fredholm alternative]{Theorem}{10.2}
+For a certain class of operators $\hat A$ on a Hilbert space $H$, a solution to the linear problem $\hat Au=v$ exists if and only if $v\perp\ker(\hat A^\dagger)$.
+\end{res}
+
+\begin{res}{Proposition}{10.3}
+Functions $u,v\in L^2([a,b])$ with square integrable $p$th derivatives satisfy the \textbf{Lagrange identity}
+\begin{equation}\overline{v(x)}(\hat Lu)(x)-\overline{(\hat L^\dagger v)(x)}u(x)=\frac{\mathrm d}{\mathrm dx}J(u(x),v(x))\tag{10.15}\end{equation}
+where we have introduced the \textbf{bilinear concomitant} (it actually is sesquilinear)
+\begin{equation}J(u(x),v(x))=\sum_{j=0}^p\sum_{k=0}^{j-1}(-1)^k\left(\frac{\mathrm d^k}{\mathrm dx^k}\bigl[a_j(x)\overline{v(x)}\bigr]\right)\left(\frac{\mathrm d^{j-1-k}}{\mathrm dx^{j-1-k}}u(x)\right).\tag{10.16}\end{equation}
+\end{res}
+
+\begin{res}{Corollary}{10.4}
+These functions $u,v$ then also satisfy the \textbf{Green identity}
+\begin{equation}\langle v,\hat Lu\rangle-\left\langle\hat L^\dagger v,u\right\rangle=J(u(x),v(x))\Big|_a^b=J(u(x),v(x))\Big|_{x=b}-J(u(x),v(x))\Big|_{x=a}.\tag{10.17}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.5}
+A real second order differential operator is formally self-adjoint on $L^2_w([a,b])$ if and only if it takes the form of a \textbf{Sturm-Liouville operator}
+\begin{equation}(\hat Lu)(x)=-\frac1{w(x)}\frac{\mathrm d}{\mathrm dx}\left(p(x)\frac{\mathrm d}{\mathrm dx}u(x)\right)+\frac{q(x)}{w(x)}u(x).\tag{10.26}\end{equation}
+\end{res}
+
+\begin{res}{Corollary}{10.6}
+Consider a real second order differential operator $\hat L$ (as given in Eq.~(10.25) with $a_2(x)\ne0$ for all $x\in[a,b]$. There exists a weight function $w(x)>0$ so that $\hat L$ is a formally self-adjoint operator in $L^2_w([a,b])$.
+\end{res}
+
+\begin{res}{Proposition}{10.7}
+A regular Sturm-Liouville operator is self-adjoint when imposing \textbf{separated boundary conditions}
+\begin{equation}\mathsf B\boldsymbol x=\begin{bmatrix}\alpha_1&\alpha_2&0&0\\0&0&\beta_1&\beta_2\end{bmatrix}\begin{bmatrix}u(a)\\u'(a)\\u(b)\\u'(b)\end{bmatrix}=\boldsymbol 0\iff\begin{cases}\alpha_1u(a)+\alpha_2u'(a)=0\\\beta_1u(b)+\beta_2u'(b)=0\end{cases}.\tag{10.34}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.8}
+A regular Sturm-Liouville operator with $p(a)=p(b)$ is self-adjoint when imposing \textbf{periodic boundary conditions}
+\begin{equation}\mathsf B\boldsymbol x=\begin{bmatrix}1&0&-1&0\\0&1&0&-1\end{bmatrix}\begin{bmatrix}u(a)\\u'(a)\\u(b)\\u'(b)\end{bmatrix}=\boldsymbol 0\iff\begin{cases}u(a)=u(b)\\u'(a)=u'(b)\end{cases}\tag{10.35}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.9}
+The solution to the homogeneous first-order vector valued initial value problem in Eq.~(10.38) is given by
+\begin{equation}\boldsymbol z(t)=\sum_{n=0}^{+\infty}(\hat{\mathsf K}^n\boldsymbol\zeta)(t)=\sum_{n=0}^{+\infty}\int_c^t\mathrm dt_1\int_c^{t_1}\mathrm dt_2\cdots\int_c^{t_{n-1}}\mathrm dt_n\,\mathsf A(t_1)\mathsf A(t_2)\cdots\mathsf A(t_n)\boldsymbol\zeta\tag{10.46}\end{equation}
+where, in order to apply the integral operator $\hat{\mathsf K}$ and powers thereof to the vector $\boldsymbol\zeta$, we need to interpret it as the constant vector-valued function $t\mapsto\boldsymbol\zeta$ for $t\in[a,b]$.
+\end{res}
+
+\begin{res}{Proposition}{10.10}
+Let $\{\boldsymbol z_i:[a,b]\to\mathbb F^p;i=1,\dots,r\}$ be a set of solutions of the homogeneous first-order differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ without boundary conditions, and denote the set of vectors $S(t)=\{\boldsymbol z_1(t),\dots,\boldsymbol z_r(t)\}$ obtained by evaluating the solutions at time $t$. The set of vectors $S(t_0)$ at a particular time $t_0$ is linearly independent if and only if $S(t)$ is linearly independent for any other time $t$.
+\end{res}
+
+\begin{res}{Proposition}{10.11}
+The homogeneous first-order vector-valued differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ without boundary conditions, where $\boldsymbol z(t)\in\mathbb F^p$, admits exactly $p$ linearly independent solutions, with respect to which any solution can be expanded.
+\end{res}
+
+\begin{res}[Liouville]{Theorem}{10.12}
+Any matrix (function) satisfying $\dot{\mathsf Z}(t)=\mathsf A(t)\mathsf Z(t)$ satisfies
+\begin{equation}\det\bigl(\mathsf Z(t)\bigr)=\det\bigl(\mathsf Z(c)\bigr)\exp\left[\int_c^t\operatorname{tr}\bigl(\mathsf A(\tau)\bigr)\,\mathrm d\tau\right].\tag{10.57}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.13}
+Any two fundamental solution matrices $\mathsf Z(t)$ and $\tilde{\mathsf Z}(t)$ of the differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ are related by a constant matrix via
+\begin{equation}\tilde{\mathsf Z}(t)=\mathsf Z(t)\mathsf C\tag{10.60}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.14}
+The principal fundamental matrix $\mathsf Z$ satisfies the following properties:
+\begin{enumerate}
+\item The solution of $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ satisfying the initial condition $\boldsymbol z(t_0)=\boldsymbol\zeta$ is given by
+\begin{equation}\boldsymbol z(t)=\mathsf Z(t,t_0)\boldsymbol\zeta.\tag{10.62}\end{equation}
+\item For any other fundamental matrix $\tilde{\mathsf Z}$, it holds that $\mathsf Z(t,t_0)=\tilde{\mathsf Z}(t)\tilde{\mathsf Z}(t_0)^{-1}$.
+\item The principal fundamental matrix satisfies the \textbf{stationarity property}
+\begin{equation}\mathsf Z(t_2,t_1)\mathsf Z(t_1,t_0)=\mathsf Z(t_2,t_0)\tag{10.63}\end{equation}
+and thus in particular $\mathsf Z(t_0,t_1)=\mathsf Z(t_1,t_0)^{-1}$.
+\item $\det(\mathsf Z(t,t_0))=\exp\left[\int_{t_0}^t\operatorname{tr}(\mathsf A(\tau))\,\mathrm d\tau\right]$
+\end{enumerate}
+\end{res}
+
+\begin{res}{Proposition}{10.15}
+If the set of functions $\{u_i;i=1,\dots,p\}$ corresponds to a set of solutions of $\sum_{j=0}^pa_j(t)u^{(j)}(t)=0$ (with $a_p(t)\ne0$), then the associated Wronskian satisfies \textbf{Abel's formula}
+\begin{equation}W(t)=W(t_0)\mathrm e^{-\int_{t_0}^t\frac{a_{p-1}(\tau)}{a_p(\tau)}\mathrm d\tau}.\tag{10.67}\end{equation}
+\end{res}
+
+\begin{res}{Proposition}{10.16}
+Let $u$ be a solution of $a_2(t)\ddot u(t)+a_1(t)\dot u(t)+a_0(t)u(t)=0$. A linearly independent solution $v(t)$ is given by
+\begin{equation}v(t)=u(t)\int_{t_0}^t\frac1{p(\tau)u(\tau)^2}\,\mathrm d\tau.\tag{10.68}\end{equation}
+where $p(t)$ is defined (up to a constant factor) by $\frac{\mathrm d}{\mathrm dt}\log p(t)=\frac1{p(t)}\frac{\mathrm d}{\mathrm dt}p(t)=\frac{a_1(t)}{a_2(t)}$.
+\end{res}
+
+\begin{res}[Floquet]{Theorem}{10.17}
+For a homogenous first order differential equation with $\mathsf A(t+T)=\mathsf A(t)$, every fundamental matrix can be expressed as
+\begin{equation}\mathsf Z(t)=\mathsf Q(t)\mathrm e^{\mathsf Bt}\tag{10.70}\end{equation}
+where $\mathsf Q(t)=\mathsf Q(t+T)$ is a periodic and $\mathsf B$ is constant.
+\end{res}
+
+\begin{res}{Proposition}{10.18}
+The inhomogeneous initial value problem given in Eq.~(10.74) admits a unique solution given by
+\begin{equation}\boldsymbol z(t)=\mathsf Z(t,t_0)\boldsymbol\zeta+\int_{t_0}^t\mathsf Z(t,\tau)\boldsymbol b(\tau)\,\mathrm d\tau.\tag{10.76}\end{equation}
+\end{res}
+
+\begin{res}{Theorem}{10.19}
+If $\mathsf A(t)$ and $\boldsymbol b(t)$ are analytic (admit a Taylor expansion with a nonzero convergence radius) around some point $t_0$, then the solution $\boldsymbol z(t)$ of the inhomogeneous first order problem in Eq.~(10.74) is also analytic around $t_0$.
+\end{res}
+
+\begin{res}{Corollary}{10.20}
+Any fundamental matrix $\mathsf Z(t)$ of the first order differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ with $\mathsf A(t)$ analytic in $[a,b]$, will be analytic for all $t\in[a,b]$.
+\end{res}
+
+\begin{res}{Corollary}{10.21}
+The solution $u(t)$ of the initial value problem in Eq.~(10.36) is analytic around $t=c$ if each of the coefficients $a_j(t)$ for $j=0,\dots,p$ and the right-hand side $f(t)$ are analytic around $t=c$, and furthermore $a_p(c)\ne0$.
+\end{res}
+
+\begin{res}{Proposition}{10.22}
+Consider the first order homogeneous differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ where $\mathsf A(t)$ is analytic in $(0,\rho)$ but has a singularity at $t=0$. The fundamental solution matrix is an analytic function of $(\log t)$ for $t\in(0,\rho)$.
+\end{res}
+
+\begin{res}{Theorem}{10.23}
+Consider a first order homogeneous differential equation $\dot{\boldsymbol z}(t)=\mathsf A(t)\boldsymbol z(t)$ for which $t=0$ is a regular singular point. Any fundamental matrix solution takes the form $\mathsf Z(t)=\mathsf X(t)\mathrm e^{\mathsf B\log t}=\mathsf X(t)t^{\mathsf B}$ where $\mathsf X(t)$ admits a converging Taylor series expansion at $t=0$. If the spectrum of $\mathsf A_{-1}$ is such that no two distinct eigenvalues $\lambda_i\ne\lambda_j$ satisfy $\lambda_i-\lambda_j\in\mathbb Z$, then a fundamental matrix exists where $\mathsf X(0)=\mathsf I$ and $\mathsf B=\mathsf A_{-1}$.
+\end{res}
+
+\begin{res}{Theorem}{10.24}
+Consider the boundary value problem $(\hat Lu)(x)=f(x)$ on the interval $[a,b]$, with $\hat L$ the $p$th order linear differential operator in Eq.~(10.7) and with boundary conditions $B_i[u]=\gamma_i$ for $i=1,\dots,p$ which are such that the solution $u_\gamma$ exits and is unique for all $\gamma_i$. For all $\xi\in[a,b]$, there exists a function $g_\xi(x)$, known as the \textbf{Green's function}, so that the solution $u_f$ satisfying the inhomogeneous differential equation with homogeneous boundary conditions can be written as
+\begin{equation}u_f(x)=\int_a^bg_\xi(x)f(\xi)\,\mathrm d\xi\tag{10.113}\end{equation}
+where $g_\xi(x)$ is completely specified by the conditions that for all $\xi\in(a,b)$
+\begin{itemize}
+\item $B_i[g_\xi]=0$ for $i=1,\dots,p$;
+\item $(\hat Lg_\xi)(x)=0$ for $x\in(a,\xi)$ and $x\in(\xi,b)$;
+\item $g_\xi(x)$ and its derivatives $g_\xi^{(j)}(x)$ for $j\le p-2$ are continuous at $x=\xi$;
+\item $g_\xi^{(p-1)}(x)$ is discontinuous at $x=\xi$ and satisfies the `jump condition'
+\begin{equation}g_\xi^{(p-1)}(\xi^+)-g_\xi^{(p-1)}(\xi^-)=\frac1{a_p(\xi)}.\tag{10.114}\end{equation}
+\end{itemize}
+\end{res}
+
+\begin{res}{Theorem}{10.25}
+For the regular Sturm-Liouville eigenvalue problem in Definition 10.4.1, the following properties hold:
+\begin{enumerate}
+\item The (point) spectrum of $\hat L$ corresponds to an infinite sequence of real numbers $\lambda_0<\lambda_1<\lambda_2<\ldots<\lambda_n<\ldots$, with some finite lower bound $-\infty<M<\lambda_0$ and $\lim_{n\to\infty}\lambda_n=+\infty$
+\item For every eigenvalue $\lambda_n$, there is exactly one (linearly independent) eigenvector $u_n(x)$.
+\item Eigenvectors corresponding to different eigenvalues are orthogonal with respect to the weighted inner product of $L^2_w([a,b])$.
+\item The eigenvectors $\{u_n,n\in\mathbb N\}$ form a complete orthonormal basis.
+\end{enumerate}
+\end{res}
+
+\begin{res}{Theorem}{10.26}
+For functions $u\in\mathcal D_{\hat L}$, i.e.\ $u$ is continuous, differentiable and satisfies the boundary conditions, then the convergence of $u(x)=\sum_{n=0}^{+\infty}\langle u_n,u\rangle_wu_n(x)$ is uniform.
+\end{res}
+
+\begin{res}[Oscillation]{Theorem}{10.27}
+The eigenfunction $u_n$ of the regular Sturm-Liouville eigenvalue problem in Definition 10.4.1 has exactly $n$ roots in $(a,b)$.
+\end{res}
+
+\begin{res}[Variational principle]{Theorem}{10.28}
+Given a regular Sturm-Liouville operator, consider a general function $u\in\mathcal D_{\hat L}$ (thus in particular satisfying the boundary conditions). It holds that the \textbf{Rayleigh quotient}
+\begin{equation}\mathcal R[u]=\frac{\langle u,\hat Lu\rangle_w}{\langle u,u\rangle_w}\tag{10.134}\end{equation}
+satisfies $\mathcal R[u]\ge\lambda_0$, with the inequality becoming an equality if $u\sim u_0$.
+\end{res}
