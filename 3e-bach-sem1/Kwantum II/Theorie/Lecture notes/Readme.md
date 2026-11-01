@@ -1,0 +1,1 @@
+Deze lecture notes zijn van `The Cynical Philosopher`; ze zijn **publiek** te vinden op zijn [Youtube kanaal](https://www.youtube.com/@TheCynicalPhilosopher), meestal bij de beschrijving van de specifieke video.

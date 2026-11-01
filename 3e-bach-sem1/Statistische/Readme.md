@@ -1,5 +1,32 @@
 # Statistische Fysica (Statistical Physics)
 
+
+## Examenstof
+
+- H7:
+  - 7.2.1
+  - 7.2.3
+
+## Verzameling van de afleidingen:
+ - H7:
+    - 7.2.1:
+      - Gesloten uitdrukking voor gemiddelde waarde \(\bar{h}\) Eq. (7.3)
+    - 7.2.3:
+      - De drukvergelijking Eq. (7.18)
+  - H8:
+    - 8.3:
+      - Partitiefunctie van een ideaal kwantumgas Eq. (8.13) ? (klein)
+    - 8.4:
+      - Bewijs positief definitiet van dichtheidsmatrix Eq. (8.25)
+      - Equivalent Liouville (tijdsevolutie vd faseruimtedichtheid) Eq. (8.26-8.27)
+  - H9:
+    - 9.2:
+      - Afleiding partititiefunctie fotonengas
+   - 9.3:
+      - Afleiding Stralingswet van Planck
+      - Wet van Stefan-Boltzmann
+      - Vrije energie en druk van fotonengas
+
 > ### 📝 Tips Oefeningenexamen (Notities uit de werkcolleges)
 >
 > Op het examen wordt vaak gepeild naar volgende situaties:
