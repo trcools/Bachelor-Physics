@@ -85,9 +85,51 @@
 \begin{abstract}
 
 \end{abstract}
-
+\section{H1}
+\section{H2}
+\section{H3}
+\section{H4}
 \textbf{4.5 changing location of the branch of log(z)}
 
 Eigenlijk alles van de argument functie nog eens bekijken!
+
+\section{H5}
+\section{H6}
+\subsection{6.1}
+Allemaal herhaling buiten:
+\[Res(f;z_0) = \frac{P(z_0)}{Q'(z_0)}\]
+waarbij $f(z) = \frac{P(z)}{Q(z)}$ en $z_0$ een enkelvoudige pool is. (beide \(P(z)\) en \(Q(z)\) zijn analytisch in een omgeving van \(z_0\)).
+\subsection{6.2}
+\subsection{6.3}
+
+\textbf{Methodiek van oneigenlijke integralen via de Residustelling}
+
+De keuze voor deze specifieke contour en de bijbehorende afschattingen vormen de standaardmethode om oneigenlijke reële integralen op te lossen via complexe analyse. Hieronder worden de stappen uit het voorbeeld conceptueel verduidelijkt.
+
+\subsubsection*{1. De keuze van de contour en de uitgesloten polen}
+Om de integraal over de reële as te berekenen (van $-\infty$ tot $\infty$), is een gesloten pad (contour) vereist om de Residustelling te kunnen toepassen.
+\begin{itemize}
+    \item Omdat de reële as zelf geen gesloten pad is, wordt de contour gesloten door er in het complexe vlak een halve cirkel $C_\rho^+$ aan toe te voegen.
+    \item Volgens conventie trekt men deze boog door het bovenste halfvlak. De reële as van $-\rho$ tot $\rho$ vormt dan samen met de boog $C_\rho^+$ de gesloten D-vormige contour $\Gamma_\rho$.
+    \item Omdat deze D-vorm zich uitsluitend in de bovenste helft van het complexe vlak bevindt, liggen alleen de singulariteiten met een positief imaginair deel ($z_1$ en $z_2$) binnen de contour.
+    \item De onderste twee polen ($z_3$ en $z_4$) doen in deze berekening niet mee simpelweg omdat ze buiten het gekozen integratiepad vallen. Men had er ook voor kunnen kiezen om de contour via het onderste halfvlak te sluiten. In dat geval worden $z_3$ en $z_4$ ingesloten en vallen $z_1$ en $z_2$ erbuiten. Dit zou (na correctie voor de draairichting, aangezien met de klok mee integreren een minteken introduceert) exact hetzelfde eindantwoord opleveren.
+\end{itemize}
+
+\subsubsection*{2. Het doel van de afschattingen in (6.92) en (6.93)}
+De Residustelling berekent de integraal over de \textit{volledige} gesloten contour $\Gamma_\rho$. Het doel van de oefening is echter uitsluitend de integraal over de reële as. Daarom moet wiskundig bewezen worden dat de bijdrage van het pad over de boog $C_\rho^+$ verdwijnt wanneer de straal $\rho$ naar oneindig nadert.
+\begin{itemize}
+    \item \textbf{Vergelijking (6.92)} maakt gebruik van de omgekeerde driehoeksongelijkheid om de maximale waarde van de integrandum op de boog af te schatten: de absolute waarde van de noemer $|z^4 + 4|$ is altijd groter dan of gelijk aan $\rho^4 - 4$. Hierdoor is de gehele breuk maximaal $\frac{1}{\rho^4 - 4}$.
+    \item \textbf{Vergelijking (6.93)} past vervolgens de zogenaamde ML-ongelijkheid (Maximum $\times$ Lengte) toe. De integraal over de boog wordt naar boven begrensd door de maximale functiewaarde (bepaald in 6.92) te vermenigvuldigen met de lengte van het pad, in dit geval de halve cirkelboog met lengte $\pi \rho$.
+    \item Aangezien de breuk $\frac{\pi \rho}{\rho^4 - 4}$ voor $\rho \to \infty$ naar nul convergeert (de noemer groeit veel sneller dan de teller), is hiermee sluitend bewezen dat het integreren over deze oneindig grote boog niets toevoegt aan het eindresultaat van de reële integraal.
+\end{itemize}
+
+\subsubsection*{3. De gelijkstelling van $I$ aan $I_\rho$ in (6.98)}
+\begin{itemize}
+    \item De gesloten contourintegraal over $\Gamma_\rho$ is gelijk aan de som van $I_\rho$ (het eindige deel over de reële as) en de integraal over de complexe boog.
+    \item Neemt men de limiet van $\rho \to \infty$, dan evalueert de integraal over de boog naar $0$ (zoals bewezen in 6.93). Tegelijkertijd transformeert de eindige integraal $I_\rho$ naar de gevraagde oneigenlijke integraal $I$.
+\end{itemize}
+
+\section{H7}
+
 
 \end{document}
