@@ -1,16 +1,34 @@
 # Statistische Fysica (Statistical Physics)
 
-
 ## Examenstof
+i) Hoofdstuk 1 tot en met Hoofdstuk 6: volledig + artikel "Negative Absolute Temperatures"
+ii) Hoofdstuk 7: paragraaf 7.1, paragraaf 7.2.1 en paragraaf 7.2.3
+iii) Hoofdstuk 8 tot en met Hoofdstuk 10: volledig buiten paragraaf 10.5
+iv) Hoofdstukken 11 en 12: volledig
+v) Hoofdstuk 13: paragrafen 13.1, 13.2, 13.3
+vi) Appendix A en Appendix B
 
-- H7:
-  - 7.2.1
-  - 7.2.3
 
 ## Verzameling van de afleidingen:
+ - H2:
+    - 2.3:
+      - Afleiding, equivalente definitie entropie Eq. (2.11)
+      - Eigenschappenn van Entropie
+    - 2.4:
+      - Schottky defecten in functie van temperatuur
+    - 2.5:
+      - Veralgemeend equipartitie theorema Eq. (2.41)
+      - Viriaal theorema Eq. (2.49)
+    - 2.6:
+      - Theorema van Liouville Eq. (2.60) - Eq. (2.60)
+      - Gevolgen van Liouville theorema
+    - 2.7:
+      - Systeem in warmtebad theorie Pg. (30-33)
+      - Veralgemening entropie
+
  - H7:
     - 7.2.1:
-      - Gesloten uitdrukking voor gemiddelde waarde \(\bar{h}\) Eq. (7.3)
+      - Gesloten uitdrukking voor gemiddelde waarde $\bar{h}$ Eq. (7.3)
     - 7.2.3:
       - De drukvergelijking Eq. (7.18)
   - H8:
