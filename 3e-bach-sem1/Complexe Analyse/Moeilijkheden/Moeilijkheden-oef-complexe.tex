@@ -576,7 +576,8 @@ Ergens geraakt, dan geen zin meer.
 
 \subsection{Zero's and singularities}
 \section{Oefeningen Hoofdstuk 6}
-\subsubsection{The Residuee Theorem}
+\subsection{The Residuee Theorem}
+\subsubsection{Oefening 1}
 a) gelukt\\
 b) gelukt\\
 c) gelukt\\
@@ -593,4 +594,118 @@ e), f) en g) nog te doen\\
 \subsubsection{Oefening 3}
 Gelukt denk ik, maar nog te verbeteren.\\
 \subsection{Trigonometric Integrals over [0, 2\(pi\)]}
+\subsubsection{Oefening 1}
+a)
+\begin{align*}
+I &= \int_0^{2\pi} \frac{d\theta}{2 + \sin\theta} \\
+&= \oint_{|z|=1} \frac{1}{2 + \frac{z^2 - 1}{2iz}} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{2}{4iz + z^2 - 1} dz \\
+&= \oint_{|z|=1} \frac{2}{z^2 + 4iz - 1} dz
+\end{align*}
+
+\text{Bepaal de poles van de noemer } $z^2 + 4iz - 1 = 0$:
+\begin{align*}
+z &= \frac{-4i \pm \sqrt{(4i)^2 - 4(1)(-1)}}{2} \\
+&= \frac{-4i \pm \sqrt{-12}}{2} \\
+&= i(-2 \pm \sqrt{3})
+\end{align*}
+
+\text{Poles bevinden zich op } $z_1 = i(-2+\sqrt{3})$ \text{ en } $z_2 = i(-2-\sqrt{3})$. \\
+\text{Enkel } $z_1$ \text{ ligt binnen de unit circle, aangezien } $|z_1| \approx 0.268 < 1$ \text{ en } $|z_2| \approx 3.732 > 1$. \\
+
+\text{Bereken de residue voor de simple pole } $z_1$:
+\begin{align*}
+\text{Res}(f, z_1) &= \lim_{z \to z_1} (z - z_1) \frac{2}{(z-z_1)(z-z_2)} \\
+&= \frac{2}{z_1 - z_2} \\
+&= \frac{2}{i(-2+\sqrt{3}) - i(-2-\sqrt{3})} \\
+&= \frac{2}{2i\sqrt{3}} = \frac{1}{i\sqrt{3}}
+\end{align*}
+
+\text{Pas Cauchy's Residue Theorem toe:}
+\begin{align*}
+I &= 2\pi i \sum \text{Res}(f, z_k) \\
+&= 2\pi i \left( \frac{1}{i\sqrt{3}} \right) \\
+&= \frac{2\pi}{\sqrt{3}}
+\end{align*}
+
+Na aantal keer misrekenen heb ik dit eindelijk gevonden! (correct)\\
+b) nog te doen\\
+c) nog te doen\\
+d)
+\begin{align*}
+I &= \int_{-\pi}^{\pi} \frac{d\theta}{1 + \sin^2 \theta} \\
+\text{Substitueer } z &= e^{i\theta} \implies d\theta = \frac{dz}{iz} \text{ en } \sin \theta = \frac{z - z^{-1}}{2i} \\
+I &= \oint_{|z|=1} \frac{1}{1 + \left(\frac{z - z^{-1}}{2i}\right)^2} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{1}{1 - \frac{z^2 - 2 + z^{-2}}{4}} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{4z}{6z^2 - z^4 - 1} \frac{dz}{i} \\
+&= \oint_{|z|=1} \frac{4iz}{z^4 - 6z^2 + 1} dz
+\end{align*}
+
+\text{Bepaal de poles door de noemer nul te stellen via } $u = z^2$: \\
+\begin{align*}
+u^2 - 6u + 1 = 0 \implies u = 3 \pm 2\sqrt{2}
+\end{align*}
+
+\text{Dit resulteert in vier simple poles in het complexe vlak:} \\
+\begin{align*}
+z_{1,2} &= \pm \sqrt{3 - 2\sqrt{2}} = \pm (\sqrt{2} - 1) \\
+z_{3,4} &= \pm \sqrt{3 + 2\sqrt{2}} = \pm (\sqrt{2} + 1)
+\end{align*}
+
+\text{Enkel de poles met } $|z| < 1$ \text{ liggen binnen de unit circle, dit zijn uitsluitend } $z_1$ \text{ en } $z_2$. \\
+\text{Bereken de residues via de limiet van afgeleiden } $\text{Res}(f, a) = \frac{P(a)}{Q'(a)}$: \\
+\begin{align*}
+\text{Res}(f, a) &= \left. \frac{4iz}{4z^3 - 12z} \right|_{z=a} = \left. \frac{i}{z^2 - 3} \right|_{z=a}
+\end{align*}
+
+\text{Voor zowel } $z_1$ \text{ als } $z_2$ \text{ geldt exact } $z^2 = 3 - 2\sqrt{2}$: \\
+\begin{align*}
+\text{Res}(f, z_{1,2}) &= \frac{i}{(3 - 2\sqrt{2}) - 3} = -\frac{i}{2\sqrt{2}}
+\end{align*}
+
+\text{Pas Cauchy's Residue Theorem toe om te sommeren:} \\
+\begin{align*}
+I &= 2\pi i \sum \text{Res}(f, z_k) \\
+&= 2\pi i \left( -\frac{i}{2\sqrt{2}} - \frac{i}{2\sqrt{2}} \right) \\
+&= 2\pi i \left( -\frac{2i}{2\sqrt{2}} \right) \\
+&= 2\pi i \left( -\frac{i}{\sqrt{2}} \right) = \frac{2\pi}{\sqrt{2}} = \pi\sqrt{2}
+\end{align*}
+Ik was slim genoeg om te zeggen dat \(1+\sin^2\theta = \cos^2\theta\) \textbf{RIP}\\
+e) nog niet gelukt\\
+f) nog te doen\\
+g) nog te doen\\
+h) nog te doen\\
+i) nog te doen\\
+j) mislukt!
+k) nog te doen\\
+\subsection{Improper Integrals of Certain Functions over $(-\infty, \infty)$}
+\subsubsection{Oefening 1}
+a) soort van, niet koosjer\\
+b) Achter 1u rekenen, kom ik 0 uit\dots \\
+Hier is het antwoord:
+\begin{align*}
+I &= \int_{-\infty}^{\infty} \frac{x^2}{(x^2 + 9)^2} dx \\
+\text{Definieer de complexe functie } & f(z) = \frac{z^2}{(z^2 + 9)^2} = \frac{z^2}{(z - 3i)^2(z + 3i)^2} \\
+\text{Poles bevinden zich op } & z = \pm 3i \text{ (beide poles of order 2).} \\
+\text{Kies contour } \Gamma & \text{ in de upper half-plane, omsluit enkel } z_0 = 3i. \\
+\text{Bereken de residue voor de pole of order 2 op } z_0 &= 3i: \\
+\text{Res}(f, 3i) &= \lim_{z \to 3i} \frac{d}{dz} \left[ (z - 3i)^2 \frac{z^2}{(z - 3i)^2(z + 3i)^2} \right] \\
+&= \lim_{z \to 3i} \frac{d}{dz} \left[ \frac{z^2}{(z + 3i)^2} \right] \\
+&= \lim_{z \to 3i} \frac{2z(z + 3i)^2 - z^2(2)(z + 3i)}{(z + 3i)^4} \\
+&= \lim_{z \to 3i} \frac{2z(z + 3i) - 2z^2}{(z + 3i)^3} \\
+&= \lim_{z \to 3i} \frac{6iz}{(z + 3i)^3} \\
+&= \frac{6i(3i)}{(3i + 3i)^3} = \frac{-18}{(6i)^3} = \frac{-18}{-216i} = \frac{1}{12i} = -\frac{i}{12} \\
+\text{Pas Cauchy's Residue Theorem toe:} \\
+\oint_{\Gamma} f(z) dz &= \int_{-R}^{R} f(x) dx + \int_{C_R} f(z) dz = 2\pi i \sum \text{Res} \\
+\text{Neem de limiet } R \to \infty, \text{ waarbij } \int_{C_R} f(z) dz \to 0: \\
+I &= 2\pi i \left( -\frac{i}{12} \right) = \frac{2\pi}{12} = \frac{\pi}{6}
+\end{align*}
+
+Aah oke, ik moest enkel de upper half-plane gebruiken, dus ik kom \(frac{-i}{12}\) uit.\\
+
+Zonder die ene conceptuele fout, had ik het correct.\\
+c) Fout, ik kom weeral 0 uit aAAAHHHH\\
+
+
+
 \end{document}
