@@ -706,6 +706,65 @@ Aah oke, ik moest enkel de upper half-plane gebruiken, dus ik kom \(frac{-i}{12}
 Zonder die ene conceptuele fout, had ik het correct.\\
 c) Fout, ik kom weeral 0 uit aAAAHHHH\\
 
+\subsubsection{Oefening 2}
+
+Om de integraal $\displaystyle \int_{-\infty}^{\infty} \frac{e^{2x}}{\cosh(\pi x)} \, dx$ exact op te lossen, integreren we de complexe functie $f(z) = \frac{e^{2z}}{\cosh(\pi z)}$ over een gesloten rechthoekige contour $C$ in het complexe vlak, met hoekpunten $z = \rho, \rho + i, -\rho + i,$ en $-\rho$.
+
+\vspace{0.3cm}
+\noindent \textbf{1. Polen en residu binnen de contour bepalen} \\
+De singulariteiten van $f(z)$ treden op wanneer de noemer nul is:
+\[ \cosh(\pi z) = 0 \]
+Omdat $\cosh(\pi z) = \cos(i\pi z)$, vinden we de nulpunten bij $i\pi z = \frac{\pi}{2} + k\pi$, oftewel $z = i\left(k + \frac{1}{2}\right)$ voor gehele getallen $k$. Binnen onze rechthoekige contour (waar het imaginaire deel $y$ tussen $0$ en $1$ ligt) ligt voor voldoende grote $\rho$ slechts één enkelvoudige pool, namelijk voor $k=0$:
+\[ z_0 = \frac{i}{2} \]
+
+\noindent We berekenen het residu in deze pool met behulp van de formule $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$ waarbij $g(z) = e^{2z}$ en $h(z) = \cosh(\pi z)$:
+\begin{align*}
+    h'(z) &= \pi \sinh(\pi z) \\
+    \text{Res}\left(f, \frac{i}{2}\right) &= \frac{e^{2(i/2)}}{\pi \sinh(\pi \cdot i/2)} = \frac{e^i}{\pi i \sin(\pi/2)} = \frac{e^i}{i\pi}
+\end{align*}
+
+\noindent Volgens de residustelling is de integraal over de volledige gesloten contour $C$ gelijk aan $2\pi i$ maal dit residu:
+\[ \oint_C f(z) \, dz = 2\pi i \left( \frac{e^i}{i\pi} \right) = 2e^i \]
+
+\vspace{0.3cm}
+\noindent \textbf{2. De contour opsplitsen en de limiet $\rho \to \infty$ nemen} \\
+We splitsen de lijnintegraal op over de vier zijden van de rechthoek en nemen de limiet $\rho \to \infty$:
+
+\begin{itemize}
+    \item \textbf{De onderkant ($z = x$, van $-\rho$ tot $\rho$):}
+    \[ \lim_{\rho \to \infty} \int_{-\rho}^{\rho} \frac{e^{2x}}{\cosh(\pi x)} \, dx = I \]
+    Dit is exact de integraal die we willen berekenen.
+
+    \item \textbf{De bovenkant ($z = x + i$, van $\rho$ tot $-\rho$):} \\
+    Hier is $dz = dx$. We substitueren $z$ in de integrand:
+    \[ f(x+i) = \frac{e^{2(x+i)}}{\cosh(\pi(x+i))} = \frac{e^{2x}e^{2i}}{\cosh(\pi x)\cosh(\pi i) + \sinh(\pi x)\sinh(\pi i)} \]
+    Omdat $\cosh(i\pi) = -1$ en $\sinh(i\pi) = 0$, vereenvoudigt de noemer tot $-\cosh(\pi x)$. Let bij het integreren op de looprichting (van $\rho$ naar $-\rho$):
+    \[ \int_{\rho}^{-\rho} \frac{e^{2x}e^{2i}}{-\cosh(\pi x)} \, dx = - \int_{-\rho}^{\rho} \frac{e^{2x}e^{2i}}{-\cosh(\pi x)} \, dx = e^{2i} \int_{-\rho}^{\rho} \frac{e^{2x}}{\cosh(\pi x)} \, dx \]
+    In de limiet $\rho \to \infty$ is deze bijdrage dus gelijk aan $e^{2i}I$.
+
+    \item \textbf{De linker- en rechterzijkant:} \\
+    Voor de rechterkant ($z = \rho + iy$) is de grootteorde van de integrand evenredig met $\frac{e^{2\rho}}{e^{\pi\rho}} = e^{(2-\pi)\rho}$. Aangezien $\pi \approx 3.14 > 2$, nadert deze exponentiële functie naar $0$ naarmate $\rho \to \infty$. De integrand op de linkerkant nadert eveneens naar $0$. Beide verticale zijden dragen in de limiet dus $0$ bij.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \textbf{3. Eindresultaat samenstellen} \\
+Als we de bijdragen van alle vier de zijden optellen en gelijkstellen aan de uitkomst van de residustelling, krijgen we:
+\begin{align*}
+    I + 0 + e^{2i}I + 0 &= 2e^i \\
+    I (1 + e^{2i}) &= 2e^i
+\end{align*}
+
+\noindent Door $I$ af te zonderen, verkrijgen we:
+\[ I = \frac{2e^i}{1 + e^{2i}} \]
+
+\noindent Om dit om te schrijven naar de gewenste vorm, delen we zowel de teller als de noemer door $e^i$:
+\[ I = \frac{2}{e^{-i} + e^i} = \frac{1}{\frac{e^i + e^{-i}}{2}} \]
+
+\noindent Gebruikmakend van de definitie van de cosinus, $\cos(\theta) = \frac{e^{i\theta} + e^{-i\theta}}{2}$, vinden we tot slot:
+\[ I = \frac{1}{\cos(1)} = \sec(1) \]
+\subsubsection{Oefening 3}
+Gelukt!
+\subsection{Improper integrals involving Trigonometric functions}
 
 
 \end{document}
