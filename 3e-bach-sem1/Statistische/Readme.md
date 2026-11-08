@@ -54,6 +54,7 @@ vi) Appendix A en Appendix B
 > **Wat we vanbuiten moeten kennen:**
 > In welke systemen (met welke variabelen) we welke eenheden we moeten maximaliseren of minimaliseren:
 > - **$(T,V,N)$-systeem**: $F = E - TS$ minimaliseren!
+> Thermische golflengte: $\lambda = \frac{h}{\sqrt{2\pi m k T}}$ **Vanbuiten kennen!**
 
 Lecture notes, computational simulations, problem sets, literature articles, and exam preparation for **Statistische Fysica** (3rd Bachelor Physics & Astronomy).
 
