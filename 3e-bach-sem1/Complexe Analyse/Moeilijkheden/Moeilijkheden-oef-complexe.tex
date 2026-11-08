@@ -576,7 +576,8 @@ Ergens geraakt, dan geen zin meer.
 
 \subsection{Zero's and singularities}
 \section{Oefeningen Hoofdstuk 6}
-\subsubsection{The Residuee Theorem}
+\subsection{The Residuee Theorem}
+\subsubsection{Oefening 1}
 a) gelukt\\
 b) gelukt\\
 c) gelukt\\
@@ -593,4 +594,203 @@ e), f) en g) nog te doen\\
 \subsubsection{Oefening 3}
 Gelukt denk ik, maar nog te verbeteren.\\
 \subsection{Trigonometric Integrals over [0, 2\(pi\)]}
+\subsubsection{Oefening 1}
+a)
+\begin{align*}
+I &= \int_0^{2\pi} \frac{d\theta}{2 + \sin\theta} \\
+&= \oint_{|z|=1} \frac{1}{2 + \frac{z^2 - 1}{2iz}} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{2}{4iz + z^2 - 1} dz \\
+&= \oint_{|z|=1} \frac{2}{z^2 + 4iz - 1} dz
+\end{align*}
+
+\text{Bepaal de poles van de noemer } $z^2 + 4iz - 1 = 0$:
+\begin{align*}
+z &= \frac{-4i \pm \sqrt{(4i)^2 - 4(1)(-1)}}{2} \\
+&= \frac{-4i \pm \sqrt{-12}}{2} \\
+&= i(-2 \pm \sqrt{3})
+\end{align*}
+
+\text{Poles bevinden zich op } $z_1 = i(-2+\sqrt{3})$ \text{ en } $z_2 = i(-2-\sqrt{3})$. \\
+\text{Enkel } $z_1$ \text{ ligt binnen de unit circle, aangezien } $|z_1| \approx 0.268 < 1$ \text{ en } $|z_2| \approx 3.732 > 1$. \\
+
+\text{Bereken de residue voor de simple pole } $z_1$:
+\begin{align*}
+\text{Res}(f, z_1) &= \lim_{z \to z_1} (z - z_1) \frac{2}{(z-z_1)(z-z_2)} \\
+&= \frac{2}{z_1 - z_2} \\
+&= \frac{2}{i(-2+\sqrt{3}) - i(-2-\sqrt{3})} \\
+&= \frac{2}{2i\sqrt{3}} = \frac{1}{i\sqrt{3}}
+\end{align*}
+
+\text{Pas Cauchy's Residue Theorem toe:}
+\begin{align*}
+I &= 2\pi i \sum \text{Res}(f, z_k) \\
+&= 2\pi i \left( \frac{1}{i\sqrt{3}} \right) \\
+&= \frac{2\pi}{\sqrt{3}}
+\end{align*}
+
+Na aantal keer misrekenen heb ik dit eindelijk gevonden! (correct)\\
+b) nog te doen\\
+c) nog te doen\\
+d)
+\begin{align*}
+I &= \int_{-\pi}^{\pi} \frac{d\theta}{1 + \sin^2 \theta} \\
+\text{Substitueer } z &= e^{i\theta} \implies d\theta = \frac{dz}{iz} \text{ en } \sin \theta = \frac{z - z^{-1}}{2i} \\
+I &= \oint_{|z|=1} \frac{1}{1 + \left(\frac{z - z^{-1}}{2i}\right)^2} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{1}{1 - \frac{z^2 - 2 + z^{-2}}{4}} \frac{dz}{iz} \\
+&= \oint_{|z|=1} \frac{4z}{6z^2 - z^4 - 1} \frac{dz}{i} \\
+&= \oint_{|z|=1} \frac{4iz}{z^4 - 6z^2 + 1} dz
+\end{align*}
+
+\text{Bepaal de poles door de noemer nul te stellen via } $u = z^2$: \\
+\begin{align*}
+u^2 - 6u + 1 = 0 \implies u = 3 \pm 2\sqrt{2}
+\end{align*}
+
+\text{Dit resulteert in vier simple poles in het complexe vlak:} \\
+\begin{align*}
+z_{1,2} &= \pm \sqrt{3 - 2\sqrt{2}} = \pm (\sqrt{2} - 1) \\
+z_{3,4} &= \pm \sqrt{3 + 2\sqrt{2}} = \pm (\sqrt{2} + 1)
+\end{align*}
+
+\text{Enkel de poles met } $|z| < 1$ \text{ liggen binnen de unit circle, dit zijn uitsluitend } $z_1$ \text{ en } $z_2$. \\
+\text{Bereken de residues via de limiet van afgeleiden } $\text{Res}(f, a) = \frac{P(a)}{Q'(a)}$: \\
+\begin{align*}
+\text{Res}(f, a) &= \left. \frac{4iz}{4z^3 - 12z} \right|_{z=a} = \left. \frac{i}{z^2 - 3} \right|_{z=a}
+\end{align*}
+
+\text{Voor zowel } $z_1$ \text{ als } $z_2$ \text{ geldt exact } $z^2 = 3 - 2\sqrt{2}$: \\
+\begin{align*}
+\text{Res}(f, z_{1,2}) &= \frac{i}{(3 - 2\sqrt{2}) - 3} = -\frac{i}{2\sqrt{2}}
+\end{align*}
+
+\text{Pas Cauchy's Residue Theorem toe om te sommeren:} \\
+\begin{align*}
+I &= 2\pi i \sum \text{Res}(f, z_k) \\
+&= 2\pi i \left( -\frac{i}{2\sqrt{2}} - \frac{i}{2\sqrt{2}} \right) \\
+&= 2\pi i \left( -\frac{2i}{2\sqrt{2}} \right) \\
+&= 2\pi i \left( -\frac{i}{\sqrt{2}} \right) = \frac{2\pi}{\sqrt{2}} = \pi\sqrt{2}
+\end{align*}
+Ik was slim genoeg om te zeggen dat \(1+\sin^2\theta = \cos^2\theta\) \textbf{RIP}\\
+e) nog niet gelukt\\
+f) nog te doen\\
+g) nog te doen\\
+h) nog te doen\\
+i) nog te doen\\
+j) mislukt!
+k) nog te doen\\
+\subsection{Improper Integrals of Certain Functions over $(-\infty, \infty)$}
+\subsubsection{Oefening 1}
+a) soort van, niet koosjer\\
+b) Achter 1u rekenen, kom ik 0 uit\dots \\
+Hier is het antwoord:
+\begin{align*}
+I &= \int_{-\infty}^{\infty} \frac{x^2}{(x^2 + 9)^2} dx \\
+\text{Definieer de complexe functie } & f(z) = \frac{z^2}{(z^2 + 9)^2} = \frac{z^2}{(z - 3i)^2(z + 3i)^2} \\
+\text{Poles bevinden zich op } & z = \pm 3i \text{ (beide poles of order 2).} \\
+\text{Kies contour } \Gamma & \text{ in de upper half-plane, omsluit enkel } z_0 = 3i. \\
+\text{Bereken de residue voor de pole of order 2 op } z_0 &= 3i: \\
+\text{Res}(f, 3i) &= \lim_{z \to 3i} \frac{d}{dz} \left[ (z - 3i)^2 \frac{z^2}{(z - 3i)^2(z + 3i)^2} \right] \\
+&= \lim_{z \to 3i} \frac{d}{dz} \left[ \frac{z^2}{(z + 3i)^2} \right] \\
+&= \lim_{z \to 3i} \frac{2z(z + 3i)^2 - z^2(2)(z + 3i)}{(z + 3i)^4} \\
+&= \lim_{z \to 3i} \frac{2z(z + 3i) - 2z^2}{(z + 3i)^3} \\
+&= \lim_{z \to 3i} \frac{6iz}{(z + 3i)^3} \\
+&= \frac{6i(3i)}{(3i + 3i)^3} = \frac{-18}{(6i)^3} = \frac{-18}{-216i} = \frac{1}{12i} = -\frac{i}{12} \\
+\text{Pas Cauchy's Residue Theorem toe:} \\
+\oint_{\Gamma} f(z) dz &= \int_{-R}^{R} f(x) dx + \int_{C_R} f(z) dz = 2\pi i \sum \text{Res} \\
+\text{Neem de limiet } R \to \infty, \text{ waarbij } \int_{C_R} f(z) dz \to 0: \\
+I &= 2\pi i \left( -\frac{i}{12} \right) = \frac{2\pi}{12} = \frac{\pi}{6}
+\end{align*}
+
+Aah oke, ik moest enkel de upper half-plane gebruiken, dus ik kom \(frac{-i}{12}\) uit.\\
+
+Zonder die ene conceptuele fout, had ik het correct.\\
+c) Fout, ik kom weeral 0 uit aAAAHHHH\\
+
+\subsubsection{Oefening 2}
+
+Om de integraal $\displaystyle \int_{-\infty}^{\infty} \frac{e^{2x}}{\cosh(\pi x)} \, dx$ exact op te lossen, integreren we de complexe functie $f(z) = \frac{e^{2z}}{\cosh(\pi z)}$ over een gesloten rechthoekige contour $C$ in het complexe vlak, met hoekpunten $z = \rho, \rho + i, -\rho + i,$ en $-\rho$.
+
+\vspace{0.3cm}
+\noindent \textbf{1. Polen en residu binnen de contour bepalen} \\
+De singulariteiten van $f(z)$ treden op wanneer de noemer nul is:
+\[ \cosh(\pi z) = 0 \]
+Omdat $\cosh(\pi z) = \cos(i\pi z)$, vinden we de nulpunten bij $i\pi z = \frac{\pi}{2} + k\pi$, oftewel $z = i\left(k + \frac{1}{2}\right)$ voor gehele getallen $k$. Binnen onze rechthoekige contour (waar het imaginaire deel $y$ tussen $0$ en $1$ ligt) ligt voor voldoende grote $\rho$ slechts één enkelvoudige pool, namelijk voor $k=0$:
+\[ z_0 = \frac{i}{2} \]
+
+\noindent We berekenen het residu in deze pool met behulp van de formule $\text{Res}(f, z_0) = \frac{g(z_0)}{h'(z_0)}$ waarbij $g(z) = e^{2z}$ en $h(z) = \cosh(\pi z)$:
+\begin{align*}
+    h'(z) &= \pi \sinh(\pi z) \\
+    \text{Res}\left(f, \frac{i}{2}\right) &= \frac{e^{2(i/2)}}{\pi \sinh(\pi \cdot i/2)} = \frac{e^i}{\pi i \sin(\pi/2)} = \frac{e^i}{i\pi}
+\end{align*}
+
+\noindent Volgens de residustelling is de integraal over de volledige gesloten contour $C$ gelijk aan $2\pi i$ maal dit residu:
+\[ \oint_C f(z) \, dz = 2\pi i \left( \frac{e^i}{i\pi} \right) = 2e^i \]
+
+\vspace{0.3cm}
+\noindent \textbf{2. De contour opsplitsen en de limiet $\rho \to \infty$ nemen} \\
+We splitsen de lijnintegraal op over de vier zijden van de rechthoek en nemen de limiet $\rho \to \infty$:
+
+\begin{itemize}
+    \item \textbf{De onderkant ($z = x$, van $-\rho$ tot $\rho$):}
+    \[ \lim_{\rho \to \infty} \int_{-\rho}^{\rho} \frac{e^{2x}}{\cosh(\pi x)} \, dx = I \]
+    Dit is exact de integraal die we willen berekenen.
+
+    \item \textbf{De bovenkant ($z = x + i$, van $\rho$ tot $-\rho$):} \\
+    Hier is $dz = dx$. We substitueren $z$ in de integrand:
+    \[ f(x+i) = \frac{e^{2(x+i)}}{\cosh(\pi(x+i))} = \frac{e^{2x}e^{2i}}{\cosh(\pi x)\cosh(\pi i) + \sinh(\pi x)\sinh(\pi i)} \]
+    Omdat $\cosh(i\pi) = -1$ en $\sinh(i\pi) = 0$, vereenvoudigt de noemer tot $-\cosh(\pi x)$. Let bij het integreren op de looprichting (van $\rho$ naar $-\rho$):
+    \[ \int_{\rho}^{-\rho} \frac{e^{2x}e^{2i}}{-\cosh(\pi x)} \, dx = - \int_{-\rho}^{\rho} \frac{e^{2x}e^{2i}}{-\cosh(\pi x)} \, dx = e^{2i} \int_{-\rho}^{\rho} \frac{e^{2x}}{\cosh(\pi x)} \, dx \]
+    In de limiet $\rho \to \infty$ is deze bijdrage dus gelijk aan $e^{2i}I$.
+
+    \item \textbf{De linker- en rechterzijkant:} \\
+    Voor de rechterkant ($z = \rho + iy$) is de grootteorde van de integrand evenredig met $\frac{e^{2\rho}}{e^{\pi\rho}} = e^{(2-\pi)\rho}$. Aangezien $\pi \approx 3.14 > 2$, nadert deze exponentiële functie naar $0$ naarmate $\rho \to \infty$. De integrand op de linkerkant nadert eveneens naar $0$. Beide verticale zijden dragen in de limiet dus $0$ bij.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \textbf{3. Eindresultaat samenstellen} \\
+Als we de bijdragen van alle vier de zijden optellen en gelijkstellen aan de uitkomst van de residustelling, krijgen we:
+\begin{align*}
+    I + 0 + e^{2i}I + 0 &= 2e^i \\
+    I (1 + e^{2i}) &= 2e^i
+\end{align*}
+
+\noindent Door $I$ af te zonderen, verkrijgen we:
+\[ I = \frac{2e^i}{1 + e^{2i}} \]
+
+\noindent Om dit om te schrijven naar de gewenste vorm, delen we zowel de teller als de noemer door $e^i$:
+\[ I = \frac{2}{e^{-i} + e^i} = \frac{1}{\frac{e^i + e^{-i}}{2}} \]
+
+\noindent Gebruikmakend van de definitie van de cosinus, $\cos(\theta) = \frac{e^{i\theta} + e^{-i\theta}}{2}$, vinden we tot slot:
+\[ I = \frac{1}{\cos(1)} = \sec(1) \]
+\subsubsection{Oefening 3}
+Gelukt!
+\subsection{Improper Integrals Involving Trigonometric Functions}
+\subsubsection{Oefening 1}
+a) Gelukt! (Ik kom het juiste antwoord uit)\\
+b) Ik kom er net niet, ik die hem wel nog eens opnieuw\\
+c) Ik kom het antwoord met een minteken uit...
+\subsubsection{Oefening 2}
+a) Ik kom \(\frac{2 \pi i}{e^6}\) uit.\\
+b) Ik heb \(\frac{2/pi}{3}[\cos 1 -\frac{1}{2}\cos 2]\) uit.\\
+c) Ik kom \(\frac{2 \pi i}{e^6}\) uit
+\subsection{Indented Contours}
+\subsubsection{Oefening 1}
+a) Ik kom \(\frac{\pi i}{2}\) uit.\\
+b) Ik kom \(\frac{3\pi i}{8}e^{3i}\) uit.\\
+c) 0?\\
+d) nog te doen\\
+\subsubsection{Oefening 2}
+a) Niet gevonden, ik kom \(\pi i e^{-2i}\) uit.\\
+Blijkbaar is dit correct!\\
+b) nog te doen\\
+c)
+\begin{figure}[ht!]
+    \includegraphics[width=0.55\textwidth]{figuren-voor-oef/H6-6.5-oef2-contour.jpg}
+    \caption{Contour voor oefening 6.5.2(c).}
+\end{figure}
+d) nog te doen\\
+e) nog te doen\\
+f) nog te doen\\
+\subsection{Integrals Involving Multivalued Functions}
+\subsubsection{Oefening 1}
 \end{document}

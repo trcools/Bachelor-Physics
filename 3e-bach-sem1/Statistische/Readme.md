@@ -1,16 +1,34 @@
 # Statistische Fysica (Statistical Physics)
 
-
 ## Examenstof
+i) Hoofdstuk 1 tot en met Hoofdstuk 6: volledig + artikel "Negative Absolute Temperatures"
+ii) Hoofdstuk 7: paragraaf 7.1, paragraaf 7.2.1 en paragraaf 7.2.3
+iii) Hoofdstuk 8 tot en met Hoofdstuk 10: volledig buiten paragraaf 10.5
+iv) Hoofdstukken 11 en 12: volledig
+v) Hoofdstuk 13: paragrafen 13.1, 13.2, 13.3
+vi) Appendix A en Appendix B
 
-- H7:
-  - 7.2.1
-  - 7.2.3
 
 ## Verzameling van de afleidingen:
+ - H2:
+    - 2.3:
+      - Afleiding, equivalente definitie entropie Eq. (2.11)
+      - Eigenschappenn van Entropie
+    - 2.4:
+      - Schottky defecten in functie van temperatuur
+    - 2.5:
+      - Veralgemeend equipartitie theorema Eq. (2.41)
+      - Viriaal theorema Eq. (2.49)
+    - 2.6:
+      - Theorema van Liouville Eq. (2.60) - Eq. (2.60)
+      - Gevolgen van Liouville theorema
+    - 2.7:
+      - Systeem in warmtebad theorie Pg. (30-33)
+      - Veralgemening entropie
+
  - H7:
     - 7.2.1:
-      - Gesloten uitdrukking voor gemiddelde waarde \(\bar{h}\) Eq. (7.3)
+      - Gesloten uitdrukking voor gemiddelde waarde $\bar{h}$ Eq. (7.3)
     - 7.2.3:
       - De drukvergelijking Eq. (7.18)
   - H8:
@@ -26,6 +44,20 @@
       - Afleiding Stralingswet van Planck
       - Wet van Stefan-Boltzmann
       - Vrije energie en druk van fotonengas
+  - H10:
+    - 10.1:
+      - Afleiding van de Gibbs of Groot-Canonische distributiefunctie
+    - 10.2:
+      - Afleiding van de Fermi-Dirac distributiefunctie
+      - Afleiding van de Bose-Einstein distributiefunctie
+      - Klassieke limiet van de Fermi-Dirac en Bose-Einstein distributiefuncties (Maxwell-Boltzmann distributiefunctie)
+      - Fluctuaties in bezettingsgetallen in een ideaal kwantumgas
+    - 10.3:
+      - Afleiding: Veralgemening $dE = TdS - PdV$
+      - Grootpotentiaal $\Phi$ herschreven
+    - 10.4:
+      - Toestandsvergelijking ideaal kwantumgas (niet-relativistisch limiet)
+
 
 > ### 📝 Tips Oefeningenexamen (Notities uit de werkcolleges)
 >
@@ -36,6 +68,7 @@
 > **Wat we vanbuiten moeten kennen:**
 > In welke systemen (met welke variabelen) we welke eenheden we moeten maximaliseren of minimaliseren:
 > - **$(T,V,N)$-systeem**: $F = E - TS$ minimaliseren!
+> Thermische golflengte: $\lambda = \frac{h}{\sqrt{2\pi m k T}}$ **Vanbuiten kennen!**
 
 Lecture notes, computational simulations, problem sets, literature articles, and exam preparation for **Statistische Fysica** (3rd Bachelor Physics & Astronomy).
 
