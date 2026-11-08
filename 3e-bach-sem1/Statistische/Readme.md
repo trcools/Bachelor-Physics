@@ -44,6 +44,20 @@ vi) Appendix A en Appendix B
       - Afleiding Stralingswet van Planck
       - Wet van Stefan-Boltzmann
       - Vrije energie en druk van fotonengas
+  - H10:
+    - 10.1:
+      - Afleiding van de Gibbs of Groot-Canonische distributiefunctie
+    - 10.2:
+      - Afleiding van de Fermi-Dirac distributiefunctie
+      - Afleiding van de Bose-Einstein distributiefunctie
+      - Klassieke limiet van de Fermi-Dirac en Bose-Einstein distributiefuncties (Maxwell-Boltzmann distributiefunctie)
+      - Fluctuaties in bezettingsgetallen in een ideaal kwantumgas
+    - 10.3:
+      - Afleiding: Veralgemening $dE = TdS - PdV$
+      - Grootpotentiaal $\Phi$ herschreven
+    - 10.4:
+      - Toestandsvergelijking ideaal kwantumgas (niet-relativistisch limiet)
+
 
 > ### 📝 Tips Oefeningenexamen (Notities uit de werkcolleges)
 >
