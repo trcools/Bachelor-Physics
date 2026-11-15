@@ -1,0 +1,1652 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper, top=2.2cm, bottom=2.2cm, left=2.2cm, right=2.2cm]{geometry}
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts,mathtools,amsthm,mathrsfs}
+\usepackage{booktabs,array,tabularx,multirow,float}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Kleurenpalet
+\definecolor{primaryblue}{RGB}{24, 76, 120}
+\definecolor{secondaryblue}{RGB}{41, 128, 185}
+\definecolor{accentteal}{RGB}{22, 160, 133}
+\definecolor{accentorange}{RGB}{211, 84, 0}
+\definecolor{darkgray}{RGB}{44, 62, 80}
+\definecolor{lightgray}{RGB}{245, 247, 250}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    citecolor=accentteal,
+    urlcolor=secondaryblue,
+    pdfauthor={T. Cools},
+    pdftitle={Statistiek en Gegevensverwerking - Uitgebreide Samenvatting}
+}
+
+% Paginastijl
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{darkgray}\textbf{Statistiek en Gegevensverwerking} --- Cursusoverzicht}
+\fancyhead[R]{\small\color{darkgray}\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% Paragraaf-opmaak
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+
+% Sectietitels
+\titleformat{\section}
+  {\Large\bfseries\color{primaryblue}}{\thesection}{1em}{}
+  [\vspace{2pt}\titlerule]
+\titleformat{\subsection}
+  {\large\bfseries\color{secondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{darkgray}}{\thesubsubsection}{1em}{}
+
+% Tcolorbox configuraties
+\newtcolorbox{defbox}[2][]{
+  colback=blue!3!white,
+  colframe=primaryblue,
+  fonttitle=\bfseries\color{white},
+  title={Definitie: #2},
+  boxrule=0.8pt,
+  arc=3pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  breakable,
+  #1
+}
+
+\newtcolorbox{theobox}[2][]{
+  colback=teal!3!white,
+  colframe=accentteal,
+  fonttitle=\bfseries\color{white},
+  title={Stelling / Eigenschap: #2},
+  boxrule=0.8pt,
+  arc=3pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  breakable,
+  #1
+}
+
+\newtcolorbox{formulabox}[1][]{
+  colback=gray!4!white,
+  colframe=darkgray!70,
+  boxrule=0.6pt,
+  arc=2pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  #1
+}
+
+\newtcolorbox{stappenplan}[2][]{
+  colback=orange!3!white,
+  colframe=accentorange,
+  fonttitle=\bfseries\color{white},
+  title={Stappenplan / Methode: #2},
+  boxrule=0.8pt,
+  arc=3pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  breakable,
+  #1
+}
+
+\newtcolorbox{fysicabox}[2][]{
+  colback=purple!3!white,
+  colframe=purple!70!black,
+  fonttitle=\bfseries\color{white},
+  title={Fysische Toepassing \& Context: #2},
+  boxrule=0.8pt,
+  arc=3pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  breakable,
+  #1
+}
+
+% Wiskundige macro's
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\Bias}{\text{Bias}}
+\newcommand{\MSE}{\text{MSE}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\normdist}{\mathcal{N}}
+
+\title{\Huge\bfseries\color{primaryblue} Statistiek en Gegevensverwerking \\ \vspace{0.3em} \LARGE Uitgebreide Samenvatting \& Overzicht}
+\author{\textbf{T. Cools} \\ Naar de cursus van Prof. Ilse De Looze \\ 2e Bachelor Fysica en Sterrenkunde}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vspace{-1.5em}
+
+\begin{abstract}
+\noindent Dit document vormt een diepgaande en gestructureerde samenvatting van de cursus \emph{Statistiek en Gegevensverwerking} (2de Bachelor Fysica en Sterrenkunde). Het overzicht behandelt alle tien hoofdstukken, opgesplitst in Deel I (Beschrijvende Statistiek, Theoretische Distributies, Belangrijke Verdelingen en Foutenleer) en Deel II (Verklarende Statistiek: Schattingstheorie, Schattingsmethodes, Confidentieniveaus, Hypothesetoetsen, Wachtrijtheorie en Monte Carlo). Er wordt bijzondere aandacht besteed aan wiskundige definities, fysische achtergronden, interpretaties, stappenplannen voor toetsen en schattingen, en compacte naslagtabellen.
+\end{abstract}
+
+\vspace{1em}
+\tableofcontents
+\newpage
+
+\part{Beschrijvende Statistiek en Waarschijnlijkheidsleer}
+
+%===================================================================
+\section{Gegevens en Beschrijvende Statistiek}
+%===================================================================
+
+Statistiek in de natuurkunde vertrekt steeds vanuit experimentele observaties of metingen van één of meerdere variabelen. Deze verzameling metingen noemen we een \textbf{steekproef} (sample), getrokken uit een grotere, vaak oneindige \textbf{populatie}. Beschrijvende statistiek heeft tot doel deze data op een compacte, inzichtelijke en getrouwe wijze samen te vatten zonder voorafgaande aannames over een onderliggend theoretisch model.
+
+\subsection{Soorten Gegevens en Meetschalen}
+Gegevens worden geclassificeerd op basis van hun aard en hun meetniveau (de meetschalen van Stevens):
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Kwalitatieve gegevens (categorisch):} Gegevens die eigenschappen of categorieën beschrijven en niet inherent numeriek zijn.
+    \begin{itemize}
+        \item \emph{Nominaal:} Categorieën zonder enige natuurlijke ordening (bv. detectortype: scintillatiedetector, halfgeleider, draadkamer; of smaak van quarks). Enige toegestane bewerking is het tellen van frequenties en gelijkheidstoetsing ($=$ of $\neq$).
+        \item \emph{Ordinaal:} Categorieën met een intrinsieke rangorde, maar waar de intervallen tussen opeenvolgende rangen niet betekenisvol of constant zijn (bv. stermagnitudeschaal in de oudheid: helderste sterren klasse 1, zwakkere klasse 2; of kwalitatieve energieniveaus: laag, midden, hoog). Bewerkingen: vergelijken ($<$ of $>$).
+    \end{itemize}
+    \item \textbf{Kwantitatieve gegevens (numeriek):} Gegevens die numerieke grootheden voorstellen waarop rekenkundige bewerkingen uitgevoerd kunnen worden.
+    \begin{itemize}
+        \item \emph{Discreet:} Variabelen die enkel geïsoleerde waarden (meestal gehele getallen) kunnen aannemen (bv. aantal geregistreerde deeltjes $n \in \mathbb{N}$ in een tijdsinterval).
+        \item \emph{Continu:} Variabelen die elke reële waarde binnen een continu interval kunnen aannemen (bv. golflengte $\lambda$, temperatuur $T$, massa $m$).
+    \end{itemize}
+\end{itemize}
+
+\begin{theobox}{Hiërarchie van de Meetschalen (Stevens)}
+\begin{enumerate}[leftmargin=1.2em]
+    \item \textbf{Nominaal:} Alleen classificatie (modus is gedefinieerd).
+    \item \textbf{Ordinaal:} Classificatie + rangschikking (mediaan en percentielen zijn gedefinieerd).
+    \item \textbf{Interval:} Rangschikking + gelijke intervallen, maar met een \emph{arbitrair} nulpunt (bv. temperatuur in graden Celsius). Verschillen hebben betekenis ($T_1 - T_2$), maar verhoudingen ($T_1 / T_2$) niet. Gemiddelde en standaardafwijking zijn gedefinieerd.
+    \item \textbf{Ratio (Verhoudingsschaal):} Heeft een \emph{natuurlijk, absoluut nulpunt} (bv. absolute temperatuur in Kelvin, massa in kg, energie in Joules). Zowel verschillen als verhoudingen zijn betekenisvol ($m_1 = 2 m_2$). Alle statistische bewerkingen, inclusief meetkundig en harmonisch gemiddelde, zijn toegestaan.
+\end{enumerate}
+\end{theobox}
+
+\subsection{Gegevensvoorstelling: Histogrammen en Binning}
+Bij continue gegevens groeperen we waarnemingen in intervallen (zogenaamde \emph{bins} of klassen) van breedte $h$. De keuze van de bin-breedte $h$ (of aantal bins $k$) is cruciaal:
+\begin{itemize}[leftmargin=1.5em]
+    \item Te kleine $h$ leidt tot hoge statistische ruis (weinig tellingen per bin).
+    \item Te grote $h$ leidt tot verlies van informatie over de structuur en vorm van de verdeling (over-smoothing).
+\end{itemize}
+Bekende vuistregels voor de keuze van het aantal bins $k$ bij $N$ datapunten zijn:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Regel van Sturges:} $k = 1 + \lceil \log_2 N \rceil$ (optimaal voor normaal verdeelde data van matige omvang).
+    \item \textbf{Regel van Freedman-Diaconis:} $h = 2 \cdot \text{IQR} \cdot N^{-1/3}$ (robuust tegen uitbijters, gebaseerd op de interkwartielafstand).
+    \item \textbf{Regel van Scott:} $h = 3.49 \cdot s \cdot N^{-1/3}$ (minimaliseert de geïntegreerde kwadratische fout bij Gaussische data).
+\end{itemize}
+
+\subsection{Maten voor Centrale Tendens}
+Een maat voor centrale tendens vat de centrale ligging van een gegevensverzameling samen in één representatief getal.
+
+\begin{defbox}{Centrale Maten}
+Gegeven een steekproef $\{x_1, x_2, \ldots, x_N\}$:
+\begin{enumerate}[leftmargin=1.2em]
+    \item \textbf{Rekenkundig gemiddelde (Arithmetic Mean):}
+    \begin{equation}
+        \bar{x} = \frac{1}{N} \sum_{i=1}^N x_i
+    \end{equation}
+    Eigenschappen: $\sum_{i=1}^N (x_i - \bar{x}) = 0$, en de som van gekwadrateerde afwijkingen $\sum_{i=1}^N (x_i - c)^2$ is minimaal voor $c = \bar{x}$.
+    \item \textbf{Gewogen gemiddelde (Weighted Mean):}
+    Wanneer elk punt $x_i$ een gewicht $w_i \ge 0$ heeft (vaak $w_i = 1/\sigma_i^2$):
+    \begin{equation}
+        \bar{x}_w = \frac{\sum_{i=1}^N w_i x_i}{\sum_{i=1}^N w_i}
+    \end{equation}
+    \item \textbf{Meetkundig gemiddelde (Geometric Mean):}
+    Voor strikt positieve data ($x_i > 0$):
+    \begin{equation}
+        G = \left( \prod_{i=1}^N x_i \right)^{1/N} \iff \ln G = \frac{1}{N} \sum_{i=1}^N \ln x_i
+    \end{equation}
+    Toepassing: Multiplicatieve processen, versterkingsfactoren in getrapte photomultiplier tubes (PMT's), of spectrale verhoudingen.
+    \item \textbf{Harmonisch gemiddelde (Harmonic Mean):}
+    \begin{equation}
+        H = \frac{N}{\sum_{i=1}^N \frac{1}{x_i}}
+    \end{equation}
+    Toepassing: Gemiddelde snelheden over vaste trajectafstanden, parallelle weerstanden ($1/R_{\text{tot}} = \sum 1/R_i$), of gemiddelde levensduren bij concurrerende vervalkanalen.
+    \item \textbf{Mediaan ($\tilde{x}$ of $x_{\text{med}}$):}
+    De middelste waarde van de geordende steekproef $x_{(1)} \le x_{(2)} \le \ldots \le x_{(N)}$. Voor even $N$ het gemiddelde van de twee middelste waarden. De mediaan minimaliseert $\sum |x_i - c|$ en bezit een \emph{breakdown point} van $50\%$, waardoor hij uiterst robuust is tegen extreme uitschieters.
+    \item \textbf{Modus:} De meest frequente waarde in de steekproef, of het maximum van de dichtheidskromme.
+\end{enumerate}
+\end{defbox}
+
+\begin{theobox}{Ongelijkheid van de Gemiddelden}
+Voor strikt positieve waarnemingen geldt altijd:
+\begin{equation}
+    H \le G \le \bar{x}
+\end{equation}
+waarbij de gelijkheid $H = G = \bar{x}$ enkel en alleen geldt als alle waarnemingen identiek zijn ($x_1 = x_2 = \ldots = x_N$).
+\end{theobox}
+
+\subsection{Maten voor Spreiding en Variabiliteit}
+Spreidingsmaten kwantificeren de spreiding of variabiliteit van de gegevens rond het centrum.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Bereik (Range):} $R = x_{\max} - x_{\min}$. Zeer gevoelig voor extreme meetfouten.
+    \item \textbf{Interkwartielafstand (IQR):} $\text{IQR} = Q_3 - Q_1$, waarbij $Q_1$ het 25e percentiel is en $Q_3$ het 75e percentiel. Omvat de centrale 50\% van de verdeling en is ongevoelig voor uitbijters.
+    \item \textbf{Gemiddelde Absolute Afwijking (MAD):} $\text{MAD} = \text{mediaan}(|x_i - \tilde{x}|)$ of $\frac{1}{N}\sum |x_i - \bar{x}|$.
+    \item \textbf{Steekproefvariantie ($s^2$) en Standaardafwijking ($s$):}
+    \begin{formulabox}
+    \begin{equation}
+        s^2 = \frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})^2 = \frac{1}{N-1} \left( \sum_{i=1}^N x_i^2 - \frac{1}{N} \left(\sum_{i=1}^N x_i\right)^2 \right)
+    \end{equation}
+    \end{formulabox}
+    \textbf{Bessel-correctie ($N-1$):} De noemer $N-1$ in plaats van $N$ is noodzakelijk omdat $\bar{x}$ zelf berekend is uit de steekproef. Dit kost 1 vrijheidsgraad. Het delen door $N-1$ maakt $s^2$ een \emph{onvertekende schatter} voor de populatievariantie $\sigma^2$ (zie Hoofdstuk 5).
+\end{itemize}
+
+\subsection{Hogere Momenten: Scheefheid en Welving}
+\begin{defbox}{Momenten van een Gegevensreeks}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{$k$-de ruwe moment:} $m'_k = \frac{1}{N} \sum_{i=1}^N x_i^k \quad (m'_1 = \bar{x})$.
+    \item \textbf{$k$-de centrale moment:} $m_k = \frac{1}{N} \sum_{i=1}^N (x_i - \bar{x})^k \quad (m_2 = \frac{N-1}{N}s^2)$.
+    \item \textbf{Scheefheid (Skewness) $\gamma_1$:}
+    \begin{equation}
+        \gamma_1 = \frac{m_3}{m_2^{3/2}} = \frac{\frac{1}{N}\sum (x_i - \bar{x})^3}{s^3}
+    \end{equation}
+    \begin{itemize}
+        \item $\gamma_1 = 0$: Perfect symmetrische verdeling rond het gemiddelde.
+        \item $\gamma_1 > 0$: Rechts-scheef (positive skew), lange staart naar rechts, modus $<$ mediaan $<$ gemiddelde.
+        \item $\gamma_1 < 0$: Links-scheef (negative skew), lange staart naar links, gemiddelde $<$ mediaan $<$ modus.
+    \end{itemize}
+    \item \textbf{Welving (Kurtosis) $\beta_2$ en Excess Kurtosis $\gamma_2$:}
+    \begin{equation}
+        \beta_2 = \frac{m_4}{m_2^2}, \qquad \gamma_2 = \beta_2 - 3
+    \end{equation}
+    Voor een Gaussische verdeling geldt $\beta_2 = 3$ ($\gamma_2 = 0$).
+    \begin{itemize}
+        \item $\gamma_2 = 0$: \textbf{Mesokurtisch} (Gaussisch gedrag).
+        \item $\gamma_2 > 0$: \textbf{Leptokurtisch} (scherpere centrale piek, zwaardere staarten / fat tails). Fysisch relevant bij processen met zeldzame extreme uitschieters.
+        \item $\gamma_2 < 0$: \textbf{Platykurtisch} (platter dan normaal, kortere staarten, bv. een uniforme verdeling heeft $\gamma_2 = -1.2$).
+    \end{itemize}
+\end{itemize}
+\end{defbox}
+
+\subsection{Bivariate en Multivariate Variabelen}
+Wanneer we voor elk meetobject meerdere variabelen gelijktijdig meten (bv. positie $x$ en impuls $p$, of helderheid en kleurindex), bestuderen we de correlatie tussen de variabelen.
+
+\begin{defbox}{Covariantie en Correlatie}
+Gegeven paren waarnemingen $\{(x_1, y_1), \ldots, (x_N, y_N)\}$:
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Steekproefcovariantie:}
+    \begin{equation}
+        s_{xy} = \Cov(X, Y) = \frac{1}{N-1} \sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y}) = \frac{1}{N-1} \left( \sum_{i=1}^N x_i y_i - N \bar{x}\bar{y} \right)
+    \end{equation}
+    \item \textbf{Pearson correlatiecoëfficiënt:}
+    \begin{equation}
+        r_{xy} = \frac{s_{xy}}{s_x s_y} = \frac{\sum_{i=1}^N (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^N (x_i - \bar{x})^2 \sum_{i=1}^N (y_i - \bar{y})^2}}
+    \end{equation}
+\end{itemize}
+\end{defbox}
+
+\begin{theobox}{Eigenschappen van de Correlatiecoëfficiënt}
+\begin{enumerate}[leftmargin=1.2em]
+    \item $-1 \le r_{xy} \le 1$.
+    \item $|r_{xy}| = 1$ dan en slechts dan als er een exact lineair verband bestaat tussen $y$ en $x$ ($y = ax + b$).
+    \item $r_{xy} = 0$ impliceert de afwezigheid van een \emph{lineair} verband. Dit betekent echter \textbf{niet} noodzakelijk dat de variabelen onafhankelijk zijn (er kan een perfect niet-lineair verband bestaan, zoals $y = x^2$ symmetrisch rond 0).
+    \item Invariantie: $r_{xy}$ is invariant onder lineaire schalingen met positieve factoren ($X' = aX + b, Y' = cY + d$ met $a, c > 0$).
+\end{enumerate}
+\end{theobox}
+
+Voor een vector van variabelen $\vec{X} = (X_1, X_2, \ldots, X_p)^T$ definieert men de symmetrische, positief semi-definiete \textbf{covariantiematrix} $V$ en \textbf{correlatiematrix} $R$:
+\begin{equation}
+    V = \begin{pmatrix}
+        s_1^2 & s_{12} & \cdots & s_{1p} \\
+        s_{21} & s_2^2 & \cdots & s_{2p} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        s_{p1} & s_{p2} & \cdots & s_p^2
+    \end{pmatrix}, \qquad
+    R = \begin{pmatrix}
+        1 & r_{12} & \cdots & r_{1p} \\
+        r_{21} & 1 & \cdots & r_{2p} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        r_{p1} & r_{p2} & \cdots & 1
+    \end{pmatrix}
+\end{equation}
+
+
+%===================================================================
+\section{Theoretische Distributies}
+%===================================================================
+
+\subsection{Wat is Waarschijnlijkheid?}
+In de natuurkunde en wiskunde worden vier hoofdinterpretaties van het begrip waarschijnlijkheid onderscheiden:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Wiskundige (Axiomatische) Waarschijnlijkheid (Kolmogorov, 1933):}
+    Gedefinieerd op een uitkomstenruimte $\Omega$ met gebeurtenissen $\mathcal{F}$ en een maat $P: \mathcal{F} \to [0,1]$ die voldoet aan de Kolmogorov-axioma's:
+    \begin{itemize}
+        \item Axioma 1: Voor elke gebeurtenis $A$ geldt $P(A) \ge 0$.
+        \item Axioma 2: Voor de zekere gebeurtenis geldt $P(\Omega) = 1$.
+        \item Axioma 3 ($\sigma$-additiviteit): Voor paarsgewijs disjuncte gebeurtenissen ($A_i \cap A_j = \emptyset$ voor $i \neq j$) geldt:
+        \begin{equation}
+            P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i)
+        \end{equation}
+    \end{itemize}
+    \item \textbf{Klassieke definitie (Laplace):}
+    $P(A) = \frac{\text{aantal gunstige uitkomsten}}{\text{totaal aantal mogelijke uitkomsten}}$, mits alle uitkomsten even waarschijnlijk zijn (principe van onverschilligheid).
+    \item \textbf{Frequentistische / Empirische definitie (von Mises):}
+    Waarschijnlijkheid is de limietwaarde van de relatieve frequentie van voorkomen bij een oneindige reeks identieke, onafhankelijke herhalingen van een experiment:
+    \begin{equation}
+        P(A) = \lim_{N \to \infty} \frac{N(A)}{N}
+    \end{equation}
+    Dit is de dominante interpretatie in klassieke natuurkundige experimenten.
+    \item \textbf{Subjectieve / Bayesiaanse definitie (De Finetti, Jeffreys):}
+    Waarschijnlijkheid drukt een \emph{mate van geloof} (degree of belief) of aannemelijkheid uit, gegeven onvolledige informatie. Deze aanpak laat toe waarschijnlijkheden toe te kennen aan hypothesen of fysische constanten (bv. ``de kans dat de massa van het neutrino kleiner is dan 0.1 eV'').
+    \item \textbf{Propensiteit (Popper):}
+    Waarschijnlijkheid als een intrinsieke fysische neiging of dispositionele eigenschap van een experimentele opstelling (relevant in kwantummechanica).
+\end{enumerate}
+
+\subsection{De Wet van de Grote Getallen en Ongelijkheden}
+\begin{theobox}{Fundamentele Ongelijkheden}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Markov Ongelijkheid:} Als $X$ een niet-negatieve toevallige variabele is ($X \ge 0$) met verwachting $\E[X]$, dan geldt voor elke $a > 0$:
+    \begin{equation}
+        P(X \ge a) \le \frac{\E[X]}{a}
+    \end{equation}
+    \item \textbf{Chebyshev Ongelijkheid:} Voor elke toevallige variabele $X$ met verwachting $\mu$ en variantie $\sigma^2$ geldt voor elke $k > 0$:
+    \begin{equation}
+        P(|X - \mu| \ge k\sigma) \le \frac{1}{k^2}
+    \end{equation}
+    \emph{Fysische implicatie:} Ongeacht de (mogelijk onbekende of scheve) vorm van de verdeling, ligt minstens $1 - 1/k^2$ van de totale waarschijnlijkheidsmassa binnen $k$ standaardafwijkingen rond de verwachtingswaarde (bv. minstens $75\%$ binnen $2\sigma$, minstens $88.9\%$ binnen $3\sigma$).
+\end{itemize}
+\end{theobox}
+
+\begin{theobox}{Wet van de Grote Getallen (LLN)}
+Laat $X_1, X_2, \ldots, X_N$ een reeks onafhankelijke en gelijkverdeelde (i.i.d.) toevallige variabelen zijn met $\E[X_i] = \mu$ en $\Var(X_i) = \sigma^2 < \infty$. Dan convergeert het steekproefgemiddelde $\bar{X}_N = \frac{1}{N}\sum_{i=1}^N X_i$ naar $\mu$:
+\begin{itemize}
+    \item \textbf{Zwakke Wet (WLLN):} Convergentie in waarschijnlijkheid:
+    \begin{equation}
+        \forall \epsilon > 0: \quad \lim_{N \to \infty} P(|\bar{X}_N - \mu| \ge \epsilon) = 0
+    \end{equation}
+    \item \textbf{Sterke Wet (SLLN):} Bijna-zekere convergentie:
+    \begin{equation}
+        P\left( \lim_{N \to \infty} \bar{X}_N = \mu \right) = 1
+    \end{equation}
+\end{itemize}
+\end{theobox}
+
+\subsection{Continue Toevallige Variabelen}
+Een continue toevallige variabele $X$ wordt gekarakteriseerd door haar \textbf{kansdichtheidsfunctie} (Probability Density Function, PDF) $f(x)$ en \textbf{cumulatieve verdelingsfunctie} (Cumulative Distribution Function, CDF) $F(x)$.
+
+\begin{defbox}{Eigenschappen van PDF en CDF}
+\begin{equation}
+    F(x) = P(X \le x) = \int_{-\infty}^x f(t) \, \dd t, \qquad f(x) = \frac{\dd F(x)}{\dd x}
+\end{equation}
+\begin{enumerate}[leftmargin=1.2em]
+    \item $f(x) \ge 0$ voor alle $x \in \mathbb{R}$.
+    \item Normalisatie: $\int_{-\infty}^\infty f(x) \, \dd t = 1$.
+    \item $P(a \le X \le b) = \int_a^b f(x) \, \dd x = F(b) - F(a)$.
+    \item Voor een continue variabele geldt $P(X = c) = 0$ voor elk individueel punt $c$.
+    \item $\lim_{x \to -\infty} F(x) = 0$ en $\lim_{x \to +\infty} F(x) = 1$; $F(x)$ is monotoon niet-dalend.
+\end{enumerate}
+\end{defbox}
+
+\begin{defbox}{Theoretische Verwachtingswaarde en Momenten}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Verwachtingswaarde:} $\mu = \E[X] = \int_{-\infty}^\infty x f(x) \, \dd x$.
+    \item \textbf{Verwachtingswaarde van een functie $g(X)$:} $\E[g(X)] = \int_{-\infty}^\infty g(x) f(x) \, \dd x$.
+    \item \textbf{Variantie:} $\sigma^2 = \Var(X) = \E[(X - \mu)^2] = \E[X^2] - (\E[X])^2 = \int_{-\infty}^\infty (x - \mu)^2 f(x) \, \dd x$.
+    \item \textbf{Centrale momenten:} $\mu_k = \E[(X - \mu)^k] = \int_{-\infty}^\infty (x - \mu)^k f(x) \, \dd x$.
+\end{itemize}
+\end{defbox}
+
+\subsection{Transformatie van Toevallige Variabelen}
+Vaak meten we een variabele $X$, maar zijn we geïnteresseerd in een getransformeerde grootheid $Y = g(X)$ (bv. $X$ is de hoek $\theta$, $Y = \sin \theta$; of $X$ is de snelheid $v$, $Y = \frac{1}{2}mv^2$ is de kinetische energie).
+
+\begin{theobox}{Transformatiewet voor Kansdichtheden}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{1D Monotone transformatie:} Als $g(x)$ continu differentieerbaar en strikt monotoon is over het domein van $X$, met inverse $x = g^{-1}(y)$, dan geldt voor de dichtheid $f_Y(y)$:
+    \begin{formulabox}
+    \begin{equation}
+        f_Y(y) = f_X(x) \left| \frac{\dd x}{\dd y} \right| = f_X(g^{-1}(y)) \left| \frac{\dd g^{-1}(y)}{\dd y} \right| = \frac{f_X(x)}{\left| g'(x) \right|}\Bigg|_{x = g^{-1}(y)}
+    \end{equation}
+    \end{formulabox}
+    \emph{Bewijs/Intuïtie:} De waarschijnlijkheidsmassa in een interval moet behouden blijven: $|f_Y(y) \, \dd y| = |f_X(x) \, \dd x|$.
+    \item \textbf{1D Niet-monotone transformatie:} Indien meerdere wortels $x_k$ voldoen aan $g(x_k) = y$, sommeert men over alle takken:
+    \begin{equation}
+        f_Y(y) = \sum_{k} f_X(x_k) \left| \frac{\dd x}{\dd y} \right|_{x = x_k}
+    \end{equation}
+    \item \textbf{Multidimensionale transformatie:} Voor $\vec{Y} = \vec{g}(\vec{X})$ van $\mathbb{R}^n \to \mathbb{R}^n$:
+    \begin{equation}
+        f_{\vec{Y}}(\vec{y}) = f_{\vec{X}}(\vec{x}) \cdot |\det J|^{-1} = f_{\vec{X}}(\vec{g}^{-1}(\vec{y})) \cdot \left| \det \frac{\partial (x_1, \ldots, x_n)}{\partial (y_1, \ldots, y_n)} \right|
+    \end{equation}
+    waarbij $J$ de Jacobiaanse matrix is: $J_{ij} = \frac{\partial y_i}{\partial x_j}$.
+\end{itemize}
+\end{theobox}
+
+\subsection{Meerdimensionale Verdelingen}
+\begin{defbox}{Gezamenlijke, Marginale en Conditionele Dichtheid}
+Voor twee continue toevallige variabelen $(X, Y)$:
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Gezamenlijke dichtheid (Joint PDF):} $f(x, y)$ met $\int_{-\infty}^\infty \int_{-\infty}^\infty f(x, y) \, \dd x \, \dd y = 1$.
+    \item \textbf{Marginale dichtheid (Marginal PDF):} De verdeling van één variabele ongeacht de waarde van de andere (verkregen door te integreren over alle mogelijke waarden van de andere variabele):
+    \begin{equation}
+        f_X(x) = \int_{-\infty}^\infty f(x, y) \, \dd y, \qquad f_Y(y) = \int_{-\infty}^\infty f(x, y) \, \dd x
+    \end{equation}
+    \item \textbf{Conditionele dichtheid (Conditional PDF):} De dichtheid van $Y$ gegeven dat $X = x$:
+    \begin{equation}
+        f(y \mid x) = \frac{f(x, y)}{f_X(x)} \quad \text{mits } f_X(x) > 0
+    \end{equation}
+    \item \textbf{Stochastische Onafhankelijkheid:} $X$ en $Y$ zijn onafhankelijk indien:
+    \begin{equation}
+        f(x, y) = f_X(x) f_Y(y) \iff f(y \mid x) = f_Y(y)
+    \end{equation}
+\end{itemize}
+\end{defbox}
+
+\begin{theobox}{Het Theorema van Bayes voor Continue Verdelingen}
+Laat $\theta$ een continue parameter zijn (bv. een natuurconstante of signaalsterkte) en $x$ de geobserveerde experimentele data:
+\begin{equation}
+    f(\theta \mid x) = \frac{f(x \mid \theta) \, \pi(\theta)}{\int f(x \mid \theta') \, \pi(\theta') \, \dd \theta'} = \frac{L(x; \theta) \, \pi(\theta)}{\int L(x; \theta') \, \pi(\theta') \, \dd \theta'}
+\end{equation}
+waarbij:
+\begin{itemize}
+    \item $\pi(\theta)$ de \textbf{prior verdeling} is (kennis over $\theta$ vóór het experiment).
+    \item $f(x \mid \theta) = L(x; \theta)$ de \textbf{likelihood functie} is (kansdichtheid van de data gegeven $\theta$).
+    \item $f(\theta \mid x)$ de \textbf{posterior verdeling} is (geüpdatete kennis over $\theta$ na het experiment).
+    \item De noemer fungeert als normalisatieconstante (evidence of marginal likelihood).
+\end{itemize}
+\end{theobox}
+
+\subsection{Lineaire Combinaties van Toevallige Variabelen}
+Voor willekeurige toevallige variabelen $X$ en $Y$ en constanten $a, b \in \mathbb{R}$:
+\begin{formulabox}
+\begin{align}
+    \E[aX + bY] &= a\E[X] + b\E[Y] \\
+    \Var(aX + bY) &= a^2 \Var(X) + b^2 \Var(Y) + 2ab \, \Cov(X, Y)
+\end{align}
+\end{formulabox}
+Indien $X$ en $Y$ onafhankelijk zijn (of ongecorreleerd, $\Cov(X, Y) = 0$), reduceert dit tot $\Var(aX + bY) = a^2 \Var(X) + b^2 \Var(Y)$.
+
+
+%===================================================================
+\section{Belangrijke Verdelingen}
+%===================================================================
+
+\subsection{Eenvoudige Univariabele Verdelingen}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Uniforme Verdeling $U(a, b)$:}
+    \begin{equation}
+        f(x) = \frac{1}{b - a} \quad (a \le x \le b), \qquad \E[X] = \frac{a + b}{2}, \qquad \Var(X) = \frac{(b - a)^2}{12}
+    \end{equation}
+    \emph{Fysische toepassing:} Kwantisatieruis bij digitaal-naar-analoog omzetters (ADC's) met bin-breedte $\Delta$: $\sigma = \Delta / \sqrt{12}$.
+    \item \textbf{Exponentiële Verdeling $\text{Exp}(\lambda)$:}
+    \begin{equation}
+        f(x) = \lambda e^{-\lambda x} \quad (x \ge 0), \qquad \E[X] = \frac{1}{\lambda}, \qquad \Var(X) = \frac{1}{\lambda^2}
+    \end{equation}
+    \emph{Eigenschap van Geheugenloosheid:} $P(X > s + t \mid X > s) = P(X > t)$.
+    \emph{Fysische toepassing:} Verval van instabiele kernen en deeltjes (levensduur $\tau = 1/\lambda$), tijdsintervallen tussen opeenvolgende detectortellingen in een Poisson-proces, vrije weglengte van fotonen in materie.
+\end{itemize}
+
+\subsection{Discrete Verdelingen (Telstatistiek)}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Bernoulli Verdeling:} Eén enkel experiment met uitkomst succes ($X = 1$) met kans $p$, of mislukking ($X = 0$) met kans $1 - p$:
+    \begin{equation}
+        \E[X] = p, \qquad \Var(X) = p(1 - p)
+    \end{equation}
+    \item \textbf{Binomiale Verdeling $B(n, p)$:}
+    Aantal successen $k$ in $n$ onafhankelijke, identieke Bernoulli-experimenten:
+    \begin{equation}
+        P(k; n, p) = \binom{n}{k} p^k (1 - p)^{n - k} \quad (k \in \{0, 1, \ldots, n\})
+    \end{equation}
+    \begin{equation}
+        \E[k] = np, \qquad \Var(k) = np(1 - p), \qquad \sigma_k = \sqrt{np(1 - p)}
+    \end{equation}
+    \emph{Fysische toepassing:} Detectie-efficiëntie van deeltjesdetectoren; kans dat $k$ van de $n$ deeltjes geregistreerd worden bij detector-efficiëntie $\epsilon = p$.
+    \item \textbf{Poisson Verdeling $\text{Pois}(\mu)$:}
+    De limiet van de binomiale verdeling voor zeldzame gebeurtenissen: $n \to \infty$ en $p \to 0$ zodanig dat het verwachte aantal $np = \mu$ constant blijft:
+    \begin{formulabox}
+    \begin{equation}
+        P(k; \mu) = \frac{\mu^k e^{-\mu}}{k!} \quad (k \in \{0, 1, 2, \ldots\})
+    \end{equation}
+    \begin{equation}
+        \E[k] = \mu, \qquad \Var(k) = \mu, \qquad \sigma_k = \sqrt{\mu}
+    \end{equation}
+    \end{formulabox}
+    \emph{Cruciale eigenschappen:}
+    \begin{enumerate}
+        \item De variantie is exact gelijk aan de verwachtingswaarde ($\Var = \mu$). De relatieve statistische fluctuatie is $\sigma/\mu = 1/\sqrt{\mu}$.
+        \item \textbf{Additiviteit:} Als $X \sim \text{Pois}(\mu_1)$ en $Y \sim \text{Pois}(\mu_2)$ onafhankelijk zijn, dan is $X + Y \sim \text{Pois}(\mu_1 + \mu_2)$.
+        \item \emph{Fysische toepassing:} Fotonentellingen in astronomie (Poisson shot noise), radioactief verval, aantal kosmische stralen per seconde in een detector.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{De Normale (Gaussische) Verdeling}
+\begin{defbox}{Normale Verdeling $\normdist(\mu, \sigma^2)$}
+\begin{equation}
+    f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+\end{equation}
+\begin{equation}
+    \E[X] = \mu, \qquad \Var(X) = \sigma^2, \qquad \text{Skewness } \gamma_1 = 0, \qquad \text{Excess Kurtosis } \gamma_2 = 0
+\end{equation}
+\end{defbox}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Standaardnormale Verdeling $\normdist(0, 1)$:}
+    Verkregen door de substitutie $Z = \frac{X - \mu}{\sigma}$:
+    \begin{equation}
+        \phi(z) = \frac{1}{\sqrt{2\pi}} e^{-z^2/2}, \qquad \Phi(z) = \int_{-\infty}^z \phi(t) \, \dd t = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{z}{\sqrt{2}} \right) \right]
+    \end{equation}
+    waarbij de Gaussische foutfunctie gedefinieerd is als $\text{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\dd t$.
+    \item \textbf{Kwantielen en Veelgebruikte Betrouwbaarheidsintervallen:}
+    \begin{center}
+        \small
+        \begin{tabular}{lccc}
+            \toprule
+            Interval & Waarschijnlijkheid binnen $[-\lambda\sigma, +\lambda\sigma]$ & Buiten interval & Interpretatie / Toepassing \\
+            \midrule
+            $1\sigma$ & $68.27\%$ & $31.73\%$ ($1$ op $3$) & Standaard meetfout \\
+            $2\sigma$ & $95.45\%$ & $4.55\%$ ($1$ op $22$) & Typisch $95\%$ betrouwbaarheidsinterval \\
+            $3\sigma$ & $99.73\%$ & $0.27\%$ ($1$ op $370$) & Vaste fysica-drempel voor "evidence" \\
+            $5\sigma$ & $99.999943\%$ & $5.73 \times 10^{-7}$ ($1$ op $1.7 \times 10^6$) & Drempel voor "ontdekking" (CERN/Higgs) \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \item \textbf{Gauss als limiet van Poisson en Binomiaal:}
+    \begin{itemize}
+        \item Binomiaal $B(n, p) \to \normdist(np, np(1 - p))$ zodra $np > 5$ en $n(1 - p) > 5$.
+        \item Poisson $\text{Pois}(\mu) \to \normdist(\mu, \mu)$ zodra $\mu \gtrsim 20$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Lognormale Verdeling en Breit-Wigner (Cauchy)}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Lognormale Verdeling:}
+    Als $Y = \ln X \sim \normdist(\mu, \sigma^2)$, dan volgt $X$ een lognormale verdeling:
+    \begin{equation}
+        f(x) = \frac{1}{x \sigma \sqrt{2\pi}} \exp\left( -\frac{(\ln x - \mu)^2}{2\sigma^2} \right) \quad (x > 0)
+    \end{equation}
+    Karakteristiek voor variabelen die het resultaat zijn van het \emph{product} van vele onafhankelijke positieve toevallige factoren (multiplicatieve CLT). Typisch in astronomie (ster- en stelsellichtkrachten, afmetingen van interstellair stof) en geofysica.
+    \item \textbf{Breit-Wigner (Cauchy / Lorentz) Distributie:}
+    \begin{equation}
+        f(x; x_0, \Gamma) = \frac{1}{\pi} \frac{\Gamma / 2}{(x - x_0)^2 + (\Gamma / 2)^2}
+    \end{equation}
+    waarbij $x_0$ de resonantiepiek is en $\Gamma$ de volle breedte op halve hoogte (FWHM: Full Width at Half Maximum).
+    \begin{fysicabox}{Kwantummechanische Betekenis van Breit-Wigner}
+    Beschrijft de energieverdeling van instabiele deeltjes of nucleaire resonanties. Krachtens het onzekerheidsprincipe van Heisenberg ($\Delta E \cdot \Delta t \sim \hbar$) is de resonantiebreedte $\Gamma$ omgekeerd evenredig met de levensduur $\tau$ van de toestand: $\Gamma = \hbar / \tau$.
+    \textbf{Wiskundige bijzonderheid:} De staarten van de Cauchy-verdeling vallen zo langzaam af ($\sim 1/x^2$) dat de integralen voor de verwachtingswaarde en de variantie \textbf{divergeren}. Het gemiddelde en de variantie bestaan formeel niet!
+    \end{fysicabox}
+\end{itemize}
+
+\subsection{Multidimensionale Verdelingen}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Multinomiale Verdeling:}
+    Generalisatie van de binomiale verdeling naar $k$ mogelijke wederzijds uitsluitende uitkomsten met kansen $p_1, \ldots, p_k$ ($\sum p_i = 1$) in $N$ experimenten ($\sum n_i = N$):
+    \begin{equation}
+        P(n_1, \ldots, n_k) = \frac{N!}{n_1! n_2! \cdots n_k!} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}
+    \end{equation}
+    met $\E[n_i] = N p_i$, $\Var(n_i) = N p_i (1 - p_i)$ en $\Cov(n_i, n_j) = -N p_i p_j$ ($i \neq j$). Toepassing: Histogram-tellingen bij een vast totaal aantal evenementen $N$.
+    \item \textbf{Multivariate Gaussische Verdeling:}
+    Voor een $n$-dimensionale vector $\vec{X} = (X_1, \ldots, X_n)^T$ met verwachtingsvector $\vec{\mu}$ en covariantiematrix $V$:
+    \begin{formulabox}
+    \begin{equation}
+        f(\vec{x}) = \frac{1}{(2\pi)^{n/2} \sqrt{\det V}} \exp\left( -\frac{1}{2} (\vec{x} - \vec{\mu})^T V^{-1} (\vec{x} - \vec{\mu}) \right)
+    \end{equation}
+    \end{formulabox}
+    De contouren van gelijke waarschijnlijkheidsdichtheid zijn $n$-dimensionale hyperellipsoïden (foutellipsen), gedefinieerd door de Mahalanobis-afstand:
+    \begin{equation}
+        \chi^2 = (\vec{x} - \vec{\mu})^T V^{-1} (\vec{x} - \vec{\mu}) = \text{constant}
+    \end{equation}
+\end{itemize}
+
+
+%===================================================================
+\section{Foutenleer en Foutenpropagatie}
+%===================================================================
+
+Elke experimentele fysische meting is onderhevig aan onzekerheden. Een meetresultaat zonder bijbehorende foutenmarge heeft geen wetenschappelijke betekenis.
+
+\subsection{Het Centrale Limiet Theorema (CLT)}
+\begin{theobox}{Het Centrale Limiet Theorema (Lindeberg-Lévy)}
+Laat $X_1, X_2, \ldots, X_N$ onafhankelijke en identiek verdeelde toevallige variabelen zijn met verwachting $\mu$ en eindige variantie $\sigma^2 < \infty$. Dan nadert de som $S_N = \sum_{i=1}^N X_i$ voor $N \to \infty$ een normale verdeling:
+\begin{equation}
+    Z_N = \frac{\sum_{i=1}^N X_i - N\mu}{\sigma \sqrt{N}} = \frac{\bar{X}_N - \mu}{\sigma / \sqrt{N}} \xrightarrow{d} \normdist(0, 1)
+\end{equation}
+\end{theobox}
+
+\emph{Fysische verklaring:} Meetfouten in experimenten worden veroorzaakt door het cumulatieve effect van een groot aantal onafhankelijke, microscopische toevallige verstoringen (elektronische thermische ruis, mechanische trillingen, kwantumfluctuaties). Het CLT garandeert dat de resultante van al deze kleine verstoringen vrijwel altijd nauwkeurig beschreven wordt door een Gaussische verdeling.
+
+\subsection{Toevallige versus Systematische Fouten}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Toevallige (Statistische) Fouten:}
+    Onvoorspelbare fluctuaties die zowel positief als negatief kunnen uitvallen.
+    \begin{itemize}
+        \item Oorzaak: Intrinsieke statistische variabiliteit, thermische ruis, kwantumprocessen.
+        \item Kenmerk: Verminderen bij herhaalde metingen volgens de factor $1/\sqrt{N}$.
+    \end{itemize}
+    \item \textbf{Systematische Fouten (Bias):}
+    Consistente, reproduceerbare afwijkingen in één bepaalde richting.
+    \begin{itemize}
+        \item Oorzaak: Verkeerde kalibratie van meetinstrumenten, onnauwkeurige modelaannames, achtergrondstraling, temperatuurdrift.
+        \item Kenmerk: \textbf{Nemen niet af door het aantal metingen $N$ te vergroten!} Ze kunnen enkel gereduceerd worden door betere experimentele controle, herkalibratie of onafhankelijke meetmethoden.
+    \end{itemize}
+    \item \textbf{Combineren en Rapporteren:}
+    Indien toevallige en systematische fouten onafhankelijk zijn, combineert men ze kwadratisch:
+    \begin{equation}
+        \sigma_{\text{tot}} = \sqrt{\sigma_{\text{stat}}^2 + \sigma_{\text{syst}}^2}
+    \end{equation}
+    In publicaties rapporteert men ze echter altijd afzonderlijk:
+    \begin{equation}
+        x = x_{\text{meet}} \pm \sigma_{\text{stat}} \text{ (stat)} \pm \sigma_{\text{syst}} \text{ (syst)}
+    \end{equation}
+\end{itemize}
+
+\subsection{Herhaalde Metingen en Gewogen Gemiddelde}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{$N$ metingen met identieke nauwkeurigheid $\sigma$:}
+    $\bar{x} = \frac{1}{N}\sum x_i$, met standaardafwijking op het gemiddelde:
+    \begin{equation}
+        \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{N}}
+    \end{equation}
+    \item \textbf{Metingen met verschillende meetonnauwkeurigheden $\sigma_i$:}
+    Om de variantie op het gecombineerde resultaat te minimaliseren, kent men gewichten $w_i = \frac{1}{\sigma_i^2}$ toe aan elke meting:
+    \begin{formulabox}
+    \begin{equation}
+        \bar{x} = \frac{\sum_{i=1}^N \frac{x_i}{\sigma_i^2}}{\sum_{i=1}^N \frac{1}{\sigma_i^2}}, \qquad
+        \sigma_{\bar{x}}^2 = \frac{1}{\sum_{i=1}^N \frac{1}{\sigma_i^2}} \iff \sigma_{\bar{x}} = \frac{1}{\sqrt{\sum_{i=1}^N \frac{1}{\sigma_i^2}}}
+    \end{equation}
+    \end{formulabox}
+    Het gewogen gemiddelde heeft een kleinere variantie dan élk van de individuele metingen afzonderlijk.
+\end{itemize}
+
+\subsection{De Algemene Wet van Foutenpropagatie}
+Laat $u = f(x_1, x_2, \ldots, x_n)$ een differentieerbare functie zijn van meerdere gemeten grootheden $\vec{x}$, met covariantiematrix $V_{ij} = \Cov(x_i, x_j)$ en varianties $\sigma_i^2 = V_{ii}$.
+
+Door een eerste-orde Taylorontwikkeling van $f$ rond het gemiddelde $\vec{\mu}$:
+\begin{equation}
+    f(\vec{x}) \approx f(\vec{\mu}) + \sum_{i=1}^n \left. \frac{\partial f}{\partial x_i} \right|_{\vec{\mu}} (x_i - \mu_i)
+\end{equation}
+vinden we de \textbf{algemene wet van foutenpropagatie}:
+
+\begin{formulabox}
+\begin{equation}
+    \sigma_u^2 \approx \sum_{i=1}^n \left( \frac{\partial f}{\partial x_i} \right)^2 \sigma_i^2 + 2 \sum_{i < j} \left( \frac{\partial f}{\partial x_i} \right) \left( \frac{\partial f}{\partial x_j} \right) \Cov(x_i, x_j)
+\end{equation}
+In matrixnotatie met de gradiëntvector $\vec{D} = \left( \frac{\partial f}{\partial x_1}, \ldots, \frac{\partial f}{\partial x_n} \right)^T$:
+\begin{equation}
+    \sigma_u^2 = \vec{D}^T V \vec{D}
+\end{equation}
+\end{formulabox}
+
+Voor een vector van meerdere functies $\vec{u} = \vec{f}(\vec{x})$ wordt de resulterende covariantiematrix $V_u$ gegeven door:
+\begin{equation}
+    V_u = J \, V_x \, J^T \qquad \text{waarbij } J_{ik} = \frac{\partial f_i}{\partial x_k} \text{ de Jacobiaan is.}
+\end{equation}
+
+\subsection{Veelvoorkomende Speciale Gevallen}
+Wanneer de variabelen ongecorreleerd zijn ($\Cov(x_i, x_j) = 0$ voor $i \neq j$):
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Lineaire combinatie:} $u = a x \pm b y \implies \sigma_u^2 = a^2 \sigma_x^2 + b^2 \sigma_y^2$.
+    \emph{Regel: Bij optelling en aftrekking tellen de absolute fouten kwadratisch op.}
+    \item \textbf{Product en quotiënt:} $u = a x y$ of $u = a \frac{x}{y}$:
+    \begin{equation}
+        \left( \frac{\sigma_u}{u} \right)^2 = \left( \frac{\sigma_x}{x} \right)^2 + \left( \frac{\sigma_y}{y} \right)^2 \pm 2 \rho_{xy} \left( \frac{\sigma_x}{x} \right) \left( \frac{\sigma_y}{y} \right)
+    \end{equation}
+    \emph{Regel: Bij vermenigvuldiging en deling tellen de fractionele (relatieve) fouten kwadratisch op.}
+    \item \textbf{Machtsfunctie:} $u = a x^\alpha \implies \frac{\sigma_u}{u} = |\alpha| \frac{\sigma_x}{x}$.
+    \item \textbf{Exponentiële functie:} $u = a e^{bx} \implies \frac{\sigma_u}{u} = |b| \sigma_x$.
+    \item \textbf{Logaritmische functie:} $u = a \ln(bx) \implies \sigma_u = |a| \frac{\sigma_x}{x}$.
+\end{enumerate}
+
+\begin{theobox}{Beperkingen van de Lineaire Foutenpropagatie}
+De foutenpropagatieformule is gebaseerd op een \textbf{lineaire benadering} (afkapping van de Taylorreeks na de 1e orde). Deze benadering verliest haar geldigheid wanneer:
+\begin{enumerate}
+    \item De tweede afgeleiden $\frac{\partial^2 f}{\partial x_i^2} \sigma_i^2$ niet verwaarloosbaar klein zijn ten opzichte van de eerste-orde termen (sterke niet-lineariteit binnen het fouteninterval, bv. $u = 1/x$ nabij $x \approx 0$).
+    \item De relatieve fouten groot zijn ($\sigma_x / x \gtrsim 20\%$).
+    \item De verdeling van de invoervariabelen sterk asymmetrisch is.
+\end{enumerate}
+In dergelijke gevallen moet men toevlucht nemen tot exacte transformatie van dichtheden of Monte Carlo foutenpropagatie (zie Hoofdstuk 10).
+\end{theobox}
+
+\part{Verklarende Statistiek (Inference)}
+
+%===================================================================
+\section{Schattingstheorie (Estimation)}
+%===================================================================
+
+In de verklarende statistiek (statistische inferentie) trachten we op basis van een experimentele steekproef conclusies te trekken over onbekende parameters $\theta$ van de onderliggende populatieverdeling.
+
+\subsection{Definitie en Kwaliteitscriteria van Schatters}
+\begin{defbox}{Schatter}
+Een \textbf{schatter} (estimator) $\hat{\theta} = T(X_1, X_2, \ldots, X_N)$ is een wiskundige functie van de toevallige variabelen in de steekproef. Omdat de steekproef toevallig is, is de schatter $\hat{\theta}$ zelf eveneens een toevallige variabele met een eigen kansverdeling (de \emph{steekproevenverdeling}). De numerieke uitkomst van $\hat{\theta}$ voor een specifieke gerealiseerde dataset heet een \textbf{schatting} (estimate).
+\end{defbox}
+
+Om de kwaliteit van een schatter te beoordelen hanteren we vijf fundamentele criteria:
+
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Onvertekendheid (Unbiasedness):}
+    Een schatter is zuiver of onvertekend indien de theoretische verwachtingswaarde van de schatter exact gelijk is aan de ware parameterwaarde $\theta$:
+    \begin{formulabox}
+    \begin{equation}
+        \Bias(\hat{\theta}) = \E[\hat{\theta}] - \theta = 0 \iff \E[\hat{\theta}] = \theta
+    \end{equation}
+    \end{formulabox}
+    Indien $\Bias(\hat{\theta}) \neq 0$ noemen we de schatter vertekend (biased).
+
+    \item \textbf{Consistentie (Consistency):}
+    Een schatter is consistent indien de schatter bij toenemende steekproefgrootte $N \to \infty$ in waarschijnlijkheid convergeert naar de ware parameterwaarde:
+    \begin{equation}
+        \forall \epsilon > 0: \quad \lim_{N \to \infty} P(|\hat{\theta}_N - \theta| \ge \epsilon) = 0 \quad (\hat{\theta}_N \xrightarrow{P} \theta)
+    \end{equation}
+    \emph{Voldoende voorwaarde voor consistentie:} $\lim_{N \to \infty} \Bias(\hat{\theta}_N) = 0$ en $\lim_{N \to \infty} \Var(\hat{\theta}_N) = 0$.
+
+    \item \textbf{Efficiëntie (Efficiency):}
+    Gegeven twee onvertekende schatters $\hat{\theta}_1$ en $\hat{\theta}_2$ is $\hat{\theta}_1$ efficiënter dan $\hat{\theta}_2$ indien $\Var(\hat{\theta}_1) < \Var(\hat{\theta}_2)$. Een schatter is \emph{maximaal efficiënt} als hij de theoretisch minimaal haalbare variantie bereikt (de Cramér-Rao grens).
+
+    \item \textbf{Mean Squared Error (Kwadratische Fout, MSE):}
+    De totale fout van een schatter combineert variantie en vertekening:
+    \begin{formulabox}
+    \begin{equation}
+        \MSE(\hat{\theta}) = \E[(\hat{\theta} - \theta)^2] = \Var(\hat{\theta}) + \left[ \Bias(\hat{\theta}) \right]^2
+    \end{equation}
+    \end{formulabox}
+    \emph{Bias-Variance Tradeoff:} Soms verkiest men een licht vertekende schatter met een veel kleinere variantie boven een onvertekende schatter met een grote variantie, omdat de totale MSE dan kleiner is.
+
+    \item \textbf{Robuustheid:}
+    De ongevoeligheid van de schatter voor kleine afwijkingen van de theoretische veronderstellingen (bv. aanwezigheid van meetuitschieters of een niet-Gaussische verdeling).
+\end{enumerate}
+
+\subsection{Fundamentele Schatters}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Schatten van het gemiddelde $\mu$:}
+    Het steekproefgemiddelde $\bar{X} = \frac{1}{N}\sum_{i=1}^N X_i$ is altijd een onvertekende en consistente schatter voor $\mu$:
+    \begin{equation}
+        \E[\bar{X}] = \mu, \qquad \Var(\bar{X}) = \frac{\sigma^2}{N}
+    \end{equation}
+    \item \textbf{Schatten van de variantie $\sigma^2$ (Bessel-correctie):}
+    \begin{formulabox}
+    \begin{equation}
+        S^2 = \frac{1}{N - 1} \sum_{i=1}^N (X_i - \bar{X})^2
+    \end{equation}
+    \end{formulabox}
+    \begin{theobox}{Bewijs van Onvertekendheid van $S^2$}
+    Schrijf $(X_i - \bar{X}) = (X_i - \mu) - (\bar{X} - \mu)$. Kwadrateren en sommeren geeft:
+    \begin{equation}
+        \sum_{i=1}^N (X_i - \bar{X})^2 = \sum_{i=1}^N (X_i - \mu)^2 - N(\bar{X} - \mu)^2
+    \end{equation}
+    Neem de verwachtingswaarde aan beide zijden:
+    \begin{equation}
+        \E\left[ \sum_{i=1}^N (X_i - \bar{X})^2 \right] = \sum_{i=1}^N \Var(X_i) - N \Var(\bar{X}) = N\sigma^2 - N \left( \frac{\sigma^2}{N} \right) = (N - 1)\sigma^2
+    \end{equation}
+    Hieruit volgt direct: $\E[S^2] = \frac{1}{N - 1} (N - 1)\sigma^2 = \sigma^2$.
+    Als men door $N$ zou delen, zou de schatter vertekend zijn met een factor $\frac{N-1}{N}$.
+    \emph{Opmerking:} Indien het ware gemiddelde $\mu$ exact bekend is, is de schatter $S_0^2 = \frac{1}{N}\sum_{i=1}^N (X_i - \mu)^2$ onvertekend.
+    \end{theobox}
+
+    \item \textbf{Schatten van de correlatiecoëfficiënt $\rho$:}
+    De steekproefcorrelatie $r$ is een consistente schatter voor $\rho$. Voor Gaussische data kan men betrouwbaarheidsintervallen opbouwen via de \textbf{Fisher $z$-transformatie}:
+    \begin{equation}
+        z = \frac{1}{2} \ln \left( \frac{1 + r}{1 - r} \right) = \text{artanh}(r) \approx \normdist\left( \text{artanh}(\rho), \frac{1}{N - 3} \right)
+    \end{equation}
+\end{itemize}
+
+\subsection{Stratified Sampling (Gestratificeerde Steekproef)}
+In veel fysische metingen of enquêtes kan de populatie verdeeld worden in $K$ afzonderlijke, homogene deelpopulaties of \textbf{strata} (bv. detectorzones, hemelgebieden, of energielagen), elk met bekende populatieomvang $N_k$ en fractie $w_k = N_k / N_{\text{tot}}$.
+
+\begin{stappenplan}{Gestratificeerd Schatten en Neyman Allocatie}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Schat het gemiddelde in elk stratum $k$ afzonderlijk via $\bar{X}_k = \frac{1}{n_k}\sum_{i=1}^{n_k} X_{k,i}$.
+    \item De gestratificeerde schatter voor het totale gemiddelde is:
+    \begin{equation}
+        \bar{X}_{\text{strat}} = \sum_{k=1}^K w_k \bar{X}_k, \qquad \Var(\bar{X}_{\text{strat}}) = \sum_{k=1}^K w_k^2 \frac{\sigma_k^2}{n_k}
+    \end{equation}
+    \item \textbf{Optimale (Neyman) Allocatie:} Bij een vast totaal aantal metingen $n = \sum n_k$ wordt de totale variantie geminimaliseerd door meer meetpunten toe te wijzen aan grotere strata en strata met een grotere interne spreiding $\sigma_k$:
+    \begin{equation}
+        n_k = n \cdot \frac{w_k \sigma_k}{\sum_{j=1}^K w_j \sigma_j} = n \cdot \frac{N_k \sigma_k}{\sum_{j=1}^K N_j \sigma_j}
+    \end{equation}
+    \item \emph{Resultaat:} De variantie van een optimaal gestratificeerde steekproef is altijd kleiner dan of gelijk aan die van een zuiver toevallige steekproef:
+    \begin{equation}
+        \Var(\bar{X}_{\text{strat}}) \le \Var(\bar{X}_{\text{SRS}})
+    \end{equation}
+\end{enumerate}
+\end{stappenplan}
+
+\subsection{Likelihood, Score en Fisher Informatie}
+Beschouw een steekproef van $N$ onafhankelijke observaties $\vec{x} = (x_1, \ldots, x_N)$ uit een verdeling met dichtheid $f(x; \theta)$.
+
+\begin{defbox}{Likelihood Functie en Score Functie}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Likelihood functie:}
+    \begin{equation}
+        L(\vec{x}; \theta) = \prod_{i=1}^N f(x_i; \theta)
+    \end{equation}
+    \item \textbf{Log-Likelihood functie:}
+    \begin{equation}
+        \ell(\vec{x}; \theta) = \ln L(\vec{x}; \theta) = \sum_{i=1}^N \ln f(x_i; \theta)
+    \end{equation}
+    \item \textbf{Score functie:} De gradiënt van de log-likelihood naar de parameter:
+    \begin{equation}
+        S(\theta) = \frac{\partial \ell}{\partial \theta} = \frac{\partial \ln L}{\partial \theta}
+    \end{equation}
+    Onder milde regulariteitsvoorwaarden geldt altijd dat de verwachtingswaarde van de score nul is:
+    \begin{equation}
+        \E\left[ \frac{\partial \ln L}{\partial \theta} \right] = 0
+    \end{equation}
+\end{itemize}
+\end{defbox}
+
+\begin{defbox}{Fisher Informatie}
+De \textbf{Fisher informatie} $I(\theta)$ meet de hoeveelheid informatie die een steekproef draagt over de onbekende parameter $\theta$:
+\begin{formulabox}
+\begin{equation}
+    I(\theta) = \E\left[ \left( \frac{\partial \ln L}{\partial \theta} \right)^2 \right] = -\E\left[ \frac{\partial^2 \ln L}{\partial \theta^2} \right] = N \cdot I_1(\theta)
+\end{equation}
+\end{formulabox}
+waarbij $I_1(\theta)$ de Fisher informatie van één enkele waarneming is. Een scherp gepiekte log-likelihood curve (grote negatieve tweede afgeleide) levert veel informatie op over $\theta$.
+\end{defbox}
+
+\subsection{De Cramér-Rao Grens (Minimum Variance Bound, MVB)}
+\begin{theobox}{Cramér-Rao Ongelijkheid}
+Laat $\hat{\theta}$ een willekeurige onvertekende schatter zijn voor $\theta$ ($\E[\hat{\theta}] = \theta$). Dan geldt voor de variantie van $\hat{\theta}$:
+\begin{formulabox}
+\begin{equation}
+    \Var(\hat{\theta}) \ge \frac{1}{I(\theta)} = \frac{1}{N \cdot I_1(\theta)} = \frac{1}{-\E\left[ \frac{\partial^2 \ln L}{\partial \theta^2} \right]}
+\end{equation}
+\end{formulabox}
+Voor een vertekende schatter met verwachtingswaarde $\E[\hat{\theta}] = \theta + b(\theta)$ luidt de grens:
+\begin{equation}
+    \Var(\hat{\theta}) \ge \frac{\left( 1 + b'(\theta) \right)^2}{I(\theta)}
+\end{equation}
+\end{theobox}
+
+\emph{Definitie Efficiënte Schatter:} Een onvertekende schatter $\hat{\theta}$ die de Cramér-Rao ondergrens exact bereikt ($\Var(\hat{\theta}) = 1/I(\theta)$) wordt \textbf{maximaal efficiënt} genoemd. De efficiëntie van een schatter is gedefinieerd als $\text{eff}(\hat{\theta}) = \frac{1 / I(\theta)}{\Var(\hat{\theta})} \le 1$.
+
+
+%===================================================================
+\section{Schattingsmethodes}
+%===================================================================
+
+\subsection{Methode van de Momenten (MM)}
+\begin{stappenplan}{Methode van de Momenten}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Bereken de theoretische momenten als functie van de $k$ onbekende parameters $\vec{\theta} = (\theta_1, \ldots, \theta_k)$:
+    \begin{equation}
+        \mu'_j(\theta_1, \ldots, \theta_k) = \E[X^j] = \int x^j f(x; \vec{\theta}) \, \dd x \quad (j = 1, \ldots, k)
+    \end{equation}
+    \item Bereken de corresponderende empirische steekproefmomenten:
+    \begin{equation}
+        m'_j = \frac{1}{N} \sum_{i=1}^N x_i^j
+    \end{equation}
+    \item Stel de theoretische momenten gelijk aan de steekproefmomenten:
+    \begin{equation}
+        \mu'_j(\hat{\theta}_1, \ldots, \hat{\theta}_k) = m'_j \quad (j = 1, \ldots, k)
+    \end{equation}
+    \item Los dit stelsel van $k$ vergelijkingen op naar $\hat{\theta}_1, \ldots, \hat{\theta}_k$.
+\end{enumerate}
+\end{stappenplan}
+
+\emph{Beoordeling van de Momentenmethode:}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Voordelen:} Conceptueel zeer eenvoudig, rekentechnisch vaak snel op te lossen zonder iteratieve optimalisatie, levert consistente schatters op.
+    \item \textbf{Nadelen:} Over het algemeen \emph{niet efficiënt} (grotere variantie dan ML). Bovendien kunnen berekende schattingen soms buiten het fysisch toegestane parameterdomein vallen (bv. negatieve varianties of kansen $> 1$).
+\end{itemize}
+
+\subsection{Maximum (Log)Likelihood Methode (ML / MLLH)}
+De Maximum Likelihood methode is de meest fundamentele en krachtigste schattingsmethode in de experimentele fysica.
+
+\begin{stappenplan}{Maximum Likelihood Schatting}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Formuleer de Likelihood $L(\vec{\theta}) = \prod_{i=1}^N f(x_i; \vec{\theta})$.
+    \item Neem de natuurlijke logaritme om de \textbf{log-likelihood} $\ell(\vec{\theta})$ te vormen:
+    \begin{equation}
+        \ell(\vec{\theta}) = \ln L(\vec{\theta}) = \sum_{i=1}^N \ln f(x_i; \vec{\theta})
+    \end{equation}
+    (Omdat $\ln$ een strikt monotoon stijgende functie is, treedt het maximum van $\ell$ op bij exact dezelfde parameterwaarde als het maximum van $L$).
+    \item Bepaal het nulpunt van de afgeleiden (de zgn. \emph{likelihood vergelijkingen}):
+    \begin{equation}
+        \left. \frac{\partial \ell}{\partial \theta_j} \right|_{\hat{\theta}} = 0 \quad (j = 1, \ldots, k)
+    \end{equation}
+    \item Controleer dat de matrix van tweede afgeleiden (de Hessiaan) negatief definiet is: $\left. \frac{\partial^2 \ell}{\partial \theta_j^2} \right|_{\hat{\theta}} < 0$.
+\end{enumerate}
+\end{stappenplan}
+
+\begin{theobox}{Fundamentele Asymptotische Eigenschappen van ML (bij $N \to \infty$)}
+Onder algemene regulariteitsvoorwaarden bezit de ML-schatter $\hat{\theta}_{\text{ML}}$ de volgende eigenschappen:
+\begin{enumerate}[leftmargin=1.2em]
+    \item \textbf{Consistentie:} $\hat{\theta} \xrightarrow{P} \theta$ voor $N \to \infty$.
+    \item \textbf{Asymptotisch onvertekend:} $\lim_{N \to \infty} \E[\hat{\theta}] = \theta$.
+    \item \textbf{Asymptotisch efficiënt:} De variantie van $\hat{\theta}$ bereikt de theoretische Cramér-Rao grens: $\lim_{N \to \infty} \Var(\hat{\theta}) = \frac{1}{I(\theta)}$.
+    \item \textbf{Asymptotisch normaal verdeeld:}
+    \begin{equation}
+        \hat{\theta} \xrightarrow{d} \normdist\left( \theta, \frac{1}{I(\theta)} \right)
+    \end{equation}
+    \item \textbf{Invariantie onder transformaties:} Indien $\hat{\theta}$ de ML-schatter is voor $\theta$, en $g(\theta)$ is een één-op-één transformatie, dan is de ML-schatter voor $g(\theta)$ simpelweg $g(\hat{\theta})$:
+    \begin{equation}
+        \widehat{g(\theta)}_{\text{ML}} = g(\hat{\theta}_{\text{ML}})
+    \end{equation}
+\end{enumerate}
+\end{theobox}
+
+\subsection{Fouten en Onzekerheden op ML-Schatters}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Analytische / Asymptotische fout:}
+    De variantie op de schatter wordt geschat via de negatieve inverse van de tweede afgeleide van de log-likelihood in het maximum:
+    \begin{equation}
+        \sigma_{\hat{\theta}}^2 \approx \left( -\left. \frac{\partial^2 \ln L}{\partial \theta^2} \right|_{\hat{\theta}} \right)^{-1}
+    \end{equation}
+    Voor meerdere parameters $\vec{\theta}$ wordt de covariantiematrix $V$ gegeven door de inverse van de Hessiaan $H$:
+    \begin{equation}
+        V = H^{-1}, \qquad H_{ij} = -\left. \frac{\partial^2 \ln L}{\partial \theta_i \partial \theta_j} \right|_{\hat{\vec{\theta}}}
+    \end{equation}
+    \item \textbf{Grafische / Numerieke Likelihood-Fout (Essentieel in de Fysica!):}
+    Wanneer de steekproef niet oneindig groot is en de log-likelihood asymmetrisch is, gebruikt men de log-likelihood kromme direct. Door een Taylorontwikkeling rond het maximum:
+    \begin{equation}
+        \ln L(\theta) \approx \ln L(\hat{\theta}) + \frac{1}{2} \left. \frac{\partial^2 \ln L}{\partial \theta^2} \right|_{\hat{\theta}} (\theta - \hat{\theta})^2 = \ln L_{\max} - \frac{(\theta - \hat{\theta})^2}{2\sigma^2}
+    \end{equation}
+    ziet men dat voor $\theta = \hat{\theta} \pm 1\sigma$ geldt:
+    \begin{formulabox}
+    \begin{equation}
+        \ln L(\hat{\theta} \pm 1\sigma) = \ln L_{\max} - \frac{1}{2}
+    \end{equation}
+    Voor $2\sigma$ en $3\sigma$ betrouwbaarheidsintervallen geldt:
+    \begin{equation}
+        \Delta \ln L = \ln L_{\max} - \ln L(\theta) = \frac{k^2}{2} \implies \begin{cases}
+            1\sigma: & \Delta \ln L = 0.5 \\
+            2\sigma: & \Delta \ln L = 2.0 \\
+            3\sigma: & \Delta \ln L = 4.5
+        \end{cases}
+    \end{equation}
+    \end{formulabox}
+    Voor asymmetrische krommen levert dit direct asymmetrische foutenmarges op: $\hat{\theta}_{-\sigma_-}^{+\sigma_+}$.
+\end{itemize}
+
+\subsection{Extended Maximum Likelihood (EML)}
+In deeltjesfysica en astrofysica is het totale aantal geobserveerde evenementen $N$ in een meting vaak niet van tevoren vastgelegd, maar een toevallige variabele die een Poisson-verdeling volgt met verwachtingswaarde $\nu(\vec{\theta})$.
+
+\begin{defbox}{Extended Likelihood}
+De uitgebreide likelihood combineert de Poisson-kans op het aantal evenementen met de dichtheden van de individuele metingen:
+\begin{equation}
+    L_{\text{ext}}(\vec{\theta}) = \frac{\nu^N e^{-\nu}}{N!} \prod_{i=1}^N f(x_i; \vec{\theta})
+\end{equation}
+De log-likelihood wordt (op een constante $\ln(N!)$ na):
+\begin{equation}
+    \ln L_{\text{ext}}(\vec{\theta}) = \sum_{i=1}^N \ln f(x_i; \vec{\theta}) - \nu(\vec{\theta}) + N \ln \nu(\vec{\theta})
+\end{equation}
+\end{defbox}
+Dit laat toe om zowel de vormparameters van een signaalpiek als de signaal- en achtergrond-aantallen simultaan te fitten.
+
+\subsection{De Methode der Kleinste Kwadraten (Least Squares, \texorpdfstring{$\chi^2$}{Chi-kwadraat})}
+Gegeven $N$ meetpunten $(x_i, y_i)$ met bekende Gaussische meetfouten $\sigma_i$ op de afhankelijke variabele $y_i$, en een theoretisch model $y = f(x; \vec{\theta})$.
+
+\begin{formulabox}
+De \textbf{Kleinste Kwadraten methode} minimaliseert de gewogen residuele kwadratensom:
+\begin{equation}
+    \chi^2(\vec{\theta}) = \sum_{i=1}^N \frac{(y_i - f(x_i; \vec{\theta}))^2}{\sigma_i^2}
+\end{equation}
+\end{formulabox}
+
+\begin{theobox}{Equivalentie tussen Kleinste Kwadraten en Maximum Likelihood}
+Indien de meetfouten op $y_i$ onafhankelijk en Gaussisch verdeeld zijn ($y_i \sim \normdist(f(x_i; \vec{\theta}), \sigma_i^2)$), is de likelihood:
+\begin{equation}
+    L(\vec{\theta}) = \prod_{i=1}^N \frac{1}{\sigma_i \sqrt{2\pi}} \exp\left( -\frac{(y_i - f(x_i; \vec{\theta}))^2}{2\sigma_i^2} \right) \implies \ln L(\vec{\theta}) = -\frac{1}{2}\chi^2(\vec{\theta}) + \text{constante}
+\end{equation}
+Het maximaliseren van de log-likelihood is dus \textbf{exact equivalent} aan het minimaliseren van $\chi^2$!
+\end{theobox}
+
+\subsection{Lineaire Regressie: Fitten van een Rechte Lijn}
+Voor het model $y = a + bx$:
+\begin{equation}
+    \chi^2(a, b) = \sum_{i=1}^N \frac{(y_i - a - bx_i)^2}{\sigma_i^2}
+\end{equation}
+Definieer de gewichten $w_i = 1/\sigma_i^2$ en de sommen:
+\begin{equation}
+    S = \sum w_i, \quad S_x = \sum w_i x_i, \quad S_y = \sum w_i y_i, \quad S_{xx} = \sum w_i x_i^2, \quad S_{xy} = \sum w_i x_i y_i, \quad \Delta = S S_{xx} - S_x^2
+\end{equation}
+De exacte analytische oplossingen voor de geschatte parameters luiden:
+\begin{formulabox}
+\begin{equation}
+    \hat{a} = \frac{S_{xx} S_y - S_x S_{xy}}{\Delta}, \qquad \hat{b} = \frac{S S_{xy} - S_x S_y}{\Delta}
+\end{equation}
+\begin{equation}
+    \Var(\hat{a}) = \sigma_a^2 = \frac{S_{xx}}{\Delta}, \qquad \Var(\hat{b}) = \sigma_b^2 = \frac{S}{\Delta}, \qquad \Cov(\hat{a}, \hat{b}) = -\frac{S_x}{\Delta}
+\end{equation}
+\end{formulabox}
+\emph{Opmerking over correlatie:} $\hat{a}$ en $\hat{b}$ zijn over het algemeen gecorreleerd ($\Cov(\hat{a}, \hat{b}) \neq 0$). De covariantie verdwijnt wanneer het assenstelsel zo gekozen wordt dat $S_x = 0$ (d.w.z. door $x$ te centreren rond het gewogen gemiddelde $\bar{x}_w$).
+
+\subsection{Matrixformulering van Lineaire Kleinste Kwadraten}
+Voor een algemeen lineair model $\vec{y} = X \vec{\beta} + \vec{\epsilon}$ met designmatrix $X$ ($N \times p$), parametervector $\vec{\beta}$ ($p \times 1$), en meetfouten met covariantiematrix $V = \Cov(\vec{\epsilon})$:
+\begin{equation}
+    \chi^2(\vec{\beta}) = (\vec{y} - X\vec{\beta})^T V^{-1} (\vec{y} - X\vec{\beta})
+\end{equation}
+Minimisatie naar $\vec{\beta}$ levert de \textbf{normaalvergelijkingen}:
+\begin{formulabox}
+\begin{equation}
+    \hat{\vec{\beta}} = (X^T V^{-1} X)^{-1} X^T V^{-1} \vec{y}
+\end{equation}
+\begin{equation}
+    V_{\hat{\beta}} = \Cov(\hat{\vec{\beta}}) = (X^T V^{-1} X)^{-1}
+\end{equation}
+\end{formulabox}
+
+\begin{theobox}{Theorema van Gauss-Markov}
+Onder het lineaire model met $\E[\vec{\epsilon}] = \vec{0}$ en $\Cov(\vec{\epsilon}) = V$ is de Kleinste Kwadraten schatter $\hat{\vec{\beta}}$ de \textbf{Best Linear Unbiased Estimator (BLUE)}: onder alle lineaire onvertekende schatters heeft $\hat{\vec{\beta}}$ de kleinste variantie. Dit theorema vereist \emph{geen} aanname over normaliteit van de fouten!
+\end{theobox}
+
+\subsection{Uitbreidingen: Fouten op \texorpdfstring{$x$}{x} en \texorpdfstring{$y$}{y}, Gebinde Data}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Fouten op zowel $x$ als $y$ (Effectieve Variantie Methode):}
+    Wanneer zowel $x_i$ (fout $\sigma_{x,i}$) als $y_i$ (fout $\sigma_{y,i}$) meetfouten dragen, propageert men de fout op $x$ naar $y$ via de afgeleide van het model:
+    \begin{equation}
+        \sigma_{i,\text{eff}}^2 = \sigma_{y,i}^2 + \left( \left. \frac{\dd f}{\dd x} \right|_{x_i} \right)^2 \sigma_{x,i}^2
+    \end{equation}
+    Men minimaliseert vervolgens de effectieve chi-kwadraat: $\chi^2 = \sum \frac{(y_i - f(x_i))^2}{\sigma_{i,\text{eff}}^2}$.
+    \item \textbf{Gebinde Data (Histogrammen):}
+    Voor waargenomen aantallen $n_i$ in bin $i$ met verwacht aantal $\nu_i(\vec{\theta})$:
+    \begin{itemize}
+        \item \emph{Pearson $\chi^2$:} $\chi^2_{\text{P}} = \sum_i \frac{(n_i - \nu_i)^2}{\nu_i}$.
+        \item \emph{Neyman (Modified) $\chi^2$:} $\chi^2_{\text{N}} = \sum_i \frac{(n_i - \nu_i)^2}{n_i}$ (faalt wanneer bins $n_i = 0$ bevatten).
+    \end{itemize}
+\end{itemize}
+
+
+%===================================================================
+\section{Confidentieniveaus en Betrouwbaarheidsintervallen}
+%===================================================================
+
+\subsection{Conceptuele Betekenis en Filosofie}
+Een puntschatting $\hat{\theta}$ geeft slechts één waarde. Om de experimentele onzekerheid volledig uit te drukken, construeren we een \textbf{betrouwbaarheidsinterval} (confidence interval) $[a, b]$ bij een vooraf gekozen \textbf{betrouwbaarheidsniveau} $1 - \alpha$ (vaak $68.3\%$, $90\%$, of $95\%$).
+
+\begin{defbox}{Frequentistische versus Bayesiaanse Interpretatie}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Frequentistisch (Confidence Interval):}
+    De ware fysische parameter $\theta$ is een \emph{vaste, onbekende constante} (geen toevallige variabele!). De intervalgrenzen $[a(\vec{X}), b(\vec{X})]$ zijn toevallige variabelen omdat ze berekend worden uit de steekproef:
+    \begin{equation}
+        P\left( a(\vec{X}) \le \theta \le b(\vec{X}) \right) = 1 - \alpha
+    \end{equation}
+    \emph{Correcte betekenis:} Als we het experiment een groot aantal keren herhalen onder identieke condities en telkens het interval $[a, b]$ berekenen, zal in een fractie $1 - \alpha$ van al die experimenten het geconstrueerde interval de werkelijke constante $\theta$ bevatten.
+    \item \textbf{Bayesiaans (Credible Interval):}
+    De data $\vec{x}$ zijn vast (ze zijn gemeten). De parameter $\theta$ wordt beschouwd als een toevallige variabele met een posterior kansdichtheid $f(\theta \mid \vec{x})$:
+    \begin{equation}
+        P(\theta \in [a, b] \mid \vec{x}) = \int_a^b f(\theta \mid \vec{x}) \, \dd \theta = 1 - \alpha
+    \end{equation}
+    Hier mag men wél zeggen: ``De kans dat $\theta$ tussen $a$ en $b$ ligt, gegeven de data, is $95\%$''. Dit vereist echter de keuze van een a priori verdeling $\pi(\theta)$.
+\end{itemize}
+\end{defbox}
+
+\subsection{De Klassieke Neyman-Constructie (Confidence Belts)}
+De algemene frequentistische methode om voor elke willekeurige verdeling betrouwbaarheidsintervallen te construeren is ontwikkeld door Jerzy Neyman (1937):
+\begin{stappenplan}{Neyman Confidence Belt Constructie}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Kies een betrouwbaarheidsniveau $1 - \alpha$.
+    \item Voor \emph{elke mogelijke waarde} van de parameter $\theta$, bepaal een acceptatie-interval $[x_1(\theta), x_2(\theta)]$ in de dataruimte zodanig dat:
+    \begin{equation}
+        P(x_1(\theta) \le X \le x_2(\theta) \mid \theta) = \int_{x_1(\theta)}^{x_2(\theta)} f(x \mid \theta) \, \dd x = 1 - \alpha
+    \end{equation}
+    (Vaak kiest men symmetrische staartkansen: $\alpha/2$ aan weerszijden).
+    \item Zet deze intervallen uit in een diagram met $\theta$ op de verticale as en $x$ op de horizontale as. De verbindingslijnen van $x_1(\theta)$ en $x_2(\theta)$ vormen de zgn. \textbf{confidence belt} (betrouwbaarheidsgordel).
+    \item Voer het experiment uit en meet de specifieke waarde $x_{\text{obs}}$.
+    \item Trek een verticale lijn bij $x = x_{\text{obs}}$. De snijpunten van deze lijn met de randen van de gordel bepalen de ondergrens $\theta_1$ en bovengrens $\theta_2$ van het betrouwbaarheidsinterval: $[\theta_1, \theta_2]$.
+\end{enumerate}
+\end{stappenplan}
+
+\subsection{Standaardgevallen in de Praktijk}
+\subsubsection{1. Normale Verdeling met Bekende Variantie \texorpdfstring{$\sigma^2$}{sigma-kwadraat}}
+Voor een steekproef van omvang $N$ uit $\normdist(\mu, \sigma^2)$ is $Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{N}} \sim \normdist(0, 1)$.
+Het exacte $(1 - \alpha)$ betrouwbaarheidsinterval voor $\mu$ luidt:
+\begin{formulabox}
+\begin{equation}
+    \left[ \bar{X} - z_{1 - \alpha/2} \frac{\sigma}{\sqrt{N}}, \quad \bar{X} + z_{1 - \alpha/2} \frac{\sigma}{\sqrt{N}} \right]
+\end{equation}
+\end{formulabox}
+Voorbeeld ($95\%$ betrouwbaarheid, $\alpha = 0.05$): $z_{0.975} = 1.96 \implies \bar{X} \pm 1.96 \frac{\sigma}{\sqrt{N}}$.
+
+\subsubsection{2. Normale Verdeling met Onbekende Variantie: De Student-\texorpdfstring{$t$}{t} Verdeling}
+In de praktijk is de populatievariantie $\sigma^2$ vrijwel nooit exact bekend en moet zij geschat worden via de steekproefstandaardafwijking $s$.
+
+\begin{theobox}{Student-$t$ Statistiek}
+Vervanging van $\sigma$ door $s$ introduceert extra statistische fluctuaties. De resulterende testgrootheid volgt geen normale verdeling, maar een \textbf{Student-$t$ verdeling} met $\nu = N - 1$ vrijheidsgraden:
+\begin{equation}
+    T = \frac{\bar{X} - \mu}{s / \sqrt{N}} \sim t(\nu = N - 1)
+\end{equation}
+De dichtheidsfunctie van de Student-$t$ verdeling is:
+\begin{equation}
+    f(t; \nu) = \frac{\Gamma\left(\frac{\nu + 1}{2}\right)}{\sqrt{\nu\pi} \, \Gamma\left(\frac{\nu}{2}\right)} \left( 1 + \frac{t^2}{\nu} \right)^{-\frac{\nu + 1}{2}}
+\end{equation}
+\end{theobox}
+Het $(1 - \alpha)$ betrouwbaarheidsinterval voor $\mu$ wordt:
+\begin{formulabox}
+\begin{equation}
+    \left[ \bar{X} - t_{1 - \alpha/2, \, N - 1} \frac{s}{\sqrt{N}}, \quad \bar{X} + t_{1 - \alpha/2, \, N - 1} \frac{s}{\sqrt{N}} \right]
+\end{equation}
+\end{formulabox}
+Voor kleine $N$ is $t_{1 - \alpha/2, N-1} > z_{1 - \alpha/2}$ (dikkere staarten ter compensatie van de onzekerheid op $s$). Voor $N \to \infty$ nadert de Student-$t$ verdeling asymptotisch de Gaussische verdeling.
+
+\subsubsection{3. Confidentie-interval voor de Variantie \texorpdfstring{$\sigma^2$}{sigma-kwadraat}}
+\begin{theobox}{Verdeling van de Steekproefvariantie ($\chi^2$)}
+Voor een normale verdeling is de grootheid $\frac{(N - 1)S^2}{\sigma^2}$ exact verdeeld volgens een \textbf{$\chi^2$-verdeling} met $\nu = N - 1$ vrijheidsgraden:
+\begin{equation}
+    \frac{(N - 1)S^2}{\sigma^2} = \sum_{i=1}^N \frac{(X_i - \bar{X})^2}{\sigma^2} \sim \chi^2(N - 1)
+\end{equation}
+\end{theobox}
+Omdat de $\chi^2$-verdeling asymmetrisch is, kiest men de onder- en bovenkwantielen $\chi^2_{\alpha/2, N-1}$ en $\chi^2_{1 - \alpha/2, N-1}$:
+\begin{formulabox}
+\begin{equation}
+    P\left( \chi^2_{\alpha/2, N-1} \le \frac{(N - 1)S^2}{\sigma^2} \le \chi^2_{1 - \alpha/2, N-1} \right) = 1 - \alpha
+\end{equation}
+Inversie levert het betrouwbaarheidsinterval voor $\sigma^2$:
+\begin{equation}
+    \left[ \frac{(N - 1)s^2}{\chi^2_{1 - \alpha/2, \, N - 1}}, \quad \frac{(N - 1)s^2}{\chi^2_{\alpha/2, \, N - 1}} \right]
+\end{equation}
+\end{formulabox}
+
+\subsubsection{4. Poisson Confidentie-intervallen en Nul-Resultaten (Tellerexperimenten)}
+In zeldzame deeltjes- of astrofysische waarnemingen telt men een discreet aantal gebeurtenissen $n$. Het exacte $(1 - \alpha)$ interval voor de Poisson-parameter $\mu$ wordt berekend via het verband tussen de cumulatieve Poisson-som en de $\chi^2$-verdeling:
+\begin{formulabox}
+\begin{equation}
+    \mu_{\text{onder}} = \frac{1}{2} \chi^2_{\alpha/2, \, 2n}, \qquad \mu_{\text{boven}} = \frac{1}{2} \chi^2_{1 - \alpha/2, \, 2(n + 1)}
+\end{equation}
+\end{formulabox}
+
+\begin{fysicabox}{Het Belang van Nul-Resultaten ("Regel van 3")}
+Veronderstel dat een detector in een zoektocht naar een zeldzaam deeltje (bv. donkere materie of zeldzaam verval) \textbf{exact nul evenementen} registreert ($n = 0$). Wat is dan de $95\%$ bovengrens voor de verwachtingswaarde $\mu$?
+
+De waarschijnlijkheid om nul evenementen te zien bij een verwachting $\mu$ is $P(0; \mu) = e^{-\mu}$.
+We stellen deze kans gelijk aan de onbetrouwbaarheidsdrempel $\alpha = 0.05$ (eenzijdig $95\%$ betrouwbaarheidsniveau):
+\begin{equation}
+    e^{-\mu_{\text{up}}} = 0.05 \iff \mu_{\text{up}} = -\ln(0.05) \approx 2.996 \approx 3.00
+\end{equation}
+\textbf{De "Regel van 3":} Indien men nul evenementen waarneemt, kan men met $95\%$ zekerheid besluiten dat het verwachte aantal gebeurtenissen kleiner is dan $3$!
+\end{fysicabox}
+
+\subsection{Fysische Grenzen en het Feldman-Cousins Probleem}
+In veel fysische experimenten is een parameter fysisch begrensd (bv. neutrino massa $m \ge 0$, signaalamplitude $s \ge 0$). Wanneer men metingen verricht met Gaussische achtergrondruis en de gemeten waarde na achtergrondaftrek negatief uitvalt, levert de klassieke Neyman-constructie soms absurde of lege intervallen op (bv. een betrouwbaarheidsinterval dat uitsluitend in het niet-fysische domein ligt).
+
+\textbf{Oplossingen in de moderne data-analyse:}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Bayesiaanse aanpak:} Leg een prior op die strikt nul is in het onfysische gebied ($\pi(\theta) = 0$ voor $\theta < 0$). De posterior blijft automatisch fysisch zinvol.
+    \item \textbf{Feldman-Cousins Unified Approach (1998):} Een frequentistische constructie gebaseerd op een \emph{likelihood-ratio ordering principle} dat op natuurlijke wijze overgaat van een tweezijdig betrouwbaarheidsinterval (bij significante signalen) naar een eenzijdige bovengrens (bij afwezigheid van signaal), zonder lege intervallen of undercoverage.
+\end{itemize}
+
+%===================================================================
+\section{Hypothesetoetsen en Beslissingsleer}
+%===================================================================
+
+Waar schattingstheorie numerieke parameters tracht te bepalen, beantwoordt hypothesetoetsing kwalitatieve, binaire vragen: ``Is er een nieuw deeltje ontdekt?'', ``Zijn twee meetmethoden compatibel?'', of ``Voldoet het model aan de data?''.
+
+\subsection{Formulering van Hypothesen}
+\begin{defbox}{Hypothesen en Beslissingsruimte}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Nulhypothese ($H_0$):} De standaardhypothese die stelt dat er geen effect, geen verschil of geen signaal aanwezig is (bv. achtergrond alleen, $\theta = \theta_0$).
+    \item \textbf{Alternatieve hypothese ($H_1$):} De hypothese die een nieuw effect, een afwijking of een signaal postuleert ($\theta \neq \theta_0$ of $\theta > \theta_0$).
+    \item \textbf{Teststatistiek $T(\vec{X})$:} Een scalaire functie van de data die gebruikt wordt om een beslissing te forceren.
+    \item \textbf{Kritiek gebied (Critical Region) $W$:} De verzameling uitkomsten waarvoor men besluit $H_0$ te verwerpen ten gunste van $H_1$.
+\end{itemize}
+\end{defbox}
+
+\subsection{Foutentypes en Onderscheidend Vermogen (Power)}
+Bij het nemen van een beslissing op basis van toevallige steekproeven kunnen twee soorten fouten optreden:
+
+\begin{center}
+    \small
+    \begin{tabular}{lcc}
+        \toprule
+        & \textbf{$H_0$ is waar} (Geen effect) & \textbf{$H_1$ is waar} (Werkelijk effect) \\
+        \midrule
+        \textbf{Beslissing: $H_0$ niet verwerpen} & Correcte beslissing ($1 - \alpha$) & \textbf{Type II fout} ($\beta$) [Vals negatief] \\
+        \textbf{Beslissing: $H_0$ verwerpen} & \textbf{Type I fout} ($\alpha$) [Vals alarm] & Correcte ontdekking ($1 - \beta$) [Power] \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\begin{defbox}{Kwantitatieve Maten van een Toets}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Type I fout ($\alpha$):} De kans om $H_0$ te verwerpen terwijl $H_0$ in werkelijkheid waar is (het \textbf{significantieniveau} van de test):
+    \begin{equation}
+        \alpha = P(T \in W \mid H_0)
+    \end{equation}
+    \item \textbf{Type II fout ($\beta$):} De kans om $H_0$ niet te verwerpen terwijl $H_1$ in werkelijkheid waar is:
+    \begin{equation}
+        \beta = P(T \notin W \mid H_1)
+    \end{equation}
+    \item \textbf{Onderscheidend Vermogen (Statistical Power):} De kans om een werkelijk bestaand effect correct te detecteren:
+    \begin{formulabox}
+    \begin{equation}
+        \text{Power} = 1 - \beta = P(T \in W \mid H_1)
+    \end{equation}
+    \end{formulabox}
+\end{itemize}
+\end{defbox}
+
+\emph{De Fundamentele Afweging:} Bij een vaste steekproefgrootte $N$ leidt het verlagen van het valsalarm-risico $\alpha$ onvermijdelijk tot een toename van het risico op gemiste ontdekkingen $\beta$. Om zowel $\alpha$ als $\beta$ simultaan te verkleinen, moet men de steekproefgrootte $N$ vergroten.
+
+\subsection{Het Neyman-Pearson Lemma}
+Voor het testen van twee \emph{enkelvoudige hypothesen} (waarbij de parameterverdelingen onder $H_0$ en $H_1$ volledig gespecificeerd zijn: $f(\vec{x} \mid H_0)$ en $f(\vec{x} \mid H_1)$) formuleert het Neyman-Pearson lemma de mathematisch meest optimale test.
+
+\begin{theobox}{Neyman-Pearson Lemma}
+Gegeven een vastgelegd significantieniveau $\alpha$, wordt de test met het \textbf{maximaal mogelijke onderscheidend vermogen} ($1 - \beta$) verkregen door het kritieke gebied $W$ te definiëren op basis van de \textbf{Likelihood Ratio} $\Lambda(\vec{x})$:
+\begin{formulabox}
+\begin{equation}
+    \Lambda(\vec{x}) = \frac{L(\vec{x} \mid H_1)}{L(\vec{x} \mid H_0)} \ge c_\alpha
+\end{equation}
+\end{formulabox}
+waarbij de drempelwaarde $c_\alpha$ zodanig gekozen wordt dat $P(\Lambda(\vec{X}) \ge c_\alpha \mid H_0) = \alpha$.
+\end{theobox}
+Dit theorema vormt de theoretische basis voor multivariate signaal-achtergrond scheiding in de moderne deeltjesfysica (bv. likelihood ratio tests, discriminanten en neurale netwerken).
+
+\subsection{Interpretatie van de \texorpdfstring{$p$}{p}-waarde}
+\begin{defbox}{$p$-waarde}
+De \textbf{$p$-waarde} is de waarschijnlijkheid om, onder de aanname dat de nulhypothese $H_0$ waar is, een teststatistiek te observeren die minstens even extreem is als de feitelijk waargenomen waarde $t_{\text{obs}}$:
+\begin{equation}
+    p = P(T \ge t_{\text{obs}} \mid H_0)
+\end{equation}
+\end{defbox}
+
+\begin{theobox}{Beslisregels en Valkuilen bij de $p$-waarde}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Beslisregel:} Indien $p \le \alpha$, verwerp $H_0$ op significantieniveau $\alpha$. Indien $p > \alpha$, verwerp $H_0$ niet.
+    \item \textbf{Wat de $p$-waarde NIET is:} De $p$-waarde is \textbf{niet} de kans dat $H_0$ waar is ($p \neq P(H_0 \mid \text{data})$). Om de kans op $H_0$ te kennen is Bayesiaanse statistiek met een prior vereist.
+    \item \textbf{Bewijzen is slechts verwerpen:} Een hypothese kan experimenteel verworpen worden als de data uiterst onwaarschijnlijk zijn onder die aanname. Het \emph{niet} verwerpen van $H_0$ betekent echter \textbf{nooit} dat $H_0$ bewezen is; het betekent louter dat de data compatibel zijn met $H_0$ (``Absence of evidence is not evidence of absence'').
+    \item \textbf{De $5\sigma$-standaard in Fysica:}
+    In deeltjesfysica hanteert men conventioneel:
+    \begin{itemize}
+        \item $3\sigma$ ($p = 1.35 \times 10^{-3}$, eenzijdig): Bewijs voor een effect (``Evidence'').
+        \item $5\sigma$ ($p = 2.87 \times 10^{-7}$, eenzijdig): Officiële ontdekking (``Discovery''). Deze extreem strenge drempel compenseert voor niet-gemodelleerde systematische fouten en het \emph{look-elsewhere effect}.
+    \end{itemize}
+\end{itemize}
+\end{theobox}
+
+\subsection{Aanpassingstoetsen (Goodness-of-Fit)}
+\subsubsection{1. De \texorpdfstring{$\chi^2$}{Chi-kwadraat}-Toets voor Aangepastheid}
+Om te testen of een waargenomen histogram compatibel is met een theoretische verdeling, verdeelt men de data in $k$ klassen of bins:
+\begin{formulabox}
+\begin{equation}
+    X^2 = \sum_{i=1}^k \frac{(O_i - E_i)^2}{E_i}
+\end{equation}
+\end{formulabox}
+waarbij $O_i$ de geobserveerde tellingen zijn en $E_i = N p_i$ de theoretisch verwachte tellingen onder $H_0$.
+
+\begin{theobox}{Eigenschappen van de $\chi^2$-Toets}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Onder $H_0$ volgt $X^2$ asymptotisch een $\chi^2$-verdeling met $\nu = k - 1 - m$ vrijheidsgraden, waarbij $m$ het aantal parameters is dat uit de data geschat is via kleinste kwadraten of ML.
+    \item \textbf{Geldigheidsvoorwaarde:} In elke bin moet de verwachte telling voldoende groot zijn: $E_i \ge 5$. Bins met te weinig tellingen moeten samengevoegd worden.
+    \item \textbf{Gereduceerde $\chi^2_\nu = X^2 / \nu$:}
+    \begin{itemize}
+        \item $\chi^2_\nu \approx 1$: Uitstekende overeenstemming tussen data en model.
+        \item $\chi^2_\nu \gg 1$: Slechte fit (model verwerpen) of onderschatte meetfouten.
+        \item $\chi^2_\nu \ll 1$: Over-fitting of overschatte meetfouten.
+    \end{itemize}
+\end{enumerate}
+\end{theobox}
+
+\subsubsection{2. De Run Test (Wald-Wolfowitz)}
+De $\chi^2$-toets kijkt alleen naar de grootte van de afwijkingen, niet naar hun volgorde of tekens.
+\begin{stappenplan}{Run Test}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Bepaal de residuen $r_i = y_i - f(x_i)$ in volgorde van toenemende $x$.
+    \item Ken aan elk residu een teken toe ($+$ of $-$).
+    \item Tel het totale aantal \textbf{runs} $R$ (opeenvolgende reeksen van hetzelfde teken).
+    \item Indien $N_+$ en $N_-$ het aantal positieve en negatieve tekens zijn, zijn de verwachting en variantie van $R$ onder de aanname van toeval:
+    \begin{equation}
+        \E[R] = 1 + \frac{2 N_+ N_-}{N_+ + N_-}, \qquad \Var(R) = \frac{2 N_+ N_- (2 N_+ N_- - N_+ - N_-)}{(N_+ + N_-)^2 (N_+ + N_- - 1)}
+    \end{equation}
+    \item \emph{Diagnostische kracht:} Te weinig runs duidt op systematische onder- of overschatting over langere intervallen (bv. een fit die te strak of krom is). De run test levert cruciale, \emph{onafhankelijke} informatie naast de $\chi^2$-toets.
+\end{enumerate}
+\end{stappenplan}
+
+\subsubsection{3. De Kolmogorov-Smirnov Toets (KS-Toets)}
+De KS-toets vergelijkt de continue empirische cumulatieve verdeling $S_N(x) = \frac{1}{N}\sum_{i=1}^N \mathbf{1}_{x_i \le x}$ rechtstreeks met de theoretische CDF $F(x)$:
+\begin{formulabox}
+\begin{equation}
+    D = \sup_{x} |S_N(x) - F(x)|
+\end{equation}
+\end{formulabox}
+\textbf{Grote voordelen van de KS-toets:} Vereist geen binning van de data (geen arbitraire bin-keuze of informatieverlies), is exact geldig voor elke eindige steekproefgrootte $N$, en is gevoelig voor zowel verschuivingen in het centrum als in de staarten van de verdeling.
+
+\subsection{Toetsen voor Vergelijking van Twee Steekproeven}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Twee gemiddelden met bekende varianties $\sigma_1^2, \sigma_2^2$ ($Z$-toets):}
+    \begin{equation}
+        Z = \frac{\bar{X}_1 - \bar{X}_2 - \Delta_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \normdist(0, 1)
+    \end{equation}
+    \item \textbf{Twee gemiddelden met onbekende maar gelijke varianties $\sigma_1 = \sigma_2$ (Two-Sample $t$-toets):}
+    Bereken de gepoolde steekproefvariantie $s_p^2$:
+    \begin{equation}
+        s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}
+    \end{equation}
+    De teststatistiek volgt een Student-$t$ verdeling:
+    \begin{equation}
+        T = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(\nu = n_1 + n_2 - 2)
+    \end{equation}
+    \item \textbf{Gepaarde Metingen (Paired $t$-toets):}
+    Voor metingen op dezelfde objecten voor en na een bewerking ($X_{1i}, X_{2i}$): bereken de verschillen $d_i = X_{1i} - X_{2i}$ en voer een standaard één-steekproef $t$-toets uit op $\bar{d}$ met $s_d$.
+    \item \textbf{Vergelijken van twee varianties (Fisher-Snedecor $F$-toets):}
+    Om $H_0: \sigma_1^2 = \sigma_2^2$ te toetsen, berekent men de verhouding van de steekproefvarianties:
+    \begin{equation}
+        F = \frac{s_1^2}{s_2^2} \sim F(n_1 - 1, \, n_2 - 1)
+    \end{equation}
+\end{itemize}
+
+
+%===================================================================
+\section{Wachtrijtheorie en Stochastische Processen in de Fysica}
+%===================================================================
+
+Wachtrijtheorie en stochastische processen zijn essentieel in de experimentele fysica voor het modelleren van detectoren, data-acquisitiesystemen (DAQ) en deeltjestellers.
+
+\subsection{Tijdsintervallen in Poisson-Processen}
+Beschouw evenementen die optreden met een constant gemiddeld tempo van $\lambda$ gebeurtenissen per tijdseenheid.
+\begin{itemize}[leftmargin=1.5em]
+    \item De kans op $k$ evenementen in een tijdsinterval $t$ is Poisson-verdeeld: $P(k; t) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}$.
+    \item De kans dat er in een tijdsinterval $t$ \emph{geen enkele} gebeurtenis optreedt is $P(0; t) = e^{-\lambda t}$.
+    \item De cumulatieve verdeling van de wachttijd $T$ tot de eerstvolgende gebeurtenis is $F(t) = P(T \le t) = 1 - P(0; t) = 1 - e^{-\lambda t}$.
+    \item De kansdichtheid van de tussentijden is derhalve \textbf{exponentieel verdeeld}:
+    \begin{formulabox}
+    \begin{equation}
+        f(t) = \frac{\dd F(t)}{\dd t} = \lambda e^{-\lambda t} \quad (t \ge 0)
+    \end{equation}
+    \end{formulabox}
+    met gemiddelde tussentijd $\E[T] = 1/\lambda$ en variantie $\Var(T) = 1/\lambda^2$.
+\end{itemize}
+
+\subsection{Dode Tijd (Dead Time) Modellen in Detectoren}
+Na de registratie van een deeltje heeft elke fysische detector (bv. Geiger-Müller teller, fotomultiplicator, siliciumstripdetector) een hersteltijd $\tau$ waarin het systeem ongevoelig is voor nieuwe inkomende deeltjes. We onderscheiden twee fundamentele modellen:
+
+
+
+\begin{defbox}{Niet-Paralyseerbaar versus Paralyseerbaar Meetsysteem}
+Laat $R$ het werkelijke (inkomende) teltempo zijn en $m$ het waargenomen (gemeten) teltempo.
+\begin{enumerate}[leftmargin=1.2em]
+    \item \textbf{Niet-Paralyseerbaar Model (Non-paralyzable):}
+    Gebeurtenissen die binnenvallen tijdens de dode tijd $\tau$ worden genegeerd en \textbf{verlengen de dode tijd niet}.
+    \begin{itemize}
+        \item In één seconde meet de detector $m$ pulsen, wat resulteert in een totale dode tijd van $m\tau$ seconden.
+        \item De fractie actieve tijd per seconde is $1 - m\tau$.
+        \item Het gemeten tempo is het werkelijke tempo vermenigvuldigd met de actieve fractie: $m = R(1 - m\tau)$.
+    \end{itemize}
+    \begin{formulabox}
+    \begin{equation}
+        m = \frac{R}{1 + R\tau} \iff R = \frac{m}{1 - m\tau}
+    \end{equation}
+    \end{formulabox}
+    \emph{Verzadigingsgedrag:} Voor $R \to \infty$ nadert het gemeten tempo asymptotisch naar een constant maximum: $m_{\max} = 1/\tau$.
+
+    \item \textbf{Paralyseerbaar Model (Paralyzable / Verlengbare Dode Tijd):}
+    \textbf{Elke} inkomende gebeurtenis (ook die tijdens de dode tijd valt) herstart de dode tijd $\tau$.
+    \begin{itemize}
+        \item Een gebeurtenis wordt enkel geregistreerd als het tijdsinterval tot de voorgaande gebeurtenis groter is dan $\tau$.
+        \item Krachtens de Poisson-statistiek is de kans dat er in een tijdsduur $\tau$ géén andere deeltjes binnenvallen gelijk aan $e^{-R\tau}$.
+    \end{itemize}
+    \begin{formulabox}
+    \begin{equation}
+        m = R e^{-R\tau}
+    \end{equation}
+    \end{formulabox}
+    \emph{Dramatisch gedrag:} Het gemeten tempo bereikt een maximum bij $R = 1/\tau$, waar $m_{\max} = \frac{1}{e\tau} \approx \frac{0.368}{\tau}$. Voor $R > 1/\tau$ \textbf{daalt} het gemeten teltempo weer! Bij extreem hoge fluxen slibt de detector volledig dicht en valt de teller stil ($m \to 0$).
+\end{enumerate}
+\end{defbox}
+
+\begin{fysicabox}{Dubbelzinnigheid bij Paralyseerbare Detectoren}
+Bij een paralyseerbaar systeem levert een gemeten teltempo $m < m_{\max}$ \textbf{twee mogelijke werkelijke teltempo's} $R$ op (één op de stijgende tak $R < 1/\tau$ en één op de dalende tak $R > 1/\tau$). In experimenten moet men via attenuatiefilters of stapsgewijze verhoging van de bundelintensiteit verifiëren op welke tak men opereert.
+\end{fysicabox}
+
+\subsection{Wachtrijmodellen (Kendall-Notatie) en het \texorpdfstring{$M/M/1$}{M/M/1}-Systeem}
+Wachtrijsystemen worden aangeduid volgens de Kendall-notatie: $A / S / c$, waarbij $A$ de aankomstverdeling is, $S$ de bedieningsduurverdeling (service time), en $c$ het aantal bedieningsstations (servers). ($M$ staat voor Markoviaans / exponentieel).
+
+In het klassieke \textbf{$M/M/1$-systeem}:
+\begin{itemize}[leftmargin=1.5em]
+    \item Aankomstproces: Poisson met tempo $\lambda$ (inter-aankomsttijden $\sim \text{Exp}(\lambda)$).
+    \item Bedieningsproces: Exponentieel met tempo $\mu$ (bedieningsduur $\sim \text{Exp}(\mu)$).
+    \item Aantal servers: $c = 1$.
+    \item \textbf{Bezettingsgraad / Verkeersintensiteit:} $\rho = \frac{\lambda}{\mu}$.
+    Voor een stabiel systeem moet gelden: $\rho < 1$.
+\end{itemize}
+
+\begin{theobox}{Karakteristieken van het $M/M/1$-Systeem}
+\begin{itemize}[leftmargin=1.2em]
+    \item \textbf{Stationaire kans op $n$ klanten in het systeem:}
+    \begin{equation}
+        P_n = (1 - \rho)\rho^n \quad (n = 0, 1, 2, \ldots)
+    \end{equation}
+    \item \textbf{Gemiddeld aantal klanten in het systeem ($L$):}
+    \begin{equation}
+        L = \sum_{n=0}^\infty n P_n = \frac{\rho}{1 - \rho} = \frac{\lambda}{\mu - \lambda}
+    \end{equation}
+    \item \textbf{Wet van Little:}
+    \begin{equation}
+        L = \lambda W \iff W = \frac{L}{\lambda} = \frac{1}{\mu - \lambda}
+    \end{equation}
+    waarbij $W$ de gemiddelde totale verblijftijd in het systeem is.
+    \item \textbf{Gemiddelde wachttijd in de rij ($W_q$):}
+    \begin{equation}
+        W_q = W - \frac{1}{\mu} = \frac{\rho}{\mu - \lambda} = \frac{\lambda}{\mu(\mu - \lambda)}
+    \end{equation}
+\end{itemize}
+\end{theobox}
+
+\subsection{Markov-Ketens en Random Walks}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Discrete Markov-ketens:} Een reeks toevallige variabelen $\{X_0, X_1, \ldots\}$ met de Markov-eigenschap: de toekomst hangt uitsluitend af van de huidige toestand:
+    \begin{equation}
+        P(X_{n+1} = j \mid X_n = i, X_{n-1} = i_{n-1}, \ldots) = P(X_{n+1} = j \mid X_n = i) = P_{ij}
+    \end{equation}
+    De transitiekansen vormen een stochastische matrix $P$ ($\sum_j P_{ij} = 1$). De stationaire verdeling $\vec{\pi}$ voldoet aan:
+    \begin{equation}
+        \vec{\pi} P = \vec{\pi}, \qquad \sum_i \pi_i = 1
+    \end{equation}
+    Toepassing: Buffercapaciteit in elektronica, toestand van detectorsystemen met ruis.
+    \item \textbf{Random Walk (Stochastische Wandeling) in 1D:}
+    Een deeltje start op $x = 0$ en zet bij elke tijdstap $\Delta t$ een stap $\pm \Delta x$ met kans $p$ (naar rechts) en $1 - p$ (naar links).
+    Voor een symmetrische stap ($p = 1/2$):
+    \begin{equation}
+        \E[X_N] = 0, \qquad \Var(X_N) = N (\Delta x)^2
+    \end{equation}
+    In de continue limiet ($N \to \infty, \Delta t \to 0, \Delta x \to 0$ met constant blijvende verhouding $D = \frac{(\Delta x)^2}{2\Delta t}$):
+    \begin{equation}
+        \langle X^2(t) \rangle = 2Dt
+    \end{equation}
+    Dit is de fundamentele \textbf{Einstein-diffusiewet} voor Brownse beweging!
+\end{itemize}
+
+
+%===================================================================
+\section{De Monte Carlo Methode}
+%===================================================================
+
+De Monte Carlo (MC) methode is een numerieke techniek gebaseerd op het herhaaldelijk trekken van pseudo-willekeurige getallen om complexe probabilistische en deterministische problemen op te lossen.
+
+\subsection{Genereren van Willekeurige Getallen}
+Computers genereren deterministische reeksen via \textbf{Pseudo-Random Number Generators (PRNG)}, zoals de Linear Congruential Generator (LCG) of de Mersenne Twister, die getallen uniform verdeeld over het eenheidsinterval produceren: $u \sim U(0, 1)$.
+
+\subsection{Bemonsteringsmethodes voor Niet-Uniforme Verdelingen}
+\subsubsection{1. De Inverse Transformatie Methode}
+\begin{theobox}{Inverse Transformatie Theorema}
+Laat $X$ een continue toevallige variabele zijn met PDF $f(x)$ en strikt monotoon stijgende cumulatieve verdeling $F(x) = \int_{-\infty}^x f(t) \, \dd t$.
+Indien $U \sim U(0, 1)$, dan volgt de getransformeerde variabele:
+\begin{formulabox}
+\begin{equation}
+    X = F^{-1}(U)
+\end{equation}
+\end{formulabox}
+exact de kansverdeling $f(x)$.
+\end{theobox}
+
+\emph{Voorbeeld (Exponentiële Verdeling):}
+Voor $f(x) = \lambda e^{-\lambda x}$ is de CDF $F(x) = 1 - e^{-\lambda x}$.
+Stel $u = 1 - e^{-\lambda x} \implies e^{-\lambda x} = 1 - u \implies x = -\frac{1}{\lambda} \ln(1 - u)$.
+Omdat $1 - u$ eveneens uniform verdeeld is op $[0, 1)$, kan men vereenvoudigen tot:
+\begin{equation}
+    x = -\frac{1}{\lambda} \ln u
+\end{equation}
+
+\subsubsection{2. De Acceptatie-Verwerpingsmethode (Hit-and-Miss / Von Neumann Rejection)}
+Wanneer de cumulatieve verdeling $F(x)$ niet analytisch inverteerbaar is, omhult men de doeldichtheid $f(x)$ op het interval $[a, b]$ door een eenvoudig te bemonsteren dichtheid $g(x)$ geschaald met een factor $c \ge 1$, zodanig dat $c \cdot g(x) \ge f(x)$ overal op het domein (in het eenvoudigste geval een constante rechthoek met hoogte $M \ge \max f(x)$).
+
+\begin{stappenplan}{Von Neumann Acceptatie-Verwerping}
+\begin{enumerate}[leftmargin=1.2em]
+    \item Genereer een kandidaatpunt $x$ uit de verdeling $g(x)$ (bv. uniform op $[a, b]$).
+    \item Genereer een uniform getal $u \sim U(0, 1)$.
+    \item Controleer de acceptatievoorwaarde:
+    \begin{itemize}
+        \item Indien $u \le \frac{f(x)}{c \cdot g(x)}$: \textbf{Accepteer} $x$ als trekking uit $f(x)$.
+        \item Anders: \textbf{Verwerp} $x$ en herhaal stap 1.
+    \end{itemize}
+    \item De fractie geaccepteerde punten (het rendement) is $\frac{1}{c}$.
+\end{enumerate}
+\end{stappenplan}
+
+\subsubsection{3. De Box-Muller Transformatie voor Gaussische Variabelen}
+Het genereren van normale verdelingen $\normdist(0, 1)$ kan niet direct via inverse transformatie omdat de errorfunctie niet elementair inverteerbaar is. De Box-Muller methode lost dit exact op via tweedimensionale poolcoördinaten:
+\begin{theobox}{Box-Muller Algoritme}
+Trek twee onafhankelijke getallen $u_1, u_2 \sim U(0, 1)$. Dan zijn:
+\begin{formulabox}
+\begin{equation}
+    z_1 = \sqrt{-2\ln u_1} \cos(2\pi u_2), \qquad z_2 = \sqrt{-2\ln u_1} \sin(2\pi u_2)
+\end{equation}
+\end{formulabox}
+twee exact onafhankelijke standaardnormaal verdeelde variabelen: $z_1, z_2 \sim \normdist(0, 1)$.
+\end{theobox}
+
+\subsubsection{4. Multidimensionale en Gecorreleerde Variabelen}
+Om een vector $\vec{X} \sim \normdist(\vec{\mu}, V)$ te simuleren met een willekeurige covariantiematrix $V$:
+\begin{enumerate}[leftmargin=1.2em]
+    \item Bepaal de \textbf{Cholesky-decompositie} van de covariantiematrix: $V = L L^T$, waarbij $L$ een benedendriehoeksmatrix is.
+    \item Genereer een vector $\vec{Z} = (Z_1, \ldots, Z_n)^T$ van ongecorreleerde standaardnormale getallen ($Z_i \sim \normdist(0, 1)$).
+    \item De getransformeerde vector $\vec{X} = \vec{\mu} + L \vec{Z}$ heeft exact verwachting $\vec{\mu}$ en covariantiematrix $\Cov(\vec{X}) = L \Cov(\vec{Z}) L^T = L I L^T = V$.
+\end{enumerate}
+
+\subsection{Monte Carlo Toepassingen in de Fysica}
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Simulatie van Deeltjesdetectoren (bv. GEANT4):} Simulatie van spoorvorming, elektromagnetische en hadronische douches, interacties van straling met materie, en detectorefficiëntie.
+    \item \textbf{Complexe Foutenpropagatie:} Wanneer modellen sterk niet-lineair zijn en klassieke eerste-orde foutenpropagatie faalt, genereert men $10^5$ synthetische datasets volgens de inputonzekerheden en analyseert men de resulterende uitkomstverdeling rechtstreeks.
+\end{itemize}
+
+\subsection{Monte Carlo Numerieke Integratie}
+Beschouw de meervoudige integraal $I = \int_\Omega g(\vec{x}) \, \dd \vec{x}$ over een volume $V_\Omega$.
+
+We kunnen deze integraal herschrijven als het volume vermenigvuldigd met de verwachtingswaarde van $g$ onder een uniforme verdeling op $\Omega$:
+\begin{equation}
+    I = V_\Omega \cdot \E[g(\vec{X})] \qquad \text{met } \vec{X} \sim \text{Uniform}(\Omega)
+\end{equation}
+
+\begin{defbox}{Monte Carlo Integratieschatter}
+Genereer $N$ onafhankelijke uniforme punten $\vec{x}_1, \ldots, \vec{x}_N \in \Omega$:
+\begin{formulabox}
+\begin{equation}
+    \hat{I}_{\text{MC}} = \frac{V_\Omega}{N} \sum_{i=1}^N g(\vec{x}_i)
+\end{equation}
+\end{formulabox}
+Krachtens het Centrale Limiet Theorema is de standaardfout op deze schatting:
+\begin{equation}
+    \sigma_I = V_\Omega \cdot \frac{s_g}{\sqrt{N}} = \frac{V_\Omega}{\sqrt{N}} \sqrt{\frac{1}{N - 1} \sum_{i=1}^N (g(\vec{x}_i) - \bar{g})^2} \propto \frac{1}{\sqrt{N}}
+\end{equation}
+\end{defbox}
+
+\begin{theobox}{Doorbreking van de Vloek van Dimensionaliteit}
+Vergelijk de convergentiesnelheid van Monte Carlo integratie met klassieke numerieke roostermethoden in $d$ dimensies:
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Integratiemethode} & \textbf{Foutenschaal als functie van evaluaties $N$} & \textbf{Opmerkingen} \\
+        \midrule
+        Trapeziumregel & $\mathcal{O}(N^{-2/d})$ & Sterk afhankelijk van dimensie $d$ \\
+        Simpsonregel & $\mathcal{O}(N^{-4/d})$ & Sterk afhankelijk van dimensie $d$ \\
+        Gauss-kwadratuur & $\mathcal{O}(N^{-2k/d})$ & Vereist gladde functies \\
+        \textbf{Monte Carlo Integratie} & $\mathbf{\mathcal{O}(N^{-1/2})}$ & \textbf{Onafhankelijk van de dimensie $d$!} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\textbf{Conclusie:} Voor eendimensionale integralen zijn klassieke methoden superieur. Echter, zodra de dimensie $d \ge 4$ (voor trapezium) of $d \ge 8$ (voor Simpson), verslaat de Monte Carlo methode onverbiddelijk elke roostermethode! Dit maakt Monte Carlo onmisbaar voor veeldeeltjessystemen, padintegralen en faseruimte-integralen in de kwantum- en astrofysica.
+\end{theobox}
+
+\subsection{Variantiereductietechnieken}
+Om de precisie van Monte Carlo berekeningen te verhogen zonder $N$ onevenredig groot te maken, gebruikt men:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Importance Sampling:} In plaats van uniform te bemonsteren, bemonstert men punten uit een dichtheid $p(\vec{x})$ die qua vorm sterk lijkt op het integrandum $|g(\vec{x})|$:
+    \begin{equation}
+        I = \int \frac{g(\vec{x})}{p(\vec{x})} p(\vec{x}) \, \dd \vec{x} \implies \hat{I} = \frac{1}{N}\sum_{i=1}^N \frac{g(\vec{x}_i)}{p(\vec{x}_i)} \quad \text{met } \vec{x}_i \sim p(\vec{x})
+    \end{equation}
+    Als $g/p \approx \text{constant}$, nadert de variantie naar nul.
+    \item \textbf{Stratified Sampling:} Verdeel het integratiedomein in subdomeinen en trek in elk subdomein punten, waardoor ruimtelijke klontering van toevalspunten vermeden wordt.
+\end{itemize}
+
+
+%===================================================================
+\newpage
+\appendix
+\section{Formulaire en Beslissingstabellen}
+%===================================================================
+
+\subsection{Overzichtstabel Belangrijke Kansverdelingen}
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lcp{3.8cm}ccX}
+        \toprule
+        \textbf{Verdeling} & \textbf{Type} & \textbf{Dichtheid / Kans $f(x)$} & $\mathbf{\E[X]}$ & $\mathbf{\Var(X)}$ & \textbf{Fysische Toepassing} \\
+        \midrule
+        $\text{Uniform}(a,b)$ & Cont. & $\frac{1}{b-a}$ & $\frac{a+b}{2}$ & $\frac{(b-a)^2}{12}$ & Kwantisatieruis, PRNG \\
+        \addlinespace
+        $\text{Exp}(\lambda)$ & Cont. & $\lambda e^{-\lambda x}$ & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ & Verval, Poisson-tussentijden \\
+        \addlinespace
+        $\text{Binom}(n,p)$ & Disc. & $\binom{n}{k}p^k(1-p)^{n-k}$ & $np$ & $np(1-p)$ & Detectorefficiëntie \\
+        \addlinespace
+        $\text{Pois}(\mu)$ & Disc. & $\frac{\mu^k e^{-\mu}}{k!}$ & $\mu$ & $\mu$ & Shot noise, fotonentelling \\
+        \addlinespace
+        $\normdist(\mu,\sigma^2)$ & Cont. & $\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ & $\mu$ & $\sigma^2$ & Meetfouten (CLT) \\
+        \addlinespace
+        $\text{Lognorm}(\mu,\sigma)$ & Cont. & $\frac{1}{x\sigma\sqrt{2\pi}}e^{-\frac{(\ln x-\mu)^2}{2\sigma^2}}$ & $e^{\mu+\frac{\sigma^2}{2}}$ & $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$ & Multiplicatieve effecten, fluxen \\
+        \addlinespace
+        Breit-Wigner & Cont. & $\frac{1}{\pi}\frac{\Gamma/2}{(x-x_0)^2+(\Gamma/2)^2}$ & Onbepaald & Onbepaald & Resonanties, onzekerheid $\Delta E$ \\
+        \addlinespace
+        $\chi^2(\nu)$ & Cont. & $\frac{x^{\frac{\nu}{2}-1}e^{-\frac{x}{2}}}{2^{\nu/2}\Gamma(\nu/2)}$ & $\nu$ & $2\nu$ & Goodness-of-fit, varianties \\
+        \addlinespace
+        Student-$t(\nu)$ & Cont. & $\frac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}\Gamma(\nu/2)}(1+\frac{t^2}{\nu})^{-\frac{\nu+1}{2}}$ & $0$ ($\nu>1$) & $\frac{\nu}{\nu-2}$ ($\nu>2$) & Kleine steekproeven, onbekende $\sigma$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Beslissingsboom voor Statistische Hypothesetoetsen}
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{llX}
+        \toprule
+        \textbf{Vraagstelling / Gegevens} & \textbf{Toets} & \textbf{Teststatistiek \& Voorwaarde} \\
+        \midrule
+        Eén gemiddelde, $\sigma$ bekend & $Z$-toets & $Z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{N}} \sim \normdist(0,1)$ \\
+        \addlinespace
+        Eén gemiddelde, $\sigma$ onbekend & Eén-steekproef $t$-toets & $T = \frac{\bar{X} - \mu_0}{s / \sqrt{N}} \sim t(N-1)$ \\
+        \addlinespace
+        Twee onafhankelijke gemiddelden, gelijke $\sigma$ & Two-sample $t$-toets & $T = \frac{\bar{X}_1 - \bar{X}_2}{s_p\sqrt{1/n_1 + 1/n_2}} \sim t(n_1+n_2-2)$ \\
+        \addlinespace
+        Gepaarde metingen (voor/na) & Gepaarde $t$-toets & $T = \frac{\bar{d}}{s_d / \sqrt{N}} \sim t(N-1)$ op $d_i = X_{1i} - X_{2i}$ \\
+        \addlinespace
+        Vergelijking van twee varianties & Fisher $F$-toets & $F = s_1^2 / s_2^2 \sim F(n_1-1, n_2-1)$ \\
+        \addlinespace
+        Histogram vs. Theoretische verdeling & Pearson $\chi^2$-toets & $X^2 = \sum \frac{(O_i - E_i)^2}{E_i} \sim \chi^2(k - 1 - m)$ (mits $E_i \ge 5$) \\
+        \addlinespace
+        Volgorde van residuen (systematische trends) & Run test & Aantal runs $R$ vergeleken met $\E[R]$ en $\Var(R)$ \\
+        \addlinespace
+        Continue vergelijking zonder binning & Kolmogorov-Smirnov & $D = \sup |S_N(x) - F(x)|$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Vergelijking van Schattingsmethodes}
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lXXX}
+        \toprule
+        \textbf{Eigenschap} & \textbf{Momentenmethode (MM)} & \textbf{Maximum Likelihood (ML)} & \textbf{Kleinste Kwadraten (LS / $\chi^2$)} \\
+        \midrule
+        \textbf{Principe} & $\E[X^k] = m_k$ gelijkstellen & $\prod f(x_i;\theta)$ maximaliseren & $\sum (y_i - f(x_i))^2/\sigma_i^2$ minimaliseren \\
+        \addlinespace
+        \textbf{Complexiteit} & Zeer eenvoudig, vaak analytisch & Vaak numeriek/iteratief vereist & Analytisch voor lineaire modellen \\
+        \addlinespace
+        \textbf{Efficiëntie} & Meestal suboptimaal & Asymptotisch maximaal (MVB) & Optimaal lineair (BLUE via Gauss-Markov) \\
+        \addlinespace
+        \textbf{Informatie-eis} & Enkel momenten vereist & Volledige PDF $f(x;\theta)$ vereist & Punten $(x_i, y_i)$ en fouten $\sigma_i$ \\
+        \addlinespace
+        \textbf{Verband met ML} & Geen direct verband & Referentiemethode & Exact equivalent met ML bij Gaussische fouten \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\end{document}
