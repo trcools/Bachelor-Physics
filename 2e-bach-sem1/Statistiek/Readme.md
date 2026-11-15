@@ -2,6 +2,10 @@ Reminder voor mezelf: Maak zeker nog de "voor de lezer" oefeningen op de powerpo
 
 Het lange bewijs van stelling 5.2.2 heb ik nog even achterwege gelaten (kom hier zekeer nog op terug!)
 
+Oefeningen: H6 Oefening 4 kleinste kwadraten nog eens opnieuw maken.
+
+Op de slides van H7 is er op het eeinde nog een deel Monte Carlo die niet in de cursus staat volgens mij.
+
 
 2e-bach-sem1/Statistiek/
 ├── Cursus/

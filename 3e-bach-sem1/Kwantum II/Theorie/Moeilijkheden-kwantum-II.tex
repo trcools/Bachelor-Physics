@@ -199,6 +199,55 @@ Theorema 6 bewijs met jordaanblokken!
 \subsection{De Diracvergelijking}
 \subsection{Niet-relativistische limiet}
 \subsection{Covariante vorm van de Diracvergelijking}
+
+In deze subsectie volgt een beknopt overzicht van de wiskundige struikelblokken bij het aantonen van de Lorentzcovariantie van de Diracvergelijking.
+
+\textbf{1. De impliciete tensorcontractie en index-manipulaties} \\
+De cursus stelt dat men vergelijking (6.81), $\Lambda^\mu_{\;\;\lambda} \Lambda_\mu^{\;\;\sigma} = \delta_\lambda^\sigma$, bekomt door contractie van $\Lambda^\mu_{\;\;\lambda} \Lambda^\nu_{\;\;\kappa} g_{\mu\nu} = g_{\lambda\kappa}$ met de inverse metrische tensor $g^{\kappa\sigma}$. Het ontbrekende wiskundige mechanisme hier is de Einstein-sommatieconventie in combinatie met \textit{index raising en lowering}.
+Door beide zijden te vermenigvuldigen met $g^{\kappa\sigma}$ en te sommeren over de dummy index $\kappa$, krijgt men:
+\begin{equation}
+\Lambda^\mu_{\;\;\lambda} \left( g_{\mu\nu} \Lambda^\nu_{\;\;\kappa} g^{\kappa\sigma} \right) = g_{\lambda\kappa} g^{\kappa\sigma}
+\end{equation}
+De uitdrukking tussen haakjes verlaagt index $\nu$ naar $\mu$ en verhoogt $\kappa$ naar $\sigma$, wat $\Lambda_\mu^{\;\;\sigma}$ oplevert. Het rechterlid is per definitie de inverse relatie van de metrische tensor, wat de Kronecker delta $\delta_\lambda^\sigma$ geeft.
+
+\textbf{2. De nul-relatie voor infinitesimale transformaties} \\
+Wanneer we een infinitesimale Lorentztransformatie $\Lambda^\nu_{\;\;\mu} = \delta^\nu_{\;\;\mu} + \Delta\omega^\nu_{\;\;\mu}$ substitueren in de orthogonaliteitsrelatie, lijkt de stap naar de antisymmetrische relatie $\Delta\omega_\nu^{\;\;\mu} + \Delta\omega^\mu_{\;\;\nu} = 0$ onduidelijk. De sleutel is het lineariseren (eerste orde Taylorbenadering). We bepalen eerst de covariante vorm:
+\begin{equation}
+\Lambda_\mu^{\;\;\sigma} = g_{\mu\rho} (\delta^\rho_{\;\;\tau} + \Delta\omega^\rho_{\;\;\tau}) g^{\tau\sigma} = \delta_\mu^\sigma + \Delta\omega_\mu^{\;\;\sigma}
+\end{equation}
+Substitutie levert:
+\begin{equation}
+(\delta^\mu_{\;\;\lambda} + \Delta\omega^\mu_{\;\;\lambda})(\delta_\mu^\sigma + \Delta\omega_\mu^{\;\;\sigma}) = \delta_\lambda^\sigma
+\end{equation}
+Uitwerken en het verwaarlozen van de kwadratische term $\mathcal{O}(\Delta\omega^2)$ geeft $\delta_\lambda^\sigma + \Delta\omega_\lambda^{\;\;\sigma} + \Delta\omega^\sigma_{\;\;\lambda} = \delta_\lambda^\sigma$. Na het aftrekken van de eenheidsmatrix resteert exact de nul-relatie.
+
+\textbf{3. De oorsprong van de machtreeksontwikkeling voor spinorrepresentaties} \\
+De cursus presenteert de infinitesimale spinorrepresentatie $\mathcal{D}(\Lambda) \approx \mathbf{1} - \frac{i}{4} \sigma_{\mu\nu} \Delta\omega^{\mu\nu}$ schijnbaar uit het niets als een machtreeks. Dit steunt eigenlijk op de exponentiële afbeelding uit de Lie-algebra. Een algemene transformatie wordt gegenereerd door $\mathcal{D}(\Lambda) = \exp(-\frac{i}{2} \omega_{\mu\nu} S^{\mu\nu})$. Door de \textit{generator} voor de Dirac-spinor $S^{\mu\nu} = \frac{1}{2}\sigma^{\mu\nu}$ te kiezen en een eerste-orde Taylor-expansie uit te voeren voor kleine $\Delta\omega$, bekomt men de gegeven lineaire benadering.
+
+\textbf{4. De afleiding van de commutatorvergelijking voor de gammamatrices} \\
+Bij het substitueren van de infinitesimale vormen in $\mathcal{D}(\Lambda)^{-1} \gamma^\nu \mathcal{D}(\Lambda) = \Lambda^\nu_{\;\;\mu} \gamma^\mu$, lineariseert men opnieuw de vergelijking.
+\begin{equation}
+\left( \mathbf{1} + \frac{i}{4}\sigma_{\alpha\beta}\Delta\omega^{\alpha\beta} \right) \gamma^\nu \left( \mathbf{1} - \frac{i}{4}\sigma_{\rho\sigma}\Delta\omega^{\rho\sigma} \right) \approx \left( \delta^\nu_{\;\;\mu} + \Delta\omega^\nu_{\;\;\mu} \right) \gamma^\mu
+\end{equation}
+Na het uitwerken van de haakjes, het behouden van enkel de eerste-orde termen, en het aftrekken van $\gamma^\nu$ aan beide kanten, ordent men de componenten. Omdat de matrix $\sigma_{\alpha\beta}$ niet commuteert met $\gamma^\nu$, blijft de volgorde belangrijk, wat direct resulteert in de commutator:
+\begin{equation}
+\frac{i}{4}\Delta\omega^{\alpha\beta} (\sigma_{\alpha\beta} \gamma^\nu - \gamma^\nu \sigma_{\alpha\beta}) = \Delta\omega^\nu_{\;\;\mu} \gamma^\mu
+\end{equation}
+
+\textbf{5. Antisymmetrisatie met dummy indices} \\
+Om het rechterlid van de vergelijking om te schrijven naar de vorm $\frac{1}{2} \Delta\omega^{\alpha\beta} [ \delta^\nu_\alpha \gamma_\beta - \delta^\nu_\beta \gamma_\alpha ]$, maakt men gebruik van een bekende tensortruc en de eigenschap $\Delta\omega^{\alpha\beta} = -\Delta\omega^{\beta\alpha}$. Men splitst de term in twee gelijke helften:
+\begin{equation}
+\Delta\omega^{\alpha\beta} \delta^\nu_\alpha \gamma_\beta = \frac{1}{2} \Delta\omega^{\alpha\beta} \delta^\nu_\alpha \gamma_\beta + \frac{1}{2} \Delta\omega^{\alpha\beta} \delta^\nu_\alpha \gamma_\beta
+\end{equation}
+In de tweede term hernoemt men de sommatie-indices ($\alpha \leftrightarrow \beta$) en past men het minteken van de antisymmetrie toe, waarna men $\frac{1}{2} \Delta\omega^{\alpha\beta}$ kan afzonderen.
+
+\textbf{6. Het uitwerken van $\gamma^0$ uit de matrix-exponent} \\
+In de relatie $[\mathcal{D}(\Lambda)]^+ = \gamma^0 [\mathcal{D}(\Lambda)]^{-1} \gamma^0$ steunt het naar buiten halen van $\gamma^0$ uit de machtreeks op de eigenschap $(\gamma^0)^2 = 1$. Door de relatie $(\gamma_\mu)^+ = \gamma^0 \gamma_\mu \gamma^0$ in te vullen in de commutator, ontstaat een matrix van de vorm $X = \gamma^0 Y \gamma^0$. Binnen de Maclaurin-reeks van de exponentiële functie geldt voor elke macht:
+\begin{equation}
+X^n = (\gamma^0 Y \gamma^0)(\gamma^0 Y \gamma^0) \dots (\gamma^0 Y \gamma^0) = \gamma^0 Y^n \gamma^0
+\end{equation}
+Omdat dit voor elke term uit de oneindige sommatie geldt (inclusief de identiteitsmatrix $1 = \gamma^0 1 \gamma^0$), kan $\gamma^0$ volledig links en rechts afgezonderd worden. Dit bewijst dat $[\mathcal{D}(\Lambda)]^+ = \gamma^0 \exp(Y) \gamma^0$.
+
 \subsection{Lorentzcovariantie van de Diracvergelijking}
 \subsection{Pariteitstransformatie}
 \subsection{Bilineaire covariante vormen}
@@ -223,6 +272,7 @@ Theorema 6 bewijs met jordaanblokken!
 
 
 \bibliographystyle{plain}
+\nocite{*} %Want nog geen citaties.
 \bibliography{/Users/tristancools/Documents/Overleaf-Latex-Typst/References/references}
 
 \end{document}
