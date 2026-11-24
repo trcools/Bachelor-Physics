@@ -200,6 +200,8 @@ Statistische/
 > - **Grand Canonical $(T, V, \mu)$ system**: Grand potential $\Phi = F - \mu N = -pV$ is **minimized**.
 > - **Isothermal-Isobaric $(T, p, N)$ system**: Gibbs free energy $G = E - TS + pV$ is **minimized**.
 
+> - Hardebolmodellen worden vaak gevraagd op het examen (vooral theorie) zie deelvraag 5 van oef 2 in reeks 5!
+
 ---
 
 ## 🐍 Computational Physics Notebooks (`Code/`)
